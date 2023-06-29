@@ -14,6 +14,7 @@
 
   * [Getting Started](/)
   * [FAQ](/faq.md)
+  * [Test Page](/test.md)
 
 
 
