@@ -9,7 +9,7 @@
   <meta name="viewport"
     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
   <!-- <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css" /> -->
-  <link rel="stylesheet" href="_css/style.css" />
+  <link rel="stylesheet" href="css/style.css" />
   <!-- Edit on Github -->
   <script src="//unpkg.com/docsify-edit-on-github/index.js"></script>
   <!-- custom styles -->
@@ -119,15 +119,14 @@
       maxLevel: 2,
       mergeNavbar: true,
       auto2top: true,
-      plugins: [
-        EditOnGithubPlugin.create(config.editOnGithub.docBase, null, config.editOnGithub.title),
-      ],
+      // plugins: [ EditOnGithubPlugin.create(config.editOnGithub.docBase, null, config.editOnGithub.title),],
     };
   </script>
   <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
   <!-- Plugins -->
   <!-- Search -->
-  <script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
+  <!-- Search is rather confusing so it is hidden. -->
+  <!-- <script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script> -->
   <!-- Emoji plugin -->
   <script src="//unpkg.com/docsify/lib/plugins/emoji.min.js"></script>
   <!-- External JS -->

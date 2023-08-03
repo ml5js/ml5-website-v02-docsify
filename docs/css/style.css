@@ -1,7 +1,11 @@
-/* #2ee2ee */
-/* #2ee2ee */
-
 @import url("https://fonts.googleapis.com/css?family=Roboto+Mono|Source+Sans+Pro:300,400,600");
+
+:root {
+  --main-color: #9760f6;
+  --theme-color: #2ee2ee;
+  --text-color: #34495e;
+  /* --theme-color: #42b983; */
+}
 
 * {
   -webkit-font-smoothing: antialiased;
@@ -45,8 +49,8 @@ span.emoji {
 }
 
 .progress {
-  background-color: #2ee2ee;
-  background-color: var(--theme-color, #2ee2ee);
+  background-color: #42b983;
+  background-color: var(--theme-color, #42b983);
   height: 2px;
   left: 0px;
   position: fixed;
@@ -58,13 +62,13 @@ span.emoji {
 }
 
 .search a:hover {
-  color: #2ee2ee;
-  color: var(--theme-color, #2ee2ee);
+  color: #42b983;
+  color: var(--theme-color, #42b983);
 }
 
 .search .search-keyword {
-  color: #2ee2ee;
-  color: var(--theme-color, #2ee2ee);
+  color: #42b983;
+  color: var(--theme-color, #42b983);
   font-style: normal;
   font-weight: bold;
 }
@@ -80,6 +84,7 @@ body {
   color: #34495e;
   font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
   font-size: 15px;
+  /* *** */
   letter-spacing: 0;
   margin: 0;
   overflow-x: hidden;
@@ -147,15 +152,15 @@ li input[type='checkbox'] {
 }
 
 .app-nav a:hover {
-  color: #2ee2ee;
-  color: var(--theme-color, #2ee2ee);
+  color: #42b983;
+  color: var(--theme-color, #42b983);
 }
 
 .app-nav a.active {
-  border-bottom: 2px solid #2ee2ee;
-  border-bottom: 2px solid var(--theme-color, #2ee2ee);
-  color: #2ee2ee;
-  color: var(--theme-color, #2ee2ee);
+  border-bottom: 2px solid #42b983;
+  border-bottom: 2px solid var(--theme-color, #42b983);
+  color: #42b983;
+  color: var(--theme-color, #42b983);
 }
 
 .app-nav li {
@@ -222,8 +227,8 @@ li input[type='checkbox'] {
 
 .github-corner svg {
   color: #fff;
-  fill: #2ee2ee;
-  fill: var(--theme-color, #2ee2ee);
+  fill: #42b983;
+  fill: var(--theme-color, #42b983);
   height: 80px;
   width: 80px;
 }
@@ -355,8 +360,8 @@ main.hidden {
 }
 
 .sidebar-toggle span {
-  background-color: #2ee2ee;
-  background-color: var(--theme-color, #2ee2ee);
+  background-color: #42b983;
+  background-color: var(--theme-color, #42b983);
   display: block;
   margin-bottom: 4px;
   width: 16px;
@@ -678,14 +683,14 @@ section.cover ul {
 }
 
 section.cover .cover-main>p:last-child a {
-  border-color: #2ee2ee;
-  border-color: var(--theme-color, #2ee2ee);
+  border-color: #42b983;
+  border-color: var(--theme-color, #42b983);
   border-radius: 2rem;
   border-style: solid;
   border-width: 1px;
   box-sizing: border-box;
-  color: #2ee2ee;
-  color: var(--theme-color, #2ee2ee);
+  color: #42b983;
+  color: var(--theme-color, #42b983);
   display: inline-block;
   font-size: 1.05rem;
   letter-spacing: 0.1rem;
@@ -696,8 +701,8 @@ section.cover .cover-main>p:last-child a {
 }
 
 section.cover .cover-main>p:last-child a:last-child {
-  background-color: #2ee2ee;
-  background-color: var(--theme-color, #2ee2ee);
+  background-color: #42b983;
+  background-color: var(--theme-color, #42b983);
   color: #fff;
 }
 
@@ -711,14 +716,14 @@ section.cover .cover-main>p:last-child a:hover {
 }
 
 section.cover blockquote>p>a {
-  border-bottom: 2px solid #2ee2ee;
-  border-bottom: 2px solid var(--theme-color, #2ee2ee);
+  border-bottom: 2px solid #42b983;
+  border-bottom: 2px solid var(--theme-color, #42b983);
   transition: color 0.3s;
 }
 
 section.cover blockquote>p>a:hover {
-  color: #2ee2ee;
-  color: var(--theme-color, #2ee2ee);
+  color: #42b983;
+  color: var(--theme-color, #42b983);
 }
 
 body {
@@ -756,8 +761,8 @@ body {
 
 .sidebar ul li.active>a {
   border-right: 2px solid;
-  color: #2ee2ee;
-  color: var(--theme-color, #2ee2ee);
+  color: #42b983;
+  color: var(--theme-color, #42b983);
   font-weight: 600;
 }
 
@@ -774,18 +779,21 @@ body {
 .markdown-section h4,
 .markdown-section strong {
   color: #2c3e50;
+  color: var(--main-color, #2c3e50);
   font-weight: 600;
 }
 
 .markdown-section a {
-  color: #2ee2ee;
-  color: var(--theme-color, #2ee2ee);
+  color: #42b983;
+  color: var(--theme-color, #42b983);
   font-weight: 600;
 }
 
 .markdown-section h1 {
-  font-size: 2rem;
-  margin: 0 0 1rem;
+  font-size: 2.5rem;
+  /* was 2 */
+  margin: 0 0 1.5rem;
+  /* was 1 */
 }
 
 .markdown-section h2 {
@@ -794,32 +802,36 @@ body {
 }
 
 .markdown-section h3 {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
+  /* was 1.5 */
   margin: 40px 0 0.6rem;
 }
 
 .markdown-section h4 {
-  font-size: 1.25rem;
+  font-size: 1rem;
+  /* was 1.25 */
 }
 
 .markdown-section h5 {
+  color: #999;
   font-size: 1rem;
 }
 
 .markdown-section h6 {
-  color: #777;
+  color: #666;
   font-size: 1rem;
 }
 
 .markdown-section figure,
 .markdown-section p {
-  margin: 1.2em 0;
+  margin: 1.05em 0;
 }
 
 .markdown-section p,
 .markdown-section ul,
 .markdown-section ol {
-  line-height: 1.6rem;
+  line-height: 1.5rem;
+  /* was 1.6 */
   word-spacing: 0.05rem;
 }
 
@@ -829,8 +841,8 @@ body {
 }
 
 .markdown-section blockquote {
-  border-left: 4px solid #2ee2ee;
-  border-left: 4px solid var(--theme-color, #2ee2ee);
+  border-left: 4px solid #42b983;
+  border-left: 4px solid var(--theme-color, #42b983);
   color: #858585;
   margin: 2em 0;
   padding-left: 20px;
@@ -842,7 +854,8 @@ body {
 }
 
 .markdown-section iframe {
-  margin: 1em 0;
+  /* margin: 1em 0; */
+  margin: -0.75em 0;
 }
 
 .markdown-section em {
@@ -977,8 +990,8 @@ body {
 }
 
 .token.string {
-  color: #2ee2ee;
-  color: var(--theme-color, #2ee2ee);
+  color: #42b983;
+  color: var(--theme-color, #42b983);
 }
 
 .token.selector {
@@ -1000,8 +1013,8 @@ body {
 .token.control,
 .token.directive,
 .token.unit {
-  color: #2ee2ee;
-  color: var(--theme-color, #2ee2ee);
+  color: #42b983;
+  color: var(--theme-color, #42b983);
 }
 
 .token.keyword,
