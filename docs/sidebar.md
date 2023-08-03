@@ -14,10 +14,7 @@
 
   * [Getting Started](/)
   * [FAQ](/faq.md)
-  * [Test Page](/test.md)
-
-
-
+  
 * **Tutorials** 🧠
 <div class="Sidebar__section-divider">&nbsp;</div>
 
@@ -35,7 +32,6 @@
     * [KNNClassifier](/reference/knn-classifier.md)
     * [kmeans](/reference/kmeans.md)
   * **Image** 🖼
-    * [PoseEstimation](/reference/pose-estimation.md)
     * [ImageClassifier](/reference/image-classifier.md)
     * [PoseNet](/reference/posenet.md)
     * [BodyPix](/reference/bodypix.md)
