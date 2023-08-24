@@ -4,7 +4,7 @@ Welcome to the ml5.js documentation. Here you'll find everything you need to get
 
 Here, we introduces two ways to get started:
 ### Try Ml5.js Online {docsify-ignore}
-If you would like to get a taste of ml5.js in minutes, the easiest way is using the [p5.js editor](https://editor.p5js.org/), you can open the web editor and follow the steps [here](/?id=try-ml5js-online).
+If you would like to get a taste of ml5.js in minutes, the easiest way is using the [p5.js editor](https://editor.p5js.org/), you can open the web editor and find the next step [here](/?id=try-ml5js-online-1).
 
 *💡 If you are not familiar with p5.js, check out the [p5.js Get Started page](https://p5js.org/get-started/) to know more!*
 
@@ -28,7 +28,7 @@ Your project directory should look something like this:
   * &ensp; 🗒**index.html**: is an .html file that has your html markup and library references
   * &ensp; 🗒**sketch.js**: is where you'll be writing your javascript
 
-And start from [here](/?id=try-ml5js-locally).
+If you are done, find the next step [here](/?id=try-ml5js-locally-1).
 
 ## Import Ml5.js Library {docsify-ignore}
 
@@ -74,6 +74,8 @@ If everything loaded properly you should see the latest ml5 version ```ml5 versi
     <img style="display:block; max-height:25rem" alt="pose detection" src="_media/getting_started__ml5-version.png">
 </center>
 
+Find the next step [here](/?id=try-ml5js-online-2)!
+
 ### Try Ml5.js Locally
 
 Open your **index.html** file.
@@ -99,8 +101,10 @@ Here you can see that we read in the javascript libraries. This includes our ml5
 </html>
 ```
 
+Find the next step [here](/?id=try-ml5js-locally-2)!
+
 ## Prepare Image Assets For Your First Sketch {docsify-ignore}
-If you've arrived here, we assume you've imported ml5.js library to your project. Now, no matter you are trying ml5.js online or locally, let's prepare the image assets we will be using soon.
+If you've arrived here, we assume you've imported ml5.js library to your project. Now, let's prepare the image assets we will be using soon.
 
 ### Try Ml5.js Online
 Open the **Sketch Files** folder by clicking the arrow **'>'** at the top left corner of the p5.js editor. 
@@ -278,7 +282,7 @@ If you are new to machine learning and would like to learn ML with ml5.js, take 
 > This playlist provides an introduction to developing creative coding projects with machine learning. The theory and application of machine learning algorithms is demonstrated in JavaScript using the p5.js and ml5.js libraries.
 > <iframe width="560" height="315" src="https://www.youtube.com/embed/26uABexmOX4?si=HXJRrgTkPhjN5hrr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-> #### Nature Of Code Chapter 10. Neural Networks 👉[ Learn](https://natureofcode.com/book/chapter-10-neural-networks/) *By Daniel Shiffman*
+> #### The Nature of Code - Chapter 10. Neural Networks 👉[ Learn](https://natureofcode.com/book/chapter-10-neural-networks/) *By Daniel Shiffman*
 > "In this chapter, we’ll begin with a conceptual overview of the properties and features of neural networks and build the simplest possible example of one (a network that consists of a single neuron). Afterwards, we’ll examine strategies for creating a “Brain” object that can be inserted into our Vehicle class and used to determine steering. Finally, we’ll also look at techniques for visualizing and animating a network of neurons."
 > <center>
     <img style="display:block; max-height:25rem" alt="pose detection" src="_media/getting_started__noc.jpeg">
