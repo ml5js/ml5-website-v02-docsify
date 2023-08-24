@@ -49,6 +49,7 @@
     * [KNNClassifier](/reference/knn-classifier.md)
     * [kmeans](/reference/kmeans.md)
   * **Image** 🖼
+    * [PoseEstimation](/reference/pose-estimation.md)
     * [ImageClassifier](/reference/image-classifier.md)
     * [PoseNet](/reference/posenet.md)
     * [BodyPix](/reference/bodypix.md)
