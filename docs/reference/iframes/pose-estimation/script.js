@@ -1,5 +1,12 @@
 console.log('ml5 version:', ml5.version);
 
+let gui;
+let params = {
+  modelType: "MoveNet",
+  skeleton: false,
+  PointColor: [0, 255, 0, 255],
+};
+
 let cam;
 let poseNet;
 let poses = [];
@@ -11,9 +18,13 @@ function setup() {
   cam = createCapture(VIDEO);
   cam.size(640, 480);
   cam.hide();
-  //poseNet
+  // poseNet
   poseNet = ml5.poseNet(cam, modelReady);
   poseNet.on("pose", gotResults);
+  // gui
+  gui = new dat.GUI();
+  gui.add(params, "modelType");
+  gui.addColor(params, "PointColor");
 }
 
 function draw() {
