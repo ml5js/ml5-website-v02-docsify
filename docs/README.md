@@ -9,7 +9,7 @@ If you would like to get a taste of ml5.js in minutes, the easiest way is using 
 *💡 If you are not familiar with p5.js, check out the [p5.js Get Started page](https://p5js.org/get-started/) to know more!*
 
 ### Try Ml5.js Locally {docsify-ignore}
-If you would like to start a project from scratch and develop it locally, have something set up as follows.
+If you want to start a project from scratch and develop it locally, have something set up as follows.
 
 > + 📝 A text editor (e.g. [Atom](https://atom.io/), [VSCode](https://code.visualstudio.com/), [Sublimetext](https://www.sublimetext.com/))
 > + 💻 Your web browser: Chrome & Firefox preferred
@@ -273,10 +273,10 @@ Not all of our examples are structured exactly like this, but this provides a ta
 2. Do you notice that MobileNet is better at classifying some animals over others? Why do you think that is?
 
 ## What Next? {docsify-ignore}
-Now you already have built up your first ever ml5.js project. Interested to use ml5.js to build more ML-based projects? Check out these learning resources!
+Now, you have already built up your first-ever ml5.js project. Interested in using ml5.js to build more ML-based projects? Check out these learning resources!
 
 ### For Beginners
-If you are new to machine learning and would like to learn ML with ml5.js, take a look at the amazing tutorials here!
+If you are new to machine learning and want to learn ML with ml5.js, look at the amazing tutorials here!
 
 > #### Beginner's Guide to Machine Learning with ml5.js 👉[ Learn](https://youtu.be/26uABexmOX4?si=nqPoD6bQrVTU-YFw) *By Daniel Shiffman*
 > This playlist provides an introduction to developing creative coding projects with machine learning. The theory and application of machine learning algorithms is demonstrated in JavaScript using the p5.js and ml5.js libraries.
@@ -289,7 +289,7 @@ If you are new to machine learning and would like to learn ML with ml5.js, take 
 </center>
 
 ### For Expert
-If you have been exposed to machine learning for a while and would like to know what happened behind the pre-trained models ml5.js provides, we believe following recouses will probably help!
+If you have been exposed to machine learning for a while and want to know what happened behind the pre-trained models ml5.js provides, the following resources will help!
 
 > #### Theoretical and advanced machine learning with TensorFlow 👉[ Learn](https://www.tensorflow.org/resources/learn-ml/theoretical-and-advanced-machine-learning) *By TensorFlow*
 >
