@@ -3,11 +3,13 @@
 Welcome to the ml5.js documentation. Here you'll find everything you need to get up and started with ml5.
 
 Here, we introduces two ways to get started:
-1. If you would like to get a taste of ml5.js in minutes, the easiest way is using the [p5.js editor](https://editor.p5js.org/), you can open the web editor and follow the steps [here](/?id=try-ml5js-online).
+### Try Ml5.js Online {docsify-ignore}
+If you would like to get a taste of ml5.js in minutes, the easiest way is using the [p5.js editor](https://editor.p5js.org/), you can open the web editor and follow the steps [here](/?id=try-ml5js-online).
 
-💡 If you are not familiar with p5.js, check out the [p5.js Get Started page](https://p5js.org/get-started/) to know more!
+*💡 If you are not familiar with p5.js, check out the [p5.js Get Started page](https://p5js.org/get-started/) to know more!*
 
-2. If you would like to start a project from scratch and develop it locally, have something set up as follows.
+### Try Ml5.js Locally {docsify-ignore}
+If you would like to start a project from scratch and develop it locally, have something set up as follows.
 
 > + 📝 A text editor (e.g. [Atom](https://atom.io/), [VSCode](https://code.visualstudio.com/), [Sublimetext](https://www.sublimetext.com/))
 > + 💻 Your web browser: Chrome & Firefox preferred
@@ -97,7 +99,7 @@ Here you can see that we read in the javascript libraries. This includes our ml5
 </html>
 ```
 
-## Prepare Image Assets For Your First Sketch
+## Prepare Image Assets For Your First Sketch {docsify-ignore}
 If you've arrived here, we assume you've imported ml5.js library to your project. Now, no matter you are trying ml5.js online or locally, let's prepare the image assets we will be using soon.
 
 ### Try Ml5.js Online
@@ -140,7 +142,7 @@ Your project directory should look something like this:
   * &ensp; 🗒**index.html**: is an .html file that has your html markup and library references
   * &ensp; 🗒**sketch.js**: is where you'll be writing your javascript
 
-## Your First Sketch
+## Your First Sketch {docsify-ignore}
 Now, no matter you are trying ml5.js online or locally, open your **sketch.js**.
 
 We can start to build your first ml5.js sketch - a classic application of machine learning: **image classification**. This application showcases how you can use a [pre-trained](https://youtu.be/yNkAuWz5lnY?si=0JuaPFYlxLFE0WSU) model called [MobileNet](https://github.com/tensorflow/tfjs-models/tree/master/mobilenet) -- a machine learning model trained to recognize the content of certain images -- in ml5.js. The application aims to highlight a general pattern for how ml5.js projects are setup.
@@ -179,7 +181,7 @@ function gotResult(error, results) {
 }
 ```
 
-## Our sketch.js explained in 4 steps
+## Our sketch.js explained in 4 steps {docsify-ignore}
 
 ### Step 1: Define your variables
 
@@ -244,7 +246,13 @@ function gotResult(error, results) {
 }
 ```
 
-## And voilà!
+## Need Help On Your Code? {docsify-ignore}
+
+Check our examples below for reference:
+1. If you try ml5.js online with p5 web editor, check [ml5.js image classification on p5 web editor](https://editor.p5js.org/ml5/sketches/ImageClassification)
+2. If you try ml5.js locally, check [ml5.js image classification on Github](https://github.com/ml5js/ml5-library/tree/main/examples/p5js/ImageClassification/ImageClassification)
+
+## And voilà! {docsify-ignore}
 
 You've just made a simple machine learning powered program that:
 1. takes an image,
@@ -255,18 +263,29 @@ Not all of our examples are structured exactly like this, but this provides a ta
 
 <br/>
 
-Some guiding questions you might start to think about are:
+💡 Some guiding questions you might start to think about are:
 
 1. When classifying an image with MobileNet, does the computer see people? If not, why do you think that is?
 2. Do you notice that MobileNet is better at classifying some animals over others? Why do you think that is?
 
-## [Source](https://github.com/ml5js/ml5-library/tree/main/examples/p5js/ImageClassification/ImageClassification)
-
-- [ml5.js image classification on Github](https://github.com/ml5js/ml5-library/tree/main/examples/p5js/ImageClassification/ImageClassification)
-- [ml5.js image classification on p5 web editor](https://editor.p5js.org/ml5/sketches/ImageClassification)
-
 ## What Next? {docsify-ignore}
+Now you already have built up your first ever ml5.js project. Interested to use ml5.js to build more ML-based projects? Check out these learning resources!
 
 ### For Beginners
+If you are new to machine learning and would like to learn ML with ml5.js, take a look at the amazing tutorials here!
+
+> #### Beginner's Guide to Machine Learning with ml5.js 👉[ Learn](https://youtu.be/26uABexmOX4?si=nqPoD6bQrVTU-YFw) *By Daniel Shiffman*
+> This playlist provides an introduction to developing creative coding projects with machine learning. The theory and application of machine learning algorithms is demonstrated in JavaScript using the p5.js and ml5.js libraries.
+> <iframe width="560" height="315" src="https://www.youtube.com/embed/26uABexmOX4?si=HXJRrgTkPhjN5hrr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+> #### Nature Of Code Chapter 10. Neural Networks 👉[ Learn](https://natureofcode.com/book/chapter-10-neural-networks/) *By Daniel Shiffman*
+> "In this chapter, we’ll begin with a conceptual overview of the properties and features of neural networks and build the simplest possible example of one (a network that consists of a single neuron). Afterwards, we’ll examine strategies for creating a “Brain” object that can be inserted into our Vehicle class and used to determine steering. Finally, we’ll also look at techniques for visualizing and animating a network of neurons."
+> <center>
+    <img style="display:block; max-height:25rem" alt="pose detection" src="_media/getting_started__noc.jpeg">
+</center>
 
 ### For Expert
+If you have been exposed to machine learning for a while and would like to know what happened behind the pre-trained models ml5.js provides, we believe following recouses will probably help!
+
+> #### Theoretical and advanced machine learning with TensorFlow 👉[ Learn](https://www.tensorflow.org/resources/learn-ml/theoretical-and-advanced-machine-learning) *By TensorFlow*
+>
