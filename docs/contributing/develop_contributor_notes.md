@@ -161,10 +161,10 @@ NVM_HOMEBREW="/usr/local/opt/nvm/nvm.sh"
     webpack: Compiled successfully.
     ```
     <center>
-    <img style="display:block; max-height:30rem" alt="image of terminal window with webpack message" src="_media/contributing__ml5-webpack-build.png">
+    <img style="display:block;" alt="image of terminal window with webpack message" src="_media/contributing__ml5-webpack-build.png">
     </center>
     <center>
-    <img style="display:block; max-height:30rem" alt="ml5.js shows compiled library" src="_media/contributing__ml5-localhost.png">
+    <img style="display:block;" alt="ml5.js shows compiled library" src="_media/contributing__ml5-localhost.png">
     </center>
 
     If you see this message, it means the project is actively being built by Webpack's `webpack-dev-server`. Any changes you make to any file in the `/src` folder will automatically rebuild the `ml5.js` and `ml5.min.js` libraries as long as the server continues to run.
