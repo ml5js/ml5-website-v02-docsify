@@ -1,6 +1,6 @@
 # Develop Contributor Notes
 
-*By ml5-library Dev Team* [(source)]([https://github.com/ml5js/ml5-library/blob/main/CONTRIBUTING.md])
+*By ml5-library Dev Team* [(source)](https://github.com/ml5js/ml5-library/blob/main/CONTRIBUTING.md)
 
 > Welcome to the ml5 project! Developing ml5 is not just about developing machine learning software, it is about making machine learning approachable for a broad audience of artists, creative coders, and students. The library provides access to machine learning algorithms and models in the browser, building on top of TensorFlow.js with no other external dependencies. The library is supported by code examples, tutorials, and sample datasets with an emphasis on ethical computing. Bias in data, stereotypical harms, and responsible crowdsourcing are part of the documentation around data collection and usage. We're building **friendly** machine learning for the web - we're glad you're here!
 
@@ -13,7 +13,7 @@
 ml5.js is comprised a number of sister repositories which you can find at the [ml5 github organization - github.com/ml5js](https://github.com/ml5js). As a contributor of ml5 you should be aware of the other parallel repositories of the ml5 project.
 
 - **The 2 main repositories you'll likely be working with**:
-  + [ml5-library]([https://github.com/ml5js](https://github.com/ml5js/ml5-library))
+  + [ml5-library](https://github.com/ml5js/ml5-library)
     * this is the main ml5js library. When building the library, all of the files in the `/src` directory get bundled into the `ml5.js` library. Releases to the ml5 library get sent to `npm` and are hosted at https://unpkg.com/ (e.g. `https://unpkg.com/ml5@0.2.1/dist/ml5.min.js`). When adding new features or updates to the ml5 library, you should also add an example in the `examples/` subdirectory of this repo to showcase how your new feature works. Usually examples are submitted in a simple p5.js sketch, but they can also be in vanilla javascript.
   + [ml5-website](https://github.com/ml5js/ml5-website)
     * the ml5-website is what you see here: https://ml5js.org/. As we make changes to the ml5 API and examples, the website also needs to be updated. For now, we're working with a manual process to updating changes, but we're working on development processes to help sync all these efforts. For now, make sure to update the ml5-website when making changes to ml5-library and vice-versa.
