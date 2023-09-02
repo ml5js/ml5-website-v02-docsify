@@ -29,7 +29,7 @@
   * **Pre-trained Model** 📦
     * [Image Classification](/reference/image-classifier.md)
     * [Sound Classification](/reference/sound-classifier.md)
-    * [Pose Estimation](/reference/posenet.md)
+    * [Pose Estimation](/reference/pose-estimation.md)
     * [Hand Pose Estimation](/reference/pitch-detection.md)
     * [Face Mesh Estimation](/reference/facemesh.md)
   * **Custom Model** ✍️
