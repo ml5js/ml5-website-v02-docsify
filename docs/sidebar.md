@@ -13,20 +13,37 @@
 <div class="Sidebar__section-divider">&nbsp;</div>
 
   * [Getting Started](/)
-  * [FAQ](/faq.md)
+  <!-- * [FAQ](/faq.md) -->
   
-* **Tutorials** 🧠
+<!-- * **Tutorials** 🧠
 <div class="Sidebar__section-divider">&nbsp;</div>
 
   * [Introduction to ml5.js](/tutorials/hello-ml5.md)
   * [Running a local web server](/tutorials/local-web-server)
-  * [Promises and Callbacks in ml5](/tutorials/promises-and-callbacks.md)
+  * [Promises and Callbacks in ml5](/tutorials/promises-and-callbacks.md) -->
 
-* **Reference** 📝
+* **Reference** 📃
 <div class="Sidebar__section-divider">&nbsp;</div>
 
   * [Overview](/reference/index.md)
-  * **Helpers** ✨
+  * **Pre-trained Model** 📦
+    * [Image Classification](/reference/image-classifier.md)
+    * [Sound Classification](/reference/sound-classifier.md)
+    * [Pose Estimation](/reference/posenet.md)
+    * [Hand Pose Estimation](/reference/pitch-detection.md)
+    * [Face Mesh Estimation](/reference/facemesh.md)
+  * **Custom Model** ✍️
+    * [Image Classification + Teachable Machine](/reference/image-classifier.md)
+    * [Sound Classification + Teachable Machine](/reference/sound-classifier.md)
+    * [Neural Networks](/reference/neural-network.md)
+
+* **Contributing** 🏗 
+<div class="Sidebar__section-divider">&nbsp;</div>
+
+  * [How To Contribute](/contributing/how_to_contribute.md)
+  * [Develop Contributor Notes](/contributing/develop_contributor_notes.md)
+
+  <!-- * **Helpers** ✨
     * [NeuralNetwork](/reference/neural-network.md)
     * [FeatureExtractor](/reference/feature-extractor.md)
     * [KNNClassifier](/reference/knn-classifier.md)
@@ -53,9 +70,9 @@
     * [Sentiment](/reference/sentiment.md)
     * [Word2Vec](/reference/word2vec.md)
   * **Utils** 🛠
-    * [utils](/reference/utils.md)
+    * [utils](/reference/utils.md) -->
 
-* **Contributing** 🏗 
+<!-- * **Contributing** 🏗 
 <div class="Sidebar__section-divider">&nbsp;</div>
 
   * [Contributor Notes](/styleguide/contributor-notes.md)
@@ -63,4 +80,4 @@
   * Style Guide
     * [Reference guidelines](/styleguide/reference-guidelines.md)
     * [Development guidelines](/styleguide/development-guidelines.md)
-    * [Design guidelines](/styleguide/design-guidelines.md)
+    * [Design guidelines](/styleguide/design-guidelines.md) -->

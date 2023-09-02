@@ -3,12 +3,12 @@
 Welcome to the ml5.js documentation. Here you'll find everything you need to get up and started with ml5.
 
 Here, we introduces two ways to get started:
-### Try Ml5.js Online {docsify-ignore}
+### Try Ml5.js Online
 If you would like to get a taste of ml5.js in minutes, the easiest way is using the [p5.js editor](https://editor.p5js.org/), you can open the web editor and find the next step [here](/?id=try-ml5js-online-1).
 
 *💡 If you are not familiar with p5.js, check out the [p5.js Get Started page](https://p5js.org/get-started/) to know more!*
 
-### Try Ml5.js Locally {docsify-ignore}
+### Try Ml5.js Locally
 If you want to start a project from scratch and develop it locally, have something set up as follows.
 
 > + 📝 A text editor (e.g. [Atom](https://atom.io/), [VSCode](https://code.visualstudio.com/), [Sublimetext](https://www.sublimetext.com/))
@@ -30,7 +30,7 @@ Your project directory should look something like this:
 
 If you are done, find the next step [here](/?id=try-ml5js-locally-1).
 
-## Import Ml5.js Library {docsify-ignore}
+## Import Ml5.js Library
 
 ### Try Ml5.js Online
 
@@ -146,7 +146,7 @@ Your project directory should look something like this:
   * &ensp; 🗒**index.html**: is an .html file that has your html markup and library references
   * &ensp; 🗒**sketch.js**: is where you'll be writing your javascript
 
-## Your First Sketch {docsify-ignore}
+## Your First Sketch
 Now, no matter you are trying ml5.js online or locally, open your **sketch.js**.
 
 We can start to build your first ml5.js sketch - a classic application of machine learning: **image classification**. This application showcases how you can use a [pre-trained](https://youtu.be/yNkAuWz5lnY?si=0JuaPFYlxLFE0WSU) model called [MobileNet](https://github.com/tensorflow/tfjs-models/tree/master/mobilenet) -- a machine learning model trained to recognize the content of certain images -- in ml5.js. The application aims to highlight a general pattern for how ml5.js projects are setup.
@@ -256,6 +256,41 @@ Check our examples below for reference:
 1. If you try ml5.js online with p5 web editor, check [ml5.js image classification on p5 web editor](https://editor.p5js.org/ml5/sketches/ImageClassification)
 2. If you try ml5.js locally, check [ml5.js image classification on Github](https://github.com/ml5js/ml5-library/tree/main/examples/p5js/ImageClassification/ImageClassification)
 
+## Run Your Sketch {docsify-ignore}
+
+Now, you may want to run your sketch and see if the model can make predictions and provide meaningful outputs.
+
+### Try Ml5.js Online
+Simply press the **Play** button on the top right corner of the interface. And you should see something like this.
+<center>
+    <img style="display:block; max-height:30rem" alt="pose detection" src="_media/getting_started__run_sketch.png">
+</center>
+
+### Try Ml5.js Locally
+To run the sketch locally, we need to start a local development server.
+
+#### Step 1. Open your terminal
+
+```sh
+# change directories to your project root directory
+cd my-first-ml5-project
+
+# install the dependencies
+npm install
+
+# run the local web server
+npm run develop
+```
+
+#### Step 2. You should be able to run the sketch at: 
+```
+http://localhost:8081
+```
+
+💡 You may also be interested in watching [CodingTrain - getting set up](https://www.youtube.com/watch?v=UCHzlUiDD10) for a nice intro on getting set up with writing code for the web.
+
+
+
 ## And voilà! {docsify-ignore}
 
 You've just made a simple machine learning powered program that:
@@ -272,11 +307,8 @@ Not all of our examples are structured exactly like this, but this provides a ta
 1. When classifying an image with MobileNet, does the computer see people? If not, why do you think that is?
 2. Do you notice that MobileNet is better at classifying some animals over others? Why do you think that is?
 
-## What Next? {docsify-ignore}
+## What Next?
 Now, you have already built up your first-ever ml5.js project. Interested in using ml5.js to build more ML-based projects? Check out these learning resources!
-
-### For Beginners
-If you are new to machine learning and want to learn ML with ml5.js, look at the amazing tutorials here!
 
 > #### Beginner's Guide to Machine Learning with ml5.js 👉[ Learn](https://youtu.be/26uABexmOX4?si=nqPoD6bQrVTU-YFw) *By Daniel Shiffman*
 > This playlist provides an introduction to developing creative coding projects with machine learning. The theory and application of machine learning algorithms is demonstrated in JavaScript using the p5.js and ml5.js libraries.
@@ -288,8 +320,23 @@ If you are new to machine learning and want to learn ML with ml5.js, look at the
     <img style="display:block; max-height:25rem" alt="pose detection" src="_media/getting_started__noc.jpeg">
 </center>
 
-### For Expert
-If you have been exposed to machine learning for a while and want to know what happened behind the pre-trained models ml5.js provides, the following resources will help!
+## FAQ
 
-> #### Theoretical and advanced machine learning with TensorFlow 👉[ Learn](https://www.tensorflow.org/resources/learn-ml/theoretical-and-advanced-machine-learning) *By TensorFlow*
->
+### Can I always use ml5.js in the [p5 web editor](https://editor.p5js.org)?
+
+Mostly.
+
+A number of the ml5 sketches don't currently work in the p5 web editor due to some of the ways that the editor handles data files and some of the network communication regarding making requests to external data (e.g. the big model files that allow ml5.js to run things like image detection, etc). 
+
+There are lots of developments in the p5 web editor as well as in ml5 to make sure these environments all play nicely together. If something doesn't work in the web editor, the best thing to do is to try and run things locally if possible. See [running you sketch with a local web server tutorial](/?id=try-ml5js-locally-3).
+
+Thanks!
+
+### Can I use ml5.js with node.js?
+
+No. Not at the moment.
+
+ml5.js uses TensorFlow.js which uses the browser's GPU to run all the calculations. As a result, all of the ml5.js functionality is based around using the browser GPU. We hope to have ml5.js run in node-js sometime in the near future (especially now that [node support for TensorFlow is a thing](https://www.tensorflow.org/js/guide/nodejs) but the current ml5 setup does not support node.js. We hope to support this in the future.
+
+
+[For more discussion about node and ml5.js, visit this issue thread.](https://github.com/ml5js/ml5-library/issues/377)
