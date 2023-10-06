@@ -301,6 +301,8 @@ main.hidden {
 .sidebar ul {
   margin: 0 0 0 15px;
   padding: 0;
+  /* *** */
+  font-size: 1.0rem;
 }
 
 .sidebar li>p {
@@ -320,6 +322,14 @@ main.hidden {
 
 .sidebar ul li ul {
   padding-left: 20px;
+  /* *** */
+  font-size: 1.0rem;
+}
+
+.sidebar ul li ul a {
+  display: block;
+  /* *** */
+  font-size: 1.0rem;
 }
 
 .sidebar::-webkit-scrollbar {
@@ -337,6 +347,16 @@ main.hidden {
 
 .sidebar:hover::-webkit-scrollbar-track {
   background: rgba(136, 136, 136, 0.1);
+}
+
+/* from the previous developer */
+.sidebar__section-divider {
+  height: 1px;
+  width: 90%;
+  border-top: 2px solid #A15FFB;
+  display: block;
+  margin: 0 0px 0 -2px;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
 }
 
 .sidebar-toggle {
@@ -390,7 +410,6 @@ body.sticky .sidebar-toggle {
   margin: 0 10%;
   /* max-width: 80%; */
   max-width: 800px;
-  /* here */
   padding: 30px 15px 40px 15px;
   position: relative;
 }
@@ -544,7 +563,7 @@ body.close .content {
     left: 0;
     max-width: 100vw;
     position: static;
-    padding-top: 20px;
+    padding-top: 60px;
     transition: transform 250ms ease;
   }
 
@@ -1069,4 +1088,73 @@ code .token {
   min-height: 1.5rem;
   position: relative;
   left: auto;
+}
+
+
+/* custom styles from the previous developer */
+.github-corner {
+  display: none;
+}
+
+.Menu__Top {
+  background: #EEFFFF;
+  color: #9760f6;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  height: 60px;
+  margin: 0px !important;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  padding: 0rem 2rem;
+  align-items: center;
+  justify-content: space-between;
+  /* border-bottom-width: 1px; */
+  /* border-bottom-color: aquamarine; */
+  /* border-bottom-style: solid; */
+}
+
+.Menu__Top__LogoContainer {
+  display: flex;
+}
+
+.Menu__Top__LogoContainer_Logo {
+  height: 28px;
+}
+
+.sidebar {
+  margin: 60px 0 0 0;
+}
+
+.Menu__Top__Menu {
+  display: flex;
+  align-items: center;
+}
+
+.Menu__Top__Menu__Item:not(:last-child) {
+  margin-right: 2rem;
+}
+
+@media screen and (max-width: 650px) {
+  .Menu__Top__LogoContainer {
+    width: 300px !important;
+    flex: 3;
+  }
+
+  .Menu__Top__Menu {
+    flex: 1;
+  }
+
+  .Menu__Top__Menu__Item {
+    display: none !important;
+  }
+}
+
+@media screen and (min-width: 650px) {
+  .Menu__Top {
+    /* padding: 0 0.5em; */
+  }
 }

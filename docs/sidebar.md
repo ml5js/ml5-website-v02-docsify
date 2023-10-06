@@ -1,29 +1,18 @@
-<style>
-.Sidebar__section-divider{
-  height:1px; 
-  width:90%; 
-  border-top:2px solid #A15FFB; 
-  display:block; 
-  margin:0 0px 0 -2px;
-  box-shadow: 1px 1px 4px rgba(0,0,0,0.2);
-}
-</style>
-
 * **Welcome** 🌈
-<div class="Sidebar__section-divider">&nbsp;</div>
+<div class="sidebar__section-divider">&nbsp;</div>
 
   * [Getting Started](/)
   <!-- * [FAQ](/faq.md) -->
   
 <!-- * **Tutorials** 🧠
-<div class="Sidebar__section-divider">&nbsp;</div>
+<div class="sidebar__section-divider">&nbsp;</div>
 
   * [Introduction to ml5.js](/tutorials/hello-ml5.md)
   * [Running a local web server](/tutorials/local-web-server)
   * [Promises and Callbacks in ml5](/tutorials/promises-and-callbacks.md) -->
 
 * **Reference** 📃
-<div class="Sidebar__section-divider">&nbsp;</div>
+<div class="sidebar__section-divider">&nbsp;</div>
 
   * [Overview](/reference/index.md)
   * **Pre-trained Model** 📦
@@ -38,7 +27,7 @@
     * [Neural Networks](/reference/neural-network.md)
 
 * **Contributing** 🏗 
-<div class="Sidebar__section-divider">&nbsp;</div>
+<div class="sidebar__section-divider">&nbsp;</div>
 
   * [How To Contribute](/contributing/how_to_contribute.md)
   * [Develop Contributor Notes](/contributing/develop_contributor_notes.md)
@@ -74,7 +63,7 @@
     * [utils](/reference/utils.md) -->
 
 <!-- * **Contributing** 🏗 
-<div class="Sidebar__section-divider">&nbsp;</div>
+<div class="sidebar__section-divider">&nbsp;</div>
 
   * [Contributor Notes](/styleguide/contributor-notes.md)
   * [Maintenance Notes](/styleguide/maintenance-notes.md)
