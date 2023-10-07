@@ -320,6 +320,9 @@ Now, you have already built up your first-ever ml5.js project. Interested in usi
     <img style="display:block; max-height:25rem" alt="pose detection" src="_media/getting_started__noc.jpeg">
 </center>
 
+## Join Community
+We are on [Discord](https://discord.com/invite/3CVauZMSt7). If you have any questions about ml5.js, would like to contribute to ml5.js, or simply want to share your project with a group of creative and talented people like you, don't hesitate to join us!
+
 ## FAQ
 
 ### Can I always use ml5.js in the [p5 web editor](https://editor.p5js.org)?
