@@ -12,72 +12,6 @@
   <link rel="stylesheet" href="css/style.css" />
   <!-- Edit on Github -->
   <script src="//unpkg.com/docsify-edit-on-github/index.js"></script>
-  <!-- custom styles -->
-  <style>
-    .github-corner {
-      display: none;
-    }
-
-    .Menu__Top {
-      background: #ffffff;
-      color: black;
-      position: fixed;
-      top: 0px;
-      width: 100%;
-      height: 60px;
-      margin: 0px !important;
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -webkit-flex;
-      display: flex;
-      padding: 0rem 2rem;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .Menu__Top__LogoContainer {
-      display: flex;
-    }
-
-    .Menu__Top__LogoContainer_Logo {
-      height: 28px;
-    }
-
-    .sidebar {
-      margin: 80px 0 0 0;
-    }
-
-    .Menu__Top__Menu {
-      display: flex;
-      align-items: center;
-    }
-
-    .Menu__Top__Menu__Item:not(:last-child) {
-      margin-right: 2rem;
-    }
-
-    @media screen and (max-width: 600px) {
-      .Menu__Top__LogoContainer {
-        width: 300px !important;
-        flex: 3;
-      }
-
-      .Menu__Top__Menu {
-        flex: 1;
-      }
-
-      .Menu__Top__Menu__Item {
-        display: none !important;
-      }
-    }
-
-    @media screen and (min-width: 600px) {
-      .Menu__Top {
-        padding: 0 0.5em;
-      }
-    }
-  </style>
 </head>
 
 <body>
@@ -110,7 +44,7 @@
     };
     */
     window.$docsify = {
-      name: 'ml5',
+      name: '', // name is removed as it appears redundantly.
       repo: 'https://github.com/ml5js/ml5-website-v02-docsify/tree/main/docs',
       loadSidebar: 'sidebar.md',
       alias: {
@@ -121,22 +55,30 @@
       maxLevel: 2,
       mergeNavbar: true,
       auto2top: true,
+
       // plugins: [ EditOnGithubPlugin.create(config.editOnGithub.docBase, null, config.editOnGithub.title),],
+
+      search: {
+        maxAge: 86400000, // Expiration time, the default one day
+        paths: 'auto',
+        placeholder: 'Search',
+        noData: 'No Results!',
+        depth: 1, // Headline depth, 1 - 6
+        hideOtherSidebarContent: true, // whether or not to hide other sidebar content
+      }
+
     };
   </script>
+
   <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+
   <!-- Plugins -->
   <!-- Search -->
-  <!-- Search is rather confusing so it is hidden. -->
-  <!-- <script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script> -->
-  <!-- Emoji plugin -->
-  <script src="//unpkg.com/docsify/lib/plugins/emoji.min.js"></script>
+  <script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
   <!-- External JS -->
   <script src="//unpkg.com/docsify/lib/plugins/external-script.min.js"></script>
   <!-- Copy to clipboard -->
   <script src="//unpkg.com/docsify-copy-code"></script>
-  <!-- Pagination -->
-  <script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
 </body>
 
 </html>
