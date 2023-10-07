@@ -1,8 +1,16 @@
-# Promises and Callback support in ml5
+# Ml5 Glossary
 
+<br/>
+Have you ever felt confused about a term we used here at ml5? No worries, we've got you covered! Check out this glossary. Here, we explain and define programming techniques, machine learning terms, and terms specific to ml5 that are mentioned in our libraries, website, and examples.
+
+## A {docsify-ignore}
+
+## B {docsify-ignore}
+
+## C {docsify-ignore}
+---
+#### Callback
 ml5.js is heavily inspired by the syntax, patterns and style of the [p5.js](https://p5js.org/) library. However, there are several differences in how asynchronous operations are handled by ml5.js. ml5.js supports both <b>error-first callbacks</b> and Promises in all methods.
-
-## Using Callbacks
 
 In [p5.js](https://p5js.org/), [callbacks](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function) are passed as arguments to functions that often perform some asynchronous operation. For example, [p5.js](https://p5js.org/) defines the [**loadJSON()**](https://p5js.org/reference/#/p5/loadJSON) function as the following:
 
@@ -34,9 +42,26 @@ classifier.predict(image, (err, results) => {
 
 Error first callbacks is a convention common to many JavaScript libraries that we have chosen to adopt. The language JavaScript itself does not enforce this pattern. Keep in mind that most ml5.js methods and functions are asynchronous (machine learning models can take significant amounts of time to process inputs and generate outputs!). You will need to use the <b>error-first callback</b> pattern if you want to use callbacks.
 
-## Using Promises
+---
 
-ml5.js also supports [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise). If no callback is provided to any asynchronous function then a Promise is returned.
+## D {docsify-ignore}
+## E {docsify-ignore}
+## F {docsify-ignore}
+## G {docsify-ignore}
+## H {docsify-ignore}
+## I {docsify-ignore}
+## J {docsify-ignore}
+## K {docsify-ignore}
+## L {docsify-ignore}
+## M {docsify-ignore}
+## N {docsify-ignore}
+## O {docsify-ignore}
+## P {docsify-ignore}
+---
+#### Promise
+ml5.js is heavily inspired by the syntax, patterns and style of the [p5.js](https://p5js.org/) library. However, there are several differences in how asynchronous operations are handled by ml5.js. ml5.js supports both <b>error-first callbacks</b> and Promises in all methods.
+
+ml5.js supports [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise). If no callback is provided to any asynchronous function then a Promise is returned.
 
 With Promises, the image classification example can be used in the following way:
 
@@ -51,3 +76,18 @@ ml5
 ```
 
 For some video tutorials about Promises, you can find this [Coding Train playlist](https://www.youtube.com/playlist?list=PLRqwX-V7Uu6bKLPQvPRNNE65kBL62mVfx). There is also a [video tutorial about the ES6 arrow notation (**=>**)](https://youtu.be/mrYMzpbFz18).
+
+---
+
+## Q {docsify-ignore}
+## R {docsify-ignore}
+## S {docsify-ignore}
+## T {docsify-ignore}
+## U {docsify-ignore}
+## V {docsify-ignore}
+## W {docsify-ignore}
+## X {docsify-ignore}
+## Y {docsify-ignore}
+## Z {docsify-ignore}
+
+
