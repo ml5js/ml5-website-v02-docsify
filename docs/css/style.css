@@ -1097,7 +1097,8 @@ code .token {
 }
 
 .Menu__Top {
-  background: #EEFFFF;
+  /* background: #EEFFFF; */
+  background: #FFF;
   color: #9760f6;
   position: fixed;
   top: 0px;
@@ -1115,6 +1116,9 @@ code .token {
   /* border-bottom-width: 1px; */
   /* border-bottom-color: aquamarine; */
   /* border-bottom-style: solid; */
+  border-top-width: 5px;
+  border-top-color: var(--theme-color, #42b983);
+  border-top-style: solid;
 }
 
 .Menu__Top__LogoContainer {
