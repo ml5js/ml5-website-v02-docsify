@@ -853,3 +853,26 @@ No demos yet - contribute one today!
 ## Source Code
 
 * [/src/NeuralNetwork](https://github.com/ml5js/ml5-library/tree/main/src/NeuralNetwork)
+
+
+
+
+
+
+
+
+
+
+## ml5.neuralNetwork
+
+See [old reference](https://learn.ml5js.org/#/reference/neural-network) and Nature of Code [Chapter 10: Neural Networks](https://nature-of-code-2nd-edition.netlify.app/neural-networks/) and [Chapter 11: Neuroevolution](https://nature-of-code-2nd-edition.netlify.app/neuroevolution/)
+
+---
+
+## ml5.sentiment
+
+See [old reference](https://learn.ml5js.org/#/reference/sentiment).
+
+---
+
+More models and features coming soon!

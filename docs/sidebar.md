@@ -2,18 +2,20 @@
 <div class="sidebar__section-divider">&nbsp;</div>
 
   * [Getting Started](/)
+  * [Next Steps](/)
+  * [FAQ](/)
 
 * **Reference** 📃
 <div class="sidebar__section-divider">&nbsp;</div>
 
   * [Overview](/reference/overview.md)
   * **ml5 Models** 📦
-    * [ImageClassifier](/reference/image-classifier.md)
-    * [SoundClassifier](/reference/sound-classifier.md)
     * [Bodypose](/reference/bodypose.md)
     * [Handpose](/reference/handpose.md)
     * [Facemesh](/reference/facemesh.md)
-  * **With Teachable Machine** ✍️
+    * [ImageClassifier](/reference/image-classifier.md)
+    * [SoundClassifier](/reference/sound-classifier.md)
+  * **ml5 + Teachable Machine** ✍️
     * [Image + Teachable Machine](/reference/image-classifier-tm.md)
     * [Sound + Teachable Machine](/reference/sound-classifier-tm.md)
     * [Pose + Teachable Machine](/reference/pose-estimation-tm.md)
