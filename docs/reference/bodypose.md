@@ -7,12 +7,11 @@
     <!-- <p>image via: https://pdm.com.co/tag/posenet/</p> -->
 </center>
 
-***
 ## Description
 
 Bodypose offers a versatile solution for pose estimation by leveraging the strengths of Movenet and Blazepose. It provides real-time, full-body pose estimation and precise tracking of key body parts, including hands, face, and body, in an optimized and lightweight package. 
 
-**Key Features**
+#### Key Features
 
 * Real-time full-body pose estimation
 * High-precision keypoints tracking
@@ -20,9 +19,7 @@ Bodypose offers a versatile solution for pose estimation by leveraging the stren
 * Easy integration into web-based projects using ml5.js
 
 
-
-
-### What can we do with the model?
+#### What can we do with the model?
 
 Bodypose is suitable for a wide range of applications, such as interactive gaming, fitness apps, art installations, and accessibility solutions. Its accuracy and real-time performance make it a valuable tool for developers and creators!
 
@@ -34,7 +31,7 @@ Bodypose's MoveNet model predict a set of 17 keypoints:
   See the diagram below for the position of each keypoint.
 
   ![Keypoint Diagram](https://camo.githubusercontent.com/b8a385301ca6b034d5f4807505e528b4512a0aa78507dec9ebafcc829b9556be/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f6d6f76656e65742f636f636f2d6b6579706f696e74732d3530302e706e67)
-  
+
 Once you have the 17 keypoints estimated by the model, you can utilize them in various ways based on your application:
 
 **Human Pose Estimation**: You can reconstruct the human body pose by connecting the keypoints using skeletal connections. This helps visualize the pose and track the movement of body parts.
@@ -50,8 +47,6 @@ Once you have the 17 keypoints estimated by the model, you can utilize them in v
 **Accessibility**: Bodypos can be used to track body movements and gestures to control devices and interfaces, enabling people with disabilities to interact with technology in new ways.
 
 
-
-***
 ## Getting Started
 Integrating Bodypose into your ml5.js projects is straightforward. Our documentation and user-friendly API will help you make the most of this combined model!
 
@@ -200,3 +195,5 @@ bodypose.detect(media, ?callback);
 
 **Returns:**  
 A promise that resolves to the estimation output.
+
+(footer needed)

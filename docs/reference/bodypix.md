@@ -31,7 +31,7 @@ function gotResults(error, result) {
 }
 ```
 
-### Descripton
+### Description
 
 As written by the developers of BodyPix:
 
