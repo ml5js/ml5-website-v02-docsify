@@ -32,160 +32,87 @@ facemesh.on('face', results => {
 });
 ```
 
+## Methods
 
-## Usage
+#### ml5.facemesh()
 
-### Initialize
-You can initialize ml5.facemesh with an optional `video`, configuration `options` object, or a `callback` function.
-```js
-const facemesh = ml5.facemesh(?video, ?options, ?callback);
+This method is used to initialize the facemesh object.
+
+```javascript
+const facemesh = ml5.facemesh(?options, ?callback);
 ```
 
-#### Parameters
-* **video**: OPTIONAL. Optional HTMLVideoElement input to run predictions on.
-* **options**: OPTIONAL. A object that contains properties that effect the Facemesh model accuracy, results, etc. See documentation on the available options in [TensorFlow's Facemesh documentation](https://github.com/tensorflow/tfjs-models/tree/master/face-landmarks-detection#parameters-for-facelandmarksdetectionload).
-  ```js
-  const options = {
-  flipHorizontal: false, // boolean value for if the video should be flipped, defaults to false
-  maxContinuousChecks: 5, // How many frames to go without running the bounding box detector. Only relevant if maxFaces > 1. Defaults to 5.
-  detectionConfidence: 0.9, // Threshold for discarding a prediction. Defaults to 0.9.
-  maxFaces: 10, // The maximum number of faces detected in the input. Should be set to the minimum number for performance. Defaults to 10.
-  scoreThreshold: 0.75, // A threshold for removing multiple (likely duplicate) detections based on a "non-maximum suppression" algorithm. Defaults to 0.75.
-  iouThreshold: 0.3, // A float representing the threshold for deciding whether boxes overlap too much in non-maximum suppression. Must be between [0, 1]. Defaults to 0.3.
+**Parameters:**
+
+- **options**: OPTIONAL. An object to change the default configuration of the model. The default and available options are:
+
+  ```javascript
+  {
+      maxFaces: 1,
+      refineLandmarks: false,
+      flipHirzontal: false
   }
   ```
 
-* **callback**: OPTIONAL. A function that is called once the model has loaded.
+  More info on options [here](https://github.com/tensorflow/tfjs-models/tree/master/face-landmarks-detection/src/mediapipe#create-a-detector).
 
-### Properties
-***
-#### .video
-> *Object*. HTMLVideoElement if given in the constructor. Otherwise it is null.
-***
+- **callback(facemesh, error)**: OPTIONAL. A function to run once the model has been loaded. Alternatively, call `ml5.facemesh()` within the p5 `preload` function.
 
-***
-#### .config
-> *Object*. containing all of the configuration options passed into the model. 
-***
+**Returns:**  
+The facemesh object.
 
-***
-#### .model
-> *Object*. The Facemesh model.
-***
+#### facemesh.detectStart()
 
-***
-#### .modelReady
-> *Boolean*. Truthy value indicating the model has loaded.
-***
+This method repeatedly outputs face estimations on an image media through a callback function.
 
-### Methods
+```javascript
+facemesh.detectStart(media, callback);
+```
 
-***
-#### .predict()
-> A function that returns the results of a single face detection prediction.
+**Parameters:**
 
-  ```js
-  facemesh.predict(inputMedia, callback);
-  ```
+- **media**: An HMTL or p5.js image, video, or canvas element to run the estimation on.
+- **callback(output, error)**: A callback function to handle the output of the estimation. See below for an example output passed into the callback function:
 
-📥 **Inputs**
-* **inputMedia**: REQUIRED. An HMTL or p5.js image, video, or canvas element that you'd like to run a single prediction on.
-
-* **callback**: OPTIONAL.  A callback function to handle new face detection predictions. For example:
-
-  ```js
-  facemesh.predict(inputMedia, results => {
-    // do something with the results
-    console.log(results);
-  });
-  ```
-
-📤 **Outputs**
-
-* **Array**: Returns an array of objects describing each detected face. See the [Facemesh keypoints map](https://github.com/tensorflow/tfjs-models/tree/master/face-landmarks-detection#keypoints) to determine how the keypoint related to facial landmarks.
-
-  ```js
+  ```javascript
   [
-      {
-          faceInViewConfidence: 1, // The probability of a face being present.
-          boundingBox: { // The bounding box surrounding the face.
-              topLeft: [232.28, 145.26],
-              bottomRight: [449.75, 308.36],
-          },
-          mesh: [ // The 3D coordinates of each facial landmark.
-              [92.07, 119.49, -17.54],
-              [91.97, 102.52, -30.54],
-              ...
-          ],
-          scaledMesh: [ // The 3D coordinates of each facial landmark, normalized.
-              [322.32, 297.58, -17.54],
-              [322.18, 263.95, -30.54]
-          ],
-          annotations: { // Semantic groupings of the `scaledMesh` coordinates.
-              silhouette: [
-              [326.19, 124.72, -3.82],
-              [351.06, 126.30, -3.00],
-              ...
-              ],
-              ...
-          }
-      }
+    {
+      box: { width, height, xMax, xMin, yMax, yMin },
+      keypoints: [{x, y, z, name}, ... ],
+      faceOval: [{x, y, z}, ...],
+      leftEye: [{x, y, z}, ...],
+      ...
+    },
+    ...
   ]
   ```
 
-***
+  [Here](https://github.com/tensorflow/tfjs-models/blob/master/face-landmarks-detection/mesh_map.jpg) is a diagram for the position of each keypoint (download and zoom in to see the index).
 
-#### .on('face', ...)
-> An event listener that returns the results when a new face detection prediction occurs.
+#### facemesh.detectStop()
 
-  ```js
-  facemesh.on('face', callback);
-  ```
+This method can be called after a call to `facemesh.detectStart` to stop the repeating face estimation.
 
-📥 **Inputs**
+```javascript
+facemesh.detectStop();
+```
 
-* **callback**: REQUIRED.  A callback function to handle new face detection predictions. For example:
+#### facemesh.detect()
 
-  ```js
-  facemesh.on('face', results => {
-    // do something with the results
-    console.log(results);
-  });
-  ```
+This method asynchronously outputs a single face estimation on an image media when called.
 
-📤 **Outputs**
+```javascript
+facemesh.detect(media, ?callback);
+```
 
-* **Array**: Returns an array of objects describing each detected face as an array of objects exactly like the output of the `.predict()` method described above. See the [Facemesh keypoints map](https://github.com/tensorflow/tfjs-models/tree/master/face-landmarks-detection#keypoints) to determine how the keypoint related to facial landmarks.
+**Parameters:**
 
+- **media**: An HMTL or p5.js image, video, or canvas element to run the estimation on.
+- **callback(output, error)**: OPTIONAL. A callback function to handle the output of the estimation, see output example above.
 
-## Examples
+**Returns:**  
+A promise that resolves to the estimation output.
 
-**p5.js**
-* [Facemesh_Image](https://github.com/ml5js/ml5-library/tree/main/examples/p5js/Facemesh/Facemesh_Image)
-* [Facemesh_Webcam](https://github.com/ml5js/ml5-library/tree/main/examples/p5js/Facemesh/Facemesh_Webcam)
+### Examples
 
-**p5 web editor**
-* [Facemesh_Image](https://editor.p5js.org/ml5/sketches/Facemesh_Image)
-* [Facemesh_Webcam](https://editor.p5js.org/ml5/sketches/Facemesh_Webcam)
-
-## Demo
-
-No demos yet - contribute one today!
-
-## Tutorials
-
-No tutorials yet - contribute one today!
-
-## Model and Data Provenance
-> A project started by [Ellen Nickles](https://github.com/ellennickles/)
-
-Coming soon!
-
-## Acknowledgements
-
-**Contributors**:
-  * Ported to ml5.js by [Bomani Oseni McClendon](https://bomani.rip/).
-
-## Source Code
-
-* [/src/Facemesh](https://github.com/ml5js/ml5-library/tree/main/src/Facemesh)
+TODO (link p5 web editor examples once uploaded)

@@ -2,27 +2,30 @@
 <div class="sidebar__section-divider">&nbsp;</div>
 
   * [Getting Started](/)
+  * [Next Steps](/)
+  * [FAQ](/)
 
 * **Reference** 📃
 <div class="sidebar__section-divider">&nbsp;</div>
 
-  * [Overview](/reference/index.md)
-  * **Pre-trained Model** 📦
-    * [Image Classification](/reference/image-classifier.md)
-    * [Sound Classification](/reference/sound-classifier.md)
-    * [Body Pose Estimation](/reference/pose-estimation.md)
-    * [Hand Pose Estimation](/reference/pitch-detection.md)
-    * [Face Mesh Estimation](/reference/facemesh.md)
-  * **Custom Model** ✍️
-    * [Image Classification + Teachable Machine](/reference/image-classifier.md)
-    * [Sound Classification + Teachable Machine](/reference/sound-classifier.md)
+  * [Overview](/reference/overview.md)
+  * **ml5 Models** 📦
+    * [Bodypose](/reference/bodypose.md)
+    * [Handpose](/reference/handpose.md)
+    * [Facemesh](/reference/facemesh.md)
+    * [ImageClassifier](/reference/image-classifier.md)
+    * [SoundClassifier](/reference/sound-classifier.md)
+  * **ml5 + Teachable Machine** ✍️
+    * [Image + Teachable Machine](/reference/image-classifier-tm.md)
+    * [Sound + Teachable Machine](/reference/sound-classifier-tm.md)
+    * [Pose + Teachable Machine](/reference/pose-estimation-tm.md)
+  * **Train your own model!** 💡
     * [Neural Networks](/reference/neural-network.md)
 
 * **Learning** 📚
 <div class="sidebar__section-divider">&nbsp;</div>
 
   * [Ml5 Glossary](/learning/ml5_glossary.md)
-
 
 * **Contributing** 🏗 
 <div class="sidebar__section-divider">&nbsp;</div>

@@ -349,4 +349,106 @@ To-dos:
 * update text.
 
 
+## ml5.bodypose
+
+### Descripton
+
+Bodypose can be used for real-time human pose Estimation.
+
+### Methods
+
+#### ml5.bodypose()
+
+This method is used to initialize the bodypose object.
+
+```javascript
+const bodypose = ml5.bodypose(?options, ?callback);
+```
+
+**Parameters:**
+
+- **options**: OPTIONAL. An object to change the default configuration of the model. The default and available options are:
+
+  ```javascript
+  {
+    modelType: "MULTIPOSE_LIGHTNING" // "MULTIPOSE_LIGHTNING", "SINGLEPOSE_LIGHTNING", or "SINGLEPOSE_THUNDE"
+    enableSmoothing: true,
+
+    minPoseScore: 0.25,
+    multiPoseMaxDimension: 256,
+    enableTracking: true,
+    trackerType: "boundingBox", // "keypoint" or "boundingBox"
+    trackerConfig: {},
+    modelUrl: undefined,
+  }
+  ```
+
+  More info on options [here](https://github.com/tensorflow/tfjs-models/tree/master/pose-detection/src/movenet#create-a-detector).
+
+- **callback(bodypose, error)**: OPTIONAL. A function to run once the model has been loaded. Alternatively, call `ml5.bodyPix()` within the p5 `preload` function.
+
+**Returns:**  
+The bodypose object.
+
+#### bodypose.detectStart()
+
+This method repeatedly outputs pose estimations on an image media through a callback function.
+
+```javascript
+bodypose.detectStart(media, callback);
+```
+
+**Parameters:**
+
+- **media**: An HMTL or p5.js image, video, or canvas element to run the estimation on.
+- **callback(output, error)**: A callback function to handle the output of the estimation. See below for an example output passed into the callback function:
+
+  ```javascript
+  [
+    {
+      box: { width, height, xMax, xMin, yMax, yMin },
+      id: 1,
+      keypoints: [{ x, y, score, name }, ...],
+      left_ankle: { x, y, confidence },
+      left_ear: { x, y, confidence },
+      left_elbow: { x, y, confidence },
+      ...
+      score: 0.28,
+    },
+    ...
+  ];
+  ```
+
+  See the diagram below for the position of each keypoint.
+
+  ![Keypoint Diagram](https://camo.githubusercontent.com/b8a385301ca6b034d5f4807505e528b4512a0aa78507dec9ebafcc829b9556be/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f6d6f76656e65742f636f636f2d6b6579706f696e74732d3530302e706e67)
+
+#### bodypose.detectStop()
+
+This method can be called after a call to `bodypose.detectStart` to stop the repeating pose estimation.
+
+```javascript
+bodypose.detectStop();
+```
+
+#### bodypose.detect()
+
+This method asynchronously outputs a single pose estimation on an image media when called.
+
+```javascript
+bodypose.detect(media, ?callback);
+```
+
+**Parameters:**
+
+- **media**: An HMTL or p5.js image, video, or canvas element to run the estimation on.
+- **callback(output, error)**: OPTIONAL. A callback function to handle the output of the estimation, see output example above.
+
+**Returns:**  
+A promise that resolves to the estimation output.
+
+### Examples
+
+TODO (link p5 web editor examples once uploaded)
+
 
