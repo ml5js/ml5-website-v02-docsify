@@ -7,6 +7,10 @@
   --text-sub-color: #505d6b;
   --theme-color: #5cb0ff;
   /* --theme-color: #42b983; */
+
+  /* docsify-tabs (may need reorder & clean up) */
+  --docsifytabs-border-color: #ededed;
+  --docsifytabs-tab-highlight-color: var(--theme-color, #5cb0ff);
 }
 
 * {
