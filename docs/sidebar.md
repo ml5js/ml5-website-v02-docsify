@@ -2,8 +2,8 @@
 <div class="sidebar__section-divider">&nbsp;</div>
 
   * [Getting Started](/)
-  * [Next Steps](/)
-  * [FAQ](/)
+  * [Next Steps](/welcome/next_steps.md)
+  * [FAQ](/welcome/FAQ.md)
 
 * **Reference** 📃
 <div class="sidebar__section-divider">&nbsp;</div>

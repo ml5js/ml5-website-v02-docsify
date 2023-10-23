@@ -308,38 +308,6 @@ Not all of our examples are structured exactly like this, but this provides a ta
 2. Do you notice that MobileNet is better at classifying some animals over others? Why do you think that is?
 
 ## What Next?
-Now, you have already built up your first-ever ml5.js project. Interested in using ml5.js to build more ML-based projects? Check out these learning resources!
+Now, you have already built up your first-ever ml5.js project. Interested in using ml5.js to build more ML-based projects and would like learn more? Check out our [Next Steps](https://ml5js.github.io/ml5-website-v02-docsify/#/welcome/next_steps) page!
 
-> #### Beginner's Guide to Machine Learning with ml5.js 👉[ Learn](https://youtu.be/26uABexmOX4?si=nqPoD6bQrVTU-YFw) *By Daniel Shiffman*
-> This playlist provides an introduction to developing creative coding projects with machine learning. The theory and application of machine learning algorithms is demonstrated in JavaScript using the p5.js and ml5.js libraries.
-> <iframe width="560" height="315" src="https://www.youtube.com/embed/26uABexmOX4?si=HXJRrgTkPhjN5hrr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-> #### The Nature of Code - Chapter 10. Neural Networks 👉[ Learn](https://natureofcode.com/book/chapter-10-neural-networks/) *By Daniel Shiffman*
-> "In this chapter, we’ll begin with a conceptual overview of the properties and features of neural networks and build the simplest possible example of one (a network that consists of a single neuron). Afterwards, we’ll examine strategies for creating a “Brain” object that can be inserted into our Vehicle class and used to determine steering. Finally, we’ll also look at techniques for visualizing and animating a network of neurons."
-> <center>
-    <img style="display:block; max-height:25rem" alt="pose detection" src="_media/getting_started__noc.jpeg">
-</center>
-
-## Join Community
-We are on [Discord](https://discord.com/invite/3CVauZMSt7). If you have any questions about ml5.js, would like to contribute to ml5.js, or simply want to share your project with a group of creative and talented people like you, don't hesitate to join us!
-
-## FAQ
-
-### Can I always use ml5.js in the [p5 web editor](https://editor.p5js.org)?
-
-Mostly.
-
-A number of the ml5 sketches don't currently work in the p5 web editor due to some of the ways that the editor handles data files and some of the network communication regarding making requests to external data (e.g. the big model files that allow ml5.js to run things like image detection, etc). 
-
-There are lots of developments in the p5 web editor as well as in ml5 to make sure these environments all play nicely together. If something doesn't work in the web editor, the best thing to do is to try and run things locally if possible. See [running you sketch with a local web server tutorial](/?id=try-ml5js-locally-3).
-
-Thanks!
-
-### Can I use ml5.js with node.js?
-
-No. Not at the moment.
-
-ml5.js uses TensorFlow.js which uses the browser's GPU to run all the calculations. As a result, all of the ml5.js functionality is based around using the browser GPU. We hope to have ml5.js run in node-js sometime in the near future (especially now that [node support for TensorFlow is a thing](https://www.tensorflow.org/js/guide/nodejs) but the current ml5 setup does not support node.js. We hope to support this in the future.
-
-
-[For more discussion about node and ml5.js, visit this issue thread.](https://github.com/ml5js/ml5-library/issues/377)
+<br>
