@@ -64,7 +64,15 @@
         noData: 'No Results!',
         depth: 1, // Headline depth, 1 - 6
         hideOtherSidebarContent: true, // whether or not to hide other sidebar content
-      }
+      },
+
+      tabs: {
+        persist    : true,      // default
+        sync       : true,      // default
+        theme      : 'classic', // default
+        tabComments: true,      // default
+        tabHeadings: true       // default
+      },
 
     };
   </script>
@@ -78,6 +86,8 @@
   <script src="//unpkg.com/docsify/lib/plugins/external-script.min.js"></script>
   <!-- Copy to clipboard -->
   <script src="//unpkg.com/docsify-copy-code"></script>
+  <!-- docsify-tabs (latest v1.x.x) -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify-tabs@1"></script>
 </body>
 
 </html>
