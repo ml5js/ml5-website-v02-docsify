@@ -7,15 +7,7 @@ Have you ever felt confused about a term we used here at ml5? No worries, we've 
 
 #### **A**
 
----
-### Activation Function
-An activation function is a function that determines the output of a neural network. An activation function is a function that determines the output of a neural network. Activation functions are often used to introduce non-linearity into a neural network. In ml5.js, activation functions are often used to introduce non-linearity into a neural network.
-
 #### **B**
-
----
-### Bias
-A bias is a constant value that is added to the input of a neural network. A bias is a constant value that is added to the input of a neural network. Biases are often used to introduce non-linearity into a neural network. In ml5.js, biases are often used to introduce non-linearity into a neural network.
 
 #### **C**
 
@@ -59,7 +51,11 @@ Confidence is a measure of how certain a machine learning model is about its pre
 
 ---
 ### Classifier
-A classifier is a machine learning model that is used to classify data. For example, a classifier could be used to classify images of cats and dogs. In ml5.js, classifiers are often used to classify images of cats and dogs.
+A classifier is a machine learning model that is used to classify data. For example, a classifier could be used to classify images of cats and dogs.
+
+---
+### Classification
+Classification is the process of assigning a label to a piece of data. For example, a machine learning model could be used to classify images of cats and dogs.
 
 #### **D**
 
@@ -68,13 +64,14 @@ A classifier is a machine learning model that is used to classify data. For exam
 A dataset is a collection of data. Datasets are often used to train machine learning models. For example, a dataset of images of cats and dogs could be used to train a machine learning model to classify images of cats and dogs. In ml5.js, datasets are often used to train custom machine learning models.
 
 ---
-### Deep Learning
-Deep learning is a subfield of machine learning that uses neural networks to learn from data. Deep learning is a subfield of machine learning that uses neural networks to learn from data. Deep learning is often used to solve problems that are difficult to solve with other machine learning techniques. In ml5.js, deep learning is often used to solve problems that are difficult to solve with other machine learning techniques.
+### Div
+A div is an HTML element that is used to define a section of a webpage. In ml5.js, divs are often used to display the output of a machine learning model.
+
+---
+### Dependencies
+Dependencies are libraries that are required by another library.
 
 #### **E**
----
-### Early Stopping
-Early stopping is a technique used to prevent overfitting in machine learning models. Early stopping is a technique used to prevent overfitting in machine learning models. Early stopping is often used to prevent overfitting in machine learning models. In ml5.js, early stopping is often used to prevent overfitting in machine learning models.
 
 #### **F**
 ---
@@ -82,9 +79,6 @@ Early stopping is a technique used to prevent overfitting in machine learning mo
 A feature is an individual measurable property or characteristic of a phenomenon being observed. Features are used to represent the phenomenon numerically. For example, a feature of a cat could be its weight, or the color of its fur. In machine learning, features are used to represent the phenomenon being observed in a way that a machine learning algorithm can understand. For example, a cat could be represented by a feature vector of its weight and the color of its fur. In ml5.js, features are often used to represent the input to a machine learning model.
 
 #### **G**
----
-### Gradient Descent
-Gradient descent is an optimization algorithm used to train machine learning models. Gradient descent is an optimization algorithm used to train machine learning models. Gradient descent is often used to train machine learning models. In ml5.js, gradient descent is often used to train machine learning models.
 
 #### **H**
 ---
@@ -99,15 +93,58 @@ Hyperparameters are parameters that are set before training a machine learning m
 
 #### **L**
 ---
-### Labels
+### Label
 Labels are used to identify the class or category of a phenomenon being observed. For example, a label of a cat could be "cat". In machine learning, labels are used to identify the class or category of the phenomenon being observed. For example, a cat could be labeled as "cat". In ml5.js, labels are often used to identify the output of a machine learning model.
 
 #### **M**
+---
+### MobileNet
+By [Ellen Nickles](https://github.com/ellennickles/)
+#### MobileNetV1 - Model Biography
+
+* **Description**
+  * MobileNet is a term that describes a type of machine learning model architecture that has been optimized to run on platforms with limited computational power, such as applications on mobile or embedded devices. MobileNets have several use cases, including image classification, object detection, and image segmentation. This particular MobileNet model was trained to detect people and 17 different key points on the body.
+  * ml5 defaults using a MobileNet created with TensorFlow.js, a JavaScript library from TensorFlow, an open source machine learning platform developed by Google.
+* **Developer and Year**
+  * Google’s TensorFlow.js team. The TensorFlow version was ported to TensorFlow.js by Dan Oved in collaboration with Google Researchers, George Papandreou and [Tyler (Lixuan) Zhu](https://research.google/people/TylerZhu/).
+* **Purpose and Intended Users**
+  * From the website: TensorFlow is an open source machine learning platform that “has a comprehensive, flexible ecosystem of tools, libraries, and community resources that lets researchers push the state-of-the-art in ML and developers easily build and deploy ML-powered applications.” This model is available for use in the ml5 library because Tensorflow licenses it with Apache License 2.0.
+* **Hosted Location**
+  * As of June 2019, ml5 imports MobileNetV1 from TensorFlow, hosted on the NPM database. This means that your ml5 sketch will automatically use the most recent version distributed on NPM. 
+* **ml5 Contributor and Year**
+  * Ported by Cristóbal Valenzuela in 2018
+* **References**
+  * Website [TensorFlow](https://www.tensorflow.org/)
+  * Developers [Dan Oved](https://www.danioved.com/), George Papandreou, and [Tyler (Lixuan) Zhu](https://research.google/people/TylerZhu/)
+  * ml5 Contributor [Cristóbal Valenzuela](https://cvalenzuelab.com/)
+  * GitHub Repository [TensorFlow.js Pose Detection in the Browser: PoseNet Model](https://github.com/tensorflow/tfjs-models/tree/master/posenet)
+  * NPM Readme [Pose Detection in the Browser: PoseNet Model](https://www.npmjs.com/package/@tensorflow-models/posenet)
+  * Article: [Real-time Human Pose Estimation in the Browser with TensorFlow.js](https://medium.com/tensorflow/real-time-human-pose-estimation-in-the-browser-with-tensorflow-js-7dd0bc881cd5)
+
+#### MobileNetV1 - Data Biography
+* **Description**
+  * According to Dan Oved, the model was trained on images from the COCO dataset.
+* **Source**
+  * From the website: The COCO dataset is managed by a number of collaborators from both academic and commercial organizations for “large-scale object detection, segmentation, and captioning,” and according to the paper, images were collected from Flickr. 
+* **Collector and Year**
+  * The COCO database began in 2014.
+* **Collection Method**
+  * COCO methods for collecting images and annotating pixels into segments are described  in the paper.
+* **Purpose and Intended Users**
+  * The COCO dataset was created to advance computer vision research. 
+* **References**
+  - TensorFlow.js PoseNet Developer [Dan Oved](https://www.danioved.com/)
+  - Paper [Microsoft COCO: Common Objects in Context](https://arxiv.org/abs/1405.0312)
+  - Website [Microsoft COCO: Common Objects in Context](http://cocodataset.org/#home)
 
 #### **N**
 ---
 ### Neural Network
 A neural network is a machine learning model that is inspired by the structure of the brain. Neural networks are often used to solve problems that are difficult to solve with other machine learning techniques.
+
+---
+### NPM
+NPM is a package manager for JavaScript. NPM is used to install and manage JavaScript libraries.
 
 #### **O**
 ---
@@ -116,7 +153,7 @@ Overfitting is a phenomenon that occurs when a machine learning model is trained
 
 ---
 ### Output Stride
-Output stride is a parameter used to control the resolution of the output of a machine learning model. Output stride is a parameter used to control the resolution of the output of a machine learning model. Output stride is often used to control the resolution of the output of a machine learning model. In ml5.js, output stride is often used to control the resolution of the output of a machine learning model.
+Output stride is a parameter used to control the resolution of the output of a machine learning model.
 
 #### **P**
 ---
@@ -145,12 +182,33 @@ For some video tutorials about Promises, you can find this [Coding Train playlis
 
 #### **S**
 ---
+### Prediction
+A prediction is the output of a machine learning model. For example, a machine learning model that is trained to classify images of cats and dogs could make a prediction that an image is a cat.
+
+---
+### Pretrained Model
+A pretrained model is a machine learning model that has been trained on a dataset. Pretrained models are often used to make predictions on new data. For example, a pretrained model that has been trained on a dataset of images of cats and dogs could be used to make predictions on new images of cats and dogs. In ml5.js, pretrained models are often used to make predictions on new data.
+
+---
+### Preload Function
+The preload function is a function that is called before the setup function. In ml5.js, the preload function is often used to load assets, such as images, before the setup function is called.
+
+#### **Q**
+
+#### **R**
+
+#### **S**
+---
 ### Score
 Score is a measure of how well a machine learning model performs on a given input. For example, a machine learning model that is 100% accurate has a score of 1. A machine learning model that is 0% accurate has a score of 0. In ml5.js, score is often used to evaluate the performance of a machine learning model.
 
 ---
 ### Score Threshold
 Score threshold is often used to control the minimum score required for a machine learning model to make a prediction. In ml5.js, score threshold is often used to control the minimum score required for a machine learning model to make a prediction.
+
+---
+### Local Development Server
+A local development server is a server that is used to launch/deploy a website or web application on a local machine.
 
 #### **T**
 ---
@@ -160,6 +218,10 @@ Test data is a set of data used to test a machine learning model. Test data is u
 ---
 ### Training Data
 Training data is a set of data used to train a machine learning model. Training data is used to train a machine learning model to make predictions. For example, a set of images of cats and dogs could be used to train a machine learning model to classify images of cats and dogs. In ml5.js, training data is often used to train a custom machine learning model.
+
+---
+### Terminal
+A terminal is a command line interface that is used to run commands on a computer. In ml5.js, a terminal is often used to run a local development server.
 
 #### **U**
 ---
