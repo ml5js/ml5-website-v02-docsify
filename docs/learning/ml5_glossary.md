@@ -176,6 +176,11 @@ ml5
 
 For some video tutorials about Promises, you can find this [Coding Train playlist](https://www.youtube.com/playlist?list=PLRqwX-V7Uu6bKLPQvPRNNE65kBL62mVfx). There is also a [video tutorial about the ES6 arrow notation (**=>**)](https://youtu.be/mrYMzpbFz18).
 
+#### **Q**
+
+#### **R**
+
+#### **S**
 ---
 ### Prediction
 A prediction is the output of a machine learning model. For example, a machine learning model that is trained to classify images of cats and dogs could make a prediction that an image is a cat.
