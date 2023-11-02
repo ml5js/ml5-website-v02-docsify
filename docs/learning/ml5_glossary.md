@@ -1,9 +1,10 @@
 # Ml5 Glossary
 
 <br/>
-Have you ever felt confused about a term we used here at ml5? No worries, we've got you covered! Check out this glossary. Here, we explain and define programming techniques and machine learning terms specific to ml5 that are mentioned in our libraries, website, and examples.
 
-This glossary is designed to be editable by any ml5 user. If you have a term you'd like to add or update, please do! We'd love to hear from you. Click the `edit the document` button on the top right of this page to see the source code and create a pull request. Please don’t mind if you don’t know what we are talking about, you can also contribute through this google form! 👉 [ml5 Glossary Contribution Form](https://docs.google.com/forms/d/e/1FAIpQLScJo6XU1-D1rDkuUIKSs7wx6svpZtw6p9vBPHdQvKPxpq-ERA/viewform?usp=pp_url)
+Have you ever felt confused about a term we used here at ml5? No worries, we've got you covered! Check out this glossary. Here, we explain and define programming techniques and machine learning terms specific to ml5 that are mentioned in our libraries, website, and examples. 
+
+This glossary is designed to be editable by any ml5 user. If you have a term you'd like to add or update, please do! We'd love to hear from you. Click the `Edit Document` button on the top right of this page to see the source code and create a pull request. Please don’t mind if you don’t know what we are talking about, you can also contribute through this google form! 👉 [ml5 Glossary Contribution Form](https://docs.google.com/forms/d/e/1FAIpQLScJo6XU1-D1rDkuUIKSs7wx6svpZtw6p9vBPHdQvKPxpq-ERA/viewform?usp=pp_url)
 
 <!-- tabs:start -->
 
