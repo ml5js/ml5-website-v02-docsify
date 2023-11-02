@@ -26,6 +26,7 @@
 <div class="sidebar__section-divider">&nbsp;</div>
 
   * [Ml5 Glossary](/learning/ml5_glossary.md)
+  * [Community Tutorial Library](/learning/community_tutorial_library.md)
 
 * **Contributing** 🏗 
 <div class="sidebar__section-divider">&nbsp;</div>
