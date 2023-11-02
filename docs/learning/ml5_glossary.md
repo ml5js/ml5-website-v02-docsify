@@ -6,8 +6,6 @@ Have you ever felt confused about a term we used here at ml5? No worries, we've 
 
 This glossary is designed to be editable by any ml5 user. If you have a term you'd like to add or update, please do! We'd love to hear from you. Click the `Edit Document` button on the top right of this page to see the source code and create a pull request. Please don’t mind if you don’t know what we are talking about, you can also contribute through this google form! 👉 [ml5 Glossary Contribution Form](https://docs.google.com/forms/d/e/1FAIpQLScJo6XU1-D1rDkuUIKSs7wx6svpZtw6p9vBPHdQvKPxpq-ERA/viewform?usp=pp_url)
 
-This glossary is designed to be editable by any ml5 user. If you have a term you'd like to add or update, please do! We'd love to hear from you. Click the `edit the document` button on the top right of this page to see the source code and create a pull request. Please don’t mind if you don’t know what we are talking about, you can also contribute through this google form! 👉 [ml5 Glossary Contribution Form](https://docs.google.com/forms/d/e/1FAIpQLScJo6XU1-D1rDkuUIKSs7wx6svpZtw6p9vBPHdQvKPxpq-ERA/viewform?usp=pp_url)
-
 <!-- tabs:start -->
 
 #### **A**
@@ -180,6 +178,35 @@ ml5
 ```
 
 For some video tutorials about Promises, you can find this [Coding Train playlist](https://www.youtube.com/playlist?list=PLRqwX-V7Uu6bKLPQvPRNNE65kBL62mVfx). There is also a [video tutorial about the ES6 arrow notation (**=>**)](https://youtu.be/mrYMzpbFz18).
+
+---
+### Prediction
+A prediction is the output of a machine learning model. For example, a machine learning model that is trained to classify images of cats and dogs could make a prediction that an image is a cat.
+
+---
+### Pretrained Model
+A pretrained model is a machine learning model that has been trained on a dataset. Pretrained models are often used to make predictions on new data. For example, a pretrained model that has been trained on a dataset of images of cats and dogs could be used to make predictions on new images of cats and dogs. In ml5.js, pretrained models are often used to make predictions on new data.
+
+---
+### Preload Function
+The preload function is a function that is called before the setup function. In ml5.js, the preload function is often used to load assets, such as images, before the setup function is called.
+
+#### **Q**
+
+#### **R**
+
+#### **S**
+---
+### Prediction
+A prediction is the output of a machine learning model. For example, a machine learning model that is trained to classify images of cats and dogs could make a prediction that an image is a cat.
+
+---
+### Pretrained Model
+A pretrained model is a machine learning model that has been trained on a dataset. Pretrained models are often used to make predictions on new data. For example, a pretrained model that has been trained on a dataset of images of cats and dogs could be used to make predictions on new images of cats and dogs. In ml5.js, pretrained models are often used to make predictions on new data.
+
+---
+### Preload Function
+The preload function is a function that is called before the setup function. In ml5.js, the preload function is often used to load assets, such as images, before the setup function is called.
 
 #### **Q**
 
