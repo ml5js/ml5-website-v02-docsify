@@ -79,7 +79,71 @@ Dependencies are libraries that are required by another library.
 #### **F**
 ---
 ### Feature
-A feature is an individual measurable property or characteristic of a phenomenon being observed. Features are used to represent the phenomenon numerically. For example, a feature of a cat could be its weight, or the color of its fur. In machine learning, features are used to represent the phenomenon being observed in a way that a machine learning algorithm can understand. For example, a cat could be represented by a feature vector of its weight and the color of its fur. In ml5.js, features are often used to represent the input to a machine learning model.
+A feature is an individual measurable property or characteristic of a phenomenon being observed. For example, a feature of a cat could be its weight, or the color of its fur. Here, we have three samples of data, each with two features (weight and color of the fur) and a label (cat or dog).
+
+| Sample # | Weight | Color of the fur | Label |
+|----------|--------|------------------|-------|
+| sample 1 | 5.8kg  | white            | Cat   |
+| sample 2 | 36kg   | golden           | Dog   |
+| sample 3 | 3.2kg  | black            | Cat   |
+
+In machine learning, features are used to represent the phenomenon being observed in a way that a machine learning algorithm can understand. For example, a cat could be represented by a feature vector of its weight and the color of its fur. Color could be represented as a number, such as 0 for white, 1 for black, and 2 for golden.
+
+| Sample # | Feature Vector | Label |
+|----------|----------------|-------|
+| sample 1 | (5.8, 0)       | Cat   |
+| sample 2 | (36, 2)        | Dog   |
+| sample 3 | (3.2, 1)       | Cat   |
+
+In ml5.js, features are often used to represent the input to a machine learning model. For instance, the example given by the [Neural Networks](/reference/neural-network) uses the following data to train the model to predict the color of an object:
+
+```js
+// Step 1: load data or create some data 
+const data = [
+  {r:255, g:0, b:0, color:'red-ish'},
+  {r:254, g:0, b:0, color:'red-ish'},
+  {r:253, g:0, b:0, color:'red-ish'},
+  {r:0, g:255, b:0, color:'green-ish'},
+  {r:0, g:254, b:0, color:'green-ish'},
+  {r:0, g:253, b:0, color:'green-ish'},
+  {r:0, g:0, b:255, color:'blue-ish'},
+  {r:0, g:0, b:254, color:'blue-ish'},
+  {r:0, g:0, b:253, color:'blue-ish'}
+];
+
+...
+
+// Step 4: add data to the neural network
+data.forEach(item => {
+  const inputs = {
+    r: item.r, 
+    g: item.g, 
+    b: item.b
+  };
+  const output = {
+    color: item.color
+  };
+
+  nn.addData(inputs, output);
+});
+
+...
+```
+
+Here, the example uses the values of red, green, and blue color channels as features.
+
+| Sample # | Feature Vector | Label     |
+|----------|----------------|-----------|
+| sample 1 | (255, 0, 0)    | red-ish   |
+| sample 2 | (254, 0, 0)    | red-ish   |
+| sample 3 | (253, 0, 0)    | red-ish   |
+| sample 4 | (0, 255, 0)    | green-ish |
+| sample 5 | (0, 254, 0)    | green-ish |
+| sample 6 | (0, 253, 0)    | green-ish |
+| sample 7 | (0, 0, 255)    | blue-ish  |
+| sample 8 | (0, 0, 254)    | blue-ish  |
+| sample 9 | (0, 0, 253)    | blue-ish  |
+
 
 #### **G**
 
@@ -278,4 +342,6 @@ Weights quantization is often used to reduce the size of a machine learning mode
 #### **Z**
 
 <!-- tabs:end -->
+
+<br/>
 
