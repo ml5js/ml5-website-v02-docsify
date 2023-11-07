@@ -11,7 +11,7 @@ If you would like to get a taste of ml5.js in minutes, the easiest way is using 
 ### Try Ml5.js Locally
 If you want to start a project from scratch and develop it locally, have something set up as follows.
 
-> + 📝 A text editor (e.g. [Atom](https://atom.io/), [VSCode](https://code.visualstudio.com/), [Sublimetext](https://www.sublimetext.com/))
+> + 📝 A text editor (e.g. [WebStorm](https://www.jetbrains.com/webstorm/), [VSCode](https://code.visualstudio.com/), [Sublimetext](https://www.sublimetext.com/))
 > + 💻 Your web browser: Chrome & Firefox preferred
 
 Your project directory should look something like this:
@@ -185,6 +185,8 @@ function gotResult(error, results) {
 }
 ```
 
+*💡 If you are not familiar with terms like **pre-trained model**, **MobileNet**, **classification**, **classifier**, **confidence** and would like to learn more about them, check out our [Ml5 Glossary](/learning/ml5_glossary) for a quick intro.*
+
 ## Our sketch.js explained in 4 steps {docsify-ignore}
 
 ### Step 1: Define your variables
@@ -199,6 +201,8 @@ let classifier;
 let img;
 ```
 
+*💡 If you are not familiar with term **callback**, check out our [Ml5 Glossary](/learning/ml5_glossary) for more information.*
+
 ### Step 2: Load your imageClassifier and image
 
 Use p5's **preload()** function to load our imageClassifier model and our bird image before running the rest of our code. Since machine learning models can be large, it can take time to load. We use **preload()** in this case to make sure our imageClassifier and image are ready to go before we can apply the image classification in the next step.
@@ -209,6 +213,8 @@ function preload() {
   img = loadImage('images/bird.png');
 }
 ```
+
+*💡 If you are not familiar with term **preload function**, check out our [Ml5 Glossary](/learning/ml5_glossary) for more information.*
 
 ### Step 3: Setup, classify, and display
 
@@ -250,6 +256,8 @@ function gotResult(error, results) {
 }
 ```
 
+*💡 If you are not familiar with terms like **div**, **label**, **confidence**, check out our [Ml5 Glossary](/learning/ml5_glossary) for more information.*
+
 ## Need Help On Your Code? {docsify-ignore}
 
 Check our examples below for reference:
@@ -269,6 +277,8 @@ Simply press the **Play** button on the top right corner of the interface. And y
 ### Try Ml5.js Locally
 To run the sketch locally, we need to start a local development server.
 
+*💡 If you are not familiar with term **local development server**, check out our [Ml5 Glossary](/learning/ml5_glossary) for more information.*
+
 #### Step 1. Open your terminal
 
 ```sh
@@ -282,12 +292,14 @@ npm install
 npm run develop
 ```
 
+*💡 If you are not familiar with terms like **terminal**, **dependencies**, check out our [Ml5 Glossary](/learning/ml5_glossary) for more information.*
+
 #### Step 2. You should be able to run the sketch at: 
 ```
 http://localhost:8081
 ```
 
-💡 You may also be interested in watching [CodingTrain - getting set up](https://www.youtube.com/watch?v=UCHzlUiDD10) for a nice intro on getting set up with writing code for the web.
+*💡 You may also be interested in watching [CodingTrain - getting set up](https://www.youtube.com/watch?v=UCHzlUiDD10) for a nice intro on getting set up with writing code for the web.*
 
 
 
@@ -302,10 +314,10 @@ Not all of our examples are structured exactly like this, but this provides a ta
 
 <br/>
 
-💡 Some guiding questions you might start to think about are:
+*💡 Some guiding questions you might start to think about are:*
 
-1. When classifying an image with MobileNet, does the computer see people? If not, why do you think that is?
-2. Do you notice that MobileNet is better at classifying some animals over others? Why do you think that is?
+*1. When classifying an image with MobileNet, does the computer see people? If not, why do you think that is?*
+*2. Do you notice that MobileNet is better at classifying some animals over others? Why do you think that is?*
 
 ## What Next?
 Now, you have already built up your first-ever ml5.js project. Interested in using ml5.js to build more ML-based projects and would like learn more? Check out our [Next Steps](https://ml5js.github.io/ml5-website-v02-docsify/#/welcome/next_steps) page!
