@@ -294,21 +294,21 @@ A pretrained model is a machine learning model that has been trained on a datase
 ### Preload Function
 The preload function is a function that is called before the setup function. In ml5.js, the preload function is often used to load assets, such as images, before the setup function is called.
 
-#### **Q**
-
 #### **R**
 
 ### Regression Analysis
-Regression analysis is a predictive modeling technique that analyzes the relation between the dependent variable and the independent variable in a dataset.
+Regression analysis is a predictive modeling technique that analyzes the relation between the dependent variable and the independent variable in a dataset. Regression models are models used to carry out regression analysis.
 
-Two most common types of regression analysis are:
-- Linear regression: a linear approach for modeling the relationship between two quantitative variables.
-- Logistic regression: maps the relationship between discrete (i.e. 0 or 1, true or false) dependent variables to independent variables, often represented by [sigmoid functions](#sigmoid-function).
+Two most common types of regression models are:
+- Linear regression model: a linear approach for modeling the relationship between two quantitative variables.
 
-### Regression Models
+<img align="center" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdatasciencelk.com%2Fwp-content%2Fuploads%2F2020%2F03%2Fregression-line.png&f=1&nofb=1&ipt=fee1072daa0e55b1206c9be1489e25c31be1c472009e761999d6c0672c91cd01&ipo=images" width="40%">
+<figcaption>A typical linear regression model</figcaption>
 
+- Logistic regression model: maps the relationship between discrete (i.e. 0 or 1, true or false) dependent variables to independent variables, often represented by [sigmoid functions](#sigmoid-function).
 
-
+<img align="center" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmiro.medium.com%2Fmax%2F1450%2F1*QY3CSyA4BzAU6sEPFwp9ZQ.png&f=1&nofb=1&ipt=b1ede474256f60310c332de4a15d65bf041bb3c028ff015b380b2dc3f5982ae1&ipo=images" width="40%">
+<figcaption>A typical logistic regression model</figcaption>
 
 #### **S**
 ---
@@ -380,17 +380,11 @@ Ideally, each data point in the dataset should only belong to one of these three
 #### **W**
 ---
 ### Weights
-Weights are parameters that are used to train a machine learning model. Weights are often used to train a machine learning model. In ml5.js, weights are often used to train a machine learning model.
+Weights are parameters that are used to train a machine learning model.
 
 ---
 ### Weights Quantization
 Weights quantization is often used to reduce the size of a machine learning model.
-
-#### **X**
-
-#### **Y**
-
-#### **Z**
 
 <!-- tabs:end -->
 
