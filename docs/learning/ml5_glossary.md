@@ -106,8 +106,22 @@ Labels are used to identify the class or category of a phenomenon being observed
 
 #### **N**
 ---
+### Neuron
+
+In machine learning, a neuron mimics a biological neuron in brains and other parts of nervous systems. It exists as a distinct unit within a hidden layer of a [neural network](#neural-network). Each neuron is responsible for completing these two tasks:
+
+1. Calculates the weighted sum of input values multiplied by their corresponding weights.
+2. Passes the weighted sum as an input to an activation function.
+
+---
 ### Neural Network
-A neural network is a machine learning model that is inspired by the structure of the brain. Neural networks are often used to solve problems that are difficult to solve with other machine learning techniques.
+Neural networks, also known as artificial neural networks (ANNs) or simulated neural networks (SNNs), are neural circuits of neurons. Neural networks are at the center of artificial intelligence and deep learning algorithms.
+
+Artificial neural networks (ANNs) are comprised of node layers, containing an input layer, one or more hidden layers, and an output layer. Each node, or [neuron](#neuron), connects to all of the nodes in the next layer. Each connection has an associated weight and threshold.
+
+![A Simple One-Layer Neural Network](https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Neural_network_example.svg/220px-Neural_network_example.svg.png)
+
+Neural networks are widely used for predictive modeling, and AI applications where training via datasets is desired.
 
 #### **O**
 ---
@@ -143,6 +157,18 @@ For some video tutorials about Promises, you can find this [Coding Train playlis
 
 #### **R**
 
+### Regression Analysis
+Regression analysis is a predictive modeling technique that analyzes the relation between the dependent variable and the independent variable in a dataset.
+
+Two most common types of regression analysis are:
+- Linear regression: a linear approach for modeling the relationship between two quantitative variables.
+- Logistic regression: maps the relationship between discrete (i.e. 0 or 1, true or false) dependent variables to independent variables, often represented by [sigmoid curves](#sigmoid-curve).
+
+### Regression Models
+
+
+
+
 #### **S**
 ---
 ### Score
@@ -151,6 +177,12 @@ Score is a measure of how well a machine learning model performs on a given inpu
 ---
 ### Score Threshold
 Score threshold is often used to control the minimum score required for a machine learning model to make a prediction. In ml5.js, score threshold is often used to control the minimum score required for a machine learning model to make a prediction.
+
+---
+### Sigmoid Function
+A sigmoid function is a mathematical function having a characteristic "S"-shaped curve.
+
+![The logistic curve](https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Logistic-curve.svg/320px-Logistic-curve.svg.png)
 
 #### **T**
 ---
