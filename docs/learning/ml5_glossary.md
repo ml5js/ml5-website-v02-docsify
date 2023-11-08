@@ -50,7 +50,118 @@ Error first callbacks is a convention common to many JavaScript libraries that w
 
 ---
 ### Confidence
-Confidence is a measure of how certain a machine learning model is about its prediction. For example, a machine learning model that is 100% confident in its prediction is certain that its prediction is correct. A machine learning model that is 0% confident in its prediction is certain that its prediction is incorrect. In ml5.js, confidence is often used to evaluate the performance of a machine learning model.
+Confidence is a measure of how certain a machine learning model is about its prediction. For example, a machine learning model that is 100% confident in its prediction is certain that its prediction is correct. A machine learning model that is 0% confident in its prediction is certain that its prediction is incorrect.
+
+In a classification task, we may get a confidence score for each class. For example, a machine learning model that is trained to classify images of cats and dogs could make a prediction that an image is a cat with a confidence score of 0.8, and a prediction that an image is a dog with a confidence score of 0.2. And we will select the class with the highest confidence score as the prediction of the machine learning model.
+
+| Label | Confidence Score | Selected Class |
+|-------|------------------|----------------|
+| Cat   | 0.8              | ✅             |
+| Dog   | 0.2              |                |
+
+A similar example is given by the [Getting Started](/?id=your-first-sketch) of ml5 website. Here, we use the [Image Classifier](/reference/image-classifier) to classify an image of a bird and print out the label and confidence score of the prediction as follows:
+
+```js
+// A function to run when we get any errors and the results
+function gotResult(error, results) {
+  // Display error in the console
+  if (error) {
+    console.error(error);
+  } else {
+    // The results are in an array ordered by confidence.
+    console.log(results);
+    createDiv(`Label: ${results[0].label}`);
+    createDiv(`Confidence: ${nf(results[0].confidence, 0, 2)}`);
+  }
+}
+```
+
+An output of the above code is as follows:
+
+```js
+[
+  {
+    label: "robin, American robin, Turdus migratorius"
+    confidence: 0.9282158017158508
+  },
+  {
+    label: "worm fence, snake fence, snake-rail fence, Virginia fence"
+    confidence: 0.004057395737618208
+  },
+  {
+    label: "brambling, Fringilla montifringilla"
+    confidence: 0.0026653283275663853
+  }
+]
+```
+
+And we can see that the machine learning model is 92.82% confident that the image is a robin, and that is the selected class.
+
+| Label | Confidence Score | Selected Class |
+|-------|------------------|----------------|
+| robin, American robin, Turdus migratorius | 0.9282158017158508 | ✅ |
+| worm fence, snake fence, snake-rail fence, Virginia fence | 0.004057395737618208 | |
+| brambling, Fringilla montifringilla | 0.0026653283275663853 | |
+
+Let's take a look at another example in ml5.js, where the confidence score is used to represent how confident a machine learning model is about its prediction. The example given by the [BodyPose](/reference/bodypose) shows how to get the confidence score of each keypoint:
+
+```js
+for (let i = 0; i < poses.length; i++) {
+  for (let k = 0; k < poses[i].pose.keypoints.length; k++) {
+    // get each keypoint
+    let point = poses[i].pose.keypoints[k];
+
+    // get the position of each keypoint
+    let x = point.position.x;
+    let y = point.position.y;
+
+    // get the confidence score of each keypoint
+    let score = point.score;
+
+    // get the name of each keypoint
+    let partName = point.part;
+
+    // draw an ellipse at each keypoint
+    fill(0, 255, 0);
+    ellipse(x, y, 5, 5);
+
+    // mark the corresponding part name and confidence score at each keypoint
+    text(partName, x + 15, y + 5);
+    text(score.toFixed(2), x + 15, y + 20);
+  }
+}
+```
+We can use the confidence score to filter out keypoints that are not confident enough. For example, we can set a threshold of 0.5, and only draw keypoints that have a confidence score higher than 0.5:
+
+```js
+for (let i = 0; i < poses.length; i++) {
+  for (let k = 0; k < poses[i].pose.keypoints.length; k++) {
+    // get each keypoint
+    let point = poses[i].pose.keypoints[k];
+
+    // get the position of each keypoint
+    let x = point.position.x;
+    let y = point.position.y;
+
+    // get the confidence score of each keypoint
+    let score = point.score;
+
+    // get the name of each keypoint
+    let partName = point.part;
+
+    // only draw an ellipse at each keypoint if the confidence score is higher than 0.5
+    if (score > 0.5) {
+      // draw an ellipse at the keypoint
+      fill(0, 255, 0);
+      ellipse(x, y, 5, 5);
+
+      // mark the corresponding part name and confidence score at the keypoint
+      text(partName, x + 15, y + 5);
+      text(score.toFixed(2), x + 15, y + 20);
+    }
+  }
+}
+```
 
 ---
 ### Classifier
