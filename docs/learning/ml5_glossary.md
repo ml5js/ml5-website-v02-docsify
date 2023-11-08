@@ -164,6 +164,10 @@ for (let i = 0; i < poses.length; i++) {
 ```
 
 ---
+### Convolutional Neural Networks
+Convolutional Neural Networks (CNN) are [neural networks](#neural-network) tuned for the compression of images and video data.
+
+---
 ### Classifier
 A classifier is a machine learning model that is used to classify data. For example, a classifier could be used to classify images of cats and dogs.
 
@@ -346,6 +350,10 @@ Hyperparameters are parameters that are set before training a machine learning m
 ### Label
 Labels are used to identify the class or category of a phenomenon being observed. For example, a label of a cat could be "cat". In machine learning, labels are used to identify the class or category of the phenomenon being observed. For example, a cat could be labeled as "cat". In ml5.js, labels are often used to identify the output of a machine learning model.
 
+---
+### Local Development Server
+A local development server is a server that is used to launch/deploy a website or web application on a local machine.
+
 #### **M**
 ---
 ### MobileNet
@@ -389,21 +397,52 @@ By [Ellen Nickles](https://github.com/ellennickles/)
 
 #### **N**
 ---
+### Neuron
+
+In machine learning, a neuron mimics a biological neuron in brains and other parts of nervous systems. It exists as a distinct unit within a hidden layer of a [neural network](#neural-network). Each neuron is responsible for completing these two tasks:
+
+1. Calculates the weighted sum of input values multiplied by their corresponding weights.
+2. Passes the weighted sum as an input to an activation function.
+
+---
 ### Neural Network
-A neural network is a machine learning model that is inspired by the structure of the brain. Neural networks are often used to solve problems that are difficult to solve with other machine learning techniques.
+
+<img align="right" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Neural_network_example.svg/220px-Neural_network_example.svg.png">
+
+Neural networks, also known as artificial neural networks (ANNs) or simulated neural networks (SNNs), are neural circuits of neurons. Neural networks are at the center of artificial intelligence and deep learning algorithms.
+
+Artificial neural networks (ANNs) are comprised of node layers, containing an input layer, one or more hidden layers, and an output layer. Each node, or [neuron](#neuron), connects to all of the nodes in the next layer. Each connection has an associated weight and threshold.
+
+Neural networks are widely used for predictive modeling, and AI applications where training via datasets is desired.
+
+In ml5.js, you can train your own neural network with `ml5.neuralNetwork`. For detailed documentation, please refer to [Neural Networks](../reference/neural-network.md).
+
+---
+### Normalization
+
+Normalization is a data preprocessing technique used to adjust the values of features in a dataset to a common scale, for example, converting a range of values to `-1` to `1`, or `0` to `1`.
+
+This is done to facilitate data analysis and modeling, and to reduce the impact of different sacales on the accuracy of machine learning models. Models usually train faster and produce better predictions when the numerical data is normalized.
 
 ---
 ### NPM
 NPM is a package manager for JavaScript. NPM is used to install and manage JavaScript libraries.
 
+You can find the npm package for ml5.js [here](https://www.npmjs.com/package/ml5).
+
 #### **O**
 ---
 ### Overfitting
-Overfitting is a phenomenon that occurs when a machine learning model is trained to fit the training data too closely. Overfitting occurs when a machine learning model is trained to fit the training data too closely. Overfitting can result in a machine learning model that performs well on the training data, but performs poorly on new data. In ml5.js, overfitting is often used to describe the performance of a machine learning model.
 
----
-### Output Stride
-Output stride is a parameter used to control the resolution of the output of a machine learning model.
+Overfitting is a phenomenon that occurs when a machine learning model is trained to fit the training data too closely. Since it fails to generalize the underlying information, the trained model often performs poorly on everything other than the training data.
+
+An example of overfitting is as follows:
+
+<img align="right" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcrunchingthedata.com%2Fwp-content%2Fuploads%2F2022%2F05%2FOverfitting.jpg&f=1&nofb=1&ipt=b9e8a7560cfac794e244c9e309994adff65eb9c68a53bcebaa5f7109c442c10c&ipo=images">
+
+Overfitting is the opposite of [underfitting](#underfitting).
+
+In ml5.js, overfitting can happen while training for a [neural network](#neural-network). Some common strategies to avoid overfitting include: training with more data, feature selection, regularization.
 
 #### **P**
 ---
@@ -438,45 +477,32 @@ A pretrained model is a machine learning model that has been trained on a datase
 ### Preload Function
 The preload function is a function that is called before the setup function. In ml5.js, the preload function is often used to load assets, such as images, before the setup function is called.
 
-#### **Q**
-
 #### **R**
+
+### Regression Analysis
+Regression analysis is a predictive modeling technique that analyzes the relation between the dependent variable and the independent variable in a dataset. Regression models are models used to carry out regression analysis.
+
+Two most common types of regression models are:
+- Linear regression model: a linear approach for modeling the relationship between two quantitative variables.
+
+<img align="center" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdatasciencelk.com%2Fwp-content%2Fuploads%2F2020%2F03%2Fregression-line.png&f=1&nofb=1&ipt=fee1072daa0e55b1206c9be1489e25c31be1c472009e761999d6c0672c91cd01&ipo=images" width="40%">
+<figcaption>A typical linear regression model</figcaption>
+
+- Logistic regression model: maps the relationship between discrete (i.e. 0 or 1, true or false) dependent variables to independent variables, often represented by [sigmoid functions](#sigmoid-function).
+
+<img align="center" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmiro.medium.com%2Fmax%2F1450%2F1*QY3CSyA4BzAU6sEPFwp9ZQ.png&f=1&nofb=1&ipt=b1ede474256f60310c332de4a15d65bf041bb3c028ff015b380b2dc3f5982ae1&ipo=images" width="40%">
+<figcaption>A typical logistic regression model</figcaption>
 
 #### **S**
 ---
-### Prediction
-A prediction is the output of a machine learning model. For example, a machine learning model that is trained to classify images of cats and dogs could make a prediction that an image is a cat.
+### Stride
 
----
-### Pretrained Model
-A pretrained model is a machine learning model that has been trained on a dataset. Pretrained models are often used to make predictions on new data. For example, a pretrained model that has been trained on a dataset of images of cats and dogs could be used to make predictions on new images of cats and dogs. In ml5.js, pretrained models are often used to make predictions on new data.
+Stride is a component of [convolutional neural networks](#convolutional-neural-networks). It's a parameter of the neural network's filter that modifies the amount of movement over the image or video.
 
----
-### Preload Function
-The preload function is a function that is called before the setup function. In ml5.js, the preload function is often used to load assets, such as images, before the setup function is called.
+For example, while performing convolution operation on an image, if we move our filter by one pixel at a time, the stride would be 1.
 
-#### **Q**
+In ml5.js, `strides` is a parameter in `imageClassification` layers.
 
-#### **R**
-
-#### **S**
----
-### Prediction
-A prediction is the output of a machine learning model. For example, a machine learning model that is trained to classify images of cats and dogs could make a prediction that an image is a cat.
-
----
-### Pretrained Model
-A pretrained model is a machine learning model that has been trained on a dataset. Pretrained models are often used to make predictions on new data. For example, a pretrained model that has been trained on a dataset of images of cats and dogs could be used to make predictions on new images of cats and dogs. In ml5.js, pretrained models are often used to make predictions on new data.
-
----
-### Preload Function
-The preload function is a function that is called before the setup function. In ml5.js, the preload function is often used to load assets, such as images, before the setup function is called.
-
-#### **Q**
-
-#### **R**
-
-#### **S**
 ---
 ### Score
 Score is a measure of how well a machine learning model performs on a given input. For example, a machine learning model that is 100% accurate has a score of 1. A machine learning model that is 0% accurate has a score of 0. In ml5.js, score is often used to evaluate the performance of a machine learning model.
@@ -486,43 +512,62 @@ Score is a measure of how well a machine learning model performs on a given inpu
 Score threshold is often used to control the minimum score required for a machine learning model to make a prediction. In ml5.js, score threshold is often used to control the minimum score required for a machine learning model to make a prediction.
 
 ---
-### Local Development Server
-A local development server is a server that is used to launch/deploy a website or web application on a local machine.
+### Sigmoid Function
+<img align="right" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Logistic-curve.svg/320px-Logistic-curve.svg.png">
+
+A sigmoid function is a mathematical function having a characteristic "S"-shaped curve, or sigmoid curve. 
+
+The logistic curve, on the right, is a common exmaple of sigmoid function.
+
 
 #### **T**
 ---
-### Test Data
-Test data is a set of data used to test a machine learning model. Test data is used to evaluate the performance of a machine learning model. For example, a set of images of cats and dogs could be used to test a machine learning model to classify images of cats and dogs. In ml5.js, test data is often used to evaluate the performance of a custom machine learning model.
+### Test Set
+Test set is a set of data used to test a machine learning model. Test data is used to evaluate the performance of a machine learning model. For example, a set of images of cats and dogs could be used to test a machine learning model to classify images of cats and dogs. In ml5.js, test data is often used to evaluate the performance of a custom machine learning model.
 
 ---
-### Training Data
-Training data is a set of data used to train a machine learning model. Training data is used to train a machine learning model to make predictions. For example, a set of images of cats and dogs could be used to train a machine learning model to classify images of cats and dogs. In ml5.js, training data is often used to train a custom machine learning model.
+### Training Set
+Training set is a set of data used to train a machine learning model. Training data is used to train a machine learning model to make predictions. For example, a set of images of cats and dogs could be used to train a machine learning model to classify images of cats and dogs. In ml5.js, training set is often used to train a custom machine learning model.
 
 ---
 ### Terminal
-A terminal is a command line interface that is used to run commands on a computer. In ml5.js, a terminal is often used to run a local development server.
+A terminal is a command line interface that is used to run commands on a computer. In ml5.js, a terminal is often used to run a [local development server](#local-development-server).
 
 #### **U**
 ---
 ### Underfitting
-Underfitting is a phenomenon that occurs when a machine learning model is trained to fit the training data too loosely. Underfitting occurs when a machine learning model is trained to fit the training data too loosely. Underfitting can result in a machine learning model that performs poorly on the training data, and performs poorly on new data. In ml5.js, underfitting is often used to describe the performance of a machine learning model.
+Underfitting is a phenomenon that occurs when a machine learning model is trained to fit the training data too loosely. Underfitting can result in a machine learning model that is not meaningful at all, and performs badly on both training and new data.
+
+Underfitting is the opposite of [overfitting](#overfitting).
 
 #### **V**
+---
+### Validation
+Validation is the initial evaluation of a model's quality. Validation checks the quality of a model's predictions against the [validation set](#validation-set).
+
+Because the validation set differs from the [training set](#training-set), validation helps guard against [overfitting](#overfitting).
+
+Often, it's a good strategy to evaluate the model against the [validation set](#validation-set) as the first round of testing, then move on to evaluate it against the [test set](#test-set).
+
+---
+### Validation Set
+Validation set is the subset of the dataset that performs initial evaluation against a trained model.
+
+Traditionally, we divide the dataset into the three distinct subsets:
+- A [training set](#training-set)
+- A [validation set](#validation-set)
+- A [test set](#test-set)
+
+Ideally, each data point in the dataset should only belong to one of these three preceding subsets.
 
 #### **W**
 ---
 ### Weights
-Weights are parameters that are used to train a machine learning model. Weights are often used to train a machine learning model. In ml5.js, weights are often used to train a machine learning model.
+Weights are parameters that are used to train a machine learning model.
 
 ---
 ### Weights Quantization
 Weights quantization is often used to reduce the size of a machine learning model.
-
-#### **X**
-
-#### **Y**
-
-#### **Z**
 
 <!-- tabs:end -->
 
