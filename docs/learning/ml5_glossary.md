@@ -64,7 +64,79 @@ Classification is the process of assigning a label to a piece of data. For examp
 
 ---
 ### Dataset
-A dataset is a collection of data. Datasets are often used to train machine learning models. For example, a dataset of images of cats and dogs could be used to train a machine learning model to classify images of cats and dogs. In ml5.js, datasets are often used to train custom machine learning models.
+A dataset is a collection of data. Datasets are often used to train and test machine learning models. For example, a dataset of images of cats and dogs could be used to train a machine learning model to classify images of cats and dogs, and another dataset of images of cats and dogs could be used to test the performance of the machine learning model. You could compare the ground truth lables of the test dataset with the model predictions to evaluate the performance of the model.
+
+See an example of a training dataset and a test dataset below. 
+
+Training Dataset
+
+| Sample # | Feature Vector | Label |
+|----------|----------------|-------|
+| sample 1 | (5.8, 0)       | Cat   |
+| sample 2 | (36, 2)        | Dog   |
+| sample 3 | (3.2, 1)       | Cat   |
+
+Test Dataset
+
+| Sample # | Feature Vector | Prediction Label | Ground Truth Label |
+|----------|----------------|------------------|--------------------|
+| sample 1 | (4.5, 0)       | ?                | Cat                |
+| sample 2 | (30, 2)        | ?                | Dog                |
+
+*💡 If you are unfamiliar with the concept of **Feature Vectors**, check out the [Feature](/learning/ml5_glossary?id=feature) definition here.*
+
+In ml5.js, you could train custom machine learning models with your own training datasets. For instance, the example given by the [Neural Networks](/reference/neural-network) uses the following training dataset to train the model to predict the color of an object:
+
+```js
+// Step 1: load data or create some data 
+const data = [
+  {r:255, g:0, b:0, color:'red-ish'},
+  {r:254, g:0, b:0, color:'red-ish'},
+  {r:253, g:0, b:0, color:'red-ish'},
+  {r:0, g:255, b:0, color:'green-ish'},
+  {r:0, g:254, b:0, color:'green-ish'},
+  {r:0, g:253, b:0, color:'green-ish'},
+  {r:0, g:0, b:255, color:'blue-ish'},
+  {r:0, g:0, b:254, color:'blue-ish'},
+  {r:0, g:0, b:253, color:'blue-ish'}
+];
+```
+
+And use the following test dataset to test the performance of the model:
+
+```js
+// Step 6: make a classification
+function classify(){
+  const input = {
+    r: 255, 
+    g: 0, 
+    b: 0
+  }
+  nn.classify(input, handleResults);
+}
+```
+Here, the training dataset and test dataset are as follows:
+
+Training Dataset
+
+| Sample # | Feature Vector | Label     |
+|----------|----------------|-----------|
+| sample 1 | (255, 0, 0)    | red-ish   |
+| sample 2 | (254, 0, 0)    | red-ish   |
+| sample 3 | (253, 0, 0)    | red-ish   |
+| sample 4 | (0, 255, 0)    | green-ish |
+| sample 5 | (0, 254, 0)    | green-ish |
+| sample 6 | (0, 253, 0)    | green-ish |
+| sample 7 | (0, 0, 255)    | blue-ish  |
+| sample 8 | (0, 0, 254)    | blue-ish  |
+| sample 9 | (0, 0, 253)    | blue-ish  |
+
+Test Dataset
+
+| Sample # | Feature Vector | Prediction Label | Ground Truth Label |
+|----------|----------------|------------------|--------------------|
+| sample 1 | (255, 0, 0)    | ?                | red-ish            |
+
 
 ---
 ### Div
