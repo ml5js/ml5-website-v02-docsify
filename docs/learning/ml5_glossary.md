@@ -165,15 +165,114 @@ for (let i = 0; i < poses.length; i++) {
 
 ---
 ### Convolutional Neural Networks
-Convolutional Neural Networks (CNN) are [neural networks](#neural-network) tuned for the compression of images and video data.
+Convolutional Neural Networks (CNN) are [neural networks](/learning/ml5_glossary?id=neural-network) tuned for the compression of images and video data. They are widely used in computer vision tasks such as image classification, object detection, and image segmentation.
 
----
-### Classifier
-A classifier is a machine learning model that is used to classify data. For example, a classifier could be used to classify images of cats and dogs.
+Here is a simple explanation of how CNNs work:
+
+Imagine you want to teach a computer to recognize pictures of cats. A Convolutional Neural Network (CNN) is like a smart robot that learns to see and understand these pictures.
+
+1. Input Layer:
+
+The robot looks at the picture, but instead of seeing the whole thing at once, it looks at small pieces, like tiny squares. Each square is called a "pixel."
+
+| col1| col2| col3| col4|
+|-----|-----|-----|-----|
+| 120 | 50 | 200 | 75 |
+| 30  | 180| 100 | 220|
+| 90  | 45 | 150 | 25 |
+| 10  | 160| 80  | 120|
+
+2. Convolutional Layers:
+
+The robot then slides a magnifying glass (filter) over these squares, focusing on a few at a time. It's like paying attention to specific patterns, like edges or colors, in small regions.
+
+We apply the following filter to the input layer:
+
+| col1| col2| col3|
+|---|---|----|
+| 1 | 0 | -1 |
+| 1 | 0 | -1 |
+| 1 | 0 | -1 |
+
+And this is the result after applied the filter to the input layer:
+
+| col1| col2| col3|
+|---|---|----|
+| 70 | -170 | 75 |
+| 180 | 160 | -20 |
+| -15 | 75 | -160 |
+| -60 | 190 | 50 |
+
+3. Activation Layers:
+
+After looking at each region, the robot decides if it found something important. If it did, it gets excited and says, "Yep, there's a pattern here!" If not, it stays calm.
+
+This is the result after applied the activation function (ReLu) to the result of the convolutional layer:
+
+| col1| col2| col3|
+|---|---|----|
+| 70 | 0 | 75 |
+| 180 | 160 | 0 |
+| 0 | 75 | 0 |
+| 0 | 190 | 50 |
+
+4. Pooling Layers:
+
+To keep things simple, the robot doesn't need to remember every tiny detail. It takes a step back and groups nearby excited regions together, making a smaller version of the picture. This is like summarizing the important parts.
+
+After applying 2 x 2 max pooling to the result of the activation layer, we get the following result:
+
+| col1| col2|
+|---|---|
+| 180 | 75 |
+| 190 | 50 |
+
+5. Fully Connected Layers:
+
+Now, the robot thinks about the bigger picture. It looks at all the summarized information and decides, "Does this look like a cat or not?" It's making a final decision based on everything it has seen.
+
+Assuming two neurons in the fully connected layer:
+
+```js
+Neuron 1: 0.3 * (180 + 75) + 0.5 = 144.5
+Neuron 2: 0.8 * (190 + 50) - 0.2 = 155
+```
+
+6. Output Layer:
+
+Finally, the robot gives its answer. If it's confident that the picture is a cat, it says, "Yes, that's a cat!" If not, it might say, "I'm not sure, but it doesn't really look like a cat to me."
+The robot repeats this process many times, adjusting its magnifying glass and learning from its mistakes. Gradually, it becomes really good at spotting cats in pictures!
+
+Softmax result:
+- Cat Probability: 0.731 / (0.731 + 0.269) ≈ 0.731
+- Not Cat Probability: 0.269 / (0.731 + 0.269) ≈ 0.269
+
+So, in this complete example, the robot processes the input image through each step of the convolutional neural network (CNN) and ultimately predicts that the image contains a cat with a probability of approximately 73.1%.
+
+In short, a CNN is like a robot that breaks down pictures, looks for important patterns, and decides what's in the picture step by step. It's fantastic for tasks like image recognition!
 
 ---
 ### Classification
-Classification is the process of assigning a label to a piece of data. For example, a machine learning model could be used to classify images of cats and dogs.
+Classification is the process of assigning a label to a piece of data. For example, a machine learning model that is trained to classify images of cats and dogs could assign the label "cat" to an image of a cat, and the label "dog" to an image of a dog. A classifier is the model that is trained to perform classification tasks.
+
+The prediction of classification task is a class.
+
+| Prediction |
+|------------|
+| Cat        |
+| Dog        |
+
+| Prediction |
+|------------|
+| Happy      |
+| Sad        |
+
+In contrast, the prediction of [regression](/learning/ml5_glossary?id=regression-analysis) task is a numerical value.
+
+| Prediction |
+|------------|
+| 0.8        |
+| 0.2        |
 
 #### **D**
 
@@ -185,7 +284,7 @@ See an example of a training dataset and a test dataset below.
 
 Training Dataset
 
-| Sample # | Feature Vector | Label |
+| Sample # | [Feature Vector](/learning/ml5_glossary?id=feature) | Label |
 |----------|----------------|-------|
 | sample 1 | (5.8, 0)       | Cat   |
 | sample 2 | (36, 2)        | Dog   |
@@ -193,12 +292,10 @@ Training Dataset
 
 Test Dataset
 
-| Sample # | Feature Vector | Prediction Label | Ground Truth Label |
+| Sample # | [Feature Vector](/learning/ml5_glossary?id=feature) | Prediction Label | Ground Truth Label |
 |----------|----------------|------------------|--------------------|
 | sample 1 | (4.5, 0)       | ?                | Cat                |
 | sample 2 | (30, 2)        | ?                | Dog                |
-
-*💡 If you are unfamiliar with the concept of **Feature Vectors**, check out the [Feature](/learning/ml5_glossary?id=feature) definition here.*
 
 In ml5.js, you could train custom machine learning models with your own training datasets. For instance, the example given by the [Neural Networks](/reference/neural-network) uses the following training dataset to train the model to predict the color of an object:
 
@@ -255,11 +352,48 @@ Test Dataset
 
 ---
 ### Div
-A div is an HTML element that is used to define a section of a webpage. In ml5.js, divs are often used to display the output of a machine learning model.
+A div is an HTML element that is used to define a section of a webpage. For instance, the following code defines a div and put a paragraph inside the div:
+
+```html
+<div>
+  <p>This is a paragraph.</p>
+</div>
+```
+
+In ml5.js, divs are often used to display the output of a machine learning model. For instance, the example given by the [Getting Started](/?id=your-first-sketch) uses the following code to display the label and confidence score of the prediction:
+
+```js
+// A function to run when we get any errors and the results
+function gotResult(error, results) {
+  // Display error in the console
+  if (error) {
+    console.error(error);
+  } else {
+    // The results are in an array ordered by confidence.
+    console.log(results);
+    createDiv(`Label: ${results[0].label}`);
+    createDiv(`Confidence: ${nf(results[0].confidence, 0, 2)}`);
+  }
+}
+```
 
 ---
 ### Dependencies
-Dependencies are libraries that are required by another library.
+Dependencies are libraries that are required by a project. The project may import the methods and functions from the dependencies to use them. Before you run your project, you need to install all the dependencies of the project to make sure that the project runs properly. 
+
+In ml5.js, you will install the dependencies of a project by running the following command:
+
+```js
+# install dependencies
+npm install
+```
+
+or
+
+```js
+# install dependencies
+yarn
+```
 
 #### **E**
 
@@ -337,7 +471,20 @@ Here, the example uses the values of red, green, and blue color channels as feat
 #### **H**
 ---
 ### Hyperparameters
-Hyperparameters are parameters that are set before training a machine learning model. Hyperparameters are parameters that are set before training a machine learning model. Hyperparameters are often used to control the training process of a machine learning model. In ml5.js, hyperparameters are often used to control the training process of a machine learning model.
+Hyperparameters are parameters that are set by coders before training a machine learning model. They are often used to control the training process of a machine learning model, for instance, the batch size, the epochs, the learning rate, and the number of hidden layers, etc. Batch size is the number of samples that are used to update the weights of a machine learning model in one iteration. Epochs is the number of times that a machine learning model is trained on the entire training dataset. Learning rate is the step size at each iteration while moving toward a minimum of a loss function. The number of hidden layers is the number of layers between the input layer and the output layer of a machine learning model.
+
+An example on ml5.js website that uses hyperparameters is the [Neural Networks](/reference/neural-network) example. Here, we set the epochs to 32, and the batch size to 12:
+
+```js
+// Step 4: train the model
+function trainModel(){
+  const trainingOptions = {
+    epochs: 32,
+    batchSize: 12
+  }
+  nn.train(trainingOptions, finishedTraining);
+}
+```
 
 #### **I**
 
@@ -348,11 +495,57 @@ Hyperparameters are parameters that are set before training a machine learning m
 #### **L**
 ---
 ### Label
-Labels are used to identify the class or category of a phenomenon being observed. For example, a label of a cat could be "cat". In machine learning, labels are used to identify the class or category of the phenomenon being observed. For example, a cat could be labeled as "cat". In ml5.js, labels are often used to identify the output of a machine learning model.
+Labels are used to identify the class or category of a phenomenon being observed. For example, a label of a cat image could be "cat". In the traning dataset, we need to provide the label for each sample of data to allow the model to learn the relationship between the features and the label. For example, the following training dataset contains three samples of data, each with two features (weight and color of the fur) and a label (cat or dog).
+
+| Sample # | Weight | Color of the fur | Label |
+|----------|--------|------------------|-------|
+| sample 1 | 5.8kg  | white            | Cat   |
+| sample 2 | 36kg   | golden           | Dog   |
+| sample 3 | 3.2kg  | black            | Cat   |
+
+And in the test dataset, the labels are the target that we want to predict. For example, the following test dataset contains two samples of data, each with two features (weight and color of the fur). And the model will decide what label to assign to the samples, with the features given.
+
+| Sample # | Weight | Color of the fur | Prediction Label |
+|----------|--------|------------------|------------------|
+| sample 1 | 4.5kg  | white            | ?                |
+| sample 2 | 30kg   | golden           | ?                |
+
+An example given by the [Neural Networks](/reference/neural-network) shows how we could assign labels to samples in the training dataset in ml5.js:
+
+```js
+// Step 1: load data or create some data
+const data = [
+  {r:255, g:0, b:0, color:'red-ish'},
+  {r:254, g:0, b:0, color:'red-ish'},
+  {r:253, g:0, b:0, color:'red-ish'},
+  {r:0, g:255, b:0, color:'green-ish'},
+  {r:0, g:254, b:0, color:'green-ish'},
+  {r:0, g:253, b:0, color:'green-ish'},
+  {r:0, g:0, b:255, color:'blue-ish'},
+  {r:0, g:0, b:254, color:'blue-ish'},
+  {r:0, g:0, b:253, color:'blue-ish'}
+];
+```
+
+Here, the label is the color of the object.
+
+| Label     |
+|-----------|
+| red-ish   |
+| green-ish |
+| blue-ish  |
 
 ---
 ### Local Development Server
-A local development server is a server that is used to launch/deploy a website or web application on a local machine.
+A local development server is a server that is used to launch/deploy a website or web application on a local machine, without connecting to the internet. People that are not connected to the same local network will not be able to access the website or web application. It is often used to test a website or web application before it is deployed to a production server. For example, if you run your application locally, usually it will have a URL like `http://localhost:8000/`, while you run your application on a production server, it will have a URL like `https://your-website.com/`.
+
+You could launch your ml5.js sketch by using the command below. For more information, please refer to the [Getting Started](/?id=try-ml5js-locally-3) guide.
+
+```js
+# run the local web server
+npm run develop
+```
+
 
 #### **M**
 ---
