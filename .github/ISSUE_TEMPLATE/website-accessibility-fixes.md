@@ -7,9 +7,11 @@ assignees: apoorva-a98
 
 ---
 
-**→ Describe the issue**
+**→ Describe the issue, including on which page it can be found**
 
-**→ Share an example of the issue via screenshots or relevant documentation**
+**→ Screenshots or relevant documentation**
+
+**→ Example snippet causing the issue**
 
 **→ Potential solution and a11y standard it will meet (AA/AAA)**
 
