@@ -16,7 +16,7 @@ The ml5.js Handpose model is ported from the [TensorFlow.js Handpose implementat
 Ready to give it a try? Feel free to follow our instructions to build your first Handpose project!
 
 ### Demo
-[p5 Web Editor](iframes/pose-estimation ':include :type=iframe width=100% height=550px')
+[p5 Web Editor](iframes/handpose-keypoints ':include :type=iframe width=100% height=550px')
 
 ### Quickstart
 First of all, copy and paste the following code into your **index.html** file:
