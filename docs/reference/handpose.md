@@ -12,25 +12,98 @@ Handpose is a machine-learning model that allows for palm detection and hand-ske
 
 The ml5.js Handpose model is ported from the [TensorFlow.js Handpose implementation](https://github.com/tensorflow/tfjs-models/tree/master/handpose).
 
-## Quickstart
+## Getting Started
+Ready to give it a try? Feel free to follow our instructions to build your first Handpose project!
+
+### Demo
+[p5 Web Editor](iframes/pose-estimation ':include :type=iframe width=100% height=550px')
+
+### Quickstart
+First of all, copy and paste the following code into your **index.html** file:
+
+```html
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Hand Pose Keypoints Detection using Handpose and p5.js</title>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js"></script>
+  <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
+</head>
+
+<body>
+  <h1>Hand Pose Keypoints Detection using Handpose and p5.js</h1>
+  <script src="sketch.js"></script>
+</body>
+
+</html>
+```
+
+Then, add the code below to your **script.js** file:
 
 ```js
-let predictions = [];
-const video = document.getElementById('video');
+let handpose;
+let video;
+let hands = [];
 
-// Create a new handpose method
-const handpose = ml5.handpose(video, modelLoaded);
-
-// When the model is loaded
-function modelLoaded() {
-  console.log('Model Loaded!');
+function preload() {
+  // Load the handpose model
+  handpose = ml5.handpose();
 }
 
-// Listen to new 'hand' events
-handpose.on('hand', results => {
-  predictions = results;
-});
+function setup() {
+  createCanvas(640, 480);
+
+  // Create a video element and hide it
+  video = createCapture(VIDEO);
+  video.size(width, height);
+  video.hide();
+
+  // Start detecting hands from the webcam video
+  // Call function "gotHands" upon receiving output from the model
+  handpose.detectStart(video, gotHands);
+}
+
+function draw() {
+  // Draw the webcam video
+  image(video, 0, 0, width, height);
+
+  // Draw all the tracked hand points
+  for (let i = 0; i < hands.length; i++) {
+    let hand = hands[i];
+    for (let j = 0; j < hand.keypoints.length; j++) {
+      let keypoint = hand.keypoints[j];
+      fill(0, 255, 0);
+      noStroke();
+      circle(keypoint.x, keypoint.y, 10);
+    }
+  }
+}
+
+// Callback function for when handpose outputs data
+function gotHands(results) {
+  // Save the output to the hands variable
+  hands = results;
+}
 ```
+
+Alternatively, you can open [this example code](https://github.com/ml5js/ml5-next-gen/tree/main/examples/Handpose-keypoints) and try it yourself on p5.js web editor!
+
+### Additional Examples
+* [Handpose-parts](https://github.com/ml5js/ml5-next-gen/tree/main/examples/Handpose-parts)
+* [Handpose-single-image](https://github.com/ml5js/ml5-next-gen/tree/main/examples/Handpose-single-image)
+* [Handpose-start-stop](https://github.com/ml5js/ml5-next-gen/tree/main/examples/Handpose-start-stop)
+
+TODO (link p5 web editor examples once uploaded)
+
+### Tutorials
+
+**PoseNet on The Coding Train**
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/OIo-DIOkNVg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+TODO (link new youtube video once uploaded)
+
 ## Methods
 
 #### ml5.handpose()
@@ -119,7 +192,3 @@ handpose.detect(media, ?callback);
 
 **Returns:**  
 A promise that resolves to the estimation output.
-
-### Examples
-
-TODO (link p5 web editor examples once uploaded)
