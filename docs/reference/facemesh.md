@@ -12,7 +12,10 @@ Facemesh is a machine-learning model that allows for facial landmark detection i
 
 The ml5.js Facemesh model is ported from the [TensorFlow.js Facemesh implementation](https://github.com/tensorflow/tfjs-models/tree/master/face-landmarks-detection).
 
-## Quickstart
+## Getting Started
+Ready to give it a try? Just follow our simple instructions, and you'll be on your way to creating your very own Facemesh project in no time!
+
+### Quickstart
 
 ```js
 let predictions = [];

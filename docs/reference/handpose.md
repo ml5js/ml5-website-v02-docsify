@@ -13,7 +13,7 @@ Handpose is a machine-learning model that allows for palm detection and hand-ske
 The ml5.js Handpose model is ported from the [TensorFlow.js Handpose implementation](https://github.com/tensorflow/tfjs-models/tree/master/handpose).
 
 ## Getting Started
-Ready to give it a try? Feel free to follow our instructions to build your first Handpose project!
+Ready to give it a try? Our demo is here to give you a sneak peek into what Handpose can do! Don't hesitate to follow along with our instructions to kickstart your very own Handpose project!
 
 ### Demo
 [p5 Web Editor](iframes/handpose-keypoints ':include :type=iframe width=100% height=550px')
