@@ -19,7 +19,7 @@ The ml5.js Handpose model is ported from the [TensorFlow.js Mediapipe Handpose i
 - **Multiple Hands**: Handpose can detect multiple hands at the same time.
 
 #### Output Example
-Imagine we detected two hand poses in a frame. The output would look like this:
+An example of the output from Handpose is shown below:
 
 ```javascript
 [
@@ -60,7 +60,7 @@ First of all, copy and paste the following code into your **index.html** file:
   <title>Hand Pose Keypoints Detection using Handpose and p5.js</title>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js"></script>
-  <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
+  <script src="https://unpkg.com/ml5@alpha/dist/ml5.js"></script>
 </head>
 
 <body>
