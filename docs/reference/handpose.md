@@ -8,12 +8,43 @@
 
 ## Description
 
-Handpose is a machine-learning model that allows for palm detection and hand-skeleton finger tracking in the browser. It can detect a maximum of one hand at a time and provides 21 3D hand keypoints that describe important locations on the palm and fingers.
+Handpose is a machine-learning model that allows for palm detection and hand-skeleton finger tracking in the browser. It can detect multiple hands at a time and for each hand, provides 21 3D hand keypoints that describe important locations on the palm and fingers.
 
-The ml5.js Handpose model is ported from the [TensorFlow.js Handpose implementation](https://github.com/tensorflow/tfjs-models/tree/master/handpose).
+The ml5.js Handpose model is ported from the [TensorFlow.js Mediapipe Handpose implementation](https://github.com/tensorflow/tfjs-models/tree/master/hand-pose-detection).
+
+#### Key Features
+- **Palm Detection**: Handpose can detect the palm of a hand and provide the 2D and 3D coordinates of 21 keypoints on the hand.
+- **Finger Tracking**: Handpose can track the 3D coordinates of the tips and joints of the fingers.
+- **Handedness**: Handpose can determine the handedness (left or right) of the detected hand.
+- **Multiple Hands**: Handpose can detect multiple hands at the same time.
+
+#### Output Example
+Imagine we detected two hand poses in a frame. The output would look like this:
+
+```javascript
+[
+  {
+    score: 0.86,
+    handedness: "Left",
+    keypoints: [
+      { x: 623.57, y: 374.79, score: 0.85, name: "wrist" },
+      // Additional keypoints here...
+    ],
+    keypoints3D: [
+      { x: 0.0024, y: 0.070, z: 0.035, score: 0.85, name: "wrist" },
+      // Additional 3D keypoints here...
+    ],
+    index_finger_dip: { x: /* value */, y: /* value */, x3D: /* value */, y3D: /* value */, z3D: /* value */ },
+    index_finger_mcp: { x: /* value */, y: /* value */, x3D: /* value */, y3D: /* value */, z3D: /* value */ },
+    // Additional finger properties here...
+  },
+  // Additional objects here...
+]
+
+```
 
 ## Getting Started
-Ready to give it a try? Feel free to follow our instructions to build your first Handpose project!
+Ready to give it a try? Our demo is here to give you a sneak peek into what Handpose can do! Don't hesitate to follow along with our instructions to kickstart your very own Handpose project!
 
 ### Demo
 [p5 Web Editor](iframes/handpose-keypoints ':include :type=iframe width=100% height=550px')
@@ -192,3 +223,5 @@ handpose.detect(media, ?callback);
 
 **Returns:**  
 A promise that resolves to the estimation output.
+
+<br>
