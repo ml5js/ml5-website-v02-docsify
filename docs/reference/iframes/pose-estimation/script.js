@@ -9,7 +9,7 @@ let poses = [];
 
 function preload() {
   // Load the bodyPose model
-  bodyPose = ml5.bodyPose();
+  bodyPose = ml5.bodypose();
 }
 
 function setup() {
