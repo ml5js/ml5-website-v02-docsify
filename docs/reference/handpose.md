@@ -50,28 +50,15 @@ Ready to give it a try? Our demo is here to give you a sneak peek into what Hand
 [p5 Web Editor](iframes/handpose-keypoints ':include :type=iframe width=100% height=550px')
 
 ### Quickstart
-First of all, copy and paste the following code into your **index.html** file:
+Before you start, let's create an empty project in the [p5 web editor](https://editor.p5js.org/).
+
+First of all, copy and paste the following code into your **index.html** file. If you are not familiar with the p5 web editor interface, you can find a guide on how to find your **index.html** file [here](#/?id=try-ml5js-online-1).
 
 ```html
-<html>
-
-<head>
-  <meta charset="UTF-8">
-  <title>Hand Pose Keypoints Detection using Handpose and p5.js</title>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js"></script>
-  <script src="https://unpkg.com/ml5@alpha/dist/ml5.js"></script>
-</head>
-
-<body>
-  <h1>Hand Pose Keypoints Detection using Handpose and p5.js</h1>
-  <script src="sketch.js"></script>
-</body>
-
-</html>
+<script src="https://unpkg.com/ml5@alpha/dist/ml5.js"></script>
 ```
 
-Then, add the code below to your **script.js** file:
+Then, add the code below to your **sketch.js** file:
 
 ```js
 let handpose;
