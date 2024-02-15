@@ -62,7 +62,7 @@ Ready to give it a try? Just follow our simple instructions, and you'll be on yo
 ### Quickstart
 Before you start, let's create an empty project in the [p5 web editor](https://editor.p5js.org/).
 
-First of all, copy and paste the following code into your **index.html** file. If you are not familiar with the p5 web editor interface, you can find a guide on how to find your **index.html** file [here](#/?id=try-ml5js-online-1).
+First of all, copy and paste the following code into your **index.html** file. If you are not familiar with the p5 web editor interface, you can find a guide on how to find your **index.html** file [here](/?id=try-ml5js-online-1).
 
 ```html
 <script src="https://unpkg.com/ml5@alpha/dist/ml5.js"></script>
@@ -74,6 +74,7 @@ Then, add the code below to your **sketch.js** file:
 let faceMesh;
 let video;
 let faces = [];
+// set options to detect only one face
 let options = { maxFaces: 1, refineLandmarks: false, flipHorizontal: false };
 
 function preload() {

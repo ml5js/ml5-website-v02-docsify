@@ -1,10 +1,7 @@
 # Bodypose
 
 <center>
-    <!-- <img style="display:block; max-height:20rem" alt="pose detection" src="_media/reference__header-posenet.jpg"> -->
     <img style="display:block; max-width:100%" alt="pose estimation" src="https://1.bp.blogspot.com/-25aGTL-RTnY/YJ29jgiiNHI/AAAAAAAAEMM/9qJC_xqlUKo4To9xyumqKmrqKr-vVFXzgCLcBGAsYHQ/s0/three_pane_aligned%2B%25281%2529.gif">
-    
-    <!-- <p>image via: https://pdm.com.co/tag/posenet/</p> -->
 </center>
 
 ## Description
@@ -30,9 +27,17 @@ Bodypose's MoveNet model predict a set of 17 keypoints:
 
   See the diagram below for the position of each keypoint.
 
-  ![Keypoint Diagram](https://camo.githubusercontent.com/b8a385301ca6b034d5f4807505e528b4512a0aa78507dec9ebafcc829b9556be/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f6d6f76656e65742f636f636f2d6b6579706f696e74732d3530302e706e67)
+  ![Keypoint Diagram](https://camo.githubusercontent.com/c3641b718d7e613b2ce111a6a4575e88ca35a60cb325efdd9113c453b2a09301/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f6d6f76656e65742f636f636f2d6b6579706f696e74732d3530302e706e67)
 
-Once you have the 17 keypoints estimated by the model, you can utilize them in various ways based on your application:
+Bodypose's Blazepose model predict a set of 33 keypoints:
+
+> Nose, Left Eye Inner, Left Eye, Left Eye Outer, Right Eye Inner, Right Eye, Right Eye Outer, Left Ear, Right Ear, Mouth Left, Mouth Right, Left Shoulder, Right Shoulder, Left Elbow, Right Elbow, Left Wrist, Right Wrist, Left Pinky, Right Pinky, Left Index, Right Index, Left Thumb, Right Thumb, Left Hip, Right Hip, Left Knee, Right Knee, Left Ankle, Right Ankle, Left Heel, Right Heel, Left Foot Index, Right Foot Index, Body Center, Forehead, Left Thumb, Left Hand, Right Thumb, Right Hand
+
+  See the diagram below for the position of each keypoint.
+
+  ![Keypoint Diagram](https://camo.githubusercontent.com/17082997c33fc6d2544c4aea33d9898860cf902ed5a0b865527d1dd91bbc7efa/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f6d65646961706970652f626c617a65706f73652d6b6579706f696e74732d757064617465642e706e67)
+
+Once you have the keypoints estimated by the model, you can utilize them in various ways based on your application:
 
 **Human Pose Estimation**: You can reconstruct the human body pose by connecting the keypoints using skeletal connections. This helps visualize the pose and track the movement of body parts.
 
@@ -46,6 +51,91 @@ Once you have the 17 keypoints estimated by the model, you can utilize them in v
 
 **Accessibility**: Bodypos can be used to track body movements and gestures to control devices and interfaces, enabling people with disabilities to interact with technology in new ways.
 
+#### Output Example
+An example of the output from Body Pose MoveNet model is shown below:
+
+```javascript
+[
+  {
+    keypoints: [
+      { y: 64.88419532775879, x: 381.0333251953125, score: 0.7116302847862244, name: "nose" },
+      // Additional keypoints here...
+    ],
+    box: { yMin: 0.004535397049039602, xMin: 0.06256416440010071, yMax: 0.9879268407821655, xMax: 0.9208574295043945, width: 0.8582932651042938, height: 0.9833914437331259 },
+    score: 0.3704647719860077,
+    id: 4,
+    nose: { x: 381.0333251953125, y: 64.88419532775879, score: 0.7116302847862244 },
+    left_eye: { /* Properties of the left eye */ },
+    right_eye: { /* Properties of the right eye */ },
+    left_ear: { /* Properties of the left ear */ },
+    right_ear: { /* Properties of the right ear */ },
+    left_shoulder: { /* Properties of the left shoulder */ },
+    right_shoulder: { /* Properties of the right shoulder */ },
+    left_elbow: { /* Properties of the left elbow */ },
+    right_elbow: { /* Properties of the right elbow */ },
+    left_wrist: { /* Properties of the left wrist */ },
+    right_wrist: { /* Properties of the right wrist */ },
+    left_hip: { /* Properties of the left hip */ },
+    right_hip: { /* Properties of the right hip */ },
+    left_knee: { /* Properties of the left knee */ },
+    right_knee: { /* Properties of the right knee */ },
+    left_ankle: { /* Properties of the left ankle */ },
+    right_ankle: { /* Properties of the right ankle */ }
+  },
+  // Additional objects here...
+];
+```
+
+An example of the output from Body Pose Blazepose model is shown below:
+
+```javascript
+[
+  {
+    keypoints: [
+      { x: 384.1078567504883, y: 209.4658613204956, z: -0.35329264402389526, score: 0.9999341368675232, name: "nose" },
+      // Additional keypoints here...
+    ],
+    keypoints3D: [
+      { x: -0.08051524311304092, y: -0.6131212711334229, z: -0.3431171476840973, score: 0.9999341368675232, name: "nose" },
+      // Additional 3D keypoints here...
+    ],
+    nose: { x: 384.1078567504883, y: 209.4658613204956, z: -0.35329264402389526, score: 0.9999341368675232 },
+    left_eye_inner: { /* Properties of the left eye inner */ },
+    left_eye: { /* Properties of the left eye */ },
+    left_eye_outer: { /* Properties of the left eye outer */ },
+    right_eye_inner: { /* Properties of the right eye inner */ },
+    right_eye: { /* Properties of the right eye */ },
+    right_eye_outer: { /* Properties of the right eye outer */ },
+    left_ear: { /* Properties of the left ear */ },
+    right_ear: { /* Properties of the right ear */ },
+    mouth_left: { /* Properties of the mouth left */ },
+    mouth_right: { /* Properties of the mouth right */ },
+    left_shoulder: { /* Properties of the left shoulder */ },
+    right_shoulder: { /* Properties of the right shoulder */ },
+    left_elbow: { /* Properties of the left elbow */ },
+    right_elbow: { /* Properties of the right elbow */ },
+    left_wrist: { /* Properties of the left wrist */ },
+    right_wrist: { /* Properties of the right wrist */ },
+    left_pinky: { /* Properties of the left pinky */ },
+    right_pinky: { /* Properties of the right pinky */ },
+    left_index: { /* Properties of the left index finger */ },
+    right_index: { /* Properties of the right index finger */ },
+    left_thumb: { /* Properties of the left thumb */ },
+    right_thumb: { /* Properties of the right thumb */ },
+    left_hip: { /* Properties of the left hip */ },
+    right_hip: { /* Properties of the right hip */ },
+    left_knee: { /* Properties of the left knee */ },
+    right_knee: { /* Properties of the right knee */ },
+    left_ankle: { /* Properties of the left ankle */ },
+    right_ankle: { /* Properties of the right ankle */ },
+    left_heel: { /* Properties of the left heel */ },
+    right_heel: { /* Properties of the right heel */ },
+    left_foot_index: { /* Properties of the left foot index */ },
+    right_foot_index: { /* Properties of the right foot index */ }
+  },
+  // Additional objects here...
+];
+```
 
 ## Getting Started
 Integrating Bodypose into your ml5.js projects is straightforward. Our documentation and user-friendly API will help you make the most of this combined model!
@@ -55,53 +145,67 @@ Integrating Bodypose into your ml5.js projects is straightforward. Our documenta
 [p5 Web Editor](iframes/pose-estimation ':include :type=iframe width=100% height=550px')
 
 ### Quickstart
-First of all, copy and paste the following code into your **index.html** file:
+Before you start, let's create an empty project in the [p5 web editor](https://editor.p5js.org/).
+
+First of all, copy and paste the following code into your **index.html** file. If you are not familiar with the p5 web editor interface, you can find a guide on how to find your **index.html** file [here](/?id=try-ml5js-online-1).
 
 ```html
-(will be added.)
+<script src="https://unpkg.com/ml5@alpha/dist/ml5.js"></script>
 ```
 
-Then, add the code below to your **script.js** file:
+Then, add the code below to your **sketch.js** file:
 
 ```js
 let video;
-let bodypose;
+let bodyPose;
+let poses = [];
+
+function preload() {
+  // Load the bodyPose model, default is MoveNet model
+  bodyPose = ml5.bodypose();
+}
 
 function setup() {
   createCanvas(640, 480);
 
-  // Create a video element
-  video.createCapture(VIDEO);
+  // Create the video and hide it
+  video = createCapture(VIDEO);
   video.size(width, height);
   video.hide();
 
-  // Create a new poseNet method with a single detection
-  bodypose = ml5.bodypose(modelLoaded);
-  // start detecting poses
-  bodypose.detectStart();
+  // Start detecting poses in the webcam video
+  bodyPose.detectStart(video, gotPoses);
 }
 
 function draw() {
-  // Draw the video
+  // Draw the webcam video
   image(video, 0, 0, width, height);
 
-  // Draw the keypoints and skeleton
-  bodypose.showSkeleton();
-  bodypose.showKeypoints();
+  // Draw all the tracked landmark points
+  for (let i = 0; i < poses.length; i++) {
+    let pose = poses[i];
+    for (let j = 0; j < pose.keypoints.length; j++) {
+      let keypoint = pose.keypoints[j];
+      // Only draw a circle if the keypoint's confidence is bigger than 0.1
+      if (keypoint.score > 0.1) {
+        fill(0, 255, 0);
+        noStroke();
+        circle(keypoint.x, keypoint.y, 10);
+      }
+    }
+  }
 }
 
-// When the model is loaded
-function modelLoaded() {
-  console.log('Model Loaded!');
+// Callback function for when bodyPose outputs data
+function gotPoses(results) {
+  // Save the output to the poses variable
+  poses = results;
 }
-
 ```
-Alternatively, you can open [this example code](https://editor.p5js.org/ml5/sketches/PoseNet_image_single) and try it yourself on p5.js web editor!
+Alternatively, you can open [this example code](https://github.com/ml5js/ml5-next-gen/tree/main/examples/BodyPose-keypoints) and try it yourself on p5.js web editor!
 
 ### Additional Examples
-* [PoseNet_image_single](https://editor.p5js.org/ml5/sketches/PoseNet_image_single)
-* [PoseNet_part_selection](https://editor.p5js.org/ml5/sketches/PoseNet_part_selection)
-* [PoseNet_webcam](https://editor.p5js.org/ml5/sketches/PoseNet_webcam)
+* [BodyPose-blazepose-keypoints](https://github.com/ml5js/ml5-next-gen/tree/main/examples/BodyPose-blazepose-keypoints)
 
 ### Tutorials
 

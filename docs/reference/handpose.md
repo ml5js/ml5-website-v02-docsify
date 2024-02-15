@@ -52,7 +52,7 @@ Ready to give it a try? Our demo is here to give you a sneak peek into what Hand
 ### Quickstart
 Before you start, let's create an empty project in the [p5 web editor](https://editor.p5js.org/).
 
-First of all, copy and paste the following code into your **index.html** file. If you are not familiar with the p5 web editor interface, you can find a guide on how to find your **index.html** file [here](#/?id=try-ml5js-online-1).
+First of all, copy and paste the following code into your **index.html** file. If you are not familiar with the p5 web editor interface, you can find a guide on how to find your **index.html** file [here](/?id=try-ml5js-online-1).
 
 ```html
 <script src="https://unpkg.com/ml5@alpha/dist/ml5.js"></script>
