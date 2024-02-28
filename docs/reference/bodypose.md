@@ -27,7 +27,9 @@ Bodypose's MoveNet model predict a set of 17 keypoints:
 
   See the diagram below for the position of each keypoint.
 
-  ![Keypoint Diagram](https://camo.githubusercontent.com/c3641b718d7e613b2ce111a6a4575e88ca35a60cb325efdd9113c453b2a09301/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f6d6f76656e65742f636f636f2d6b6579706f696e74732d3530302e706e67)
+  <center>
+      <img style="display:block; max-width:30%" alt="Keypoint Diagram" src="https://camo.githubusercontent.com/c3641b718d7e613b2ce111a6a4575e88ca35a60cb325efdd9113c453b2a09301/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f6d6f76656e65742f636f636f2d6b6579706f696e74732d3530302e706e67">
+  </center>
 
 Bodypose's Blazepose model predict a set of 33 keypoints:
 
@@ -35,7 +37,9 @@ Bodypose's Blazepose model predict a set of 33 keypoints:
 
   See the diagram below for the position of each keypoint.
 
-  ![Keypoint Diagram](https://camo.githubusercontent.com/17082997c33fc6d2544c4aea33d9898860cf902ed5a0b865527d1dd91bbc7efa/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f6d65646961706970652f626c617a65706f73652d6b6579706f696e74732d757064617465642e706e67)
+  <center>
+      <img style="display:block; max-width:30%" alt="Keypoint Diagram" src="https://camo.githubusercontent.com/17082997c33fc6d2544c4aea33d9898860cf902ed5a0b865527d1dd91bbc7efa/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f6d65646961706970652f626c617a65706f73652d6b6579706f696e74732d757064617465642e706e67">
+  </center>
 
 Once you have the keypoints estimated by the model, you can utilize them in various ways based on your application:
 
@@ -207,10 +211,10 @@ Alternatively, you can open [this example code](https://github.com/ml5js/ml5-nex
 ### Additional Examples
 * [BodyPose-blazepose-keypoints](https://github.com/ml5js/ml5-next-gen/tree/main/examples/BodyPose-blazepose-keypoints)
 
-### Tutorials
+<!-- ### Tutorials
 
 **PoseNet on The Coding Train**
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/OIo-DIOkNVg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/OIo-DIOkNVg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
 
 ## Methods
 

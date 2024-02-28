@@ -115,12 +115,12 @@ Alternatively, you can open [this example code](https://github.com/ml5js/ml5-nex
 
 TODO (link p5 web editor examples once uploaded)
 
-### Tutorials
+<!-- ### Tutorials
 
 **PoseNet on The Coding Train**
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/OIo-DIOkNVg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-TODO (link new youtube video once uploaded)
+TODO (link new youtube video once uploaded) -->
 
 ## Methods
 
