@@ -8,27 +8,27 @@ First, we need to create an empty project to start with. Here, we introduces two
 ### Try Ml5.js Online
 If you would like to get a taste of ml5.js in minutes, the easiest way is using the [p5.js editor](https://editor.p5js.org/), you can open the web editor and find [the next step to import ml5 library](/?id=try-ml5js-online-1).
 
-*💡 If you are not familiar with p5.js, check out the [p5.js Get Started page](https://p5js.org/get-started/) to know more!*
+*<img style="max-height:1rem" src="_media/getting_started__bulb.png" alt="tip icon" aria-hidden="true"> If you are not familiar with p5.js, check out the [p5.js Get Started page](https://p5js.org/get-started/) to know more!*
 
 ### Try Ml5.js Locally
 If you want to start a project from scratch and develop it locally, have something set up as follows.
 
-> + 📝 A text editor (e.g. [WebStorm](https://www.jetbrains.com/webstorm/), [VSCode](https://code.visualstudio.com/), [Sublimetext](https://www.sublimetext.com/))
-> + 💻 Your web browser: Chrome & Firefox preferred
+> + <img style="max-height:1rem" src="_media/getting_started__memo.png" alt="text editor icon" aria-hidden="true"> A text editor (e.g. [WebStorm](https://www.jetbrains.com/webstorm/), [VSCode](https://code.visualstudio.com/), [Sublimetext](https://www.sublimetext.com/))
+> + <img style="max-height:1rem" src="_media/getting_started__computer.png" alt="browser icon" aria-hidden="true"> Your web browser: Chrome & Firefox preferred
 
 Your project directory should look something like this:
 
 ```
 |_ /my-first-ml5-project
-  |_ 🗒index.html
-  |_ 🗒sketch.js
+  |_ index.html
+  |_ sketch.js
 ```
 
 **Where**:
 
-* 📂**my-first-ml5-project/**: is the root project folder
-  * &ensp; 🗒**index.html**: is an .html file that has your html markup and library references
-  * &ensp; 🗒**sketch.js**: is where you'll be writing your javascript
+* <img style="max-height:1rem" src="_media/getting_started__open_file_folder.png" alt="folder icon" aria-hidden="true">**my-first-ml5-project/**: is the root project folder
+  * &ensp; <img style="max-height:1rem" src="_media/getting_started__spiral_note_pad.png" alt="file icon" aria-hidden="true">**index.html**: is an .html file that has your html markup and library references
+  * &ensp; <img style="max-height:1rem" src="_media/getting_started__spiral_note_pad.png" alt="file icon" aria-hidden="true">**sketch.js**: is where you'll be writing your javascript
 
 If you are done, find [the next step to import ml5 library](/?id=try-ml5js-locally-1).
 
@@ -134,19 +134,19 @@ Your project directory should look something like this:
 
 ```
 |_ /my-first-ml5-project
-  |_ 📂/images
-    |_ 🖼 bird.png
-  |_ 🗒index.html
-  |_ 🗒sketch.js
+  |_ /images
+    |_ bird.png
+  |_ index.html
+  |_ sketch.js
 ```
 
 **Where**:
 
-* 📂**my-first-ml5-project/**: is the root project folder
-  * &ensp; 📂**images/**: is a folder that contains your image
-    * &ensp; &ensp; &ensp; 🖼 **bird.png**: is a .png image of a bird (it can also be something else!)
-  * &ensp; 🗒**index.html**: is an .html file that has your html markup and library references
-  * &ensp; 🗒**sketch.js**: is where you'll be writing your javascript
+* <img style="max-height:1rem" src="_media/getting_started__open_file_folder.png" alt="folder icon" aria-hidden="true">**my-first-ml5-project/**: is the root project folder
+  * &ensp; <img style="max-height:1rem" src="_media/getting_started__open_file_folder.png" alt="folder icon" aria-hidden="true">**images/**: is a folder that contains your image
+    * &ensp; &ensp; &ensp; <img style="max-height:1rem" src="_media/getting_started__frame_with_picture.png" alt="image icon" aria-hidden="true"> **bird.png**: is a .png image of a bird (it can also be something else!)
+  * &ensp; <img style="max-height:1rem" src="_media/getting_started__spiral_note_pad.png" alt="file icon" aria-hidden="true">**index.html**: is an .html file that has your html markup and library references
+  * &ensp; <img style="max-height:1rem" src="_media/getting_started__spiral_note_pad.png" alt="file icon" aria-hidden="true">**sketch.js**: is where you'll be writing your javascript
 
 Now, we are ready to write our first ml5.js sketch! Find [the next step to write your first sketch](/?id=your-first-sketch)!
 
@@ -189,7 +189,7 @@ function gotResult(error, results) {
 }
 ```
 
-*💡 If you are not familiar with terms like **pre-trained model**, **MobileNet**, **classification**, **classifier**, **confidence** and would like to learn more about them, check out our [Ml5 Glossary](/learning/ml5_glossary) for a quick intro.*
+*<img style="max-height:1rem" src="_media/getting_started__bulb.png" alt="tip icon" aria-hidden="true"> If you are not familiar with terms like **pre-trained model**, **MobileNet**, **classification**, **classifier**, **confidence** and would like to learn more about them, check out our [Ml5 Glossary](/learning/ml5_glossary) for a quick intro.*
 
 ## Our sketch.js explained in 4 steps {docsify-ignore}
 
@@ -205,7 +205,7 @@ let classifier;
 let img;
 ```
 
-*💡 If you are not familiar with term **callback**, check out our [Ml5 Glossary](/learning/ml5_glossary) for more information.*
+*<img style="max-height:1rem" src="_media/getting_started__bulb.png" alt="tip icon" aria-hidden="true"> If you are not familiar with term **callback**, check out our [Ml5 Glossary](/learning/ml5_glossary) for more information.*
 
 ### Step 2: Load your imageClassifier and image
 
@@ -218,7 +218,7 @@ function preload() {
 }
 ```
 
-*💡 If you are not familiar with term **preload function**, check out our [Ml5 Glossary](/learning/ml5_glossary) for more information.*
+*<img style="max-height:1rem" src="_media/getting_started__bulb.png" alt="tip icon" aria-hidden="true"> If you are not familiar with term **preload function**, check out our [Ml5 Glossary](/learning/ml5_glossary) for more information.*
 
 ### Step 3: Setup, classify, and display
 
@@ -260,7 +260,7 @@ function gotResult(error, results) {
 }
 ```
 
-*💡 If you are not familiar with terms like **div**, **label**, **confidence**, check out our [Ml5 Glossary](/learning/ml5_glossary) for more information.*
+*<img style="max-height:1rem" src="_media/getting_started__bulb.png" alt="tip icon" aria-hidden="true"> If you are not familiar with terms like **div**, **label**, **confidence**, check out our [Ml5 Glossary](/learning/ml5_glossary) for more information.*
 
 ## Need Help On Your Code? {docsify-ignore}
 
@@ -281,7 +281,7 @@ Simply press the **Play** button on the top right corner of the interface. And y
 ### Try Ml5.js Locally
 To run the sketch locally, we need to start a local development server.
 
-*💡 If you are not familiar with term **local development server**, check out our [Ml5 Glossary](/learning/ml5_glossary) for more information.*
+*<img style="max-height:1rem" src="_media/getting_started__bulb.png" alt="tip icon" aria-hidden="true"> If you are not familiar with term **local development server**, check out our [Ml5 Glossary](/learning/ml5_glossary) for more information.*
 
 #### Step 1. Open your terminal
 
@@ -296,14 +296,14 @@ npm install
 npm run develop
 ```
 
-*💡 If you are not familiar with terms like **terminal**, **dependencies**, check out our [Ml5 Glossary](/learning/ml5_glossary) for more information.*
+*<img style="max-height:1rem" src="_media/getting_started__bulb.png" alt="tip icon" aria-hidden="true"> If you are not familiar with terms like **terminal**, **dependencies**, check out our [Ml5 Glossary](/learning/ml5_glossary) for more information.*
 
 #### Step 2. You should be able to run the sketch at: 
 ```
 http://localhost:8081
 ```
 
-*💡 You may also be interested in watching [CodingTrain - getting set up](https://www.youtube.com/watch?v=UCHzlUiDD10) for a nice intro on getting set up with writing code for the web.*
+*<img style="max-height:1rem" src="_media/getting_started__bulb.png" alt="tip icon" aria-hidden="true"> You may also be interested in watching [CodingTrain - getting set up](https://www.youtube.com/watch?v=UCHzlUiDD10) for a nice intro on getting set up with writing code for the web.*
 
 
 
@@ -318,7 +318,7 @@ Not all of our examples are structured exactly like this, but this provides a ta
 
 <br/>
 
-*💡 Some guiding questions you might start to think about are:*
+*<img style="max-height:1rem" src="_media/getting_started__bulb.png" alt="tip icon" aria-hidden="true"> Some guiding questions you might start to think about are:*
 
 *1. When classifying an image with MobileNet, does the computer see people? If not, why do you think that is?*
 *2. Do you notice that MobileNet is better at classifying some animals over others? Why do you think that is?*
