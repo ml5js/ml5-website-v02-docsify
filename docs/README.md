@@ -2,6 +2,8 @@
 
 Welcome to the ml5.js documentation. Here you'll find everything you need to get up and started with ml5.
 
+## Initiate an Empty Project
+
 Here, we introduces two ways to get started:
 ### Try Ml5.js Online
 If you would like to get a taste of ml5.js in minutes, the easiest way is using the [p5.js editor](https://editor.p5js.org/), you can open the web editor and find the next step [here](/?id=try-ml5js-online-1).
