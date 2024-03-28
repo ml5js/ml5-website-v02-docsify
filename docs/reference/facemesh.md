@@ -118,8 +118,8 @@ function gotFaces(results) {
 Alternatively, you can open [this example code](https://github.com/ml5js/ml5-next-gen/tree/main/examples/FaceMesh-keypoints) and try it yourself on p5.js web editor!
 
 ### Additional Examples
-* [FaceMesh-parts](https://github.com/ml5js/ml5-next-gen/tree/main/examples/FaceMesh-parts)
-* [FaceMesh-single-image](https://github.com/ml5js/ml5-next-gen/tree/main/examples/FaceMesh-single-image)
+* [FaceMesh-parts](https://github.com/ml5js/ml5-next-gen/tree/main/examples/FaceMesh-parts): Draw the face parts of the detected face.
+* [FaceMesh-single-image](https://github.com/ml5js/ml5-next-gen/tree/main/examples/FaceMesh-single-image): Detect faces in a single image.
 
 TODO (link p5 web editor examples once uploaded)
 

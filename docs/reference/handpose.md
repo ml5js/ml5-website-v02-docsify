@@ -106,12 +106,12 @@ function gotHands(results) {
 }
 ```
 
-Alternatively, you can open [this example code](https://github.com/ml5js/ml5-next-gen/tree/main/examples/Handpose-keypoints) and try it yourself on p5.js web editor!
+Alternatively, you can open [this example code](https://github.com/ml5js/ml5-next-gen/tree/main/examples/HandPose-keypoints) and try it yourself on p5.js web editor!
 
 ### Additional Examples
-* [Handpose-parts](https://github.com/ml5js/ml5-next-gen/tree/main/examples/Handpose-parts)
-* [Handpose-single-image](https://github.com/ml5js/ml5-next-gen/tree/main/examples/Handpose-single-image)
-* [Handpose-start-stop](https://github.com/ml5js/ml5-next-gen/tree/main/examples/Handpose-start-stop)
+* [HandPose-parts](https://github.com/ml5js/ml5-next-gen/tree/main/examples/HandPose-parts): Draw a circle whose size is determined by the pinch distance between the thumb and index finger.
+* [HandPose-single-image](https://github.com/ml5js/ml5-next-gen/tree/main/examples/HandPose-single-image): Detect hands in a single image.
+* [HandPose-start-stop](https://github.com/ml5js/ml5-next-gen/tree/main/examples/HandPose-start-stop): Start and stop hand detection with a button click.
 
 TODO (link p5 web editor examples once uploaded)
 
