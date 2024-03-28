@@ -76,8 +76,8 @@ function gotResults(result) {
 Alternatively, you can open [this example code](https://github.com/ml5js/ml5-next-gen/tree/main/examples/BodySegmentation-maskbodyparts) and try it yourself on p5.js web editor!
 
 ### Additional Examples
-* [BodySegmentation-maskbackground](https://github.com/ml5js/ml5-next-gen/tree/main/examples/BodySegmentation-maskbackground)
-* [BodySegmentation-maskperson](https://github.com/ml5js/ml5-next-gen/tree/main/examples/BodySegmentation-maskperson)
+* [BodySegmentation-maskbackground](https://github.com/ml5js/ml5-next-gen/tree/main/examples/BodySegmentation-maskbackground): Mask the background of an image.
+* [BodySegmentation-maskperson](https://github.com/ml5js/ml5-next-gen/tree/main/examples/BodySegmentation-maskperson): Mask the person in an image.
 
 <!-- ### Tutorials
 

@@ -209,7 +209,7 @@ function gotPoses(results) {
 Alternatively, you can open [this example code](https://github.com/ml5js/ml5-next-gen/tree/main/examples/BodyPose-keypoints) and try it yourself on p5.js web editor!
 
 ### Additional Examples
-* [BodyPose-blazepose-keypoints](https://github.com/ml5js/ml5-next-gen/tree/main/examples/BodyPose-blazepose-keypoints)
+* [BodyPose-blazepose-keypoints](https://github.com/ml5js/ml5-next-gen/tree/main/examples/BodyPose-blazepose-keypoints): Draw the body keypoints of the detected body using Blazepose model.
 
 <!-- ### Tutorials
 
