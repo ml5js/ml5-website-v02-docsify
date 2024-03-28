@@ -164,28 +164,34 @@ let classifier;
 // A variable to hold the image we want to classify
 let img;
 
+// Variables for displaying the results on the canvas
+let label = "";
+let confidence = "";
+
 function preload() {
-  classifier = ml5.imageClassifier('MobileNet');
-  img = loadImage('images/bird.png');
+  classifier = ml5.imageClassifier("MobileNet");
+  img = loadImage("images/bird.jpg");
 }
 
 function setup() {
   createCanvas(400, 400);
   classifier.classify(img, gotResult);
-  image(img, 0, 0);
+  image(img, 0, 0, width, height);
 }
 
 // A function to run when we get any errors and the results
-function gotResult(error, results) {
-  // Display error in the console
-  if (error) {
-    console.error(error);
-  } else {
-    // The results are in an array ordered by confidence.
-    console.log(results);
-    createDiv(`Label: ${results[0].label}`);
-    createDiv(`Confidence: ${nf(results[0].confidence, 0, 2)}`);
-  }
+function gotResult(results) {
+  // The results are in an array ordered by confidence, print in console
+  console.log(results);
+
+  // Display the results on the canvas
+  fill(255);
+  stroke(0);
+  textSize(18);
+  label = "Label: " + results[0].label;
+  confidence = "Confidence: " + nf(results[0].confidence, 0, 2);
+  text(label, 10, 360);
+  text(confidence, 10, 380);
 }
 ```
 
@@ -195,7 +201,7 @@ function gotResult(error, results) {
 
 ### Step 1: Define your variables
 
-Here we define our variables that we will assign our classifier and image to.
+Here we define our variables that we will assign our classifier, image, label, and confidence to.
 
 ```js
 // Initialize the Image Classifier method with MobileNet. A callback needs to be passed.
@@ -203,6 +209,10 @@ let classifier;
 
 // A variable to hold the image we want to classify
 let img;
+
+// Variables for displaying the results on the canvas
+let label = "";
+let confidence = "";
 ```
 
 *<img style="max-height:1rem" src="_media/getting_started__bulb.png" alt="tip icon" aria-hidden="true"> If you are not familiar with term **callback**, check out our [Ml5 Glossary](/learning/ml5_glossary) for more information.*
@@ -239,34 +249,36 @@ function setup() {
 
 ### Step 4: Define the gotResult() callback function
 
-The **gotResult()** function takes two parameters: 1. error, and 2. results. These get passed along to **gotResult()** when the **.classify()** function finishes classifying the image. If there is an error, then an **error** will be logged. If our classifier manages to recognize the content of the image, then a **result** will be returned.
+The **gotResult()** function takes one parameters: results. This parameter gets passed along to **gotResult()** when the **.classify()** function finishes classifying the image. If our classifier manages to recognize the content of the image, then a **result** will be returned.
 
 <br/>
 
-In the case of our program, we create a **div** that displays the **label** and the **confidence** of the content of the image that has been classified. The **[nf()](https://p5js.org/reference/#/p5/nf)** function is a p5 function that formats our number to a nicer string.
+In the case of our program, we are interested in the top 1 result which has the highest confidence and stored in **results[0]**. We store the label and confidence of the result in the variables **label** and **confidence** respectively, and then display the label and confidence of the result on the canvas with the **text()** function. The **[nf()](https://p5js.org/reference/#/p5/nf)** function is a p5 function that formats our number to a nicer string.
 
 ```js
 // A function to run when we get any errors and the results
-function gotResult(error, results) {
-  // Display error in the console
-  if (error) {
-    console.error(error);
-  } else {
-    // The results are in an array ordered by confidence.
-    console.log(results);
-    createDiv(`Label: ${results[0].label}`);
-    createDiv(`Confidence: ${nf(results[0].confidence, 0, 2)}`);
-  }
+function gotResult(results) {
+  // The results are in an array ordered by confidence, print in console
+  console.log(results);
+
+  // Display the results on the canvas
+  fill(255);
+  stroke(0);
+  textSize(18);
+  label = "Label: " + results[0].label;
+  confidence = "Confidence: " + nf(results[0].confidence, 0, 2);
+  text(label, 10, 360);
+  text(confidence, 10, 380);
 }
 ```
 
-*<img style="max-height:1rem" src="_media/getting_started__bulb.png" alt="tip icon" aria-hidden="true"> If you are not familiar with terms like **div**, **label**, **confidence**, check out our [Ml5 Glossary](/learning/ml5_glossary) for more information.*
+*<img style="max-height:1rem" src="_media/getting_started__bulb.png" alt="tip icon" aria-hidden="true"> If you are not familiar with terms like **label**, **confidence**, check out our [Ml5 Glossary](/learning/ml5_glossary) for more information.*
 
 ## Need Help On Your Code? {docsify-ignore}
 
 Check our examples below for reference:
 1. If you try ml5.js online with p5 web editor, check [ml5.js image classification on p5 web editor](https://editor.p5js.org/ml5/sketches/ImageClassification)
-2. If you try ml5.js locally, check [ml5.js image classification on Github](https://github.com/ml5js/ml5-library/tree/main/examples/p5js/ImageClassification/ImageClassification)
+2. If you try ml5.js locally, check [ml5.js image classification on Github](https://github.com/ml5js/ml5-next-gen/tree/main/examples/ImageClassifier)
 
 ## Run Your Sketch {docsify-ignore}
 
