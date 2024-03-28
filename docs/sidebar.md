@@ -15,6 +15,7 @@
     * [Handpose](/reference/handpose.md)
     * [Facemesh](/reference/facemesh.md)
     * [ImageClassifier](/reference/image-classifier.md)
+    * [Sentiment](/reference/sentiment.md)
     <!-- * [SoundClassifier](/reference/sound-classifier.md) -->
   * **ml5 + Teachable Machine** ✍️
     * [Image + Teachable Machine](/reference/image-classifier-tm.md)
