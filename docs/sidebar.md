@@ -11,7 +11,7 @@
   * [Overview](/reference/overview.md)
   * **ml5 Models** 📦
     * [Bodypose](/reference/bodypose.md)
-    <!-- * [BodySegmentation](/reference/body-segmentation.md) -->
+    * [BodySegmentation](/reference/body-segmentation.md)
     * [Handpose](/reference/handpose.md)
     * [Facemesh](/reference/facemesh.md)
     * [ImageClassifier](/reference/image-classifier.md)
