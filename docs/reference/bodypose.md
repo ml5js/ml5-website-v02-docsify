@@ -166,7 +166,7 @@ let poses = [];
 
 function preload() {
   // Load the bodyPose model, default is MoveNet model
-  bodyPose = ml5.bodypose();
+  bodyPose = ml5.bodyPose();
 }
 
 function setup() {

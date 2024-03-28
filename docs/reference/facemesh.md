@@ -79,7 +79,7 @@ let options = { maxFaces: 1, refineLandmarks: false, flipHorizontal: false };
 
 function preload() {
   // Load the faceMesh model
-  faceMesh = ml5.facemesh(options);
+  faceMesh = ml5.faceMesh(options);
 }
 
 function setup() {

@@ -9,7 +9,7 @@ let hands = [];
 
 function preload() {
   // Load the handpose model
-  handpose = ml5.handpose();
+  handpose = ml5.handPose();
 }
 
 function setup() {
