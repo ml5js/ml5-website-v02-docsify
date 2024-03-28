@@ -12,13 +12,13 @@ Handpose is a machine-learning model that allows for palm detection and hand-ske
 
 The ml5.js Handpose model is ported from the [Mediapipe Handpose implementation](https://github.com/google/mediapipe/blob/master/docs/solutions/hands.md).
 
-#### Key Features
+### Key Features
 - **Palm Detection**: Handpose can detect the palm of a hand and provide the 2D and 3D coordinates of 21 keypoints on the hand.
 - **Finger Tracking**: Handpose can track the 3D coordinates of the tips and joints of the fingers.
 - **Handedness**: Handpose can determine the handedness (left or right) of the detected hand.
 - **Multiple Hands**: Handpose can detect multiple hands at the same time.
 
-#### Output Example
+### Output Example
 An example of the output from Handpose is shown below:
 
 ```javascript

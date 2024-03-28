@@ -8,15 +8,13 @@
 
 Bodypose offers a versatile solution for pose estimation by leveraging the strengths of Movenet and Blazepose. It provides real-time, full-body pose estimation and precise tracking of key body parts, including hands, face, and body, in an optimized and lightweight package. 
 
-#### Key Features
+### Key Features
 
-* Real-time full-body pose estimation
-* High-precision keypoints tracking
-* Lightweight and optimized for performance
-* Easy integration into web-based projects using ml5.js
+* **High-precision keypoints tracking**: Detects and tracks key body parts with high accuracy
+* **Multi-person pose estimation**: Supports multiple people in the frame
+* **Lightweight and optimized for performance**: Speed and efficiency for real-time applications
 
-
-#### What can we do with the model?
+### What can we do with the model?
 
 Bodypose is suitable for a wide range of applications, such as interactive gaming, fitness apps, art installations, and accessibility solutions. Its accuracy and real-time performance make it a valuable tool for developers and creators!
 
@@ -55,7 +53,7 @@ Once you have the keypoints estimated by the model, you can utilize them in vari
 
 **Accessibility**: Bodypos can be used to track body movements and gestures to control devices and interfaces, enabling people with disabilities to interact with technology in new ways.
 
-#### Output Example
+### Output Example
 An example of the output from Body Pose MoveNet model is shown below:
 
 ```javascript

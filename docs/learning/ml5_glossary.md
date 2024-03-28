@@ -4,11 +4,13 @@
 
 Have you ever felt confused about a term we used here at ml5? No worries, we've got you covered! Check out this glossary. Here, we explain and define programming techniques and machine learning terms specific to ml5 that are mentioned in our libraries, website, and examples. 
 
-This glossary is designed to be editable by any ml5 user. If you have a term you'd like to add or update, please do! We'd love to hear from you. Click the `Edit Document` button on the top right of this page to see the source code and create a pull request. Please don’t mind if you don’t know what we are talking about, you can also contribute through this google form! 👉 [ml5 Glossary Contribution Form](https://docs.google.com/forms/d/e/1FAIpQLScJo6XU1-D1rDkuUIKSs7wx6svpZtw6p9vBPHdQvKPxpq-ERA/viewform?usp=pp_url)
+This glossary is designed to be editable by any ml5 user. If you have a term you'd like to add or update, please do! We'd love to hear from you. Click the `Edit Document` button on the top right of this page to see the source code and create a pull request. Please don’t mind if you don’t know what we are talking about, you can also contribute through this google form! <img style="max-height:1rem" src="_media/glossary__point_right.png" alt="tip icon" aria-hidden="true"> [ml5 Glossary Contribution Form](https://docs.google.com/forms/d/e/1FAIpQLScJo6XU1-D1rDkuUIKSs7wx6svpZtw6p9vBPHdQvKPxpq-ERA/viewform?usp=pp_url)
 
 <!-- tabs:start -->
 
-#### **🔼 Fold**
+#### **By Letter**
+
+<img style="max-height:1rem" src="_media/glossary__point_right.png" alt="tip icon" aria-hidden="true"> Click on the tabs on the right to see the glossary by letter.
 
 #### **C**
 
@@ -744,11 +746,11 @@ Ideally, each data point in the dataset should only belong to one of these three
 #### **W**
 ---
 ### Weights
-Weights are parameters that are used to train a machine learning model.
+In neural networks, weights are the parameters that are learned during the training process. Weights are used to adjust the strength of the connections between neurons in the network. The weights are adjusted during the training process to minimize the error between the predicted output and the actual output.
 
 ---
 ### Weights Quantization
-Weights quantization is often used to reduce the size of a machine learning model.
+Weights quantization is a technique used to reduce the size of a machine learning model by reducing the precision of the weights. Weights quantization is often used to make machine learning models more efficient and faster to run. For example, a machine learning model that uses 32-bit floating point numbers to represent the weights could be quantized to use 8-bit integers to represent the weights.
 
 <!-- tabs:end -->
 
@@ -756,7 +758,9 @@ Weights quantization is often used to reduce the size of a machine learning mode
 
 <!-- tabs:start -->
 
-#### **🔼 Fold**
+#### **By Topic**
+
+<img style="max-height:1rem" src="_media/glossary__point_right.png" alt="tip icon" aria-hidden="true"> Click on the tabs on the right to see the glossary by topic.
 
 #### **Web Application Development**
 ---

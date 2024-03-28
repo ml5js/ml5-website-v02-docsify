@@ -8,99 +8,153 @@
 
 ## Description
 
-Create your own neural network and train it in the browser with the `ml5.neuralNetwork`. Collect data to train your neural network or use existing data to train your neural network in real-time. Once it is trained, your neural network can do `classification` or `regression` tasks.
+Thinking of creating a custom machine learning model with your own data? Try out the ml5 Neural Network! You can train neural networks in the browser to perform
+1) classification task: where the model predicts a label based on the input data, or
+2) regression task: where the model predicts a value based on the input data.
 
+The neural network is a type of machine learning model that is inspired by the human brain. It is made up of layers of neurons that are connected to each other. Each neuron takes in input data, processes it, and passes the output to the next layer of neurons. The neural network learns by adjusting the weights of the connections between neurons to minimize the error in its predictions.
 
-## Quickstart
+*<img style="max-height:1rem" src="_media/getting_started__bulb.png" alt="tip icon" aria-hidden="true"> If you are not familiar with the concept of **classification**, **regression**, **neuron**, **neural networks**, and **weights**, you can learn more about them with [ml5 glossary](/glossary).*
 
-In general the steps for using the `ml5.neuralNetwork` look something like:
-* Step 1: load data or create some data
-* Step 2: set your neural network options & initialize your neural network
-* Step 4: add data to the neural network
-* Step 5: normalize your data
-* Step 6: train your neural network
-* Step 7: use the trained model to make a classification
-* Step 8: do something with the results
+### Key Features
+* **Classification**: The neural network can be used to classify input data into different categories. For example, you can train a neural network to classify images of cats and dogs.
+* **Regression**: The neural network can be used to predict a continuous value based on input data. For example, you can train a neural network to predict the price of a house based on its size and location.
 
-The below examples are quick 
+### Output Example
+An example of the output from the neural network classification task is shown below:
 
-### Creating data in real-time
-```js
-// Step 1: load data or create some data 
-const data = [
-  {r:255, g:0, b:0, color:'red-ish'},
-  {r:254, g:0, b:0, color:'red-ish'},
-  {r:253, g:0, b:0, color:'red-ish'},
-  {r:0, g:255, b:0, color:'green-ish'},
-  {r:0, g:254, b:0, color:'green-ish'},
-  {r:0, g:253, b:0, color:'green-ish'},
-  {r:0, g:0, b:255, color:'blue-ish'},
-  {r:0, g:0, b:254, color:'blue-ish'},
-  {r:0, g:0, b:253, color:'blue-ish'}
+```javascript
+{
+  label: "red",
+  confidence: 0.8
+}
+```
+
+An example of the output from the neural network regression task is shown below:
+
+```javascript
+{
+  value: 500000,
+  label: "house_price"
+}
+```
+
+## Getting Started
+
+### Demo
+[p5 Web Editor](iframes/neural-network ':include :type=iframe width=100% height=550px')
+
+### Quickstart
+Before you start, let's create an empty project in the [p5 web editor](https://editor.p5js.org/).
+
+First of all, copy and paste the following code into your **index.html** file. If you are not familiar with the p5 web editor interface, you can find a guide on how to find your **index.html** file [here](/?id=try-ml5js-online-1).
+
+```html
+<script src="https://unpkg.com/ml5@alpha/dist/ml5.js"></script>
+```
+
+Next, copy and paste the following code into your **sketch.js** file. This code will load the neural network model and classify the content of an image.
+
+```javascript
+// Step 1: load data or create some data
+let data = [
+  { r: 255, g: 0, b: 0, color: "red-ish" },
+  { r: 254, g: 0, b: 0, color: "red-ish" },
+  { r: 253, g: 0, b: 0, color: "red-ish" },
+  { r: 0, g: 255, b: 0, color: "green-ish" },
+  { r: 0, g: 254, b: 0, color: "green-ish" },
+  { r: 0, g: 253, b: 0, color: "green-ish" },
+  { r: 0, g: 0, b: 255, color: "blue-ish" },
+  { r: 0, g: 0, b: 254, color: "blue-ish" },
+  { r: 0, g: 0, b: 253, color: "blue-ish" },
 ];
 
-// Step 2: set your neural network options
-const options = {
-  task: 'classification',
-  debug: true
-}
+let classifer;
+let r = 255;
+let g = 0;
+let b = 0;
+let rSlider, gSlider, bSlider;
+let label = "training";
 
-// Step 3: initialize your neural network
-const nn = ml5.neuralNetwork(options);
+function setup() {
+  createCanvas(640, 240);
 
-// Step 4: add data to the neural network
-data.forEach(item => {
-  const inputs = {
-    r: item.r, 
-    g: item.g, 
-    b: item.b
+  // For this example to work across all browsers
+  // "webgl" or "cpu" needs to be set as the backend
+  ml5.setBackend("webgl");
+
+  rSlider = createSlider(0, 255, 255).position(10, 20);
+  gSlider = createSlider(0, 255, 0).position(10, 40);
+  bSlider = createSlider(0, 255, 0).position(10, 60);
+
+  // Step 2: set your neural network options
+  let options = {
+    task: "classification",
+    debug: true,
   };
-  const output = {
-    color: item.color
+
+  // Step 3: initialize your neural network
+  classifier = ml5.neuralNetwork(options);
+
+  // Step 4: add data to the neural network
+  for (let i = 0; i < data.length; i++) {
+    let item = data[i];
+    let inputs = [item.r, item.g, item.b];
+    let outputs = [item.color];
+    classifier.addData(inputs, outputs);
+  }
+
+  // Step 5: normalize your data;
+  classifier.normalizeData();
+
+  // Step 6: train your neural network
+  const trainingOptions = {
+    epochs: 32,
+    batchSize: 12,
   };
-
-  nn.addData(inputs, output);
-});
-
-// Step 5: normalize your data;
-nn.normalizeData();
-
-// Step 6: train your neural network
-const trainingOptions = {
-  epochs: 32,
-  batchSize: 12
+  classifier.train(trainingOptions, finishedTraining);
 }
-nn.train(trainingOptions, finishedTraining);
-
 // Step 7: use the trained model
-function finishedTraining(){
+function finishedTraining() {
   classify();
 }
 
 // Step 8: make a classification
-function classify(){
-  const input = {
-    r: 255, 
-    g: 0, 
-    b: 0
-  }
-  nn.classify(input, handleResults);
+function classify() {
+  const input = [r, g, b];
+  classifier.classify(input, handleResults);
+}
+
+function draw() {
+  r = rSlider.value();
+  g = gSlider.value();
+  b = bSlider.value();
+  background(r, g, b);
+  textAlign(CENTER, CENTER);
+  textSize(64);
+  text(label, width / 2, height / 2);
 }
 
 // Step 9: define a function to handle the results of your classification
-function handleResults(error, result) {
-    if(error){
-      console.error(error);
-      return;
-    }
-    console.log(result); // {label: 'red', confidence: 0.8};
+function handleResults(results, error) {
+  if (error) {
+    console.error(error);
+    return;
+  }
+  label = results[0].label;
+  // console.log(results); // {label: 'red', confidence: 0.8};
+  classify();
 }
-
 ```
 
-### Loading Existing Data
+#### Load Data from a File
+Notice that in the above example, we are creating data in real-time. This is useful when you want to create a neural network with data that is not already stored in a file. However, if you have data stored in a file, you can load it in as shown in the next example.
 
-External data: `"data/colorData.json"`
+Follow the steps below to create a neural network with data stored in a file.
+1. Create a new folder in your project called `data`.
+2. Create a new file in the `data` folder called `colorData.json`.
+
+This is what the **colorData.json** file should look like:
 ```json
 {
   "entries": [
@@ -116,8 +170,10 @@ External data: `"data/colorData.json"`
   ]
 }
 ```
-In your JavaScript: `"script.js"`
-```js
+
+Now copy and paste the following code into your **sketch.js** file. This code will load the neural network model and classify the content of a defined input, in this case, `{r:255, g:0, b:0}`.
+
+```javascript
 // Step 1: set your neural network options
 const options = {
   dataUrl: "data/colorData.json",
@@ -171,6 +227,45 @@ function handleResults(error, result) {
 
 ```
 
+### Additional Examples
+- [NeuralNetwork_Simple_Classification](https://editor.p5js.org/ml5/sketches/NeuralNetwork_Simple_Classification)
+- [NeuralNetwork_Simple_Regression](https://editor.p5js.org/ml5/sketches/NeuralNetwork_Simple_Regression)
+- [NeuralNetwork_XOR](https://editor.p5js.org/ml5/sketches/NeuralNetwork_XOR)
+- [NeuralNetwork_basics](https://editor.p5js.org/ml5/sketches/NeuralNetwork_basics)
+- [NeuralNetwork_co2net](https://editor.p5js.org/ml5/sketches/NeuralNetwork_co2net)
+- [NeuralNetwork_color_classifier](https://editor.p5js.org/ml5/sketches/NeuralNetwork_color_classifier)
+- [NeuralNetwork_load_model](https://editor.p5js.org/ml5/sketches/NeuralNetwork_load_model)
+- [NeuralNetwork_load_saved_data](https://editor.p5js.org/ml5/sketches/NeuralNetwork_load_saved_data)
+- [NeuralNetwork_lowres_pixels](https://editor.p5js.org/ml5/sketches/NeuralNetwork_lowres_pixels)
+- [NeuralNetwork_multiple_layers](https://editor.p5js.org/ml5/sketches/NeuralNetwork_multiple_layers)
+- [NeuralNetwork_musical_face](https://editor.p5js.org/ml5/sketches/NeuralNetwork_musical_face)
+- [NeuralNetwork_musical_mouse](https://editor.p5js.org/ml5/sketches/NeuralNetwork_musical_mouse)
+- [NeuralNetwork_pose_classifier](https://editor.p5js.org/ml5/sketches/NeuralNetwork_pose_classifier)
+- [NeuralNetwork_titanic](https://editor.p5js.org/ml5/sketches/NeuralNetwork_titanic)
+- [NeuralNetwork_xy_classifier](https://editor.p5js.org/ml5/sketches/NeuralNetwork_xy_classifier)
+
+### Tutorials
+
+#### Nature of Code: Chapter 10 & 11
+- [Chapter 10: Neural Networks](https://nature-of-code-2nd-edition.netlify.app/neural-networks/)
+- [Chapter 11: Neuroevolution](https://nature-of-code-2nd-edition.netlify.app/neuroevolution/)
+
+<center>
+    <img style="display:block; width:100%" alt="pose detection" src="_media/getting_started__noc.jpeg">
+</center>
+
+#### ml5.js: Train Your Own Neural Network (Coding Train)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/8HEgeAbYphA"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+#### ml5.js: Save Neural Network Training Data (Coding Train)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/q6cwxORPDo8"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+#### ml5.js: Save Neural Network Trained Model (Coding Train)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/wUrg9Hjkhg0"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+### ml5.js: Neural Network Regression (Coding Train)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/fFzvwdkzr_c"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ## Usage
 
@@ -201,8 +296,8 @@ function handleResults(error, result) {
     /**
     The weather json looks something like:
     {"data": [
-      {"xs": {"avg_temperature":20, "humidity": 0.2}, "ys": {"rained": "no"}},
-      {"xs": {"avg_temperature":30, "humidity": 0.9}, "ys": {"rained": "yes"}}
+        {"avg_temperature":20, "humidity": 0.2, "rained" : "no"},
+        {"avg_temperature":30, "humidity": 0.9, "rained": "yes"}
     ] }
     * */
     const options = {
@@ -776,103 +871,3 @@ neuralNetwork.load(filesOrPath, ?callback);
 
 
 ***
-
-
-
-## Examples
-
-
-**p5.js**
-- [NeuralNetwork_Simple_Classification](https://github.com/ml5js/ml5-library/tree/main/examples/p5js/NeuralNetwork/NeuralNetwork_Simple_Classification)
-- [NeuralNetwork_Simple_Regression](https://github.com/ml5js/ml5-library/tree/main/examples/p5js/NeuralNetwork/NeuralNetwork_Simple_Regression)
-- [NeuralNetwork_XOR](https://github.com/ml5js/ml5-library/tree/main/examples/p5js/NeuralNetwork/NeuralNetwork_XOR)
-- [NeuralNetwork_basics](https://github.com/ml5js/ml5-library/tree/main/examples/p5js/NeuralNetwork/NeuralNetwork_basics)
-- [NeuralNetwork_co2net](https://github.com/ml5js/ml5-library/tree/main/examples/p5js/NeuralNetwork/NeuralNetwork_co2net)
-- [NeuralNetwork_color_classifier](https://github.com/ml5js/ml5-library/tree/main/examples/p5js/NeuralNetwork/NeuralNetwork_color_classifier)
-- [NeuralNetwork_load_model](https://github.com/ml5js/ml5-library/tree/main/examples/p5js/NeuralNetwork/NeuralNetwork_load_model)
-- [NeuralNetwork_load_saved_data](https://github.com/ml5js/ml5-library/tree/main/examples/p5js/NeuralNetwork/NeuralNetwork_load_saved_data)
-- [NeuralNetwork_lowres_pixels](https://github.com/ml5js/ml5-library/tree/main/examples/p5js/NeuralNetwork/NeuralNetwork_lowres_pixels)
-- [NeuralNetwork_multiple_layers](https://github.com/ml5js/ml5-library/tree/main/examples/p5js/NeuralNetwork/NeuralNetwork_multiple_layers)
-- [NeuralNetwork_musical_face](https://github.com/ml5js/ml5-library/tree/main/examples/p5js/NeuralNetwork/NeuralNetwork_musical_face)
-- [NeuralNetwork_musical_mouse](https://github.com/ml5js/ml5-library/tree/main/examples/p5js/NeuralNetwork/NeuralNetwork_musical_mouse)
-- [NeuralNetwork_pose_classifier](https://github.com/ml5js/ml5-library/tree/main/examples/p5js/NeuralNetwork/NeuralNetwork_pose_classifier)
-- [NeuralNetwork_titanic](https://github.com/ml5js/ml5-library/tree/main/examples/p5js/NeuralNetwork/NeuralNetwork_titanic)
-- [NeuralNetwork_xy_classifier](https://github.com/ml5js/ml5-library/tree/main/examples/p5js/NeuralNetwork/NeuralNetwork_xy_classifier)
-
-**p5 web editor**
-- [NeuralNetwork_Simple_Classification](https://editor.p5js.org/ml5/sketches/NeuralNetwork_Simple_Classification)
-- [NeuralNetwork_Simple_Regression](https://editor.p5js.org/ml5/sketches/NeuralNetwork_Simple_Regression)
-- [NeuralNetwork_XOR](https://editor.p5js.org/ml5/sketches/NeuralNetwork_XOR)
-- [NeuralNetwork_basics](https://editor.p5js.org/ml5/sketches/NeuralNetwork_basics)
-- [NeuralNetwork_co2net](https://editor.p5js.org/ml5/sketches/NeuralNetwork_co2net)
-- [NeuralNetwork_color_classifier](https://editor.p5js.org/ml5/sketches/NeuralNetwork_color_classifier)
-- [NeuralNetwork_load_model](https://editor.p5js.org/ml5/sketches/NeuralNetwork_load_model)
-- [NeuralNetwork_load_saved_data](https://editor.p5js.org/ml5/sketches/NeuralNetwork_load_saved_data)
-- [NeuralNetwork_lowres_pixels](https://editor.p5js.org/ml5/sketches/NeuralNetwork_lowres_pixels)
-- [NeuralNetwork_multiple_layers](https://editor.p5js.org/ml5/sketches/NeuralNetwork_multiple_layers)
-- [NeuralNetwork_musical_face](https://editor.p5js.org/ml5/sketches/NeuralNetwork_musical_face)
-- [NeuralNetwork_musical_mouse](https://editor.p5js.org/ml5/sketches/NeuralNetwork_musical_mouse)
-- [NeuralNetwork_pose_classifier](https://editor.p5js.org/ml5/sketches/NeuralNetwork_pose_classifier)
-- [NeuralNetwork_titanic](https://editor.p5js.org/ml5/sketches/NeuralNetwork_titanic)
-- [NeuralNetwork_xy_classifier](https://editor.p5js.org/ml5/sketches/NeuralNetwork_xy_classifier)
-
-**plain javascript**
-
-* coming soon
-
-## Demo
-
-No demos yet - contribute one today!
-
-## Tutorials
-
-### ml5.js: Train Your Own Neural Network (Coding Train)
-<iframe width="560" height="315" src="https://www.youtube.com/embed/8HEgeAbYphA"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-### ml5.js: Save Neural Network Training Data (Coding Train)
-<iframe width="560" height="315" src="https://www.youtube.com/embed/q6cwxORPDo8"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-### ml5.js: Save Neural Network Trained Model (Coding Train)
-<iframe width="560" height="315" src="https://www.youtube.com/embed/wUrg9Hjkhg0"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-### ml5.js: Neural Network Regression (Coding Train)
-<iframe width="560" height="315" src="https://www.youtube.com/embed/fFzvwdkzr_c"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-
-## Acknowledgements
-
-**Contributors**:
-  * [Dan Shiffman](https://github.com/shiffman)
-  * [Joey Lee](https://github.com/joeyklee/)
-  * [Yining Shi](https://github.com/yining1023/)
-  * [Lydia Jessup](https://github.com/lydiajessup)
-
-**Credits**:
-  * Paper Reference | Website URL | Github Repo | Book reference | etc
-
-## Source Code
-
-* [/src/NeuralNetwork](https://github.com/ml5js/ml5-library/tree/main/src/NeuralNetwork)
-
-
-
-
-
-
-
-
-
-
-## ml5.neuralNetwork
-
-See [old reference](https://learn.ml5js.org/#/reference/neural-network) and Nature of Code [Chapter 10: Neural Networks](https://nature-of-code-2nd-edition.netlify.app/neural-networks/) and [Chapter 11: Neuroevolution](https://nature-of-code-2nd-edition.netlify.app/neuroevolution/)
-
----
-
-## ml5.sentiment
-
-See [old reference](https://learn.ml5js.org/#/reference/sentiment).
-
----
-
-More models and features coming soon!

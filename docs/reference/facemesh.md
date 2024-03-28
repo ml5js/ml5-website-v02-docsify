@@ -12,13 +12,13 @@ Facemesh is a machine-learning model that allows for facial landmark detection i
 
 The ml5.js Facemesh model is ported from the [Mediapipe Facemesh implementation](https://github.com/tensorflow/tfjs-models/tree/master/face-landmarks-detection).
 
-#### Key Features
+### Key Features
 - **Facial Landmark Detection**: Facemesh can detect the 3D coordinates of 468 keypoints on the face.
 - **Face Bounding Box**: Facemesh can provide the bounding box of each detected face.
 - **Face Parts Contour**: Facemesh can provide the 3D coordinates of the contour of each face part (lips, eyes, eyebrows, and face oval).
 - **Multiple Faces**: Facemesh can detect multiple faces at the same time. You can specify the maximum number of faces to detect.
 
-#### Output Example
+### Output Example
 An example of the output from Facemesh is shown below:
 
 ```javascript

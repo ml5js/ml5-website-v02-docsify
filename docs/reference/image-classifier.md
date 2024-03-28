@@ -13,11 +13,11 @@ The image classifier is a pre-trained model that can recognize the content of an
 
 *<img style="max-height:1rem" src="_media/getting_started__bulb.png" alt="tip icon" aria-hidden="true"> If you want to **train your own image classification model with customized labels**, check out our [Image + Teachable Machine](/reference/image-classifier-tm) to get started!*
 
-#### Key Features
+### Key Features
 - **Image Classification**: The image classifier can recognize the content of an image and provide a list of possible labels.
 - **Video Object Detection**: The image classifier can also be used to classify objects in a video stream.
 
-#### Output Example
+### Output Example
 An example of the output from the image classifier is shown below:
 
 ```javascript
@@ -94,7 +94,7 @@ Alternatively, you can open [this example code](https://github.com/ml5js/ml5-nex
 ### Additional Examples
 - [ImageClassifier-video](https://github.com/ml5js/ml5-next-gen/tree/main/examples/ImageClassifier-video): Classify the content of images from your webcam.
 
-### Methods
+## Methods
 
 #### ml5.imageClassifier()
 

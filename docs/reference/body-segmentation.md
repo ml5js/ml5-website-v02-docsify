@@ -8,12 +8,12 @@
 
 BodySegmentation divides an image input into the people and the background, and then further divide the people into different body parts. The model can detect multiple people at once and for each person, provides 24 body parts that describe important locations on the body.
 
-#### Key Features
+### Key Features
 
-* Real-time person segmentation
-* Real-time body part segmentation
+* **Real-time person segmentation**: The model can segment people from the background in real-time.
+* **Real-time body part segmentation**: The model can segment body parts in real-time.
 
-#### Output Example
+### Output Example
 Based on your options, the output can be a mask of the background, a mask of the person, or a mask of the body parts. Regardless of the scenario, the segmentation information deemed valuable is consistently stored within the mask property of the resulting object.
 
 ```javascript
