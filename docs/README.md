@@ -1,6 +1,6 @@
 # Getting Started
 
-Welcome to the ml5.js documentation. Here you'll find everything you need to get up and started with ml5.
+Welcome to the ml5.js documentation. Here you'll find everything you need to get up and started with ml5.js.
 
 ## Create an Empty Project
 
@@ -199,7 +199,7 @@ function gotResult(results) {
 }
 ```
 
-_<img style="max-height:1rem" src="_media/getting_started__bulb.png" alt="tip icon" aria-hidden="true"> If you are not familiar with terms like **pre-trained model**, **MobileNet**, **classification**, **classifier**, **confidence** and would like to learn more about them, check out our [Ml5 Glossary](/learning/ml5_glossary) for a quick intro._
+_<img style="max-height:1rem" src="_media/getting_started__bulb.png" alt="tip icon" aria-hidden="true"> If you are not familiar with terms like **pre-trained model**, **MobileNet**, **classification**, **classifier**, **confidence** and would like to learn more about them, check out our [Ml5 Glossary](/learning/ml5-glossary) for a quick intro._
 
 ## Our sketch.js explained in 4 steps {docsify-ignore}
 
@@ -229,7 +229,7 @@ function preload() {
 }
 ```
 
-_<img style="max-height:1rem" src="_media/getting_started__bulb.png" alt="tip icon" aria-hidden="true"> If you are not familiar with term **preload function**, check out our [Ml5 Glossary](/learning/ml5_glossary) for more information._
+_<img style="max-height:1rem" src="_media/getting_started__bulb.png" alt="tip icon" aria-hidden="true"> If you are not familiar with term **preload function**, check out our [Ml5 Glossary](/learning/ml5-glossary) for more information._
 
 ### Step 3: Setup, classify, and display
 
@@ -274,7 +274,7 @@ function gotResult(results) {
 }
 ```
 
-_<img style="max-height:1rem" src="_media/getting_started__bulb.png" alt="tip icon" aria-hidden="true"> If you are not familiar with terms like **callback**, **label**, **confidence**, check out our [Ml5 Glossary](/learning/ml5_glossary) for more information._
+_<img style="max-height:1rem" src="_media/getting_started__bulb.png" alt="tip icon" aria-hidden="true"> If you are not familiar with terms like **callback**, **label**, **confidence**, check out our [Ml5 Glossary](/learning/ml5-glossary) for more information._
 
 ## Need Help On Your Code? {docsify-ignore}
 
@@ -299,7 +299,7 @@ Simply press the **Play** button on the top right corner of the interface. And y
 
 To run the sketch locally, we need to start a local development server.
 
-_<img style="max-height:1rem" src="_media/getting_started__bulb.png" alt="tip icon" aria-hidden="true"> If you are not familiar with term **local development server**, check out our [Ml5 Glossary](/learning/ml5_glossary) for more information._
+_<img style="max-height:1rem" src="_media/getting_started__bulb.png" alt="tip icon" aria-hidden="true"> If you are not familiar with term **local development server**, check out our [Ml5 Glossary](/learning/ml5-glossary) for more information._
 
 #### Step 1. Open your terminal
 
@@ -311,7 +311,7 @@ cd my-first-ml5-project
 python3 -m http.server
 ```
 
-_<img style="max-height:1rem" src="_media/getting_started__bulb.png" alt="tip icon" aria-hidden="true"> If you are not familiar with terms like **terminal**, **dependencies**, check out our [Ml5 Glossary](/learning/ml5_glossary) for more information._
+_<img style="max-height:1rem" src="_media/getting_started__bulb.png" alt="tip icon" aria-hidden="true"> If you are not familiar with terms like **terminal**, **dependencies**, check out our [Ml5 Glossary](/learning/ml5-glossary) for more information._
 
 #### Step 2. In a browser, open the following URL:
 
@@ -342,6 +342,6 @@ _2. Do you notice that MobileNet is better at classifying some animals over othe
 
 ## What Next?
 
-Now, you have already built up your first-ever ml5.js project. Interested in using ml5.js to build more ML-based projects and would like learn more? Check out our [Next Steps](https://ml5js.github.io/ml5-website-v02-docsify/#/welcome/next_steps) page!
+Now, you have already built up your first-ever ml5.js project. Interested in using ml5.js to build more ML-based projects and would like learn more? Check out our [Next Steps](https://ml5js.github.io/ml5-website-v02-docsify/#/welcome/next-steps) page!
 
 <br>
