@@ -1,6 +1,6 @@
 # Getting Started
 
-Welcome to the ml5.js documentation. Here you'll find everything you need to get up and started with ml5.
+Welcome to the ml5.js documentation. Here you'll find everything you need to get up and started with ml5.js.
 
 ## Create an Empty Project
 
