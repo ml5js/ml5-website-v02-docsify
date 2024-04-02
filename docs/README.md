@@ -5,15 +5,18 @@ Welcome to the ml5.js documentation. Here you'll find everything you need to get
 ## Create an Empty Project
 
 First, we need to create an empty project to start with. Here, we introduces two ways to initialize your project:
-### Try Ml5.js Online
-If you would like to get a taste of ml5.js in minutes, the easiest way is using the [p5.js editor](https://editor.p5js.org/), you can open the web editor and find [the next step to import ml5 library](/?id=try-ml5js-online-1).
 
-*<img style="max-height:1rem" src="_media/getting_started__bulb.png" alt="tip icon" aria-hidden="true"> If you are not familiar with p5.js, check out the [p5.js Get Started page](https://p5js.org/get-started/) to know more!*
+### Try ml5.js Online
 
-### Try Ml5.js Locally
-If you want to start a project from scratch and develop it locally, have something set up as follows.
+If you would like to get a taste of ml5.js in minutes, the easiest way is using the [p5.js editor](https://editor.p5js.org/). You can open the web editor and follow [the next step to import the ml5 library](/?id=try-ml5js-online-1).
 
-> + <img style="max-height:1rem" src="_media/getting_started__memo.png" alt="text editor icon" aria-hidden="true"> A text editor (e.g. [WebStorm](https://www.jetbrains.com/webstorm/), [VSCode](https://code.visualstudio.com/), [Sublimetext](https://www.sublimetext.com/))
+* <img style="max-height:1rem" src="_media/getting_started__bulb.png" alt="tip icon" aria-hidden="true"> If you are not familiar with p5.js, check out the [p5.js Get Started page](https://p5js.org/get-started/) to know more!*
+
+### Try ml5.js Locally
+
+If you want to start a project from scratch and develop it locally, make sure to have these tools ready:
+
+> + <img style="max-height:1rem" src="_media/getting_started__memo.png" alt="text editor icon" aria-hidden="true"> A text editor (e.g. [WebStorm](https://www.jetbrains.com/webstorm/), [Visual Studio Code](https://code.visualstudio.com/), [Sublime Text](https://www.sublimetext.com/))
 > + <img style="max-height:1rem" src="_media/getting_started__computer.png" alt="browser icon" aria-hidden="true"> Your web browser: Chrome & Firefox preferred
 
 Your project directory should look something like this:
@@ -30,19 +33,19 @@ Your project directory should look something like this:
   * &ensp; <img style="max-height:1rem" src="_media/getting_started__spiral_note_pad.png" alt="file icon" aria-hidden="true">**index.html**: is an .html file that has your html markup and library references
   * &ensp; <img style="max-height:1rem" src="_media/getting_started__spiral_note_pad.png" alt="file icon" aria-hidden="true">**sketch.js**: is where you'll be writing your javascript
 
-If you are done, find [the next step to import ml5 library](/?id=try-ml5js-locally-1).
+If you are done, follow [the next step to import the ml5 library](/?id=try-ml5js-locally-1).
 
 ## Import Ml5.js Library
 
 ### Try Ml5.js Online
 
-Open the **Sketch Files** folder by clicking the arrow **'>'** at the top left corner of the p5.js editor. 
+Open the sidebar revealing the **Sketch Files** by clicking the arrow **'>'** at the top left corner of the p5.js editor.
 
 <center>
     <img style="display:block; max-height:30rem" alt="pose detection" src="_media/getting_started__sketch-folder.png">
 </center>
 
-In the **index.html** file, copy and paste the following CDN link under **&lt;head&gt;** tag.
+In the **index.html** file, copy and paste the following CDN link inside the **&lt;head&gt;** tag.
 
 ```html
 <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
@@ -54,13 +57,12 @@ In the **index.html** file, copy and paste the following CDN link under **&lt;he
 
 To check if the ml5.js library has been imported successfully, switch back to **sketch.js**.
 
-Include this line of code: ```console.log('ml5 version:', ml5.version);``` at the beginning of the script.
+Include this line of code: ```console.log('ml5 version:', ml5.version);``` inside the **setup()** function.
 
-```html
-console.log('ml5 version:', ml5.version);
-
+```js
 function setup() {
   createCanvas(400, 400);
+  console.log('ml5 version:', ml5.version);
 }
 
 function draw() {
@@ -68,19 +70,19 @@ function draw() {
 }
 ```
 
-If everything loaded properly you should see the latest ml5 version ```ml5 version: {latest_ml5_version}``` in the console.
+If everything loaded properly you should see the version number of the ml5 library show up in the console.
 
 <center>
     <img style="display:block; max-height:25rem" alt="pose detection" src="_media/getting_started__ml5-version.png">
 </center>
 
-Find [the next step to prepare your image assets](/?id=try-ml5js-online-2)!
+Follow [the next step to prepare your image assets](/?id=try-ml5js-online-2)!
 
 ### Try Ml5.js Locally
 
 Open your **index.html** file.
 
-Here you can see that we read in the javascript libraries. This includes our ml5.js version as well as p5.js. You can copy and paste this into your **index.html** file or for good practice you can type it all out. Make sure to save the file and refresh your browser after saving.
+Here you can see that we reference the needed JavaScript libraries, so that they get loaded by the browser as the page loads. This includes our ml5.js version as well as p5.js. You can copy and paste this into your **index.html** file or for good practice you can type it all out. Make sure to save the file and refresh your browser after saving.
 
 ```html
 <html>
@@ -101,13 +103,15 @@ Here you can see that we read in the javascript libraries. This includes our ml5
 </html>
 ```
 
-Find [the next step to prepare your image assets](/?id=try-ml5js-locally-2)!
+Follow [the next step to prepare your image assets](/?id=try-ml5js-locally-2)!
 
 ## Prepare Image Assets For Your First Sketch {docsify-ignore}
+
 If you've arrived here, we assume you've imported ml5.js library to your project. Now, let's prepare the image assets we will be using soon.
 
 ### Try Ml5.js Online
-Open the **Sketch Files** folder by clicking the arrow **'>'** at the top left corner of the p5.js editor. 
+
+Open the sidebar revealing the **Sketch Files** by clicking the arrow **'>'** at the top left corner of the p5.js editor.
 
 <center>
     <img style="display:block; max-height:30rem" alt="pose detection" src="_media/getting_started__sketch-folder.png">
@@ -123,12 +127,11 @@ And upload a bird image named `bird.png` to the `images` folder. Remember to log
     <img style="display:block; max-height:25rem" alt="pose detection" src="_media/getting_started__upload_file.png">
 </center>
 
-Now, we are ready to write our first ml5.js sketch! Find [the next step to write your first sketch](/?id=your-first-sketch)!
-
+Now, we are ready to write our first ml5.js sketch! Follow [the next step to write your first sketch](/?id=your-first-sketch)!
 
 ### Try Ml5.js Locally
-Create a new folder called `/images` under your root folder, and upload a bird image named `bird.png` to the `/images`.
 
+Create a new folder called `/images` under your root folder, and add a bird image named `bird.png` to the `/images`.
 
 Your project directory should look something like this:
 
@@ -148,9 +151,10 @@ Your project directory should look something like this:
   * &ensp; <img style="max-height:1rem" src="_media/getting_started__spiral_note_pad.png" alt="file icon" aria-hidden="true">**index.html**: is an .html file that has your html markup and library references
   * &ensp; <img style="max-height:1rem" src="_media/getting_started__spiral_note_pad.png" alt="file icon" aria-hidden="true">**sketch.js**: is where you'll be writing your javascript
 
-Now, we are ready to write our first ml5.js sketch! Find [the next step to write your first sketch](/?id=your-first-sketch)!
+Now, we are ready to write our first ml5.js sketch! Follow [the next step to write your first sketch](/?id=your-first-sketch)!
 
 ## Your First Sketch
+
 Now, no matter you are trying ml5.js online or locally, open your **sketch.js**.
 
 We can start to build your first ml5.js sketch - a classic application of machine learning: **image classification**. This application showcases how you can use a [pre-trained](https://youtu.be/yNkAuWz5lnY?si=0JuaPFYlxLFE0WSU) model called [MobileNet](https://github.com/tensorflow/tfjs-models/tree/master/mobilenet) -- a machine learning model trained to recognize the content of certain images -- in ml5.js. The application aims to highlight a general pattern for how ml5.js projects are setup.
@@ -158,7 +162,6 @@ We can start to build your first ml5.js sketch - a classic application of machin
 Inside your **sketch.js** file you can type out (or copy and paste) the following code. Notice in this example we have a reference to "images/bird.png". You'll replace this with the name of your image.
 
 ```js
-// Initialize the Image Classifier method with MobileNet. A callback needs to be passed.
 let classifier;
 
 // A variable to hold the image we want to classify
@@ -169,6 +172,7 @@ let label = "";
 let confidence = "";
 
 function preload() {
+  // Initialize the Image Classifier method with MobileNet
   classifier = ml5.imageClassifier("MobileNet");
   img = loadImage("images/bird.jpg");
 }
@@ -179,7 +183,7 @@ function setup() {
   image(img, 0, 0, width, height);
 }
 
-// A function to run when we get any errors and the results
+// A function to run when we get the results
 function gotResult(results) {
   // The results are in an array ordered by confidence, print in console
   console.log(results);
@@ -204,7 +208,6 @@ function gotResult(results) {
 Here we define our variables that we will assign our classifier, image, label, and confidence to.
 
 ```js
-// Initialize the Image Classifier method with MobileNet. A callback needs to be passed.
 let classifier;
 
 // A variable to hold the image we want to classify
@@ -214,8 +217,6 @@ let img;
 let label = "";
 let confidence = "";
 ```
-
-*<img style="max-height:1rem" src="_media/getting_started__bulb.png" alt="tip icon" aria-hidden="true"> If you are not familiar with term **callback**, check out our [Ml5 Glossary](/learning/ml5_glossary) for more information.*
 
 ### Step 2: Load your imageClassifier and image
 
@@ -237,7 +238,7 @@ In p5.js we use the **setup()** function for everything in our program that just
 2. call .classify() on our classifier to classify our image
 3. render the image to the canvas
 
-You will notice that the **.classify()** function takes two parameters: 1. the image you want to classify, and 2. a callback function called **gotResult**. Let's look at what **gotResult** does.
+You will notice that the **.classify()** function takes two parameters: 1. the image you want to classify, and 2. a callback function called **gotResult**. Let's next look at what **gotResult** does.
 
 ```js
 function setup() {
@@ -249,14 +250,14 @@ function setup() {
 
 ### Step 4: Define the gotResult() callback function
 
-The **gotResult()** function takes one parameters: results. This parameter gets passed along to **gotResult()** when the **.classify()** function finishes classifying the image. If our classifier manages to recognize the content of the image, then a **result** will be returned.
+The **gotResult()** function takes one parameter: the result. This parameter gets passed along to **gotResult()** when the **.classify()** function finishes classifying the image. If our classifier manages to recognize the content of the image, then a **result** will be returned.
 
 <br/>
 
 In the case of our program, we are interested in the top 1 result which has the highest confidence and stored in **results[0]**. We store the label and confidence of the result in the variables **label** and **confidence** respectively, and then display the label and confidence of the result on the canvas with the **text()** function. The **[nf()](https://p5js.org/reference/#/p5/nf)** function is a p5 function that formats our number to a nicer string.
 
 ```js
-// A function to run when we get any errors and the results
+// A function to run when we get the results
 function gotResult(results) {
   // The results are in an array ordered by confidence, print in console
   console.log(results);
@@ -272,7 +273,7 @@ function gotResult(results) {
 }
 ```
 
-*<img style="max-height:1rem" src="_media/getting_started__bulb.png" alt="tip icon" aria-hidden="true"> If you are not familiar with terms like **label**, **confidence**, check out our [Ml5 Glossary](/learning/ml5_glossary) for more information.*
+*<img style="max-height:1rem" src="_media/getting_started__bulb.png" alt="tip icon" aria-hidden="true"> If you are not familiar with terms like **callback**, **label**, **confidence**, check out our [Ml5 Glossary](/learning/ml5_glossary) for more information.*
 
 ## Need Help On Your Code? {docsify-ignore}
 
@@ -301,19 +302,19 @@ To run the sketch locally, we need to start a local development server.
 # change directories to your project root directory
 cd my-first-ml5-project
 
-# install the dependencies
-npm install
-
-# run the local web server
-npm run develop
+# start a local web server
+python3 -m http.server
 ```
 
 *<img style="max-height:1rem" src="_media/getting_started__bulb.png" alt="tip icon" aria-hidden="true"> If you are not familiar with terms like **terminal**, **dependencies**, check out our [Ml5 Glossary](/learning/ml5_glossary) for more information.*
 
-#### Step 2. You should be able to run the sketch at: 
+#### Step 2. In a browser, open the following URL:
+
 ```
-http://localhost:8081
+http://localhost:8000/
 ```
+
+This should make your sketch show up.
 
 *<img style="max-height:1rem" src="_media/getting_started__bulb.png" alt="tip icon" aria-hidden="true"> You may also be interested in watching [CodingTrain - getting set up](https://www.youtube.com/watch?v=UCHzlUiDD10) for a nice intro on getting set up with writing code for the web.*
 
