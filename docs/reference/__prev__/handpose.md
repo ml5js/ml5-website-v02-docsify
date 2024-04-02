@@ -1,10 +1,8 @@
 # Handpose
 
-
 <center>
-    <img style="display:block; max-height:20rem" alt="A GIF of a person waving their hand in front of a camera. Green dots are drawn over different locations on their palm and fingers–demonstrating the capabilities of the Handpose model." src="_media/reference__header-handpose.gif">
+    <img style="display:block; max-height:20rem" alt="A GIF of a person waving their hand in front of a camera. Green dots are drawn over different locations on their palm and fingers–demonstrating the capabilities of the Handpose model." src="assets/header-handpose.gif">
 </center>
-
 
 ## Description
 
@@ -12,38 +10,41 @@ Handpose is a machine-learning model that allows for palm detection and hand-ske
 
 The ml5.js Handpose model is ported from the [TensorFlow.js Handpose implementation](https://github.com/tensorflow/tfjs-models/tree/master/handpose).
 
-## Quickstart
+## Quick Start
 
 ```js
 let predictions = [];
-const video = document.getElementById('video');
+const video = document.getElementById("video");
 
 // Create a new handpose method
 const handpose = ml5.handpose(video, modelLoaded);
 
 // When the model is loaded
 function modelLoaded() {
-  console.log('Model Loaded!');
+  console.log("Model Loaded!");
 }
 
 // Listen to new 'hand' events
-handpose.on('hand', results => {
+handpose.on("hand", (results) => {
   predictions = results;
 });
 ```
 
-
 ## Usage
 
 ### Initialize
+
 You can initialize ml5.handpose with an optional `video`, configuration `options` object, or a `callback` function.
+
 ```js
 const handpose = ml5.handpose(?video, ?options, ?callback);
 ```
 
 #### Parameters
-* **video**: OPTIONAL. Optional HTMLVideoElement input to run predictions on.
-* **options**: OPTIONAL. A object that contains properties that effect the Handpose model accuracy, results, etc. See documentation on the available options in [TensorFlow's Handpose documentation](https://github.com/tensorflow/tfjs-models/tree/master/handpose#parameters-for-handposeload).
+
+- **video**: OPTIONAL. Optional HTMLVideoElement input to run predictions on.
+- **options**: OPTIONAL. A object that contains properties that effect the Handpose model accuracy, results, etc. See documentation on the available options in [TensorFlow's Handpose documentation](https://github.com/tensorflow/tfjs-models/tree/master/handpose#parameters-for-handposeload).
+
 ```js
 const options = {
   flipHorizontal: false, // boolean value for if the video should be flipped, defaults to false
@@ -51,49 +52,65 @@ const options = {
   detectionConfidence: 0.8, // Threshold for discarding a prediction. Defaults to 0.8.
   scoreThreshold: 0.75, // A threshold for removing multiple (likely duplicate) detections based on a "non-maximum suppression" algorithm. Defaults to 0.75
   iouThreshold: 0.3, // A float representing the threshold for deciding whether boxes overlap too much in non-maximum suppression. Must be between [0, 1]. Defaults to 0.3.
-}
+};
 ```
 
-* **callback**: OPTIONAL. A function that is called once the model has loaded.
+- **callback**: OPTIONAL. A function that is called once the model has loaded.
 
 ### Properties
-***
+
+---
+
 #### .video
-> *Object*. HTMLVideoElement if given in the constructor. Otherwise it is null.
-***
 
-***
+> _Object_. HTMLVideoElement if given in the constructor. Otherwise it is null.
+
+---
+
+---
+
 #### .config
-> *Object*. containing all of the configuration options passed into the model.
-***
 
-***
+> _Object_. containing all of the configuration options passed into the model.
+
+---
+
+---
+
 #### .model
-> *Object*. The Handpose model.
-***
 
-***
+> _Object_. The Handpose model.
+
+---
+
+---
+
 #### .modelReady
-> *Boolean*. Truthy value indicating the model has loaded.
-***
+
+> _Boolean_. Truthy value indicating the model has loaded.
+
+---
 
 ### Methods
 
-***
+---
+
 #### .predict()
+
 > A function that returns the results of a single hand detection prediction.
 
-  ```js
-  handpose.predict(inputMedia, callback);
-  ```
+```js
+handpose.predict(inputMedia, callback);
+```
 
 📥 **Inputs**
-* **inputMedia**: REQUIRED. An HMTL or p5.js image, video, or canvas element that you'd like to run a single prediction on.
 
-* **callback**: OPTIONAL.  A callback function to handle new hand detection predictions. For example:
+- **inputMedia**: REQUIRED. An HMTL or p5.js image, video, or canvas element that you'd like to run a single prediction on.
+
+- **callback**: OPTIONAL. A callback function to handle new hand detection predictions. For example:
 
   ```js
-  handpose.predict(inputMedia, results => {
+  handpose.predict(inputMedia, (results) => {
     // do something with the results
     console.log(results);
   });
@@ -101,7 +118,7 @@ const options = {
 
 📤 **Outputs**
 
-* **Array**: Returns an array of objects describing each detected hand. You can see all of the supported annotation in [the Tensorflow source code](https://github.com/tensorflow/tfjs-models/blob/master/handpose/src/keypoints.ts).
+- **Array**: Returns an array of objects describing each detected hand. You can see all of the supported annotation in [the Tensorflow source code](https://github.com/tensorflow/tfjs-models/blob/master/handpose/src/keypoints.ts).
 
   ```js
   [
@@ -128,21 +145,22 @@ const options = {
     ]
   ```
 
-***
+---
 
 #### .on('hand', ...)
+
 > An event listener that returns the results when a new hand detection prediction occurs.
 
-  ```js
-  handpose.on('hand', callback);
-  ```
+```js
+handpose.on("hand", callback);
+```
 
 📥 **Inputs**
 
-* **callback**: REQUIRED.  A callback function to handle new hand detection predictions. For example:
+- **callback**: REQUIRED. A callback function to handle new hand detection predictions. For example:
 
   ```js
-  handpose.on('hand', results => {
+  handpose.on("hand", (results) => {
     // do something with the results
     console.log(results);
   });
@@ -150,18 +168,19 @@ const options = {
 
 📤 **Outputs**
 
-* **Array**: Returns an array of objects describing each detected hand as an array of objects exactly like the output of the `.predict()` method described above.
-
+- **Array**: Returns an array of objects describing each detected hand as an array of objects exactly like the output of the `.predict()` method described above.
 
 ## Examples
 
 **p5.js**
-* [Handpose_Image](https://github.com/ml5js/ml5-library/tree/main/examples/p5js/Handpose/Handpose_Image)
-* [Handpose_Webcam](https://github.com/ml5js/ml5-library/tree/main/examples/p5js/Handpose/Handpose_Webcam)
+
+- [Handpose_Image](https://github.com/ml5js/ml5-library/tree/main/examples/p5js/Handpose/Handpose_Image)
+- [Handpose_Webcam](https://github.com/ml5js/ml5-library/tree/main/examples/p5js/Handpose/Handpose_Webcam)
 
 **p5 web editor**
-* [Handpose_Image](https://editor.p5js.org/ml5/sketches/Handpose_Image)
-* [Handpose_Webcam](https://editor.p5js.org/ml5/sketches/Handpose_Webcam)
+
+- [Handpose_Image](https://editor.p5js.org/ml5/sketches/Handpose_Image)
+- [Handpose_Webcam](https://editor.p5js.org/ml5/sketches/Handpose_Webcam)
 
 ## Demo
 
@@ -172,6 +191,7 @@ No demos yet - contribute one today!
 No tutorials yet - contribute one today!
 
 ## Model and Data Provenance
+
 > A project started by [Ellen Nickles](https://github.com/ellennickles/)
 
 Coming soon!
@@ -179,8 +199,9 @@ Coming soon!
 ## Acknowledgements
 
 **Contributors**:
-  * Ported to ml5.js by [Bomani Oseni McClendon](https://bomani.rip/).
+
+- Ported to ml5.js by [Bomani Oseni McClendon](https://bomani.rip/).
 
 ## Source Code
 
-* [/src/Handpose](https://github.com/ml5js/ml5-library/tree/main/src/Handpose)
+- [/src/Handpose](https://github.com/ml5js/ml5-library/tree/main/src/Handpose)

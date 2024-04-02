@@ -1,10 +1,8 @@
 # UNET
 
-
 <center>
-    <img style="display:block; max-height:20rem" alt="Illustration of a background masked behind a person" src="_media/reference__header-unet.png">
+    <img style="display:block; max-height:20rem" alt="Illustration of a background masked behind a person" src="assets/header-unet.png">
 </center>
-
 
 ## Description
 
@@ -14,12 +12,11 @@ UNET allows you to segment an image.
 
 The ml5 unet `face` allows you to remove, for example, the background from video of the upper body of person.
 
-
-## Quickstart
+## Quick Start
 
 ```js
 // load your model...
-const uNet = ml5.uNet('face');
+const uNet = ml5.uNet("face");
 
 // assuming you have an HTMLVideo feed...
 uNet.segment(video, gotResult);
@@ -35,7 +32,6 @@ function gotResult(error, result) {
 }
 ```
 
-
 ## Usage
 
 ### Initialize
@@ -45,18 +41,19 @@ const unet = ml5.uNet(model, ?callback);
 ```
 
 #### Parameters
-* **model**: A string to the path of the JSON model.
-* **callback**: Optional. A callback function that is called once the model has loaded. If no callback is provided, it will return a promise that will be resolved once the model has loaded.
 
+- **model**: A string to the path of the JSON model.
+- **callback**: Optional. A callback function that is called once the model has loaded. If no callback is provided, it will return a promise that will be resolved once the model has loaded.
 
 ### Properties
 
+---
 
-***
 #### .ready
-> *Boolean*. Boolean value that specifies if the model has loaded.
-***
 
+> _Boolean_. Boolean value that specifies if the model has loaded.
+
+---
 
 ### Methods
 
@@ -65,8 +62,11 @@ FUNCTION DEFINITION START
 * Notice that each function definition is wrapped in three stars `***`
 * This creates lines to contain everything
 ///////////////////////// -->
-***
+
+---
+
 #### .segment()
+
 > segments the image
 
 ```js
@@ -74,12 +74,13 @@ unet.segment(?video, ?callback);
 ```
 
 📥 **Inputs**
-* **video**: Optional. A HTML video element or a p5 video element.
-* **callback**: Optional. A function to run once the model has been loaded.
+
+- **video**: Optional. A HTML video element or a p5 video element.
+- **callback**: Optional. A function to run once the model has been loaded.
 
 📤 **Outputs**
 
-* **Object**: Returns an Object.
+- **Object**: Returns an Object.
   ```js
   {
     segmentation: mask,
@@ -102,20 +103,21 @@ unet.segment(?video, ?callback);
   };
   ```
 
-***
-
+---
 
 ## Examples
 
 **p5.js**
-* [UNET_webcam](https://github.com/ml5js/ml5-library/tree/main/examples/p5js/UNET/UNET_webcam)
+
+- [UNET_webcam](https://github.com/ml5js/ml5-library/tree/main/examples/p5js/UNET/UNET_webcam)
 
 **p5 web editor**
-* [UNET_webcam](https://editor.p5js.org/ml5/sketches/UNET_webcam)
+
+- [UNET_webcam](https://editor.p5js.org/ml5/sketches/UNET_webcam)
 
 **plain javascript**
-* [UNET_webcam](https://github.com/ml5js/ml5-library/tree/main/examples/javascript/UNET/UNET_webcam)
 
+- [UNET_webcam](https://github.com/ml5js/ml5-library/tree/main/examples/javascript/UNET/UNET_webcam)
 
 ## Demo
 
@@ -126,6 +128,7 @@ No demos yet - contribute one today!
 No tutorials yet - contribute one today!
 
 ## Model and Data Provenance
+
 > A project started by [Ellen Nickles](https://github.com/ellennickles/)
 
 ### Models Overview
@@ -167,17 +170,17 @@ A nice description of the models overview
   - Website [Mut1ny](https://www.mut1ny.com/face-headsegmentation-dataset)
   - Website [Mut1ny Patreon](https://www.patreon.com/mut1ny)
 
-
-
 ## Acknowledgements
 
 **Contributors**:
-  * Developed by [Zaid Alyafeai](https://github.com/zaidalyafeai)
-  * Additional contributions by [Joey Lee](https://github.com/joeyklee)
+
+- Developed by [Zaid Alyafeai](https://github.com/zaidalyafeai)
+- Additional contributions by [Joey Lee](https://github.com/joeyklee)
 
 **Credits**:
-  * UNET 'face' was trained by [Zaid Alyafeai](https://github.com/zaidalyafeai) using [mut1ny - Face/Head segmentation dataset](http://www.mut1ny.com/face-headsegmentation-dataset).
+
+- UNET 'face' was trained by [Zaid Alyafeai](https://github.com/zaidalyafeai) using [mut1ny - Face/Head segmentation dataset](http://www.mut1ny.com/face-headsegmentation-dataset).
 
 ## Source Code
 
-* [/src/UNET/](https://github.com/ml5js/ml5-library/tree/main/src/UNET)
+- [/src/UNET/](https://github.com/ml5js/ml5-library/tree/main/src/UNET)

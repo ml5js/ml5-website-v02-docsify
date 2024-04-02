@@ -1,23 +1,21 @@
 # ml5 Utilities
 
-
 <center>
-    <img style="display:block; max-height:20rem" alt="Illustration of hammer and wrench" src="_media/reference__header-utils.png">
+    <img style="display:block; max-height:20rem" alt="Illustration of hammer and wrench" src="assets/header-utils.png">
 </center>
-
 
 ## Description
 
 The ml5 utilities are handy functions that make your life easier when working with data, images, etc.
 
-
 ## Usage
 
 ### Methods
 
+---
 
-***
 #### .flipImage()
+
 > Flips an image or video input horizontally and returns the flipped image. Handy for mirroring an image or video.
 
 ```js
@@ -25,15 +23,17 @@ const flippedImage = ml5.flipImage(input);
 ```
 
 📥 **Inputs**
-* **input**: Optional. A HTMLVideoElement | p5 video element | HTMLImageElement.
+
+- **input**: Optional. A HTMLVideoElement | p5 video element | HTMLImageElement.
 
 📤 **Outputs**
 
-* **Object**: Returns a flipped image.
+- **Object**: Returns a flipped image.
 
 🌈**Example**
 
-* Assuming you're using ml5 with p5.js:
+- Assuming you're using ml5 with p5.js:
+
   ```html
   <html>
     <meta charset="UTF-8" />
@@ -60,10 +60,8 @@ const flippedImage = ml5.flipImage(input);
   </html>
   ```
 
-***
-
-
+---
 
 ## Source Code
 
-* [/src/utils/](https://github.com/ml5js/ml5-library/tree/main/src/utils)
+- [/src/utils/](https://github.com/ml5js/ml5-library/tree/main/src/utils)

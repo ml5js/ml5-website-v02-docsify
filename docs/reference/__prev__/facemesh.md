@@ -1,10 +1,8 @@
 # Facemesh
 
-
 <center>
-    <img style="display:block; max-height:20rem" alt="A screenshot of a video feed where a person sits at their chair inside of a bedroom while green dots are drawn over different locations on their face." src="_media/reference__header-facemesh.jpg">
+    <img style="display:block; max-height:20rem" alt="A screenshot of a video feed where a person sits at their chair inside of a bedroom while green dots are drawn over different locations on their face." src="assets/header-facemesh.jpg">
 </center>
-
 
 ## Description
 
@@ -12,89 +10,108 @@ Facemesh is a machine-learning model that allows for facial landmark detection i
 
 The ml5.js Facemesh model is ported from the [TensorFlow.js Facemesh implementation](https://github.com/tensorflow/tfjs-models/tree/master/face-landmarks-detection).
 
-## Quickstart
+## Quick Start
 
 ```js
 let predictions = [];
-const video = document.getElementById('video');
+const video = document.getElementById("video");
 
 // Create a new facemesh method
 const facemesh = ml5.facemesh(video, modelLoaded);
 
 // When the model is loaded
 function modelLoaded() {
-  console.log('Model Loaded!');
+  console.log("Model Loaded!");
 }
 
 // Listen to new 'face' events
-facemesh.on('face', results => {
+facemesh.on("face", (results) => {
   predictions = results;
 });
 ```
 
-
 ## Usage
 
 ### Initialize
+
 You can initialize ml5.facemesh with an optional `video`, configuration `options` object, or a `callback` function.
+
 ```js
 const facemesh = ml5.facemesh(?video, ?options, ?callback);
 ```
 
 #### Parameters
-* **video**: OPTIONAL. Optional HTMLVideoElement input to run predictions on.
-* **options**: OPTIONAL. A object that contains properties that effect the Facemesh model accuracy, results, etc. See documentation on the available options in [TensorFlow's Facemesh documentation](https://github.com/tensorflow/tfjs-models/tree/master/face-landmarks-detection#parameters-for-facelandmarksdetectionload).
+
+- **video**: OPTIONAL. Optional HTMLVideoElement input to run predictions on.
+- **options**: OPTIONAL. A object that contains properties that effect the Facemesh model accuracy, results, etc. See documentation on the available options in [TensorFlow's Facemesh documentation](https://github.com/tensorflow/tfjs-models/tree/master/face-landmarks-detection#parameters-for-facelandmarksdetectionload).
+
   ```js
   const options = {
-  flipHorizontal: false, // boolean value for if the video should be flipped, defaults to false
-  maxContinuousChecks: 5, // How many frames to go without running the bounding box detector. Only relevant if maxFaces > 1. Defaults to 5.
-  detectionConfidence: 0.9, // Threshold for discarding a prediction. Defaults to 0.9.
-  maxFaces: 10, // The maximum number of faces detected in the input. Should be set to the minimum number for performance. Defaults to 10.
-  scoreThreshold: 0.75, // A threshold for removing multiple (likely duplicate) detections based on a "non-maximum suppression" algorithm. Defaults to 0.75.
-  iouThreshold: 0.3, // A float representing the threshold for deciding whether boxes overlap too much in non-maximum suppression. Must be between [0, 1]. Defaults to 0.3.
-  }
+    flipHorizontal: false, // boolean value for if the video should be flipped, defaults to false
+    maxContinuousChecks: 5, // How many frames to go without running the bounding box detector. Only relevant if maxFaces > 1. Defaults to 5.
+    detectionConfidence: 0.9, // Threshold for discarding a prediction. Defaults to 0.9.
+    maxFaces: 10, // The maximum number of faces detected in the input. Should be set to the minimum number for performance. Defaults to 10.
+    scoreThreshold: 0.75, // A threshold for removing multiple (likely duplicate) detections based on a "non-maximum suppression" algorithm. Defaults to 0.75.
+    iouThreshold: 0.3, // A float representing the threshold for deciding whether boxes overlap too much in non-maximum suppression. Must be between [0, 1]. Defaults to 0.3.
+  };
   ```
 
-* **callback**: OPTIONAL. A function that is called once the model has loaded.
+- **callback**: OPTIONAL. A function that is called once the model has loaded.
 
 ### Properties
-***
+
+---
+
 #### .video
-> *Object*. HTMLVideoElement if given in the constructor. Otherwise it is null.
-***
 
-***
+> _Object_. HTMLVideoElement if given in the constructor. Otherwise it is null.
+
+---
+
+---
+
 #### .config
-> *Object*. containing all of the configuration options passed into the model. 
-***
 
-***
+> _Object_. containing all of the configuration options passed into the model.
+
+---
+
+---
+
 #### .model
-> *Object*. The Facemesh model.
-***
 
-***
+> _Object_. The Facemesh model.
+
+---
+
+---
+
 #### .modelReady
-> *Boolean*. Truthy value indicating the model has loaded.
-***
+
+> _Boolean_. Truthy value indicating the model has loaded.
+
+---
 
 ### Methods
 
-***
+---
+
 #### .predict()
+
 > A function that returns the results of a single face detection prediction.
 
-  ```js
-  facemesh.predict(inputMedia, callback);
-  ```
+```js
+facemesh.predict(inputMedia, callback);
+```
 
 📥 **Inputs**
-* **inputMedia**: REQUIRED. An HMTL or p5.js image, video, or canvas element that you'd like to run a single prediction on.
 
-* **callback**: OPTIONAL.  A callback function to handle new face detection predictions. For example:
+- **inputMedia**: REQUIRED. An HMTL or p5.js image, video, or canvas element that you'd like to run a single prediction on.
+
+- **callback**: OPTIONAL. A callback function to handle new face detection predictions. For example:
 
   ```js
-  facemesh.predict(inputMedia, results => {
+  facemesh.predict(inputMedia, (results) => {
     // do something with the results
     console.log(results);
   });
@@ -102,7 +119,7 @@ const facemesh = ml5.facemesh(?video, ?options, ?callback);
 
 📤 **Outputs**
 
-* **Array**: Returns an array of objects describing each detected face. See the [Facemesh keypoints map](https://github.com/tensorflow/tfjs-models/tree/master/face-landmarks-detection#keypoints) to determine how the keypoint related to facial landmarks.
+- **Array**: Returns an array of objects describing each detected face. See the [Facemesh keypoints map](https://github.com/tensorflow/tfjs-models/tree/master/face-landmarks-detection#keypoints) to determine how the keypoint related to facial landmarks.
 
   ```js
   [
@@ -133,21 +150,22 @@ const facemesh = ml5.facemesh(?video, ?options, ?callback);
   ]
   ```
 
-***
+---
 
 #### .on('face', ...)
+
 > An event listener that returns the results when a new face detection prediction occurs.
 
-  ```js
-  facemesh.on('face', callback);
-  ```
+```js
+facemesh.on("face", callback);
+```
 
 📥 **Inputs**
 
-* **callback**: REQUIRED.  A callback function to handle new face detection predictions. For example:
+- **callback**: REQUIRED. A callback function to handle new face detection predictions. For example:
 
   ```js
-  facemesh.on('face', results => {
+  facemesh.on("face", (results) => {
     // do something with the results
     console.log(results);
   });
@@ -155,18 +173,19 @@ const facemesh = ml5.facemesh(?video, ?options, ?callback);
 
 📤 **Outputs**
 
-* **Array**: Returns an array of objects describing each detected face as an array of objects exactly like the output of the `.predict()` method described above. See the [Facemesh keypoints map](https://github.com/tensorflow/tfjs-models/tree/master/face-landmarks-detection#keypoints) to determine how the keypoint related to facial landmarks.
-
+- **Array**: Returns an array of objects describing each detected face as an array of objects exactly like the output of the `.predict()` method described above. See the [Facemesh keypoints map](https://github.com/tensorflow/tfjs-models/tree/master/face-landmarks-detection#keypoints) to determine how the keypoint related to facial landmarks.
 
 ## Examples
 
 **p5.js**
-* [Facemesh_Image](https://github.com/ml5js/ml5-library/tree/main/examples/p5js/Facemesh/Facemesh_Image)
-* [Facemesh_Webcam](https://github.com/ml5js/ml5-library/tree/main/examples/p5js/Facemesh/Facemesh_Webcam)
+
+- [Facemesh_Image](https://github.com/ml5js/ml5-library/tree/main/examples/p5js/Facemesh/Facemesh_Image)
+- [Facemesh_Webcam](https://github.com/ml5js/ml5-library/tree/main/examples/p5js/Facemesh/Facemesh_Webcam)
 
 **p5 web editor**
-* [Facemesh_Image](https://editor.p5js.org/ml5/sketches/Facemesh_Image)
-* [Facemesh_Webcam](https://editor.p5js.org/ml5/sketches/Facemesh_Webcam)
+
+- [Facemesh_Image](https://editor.p5js.org/ml5/sketches/Facemesh_Image)
+- [Facemesh_Webcam](https://editor.p5js.org/ml5/sketches/Facemesh_Webcam)
 
 ## Demo
 
@@ -177,6 +196,7 @@ No demos yet - contribute one today!
 No tutorials yet - contribute one today!
 
 ## Model and Data Provenance
+
 > A project started by [Ellen Nickles](https://github.com/ellennickles/)
 
 Coming soon!
@@ -184,8 +204,9 @@ Coming soon!
 ## Acknowledgements
 
 **Contributors**:
-  * Ported to ml5.js by [Bomani Oseni McClendon](https://bomani.rip/).
+
+- Ported to ml5.js by [Bomani Oseni McClendon](https://bomani.rip/).
 
 ## Source Code
 
-* [/src/Facemesh](https://github.com/ml5js/ml5-library/tree/main/src/Facemesh)
+- [/src/Facemesh](https://github.com/ml5js/ml5-library/tree/main/src/Facemesh)

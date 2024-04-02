@@ -1,10 +1,8 @@
 # Facemesh
 
-
 <center>
-    <img style="display:block; max-height:20rem" alt="A screenshot of a video feed where a person sits at their chair inside of a bedroom while green dots are drawn over different locations on their face." src="_media/reference__header-facemesh.jpg">
+    <img style="display:block; max-height:20rem" alt="A screenshot of a video feed where a person sits at their chair inside of a bedroom while green dots are drawn over different locations on their face." src="assets/header-facemesh.jpg">
 </center>
-
 
 ## Description
 
@@ -13,22 +11,36 @@ Facemesh is a machine-learning model that allows for facial landmark detection i
 The ml5.js Facemesh model is ported from the [Mediapipe Facemesh implementation](https://github.com/tensorflow/tfjs-models/tree/master/face-landmarks-detection).
 
 ### Key Features
+
 - **Facial Landmark Detection**: Facemesh can detect the 3D coordinates of 468 keypoints on the face.
 - **Face Bounding Box**: Facemesh can provide the bounding box of each detected face.
 - **Face Parts Contour**: Facemesh can provide the 3D coordinates of the contour of each face part (lips, eyes, eyebrows, and face oval).
 - **Multiple Faces**: Facemesh can detect multiple faces at the same time. You can specify the maximum number of faces to detect.
 
 ### Output Example
+
 An example of the output from Facemesh is shown below:
 
 ```javascript
 [
   {
     keypoints: [
-      { x: 331.7021942138672, y: 332.43553161621094, z: -18.904154300689697, name: "lips" },
+      {
+        x: 331.7021942138672,
+        y: 332.43553161621094,
+        z: -18.904154300689697,
+        name: "lips",
+      },
       // Additional keypoints here...
     ],
-    box: { xMin: 255.43195724487305, yMin: 186.6709327697754, xMax: 433.4109115600586, yMax: 387.9571723937988, width: 177.97895431518555, height: 201.28623962402344 },
+    box: {
+      xMin: 255.43195724487305,
+      yMin: 186.6709327697754,
+      xMax: 433.4109115600586,
+      yMax: 387.9571723937988,
+      width: 177.97895431518555,
+      height: 201.28623962402344,
+    },
     lips: [
       { x: 331.7021942138672, y: 332.43553161621094, z: -18.904154300689697 },
       // Additional lip keypoints here...
@@ -47,19 +59,22 @@ An example of the output from Facemesh is shown below:
     ],
     leftEyebrow: [
       // Keypoints for left eyebrow
-    ]
+    ],
   },
   // Additional objects here...
-]
+];
 ```
 
 ## Getting Started
+
 Ready to give it a try? Just follow our simple instructions, and you'll be on your way to creating your very own Facemesh project in no time!
 
 ### Demo
-[p5 Web Editor](iframes/facemesh-keypoints ':include :type=iframe width=100% height=550px')
 
-### Quickstart
+[p5 Web Editor](iframes/facemesh-keypoints ":include :type=iframe width=100% height=550px")
+
+### Quick Start
+
 Before you start, let's create an empty project in the [p5 web editor](https://editor.p5js.org/).
 
 First of all, copy and paste the following code into your **index.html** file. If you are not familiar with the p5 web editor interface, you can find a guide on how to find your **index.html** file [here](/?id=try-ml5js-online-1).
@@ -118,8 +133,9 @@ function gotFaces(results) {
 Alternatively, you can open [this example code](https://github.com/ml5js/ml5-next-gen/tree/main/examples/FaceMesh-keypoints) and try it yourself on p5.js web editor!
 
 ### Additional Examples
-* [FaceMesh-parts](https://github.com/ml5js/ml5-next-gen/tree/main/examples/FaceMesh-parts): Draw the face parts of the detected face.
-* [FaceMesh-single-image](https://github.com/ml5js/ml5-next-gen/tree/main/examples/FaceMesh-single-image): Detect faces in a single image.
+
+- [FaceMesh-parts](https://github.com/ml5js/ml5-next-gen/tree/main/examples/FaceMesh-parts): Draw the face parts of the detected face.
+- [FaceMesh-single-image](https://github.com/ml5js/ml5-next-gen/tree/main/examples/FaceMesh-single-image): Detect faces in a single image.
 
 TODO (link p5 web editor examples once uploaded)
 

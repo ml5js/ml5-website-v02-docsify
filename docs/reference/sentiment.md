@@ -1,35 +1,43 @@
 # Sentiment
 
 <center>
-    <img style="display:block;max-height:20rem" alt="sentiment" src="_media/reference__header-sentiment.png">
+    <img style="display:block;max-height:20rem" alt="sentiment" src="assets/header-sentiment.png">
 </center>
 
 ## Description
-Sentiment is a model trained to predict the sentiment of any given text. For example, it can predict how positive or negative a review is with a value between 0 ("negative") and 1 ("positive"). 
+
+Sentiment is a model trained to predict the sentiment of any given text. For example, it can predict how positive or negative a review is with a value between 0 ("negative") and 1 ("positive").
 
 The model is trained using IMDB reviews that have been truncated to a maximum of 200 words, only the 20000 most used words in the reviews are used.
 
 ### Key Features
-* **Sentiment Analysis**: The model can predict the sentiment of a given text.
+
+- **Sentiment Analysis**: The model can predict the sentiment of a given text.
 
 ### Output Example
+
 The output is a value between 0 and 1, where 0 is negative and 1 is positive.
 
 ```javascript
-{score: 0.9999948740005493}
+{
+  score: 0.9999948740005493;
+}
 ```
 
 ## Getting Started
+
 Integrating Sentiment into your ml5.js projects is straightforward. Our documentation and user-friendly API will help you make the most of this model!
 
 ### Demo
-[p5 Web Editor](iframes/sentiment ':include :type=iframe width=100% height=550px')
 
-### Quickstart
+[p5 Web Editor](iframes/sentiment ":include :type=iframe width=100% height=550px")
+
+### Quick Start
+
 Before you start, let's create an empty project in the [p5 web editor](https://editor.p5js.org/).
 
 First of all, copy and paste the following code into your **index.html** file. If you are not familiar with the p5 web editor interface, you can find a guide on how to find your **index.html** file [here](/?id=try-ml5js-online-1).
-    
+
 ```html
 <script src="https://unpkg.com/ml5@alpha/dist/ml5.js"></script>
 ```
@@ -82,12 +90,15 @@ function keyPressed() {
   }
 }
 ```
+
 Alternatively, you can open [this example code](https://github.com/ml5js/ml5-next-gen/tree/main/examples/Sentiment) and try it yourself on p5.js web editor!
 
 ### Additional Examples
+
 (To be added)
 
 ## Usage
+
 ### Initialize
 
 ```js
@@ -95,28 +106,34 @@ const sentiment = ml5.sentiment(model, ?callback);
 ```
 
 #### Parameters
-* **model**: REQUIRED. Defaults to 'moviereviews'. You can also use a path to a `manifest.json` file via a relative or absolute path.
-* **callback**: OPTIONAL. A callback function that is called once the model has loaded. If no callback is provided, it will return a promise that will be resolved once the model has loaded.
 
+- **model**: REQUIRED. Defaults to 'moviereviews'. You can also use a path to a `manifest.json` file via a relative or absolute path.
+- **callback**: OPTIONAL. A callback function that is called once the model has loaded. If no callback is provided, it will return a promise that will be resolved once the model has loaded.
 
 ### Properties
 
-***
+---
+
 #### .ready
+
 > Boolean value that specifies if the model has loaded.
-***
 
-***
+---
+
+---
+
 #### .model
-> The model being used.
-***
 
+> The model being used.
+
+---
 
 ### Methods
 
+---
 
-***
 #### .predict()
+
 > Given a number, will make magicSparkles
 
 ```js
@@ -125,12 +142,10 @@ sentiment.predict(text);
 
 📥 **Inputs**
 
-* **text**: Required. String. A string of text to predict
-
+- **text**: Required. String. A string of text to predict
 
 📤 **Outputs**
 
-* **Object**: Scores the sentiment of given text with a value between 0 ("negative") and 1 ("positive").
+- **Object**: Scores the sentiment of given text with a value between 0 ("negative") and 1 ("positive").
 
-***
-
+---
