@@ -88,30 +88,6 @@ body {
   background-color: #fff;
 }
 
-/* sidebar toggle */
-body:not(.ready) [data-cloak],
-body:not(.ready) .app-nav,
-body:not(.ready)>nav {
-  display: none;
-}
-
-body.sticky .sidebar,
-body.sticky .sidebar-toggle {
-  position: fixed;
-}
-
-body.close .sidebar {
-  transform: translateX(-300px);
-}
-
-body.close .sidebar-toggle {
-  width: auto;
-}
-
-body.close .content {
-  left: 0;
-}
-
 /* headings */
 /* Also cross-check ".markdown-section a" */
 h1,
@@ -357,6 +333,31 @@ div#app:empty::before {
 }
 
 /* ===== SIDEBAR ===== */
+/* sidebar toggle */
+body:not(.ready) [data-cloak],
+body:not(.ready) .app-nav,
+body:not(.ready)>nav {
+  display: none;
+}
+
+body.sticky .sidebar,
+body.sticky .sidebar-toggle {
+  position: fixed;
+}
+
+body.close .sidebar {
+  transform: translateX(-300px);
+}
+
+body.close .sidebar-toggle {
+  width: auto;
+}
+
+body.close .content {
+  left: 0;
+}
+
+/* sidebar styles */
 .sidebar {
   /* border-right: 1px solid rgba(0, 0, 0, 0.07); */
   padding: 40px 0 0;

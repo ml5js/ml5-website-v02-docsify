@@ -27,7 +27,7 @@
 - **Learning** 📚
   <div class="sidebar-section-divider">&nbsp;</div>
 
-  - [Ml5 Glossary](/learning/ml5-glossary.md)
+  - [ml5 Glossary](/learning/ml5-glossary.md)
   <!-- * [Community Tutorial Library](/learning/community-tutorial-library.md) -->
 
 - **Contributing** 🏗
