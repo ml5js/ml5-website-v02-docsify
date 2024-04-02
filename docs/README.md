@@ -6,13 +6,13 @@ Welcome to the ml5.js documentation. Here you'll find everything you need to get
 
 First, we need to create an empty project to start with. Here, we introduces two ways to initialize your project:
 
-### Try Ml5.js Online
+### Try ml5.js Online
 
 If you would like to get a taste of ml5.js in minutes, the easiest way is using the [p5.js editor](https://editor.p5js.org/). You can open the web editor and follow [the next step to import the ml5 library](/?id=try-ml5js-online-1).
 
 * <img style="max-height:1rem" src="_media/getting_started__bulb.png" alt="tip icon" aria-hidden="true"> If you are not familiar with p5.js, check out the [p5.js Get Started page](https://p5js.org/get-started/) to know more!*
 
-### Try Ml5.js Locally
+### Try ml5.js Locally
 
 If you want to start a project from scratch and develop it locally, make sure to have these tools ready:
 
