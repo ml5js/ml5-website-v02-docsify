@@ -4,12 +4,12 @@ This repository is for the work-in-progress ml5.js website, which is built using
 
 ## Installation and Testing
 
-You can simply clone the repository and run the project locally
+You can simply clone the repository and run the website locally.
 
 ### Prerequisites
 
-- [GitHub Desktop Application](https://desktop.github.com/)
-  - unless you are already familiar with Git and Command Line Interface (CLI)
+- [GitHub Desktop](https://desktop.github.com/)
+  - Unless you are already familiar with Git and Command Line Interface (CLI).
 - [Docsify](https://docsify.js.org/#/quickstart)
 
 ## Contributing
@@ -17,6 +17,10 @@ You can simply clone the repository and run the project locally
 We welcome contributions!
 
 If you are in the ml5.js organization, create a new branch, keeping the naming convention described below. Please avoid using any other punctuation marks other than hyphens, "-". Category can be optional.
+
+```
+(category)/author-description-of-changes
+```
 
 If you are not in the ml5.js organization, follow these steps:
 
@@ -26,13 +30,9 @@ If you are not in the ml5.js organization, follow these steps:
 4. Create a new Pull Request (PR), by clicking on "Contribute" and then "Open Pull Request" on your forked repository.
 5. The PR will be reviewed and merged.
 
-```
-(category)/author-description-of-changes
-```
-
 ## Issues
 
-Please feel free to add any issues or feature requests on the [Issues](https://github.com/ml5js/ml5-website-v02-docsify/issues)
+Please feel free to add any issues or feature requests on the [Issues](https://github.com/ml5js/ml5-website-v02-docsify/issues).
 
 ## Code of Conduct
 
