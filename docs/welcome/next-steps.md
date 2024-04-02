@@ -23,7 +23,7 @@ Interested in using ml5.js to build more ML-based projects? Check out these lear
 
 </center>
 
-> #### ml5 Glossay 👉[ Learn](https://ml5js.github.io/ml5-website-v02-docsify/#/learning/ml5_glossary)
+> #### ml5 Glossay 👉[ Learn](https://ml5js.github.io/ml5-website-v02-docsify/#/learning/ml5-glossary)
 >
 > Have you ever felt confused about a term we used here at ml5? No worries, we've got you covered! Check out this glossary. Here, we explain and define programming techniques and machine learning terminologies specific to ml5 that are mentioned in our libraries, website, and examples.
 

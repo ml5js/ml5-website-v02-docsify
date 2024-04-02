@@ -2,8 +2,8 @@
   <div class="sidebar-section-divider">&nbsp;</div>
 
   - [Getting Started](/)
-  - [Next Steps](/welcome/next_steps.md)
-  - [FAQ](/welcome/FAQ.md)
+  - [Next Steps](/welcome/next-steps.md)
+  - [FAQ](/welcome/faq.md)
 
 - **Reference** 📃
   <div class="sidebar-section-divider">&nbsp;</div>
@@ -27,11 +27,11 @@
 - **Learning** 📚
   <div class="sidebar-section-divider">&nbsp;</div>
 
-  - [Ml5 Glossary](/learning/ml5_glossary.md)
-  <!-- * [Community Tutorial Library](/learning/community_tutorial_library.md) -->
+  - [Ml5 Glossary](/learning/ml5-glossary.md)
+  <!-- * [Community Tutorial Library](/learning/community-tutorial-library.md) -->
 
 - **Contributing** 🏗
   <div class="sidebar-section-divider">&nbsp;</div>
 
-  - [How To Contribute](/contributing/how_to_contribute.md)
-  - [Develop Contributor Notes](/contributing/develop_contributor_notes.md)
+  - [How To Contribute](/contributing/how-to-contribute.md)
+  - [Develop Contributor Notes](/contributing/develop-contributor-notes.md)
