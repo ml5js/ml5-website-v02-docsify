@@ -1,7 +1,7 @@
 # Body Segmentation
 
 <center>
-    <img style="display:block; max-height:20rem" alt="BodyPix Header Image of Harriet Tubman" src="_media/reference__header-bodypix.png">
+    <img style="display:block; max-height:20rem" alt="BodyPix Header Image of Harriet Tubman" src="assets/header-bodypix.png">
 </center>
 
 ## Description
@@ -10,10 +10,11 @@ BodySegmentation divides an image input into the people and the background, and 
 
 ### Key Features
 
-* **Real-time person segmentation**: The model can segment people from the background in real-time.
-* **Real-time body part segmentation**: The model can segment body parts in real-time.
+- **Real-time person segmentation**: The model can segment people from the background in real-time.
+- **Real-time body part segmentation**: The model can segment body parts in real-time.
 
 ### Output Example
+
 Based on your options, the output can be a mask of the background, a mask of the person, or a mask of the body parts. Regardless of the scenario, the segmentation information deemed valuable is consistently stored within the mask property of the resulting object.
 
 ```javascript
@@ -21,13 +22,15 @@ result.mask;
 ```
 
 ## Getting Started
+
 Integrating Body Segmentation into your ml5.js projects is straightforward. Our documentation and user-friendly API will help you make the most of this combined model!
 
 ### Demo
 
-[p5 Web Editor](iframes/body-segmentation ':include :type=iframe width=100% height=550px')
+[p5 Web Editor](iframes/body-segmentation ":include :type=iframe width=100% height=550px")
 
-### Quickstart
+### Quick Start
+
 Before you start, let's create an empty project in the [p5 web editor](https://editor.p5js.org/).
 
 First of all, copy and paste the following code into your **index.html** file. If you are not familiar with the p5 web editor interface, you can find a guide on how to find your **index.html** file [here](/?id=try-ml5js-online-1).
@@ -73,11 +76,13 @@ function gotResults(result) {
   segmentation = result.mask;
 }
 ```
+
 Alternatively, you can open [this example code](https://github.com/ml5js/ml5-next-gen/tree/main/examples/BodySegmentation-maskbodyparts) and try it yourself on p5.js web editor!
 
 ### Additional Examples
-* [BodySegmentation-maskbackground](https://github.com/ml5js/ml5-next-gen/tree/main/examples/BodySegmentation-maskbackground): Mask the background of an image.
-* [BodySegmentation-maskperson](https://github.com/ml5js/ml5-next-gen/tree/main/examples/BodySegmentation-maskperson): Mask the person in an image.
+
+- [BodySegmentation-maskbackground](https://github.com/ml5js/ml5-next-gen/tree/main/examples/BodySegmentation-maskbackground): Mask the background of an image.
+- [BodySegmentation-maskperson](https://github.com/ml5js/ml5-next-gen/tree/main/examples/BodySegmentation-maskperson): Mask the person in an image.
 
 <!-- ### Tutorials
 

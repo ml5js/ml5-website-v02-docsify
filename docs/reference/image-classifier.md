@@ -1,46 +1,50 @@
 # ImageClassifier
 
-
 <center>
-    <img style="display:block; max-height:20rem" alt="image classification of bird" src="_media/reference__header-imageClassifier.png">
+    <img style="display:block; max-height:20rem" alt="image classification of bird" src="assets/header-image-classifier.png">
 </center>
 
-
 ## Description
-Have you ever wanted to know what's in an image? Our image classifier can help! 
+
+Have you ever wanted to know what's in an image? Our image classifier can help!
 
 The image classifier is a pre-trained model that can recognize the content of an image. It can identify objects, animals, and even people in a picture. The image classifier uses a neural network to analyze the image and provide a list of possible labels for the content of the image.
 
-*<img style="max-height:1rem" src="_media/getting_started__bulb.png" alt="tip icon" aria-hidden="true"> If you want to **train your own image classification model with customized labels**, check out our [Image + Teachable Machine](/reference/image-classifier-tm) to get started!*
+_<img style="max-height:1rem" src="assets/gettingstarted-bulb.png" alt="tip icon" aria-hidden="true"> If you want to **train your own image classification model with customized labels**, check out our [Image + Teachable Machine](/reference/image-classifier-tm) to get started!_
 
 ### Key Features
+
 - **Image Classification**: The image classifier can recognize the content of an image and provide a list of possible labels.
 - **Video Object Detection**: The image classifier can also be used to classify objects in a video stream.
 
 ### Output Example
+
 An example of the output from the image classifier is shown below:
 
 ```javascript
 [
   {
     label: "zebra",
-    confidence: 0.98
+    confidence: 0.98,
   },
   {
     label: "tiger",
-    confidence: 0.89
+    confidence: 0.89,
   },
   // Additional objects here...
-]
+];
 ```
 
 ## Getting Started
+
 Ready to give it a try? Our demo is here to give you a sneak peek into what the image classifier can do! Don't hesitate to follow along with our instructions to kickstart your very own image classifier project!
 
 ### Demo
-[p5 Web Editor](iframes/image-classifier ':include :type=iframe width=100% height=550px')
 
-### Quickstart
+[p5 Web Editor](iframes/image-classifier ":include :type=iframe width=100% height=550px")
+
+### Quick Start
+
 Before you start, let's create an empty project in the [p5 web editor](https://editor.p5js.org/).
 
 First of all, copy and paste the following code into your **index.html** file. If you are not familiar with the p5 web editor interface, you can find a guide on how to find your **index.html** file [here](/?id=try-ml5js-online-1).
@@ -92,6 +96,7 @@ function gotResult(results) {
 Alternatively, you can open [this example code](https://github.com/ml5js/ml5-next-gen/tree/main/examples/ImageClassifier) and try it yourself on p5.js web editor!
 
 ### Additional Examples
+
 - [ImageClassifier-video](https://github.com/ml5js/ml5-next-gen/tree/main/examples/ImageClassifier-video): Classify the content of images from your webcam.
 
 ## Methods

@@ -1,26 +1,24 @@
 # Object Detector
 
-
 <center>
-    <img style="display:block; max-height:20rem" alt="cat detected by yolo" src="_media/reference__header-yolo.png">
+    <img style="display:block; max-height:20rem" alt="cat detected by yolo" src="assets/header-yolo.png">
 </center>
-
 
 ## Description
 
 Real-time object detection system using either [YOLO](https://pjreddie.com/darknet/yolo/) or [CocoSsd](https://github.com/tensorflow/tfjs-models/tree/master/coco-ssd) model.
 
-## Quickstart
+## Quick Start
 
 ```js
-const video = document.getElementById('video');
+const video = document.getElementById("video");
 
 // Create a ObjectDetector method
-const objectDetector = ml5.objectDetector('cocossd', {}, modelLoaded);
+const objectDetector = ml5.objectDetector("cocossd", {}, modelLoaded);
 
 // When the model is loaded
 function modelLoaded() {
-  console.log('Model Loaded!');
+  console.log("Model Loaded!");
 }
 
 // Detect objects in the video element
@@ -28,7 +26,6 @@ objectDetector.detect(video, (err, results) => {
   console.log(results); // Will output bounding boxes of detected objects
 });
 ```
-
 
 ## Usage
 
@@ -41,15 +38,17 @@ const objectDetector = ml5.objectDetector(modelNameOrUrl, ?options, ?callback);
 ```
 
 #### Parameters
-* **modelNameOrUrl**: A String value of a valid model OR a url to a `model.json` that contains a pre-trained model. Models available are: ['cocossd'](https://github.com/tensorflow/tfjs-models/tree/master/coco-ssd), ['yolo'](https://pjreddie.com/darknet/yolo/)
-* **options**: Optional. An object describing a model accuracy and performance. For YOLO this are: `{ filterBoxesThreshold: 0.01, IOUThreshold: 0.4, classProbThreshold: 0.4 }`
-* **callback**: Optional. A function to run once the model has been loaded. If no callback is provided, it will return a promise that will be resolved once the model has loaded.
+
+- **modelNameOrUrl**: A String value of a valid model OR a url to a `model.json` that contains a pre-trained model. Models available are: ['cocossd'](https://github.com/tensorflow/tfjs-models/tree/master/coco-ssd), ['yolo'](https://pjreddie.com/darknet/yolo/)
+- **options**: Optional. An object describing a model accuracy and performance. For YOLO this are: `{ filterBoxesThreshold: 0.01, IOUThreshold: 0.4, classProbThreshold: 0.4 }`
+- **callback**: Optional. A function to run once the model has been loaded. If no callback is provided, it will return a promise that will be resolved once the model has loaded.
 
 ### Methods
 
+---
 
-***
 #### .detect()
+
 > Given an image or video, returns an array of objects containing class names, bounding boxes and probabilities.
 
 ```js
@@ -58,37 +57,37 @@ objectDetector.detect(input, ?callback);
 
 📥 **Inputs**
 
-* **input**: A HTML video or image element or a p5 image or video element. If no input is provided, the default is to use the video given in the constructor.
-* **callback**: A function to run once the model has made the prediction. If no callback is provided, it will return a promise that will be resolved once the model has made a prediction.
+- **input**: A HTML video or image element or a p5 image or video element. If no input is provided, the default is to use the video given in the constructor.
+- **callback**: A function to run once the model has made the prediction. If no callback is provided, it will return a promise that will be resolved once the model has made a prediction.
 
 📤 **Outputs**
 
-* **Object**: returns an array of objects containing class names, bounding boxes and probabilities.
+- **Object**: returns an array of objects containing class names, bounding boxes and probabilities.
 
-***
-
+---
 
 ## Examples
 
-
 **p5.js**
-* [COCOSSD_Video](https://github.com/ml5js/ml5-library/tree/main/examples/p5js/ObjectDetector/ObjectDetector_COCOSSD_Video)
-* [COCOSSD_single_image](https://github.com/ml5js/ml5-library/tree/main/examples/p5js/ObjectDetector/ObjectDetector_COCOSSD_single_image)
-* [YOLO_single_image](https://github.com/ml5js/ml5-library/tree/main/examples/p5js/ObjectDetector/ObjectDetector_YOLO_single_image)
-* [YOLO_Video](https://github.com/ml5js/ml5-library/tree/main/examples/p5js/ObjectDetector/ObjectDetector_YOLO_single_image)
+
+- [COCOSSD_Video](https://github.com/ml5js/ml5-library/tree/main/examples/p5js/ObjectDetector/ObjectDetector_COCOSSD_Video)
+- [COCOSSD_single_image](https://github.com/ml5js/ml5-library/tree/main/examples/p5js/ObjectDetector/ObjectDetector_COCOSSD_single_image)
+- [YOLO_single_image](https://github.com/ml5js/ml5-library/tree/main/examples/p5js/ObjectDetector/ObjectDetector_YOLO_single_image)
+- [YOLO_Video](https://github.com/ml5js/ml5-library/tree/main/examples/p5js/ObjectDetector/ObjectDetector_YOLO_single_image)
 
 **p5 web editor**
 
-* [COCOSSD_Video](https://editor.p5js.org/ml5/sketches/ObjectDetector_COCOSSD_Video)
-* [COCOSSD_single_image](https://editor.p5js.org/ml5/sketches/ObjectDetector_COCOSSD_single_image)
-* [YOLO_single_image](https://editor.p5js.org/ml5/sketches/ObjectDetector_YOLO_single_image)
-* [YOLO_webcam](https://editor.p5js.org/ml5/sketches/ObjectDetector_YOLO_webcam)
+- [COCOSSD_Video](https://editor.p5js.org/ml5/sketches/ObjectDetector_COCOSSD_Video)
+- [COCOSSD_single_image](https://editor.p5js.org/ml5/sketches/ObjectDetector_COCOSSD_single_image)
+- [YOLO_single_image](https://editor.p5js.org/ml5/sketches/ObjectDetector_YOLO_single_image)
+- [YOLO_webcam](https://editor.p5js.org/ml5/sketches/ObjectDetector_YOLO_webcam)
 
 **plain javascript**
-* [COCOSSD_single_image](https://github.com/ml5js/ml5-library/tree/main/examples/javascript/ObjectDetector/COCOSSD_single_image)
-* [COCOSSD_webcam](https://github.com/ml5js/ml5-library/tree/main/examples/javascript/ObjectDetector/COCOSSD_webcam)
-* [YOLO_single_image](https://github.com/ml5js/ml5-library/tree/main/examples/javascript/ObjectDetector/YOLO_single_image)
-* [YOLO_webcam](https://github.com/ml5js/ml5-library/tree/main/examples/javascript/ObjectDetector/YOLO_webcam)
+
+- [COCOSSD_single_image](https://github.com/ml5js/ml5-library/tree/main/examples/javascript/ObjectDetector/COCOSSD_single_image)
+- [COCOSSD_webcam](https://github.com/ml5js/ml5-library/tree/main/examples/javascript/ObjectDetector/COCOSSD_webcam)
+- [YOLO_single_image](https://github.com/ml5js/ml5-library/tree/main/examples/javascript/ObjectDetector/YOLO_single_image)
+- [YOLO_webcam](https://github.com/ml5js/ml5-library/tree/main/examples/javascript/ObjectDetector/YOLO_webcam)
 
 ## Demo
 
@@ -97,9 +96,11 @@ No demos yet - contribute one today!
 ## Tutorials
 
 ### ml5.js: Object Detection (Coding Train)
+
 <iframe width="560" height="315" src="https://www.youtube.com/embed/QEzRxnuaZCk"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Model and Data Provenance
+
 > A project started by [Ellen Nickles](https://github.com/ellennickles/)
 
 ### Models Overview
@@ -107,7 +108,6 @@ No demos yet - contribute one today!
 The ml5 Object Detection method takes image classification one step further in a couple of ways. It identifies multiple objects as well as their location in images or video by drawing bounding boxes around the detected content. There are two pre-trained model options to use with this ml5’s object detection method: YOLO and COCO-SSD.
 
 Each model is a type of convolutional neural network (CNN). A CNN finds patterns in the pixels of images (e.g. horizontal or vertical edges), and through successive layers of computation finds sets of patterns to identify more complex patterns (e.g. corners or circles), eventually detecting intricate patterns that it predicts belong to a particular category (e.g. dog or airplane). The categories depend on how images in the model’s training dataset are labeled.
-
 
 #### COCO-SSD - Model Biography
 
@@ -157,7 +157,7 @@ Each model is a type of convolutional neural network (CNN). A CNN finds patterns
 - **Hosted Location**
   - Hosted by ml5
 - **ml5 Contributor and Year**
-  - Ported by Cristóbal Valenzuela in 2018 
+  - Ported by Cristóbal Valenzuela in 2018
 - **References**
   - Developer [Joseph Redmon](https://pjreddie.com/)
   - Developer [Mike Shi](https://github.com/MikeShi42)
@@ -173,29 +173,29 @@ Each model is a type of convolutional neural network (CNN). A CNN finds patterns
   - This model uses 80 categories from the COCO image dataset to detect objects, indicating that it was likely trained on that dataset.
   - If this model is indeed an implementation of YOLO_v2 (mentioned above), then the paper indicates that it was also trained on images from the ImageNet database.)
 - **Source**
-  - From the website: the COCO dataset is managed by a number of collaborators from both academic and commercial organizations for “large-scale object detection, segmentation, and captioning,” and according to the paper, images were collected from Flickr. 
+  - From the website: the COCO dataset is managed by a number of collaborators from both academic and commercial organizations for “large-scale object detection, segmentation, and captioning,” and according to the paper, images were collected from Flickr.
 - **Collector and Year**
   - The COCO database began in 2014.
 - **Collection Method**
-  - COCO methods for collecting images and annotating pixels into segments are described  in the paper.
+  - COCO methods for collecting images and annotating pixels into segments are described in the paper.
 - **Purpose and Intended Users**
   - The COCO dataset was created to advance computer vision research.
 - **References**
   - Paper [Microsoft COCO: Common Objects in Context](https://arxiv.org/abs/1405.0312)
   - Website [Microsoft COCO: Common Objects in Context](http://cocodataset.org/#home)
 
-
-
 ## Acknowledgements
 
 **Contributors**:
-  * Cristobal Valenzuela
-  * Tirta Rachman
-  * Joey Lee
+
+- Cristobal Valenzuela
+- Tirta Rachman
+- Joey Lee
 
 **Credits**:
-  * Paper Reference | Website URL | Github Repo | Book reference | etc
+
+- Paper Reference | Website URL | Github Repo | Book reference | etc
 
 ## Source Code
 
-* [/src/ObjectDetector](https://github.com/ml5js/ml5-library/tree/main/src/ObjectDetector)
+- [/src/ObjectDetector](https://github.com/ml5js/ml5-library/tree/main/src/ObjectDetector)

@@ -88,30 +88,6 @@ body {
   background-color: #fff;
 }
 
-/* sidebar toggle */
-body:not(.ready) [data-cloak],
-body:not(.ready) .app-nav,
-body:not(.ready)>nav {
-  display: none;
-}
-
-body.sticky .sidebar,
-body.sticky .sidebar-toggle {
-  position: fixed;
-}
-
-body.close .sidebar {
-  transform: translateX(-300px);
-}
-
-body.close .sidebar-toggle {
-  width: auto;
-}
-
-body.close .content {
-  left: 0;
-}
-
 /* headings */
 /* Also cross-check ".markdown-section a" */
 h1,
@@ -128,7 +104,7 @@ h6 {
   font-weight: var(--heading-font-weight);
 }
 
-/* Images, iframes & Box Models */
+/* Images, iframes & other Box Models */
 img,
 iframe {
   max-width: 100%;
@@ -142,6 +118,7 @@ a[disabled] {
 }
 
 /* Keyboard Input */
+/* not used? Consider removing this. */
 kbd {
   border: solid 1px #ccc;
   border-radius: 3px;
@@ -160,6 +137,7 @@ li input[type='checkbox'] {
 }
 
 /* Emoji */
+/* the two below are not used. */
 img.emoji {
   height: 1.2em;
   vertical-align: middle;
@@ -170,6 +148,7 @@ span.emoji {
   vertical-align: middle;
 }
 
+/* main tag */
 main {
   display: block;
   position: relative;
@@ -357,6 +336,7 @@ div#app:empty::before {
 }
 
 /* ===== SIDEBAR ===== */
+/* sidebar styles */
 .sidebar {
   /* border-right: 1px solid rgba(0, 0, 0, 0.07); */
   padding: 40px 0 0;
@@ -513,6 +493,69 @@ div#app:empty::before {
   float: left;
 }
 
+/* sidebar toggle */
+body:not(.ready) [data-cloak],
+body:not(.ready) .app-nav,
+body:not(.ready)>nav {
+  display: none;
+}
+
+body.sticky .sidebar,
+body.sticky .sidebar-toggle {
+  position: fixed;
+}
+
+body.close .sidebar {
+  transform: translateX(-300px);
+}
+
+body.close .sidebar-toggle {
+  width: auto;
+}
+
+body.close .content {
+  left: 0;
+}
+
+.app-nav,
+.github-corner {
+  transition: transform 250ms ease-out;
+}
+
+.sidebar-toggle {
+  background-color: transparent;
+  width: auto;
+  padding: 15px;
+}
+
+body.close .sidebar {
+  transform: translateX(300px);
+}
+
+body.close .sidebar-toggle {
+  background-color: rgba(255, 255, 255, 0.8);
+  transition: 1s background-color;
+  width: 300px;
+  padding: 15px;
+}
+
+body.close .content {
+  transform: translateX(300px);
+}
+
+body.close .app-nav,
+body.close .github-corner {
+  display: none;
+}
+
+.github-corner:hover .octo-arm {
+  animation: none;
+}
+
+.github-corner .octo-arm {
+  animation: octocat-wave 560ms ease-in-out;
+}
+
 /* ===== MARKDOWN SECTION ===== */
 .content {
   padding-top: 60px;
@@ -529,8 +572,8 @@ div#app:empty::before {
 
 .markdown-section {
   margin: 0 10%;
-  /* max-width: 80%; */
   max-width: 800px;
+  /* limit the max width of the reference section by 800px. */
   padding: 30px 15px 40px 15px;
   position: relative;
 }
@@ -1143,45 +1186,6 @@ code .token {
 
   .markdown-section {
     max-width: 80%;
-  }
-
-  .app-nav,
-  .github-corner {
-    transition: transform 250ms ease-out;
-  }
-
-  .sidebar-toggle {
-    background-color: transparent;
-    width: auto;
-    padding: 15px;
-  }
-
-  body.close .sidebar {
-    transform: translateX(300px);
-  }
-
-  body.close .sidebar-toggle {
-    background-color: rgba(255, 255, 255, 0.8);
-    transition: 1s background-color;
-    width: 300px;
-    padding: 15px;
-  }
-
-  body.close .content {
-    transform: translateX(300px);
-  }
-
-  body.close .app-nav,
-  body.close .github-corner {
-    display: none;
-  }
-
-  .github-corner:hover .octo-arm {
-    animation: none;
-  }
-
-  .github-corner .octo-arm {
-    animation: octocat-wave 560ms ease-in-out;
   }
 }
 

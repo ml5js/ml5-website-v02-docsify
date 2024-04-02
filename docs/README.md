@@ -10,14 +10,14 @@ First, we need to create an empty project to start with. Here, we introduces two
 
 If you would like to get a taste of ml5.js in minutes, the easiest way is using the [p5.js editor](https://editor.p5js.org/). You can open the web editor and follow [the next step to import the ml5 library](/?id=try-ml5js-online-1).
 
-_<img style="max-height:1rem" src="_media/getting_started__bulb.png" alt="tip icon" aria-hidden="true"> If you are not familiar with p5.js, check out the [p5.js Get Started page](https://p5js.org/get-started/) to know more!_
+_<img style="max-height:1rem" src="assets/gettingstarted-bulb.png" alt="tip icon" aria-hidden="true"> If you are not familiar with p5.js, check out the [p5.js Get Started page](https://p5js.org/get-started/) to know more!_
 
 ### Try ml5.js Locally
 
 If you want to start a project from scratch and develop it locally, make sure to have these tools ready:
 
-> - <img style="max-height:1rem" src="_media/getting_started__memo.png" alt="text editor icon" aria-hidden="true"> A text editor (e.g. [WebStorm](https://www.jetbrains.com/webstorm/), [Visual Studio Code](https://code.visualstudio.com/), [Sublime Text](https://www.sublimetext.com/))
-> - <img style="max-height:1rem" src="_media/getting_started__computer.png" alt="browser icon" aria-hidden="true"> Your web browser: Chrome & Firefox preferred
+> - <img style="max-height:1rem" src="assets/gettingstarted-memo.png" alt="text editor icon" aria-hidden="true"> A text editor (e.g. [WebStorm](https://www.jetbrains.com/webstorm/), [Visual Studio Code](https://code.visualstudio.com/), [Sublime Text](https://www.sublimetext.com/))
+> - <img style="max-height:1rem" src="assets/gettingstarted-computer.png" alt="browser icon" aria-hidden="true"> Your web browser: Chrome & Firefox preferred
 
 Your project directory should look something like this:
 
@@ -29,9 +29,9 @@ Your project directory should look something like this:
 
 **Where**:
 
-- <img style="max-height:1rem" src="_media/getting_started__open_file_folder.png" alt="folder icon" aria-hidden="true">**my-first-ml5-project/**: is the root project folder
-  - &ensp; <img style="max-height:1rem" src="_media/getting_started__spiral_note_pad.png" alt="file icon" aria-hidden="true">**index.html**: is an .html file that has your html markup and library references
-  - &ensp; <img style="max-height:1rem" src="_media/getting_started__spiral_note_pad.png" alt="file icon" aria-hidden="true">**sketch.js**: is where you'll be writing your javascript
+- <img style="max-height:1rem" src="assets/gettingstarted-open-file-folder.png" alt="folder icon" aria-hidden="true">**my-first-ml5-project/**: is the root project folder
+  - &ensp; <img style="max-height:1rem" src="assets/gettingstarted-spiral-note-pad.png" alt="file icon" aria-hidden="true">**index.html**: is an .html file that has your html markup and library references
+  - &ensp; <img style="max-height:1rem" src="assets/gettingstarted-spiral-note-pad.png" alt="file icon" aria-hidden="true">**sketch.js**: is where you'll be writing your javascript
 
 If you are done, follow [the next step to import the ml5 library](/?id=try-ml5js-locally-1).
 
@@ -42,7 +42,7 @@ If you are done, follow [the next step to import the ml5 library](/?id=try-ml5js
 Open the sidebar revealing the **Sketch Files** by clicking the arrow **'>'** at the top left corner of the p5.js editor.
 
 <center>
-    <img style="display:block; max-height:30rem" alt="pose detection" src="_media/getting_started__sketch-folder.png">
+    <img style="display:block; max-height:30rem" alt="pose detection" src="assets/gettingstarted-sketch-folder.png">
 </center>
 
 In the **index.html** file, copy and paste the following CDN link inside the **&lt;head&gt;** tag.
@@ -52,7 +52,7 @@ In the **index.html** file, copy and paste the following CDN link inside the **&
 ```
 
 <center>
-    <img style="display:block; max-height:40rem" alt="pose detection" src="_media/getting_started__import-lib.png">
+    <img style="display:block; max-height:40rem" alt="pose detection" src="assets/gettingstarted-import-lib.png">
 </center>
 
 To check if the ml5.js library has been imported successfully, switch back to **sketch.js**.
@@ -73,7 +73,7 @@ function draw() {
 If everything loaded properly you should see the version number of the ml5 library show up in the console.
 
 <center>
-    <img style="display:block; max-height:25rem" alt="pose detection" src="_media/getting_started__ml5-version.png">
+    <img style="display:block; max-height:25rem" alt="pose detection" src="assets/gettingstarted-ml5-version.png">
 </center>
 
 Follow [the next step to prepare your image assets](/?id=try-ml5js-online-2)!
@@ -112,19 +112,19 @@ If you've arrived here, we assume you've imported ml5.js library to your project
 Open the sidebar revealing the **Sketch Files** by clicking the arrow **'>'** at the top left corner of the p5.js editor.
 
 <center>
-    <img style="display:block; max-height:30rem" alt="pose detection" src="_media/getting_started__sketch-folder.png">
+    <img style="display:block; max-height:30rem" alt="pose detection" src="assets/gettingstarted-sketch-folder.png">
 </center>
 
 Create a new folder called `images`.
 
 <center>
-    <img style="display:block; max-height:25rem" alt="pose detection" src="_media/getting_started__create_folder.png">
+    <img style="display:block; max-height:25rem" alt="pose detection" src="assets/gettingstarted-create_folder.png">
 </center>
 
 And upload a bird image named `bird.png` to the `images` folder. Remember to login to see this option.
 
 <center>
-    <img style="display:block; max-height:25rem" alt="pose detection" src="_media/getting_started__upload_file.png">
+    <img style="display:block; max-height:25rem" alt="pose detection" src="assets/gettingstarted-upload-file.png">
 </center>
 
 Now, we are ready to write our first ml5.js sketch! Follow [the next step to write your first sketch](/?id=your-first-sketch)!
@@ -145,11 +145,11 @@ Your project directory should look something like this:
 
 **Where**:
 
-- <img style="max-height:1rem" src="_media/getting_started__open_file_folder.png" alt="folder icon" aria-hidden="true">**my-first-ml5-project/**: is the root project folder
-  - &ensp; <img style="max-height:1rem" src="_media/getting_started__open_file_folder.png" alt="folder icon" aria-hidden="true">**images/**: is a folder that contains your image
-    - &ensp; &ensp; &ensp; <img style="max-height:1rem" src="_media/getting_started__frame_with_picture.png" alt="image icon" aria-hidden="true"> **bird.png**: is a .png image of a bird (it can also be something else!)
-  - &ensp; <img style="max-height:1rem" src="_media/getting_started__spiral_note_pad.png" alt="file icon" aria-hidden="true">**index.html**: is an .html file that has your html markup and library references
-  - &ensp; <img style="max-height:1rem" src="_media/getting_started__spiral_note_pad.png" alt="file icon" aria-hidden="true">**sketch.js**: is where you'll be writing your javascript
+- <img style="max-height:1rem" src="assets/gettingstarted-open-file-folder.png" alt="folder icon" aria-hidden="true">**my-first-ml5-project/**: is the root project folder
+  - &ensp; <img style="max-height:1rem" src="assets/gettingstarted-open-file-folder.png" alt="folder icon" aria-hidden="true">**images/**: is a folder that contains your image
+    - &ensp; &ensp; &ensp; <img style="max-height:1rem" src="assets/gettingstarted-frame-with-picture.png" alt="image icon" aria-hidden="true"> **bird.png**: is a .png image of a bird (it can also be something else!)
+  - &ensp; <img style="max-height:1rem" src="assets/gettingstarted-spiral-note-pad.png" alt="file icon" aria-hidden="true">**index.html**: is an .html file that has your html markup and library references
+  - &ensp; <img style="max-height:1rem" src="assets/gettingstarted-spiral-note-pad.png" alt="file icon" aria-hidden="true">**sketch.js**: is where you'll be writing your javascript
 
 Now, we are ready to write our first ml5.js sketch! Follow [the next step to write your first sketch](/?id=your-first-sketch)!
 
@@ -199,7 +199,7 @@ function gotResult(results) {
 }
 ```
 
-_<img style="max-height:1rem" src="_media/getting_started__bulb.png" alt="tip icon" aria-hidden="true"> If you are not familiar with terms like **pre-trained model**, **MobileNet**, **classification**, **classifier**, **confidence** and would like to learn more about them, check out our [Ml5 Glossary](/learning/ml5-glossary) for a quick intro._
+_<img style="max-height:1rem" src="assets/gettingstarted-bulb.png" alt="tip icon" aria-hidden="true"> If you are not familiar with terms like **pre-trained model**, **MobileNet**, **classification**, **classifier**, **confidence** and would like to learn more about them, check out our [ml5 Glossary](/learning/ml5-glossary) for a quick intro._
 
 ## Our sketch.js explained in 4 steps {docsify-ignore}
 
@@ -229,7 +229,7 @@ function preload() {
 }
 ```
 
-_<img style="max-height:1rem" src="_media/getting_started__bulb.png" alt="tip icon" aria-hidden="true"> If you are not familiar with term **preload function**, check out our [Ml5 Glossary](/learning/ml5-glossary) for more information._
+_<img style="max-height:1rem" src="assets/gettingstarted-bulb.png" alt="tip icon" aria-hidden="true"> If you are not familiar with term **preload function**, check out our [ml5 Glossary](/learning/ml5-glossary) for more information._
 
 ### Step 3: Setup, classify, and display
 
@@ -274,7 +274,7 @@ function gotResult(results) {
 }
 ```
 
-_<img style="max-height:1rem" src="_media/getting_started__bulb.png" alt="tip icon" aria-hidden="true"> If you are not familiar with terms like **callback**, **label**, **confidence**, check out our [Ml5 Glossary](/learning/ml5-glossary) for more information._
+_<img style="max-height:1rem" src="assets/gettingstarted-bulb.png" alt="tip icon" aria-hidden="true"> If you are not familiar with terms like **callback**, **label**, **confidence**, check out our [ml5 Glossary](/learning/ml5-glossary) for more information._
 
 ## Need Help On Your Code? {docsify-ignore}
 
@@ -292,14 +292,14 @@ Now, you may want to run your sketch and see if the model can make predictions a
 Simply press the **Play** button on the top right corner of the interface. And you should see something like this.
 
 <center>
-    <img style="display:block; max-height:30rem" alt="pose detection" src="_media/getting_started__run_sketch.png">
+    <img style="display:block; max-height:30rem" alt="pose detection" src="assets/gettingstarted-run-sketch.png">
 </center>
 
 ### Try ml5.js Locally
 
 To run the sketch locally, we need to start a local development server.
 
-_<img style="max-height:1rem" src="_media/getting_started__bulb.png" alt="tip icon" aria-hidden="true"> If you are not familiar with term **local development server**, check out our [Ml5 Glossary](/learning/ml5-glossary) for more information._
+_<img style="max-height:1rem" src="assets/gettingstarted-bulb.png" alt="tip icon" aria-hidden="true"> If you are not familiar with term **local development server**, check out our [ml5 Glossary](/learning/ml5-glossary) for more information._
 
 #### Step 1. Open your terminal
 
@@ -311,7 +311,7 @@ cd my-first-ml5-project
 python3 -m http.server
 ```
 
-_<img style="max-height:1rem" src="_media/getting_started__bulb.png" alt="tip icon" aria-hidden="true"> If you are not familiar with terms like **terminal**, **dependencies**, check out our [Ml5 Glossary](/learning/ml5-glossary) for more information._
+_<img style="max-height:1rem" src="assets/gettingstarted-bulb.png" alt="tip icon" aria-hidden="true"> If you are not familiar with terms like **terminal**, **dependencies**, check out our [ml5 Glossary](/learning/ml5-glossary) for more information._
 
 #### Step 2. In a browser, open the following URL:
 
@@ -321,7 +321,7 @@ http://localhost:8000/
 
 This should make your sketch show up.
 
-_<img style="max-height:1rem" src="_media/getting_started__bulb.png" alt="tip icon" aria-hidden="true"> You may also be interested in watching [CodingTrain - getting set up](https://www.youtube.com/watch?v=UCHzlUiDD10) for a nice intro on getting set up with writing code for the web._
+_<img style="max-height:1rem" src="assets/gettingstarted-bulb.png" alt="tip icon" aria-hidden="true"> You may also be interested in watching [CodingTrain - getting set up](https://www.youtube.com/watch?v=UCHzlUiDD10) for a nice intro on getting set up with writing code for the web._
 
 ## And voilà! {docsify-ignore}
 
@@ -335,7 +335,7 @@ Not all of our examples are structured exactly like this, but this provides a ta
 
 <br/>
 
-_<img style="max-height:1rem" src="_media/getting_started__bulb.png" alt="tip icon" aria-hidden="true"> Some guiding questions you might start to think about are:_
+_<img style="max-height:1rem" src="assets/gettingstarted-bulb.png" alt="tip icon" aria-hidden="true"> Some guiding questions you might start to think about are:_
 
 _1. When classifying an image with MobileNet, does the computer see people? If not, why do you think that is?_
 _2. Do you notice that MobileNet is better at classifying some animals over others? Why do you think that is?_

@@ -19,7 +19,7 @@ Interested in using ml5.js to build more ML-based projects? Check out these lear
 >
 > <center>
 
-    <img style="display:block; max-height:25rem" alt="pose detection" src="_media/getting_started__noc.jpeg">
+    <img style="display:block; max-height:25rem" alt="pose detection" src="assets/gettingstarted-noc.jpeg">
 
 </center>
 

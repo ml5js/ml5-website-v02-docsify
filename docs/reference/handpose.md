@@ -1,10 +1,8 @@
 # Handpose
 
-
 <center>
-    <img style="display:block; max-height:20rem" alt="A GIF of a person waving their hand in front of a camera. Green dots are drawn over different locations on their palm and fingers–demonstrating the capabilities of the Handpose model." src="_media/reference__header-handpose.gif">
+    <img style="display:block; max-height:20rem" alt="A GIF of a person waving their hand in front of a camera. Green dots are drawn over different locations on their palm and fingers–demonstrating the capabilities of the Handpose model." src="assets/header-handpose.gif">
 </center>
-
 
 ## Description
 
@@ -13,12 +11,14 @@ Handpose is a machine-learning model that allows for palm detection and hand-ske
 The ml5.js Handpose model is ported from the [Mediapipe Handpose implementation](https://github.com/google/mediapipe/blob/master/docs/solutions/hands.md).
 
 ### Key Features
+
 - **Palm Detection**: Handpose can detect the palm of a hand and provide the 2D and 3D coordinates of 21 keypoints on the hand.
 - **Finger Tracking**: Handpose can track the 3D coordinates of the tips and joints of the fingers.
 - **Handedness**: Handpose can determine the handedness (left or right) of the detected hand.
 - **Multiple Hands**: Handpose can detect multiple hands at the same time.
 
 ### Output Example
+
 An example of the output from Handpose is shown below:
 
 ```javascript
@@ -44,12 +44,15 @@ An example of the output from Handpose is shown below:
 ```
 
 ## Getting Started
+
 Ready to give it a try? Our demo is here to give you a sneak peek into what Handpose can do! Don't hesitate to follow along with our instructions to kickstart your very own Handpose project!
 
 ### Demo
-[p5 Web Editor](iframes/handpose-keypoints ':include :type=iframe width=100% height=550px')
 
-### Quickstart
+[p5 Web Editor](iframes/handpose-keypoints ":include :type=iframe width=100% height=550px")
+
+### Quick Start
+
 Before you start, let's create an empty project in the [p5 web editor](https://editor.p5js.org/).
 
 First of all, copy and paste the following code into your **index.html** file. If you are not familiar with the p5 web editor interface, you can find a guide on how to find your **index.html** file [here](/?id=try-ml5js-online-1).
@@ -109,9 +112,10 @@ function gotHands(results) {
 Alternatively, you can open [this example code](https://github.com/ml5js/ml5-next-gen/tree/main/examples/HandPose-keypoints) and try it yourself on p5.js web editor!
 
 ### Additional Examples
-* [HandPose-parts](https://github.com/ml5js/ml5-next-gen/tree/main/examples/HandPose-parts): Draw a circle whose size is determined by the pinch distance between the thumb and index finger.
-* [HandPose-single-image](https://github.com/ml5js/ml5-next-gen/tree/main/examples/HandPose-single-image): Detect hands in a single image.
-* [HandPose-start-stop](https://github.com/ml5js/ml5-next-gen/tree/main/examples/HandPose-start-stop): Start and stop hand detection with a button click.
+
+- [HandPose-parts](https://github.com/ml5js/ml5-next-gen/tree/main/examples/HandPose-parts): Draw a circle whose size is determined by the pinch distance between the thumb and index finger.
+- [HandPose-single-image](https://github.com/ml5js/ml5-next-gen/tree/main/examples/HandPose-single-image): Detect hands in a single image.
+- [HandPose-start-stop](https://github.com/ml5js/ml5-next-gen/tree/main/examples/HandPose-start-stop): Start and stop hand detection with a button click.
 
 TODO (link p5 web editor examples once uploaded)
 
