@@ -5,7 +5,7 @@ _By ml5-library Dev Team_ [(source)](https://github.com/ml5js/ml5-library/blob/m
 > Welcome to the ml5 project! Developing ml5 is not just about developing machine learning software, it is about making machine learning approachable for a broad audience of artists, creative coders, and students. The library provides access to machine learning algorithms and models in the browser, building on top of TensorFlow.js with no other external dependencies. The library is supported by code examples, tutorials, and sample datasets with an emphasis on ethical computing. Bias in data, stereotypical harms, and responsible crowdsourcing are part of the documentation around data collection and usage. We're building **friendly** machine learning for the web - we're glad you're here!
 
 <center>
-    <img style="display:block; max-height:30rem" alt="friendly machine learning for the web" src="assets/contributing-header.png">
+    <img alt="friendly machine learning for the web" src="assets/contributing-header.png">
 </center>
 
 ## The ml5 ecosystem (last updated: 24, May 2020) {docsify-ignore}

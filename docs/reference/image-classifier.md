@@ -10,7 +10,7 @@ Have you ever wanted to know what's in an image? Our image classifier can help!
 
 The image classifier is a pre-trained model that can recognize the content of an image. It can identify objects, animals, and even people in a picture. The image classifier uses a neural network to analyze the image and provide a list of possible labels for the content of the image.
 
-_<img style="max-height:1rem" src="assets/gettingstarted-bulb.png" alt="tip icon" aria-hidden="true"> If you want to **train your own image classification model with customized labels**, check out our [Image + Teachable Machine](/reference/image-classifier-tm) to get started!_
+_<img class="inline-img" src="assets/gettingstarted-bulb.png" alt="tip icon" aria-hidden="true"> If you want to **train your own image classification model with customized labels**, check out our [Image + Teachable Machine](/reference/image-classifier-tm) to get started!_
 
 ### Key Features
 

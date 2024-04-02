@@ -1,3 +1,11 @@
+<!--
+TO-DOs
+- top navbar - from the website - app-nav? let's not use it.
+- fix the sidebar toggle button
+- code styles
+-->
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,13 +20,10 @@
     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
 
   <link rel="stylesheet" href="css/style.css" />
-
-  <!-- Edit on Github -->
-  <!-- We don't use this anymore. -->
-  <!-- <script src="//unpkg.com/docsify-edit-on-github/index.js"></script> -->
 </head>
 
 <body>
+  <!-- app-nav class will be applied to the navbar when the sidebar is open -->
   <nav class="navbar">
     <a href="https://ml5js.org" class="navbar-logo-container">
       <img src="https://ml5js.org/static/ml5_logo_purple-88e082b8dc81d8729f95bcc092db90c5.png" alt="ml5 Logo" />
@@ -38,15 +43,6 @@
   <div id="app">Loading...</div>
 
   <script>
-    /*
-    const config = {
-      editOnGithub: {
-        docBase: 'https://github.com/ml5js/ml5-library/tree/main/docs/',
-        docEditBase: 'https://learn.ml5js.org/',
-        title: 'Edit document',
-      },
-    };
-    */
     window.$docsify = {
       name: '', // name is removed as it appears redundantly.
       repo: 'https://github.com/ml5js/ml5-website-v02-docsify/tree/main/docs',
@@ -59,9 +55,6 @@
       maxLevel: 2,
       mergeNavbar: true,
       auto2top: true,
-
-      // plugins: [ EditOnGithubPlugin.create(config.editOnGithub.docBase, null, config.editOnGithub.title),],
-
       search: {
         maxAge: 86400000, // Expiration time, the default one day
         paths: 'auto',
@@ -70,7 +63,6 @@
         depth: 1, // Headline depth, 1 - 6
         hideOtherSidebarContent: true, // whether or not to hide other sidebar content
       },
-
       tabs: {
         persist: true,      // default
         sync: true,      // default

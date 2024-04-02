@@ -1,53 +1,94 @@
 /* Import Google Fonts */
-@import url(https://fonts.googleapis.com/css?family=Arvo:wght@700&Lato:300,400,700&Nunito+Sans:ital,wght@0,400;0,700;1,400;1,700);
+@import url(https://fonts.googleapis.com/css?family=Arvo:wght@400;700Nunito+Sans:ital,opsz,wght@1,6..12,400;600&Noto+Sans+Mono:wght@500&display=swap);
 
 /* Variables */
 :root {
   /* Colors */
   --color-primary: #8833ff;
   --color-secondary: #7d77da;
-  --color-tertiary: #00cd75;
+  --color-tertiary: #00a7af;
+  --color-quaternary: #f66;
 
   --color-text: #282a3f;
   --color-text-dark: #1f1f20;
   --color-text-light: #73768d;
-  --color-text-highlight: #adffc5;
+  /* --color-text-highlight: #adffc5; */
+  --color-text-highlight: #61fcff;
+
+  --color-text-link: #6a709c;
 
   --color-bg: #ffffff;
   --color-bg-light: #f8f9fb;
-  --color-bg-gray: #f5f5f5;
+  --color-bg-gray: #f0f0f0;
+  --color-bg-code: var(--color-bg-light);
+
+  --color-border: #ddd;
+  --color-border-light: #eee;
+  --color-border-dark: #ccc;
+
+  --color-table-header: var(--color-bg-gray);
+  --color-table-odd: #ffffff;
+  --color-table-even: #fbfbfb;
+
+  /* we use rgb values here to add transparency later. */
+  --color-sidebar-scrollbar-rgb: 136, 136, 136;
+  --color-sidebar-toggle-bg-rgb: 255, 255, 255;
+
+  /* Code Highlighting */
+  --color-code-comment: #b2b9a5;
+  --color-code-boolean-number: #6092e3;
+  --color-code-punctuation: #525252;
+  --color-code-property: #83b91f;
+  --color-code-tag: #ca4db7;
+  --color-code-string: #b248cf;
+  --color-code-selector: #b04372;
+  --color-code-attr-name: #2b86db;
+  --color-code-entity-url: #22a2c9;
+  --color-code-attr-value-control-directive-unit: #7d77da;
+  --color-code-keyword-function: #453ae0;
+  --color-code-statement-regex-atrule: #22a2c9;
+  --color-code-placeholder-variable: #3d8fd1;
+  --color-code-deleted: #202746;
+  --color-code-inserted: #202746;
+  --color-code-important: #ff00c8;
 
   /* Fonts */
   --font-serif: "Arvo", serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-sans-serif: "Nunito Sans", system-ui, -apple-system, "Helvetica", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-monospace: "Noto Sans Mono", "Courier New", monospace;
+  --font-monospace: "Noto Sans Mono", monospace;
   --font-emoji: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-weight-bold: 600;
+  --font-weight-normal: 400;
+  --font-weight-light: 300;
 
   /* Body */
   --body-color: var(--color-text);
   --body-font-family: var(--font-sans-serif);
   --body-font-size: 16px;
-  --body-font-weight: 400;
+  --body-font-weight: var(--font-weight-normal);
   --body-line-height: 1.6;
   --body-letter-spacing: 0;
-
 
   /* Headings */
   --heading-color: var(--color-text-dark);
   --heading-font-family: var(--font-serif);
   --heading-small-font-family: var(--font-sans-serif);
-  --heading-font-weight: 700;
+  --heading-font-weight: var(--font-weight-bold);
 
-  /* Buttons */
+  /* Buttons - not used */
   --button-font-family: var(--font-serif);
-  --button-font-weight: 700;
+  --button-font-weight: var(--font-weight-bold);
+
   --button-hover-color: #ffffff;
   --button-hover-bg-color: var(--color-primary);
 
   /* Navbar */
   --navbar-init-height: 6rem;
 
-  /* Docsify tabs */
+  /* Rounded corners */
+  --border-radius: 0.5rem;
+
+  /* Docsify tabs - not used */
   --docsifytabs-border-color: #ededed;
   --docsifytabs-tab-highlight-color: var(--color-secondary);
 }
@@ -78,14 +119,14 @@ body {
 body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  color: #34495e;
+  color: var(--body-color);
   font-family: var(--body-font-family);
   font-size: var(--body-font-size);
   font-weight: var(--body-font-weight);
   letter-spacing: 0;
   margin: 0;
   overflow-x: hidden;
-  background-color: #fff;
+  background-color: var(--color-bg);
 }
 
 /* headings */
@@ -108,7 +149,21 @@ h6 {
 img,
 iframe {
   max-width: 100%;
-  border-radius: 8px;
+  border-radius: var(--border-radius);
+
+}
+
+/* ===== LINKS ===== */
+a {
+  color: var(--color-text-link);
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--color-text-highlight);
+}
+
+a:hover {
+  color: var(--color-text-dark);
+  text-decoration-thickness: 3px;
+  text-decoration-color: var(--color-text-highlight);
 }
 
 /* Disabled Link */
@@ -117,10 +172,27 @@ a[disabled] {
   opacity: 0.6;
 }
 
+/* the markdown-section link overrides the global link styles */
+.anchor {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.anchor:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-decoration-color: var(--color-text-highlight);
+}
+
+.anchor span {
+  color: var(--color-text-link);
+}
+
+
 /* Keyboard Input */
 /* not used? Consider removing this. */
 kbd {
-  border: solid 1px #ccc;
+  border: solid 1px var(--color-border-dark);
   border-radius: 3px;
   display: inline-block;
   font-size: 12px !important;
@@ -168,7 +240,7 @@ body:not(.ready) {
 
 div#app {
   font-size: 30px;
-  font-weight: lighter;
+  font-weight: var(--font-weight-light);
   margin: 40vh auto;
   text-align: center;
 }
@@ -178,7 +250,7 @@ div#app:empty::before {
 }
 
 .progress {
-  background-color: var(--color-secondary, #5cb0ff);
+  background-color: var(--color-secondary);
   height: 2px;
   left: 0px;
   position: fixed;
@@ -189,25 +261,52 @@ div#app:empty::before {
   z-index: 999999;
 }
 
-/* ===== SEARCH ===== */
-.search a:hover {
-  color: var(--color-secondary);
+/* ===== TOP NAVIGATION BAR ===== */
+.navbar {
+  background: var(--color-bg);
+  color: var(--color-text);
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  height: 60px;
+  margin: 0px !important;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  padding: 0rem 2rem;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom-width: 2px;
+  border-bottom-color: var(--color-border);
+  border-bottom-style: solid;
 }
 
-.search .search-keyword {
-  color: var(--color-secondary);
-  font-style: normal;
-  font-weight: bold;
+.navbar img {
+  height: 28px;
+  /* this could be organized with a variable. */
 }
 
-/* ===== NAVBAR DROPDOWN ===== */
+.navbar-logo-container {
+  display: flex;
+}
+
+.navbar-menu {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-menu-item:not(:last-child) {
+  margin-right: 2rem;
+}
+
 .app-nav {
   margin: 25px 60px 0 0;
   position: absolute;
   right: 0;
   text-align: right;
   z-index: 10;
-
 }
 
 .app-nav.no-badge {
@@ -231,19 +330,19 @@ div#app:empty::before {
 }
 
 .app-nav a {
-  color: inherit;
+  /* color: inherit; */
   font-size: 16px;
   text-decoration: none;
   transition: color 0.3s;
 }
 
 .app-nav a:hover {
-  color: var(--color-secondary);
+  color: var(--color-primary);
 }
 
 .app-nav a.active {
-  border-bottom: 2px solid var(--color-secondary);
   color: var(--color-secondary);
+  border-bottom: 2px solid var(--color-secondary);
 }
 
 .app-nav li {
@@ -258,6 +357,7 @@ div#app:empty::before {
   background-color: #fff;
   border: 1px solid #ddd;
   border-bottom-color: #ccc;
+  /* check these colors */
   border-radius: 4px;
   box-sizing: border-box;
   display: none;
@@ -295,51 +395,15 @@ div#app:empty::before {
   display: block;
 }
 
-.github-corner {
-  border-bottom: 0;
-  position: fixed;
-  right: 0;
-  text-decoration: none;
-  top: 0;
-  z-index: 1;
-}
-
 /* quick fix for the github corner */
 .github-corner {
   display: none;
 }
 
-.github-corner:hover .octo-arm {
-  animation: octocat-wave 560ms ease-in-out;
-}
-
-.github-corner svg {
-  color: #fff;
-  fill: var(--color-secondary);
-  height: 80px;
-  width: 80px;
-}
-
-.anchor {
-  display: inline-block;
-  text-decoration: none;
-  transition: all 0.3s;
-}
-
-.anchor span {
-  /* color: #34495e; */
-}
-
-.anchor:hover {
-  text-decoration: underline;
-  text-decoration-color: var(--color-text-highlight);
-}
-
 /* ===== SIDEBAR ===== */
-/* sidebar styles */
 .sidebar {
   /* border-right: 1px solid rgba(0, 0, 0, 0.07); */
-  padding: 40px 0 0;
+  padding: 1rem 0;
   margin: 60px 0 0 0;
   position: absolute;
   top: 0;
@@ -349,19 +413,20 @@ div#app:empty::before {
   overflow-y: auto;
   transition: transform 250ms ease-out;
   z-index: 20;
-  background-color: #fbfbfb;
-  color: var(--color-text);
-  font-size: 1rem;
+  background-color: var(--color-bg-light);
+  /* font-size: 1rem; */
 }
 
 .sidebar>h1 {
+  /* not-used in our design */
   margin: 0 auto 1rem;
-  font-size: 1.5rem;
-  font-weight: 300;
+  font-size: 1.2rem;
+  font-weight: var(--font-weight-light);
   text-align: center;
 }
 
 .sidebar>h1 a {
+  /* not-used in our design */
   color: inherit;
   text-decoration: none;
 }
@@ -372,12 +437,12 @@ div#app:empty::before {
 }
 
 .sidebar .sidebar-nav {
-  line-height: 2.0em;
+  line-height: 1.8em;
   padding-bottom: 40px;
 }
 
 .sidebar li {
-  margin: 6px 0 6px 0;
+  margin: 0.4rem 0;
 }
 
 .sidebar li.collapse .app-sub-sidebar {
@@ -385,14 +450,15 @@ div#app:empty::before {
 }
 
 .sidebar ul {
-  margin: 0 0 0 15px;
+  margin: 0 0 0 1.6rem;
   padding: 0;
-  /* section title font-size */
-  font-size: 0.9rem;
+  /* font for sidebar title  */
+  font-family: var(--heading-font-family);
+  font-size: 1.0rem;
 }
 
 .sidebar li>p {
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
   margin: 0;
 }
 
@@ -402,35 +468,31 @@ div#app:empty::before {
 }
 
 .sidebar ul li a {
-  border-bottom: none;
-  display: block;
-  color: var(--color-text-light);
-  font-weight: normal;
-  overflow: hidden;
+  /* font ofr sub-menu  */
+  font-family: var(--body-font-family);
+  font-size: 0.9rem;
+  color: var(--color-text);
+  font-weight: var(--font-weight-normal);
   text-decoration: none;
   text-overflow: ellipsis;
   white-space: nowrap;
+  border-bottom: none;
+  display: block;
+  overflow: hidden;
 }
 
 .sidebar ul li a:hover {
+  color: var(--color-text-dark);
   text-decoration: underline;
-  text-decoration-color: var(--color-primary);
+  text-decoration-color: var(--color-text-highlight);
+  text-decoration-thickness: 3px;
 }
 
 .sidebar ul li.active>a {
-  border-right: 2px solid var(--color-primary, #9760f6);
-  color: var(--color-primary, #9760f6);
-  font-weight: 600;
-}
+  border-right: 2px solid var(--color-text-highlight);
+  color: var(--color-secondary);
+  font-weight: var(--font-weight-bold);
 
-.sidebar ul li ul {
-  padding-left: 0;
-  /* menu item font-size */
-  font-size: 0.9rem;
-}
-
-.sidebar ul li ul a {
-  /* display: block; */
 }
 
 .sidebar::-webkit-scrollbar {
@@ -443,25 +505,15 @@ div#app:empty::before {
 }
 
 .sidebar:hover::-webkit-scrollbar-thumb {
-  background: rgba(136, 136, 136, 0.4);
+  background: rgba(var(--color-sidebar-scrollbar-rgb), 0.4);
 }
 
 .sidebar:hover::-webkit-scrollbar-track {
-  background: rgba(136, 136, 136, 0.1);
-}
-
-.sidebar-section-divider {
-  height: 1px;
-  width: 90%;
-  border-top: 2px solid var(--color-secondary);
-  display: block;
-  margin: 0 0 0 -2px;
-  /* box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2); */
+  background: rgba(var(--color-sidebar-scrollbar-rgb), 0.1);
 }
 
 .sidebar-toggle {
-  /* background-color: transparent; */
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(var(--color-sidebar-toggle-bg-rgb), 0.8);
   border: 0;
   outline: none;
   padding: 15px;
@@ -479,6 +531,29 @@ div#app:empty::before {
   opacity: 0.4;
 }
 
+/* bullet shape for the list */
+.app-sub-sidebar li::before {
+  content: '•';
+  padding-right: 0.4rem;
+  float: left;
+}
+
+/* the horizontal line */
+.sidebar-section-divider {
+  height: 1px;
+  width: 90%;
+  border-top: 2px solid var(--color-secondary);
+  display: block;
+  margin: 0 0 0 -2px;
+}
+
+/* spacer */
+.sidebar-spacer {
+  width: 100%;
+  height: 1.0rem;
+}
+
+/* the icon on the left bottom */
 .sidebar-toggle span {
   background-color: var(--color-secondary);
   display: block;
@@ -487,10 +562,20 @@ div#app:empty::before {
   height: 3px;
 }
 
-.app-sub-sidebar li::before {
-  content: '-';
-  padding-right: 5px;
-  float: left;
+/* search result text */
+.search a {
+  color: var(--color-text-light);
+}
+
+.search a:hover {
+  color: var(--color-text-dark);
+}
+
+.search .search-keyword {
+  color: var(--color-primary);
+  font-style: normal;
+  font-weight: var(--font-weight-bold);
+
 }
 
 /* sidebar toggle */
@@ -533,7 +618,8 @@ body.close .sidebar {
 }
 
 body.close .sidebar-toggle {
-  background-color: rgba(255, 255, 255, 0.8);
+  /* make this color variable*/
+  background-color: rgba(--color-sidebar-toggle-bg-rgb, 0.8);
   transition: 1s background-color;
   width: 300px;
   padding: 15px;
@@ -543,17 +629,8 @@ body.close .content {
   transform: translateX(300px);
 }
 
-body.close .app-nav,
-body.close .github-corner {
+body.close .app-nav {
   display: none;
-}
-
-.github-corner:hover .octo-arm {
-  animation: none;
-}
-
-.github-corner .octo-arm {
-  animation: octocat-wave 560ms ease-in-out;
 }
 
 /* ===== MARKDOWN SECTION ===== */
@@ -589,19 +666,20 @@ body.close .github-corner {
 
 .markdown-section hr {
   border: none;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--color-border);
   /* margin: 2em 0; */
   margin: 4em 0 1em 0;
 }
 
 .markdown-section iframe {
-  /* border: 1px solid #eee; */
+  /* border: 1px solid var(--color-border); */
   border: 0;
   /* fix horizontal overflow on iOS Safari */
   width: 1px;
   min-width: 100%;
 }
 
+/* table styles */
 .markdown-section table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -612,26 +690,29 @@ body.close .github-corner {
 }
 
 .markdown-section th {
-  border: 1px solid #ddd;
-  font-weight: bold;
+  border: 1px solid var(--color-border);
+  font-weight: var(--font-weight-bold);
+
+  background-color: var(--color-table-header);
   padding: 6px 13px;
 }
 
 .markdown-section td {
-  border: 1px solid #ddd;
+  border: 1px solid var(--color-border);
   padding: 6px 13px;
 }
 
 .markdown-section tr {
-  border-top: 1px solid #ccc;
+  border: 1px solid var(--color-border);
 }
 
 .markdown-section tr:nth-child(2n) {
-  background-color: #f8f8f8;
+  background-color: var(--color-table-even);
 }
 
 .markdown-section p.tip {
-  background-color: #f8f8f8;
+  /* color check */
+  background-color: var(--color-bg-light);
   border-bottom-right-radius: 2px;
   border-left: 4px solid #f66;
   border-top-right-radius: 2px;
@@ -641,12 +722,13 @@ body.close .github-corner {
 }
 
 .markdown-section p.tip:before {
+  /* not used - we use an image instead. */
   background-color: #f66;
   border-radius: 100%;
   color: #fff;
   content: '!';
   font-size: 14px;
-  font-weight: bold;
+  font-weight: var(--font-weight-bold);
   left: -12px;
   line-height: 20px;
   position: absolute;
@@ -665,6 +747,7 @@ body.close .github-corner {
 }
 
 .markdown-section p.warn {
+  /* check this color, if we use */
   background: rgba(66, 185, 131, 0.1);
   border-radius: 2px;
   padding: 1rem;
@@ -674,48 +757,65 @@ body.close .github-corner {
   list-style-type: none;
 }
 
-.markdown-section h1,
-.markdown-section h2,
-.markdown-section h3,
-.markdown-section h4,
-.markdown-section strong {
-  color: var(--color-primary);
-  font-weight: 600;
-}
-
 .markdown-section a {
-  color: var(--color-text);
-  font-weight: 600;
+  /* color: var(--color-text); */
+  font-weight: var(--font-weight-bold);
+
 }
 
 .markdown-section h1 a {
-  /* padding-top: 15px; */
-  font-size: 3.0rem;
+  padding-top: 1rem;
   margin: 1rem 0;
 }
 
+.markdown-section h1 a span {
+  color: var(--color-text);
+  font-size: 3.0rem;
+}
+
 .markdown-section h2 a {
-  font-size: 1.5rem;
   margin: 3.0rem 0 0 0;
+}
+
+.markdown-section h2 a span {
   color: var(--color-secondary);
+  font-size: 1.5rem;
 }
 
 .markdown-section h3 a {
-  font-size: 1.20rem;
   margin: 1.0rem 0 0 0;
+}
+
+.markdown-section h3 a span {
+  color: var(--color-text-dark);
+  font-size: 1.20rem;
 }
 
 .markdown-section h4 a {
-  font-size: 1.00rem;
   margin: 1.0rem 0 0 0;
 }
 
+.markdown-section h4 a span {
+  color: var(--color-text-dark);
+  font-size: 1.00rem;
+}
+
 .markdown-section h5 a {
-  font-size: 1rem;
+  margin: 1.0rem 0 0 0;
+}
+
+.markdown-section h5 a span {
+  color: var(--color-text-dark);
+  font-size: 1.00rem;
 }
 
 .markdown-section h6 a {
-  font-size: 1rem;
+  margin: 1.0rem 0 0 0;
+}
+
+.markdown-section h6 a span {
+  color: var(--color-text-dark);
+  font-size: 1.00rem;
 }
 
 .markdown-section figure,
@@ -736,15 +836,15 @@ body.close .github-corner {
 }
 
 .markdown-section blockquote {
-  border-left: 4px solid var(--color-tertiary);
+  border-left: 4px solid var(--color-text-highlight);
   color: var(--color-text-light);
   margin: 2em 0;
-  padding-left: 20px;
+  padding-left: 1.2rem;
   font-style: italic;
 }
 
 .markdown-section blockquote p {
-  font-weight: 600;
+  font-weight: var(--font-weight-bold);
   margin-left: 0;
 }
 
@@ -752,8 +852,11 @@ body.close .github-corner {
   margin: -0.75em 0;
 }
 
-.markdown-section em {
-  color: #7f8c8d;
+.markdown-section em,
+.markdown-section b,
+.markdown-section strong {
+  color: var(--color-text-light);
+  font-weight: var(--font-weight-bold);
 }
 
 .markdown-section code,
@@ -764,7 +867,8 @@ body.close .github-corner {
 
 .markdown-section code,
 .markdown-section pre {
-  background-color: #f8f8f8;
+  background-color: var(--color-bg-code);
+  border-radius: var(--border-radius);
 }
 
 .markdown-section pre,
@@ -787,14 +891,14 @@ body.close .github-corner {
 
 .markdown-section code {
   border-radius: 2px;
-  color: #e96900;
+  color: var(--color-code-keyword-function);
   margin: 0 2px;
   padding: 3px 5px;
   white-space: pre-wrap;
 }
 
 .markdown-section> :not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) code {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
 }
 
 .markdown-section pre {
@@ -805,8 +909,9 @@ body.close .github-corner {
 }
 
 .markdown-section pre>code {
+  /* color check */
   color: #525252;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   padding: 2.2em 5px;
   line-height: inherit;
   margin: 0 2px;
@@ -837,12 +942,13 @@ body.close .github-corner {
 
 .markdown-section pre::after,
 .markdown-section output::after {
-  color: #ccc;
-  font-size: 0.6rem;
-  font-weight: 600;
-  height: 15px;
-  line-height: 15px;
-  padding: 5px 10px 0;
+  color: var(--color-secondary);
+  font-size: 0.9rem;
+  font-weight: var(--font-weight-bold);
+
+  line-height: 1.2rem;
+  height: 1.2rem;
+  padding: 0.7rem 1rem 0;
   position: absolute;
   right: 0;
   text-align: right;
@@ -852,6 +958,11 @@ body.close .github-corner {
 .markdown-section pre::after,
 .markdown-section output::after {
   content: attr(data-lang);
+}
+
+/* for small images in the text */
+.markdown-section .inline-img {
+  max-height: 1rem;
 }
 
 section.cover {
@@ -902,7 +1013,7 @@ section.cover p {
 section.cover h1 {
   color: inherit;
   font-size: 2.5rem;
-  font-weight: 300;
+  font-weight: var(--font-weight-light);
   margin: 0.625rem 0 2.5rem;
   position: relative;
   text-align: center;
@@ -971,74 +1082,86 @@ section.cover blockquote>p>a:hover {
 }
 
 /* ===== CODE HIGHLIGHTING ===== */
+code .token {
+  -moz-osx-font-smoothing: initial;
+  -webkit-font-smoothing: initial;
+  min-height: 1.5rem;
+  position: relative;
+  left: auto;
+  font-family: var(--font-monospace);
+  font-weight: var(--font-weight-light);
+  font-size: 0.9rem;
+  color: var(--color-text);
+}
+
 .token.comment,
 .token.prolog,
 .token.doctype,
 .token.cdata {
-  color: #8e908c;
+  color: var(--color-code-comment);
 }
 
 .token.namespace {
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
 .token.boolean,
 .token.number {
-  color: #c76b29;
+  color: var(--color-code-boolean-number);
 }
 
 .token.punctuation {
-  color: #525252;
+  color: var(--color-code-punctuation);
 }
 
 .token.property {
-  color: #c08b30;
+  color: var(--color-code-property);
 }
 
 .token.tag {
-  color: #2973b7;
+  color: var(--color-code-tag);
 }
 
 .token.string {
-  color: var(--color-secondary);
+  color: var(--color-code-string);
 }
 
 .token.selector {
-  color: #6679cc;
+  color: var(--color-code-selector);
 }
 
 .token.attr-name {
-  color: #2973b7;
+  color: var(--color-code-attr-name);
 }
 
 .token.entity,
 .token.url,
 .language-css .token.string,
 .style .token.string {
-  color: #22a2c9;
+  color: var(--color-code-entity-url);
 }
 
 .token.attr-value,
 .token.control,
 .token.directive,
 .token.unit {
-  color: var(--color-secondary);
+  color: var(--color-code-attr-value-control-directive-unit);
 }
 
 .token.keyword,
 .token.function {
-  color: #e96900;
+  color: var(--color-code-keyword-function);
 }
 
 .token.statement,
 .token.regex,
 .token.atrule {
-  color: #22a2c9;
+  color: var(--color-code-statement-regex-atrule);
 }
 
 .token.placeholder,
 .token.variable {
-  color: #3d8fd1;
+  color: var(--color-code-placeholder-variable);
 }
 
 .token.deleted {
@@ -1046,7 +1169,7 @@ section.cover blockquote>p>a:hover {
 }
 
 .token.inserted {
-  border-bottom: 1px dotted #202746;
+  border-bottom: 1px dotted var(--color-code-inserted);
   text-decoration: none;
 }
 
@@ -1056,65 +1179,16 @@ section.cover blockquote>p>a:hover {
 
 .token.important,
 .token.bold {
-  font-weight: bold;
+  font-weight: var(--font-weight-bold);
+
 }
 
 .token.important {
-  color: #c94922;
+  color: var(--color-code-important);
 }
 
 .token.entity {
   cursor: help;
-}
-
-code .token {
-  -moz-osx-font-smoothing: initial;
-  -webkit-font-smoothing: initial;
-  min-height: 1.5rem;
-  position: relative;
-  left: auto;
-}
-
-/* ===== NAVIGATION BAR ===== */
-
-.navbar {
-  /* background: #EEFFFF; */
-  background: #FFF;
-  color: #9760f6;
-  position: fixed;
-  top: 0px;
-  width: 100%;
-  height: 60px;
-  margin: 0px !important;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  padding: 0rem 2rem;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom-width: 2px;
-  border-bottom-color: #eeeeee;
-  border-bottom-style: solid;
-}
-
-.navbar img {
-  height: 28px;
-  /* this could be organized with a variable. */
-}
-
-.navbar-logo-container {
-  display: flex;
-}
-
-.navbar-menu {
-  display: flex;
-  align-items: center;
-}
-
-.navbar-menu-item:not(:last-child) {
-  margin-right: 2rem;
 }
 
 /* ===== RESPONSIVE STYLES ===== */
