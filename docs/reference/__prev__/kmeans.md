@@ -1,7 +1,7 @@
 # Kmeans Clustering
 
 <center>
-    <img style="display:block; max-height:20rem" alt="groups of points colored depending on which cluster it has been categorized into by the kmeans algorithm" src="assets/header-kmeans.png">
+    <img class="header-img" alt="groups of points colored depending on which cluster it has been categorized into by the kmeans algorithm" src="assets/header-kmeans.png">
 </center>
 
 ## Description

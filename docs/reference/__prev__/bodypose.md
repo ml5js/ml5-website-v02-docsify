@@ -1,7 +1,7 @@
 # Pose Estimation
 
 <center>
-    <!-- <img style="display:block; max-height:20rem" alt="pose detection" src="assets/header-posenet.jpg"> -->
+    <!-- <img class="header-img" alt="pose detection" src="assets/header-posenet.jpg"> -->
     <img style="display:block; max-width:100%" alt="pose estimation" src="https://1.bp.blogspot.com/-25aGTL-RTnY/YJ29jgiiNHI/AAAAAAAAEMM/9qJC_xqlUKo4To9xyumqKmrqKr-vVFXzgCLcBGAsYHQ/s0/three_pane_aligned%2B%25281%2529.gif">
     
     <!-- <p>image via: https://pdm.com.co/tag/posenet/</p> -->

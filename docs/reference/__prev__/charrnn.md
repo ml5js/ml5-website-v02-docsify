@@ -1,7 +1,7 @@
 # CharRNN
 
 <center>
-    <img style="display:block; max-height:20rem" alt="image of book with text that says, 'you are designing for humans not machines'" src="assets/header-charrnn.png">
+    <img class="header-img" alt="image of book with text that says, 'you are designing for humans not machines'" src="assets/header-charrnn.png">
 </center>
 
 ## Description

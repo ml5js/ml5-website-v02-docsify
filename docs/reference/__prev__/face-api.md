@@ -1,7 +1,7 @@
 # Face-Api
 
 <center>
-    <img style="display:block; max-height:20rem" alt="face landmark detection" src="assets/header-faceapi.png">
+    <img class="header-img" alt="face landmark detection" src="assets/header-faceapi.png">
 </center>
 
 ## Description

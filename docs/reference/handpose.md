@@ -1,7 +1,7 @@
 # Handpose
 
 <center>
-    <img style="display:block; max-height:20rem" alt="A GIF of a person waving their hand in front of a camera. Green dots are drawn over different locations on their palm and fingers–demonstrating the capabilities of the Handpose model." src="assets/header-handpose.gif">
+    <img class="header-img" alt="A GIF of a person waving their hand in front of a camera. Green dots are drawn over different locations on their palm and fingers–demonstrating the capabilities of the Handpose model." src="assets/header-handpose.gif">
 </center>
 
 ## Description

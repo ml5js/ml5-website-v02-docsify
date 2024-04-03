@@ -1,7 +1,7 @@
 # Sentiment
 
 <center>
-    <img style="display:block; max-height:20rem" alt="illustration of hand drawing a heart" src="assets/header-sentiment.png">
+    <img class="header-img" alt="illustration of hand drawing a heart" src="assets/header-sentiment.png">
 </center>
 
 ## Description

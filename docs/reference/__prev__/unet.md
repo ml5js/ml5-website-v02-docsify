@@ -1,7 +1,7 @@
 # UNET
 
 <center>
-    <img style="display:block; max-height:20rem" alt="Illustration of a background masked behind a person" src="assets/header-unet.png">
+    <img class="header-img" alt="Illustration of a background masked behind a person" src="assets/header-unet.png">
 </center>
 
 ## Description

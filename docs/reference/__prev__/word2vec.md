@@ -1,7 +1,7 @@
 # Word2Vec
 
 <center>
-    <img style="display:block; max-height:20rem" alt="illustration of an equation with egg plus cat equals kitten" src="assets/header-word2vec.png">
+    <img class="header-img" alt="illustration of an equation with egg plus cat equals kitten" src="assets/header-word2vec.png">
 </center>
 
 ## word2vec has been disabled

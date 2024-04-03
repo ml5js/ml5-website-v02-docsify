@@ -1,7 +1,7 @@
 # StyleTransfer
 
 <center>
-    <img style="display:block; max-height:20rem" alt="Transferred style of paintings onto mountain image" src="assets/header-styletransfer.png">
+    <img class="header-img" alt="Transferred style of paintings onto mountain image" src="assets/header-styletransfer.png">
 </center>
 
 ## Description

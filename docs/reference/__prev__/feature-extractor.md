@@ -1,7 +1,7 @@
 # FeatureExtractor
 
 <center>
-    <img style="display:block; max-height:20rem" alt="Illustration of a brain being sent through a funnel" src="assets/header-feature-extractor.png">
+    <img class="header-img" alt="Illustration of a brain being sent through a funnel" src="assets/header-feature-extractor.png">
 </center>
 
 ## Description

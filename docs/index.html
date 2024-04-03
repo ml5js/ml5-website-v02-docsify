@@ -1,10 +1,8 @@
 <!--
 TO-DOs
 - top navbar - from the website - app-nav? let's not use it.
-- fix the sidebar toggle button
-- code styles
+- interactive window design
 -->
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -23,22 +21,32 @@ TO-DOs
 </head>
 
 <body>
-  <!-- app-nav class will be applied to the navbar when the sidebar is open -->
-  <nav class="navbar">
-    <a href="https://ml5js.org" class="navbar-logo-container">
-      <img src="https://ml5js.org/static/ml5_logo_purple-88e082b8dc81d8729f95bcc092db90c5.png" alt="ml5 Logo" />
-    </a>
-
-    <div class="navbar-menu">
-      <a class="navbar-menu-item" href="https://learn.ml5js.org/#/">Getting Started</a>
-      <a class="navbar-menu-item" href="https://learn.ml5js.org/#/reference/index">Reference</a>
-      <a class="navbar-menu-item" href="https://ml5js.org/community/">Community</a>
-      <a class="navbar-menu-item" href="https://ml5js.org/about/">About</a>
-      <a class="navbar-menu-item" href="https://github.com/ml5js/ml5-library">
-        <img src="assets/github-mark-120px-plus.png" alt="GitHub Logo" />
-      </a>
-    </div>
-  </nav>
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <button class="button">
+          <a href="/#">ml5.js</a>
+        </button>
+      </div>
+      <div class="menu">
+        <button class="button">
+          <a href="https://ml5js.github.io/ml5-website-v02-docsify/#/">Getting Started</a>
+        </button>
+        <button class="button">
+          <a href="https://ml5js.github.io/ml5-website-v02-docsify/#/reference/overview">Reference</a>
+        </button>
+        <button class="button">
+          <a href="/learn">Learn</a>
+        </button>
+        <button class="button">
+          <a href="/community/">Community</a>
+        </button>
+        <button class="button">
+          <a href="/about/">About</a>
+        </button>
+      </div>
+    </nav>
+  </header>
 
   <div id="app">Loading...</div>
 

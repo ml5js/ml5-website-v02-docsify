@@ -1,7 +1,7 @@
 # ml5 Utilities
 
 <center>
-    <img style="display:block; max-height:20rem" alt="Illustration of hammer and wrench" src="assets/header-utils.png">
+    <img class="header-img" alt="Illustration of hammer and wrench" src="assets/header-utils.png">
 </center>
 
 ## Description

@@ -1,7 +1,7 @@
 # SoundClassifier
 
 <center>
-    <img style="display:block; max-height:20rem" alt="placeholder" src="assets/header-sound-classifier.png">
+    <img class="header-img" alt="placeholder" src="assets/header-sound-classifier.png">
 </center>
 
 ## Description

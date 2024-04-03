@@ -1,7 +1,7 @@
 # BodyPix
 
 <center>
-    <img style="display:block; max-height:20rem" alt="BodyPix Header Image of Harriet Tubman" src="assets/header-bodypix.png">
+    <img class="header-img" alt="BodyPix Header Image of Harriet Tubman" src="assets/header-bodypix.png">
 </center>
 
 ## Description
