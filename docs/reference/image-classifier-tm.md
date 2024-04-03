@@ -37,7 +37,7 @@ _<img class="inline-img" src="assets/gettingstarted-bulb.png" alt="tip icon" ari
 
 ### Demo
 
-[p5 Web Editor](iframes/neural-network ":include :type=iframe width=100% height=550px")
+[p5 Web Editor](iframes/image-teachable-machine ":include :type=iframe width=100% height=550px")
 
 ### Quick Start
 
