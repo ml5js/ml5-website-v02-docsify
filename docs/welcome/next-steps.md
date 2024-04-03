@@ -18,9 +18,7 @@ Interested in using ml5.js to build more ML-based projects? Check out these lear
 > In chapter 11, "the path forward passes through the field of neuroevolution, a style of machine learning that combines the genetic algorithms from Chapter 9 with the neural networks from Chapter 10. A neuroevolutionary system uses Darwinian principles to evolve the weights (and in some cases, the structure itself) of a neural network over generations of trial-and-error learning. In this chapter, I’ll demonstrate how to use neuroevolution with a familiar example from the world of gaming. I’ll then finish off with some variations on Craig Reynolds’s steering behaviors from Chapter 5, where the behaviors are learned through neuroevolution."
 >
 > <center>
-
     <img  alt="pose detection" src="assets/gettingstarted-noc.jpeg">
-
 </center>
 
 > #### ml5 Glossay 👉[ Learn](https://ml5js.github.io/ml5-website-v02-docsify/#/learning/ml5-glossary)
