@@ -1,7 +1,7 @@
 # YOLO
 
 <center>
-    <img style="display:block; max-height:20rem" alt="cat detected by yolo" src="assets/header-yolo.png">
+    <img class="header-img" alt="cat detected by yolo" src="assets/header-yolo.png">
 </center>
 
 ## Description

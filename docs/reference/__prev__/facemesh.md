@@ -1,7 +1,7 @@
 # Facemesh
 
 <center>
-    <img style="display:block; max-height:20rem" alt="A screenshot of a video feed where a person sits at their chair inside of a bedroom while green dots are drawn over different locations on their face." src="assets/header-facemesh.jpg">
+    <img class="header-img" alt="A screenshot of a video feed where a person sits at their chair inside of a bedroom while green dots are drawn over different locations on their face." src="assets/header-facemesh.jpg">
 </center>
 
 ## Description

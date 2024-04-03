@@ -1,7 +1,7 @@
 # DCGAN: Deep Convolutional Generative Adversarial Networks
 
 <center>
-    <img style="display:block; max-height:20rem" alt="generated map images" src="assets/header-dcgan.png">
+    <img class="header-img" alt="generated map images" src="assets/header-dcgan.png">
 </center>
 
 ## Description

@@ -1,7 +1,7 @@
 # ImageClassifier
 
 <center>
-    <img style="display:block; max-height:20rem" alt="image classification of bird" src="assets/header-image-classifier.png">
+    <img class="header-img" alt="image classification of bird" src="assets/header-image-classifier.png">
 </center>
 
 ## Description

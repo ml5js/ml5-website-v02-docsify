@@ -1,7 +1,7 @@
 # NameOfFeature
 
 <center>
-    <img style="display:block; max-height:20rem" alt="image classification of bird" src="https://via.placeholder.com/150">
+    <img class="header-img" alt="image classification of bird" src="https://via.placeholder.com/150">
 </center>
 
 ## Description

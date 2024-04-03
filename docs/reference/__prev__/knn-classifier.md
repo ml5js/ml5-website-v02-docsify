@@ -1,7 +1,7 @@
 # KNNClassifier: K-Nearest Neighbors Classifier
 
 <center>
-    <img style="display:block; max-height:20rem" alt="Illustration of hands making the signs of rock, paper, and scissors on top of different labels" src="assets/header-knn-classifier.png">
+    <img class="header-img" alt="Illustration of hands making the signs of rock, paper, and scissors on top of different labels" src="assets/header-knn-classifier.png">
 </center>
 
 ## Description

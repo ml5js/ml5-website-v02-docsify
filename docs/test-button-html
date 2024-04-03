@@ -1,0 +1,85 @@
+<style>
+  /* buttons */
+  .custom-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    overflow: hidden;
+    position: relative;
+    z-index: 0;
+    border-style: none;
+    border-color: var(--button-hover-bg-color);
+    border-radius: 1.0rem;
+  }
+
+  .custom-a {
+    color: inherit;
+    font-family: var(--button-font-family);
+    font-weight: var(--button-font-weight);
+    text-decoration: none;
+    transition: color 250ms ease-in-out;
+  }
+
+  .custom-a:before {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: -1;
+    border-radius: 1.5rem;
+    transition: all 500ms ease-in-out;
+    background: var(--button-hover-bg-color);
+    animation: gradientAnimation 6s ease infinite;
+  }
+
+  .custom-a:hover {
+    cursor: pointer;
+    color: var(--button-hover-color);
+    background-color: rgba(255, 255, 255, 0.0);
+  }
+
+  .custom-a:hover:before {
+    content: "";
+    width: 200%;
+    height: 200%;
+    left: -50%;
+    top: -50%;
+    transition: all 500ms ease-in-out;
+  }
+</style>
+
+<div class="menu">
+  <button class="custom-button">
+    <a href="https://ml5js.github.io/ml5-website-v02-docsify/#/" class="custom-a"
+      style="color: var(--color-text-dark); background-color: var(--color-transparent); font-size: 0.9rem;">Getting
+      Started</a>
+  </button>
+  <button class="custom-button">
+    <a href="https://ml5js.github.io/ml5-website-v02-docsify/#/reference/overview" class="custom-a"
+      style="color: var(--color-text-dark); background-color: var(--color-transparent); font-size: 0.9rem;">Reference</a>
+  </button>
+  <button class="custom-button">
+    <a href="/learn" class="custom-a"
+      style="color: var(--color-text-dark); background-color: var(--color-transparent); font-size: 0.9rem;">Learn</a>
+  </button>
+  <button class="custom-button">
+    <a href="/community/" class="custom-a"
+      style="color: var(--color-text-dark); background-color: var(--color-transparent); font-size: 0.9rem;">Community</a>
+  </button>
+  <button class="custom-button">
+    <a href="/about/" class="custom-a"
+      style="color: var(--color-text-dark); background-color: var(--color-transparent); font-size: 0.9rem;">About</a>
+  </button>
+</div>
+
+<script>
+  const buttons = document.querySelectorAll('.custom-button');
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Handle button click event here
+    });
+  });
+</script>

@@ -1,12 +1,12 @@
 # Image + Teachable Machine
 
 <center>
-    <img style="display:block; max-height:20rem" alt="image classification of bird" src="assets/header-image-tm.png">
+    <img class="header-img" alt="image classification of bird" src="assets/header-image-tm.png">
 </center>
 
 ## Description
 
-Have you ever wanted to train your own image classification model with customized labels? Follow this guide to get started! 
+Have you ever wanted to train your own image classification model with customized labels? Follow this guide to get started!
 
 With the combination of the image classifier and Teachable Machine, you can create a model that can recognize the content of an image from a set of labels that you define. For example, you can train a model to tell the difference between a cat and a dog, happy and sad faces, or even between a hot dog and a sandwich. The possibilities are endless!
 
@@ -19,18 +19,18 @@ _<img class="inline-img" src="assets/gettingstarted-bulb.png" alt="tip icon" ari
 - **Video Object Detection**: The image classifier with Teachable Machine can also be used to classify objects into categories that you define in real-time video.
 
 ### Output Example
-  
+
 ```javascript
 [
   {
-    "label": "cat",
-    "confidence": 0.99
+    label: "cat",
+    confidence: 0.99,
   },
   {
-    "label": "dog",
-    "confidence": 0.01
-  }
-]
+    label: "dog",
+    confidence: 0.01,
+  },
+];
 ```
 
 ## Getting Started
@@ -42,6 +42,7 @@ _<img class="inline-img" src="assets/gettingstarted-bulb.png" alt="tip icon" ari
 ### Quick Start
 
 #### Create a Teachable Machine Model
+
 - Step 1: Open [Teachable Machine](https://teachablemachine.withgoogle.com/train) and create a new "Image Project".
 - Step 2: Choose "Standard image model".
 - Step 3: Click the "Edit" icon to rename "Class 1" to your desired label. For example, "Happy".
@@ -52,6 +53,7 @@ _<img class="inline-img" src="assets/gettingstarted-bulb.png" alt="tip icon" ari
 - Step 8: Copy the model URL in the "Your shareable link" field.
 
 #### Load the Model in ml5.js
+
 Create an empty project in the [p5 web editor](https://editor.p5js.org/).
 
 First of all, copy and paste the following code into your **index.html** file. If you are not familiar with the p5 web editor interface, you can find a guide on how to find your **index.html** file [here](/?id=try-ml5js-online-1).
@@ -66,7 +68,7 @@ Next, copy and paste the following code into your **sketch.js** file.
 // Classifier Variable
 let classifier;
 // Model URL
-let imageModelURL = 'https://teachablemachine.withgoogle.com/models/bXy2kDNi/';
+let imageModelURL = "https://teachablemachine.withgoogle.com/models/bXy2kDNi/";
 
 // Video
 let video;
@@ -76,7 +78,7 @@ let label = "";
 
 // Load the model first
 function preload() {
-  classifier = ml5.imageClassifier(imageModelURL + 'model.json');
+  classifier = ml5.imageClassifier(imageModelURL + "model.json");
 }
 
 function setup() {
@@ -86,7 +88,7 @@ function setup() {
   video.size(320, 240);
   video.hide();
 
-  flippedVideo = ml5.flipImage(video)
+  flippedVideo = ml5.flipImage(video);
   // Start classifying
   classifyVideo();
 }
@@ -105,7 +107,7 @@ function draw() {
 
 // Get a prediction for the current video frame
 function classifyVideo() {
-  flippedVideo = ml5.flipImage(video)
+  flippedVideo = ml5.flipImage(video);
   classifier.classify(flippedVideo, gotResult);
 }
 
@@ -125,9 +127,11 @@ function gotResult(error, results) {
 ```
 
 #### Use the model in your code
+
 Update the `imageModelURL` variable with the model URL you copied from the Teachable Machine.
 
 #### Run the code
+
 Finally, click the "Run" button to see the result! You should see the video feed from your webcam, and the model will classify the content of the video in real-time.
 
 Alternatively, you can open [this example code](https://editor.p5js.org/ml5/sketches/ImageModel_TM) and try it yourself on p5.js web editor!
@@ -135,6 +139,7 @@ Alternatively, you can open [this example code](https://editor.p5js.org/ml5/sket
 (TODO: link to be updated)
 
 ### Additional Examples
+
 (TODO: examples to be updated)
 
 ## Methods
@@ -144,7 +149,7 @@ Alternatively, you can open [this example code](https://editor.p5js.org/ml5/sket
 This method is used to initialize the imageClassifer object. Here, you could provide the teachable machine model URL to load the model.
 
 ```javascript
-const classifier = ml5.imageClassifier(imageModelURL + 'model.json');
+const classifier = ml5.imageClassifier(imageModelURL + "model.json");
 ```
 
 **Returns:**  

@@ -1,7 +1,7 @@
 # SketchRnn
 
 <center>
-    <img style="display:block; max-height:20rem" alt="AI generated cat drawings" src="assets/header-sketchrnn.png">
+    <img class="header-img" alt="AI generated cat drawings" src="assets/header-sketchrnn.png">
 </center>
 
 ## Description

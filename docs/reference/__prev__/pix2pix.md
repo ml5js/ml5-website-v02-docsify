@@ -1,7 +1,7 @@
 # Pix2Pix
 
 <center>
-    <img style="display:block; max-height:20rem" alt="image of drawing converted to the Pokemon character, Pikachu using Pix2Pix" src="assets/header-pix2pix.png">
+    <img class="header-img" alt="image of drawing converted to the Pokemon character, Pikachu using Pix2Pix" src="assets/header-pix2pix.png">
 </center>
 
 Image: Image of drawing converted to the Pokemon character, Pikachu using Pix2Pix trained on Pikachu images. Trained by [Yining Shi](https://1023.io);

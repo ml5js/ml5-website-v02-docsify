@@ -1,7 +1,7 @@
 # PitchDetection
 
 <center>
-    <img style="display:block; max-height:20rem" alt="illustration of sound waves" src="assets/header-pitch-detection.png">
+    <img class="header-img" alt="illustration of sound waves" src="assets/header-pitch-detection.png">
 </center>
 
 ## Description

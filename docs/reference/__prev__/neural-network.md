@@ -1,7 +1,7 @@
 # NeuralNetwork
 
 <center>
-    <img style="display:block; max-height:20rem" alt="Illustration of brain" src="assets/header-neural-network.png">
+    <img class="header-img" alt="Illustration of brain" src="assets/header-neural-network.png">
 </center>
 
 ## Description

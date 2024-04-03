@@ -1,7 +1,7 @@
 # PoseNet
 
 <center>
-    <img style="display:block; max-height:20rem" alt="pose detection" src="assets/header-posenet.jpg">
+    <img class="header-img" alt="pose detection" src="assets/header-posenet.jpg">
     <p>image via: https://pdm.com.co/tag/posenet/</p>
 </center>
 
