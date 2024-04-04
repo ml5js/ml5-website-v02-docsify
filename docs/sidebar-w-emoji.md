@@ -1,6 +1,6 @@
 <div class="sidebar-spacer">&nbsp;</div>
 
-- **Welcome**
+- **Welcome** 🌈
 <div class="sidebar-section-divider">&nbsp;</div>
 
 - [Getting Started](/)
@@ -9,14 +9,14 @@
 
 <div class="sidebar-spacer">&nbsp;</div>
 
-- **Reference**
+- **Reference** 📃
   <div class="sidebar-section-divider">&nbsp;</div>
 
 - [Overview](/reference/overview.md)
 
 <div class="sidebar-spacer">&nbsp;</div>
 
-- **ml5 Models**
+- **ml5 Models** 📦
 
 - [Bodypose](/reference/bodypose.md)
 - [BodySegmentation](/reference/body-segmentation.md)
@@ -28,7 +28,7 @@
 
 <div class="sidebar-spacer">&nbsp;</div>
 
-- **ml5 + Teachable Machine**
+- **ml5 + Teachable Machine** ✍️
 
 - [Image + Teachable Machine](/reference/image-classifier-tm.md)
     <!-- * [Sound + Teachable Machine](/reference/sound-classifier-tm.md) -->
@@ -36,12 +36,12 @@
 
 <div class="sidebar-spacer">&nbsp;</div>
 
-- **Train your own model!**
+- **Train your own model!** 💡
 - [Neural Networks](/reference/neural-network.md)
 
 <div class="sidebar-spacer">&nbsp;</div>
 
-- **Learning**
+- **Learning** 📚
   <div class="sidebar-section-divider">&nbsp;</div>
 
 - [ml5 Glossary](/learning/ml5-glossary.md)
@@ -49,7 +49,7 @@
 
 <div class="sidebar-spacer">&nbsp;</div>
 
-- **Contributing**
+- **Contributing** 🏗
   <div class="sidebar-section-divider">&nbsp;</div>
 
 - [How To Contribute](/contributing/how-to-contribute.md)

@@ -2,6 +2,7 @@
 
 <center>
     <img class="header-img" alt="A screenshot of a video feed where a person sits at their chair inside of a bedroom while green dots are drawn over different locations on their face." src="assets/header-facemesh.jpg">
+    <p class="img-credit"> Image Credit: <a href="">Name</a> | <a href="">Contribute ♥️</a> </p>
 </center>
 
 ## Description
@@ -71,7 +72,7 @@ Ready to give it a try? Just follow our simple instructions, and you'll be on yo
 
 ### Demo
 
-[p5 Web Editor](iframes/facemesh-keypoints ":include :type=iframe width=100% height=550px")
+[DEMO](iframes/facemesh-keypoints ":include :type=iframe width=100% height=550px")
 
 ### Quick Start
 

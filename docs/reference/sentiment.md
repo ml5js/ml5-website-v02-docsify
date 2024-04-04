@@ -2,6 +2,7 @@
 
 <center>
     <img style="display:block;max-height:20rem" alt="sentiment" src="assets/header-sentiment.png">
+    <p class="img-credit"> Image Credit: <a href="">Name</a> | <a href="">Contribute ♥️</a> </p>
 </center>
 
 ## Description
@@ -30,7 +31,7 @@ Integrating Sentiment into your ml5.js projects is straightforward. Our document
 
 ### Demo
 
-[p5 Web Editor](iframes/sentiment ":include :type=iframe width=100% height=550px")
+[DEMO](iframes/sentiment ":include :type=iframe width=100% height=550px")
 
 ### Quick Start
 

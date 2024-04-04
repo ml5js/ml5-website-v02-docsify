@@ -52,7 +52,7 @@ Once you have the 17 keypoints estimated by the model, you can utilize them in v
 
 <!-- **Try it yourself!** -->
 
-[p5 Web Editor](iframes/pose-estimation ":include :type=iframe width=100% height=550px")
+[DEMO](iframes/pose-estimation ":include :type=iframe width=100% height=550px")
 
 ### Tutorials
 

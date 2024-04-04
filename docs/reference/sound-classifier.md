@@ -2,6 +2,7 @@
 
 <center>
     <img class="header-img" alt="placeholder" src="assets/header-sound-classifier.png">
+    <p class="img-credit"> Image Credit: <a href="">Name</a> | <a href="">Contribute ♥️</a> </p>
 </center>
 
 ## Description

@@ -54,6 +54,6 @@ function gotResult(error, results) {
   // The results are in an array ordered by confidence.
   console.log(results);
   label = results[0].label;
-  // Classifiy again!
+  // Classify again!
   classifyVideo();
 }

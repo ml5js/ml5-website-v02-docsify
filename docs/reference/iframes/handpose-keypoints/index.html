@@ -5,18 +5,21 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>p5.js iframe</title>
-  <link rel="stylesheet" href="../style.css">
+
+  <!-- iframe CSS & JS -->
+  <link rel="stylesheet" type="text/css" href="../../../css/global.css">
+  <link rel="stylesheet" type="text/css" href="../style-iframe.css">
+  <script src="../script-navbar.js"></script>
 </head>
 
 <body>
-  <div class="content-container">
-    <h1>Hand Pose Keypoints Detection Model</h1>
-    <p>(Add description.) Ensure to enable the webcam.</p>
-    <button>
-      <a href="main.html">Start!</a>
-    </button>
-  </div>
+  <script>
+    // Navbar will be added on the top of the page.
+    // You can provide a link to the script file on the p5 web editor.
+    navbar("");
+  </script>
+
+  <iframe src="ready.html" name="script-iframe"></iframe>>
 </body>
 
 </html>
