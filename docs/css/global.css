@@ -10,6 +10,7 @@
   --color-quaternary: #f66;
 
   --color-text: #282a3f;
+  --color-text-transparent: rgba(40, 42, 63, 0.9);
   --color-text-dark: #1f1f20;
   --color-text-light: #73768d;
   --color-text-highlight: #61fcff;

@@ -197,7 +197,7 @@ div#app:empty::before {
 .menu a {
   font-size: 0.9rem;
   margin-left: 20px;
-  color: var(--color-text-light);
+  color: var(--color-text-transparent);
 }
 
 .menu a:first-child {
