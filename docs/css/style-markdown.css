@@ -463,7 +463,6 @@ body.close .sidebar-toggle {
 }
 
 /* Images, iframes & other Box Models */
-/* for additional styles, check ".markdown-section iframe" */
 .markdown-section img {
   max-width: 100%;
   border-radius: var(--border-radius);
