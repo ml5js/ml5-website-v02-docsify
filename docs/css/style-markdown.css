@@ -1,176 +1,3 @@
-/* Import Google Fonts */
-@import url(https://fonts.googleapis.com/css?family=Arvo:wght@700&Nunito+Sans:ital,opsz,wght@1,6..12,400;600&Noto+Sans+Mono:wght@500&display=swap);
-
-/* Variables */
-:root {
-  /* Colors */
-  --color-primary: #8833ff;
-  --color-secondary: #7d77da;
-  --color-tertiary: #00a7af;
-  --color-quaternary: #f66;
-
-  --color-text: #282a3f;
-  --color-text-dark: #1f1f20;
-  --color-text-light: #73768d;
-  --color-text-highlight: #61fcff;
-  --color-text-highlight-green: #adffc5;
-
-  --color-text-link: #6a709c;
-
-  --color-bg: #ffffff;
-  --color-bg-light: #f8f9fb;
-  --color-bg-gray: #f0f0f0;
-  --color-bg-code: var(--color-bg-light);
-
-  --color-border: #ddd;
-  --color-border-light: #eee;
-  --color-border-dark: #ccc;
-
-  --color-table-header: var(--color-bg-gray);
-  --color-table-odd: #ffffff;
-  --color-table-even: #fbfbfb;
-
-  /* we use rgb values here to add transparency later. */
-  --color-sidebar-scrollbar-rgb: 136, 136, 136;
-  --color-sidebar-toggle-bg-rgb: 255, 255, 255;
-
-  /* Code Highlighting */
-  --color-code-comment: #b2b9a5;
-  --color-code-boolean-number: #6092e3;
-  --color-code-punctuation: #525252;
-  --color-code-property: #83b91f;
-  --color-code-tag: #ca4db7;
-  --color-code-string: #b248cf;
-  --color-code-selector: #b04372;
-  --color-code-attr-name: #2b86db;
-  --color-code-entity-url: #22a2c9;
-  --color-code-attr-value-control-directive-unit: #7d77da;
-  --color-code-keyword-function: #453ae0;
-  --color-code-statement-regex-atrule: #22a2c9;
-  --color-code-placeholder-variable: #3d8fd1;
-  --color-code-deleted: #202746;
-  --color-code-inserted: #202746;
-  --color-code-important: #ff00c8;
-
-  /* Fonts */
-  --font-serif: "Arvo", serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-sans-serif: "Nunito Sans", system-ui, -apple-system, "Helvetica", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-monospace: "Noto Sans Mono", monospace;
-  --font-emoji: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-weight-bold: 600;
-  --font-weight-normal: 400;
-  --font-weight-light: 300;
-
-  /* Body */
-  --body-color: var(--color-text);
-  --body-font-family: var(--font-sans-serif);
-  --body-font-size: 16px;
-  --body-font-weight: var(--font-weight-normal);
-  --body-line-height: 1.6;
-  --body-letter-spacing: 0;
-
-  /* Headings */
-  --heading-color: var(--color-text-dark);
-  --heading-font-family: var(--font-serif);
-  --heading-small-font-family: var(--font-sans-serif);
-  --heading-font-weight: var(--font-weight-bold);
-
-  /* Buttons */
-  --button-hover-color: #ffffff;
-  --button-hover-bg-color: var(--color-secondary);
-  --button-font-family: var(--font-serif);
-  --button-font-weight: var(--font-weight-bold);
-
-  /* Navbar */
-  --navbar-init-height: 6rem;
-
-  /* Rounded corners */
-  --border-radius: 0.5rem;
-
-  /* Docsify tabs - not used */
-  --docsifytabs-border-color: #ededed;
-  --docsifytabs-tab-highlight-color: var(--color-secondary);
-}
-
-
-/* Reset some default styles */
-* {
-  -webkit-font-smoothing: antialiased;
-  /* Make fonts smoother and better looking on webkit browsers */
-  -webkit-overflow-scrolling: touch;
-  /* Use momentum-based scrolling on webkit browsers */
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  /* Remove tap highlight color on webkit browsers */
-  -webkit-text-size-adjust: none;
-  /* Prevent webkit browsers from adjusting the text size */
-  -webkit-touch-callout: none;
-  /* Disable the default callout shown on long press on webkit browsers */
-  box-sizing: border-box;
-  /* Include padding and border in element's total width and height */
-}
-
-/* Body */
-html,
-body {
-  height: 100%;
-}
-
-body {
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  color: var(--body-color);
-  font-family: var(--body-font-family);
-  font-size: var(--body-font-size);
-  font-weight: var(--body-font-weight);
-  letter-spacing: 0;
-  margin: 0;
-  overflow-x: hidden;
-  background-color: var(--color-bg);
-}
-
-/* headings */
-/* Also cross-check ".markdown-section a" */
-h1,
-h2 {
-  font-family: var(--heading-font-family);
-  font-weight: var(--heading-font-weight);
-}
-
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--heading-small-font-family);
-  font-weight: var(--heading-font-weight);
-}
-
-/* Images, iframes & other Box Models */
-img,
-iframe {
-  max-width: 100%;
-  border-radius: var(--border-radius);
-
-}
-
-/* ===== LINKS ===== */
-a {
-  color: var(--color-text-link);
-  text-decoration-thickness: 1px;
-  text-decoration-color: var(--color-text-highlight);
-}
-
-a:hover {
-  color: var(--color-text-dark);
-  text-decoration-thickness: 3px;
-  text-decoration-color: var(--color-text-highlight);
-}
-
-/* Disabled Link */
-a[disabled] {
-  cursor: not-allowed;
-  opacity: 0.6;
-}
-
 /* the markdown-section link overrides the global link styles */
 .anchor {
   display: inline-block;
@@ -370,7 +197,7 @@ div#app:empty::before {
 .menu a {
   font-size: 0.9rem;
   margin-left: 20px;
-  color: var(--color-text);
+  color: var(--color-text-light);
 }
 
 .menu a:first-child {
@@ -586,7 +413,6 @@ body.close .sidebar-toggle {
   background-color: transparent;
   width: auto;
   padding: 15px;
-
 }
 
 .sidebar-toggle span {
@@ -636,9 +462,16 @@ body.close .sidebar-toggle {
   margin: 4em 0 1em 0;
 }
 
+/* Images, iframes & other Box Models */
+/* for additional styles, check ".markdown-section iframe" */
+.markdown-section img {
+  max-width: 100%;
+  border-radius: var(--border-radius);
+}
+
 .markdown-section iframe {
-  /* border: 1px solid var(--color-border); */
-  border: 0;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--border-radius);
   /* fix horizontal overflow on iOS Safari */
   width: 1px;
   min-width: 100%;
@@ -838,6 +671,7 @@ body.close .sidebar-toggle {
 
 .markdown-section pre,
 .markdown-section output {
+  /* here! */
   margin: 1.2em 0;
   position: relative;
 }
@@ -905,19 +739,21 @@ body.close .sidebar-toggle {
   letter-spacing: 0.05rem;
 }
 
+/* code language that appears the right top corner*/
 .markdown-section pre::after,
 .markdown-section output::after {
-  color: var(--color-secondary);
-  font-size: 0.9rem;
+  color: var(--color-tertiary);
+  font-size: 0.8rem;
+  font-family: var(--body-font-family);
   font-weight: var(--font-weight-bold);
+  text-align: right;
+  line-height: 0.9rem;
 
-  line-height: 1.2rem;
-  height: 1.2rem;
-  padding: 0.7rem 1rem 0;
+  height: 0.9rem;
   position: absolute;
   right: 0;
-  text-align: right;
   top: 0;
+  padding: 0.6rem 0.9rem 0;
 }
 
 .markdown-section pre::after,
@@ -926,13 +762,19 @@ body.close .sidebar-toggle {
 }
 
 /* for header images on each page */
-.markdown-section .header-img {
+.header-img {
   display: block;
   max-height: 400px;
 }
 
+.img-credit {
+  text-align: right;
+  font-size: 0.7rem;
+  margin: 0.5rem 0;
+}
+
 /* for small images in the text */
-.markdown-section .inline-img {
+.inline-img {
   max-height: 1rem;
 }
 
@@ -1162,9 +1004,20 @@ code .token {
   cursor: help;
 }
 
+/* Copy to clipboard button */
+.docsify-copy-code-button {
+  font-size: 0.8rem;
+  border-radius: 0 var(--border-radius);
+}
+
 /* ===== RESPONSIVE STYLES ===== */
 @media screen and (max-width: 700px) {
   .navbar .menu {
+    display: none !important;
+  }
+
+  #demo,
+  .demo-iframe {
     display: none !important;
   }
 }

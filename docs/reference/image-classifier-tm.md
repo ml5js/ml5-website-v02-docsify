@@ -2,6 +2,7 @@
 
 <center>
     <img class="header-img" alt="image classification of bird" src="assets/header-image-tm.png">
+    <p class="img-credit"> Image Credit: <a href="">Name</a> | <a href="">Contribute ♥️</a> </p>
 </center>
 
 ## Description
@@ -37,7 +38,7 @@ _<img class="inline-img" src="assets/gettingstarted-bulb.png" alt="tip icon" ari
 
 ### Demo
 
-[p5 Web Editor](iframes/image-teachable-machine ":include :type=iframe width=100% height=550px")
+[DEMO](iframes/image-teachable-machine ":include :type=iframe width=100% height=550px")
 
 ### Quick Start
 

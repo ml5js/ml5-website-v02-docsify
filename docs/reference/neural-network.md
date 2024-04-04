@@ -2,6 +2,7 @@
 
 <center>
     <img class="header-img" alt="Illustration of brain" src="assets/header-neural-network.png">
+    <p class="img-credit"> Image Credit: <a href="">Name</a> | <a href="">Contribute ♥️</a> </p>
 </center>
 
 ## Description
@@ -44,7 +45,7 @@ An example of the output from the neural network regression task is shown below:
 
 ### Demo
 
-[p5 Web Editor](iframes/neural-network ":include :type=iframe width=100% height=550px")
+[DEMO](iframes/neural-network ":include :type=iframe width=100% height=550px")
 
 ### Quick Start
 

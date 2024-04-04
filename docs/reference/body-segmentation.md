@@ -2,6 +2,7 @@
 
 <center>
     <img class="header-img" alt="BodyPix Header Image of Harriet Tubman" src="assets/header-bodypix.png">
+    <p class="img-credit"> Image Credit: <a href="">Name</a> | <a href="">Contribute ♥️</a> </p>
 </center>
 
 ## Description
@@ -27,7 +28,7 @@ Integrating Body Segmentation into your ml5.js projects is straightforward. Our 
 
 ### Demo
 
-[p5 Web Editor](iframes/body-segmentation ":include :type=iframe width=100% height=550px")
+[DEMO](iframes/body-segmentation ":include :type=iframe class='demo-iframe'width=100% height=550px")
 
 ### Quick Start
 

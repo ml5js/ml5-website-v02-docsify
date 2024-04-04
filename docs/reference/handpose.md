@@ -2,6 +2,7 @@
 
 <center>
     <img class="header-img" alt="A GIF of a person waving their hand in front of a camera. Green dots are drawn over different locations on their palm and fingers–demonstrating the capabilities of the Handpose model." src="assets/header-handpose.gif">
+    <p class="img-credit"> Image Credit: <a href="">Name</a> | <a href="">Contribute ♥️</a> </p>
 </center>
 
 ## Description
@@ -49,7 +50,7 @@ Ready to give it a try? Our demo is here to give you a sneak peek into what Hand
 
 ### Demo
 
-[p5 Web Editor](iframes/handpose-keypoints ":include :type=iframe width=100% height=550px")
+[DEMO](iframes/handpose-keypoints ":include :type=iframe width=100% height=550px")
 
 ### Quick Start
 

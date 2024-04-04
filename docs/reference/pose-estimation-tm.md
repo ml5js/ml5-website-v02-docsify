@@ -2,6 +2,7 @@
 
 <center>
     <img class="header-img" alt="image classification of bird" src="assets/header-image-classifier.png">
+    <p class="img-credit"> Image Credit: <a href="">Name</a> | <a href="">Contribute ♥️</a> </p>
 </center>
 
 ## Description

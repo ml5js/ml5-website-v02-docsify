@@ -1,9 +1,8 @@
 # ImageClassifier
 
 <center>
-    <!-- <img class="header-img" alt="image classification of 
-    bird" src="assets/header-image-classifier.png"> -->
     <img class="header-img" alt="image classification of bird" src="assets/header-test.png">
+    <p class="img-credit"> Image Credit: <a href="">Name</a> | <a href="">Contribute ♥️</a> </p>
 </center>
 
 ## Description
@@ -43,7 +42,7 @@ Ready to give it a try? Our demo is here to give you a sneak peek into what the 
 
 ### Demo
 
-[p5 Web Editor](iframes/image-classifier ":include :type=iframe width=100% height=550px")
+[DEMO](iframes/image-classifier ":include :type=iframe width=100% height=550px")
 
 ### Quick Start
 
