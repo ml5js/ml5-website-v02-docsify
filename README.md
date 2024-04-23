@@ -4,7 +4,7 @@ This repository is for the work-in-progress ml5.js website, which is built using
 
 ## Installation and Testing
 
-You can simply clone the repository and run the website locally.
+You can simply clone the repository and run the website locally. The site is temporarily deployed to: https://ml5-next-gen-docs.netlify.app/.
 
 ### Prerequisites
 
