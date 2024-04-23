@@ -62,7 +62,7 @@ Include this line of code: `console.log('ml5 version:', ml5.version);` inside th
 ```js
 function setup() {
   createCanvas(400, 400);
-  console.log("ml5 version:", ml5.version);
+  console.log('ml5 version:', ml5.version);
 }
 
 function draw() {
@@ -76,7 +76,7 @@ If everything loaded properly you should see the version number of the ml5 libra
     <img  alt="pose detection" src="assets/gettingstarted-ml5-version.png">
 </center>
 
-Follow [the next step to prepare your image assets](/?id=try-ml5js-online-2)!
+Follow [the next step to try the image classifier](/?id=try-ml5js-online-2)!
 
 ### Try ml5.js Locally
 
@@ -101,11 +101,11 @@ Here you can see that we reference the needed JavaScript libraries, so that they
 </html>
 ```
 
-Follow [the next step to prepare your image assets](/?id=try-ml5js-locally-2)!
+Follow [the next step to try the image classifier](/?id=try-ml5js-locally-2)!
 
-## Prepare Image Assets For Your First Sketch {docsify-ignore}
+## Add Images For Your First Machine Learning Sketch {docsify-ignore}
 
-If you've arrived here, we assume you've imported ml5.js library to your project. Now, let's prepare the image assets we will be using soon.
+If you've arrived here, we assume you've imported ml5.js library to your project. Now, let's get ml5.js running with a demo application that classifies an image!
 
 ### Try ml5.js Online
 
@@ -127,7 +127,7 @@ And upload a bird image named `bird.png` to the `images` folder. Remember to log
     <img alt="pose detection" src="assets/gettingstarted-upload-file.png">
 </center>
 
-Now, we are ready to write our first ml5.js sketch! Follow [the next step to write your first sketch](/?id=your-first-sketch)!
+Now, you are ready to write ouyourr first ml5.js sketch! Follow [the next step to write your first sketch](/?id=your-first-sketch)!
 
 ### Try ml5.js Locally
 
@@ -155,11 +155,11 @@ Now, we are ready to write our first ml5.js sketch! Follow [the next step to wri
 
 ## Your First Sketch
 
-Now, no matter you are trying ml5.js online or locally, open your **sketch.js**.
+Open your **sketch.js** file.
 
-We can start to build your first ml5.js sketch - a classic application of machine learning: **image classification**. This application showcases how you can use a [pre-trained](https://youtu.be/yNkAuWz5lnY?si=0JuaPFYlxLFE0WSU) model called [MobileNet](https://github.com/tensorflow/tfjs-models/tree/master/mobilenet) -- a machine learning model trained to recognize the content of certain images -- in ml5.js. The application aims to highlight a general pattern for how ml5.js projects are setup.
+Let's begin with a classic application of machine learning: **image classification**. This application showcases how you can use a [pre-trained](https://youtu.be/yNkAuWz5lnY?si=0JuaPFYlxLFE0WSU) model called [MobileNet](https://github.com/tensorflow/tfjs-models/tree/master/mobilenet) trained to recognize the content of certain images. The demonstrations aims to highlight the pattern for the functionality of all ml5.js features.
 
-Inside your **sketch.js** file you can type out (or copy and paste) the following code. Notice in this example we have a reference to "images/bird.png". You'll replace this with the name of your image.
+Inside your **sketch.js** file you can type out (or copy and paste) the following code. Notice tha reference to `"images/bird.png"`. You'll replace this with your image filename!
 
 ```js
 let classifier;
@@ -168,13 +168,13 @@ let classifier;
 let img;
 
 // Variables for displaying the results on the canvas
-let label = "";
-let confidence = "";
+let label = '';
+let confidence = '';
 
 function preload() {
   // Initialize the Image Classifier method with MobileNet
-  classifier = ml5.imageClassifier("MobileNet");
-  img = loadImage("images/bird.jpg");
+  classifier = ml5.imageClassifier('MobileNet');
+  img = loadImage('images/bird.jpg');
 }
 
 function setup() {
@@ -183,17 +183,17 @@ function setup() {
   image(img, 0, 0, width, height);
 }
 
-// A function to run when we get the results
+// A function that runs when the results are ready
 function gotResult(results) {
-  // The results are in an array ordered by confidence, print in console
+  // The results are in an array ordered by confidence
   console.log(results);
 
-  // Display the results on the canvas
+  // Show the top label on the canvas
   fill(255);
   stroke(0);
   textSize(18);
-  label = "Label: " + results[0].label;
-  confidence = "Confidence: " + nf(results[0].confidence, 0, 2);
+  label = 'Label: ' + results[0].label;
+  confidence = 'Confidence: ' + nf(results[0].confidence, 0, 2);
   text(label, 10, 360);
   text(confidence, 10, 380);
 }
@@ -201,45 +201,41 @@ function gotResult(results) {
 
 _<img class="inline-img" src="assets/gettingstarted-bulb.png" alt="tip icon" aria-hidden="true"> If you are not familiar with terms like **pre-trained model**, **MobileNet**, **classification**, **classifier**, **confidence** and would like to learn more about them, check out our [ml5 Glossary](/learning/ml5-glossary) for a quick intro._
 
-## Our sketch.js explained in 4 steps {docsify-ignore}
+## The sketch.js explained in 4 steps {docsify-ignore}
 
 ### Step 1: Define your variables
 
-Here we define our variables that we will assign our classifier, image, label, and confidence to.
+Here variables are defined for the classifier, image, label, and confidence.
 
 ```js
 let classifier;
-
-// A variable to hold the image we want to classify
 let img;
-
-// Variables for displaying the results on the canvas
-let label = "";
-let confidence = "";
+let label = '';
+let confidence = '';
 ```
 
-### Step 2: Load your imageClassifier and image
+### Step 2: Load the imageClassifier model and image file
 
-Use p5's **preload()** function to load our imageClassifier model and our bird image before running the rest of our code. Since machine learning models can be large, it can take time to load. We use **preload()** in this case to make sure our imageClassifier and image are ready to go before we can apply the image classification in the next step.
+Use p5.js's **preload()** function to load the imageClassifier model and the bird image before running the rest of the code. Since machine learning models are large (and are being retrieved from cloud servers), it can often take time to load. Here, **preload()** guarantees that the model and image are ready to go before the image is classified in the next step.
 
 ```js
 function preload() {
-  classifier = ml5.imageClassifier("MobileNet");
-  img = loadImage("images/bird.png");
+  classifier = ml5.imageClassifier('MobileNet');
+  img = loadImage('images/bird.png');
 }
 ```
 
 _<img class="inline-img" src="assets/gettingstarted-bulb.png" alt="tip icon" aria-hidden="true"> If you are not familiar with term **preload function**, check out our [ml5 Glossary](/learning/ml5-glossary) for more information._
 
-### Step 3: Setup, classify, and display
+### Step 3: setup, classify, and display
 
-In p5.js we use the **setup()** function for everything in our program that just runs once. In our program, we use the **setup()** function to:
+In p5.js the **setup()** function runs once at the beginning.
 
-1. create a canvas to render our image
-2. call .classify() on our classifier to classify our image
-3. render the image to the canvas
+1. Create a canvas.
+2. Call `classify()` on the classifier model.
+3. Draw the image on the canvas.
 
-You will notice that the **.classify()** function takes two parameters: 1. the image you want to classify, and 2. a callback function called **gotResult**. Let's next look at what **gotResult** does.
+You will notice that the **.classify()** function takes two parameters: 1. the image you want to classify, and 2. a callback function called **gotResult**.
 
 ```js
 function setup() {
@@ -249,39 +245,39 @@ function setup() {
 }
 ```
 
+Let's next look at what **gotResult** does.
+
 ### Step 4: Define the gotResult() callback function
 
-The **gotResult()** function takes one parameter: the result. This parameter gets passed along to **gotResult()** when the **.classify()** function finishes classifying the image. If our classifier manages to recognize the content of the image, then a **result** will be returned.
+The **gotResult()** function receives one parameter: the result. This parameter arrives to **gotResult()** when the **.classify()** function finishes classifying the image.
 
 <br/>
 
-In the case of our program, we are interested in the top 1 result which has the highest confidence and stored in **results[0]**. We store the label and confidence of the result in the variables **label** and **confidence** respectively, and then display the label and confidence of the result on the canvas with the **text()** function. The **[nf()](https://p5js.org/reference/#/p5/nf)** function is a p5 function that formats our number to a nicer string.
+The top result with the highest confidence can be found in **results[0]**. The label and confidence of the result are found in the properties **label** and **confidence** respectively and can be displayed on the canvas with the **text()** function. The **[nf()](https://p5js.org/reference/#/p5/nf)** function is a p5.js function that formats our number to a nicer string.
 
 ```js
 // A function to run when we get the results
 function gotResult(results) {
-  // The results are in an array ordered by confidence, print in console
+  // The results are in an array ordered by confidence
   console.log(results);
 
-  // Display the results on the canvas
+  // Draw the results on the canvas
   fill(255);
   stroke(0);
   textSize(18);
-  label = "Label: " + results[0].label;
-  confidence = "Confidence: " + nf(results[0].confidence, 0, 2);
+  label = 'Label: ' + results[0].label;
+  confidence = 'Confidence: ' + nf(results[0].confidence, 0, 2);
   text(label, 10, 360);
   text(confidence, 10, 380);
 }
 ```
 
-_<img class="inline-img" src="assets/gettingstarted-bulb.png" alt="tip icon" aria-hidden="true"> If you are not familiar with terms like **callback**, **label**, **confidence**, check out our [ml5 Glossary](/learning/ml5-glossary) for more information._
+_<img class="inline-img" src="assets/gettingstarted-bulb.png" alt="tip icon" aria-hidden="true"> If you are not familiar with terms like **callback**, **label**, **confidence**, check out the [ml5 Glossary](/learning/ml5-glossary) for more information._
 
-## Need Help On Your Code? {docsify-ignore}
+## Where can you try the example? {docsify-ignore}
 
-Check our examples below for reference:
-
-1. If you try ml5.js online with p5 web editor, check [ml5.js image classification on p5 web editor](https://editor.p5js.org/ml5/sketches/ImageClassification)
-2. If you try ml5.js locally, check [ml5.js image classification on Github](https://github.com/ml5js/ml5-next-gen/tree/main/examples/ImageClassifier)
+1. The [ml5.js image classification example is available for the p5.js web editor](https://editor.p5js.org/ml5/sketches/pjPr6XmPY)
+2. You can also find the [ml5.js image classification example on GitHub](https://github.com/ml5js/ml5-next-gen/tree/main/examples/ImageClassifier).
 
 ## Run Your Sketch {docsify-ignore}
 
