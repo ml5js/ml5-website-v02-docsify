@@ -7,7 +7,7 @@
 
 ## Description
 
-Bodypose offers a versatile solution for pose estimation by leveraging the strengths of Movenet and Blazepose. It provides real-time, full-body pose estimation and precise tracking of key body parts, including hands, face, and body, in an optimized and lightweight package.
+Bodypose offers a versatile solution for pose estimation by leveraging [Movenet](https://www.tensorflow.org/hub/tutorials/movenet#:~:text=MoveNet%20is%20an%20ultra%20fast,known%20as%20Lightning%20and%20Thunder) and [Blazepose](https://developers.google.com/mediapipe/solutions/vision/pose_landmarker). It provides real-time, full-body pose estimation and tracking of key body parts, including hands, face, and body, in an optimized and lightweight package.
 
 ### Key Features
 
@@ -17,7 +17,7 @@ Bodypose offers a versatile solution for pose estimation by leveraging the stren
 
 ### What can we do with the model?
 
-Bodypose is suitable for a wide range of applications, such as interactive gaming, fitness apps, art installations, and accessibility solutions. Its accuracy and real-time performance make it a valuable tool for developers and creators!
+Bodypose is suitable for a wide range of applications, such as interactive gaming, fitness apps, art installations, and accessibility solutions. Its real-time performance make it a valuable tool for interactive media arts!
 
 Bodypose's MoveNet model predict a set of 17 keypoints:
 
@@ -39,23 +39,23 @@ See the diagram below for the position of each keypoint.
       <img style="display:block; max-width:30%" alt="Keypoint Diagram" src="https://camo.githubusercontent.com/17082997c33fc6d2544c4aea33d9898860cf902ed5a0b865527d1dd91bbc7efa/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f6d65646961706970652f626c617a65706f73652d6b6579706f696e74732d757064617465642e706e67">
   </center>
 
-Once you have the keypoints estimated by the model, you can utilize them in various ways based on your application:
+The keypoints estimated by the model can be used in a variety of ways:
 
-**Human Pose Estimation**: You can reconstruct the human body pose by connecting the keypoints using skeletal connections. This helps visualize the pose and track the movement of body parts.
+**Human Pose Visualization**: You can reconstruct the human body pose by connecting the keypoints using skeletal connections. This helps visualize the pose and track the movement of body parts.
 
-**Gesture Recognition**: By analyzing the relative positions and movements of keypoints over time, you can recognize specific gestures or actions performed by a person.
+**Gesture Recognition**: By analyzing the relative positions and movements of keypoints, you can recognize specific gestures or actions.
 
-**Fitness Tracking**: PoseNet/MoveNet can be used to track exercises and provide feedback on the correctness of the exercise form. For instance, it can help ensure that a person is maintaining proper alignment during yoga poses or weightlifting.
+**Fitness Tracking**: Pose Estimation can be used to track exercises and provide feedback. For instance, a person's pose can be evaluated during yoga, weightlifting, or other common exercises.
 
 **Augmented Reality**: Keypoints can be used to anchor virtual objects or effects to specific body parts, allowing for interactive augmented reality experiences.
 
-**Biomechanics Analysis**: In sports and rehabilitation, PoseNet/MoveNet can provide insights into body movements, helping to analyze techniques, prevent injuries, and aid in recovery.
+**Biomechanics Analysis**: In sports and rehabilitation, pose estimation can provide insights into body movements, helping to analyze techniques, prevent injuries, and aid in recovery.
 
-**Accessibility**: Bodypos can be used to track body movements and gestures to control devices and interfaces, enabling people with disabilities to interact with technology in new ways.
+**Accessibility**: Pose estimation can be used to track movement and gesture for controlling devices and interfaces.
 
 ### Output Example
 
-An example of the output from Body Pose MoveNet model is shown below:
+An example of the output from Body Pose's MoveNet model is shown below:
 
 ```javascript
 [
@@ -65,7 +65,7 @@ An example of the output from Body Pose MoveNet model is shown below:
         y: 64.88419532775879,
         x: 381.0333251953125,
         score: 0.7116302847862244,
-        name: "nose",
+        name: 'nose',
       },
       // Additional keypoints here...
     ],
@@ -148,7 +148,7 @@ An example of the output from Body Pose Blazepose model is shown below:
         y: 209.4658613204956,
         z: -0.35329264402389526,
         score: 0.9999341368675232,
-        name: "nose",
+        name: 'nose',
       },
       // Additional keypoints here...
     ],
@@ -158,7 +158,7 @@ An example of the output from Body Pose Blazepose model is shown below:
         y: -0.6131212711334229,
         z: -0.3431171476840973,
         score: 0.9999341368675232,
-        name: "nose",
+        name: 'nose',
       },
       // Additional 3D keypoints here...
     ],
@@ -269,25 +269,23 @@ An example of the output from Body Pose Blazepose model is shown below:
 ];
 ```
 
-## Getting Started
-
-Integrating Bodypose into your ml5.js projects is straightforward. Our documentation and user-friendly API will help you make the most of this combined model!
-
 ### Demo
 
-[DEMO](iframes/pose-estimation ":include :type=iframe width=100% height=550px")
+[DEMO](iframes/pose-estimation ':include :type=iframe width=100% height=550px')
 
 ### Quick Start
 
-Before you start, let's create an empty project in the [p5 web editor](https://editor.p5js.org/).
+Try [this BodyPose example in the p5.js web editor](https://editor.p5js.org/ml5/sketches/c8sl_hGmN)!
 
-First of all, copy and paste the following code into your **index.html** file. If you are not familiar with the p5 web editor interface, you can find a guide on how to find your **index.html** file [here](/?id=try-ml5js-online-1).
+### How To
+
+To build the example yourself, create an empty project in the [p5.js web editor](https://editor.p5js.org/). Copy the following `<script>` tag into the **index.html** file. For more about the web edtor file management, you can review [the p5.js web editor guide](/?id=try-ml5js-online-1).
 
 ```html
 <script src="https://unpkg.com/ml5@alpha/dist/ml5.js"></script>
 ```
 
-Then, add the code below to your **sketch.js** file:
+Next add the code below to your **sketch.js** file:
 
 ```js
 let video;
@@ -312,15 +310,16 @@ function setup() {
 }
 
 function draw() {
-  // Draw the webcam video
+  // Display the video
   image(video, 0, 0, width, height);
 
-  // Draw all the tracked landmark points
+  // Iterate all the poses
   for (let i = 0; i < poses.length; i++) {
     let pose = poses[i];
+    // Iterate all the keypoints for each pose
     for (let j = 0; j < pose.keypoints.length; j++) {
       let keypoint = pose.keypoints[j];
-      // Only draw a circle if the keypoint's confidence is bigger than 0.1
+      // Only draw a circle if the keypoint's confidence is greater than 0.1
       if (keypoint.score > 0.1) {
         fill(0, 255, 0);
         noStroke();
@@ -330,14 +329,12 @@ function draw() {
   }
 }
 
-// Callback function for when bodyPose outputs data
+// Callback function for when the model returns pose data
 function gotPoses(results) {
-  // Save the output to the poses variable
+  // Store the model's results in a global variable
   poses = results;
 }
 ```
-
-Alternatively, you can open [this example code](https://github.com/ml5js/ml5-next-gen/tree/main/examples/BodyPose-keypoints) and try it yourself on p5.js web editor!
 
 ### Additional Examples
 
@@ -352,10 +349,10 @@ Alternatively, you can open [this example code](https://github.com/ml5js/ml5-nex
 
 #### ml5.bodypose()
 
-This method is used to initialize the bodypose object.
+This method is used to load the BodyPose model and store it in a variable. The `?` means the argument is optional!
 
 ```javascript
-const bodypose = ml5.bodypose(?options, ?callback);
+let bodypose = ml5.bodypose(?options, ?callback);
 ```
 
 **Parameters:**
@@ -366,7 +363,6 @@ const bodypose = ml5.bodypose(?options, ?callback);
   {
     modelType: "MULTIPOSE_LIGHTNING" // "MULTIPOSE_LIGHTNING", "SINGLEPOSE_LIGHTNING", or "SINGLEPOSE_THUNDE"
     enableSmoothing: true,
-
     minPoseScore: 0.25,
     multiPoseMaxDimension: 256,
     enableTracking: true,
@@ -376,16 +372,16 @@ const bodypose = ml5.bodypose(?options, ?callback);
   }
   ```
 
-  More info on options [here](https://github.com/tensorflow/tfjs-models/tree/master/pose-detection/src/movenet#create-a-detector).
+  [Read more info on MoveNet's options](https://github.com/tensorflow/tfjs-models/tree/master/pose-detection/src/movenet#create-a-detector).
 
-- **callback(bodypose, error)**: OPTIONAL. A function to run once the model has been loaded. Alternatively, call `ml5.bodyPix()` within the p5 `preload` function.
+- **callback(bodypose, error)**: OPTIONAL. A "callback" function that runs when the model has been successfully loaded. Most ml5.js example call `ml5.bodyPose()` in the p5.js `preload()` function and no callback is needed.
 
 **Returns:**  
-The bodypose object.
+The BodyPose object.
 
 #### bodypose.detectStart()
 
-This method repeatedly outputs pose estimations on an image media through a callback function.
+This method starts the pose detection process and runs it continuously on real-time video.
 
 ```javascript
 bodypose.detectStart(media, callback);
@@ -394,7 +390,7 @@ bodypose.detectStart(media, callback);
 **Parameters:**
 
 - **media**: An HMTL or p5.js image, video, or canvas element to run the estimation on.
-- **callback(output, error)**: A callback function to handle the output of the estimation. See below for an example output passed into the callback function:
+- **callback(results, error)**: A callback function to handle the results of the pose estimation. See below for an example of the model's results:
 
   ```javascript
   [
@@ -414,7 +410,7 @@ bodypose.detectStart(media, callback);
 
 #### bodypose.detectStop()
 
-This method can be called after a call to `bodypose.detectStart` to stop the repeating pose estimation.
+This method can be called to stop the continous pose estimation process.
 
 ```javascript
 bodypose.detectStop();
@@ -422,7 +418,7 @@ bodypose.detectStop();
 
 #### bodypose.detect()
 
-This method asynchronously outputs a single pose estimation on an image media when called.
+This method runs the pose estimation on an image once, not continuously!
 
 ```javascript
 bodypose.detect(media, ?callback);
@@ -431,9 +427,4 @@ bodypose.detect(media, ?callback);
 **Parameters:**
 
 - **media**: An HTML or p5.js image, video, or canvas element to run the estimation on.
-- **callback(output, error)**: OPTIONAL. A callback function to handle the output of the estimation, see output example above.
-
-**Returns:**  
-A promise that resolves to the estimation output.
-
-(footer needed)
+- **callback(output, error)**: OPTIONAL. A callback function to handle the results of the pose estimation. See the results above for an example of the model's output.
