@@ -60,70 +60,56 @@ Create an empty project in the [p5 web editor](https://editor.p5js.org/).
 First of all, copy and paste the following code into your **index.html** file. If you are not familiar with the p5 web editor interface, you can find a guide on how to find your **index.html** file [here](/?id=try-ml5js-online-1).
 
 ```html
-<script src="https://unpkg.com/ml5@latest/dist/ml5.js"></script>
+<script src="https://unpkg.com/ml5@alpha/dist/ml5.js"></script>
 ```
 
 Next, copy and paste the following code into your **sketch.js** file.
 
 ```javascript
-// Classifier Variable
+// A variable to initialize the Image Classifier
 let classifier;
-// Model URL
-let imageModelURL = "https://teachablemachine.withgoogle.com/models/bXy2kDNi/";
 
-// Video
+// A variable to hold the video we want to classify
 let video;
-let flippedVideo;
-// To store the classification
-let label = "";
 
-// Load the model first
+// Variable for displaying the results on the canvas
+let label = "Model loading...";
+
+// model URL copied from Teachable Machine, replace with your own model URL
+let imageModelURL = 'https://teachablemachine.withgoogle.com/models/bXy2kDNi/';
+
+// Preload function to load the model
 function preload() {
+  ml5.setBackend("webgl");
   classifier = ml5.imageClassifier(imageModelURL + "model.json");
 }
 
 function setup() {
-  createCanvas(320, 260);
-  // Create the video
+  createCanvas(640, 480);
+  background(255);
+
+  // Using webcam feed as video input, hiding html element to avoid duplicate with canvas
   video = createCapture(VIDEO);
-  video.size(320, 240);
   video.hide();
 
-  flippedVideo = ml5.flipImage(video);
-  // Start classifying
-  classifyVideo();
+  // Start classifying the video
+  classifier.classifyStart(video, gotResult);
 }
 
 function draw() {
-  background(0);
-  // Draw the video
-  image(flippedVideo, 0, 0);
+  //Each video frame is painted on the canvas
+  image(video, 0, 0);
 
-  // Draw the label
+  //Printing class with the highest probability on the canvas
   fill(255);
-  textSize(16);
-  textAlign(CENTER);
-  text(label, width / 2, height - 4);
+  textSize(32);
+  text(label, 20, 50);
 }
 
-// Get a prediction for the current video frame
-function classifyVideo() {
-  flippedVideo = ml5.flipImage(video);
-  classifier.classify(flippedVideo, gotResult);
-}
-
-// When we get a result
-function gotResult(error, results) {
-  // If there is an error
-  if (error) {
-    console.error(error);
-    return;
-  }
-  // The results are in an array ordered by confidence.
-  console.log(results);
+// A function to run when we get the results and any errors
+function gotResult(results) {
+  //update label variable which is displayed on the canvas
   label = results[0].label;
-  // Classifiy again!
-  classifyVideo();
 }
 ```
 

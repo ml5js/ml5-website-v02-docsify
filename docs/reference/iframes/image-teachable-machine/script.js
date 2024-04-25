@@ -1,59 +1,49 @@
-// Classifier Variable
+/*
+ * 👋 Hello! This is an ml5.js example made and shared with ❤️.
+ * Learn more about the ml5.js project: https://ml5js.org/
+ * ml5.js license and Code of Conduct: https://github.com/ml5js/ml5-next-gen/blob/main/LICENSE.md
+ *
+ * This example demonstrates detecting objects in a live video through ml5.imageClassifier.
+ */
+
+// A variable to initialize the Image Classifier
 let classifier;
-// Model URL
+
+// A variable to hold the video we want to classify
+let video;
+
+// Variable for displaying the results on the canvas
+let label = "Model loading...";
+
 let imageModelURL = 'https://teachablemachine.withgoogle.com/models/bXy2kDNi/';
 
-// Video
-let video;
-let flippedVideo;
-// To store the classification
-let label = "";
-
-// Load the model first
 function preload() {
-  classifier = ml5.imageClassifier(imageModelURL + 'model.json');
+  ml5.setBackend("webgl");
+  classifier = ml5.imageClassifier(imageModelURL + "model.json");
 }
 
 function setup() {
-  createCanvas(320, 260);
-  // Create the video
-  video = createCapture(VIDEO);
-  video.size(320, 240);
-  video.hide();
+  createCanvas(640, 480);
+  background(255);
 
-  flippedVideo = ml5.flipImage(video)
-  // Start classifying
-  classifyVideo();
+  // Using webcam feed as video input, hiding html element to avoid duplicate with canvas
+  video = createCapture(VIDEO);
+  video.hide();
+  classifier.classifyStart(video, gotResult);
 }
 
 function draw() {
-  background(0);
-  // Draw the video
-  image(flippedVideo, 0, 0);
+  //Each video frame is painted on the canvas
+  image(video, 0, 0);
 
-  // Draw the label
+  //Printing class with the highest probability on the canvas
   fill(255);
-  textSize(16);
-  textAlign(CENTER);
-  text(label, width / 2, height - 4);
+  textSize(32);
+  text(label, 20, 50);
 }
 
-// Get a prediction for the current video frame
-function classifyVideo() {
-  flippedVideo = ml5.flipImage(video)
-  classifier.classify(flippedVideo, gotResult);
-}
-
-// When we get a result
-function gotResult(error, results) {
-  // If there is an error
-  if (error) {
-    console.error(error);
-    return;
-  }
-  // The results are in an array ordered by confidence.
-  console.log(results);
+// A function to run when we get the results and any errors
+function gotResult(results) {
+  //update label variable which is displayed on the canvas
   label = results[0].label;
-  // Classify again!
-  classifyVideo();
 }
