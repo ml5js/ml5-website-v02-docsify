@@ -6,96 +6,93 @@ TO-DOs
 
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
 
-		<title>ml5 - A friendly machine learning library for the web.</title>
+<head>
+  <meta charset="UTF-8" />
 
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-		<meta
-			name="description"
-			content="A friendly machine learning library for the web."
-		/>
-		<meta
-			name="viewport"
-			content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-		/>
+  <title>ml5 - A friendly machine learning library for the web.</title>
 
-		<link rel="stylesheet" href="css/global.css" />
-		<link rel="stylesheet" href="css/style-markdown.css" />
-	</head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="A friendly machine learning library for the web." />
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
 
-	<body>
-		<header>
-			<nav class="navbar">
-				<div class="logo">
-					<button class="button">
-						<a href="https://ml5-next-gen.netlify.app/">ml5.js</a>
-					</button>
-				</div>
-				<div class="menu">
-					<button class="button">
-						<a href="#">Getting Started</a>
-					</button>
-					<button class="button">
-						<a href="#/reference/overview">Reference</a>
-					</button>
-					<button class="button">
-						<a href="https://ml5-next-gen.netlify.app/learn/">Learn</a>
-					</button>
-					<button class="button">
-						<a href="https://ml5-next-gen.netlify.app/community/">Community</a>
-					</button>
-					<button class="button">
-						<a href="https://ml5-next-gen.netlify.app/about/">About</a>
-					</button>
-				</div>
-			</nav>
-		</header>
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/style-markdown.css" />
+</head>
 
-		<div id="app">Loading...</div>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <button class="button">
+          <a href="https://ml5-next-gen.netlify.app/">ml5.js</a>
+        </button>
+      </div>
+      <div class="menu">
+        <button class="button">
+          <a href="#">Getting Started</a>
+        </button>
+        <button class="button">
+          <a href="#/reference/overview">Reference</a>
+        </button>
+        <button class="button">
+          <a href="https://ml5-next-gen.netlify.app/learn/">Learn</a>
+        </button>
+        <button class="button">
+          <a href="https://ml5-next-gen.netlify.app/community/">Community</a>
+        </button>
+        <button class="button">
+          <a href="https://ml5-next-gen.netlify.app/about/">About</a>
+        </button>
+      </div>
+    </nav>
+  </header>
 
-		<script>
-			window.$docsify = {
-				name: '', // name is removed as it appears redundantly.
-				repo: 'https://github.com/ml5js/ml5-website-v02-docsify/tree/main/docs',
-				loadSidebar: 'sidebar.md',
-				alias: {
-					'/.*/sidebar.md': '/./sidebar.md',
-				},
-				topMargin: 30,
-				subMaxLevel: 2,
-				relativePath: true,
-				maxLevel: 2,
-				mergeNavbar: true,
-				auto2top: true,
-				search: {
-					maxAge: 86400000, // Expiration time, the default one day
-					paths: 'auto',
-					placeholder: 'Search',
-					noData: 'No Results!',
-					depth: 1, // Headline depth, 1 - 6
-					hideOtherSidebarContent: true, // whether or not to hide other sidebar content
-				},
-				tabs: {
-					persist: true, // default
-					sync: true, // default
-					theme: 'classic', // default
-					tabComments: true, // default
-					tabHeadings: true, // default
-				},
-			};
-		</script>
+  <div id="app">Loading...</div>
 
-		<script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
-		<!-- Plugins -->
-		<!-- Search -->
-		<script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
-		<!-- External JS -->
-		<script src="//unpkg.com/docsify/lib/plugins/external-script.min.js"></script>
-		<!-- Copy to clipboard -->
-		<script src="//unpkg.com/docsify-copy-code"></script>
-		<!-- docsify-tabs (latest v1.x.x) -->
-		<script src="https://cdn.jsdelivr.net/npm/docsify-tabs@1"></script>
-	</body>
+  <script>
+    window.$docsify = {
+      name: '', // name is removed as it appears redundantly.
+      repo: 'https://github.com/ml5js/ml5-website-v02-docsify/tree/main/docs',
+      loadSidebar: 'sidebar.md',
+      alias: {
+        '/.*/sidebar.md': '/./sidebar.md',
+      },
+      subMaxLevel: 2,
+      relativePath: true,
+      maxLevel: 2,
+      mergeNavbar: true,
+      auto2top: true,
+      search: {
+        maxAge: 86400000, // Expiration time, the default one day
+        paths: 'auto',
+        placeholder: 'Search',
+        noData: 'No Results!',
+        depth: 1, // Headline depth, 1 - 6
+        hideOtherSidebarContent: true, // whether or not to hide other sidebar content
+      },
+      tabs: {
+        persist: true,      // default
+        sync: true,      // default
+        theme: 'classic', // default
+        tabComments: true,      // default
+        tabHeadings: true       // default
+      },
+
+    };
+  </script>
+
+  <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+  <!-- Plugins -->
+  <!-- Search -->
+  <script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
+  <!-- External JS -->
+  <script src="//unpkg.com/docsify/lib/plugins/external-script.min.js"></script>
+  <!-- Copy to clipboard -->
+  <script src="//unpkg.com/docsify-copy-code"></script>
+  <!-- docsify-tabs (latest v1.x.x) -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify-tabs@1"></script>
+</body>
+
 </html>
