@@ -42,7 +42,7 @@ If you are done, follow [the next step to import the ml5 library](/?id=try-ml5js
 Open the sidebar revealing the **Sketch Files** by clicking the arrow **'>'** at the top left corner of the p5.js editor.
 
 <center>
-    <img alt="pose detection" src="assets/gettingstarted-sketch-folder.png">
+    <img alt="screenshot of sketch files on the p5 web editor interface" src="assets/gettingstarted-sketch-folder.png">
 </center>
 
 In the **index.html** file, copy and paste the following CDN link inside the **&lt;head&gt;** tag.
@@ -52,7 +52,7 @@ In the **index.html** file, copy and paste the following CDN link inside the **&
 ```
 
 <center>
-    <img alt="pose detection" src="assets/gettingstarted-import-lib.png">
+    <img alt="screenshot of importing ml5 library in index.html file" src="assets/gettingstarted-import-lib.png">
 </center>
 
 To check if the ml5.js library has been imported successfully, switch back to **sketch.js**.
@@ -73,7 +73,7 @@ function draw() {
 If everything loaded properly you should see the version number of the ml5 library show up in the console.
 
 <center>
-    <img  alt="pose detection" src="assets/gettingstarted-ml5-version.png">
+    <img  alt="screenshot of printing ml5 version in the console" src="assets/gettingstarted-ml5-version.png">
 </center>
 
 Follow [the next step to prepare your image assets](/?id=try-ml5js-online-2)!
@@ -112,19 +112,19 @@ If you've arrived here, we assume you've imported ml5.js library to your project
 Open the sidebar revealing the **Sketch Files** by clicking the arrow **'>'** at the top left corner of the p5.js editor.
 
 <center>
-    <img alt="pose detection" src="assets/gettingstarted-sketch-folder.png">
+    <img alt="screenshot of sketch files on the p5 web editor interface" src="assets/gettingstarted-sketch-folder.png">
 </center>
 
 Create a new folder called `images`.
 
 <center>
-    <img alt="pose detection" src="assets/gettingstarted-create_folder.png">
+    <img alt="screenshot of creating images folder" src="assets/gettingstarted-create_folder.png">
 </center>
 
 And upload a bird image named `bird.png` to the `images` folder. Remember to login to see this option.
 
 <center>
-    <img alt="pose detection" src="assets/gettingstarted-upload-file.png">
+    <img alt="screenshot of uploading file to p5 web editor" src="assets/gettingstarted-upload-file.png">
 </center>
 
 Now, we are ready to write our first ml5.js sketch! Follow [the next step to write your first sketch](/?id=your-first-sketch)!
@@ -292,7 +292,7 @@ Now, you may want to run your sketch and see if the model can make predictions a
 Simply press the **Play** button on the top right corner of the interface. And you should see something like this.
 
 <center>
-    <img alt="pose detection" src="assets/gettingstarted-run-sketch.png">
+    <img alt="screenshot of running a sketch" src="assets/gettingstarted-run-sketch.png">
 </center>
 
 ### Try ml5.js Locally
