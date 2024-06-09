@@ -116,14 +116,14 @@ for (let i = 0; i < poses.length; i++) {
     let point = poses[i].pose.keypoints[k];
 
     // get the position of each keypoint
-    let x = point.position.x;
-    let y = point.position.y;
+    let x = point.x;
+    let y = point.y;
 
     // get the confidence score of each keypoint
     let score = point.score;
 
     // get the name of each keypoint
-    let partName = point.part;
+    let partName = point.name;
 
     // draw an ellipse at each keypoint
     fill(0, 255, 0);
@@ -145,14 +145,14 @@ for (let i = 0; i < poses.length; i++) {
     let point = poses[i].pose.keypoints[k];
 
     // get the position of each keypoint
-    let x = point.position.x;
-    let y = point.position.y;
+    let x = point.x;
+    let y = point.y;
 
     // get the confidence score of each keypoint
     let score = point.score;
 
     // get the name of each keypoint
-    let partName = point.part;
+    let partName = point.name;
 
     // only draw an ellipse at each keypoint if the confidence score is higher than 0.5
     if (score > 0.5) {
