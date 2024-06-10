@@ -2,9 +2,12 @@
 
 If you reach this page, we assume you have successfully installed ml5.js and built your first ml5 projects following our [Getting Started](https://ml5js.github.io/ml5-website-v02-docsify/#/) page! Here are some next steps to help you continue your ml5 journey.
 
+## Explore More Fun Models
+During the Getting Started guide, you have used ml5 [Image Classifier](/reference/image-classifier) to classify images. ml5.js provides a variety of pre-trained models that you can use to build your projects. Check out the [Reference](/reference/overview) page to explore more models and their functionalities.
+
 ## Learn ML
 
-Interested in using ml5.js to build more ML-based projects? Check out these learning resources!
+If you would like to understand how the machine learning models work behind the scenes, we recommend you to learn more about theory of machine learning algorithms. Here are some resources to help you get started:
 
 > #### Beginner's Guide to Machine Learning with ml5.js 👉[ Learn](https://youtu.be/26uABexmOX4?si=nqPoD6bQrVTU-YFw) _By Daniel Shiffman_
 >
