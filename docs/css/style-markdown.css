@@ -208,7 +208,7 @@ div#app:empty::before {
 .sidebar {
   /* border-right: 1px solid rgba(0, 0, 0, 0.07); */
   padding: 1rem 0;
-  margin-top: 3.5rem;
+  margin-top: calc(3.5rem + 1px);
   position: absolute;
   top: 0;
   bottom: 0;

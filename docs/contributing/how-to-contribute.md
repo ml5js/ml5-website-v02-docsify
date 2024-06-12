@@ -1,6 +1,10 @@
 # How To Contribute?
 
-<br/>
+<center>
+  <img class="header-img" src="assets/header-how-to-contribute.png" alt="How To Contribute Header Image" >
+  <p class="img-credit"> Image Credit: <a href="">Name</a> | <a href="">Contribute ♥️</a> </p>
+</center>
+
 Our community is always looking for enthusiasts to help in all different ways.
 
 - · **Develop**. [GitHub](https://github.com/ml5js/ml5-library) is the main place where code is collected, issues are documented, and discussions about code are had. Check out the [contributing documentation to get started](/contributing/develop-contributor-notes.md) with developing the library.
