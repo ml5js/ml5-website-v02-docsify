@@ -1,8 +1,8 @@
 # Facemesh
 
 <center>
-    <img class="header-img" alt="A screenshot of a video feed where a person sits at their chair inside of a bedroom while green dots are drawn over different locations on their face." src="assets/header-facemesh.jpg">
-    <p class="img-credit"> Image Credit: <a href="">Name</a> | <a href="">Contribute ♥️</a> </p>
+  <img class="header-img" src="assets/header-facemesh.png" alt="FaceMesh Header Image" >
+  <p class="img-credit"> Image Credit: <a href="">Name</a> | <a href="">Contribute ♥️</a> </p>
 </center>
 
 ## Description

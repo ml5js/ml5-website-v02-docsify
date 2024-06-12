@@ -1,8 +1,8 @@
 # ImageClassifier
 
 <center>
-    <img class="header-img" alt="image classification of bird" src="assets/header-test.png">
-    <p class="img-credit"> Image Credit: <a href="">Name</a> | <a href="">Contribute ♥️</a> </p>
+  <img class="header-img" src="assets/header-image-classifier.png" alt="ImageClassifier Header Image" >
+  <p class="img-credit"> Image Credit: <a href="">Name</a> | <a href="">Contribute ♥️</a> </p>
 </center>
 
 ## Description

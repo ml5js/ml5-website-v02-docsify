@@ -1,8 +1,8 @@
 # Sentiment
 
 <center>
-    <img style="display:block;max-height:20rem" alt="sentiment" src="assets/header-sentiment.png">
-    <p class="img-credit"> Image Credit: <a href="">Name</a> | <a href="">Contribute ♥️</a> </p>
+  <img class="header-img" src="assets/header-sentiment.png" alt="Sentiment Header Image" >
+  <p class="img-credit"> Image Credit: <a href="">Name</a> | <a href="">Contribute ♥️</a> </p>
 </center>
 
 ## Description

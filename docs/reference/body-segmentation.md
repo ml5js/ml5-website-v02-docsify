@@ -1,8 +1,8 @@
-# Body Segmentation
+# BodySegmentation
 
 <center>
-    <img class="header-img" alt="BodyPix Header Image of Harriet Tubman" src="assets/header-bodypix.png">
-    <p class="img-credit"> Image Credit: <a href="">Name</a> | <a href="">Contribute ♥️</a> </p>
+  <img class="header-img" src="assets/header-body-segmentation.png" alt="BodySegmentation Header Image" >
+  <p class="img-credit"> Image Credit: <a href="">Name</a> | <a href="">Contribute ♥️</a> </p>
 </center>
 
 ## Description
