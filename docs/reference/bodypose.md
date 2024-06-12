@@ -7,298 +7,89 @@
 
 ## Description
 
-Bodypose offers a versatile solution for pose estimation by leveraging the strengths of Movenet and Blazepose. It provides real-time, full-body pose estimation and precise tracking of key body parts, including hands, face, and body, in an optimized and lightweight package.
+ml5.js Bodypose is a pretrained pose estimation model that offers the flexibility to:
+1. Estimate poses for single or multiple persons.
+2. Estimate poses from images or videos.
+3. Choose between MoveNet (17 keypoints, optimized for speed) and BlazePose models (33 keypoints, optimized for precision).
 
-### Key Features
+ml5.js Bodypose is developed leveraging [MoveNet](https://www.tensorflow.org/hub/tutorials/movenet#:~:text=MoveNet%20is%20an%20ultra%20fast,known%20as%20Lightning%20and%20Thunder) and [Blazepose](https://ai.google.dev/edge/mediapipe/solutions/vision/pose_landmarker) models.
 
-- **High-precision keypoints tracking**: Detects and tracks key body parts with high accuracy
-- **Multi-person pose estimation**: Supports multiple people in the frame
-- **Lightweight and optimized for performance**: Speed and efficiency for real-time applications
-
-### What can we do with the model?
-
-Bodypose is suitable for a wide range of applications, such as interactive gaming, fitness apps, art installations, and accessibility solutions. Its accuracy and real-time performance make it a valuable tool for developers and creators!
-
-Bodypose's MoveNet model predict a set of 17 keypoints:
-
-> Nose, Left Eye, Right Eye, Left Ear, Right Ear, Left Shoulder, Right Shoulder, Left Elbow, Right Elbow, Left Wrist, Right Wrist, Left Hip, Right Hip, Left Knee, Right Knee, Left Ankle, Right Ankle
-
-See the diagram below for the position of each keypoint.
-
-  <center>
-      <img style="display:block; max-width:30%" alt="Keypoint Diagram" src="https://camo.githubusercontent.com/c3641b718d7e613b2ce111a6a4575e88ca35a60cb325efdd9113c453b2a09301/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f6d6f76656e65742f636f636f2d6b6579706f696e74732d3530302e706e67">
-  </center>
-
-Bodypose's Blazepose model predict a set of 33 keypoints:
-
-> Nose, Left Eye Inner, Left Eye, Left Eye Outer, Right Eye Inner, Right Eye, Right Eye Outer, Left Ear, Right Ear, Mouth Left, Mouth Right, Left Shoulder, Right Shoulder, Left Elbow, Right Elbow, Left Wrist, Right Wrist, Left Pinky, Right Pinky, Left Index, Right Index, Left Thumb, Right Thumb, Left Hip, Right Hip, Left Knee, Right Knee, Left Ankle, Right Ankle, Left Heel, Right Heel, Left Foot Index, Right Foot Index, Body Center, Forehead, Left Thumb, Left Hand, Right Thumb, Right Hand
-
-See the diagram below for the position of each keypoint.
-
-  <center>
-      <img style="display:block; max-width:30%" alt="Keypoint Diagram" src="https://camo.githubusercontent.com/17082997c33fc6d2544c4aea33d9898860cf902ed5a0b865527d1dd91bbc7efa/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f6d65646961706970652f626c617a65706f73652d6b6579706f696e74732d757064617465642e706e67">
-  </center>
-
-Once you have the keypoints estimated by the model, you can utilize them in various ways based on your application:
-
-**Human Pose Estimation**: You can reconstruct the human body pose by connecting the keypoints using skeletal connections. This helps visualize the pose and track the movement of body parts.
-
-**Gesture Recognition**: By analyzing the relative positions and movements of keypoints over time, you can recognize specific gestures or actions performed by a person.
-
-**Fitness Tracking**: PoseNet/MoveNet can be used to track exercises and provide feedback on the correctness of the exercise form. For instance, it can help ensure that a person is maintaining proper alignment during yoga poses or weightlifting.
-
-**Augmented Reality**: Keypoints can be used to anchor virtual objects or effects to specific body parts, allowing for interactive augmented reality experiences.
-
-**Biomechanics Analysis**: In sports and rehabilitation, PoseNet/MoveNet can provide insights into body movements, helping to analyze techniques, prevent injuries, and aid in recovery.
-
-**Accessibility**: Bodypos can be used to track body movements and gestures to control devices and interfaces, enabling people with disabilities to interact with technology in new ways.
-
-### Output Example
-
-An example of the output from Body Pose MoveNet model is shown below:
-
-```javascript
-[
-  {
-    keypoints: [
-      {
-        y: 64.88419532775879,
-        x: 381.0333251953125,
-        score: 0.7116302847862244,
-        name: "nose",
-      },
-      // Additional keypoints here...
-    ],
-    box: {
-      yMin: 0.004535397049039602,
-      xMin: 0.06256416440010071,
-      yMax: 0.9879268407821655,
-      xMax: 0.9208574295043945,
-      width: 0.8582932651042938,
-      height: 0.9833914437331259,
-    },
-    score: 0.3704647719860077,
-    id: 4,
-    nose: {
-      x: 381.0333251953125,
-      y: 64.88419532775879,
-      score: 0.7116302847862244,
-    },
-    left_eye: {
-      /* Properties of the left eye */
-    },
-    right_eye: {
-      /* Properties of the right eye */
-    },
-    left_ear: {
-      /* Properties of the left ear */
-    },
-    right_ear: {
-      /* Properties of the right ear */
-    },
-    left_shoulder: {
-      /* Properties of the left shoulder */
-    },
-    right_shoulder: {
-      /* Properties of the right shoulder */
-    },
-    left_elbow: {
-      /* Properties of the left elbow */
-    },
-    right_elbow: {
-      /* Properties of the right elbow */
-    },
-    left_wrist: {
-      /* Properties of the left wrist */
-    },
-    right_wrist: {
-      /* Properties of the right wrist */
-    },
-    left_hip: {
-      /* Properties of the left hip */
-    },
-    right_hip: {
-      /* Properties of the right hip */
-    },
-    left_knee: {
-      /* Properties of the left knee */
-    },
-    right_knee: {
-      /* Properties of the right knee */
-    },
-    left_ankle: {
-      /* Properties of the left ankle */
-    },
-    right_ankle: {
-      /* Properties of the right ankle */
-    },
-  },
-  // Additional objects here...
-];
-```
-
-An example of the output from Body Pose Blazepose model is shown below:
-
-```javascript
-[
-  {
-    keypoints: [
-      {
-        x: 384.1078567504883,
-        y: 209.4658613204956,
-        z: -0.35329264402389526,
-        score: 0.9999341368675232,
-        name: "nose",
-      },
-      // Additional keypoints here...
-    ],
-    keypoints3D: [
-      {
-        x: -0.08051524311304092,
-        y: -0.6131212711334229,
-        z: -0.3431171476840973,
-        score: 0.9999341368675232,
-        name: "nose",
-      },
-      // Additional 3D keypoints here...
-    ],
-    nose: {
-      x: 384.1078567504883,
-      y: 209.4658613204956,
-      z: -0.35329264402389526,
-      score: 0.9999341368675232,
-    },
-    left_eye_inner: {
-      /* Properties of the left eye inner */
-    },
-    left_eye: {
-      /* Properties of the left eye */
-    },
-    left_eye_outer: {
-      /* Properties of the left eye outer */
-    },
-    right_eye_inner: {
-      /* Properties of the right eye inner */
-    },
-    right_eye: {
-      /* Properties of the right eye */
-    },
-    right_eye_outer: {
-      /* Properties of the right eye outer */
-    },
-    left_ear: {
-      /* Properties of the left ear */
-    },
-    right_ear: {
-      /* Properties of the right ear */
-    },
-    mouth_left: {
-      /* Properties of the mouth left */
-    },
-    mouth_right: {
-      /* Properties of the mouth right */
-    },
-    left_shoulder: {
-      /* Properties of the left shoulder */
-    },
-    right_shoulder: {
-      /* Properties of the right shoulder */
-    },
-    left_elbow: {
-      /* Properties of the left elbow */
-    },
-    right_elbow: {
-      /* Properties of the right elbow */
-    },
-    left_wrist: {
-      /* Properties of the left wrist */
-    },
-    right_wrist: {
-      /* Properties of the right wrist */
-    },
-    left_pinky: {
-      /* Properties of the left pinky */
-    },
-    right_pinky: {
-      /* Properties of the right pinky */
-    },
-    left_index: {
-      /* Properties of the left index finger */
-    },
-    right_index: {
-      /* Properties of the right index finger */
-    },
-    left_thumb: {
-      /* Properties of the left thumb */
-    },
-    right_thumb: {
-      /* Properties of the right thumb */
-    },
-    left_hip: {
-      /* Properties of the left hip */
-    },
-    right_hip: {
-      /* Properties of the right hip */
-    },
-    left_knee: {
-      /* Properties of the left knee */
-    },
-    right_knee: {
-      /* Properties of the right knee */
-    },
-    left_ankle: {
-      /* Properties of the left ankle */
-    },
-    right_ankle: {
-      /* Properties of the right ankle */
-    },
-    left_heel: {
-      /* Properties of the left heel */
-    },
-    right_heel: {
-      /* Properties of the right heel */
-    },
-    left_foot_index: {
-      /* Properties of the left foot index */
-    },
-    right_foot_index: {
-      /* Properties of the right foot index */
-    },
-  },
-  // Additional objects here...
-];
-```
-
-## Getting Started
-
-Integrating Bodypose into your ml5.js projects is straightforward. Our documentation and user-friendly API will help you make the most of this combined model!
-
-### Demo
-
+## Demo
 [DEMO](iframes/pose-estimation ":include :type=iframe width=100% height=550px")
 
-### Quick Start
+## Quick Start
+Try [this BodyPose example in the p5.js web editor](https://editor.p5js.org/ml5/sketches/vpSI23x0A)! Press the run button to see the code in action.
 
-Before you start, let's create an empty project in the [p5 web editor](https://editor.p5js.org/).
+This example is built on the same source code as the [demo](/reference/bodypose?id=demo) above. It uses the MoveNet model (default model if not specified by user) to detect body poses in real-time from the webcam video. The detected keypoints are then visualized on the canvas. To understand the code in detail, follow the [How to](/reference/bodypose?id=how-to) tutorial below.
 
-First of all, copy and paste the following code into your **index.html** file. If you are not familiar with the p5 web editor interface, you can find a guide on how to find your **index.html** file [here](/?id=try-ml5js-online-1).
+## How to
+This tutorial is a p5.js sketch running on [p5.js web editor](https://editor.p5js.org/). To follow this tutorial, create an empty project on the p5.js web editor.
+
+### Set up ml5.js
+Import the ml5.js library in your HTML file.
 
 ```html
 <script src="https://unpkg.com/ml5@alpha/dist/ml5.js"></script>
 ```
 
-Then, add the code below to your **sketch.js** file:
+_<img class="inline-img" src="assets/gettingstarted-bulb.png" alt="tip icon" aria-hidden="true"> If you are not familiar with how to import ml5.js library and need more detailed guidance, please check out our [Getting Started](/?id=set-up-ml5js) tutorial._
 
-```js
-let video;
+### Load model
+Open the `sketch.js`. Define a variable to hold the bodypose model.
+
+```javascript
 let bodyPose;
-let poses = [];
+```
 
+Create a `preload()` function to load the bodypose model.
+
+```javascript
 function preload() {
-  // Load the bodyPose model, default is MoveNet model
+  // Load the bodyPose model
   bodyPose = ml5.bodyPose();
 }
+```
 
+_<img class="inline-img" src="assets/gettingstarted-bulb.png" alt="tip icon" aria-hidden="true"> Here you could also pass model name, an options object, and a customized callback function to the `ml5.bodyPose()` function (e.g. `ml5.bodyPose('BlazePose', options, modelLoaded)`) to change the default configuration of the model. For more information on the available configuration settings, refer to the [Methods](/reference/bodypose?id=ml5bodypose) section below._
+
+### Fetch webcam video
+Define a variable `video` to hold the webcam video.
+
+```javascript
+let video;
+```
+
+Resize the canvas to dimensions 640x480, a common resolution for webcams.
+
+```javascript
+function setup() {
+  createCanvas(640, 480);
+}
+```
+
+Fetch the webcam video, resize it to fit the canvas, and hide it from the display.
+
+```javascript
+function setup() {
+  createCanvas(640, 480);
+
+  // Create the video and hide it
+  video = createCapture(VIDEO);
+  video.size(width, height);
+  video.hide();
+}
+```
+
+### Detect poses in the webcam video with the model
+Define a variable `poses` to hold the detected poses.
+
+```javascript
+let poses = [];
+```
+
+Start detecting poses in the webcam video by calling the `bodyPose.detectStart()` method. Here, we pass two parameters: the webcam video and a customized callback function `gotPoses`.
+
+```javascript
 function setup() {
   createCanvas(640, 480);
 
@@ -310,10 +101,207 @@ function setup() {
   // Start detecting poses in the webcam video
   bodyPose.detectStart(video, gotPoses);
 }
+```
 
+The `gotPoses()` function is a callback function that will be called when the `bodyPose.detectStart()` method dectects poses. Once the poses are detected, the output `results` will be passed to `gotPoses()`, and then saved to the `poses` variable.
+
+```javascript
+function gotPoses(results) {
+  // Save the output to the poses variable
+  poses = results;
+}
+```
+
+### Draw skeleton on the canvas
+In the `draw()` function, draw the webcam video on the canvas.
+
+```javascript
 function draw() {
   // Draw the webcam video
   image(video, 0, 0, width, height);
+}
+```
+
+Draw the skeleton by connecting the keypoints of the detected poses with lines. To achieve this, we need to understand which keypoints are connected to each other. Define a variable `connections` to hold the skeleton connections.
+
+
+```javascript
+let connections;
+```
+
+Use `bodyPose.getSkeleton()` to get the connections between keypoints. This method returns an array of arrays, where each sub-array contains the indices of the connected keypoints. For example, `[[0, 1], [0, 2], ...]` means that keypoints 0 (Nose) and 1 (Left Eye) are connected, keypoints 0 (Nose) and 2 (Right Eye) are connected, and so on.
+
+```javascript
+function setup() {
+  createCanvas(640, 480);
+
+  // Create the video and hide it
+  video = createCapture(VIDEO);
+  video.size(width, height);
+  video.hide();
+
+  // Start detecting poses in the webcam video
+  bodyPose.detectStart(video, gotPoses);
+  //get the skeleton connection information
+  connections = bodyPose.getSkeleton();
+}
+```
+
+Then, we can draw the skeleton by connecting the keypoints with lines. We iterate through the `poses` array, where each object `pose` is a pose of a person, containing an array of `keypoints`. Each `keypoint` object has properties `x`, `y`, and `score`. The `score` is the confidence score of the keypoint prediction.
+  
+```javascript
+function draw() {
+  // Draw the webcam video
+  image(video, 0, 0, width, height);
+
+  //draw the skeleton connections
+  for (let i = 0; i < poses.length; i++) {
+    let pose = poses[i];
+  }
+}
+```
+
+Within each pose, we only want to draw the skeleton connections that the model has a high confidence in predicting. To achieve this, we need to check for each link in the `connections` array whether the `keypoints` that constitute the link have a confidence `score` greater than 0.1. If they do, we draw a line connecting the keypoints.
+
+We iterate through the connections array, and each item is a link of `pointA` and `pointB`. For instance, `connections[1]` is `[0, 2]`, where 0 is the index of `pointA` and 2 is the index of `pointB`. Thus, `let pointAIndex = connections[j][0];` means we get the starting point (pointA) of the link j, and `let pointBIndex = connections[j][1];` means we get the ending point (pointB) of the link j.
+
+Now we can use the indices to retrieve the `pointA` and `pointB` objects from the `pose.keypoints`. `pointA` is a object with properties `x`, `y`, and `score`.
+
+```javascript
+function draw() {
+  // Draw the webcam video
+  image(video, 0, 0, width, height);
+
+  //draw the skeleton connections
+  for (let i = 0; i < poses.length; i++) {
+    let pose = poses[i];
+    for (let j = 0; j < connections.length; j++) {
+      let pointAIndex = connections[j][0];
+      let pointBIndex = connections[j][1];
+      let pointA = pose.keypoints[pointAIndex];
+      let pointB = pose.keypoints[pointBIndex];
+    }
+  }
+}
+```
+
+Now, we can draw the line connecting the keypoints if both points have a confidence score greater than 0.1.
+
+```javascript
+function draw() {
+  // Draw the webcam video
+  image(video, 0, 0, width, height);
+
+  //draw the skeleton connections
+  for (let i = 0; i < poses.length; i++) {
+    let pose = poses[i];
+    for (let j = 0; j < connections.length; j++) {
+      let pointAIndex = connections[j][0];
+      let pointBIndex = connections[j][1];
+      let pointA = pose.keypoints[pointAIndex];
+      let pointB = pose.keypoints[pointBIndex];
+      // Only draw a line if both points are confident enough
+      if (pointA.score > 0.1 && pointB.score > 0.1) {
+        stroke(255, 0, 0);
+        strokeWeight(2);
+        line(pointA.x, pointA.y, pointB.x, pointB.y);
+      }
+    }
+  }
+}
+```
+
+### Draw keypoints on the canvas
+Iterate through the `poses` array and draw a circle for each keypoint if the confidence score is greater than 0.1.
+
+We can get each person's pose from the `poses` array. Each `pose` object contains an array of `keypoints`.
+
+```javascript
+function draw() {
+  // Draw the webcam video
+  image(video, 0, 0, width, height);
+
+  //draw the skeleton connections
+  for (let i = 0; i < poses.length; i++) {
+    let pose = poses[i];
+    for (let j = 0; j < connections.length; j++) {
+      let pointAIndex = connections[j][0];
+      let pointBIndex = connections[j][1];
+      let pointA = pose.keypoints[pointAIndex];
+      let pointB = pose.keypoints[pointBIndex];
+      // Only draw a line if both points are confident enough
+      if (pointA.score > 0.1 && pointB.score > 0.1) {
+        stroke(255, 0, 0);
+        strokeWeight(2);
+        line(pointA.x, pointA.y, pointB.x, pointB.y);
+      }
+    }
+  }
+
+  // Draw all the tracked landmark points
+  for (let i = 0; i < poses.length; i++) {
+    let pose = poses[i];
+  }
+}
+```
+
+Now we iterate through all the keypoints in the `keypoints`. Each `keypoint` object has properties `x`, `y`, and `score`. The `score` is the confidence score of the keypoint prediction.
+  
+```javascript
+function draw() {
+  // Draw the webcam video
+  image(video, 0, 0, width, height);
+
+  //draw the skeleton connections
+  for (let i = 0; i < poses.length; i++) {
+    let pose = poses[i];
+    for (let j = 0; j < connections.length; j++) {
+      let pointAIndex = connections[j][0];
+      let pointBIndex = connections[j][1];
+      let pointA = pose.keypoints[pointAIndex];
+      let pointB = pose.keypoints[pointBIndex];
+      // Only draw a line if both points are confident enough
+      if (pointA.score > 0.1 && pointB.score > 0.1) {
+        stroke(255, 0, 0);
+        strokeWeight(2);
+        line(pointA.x, pointA.y, pointB.x, pointB.y);
+      }
+    }
+  }
+
+  // Draw all the tracked landmark points
+  for (let i = 0; i < poses.length; i++) {
+    let pose = poses[i];
+    for (let j = 0; j < pose.keypoints.length; j++) {
+      let keypoint = pose.keypoints[j];
+    }
+  }
+}
+```
+
+For each keypoint, we only want to draw a circle if the keypoint's confidence is greater than 0.1. We can use the `score` property of the keypoint object to check the confidence score.
+
+```javascript
+function draw() {
+  // Draw the webcam video
+  image(video, 0, 0, width, height);
+
+  //draw the skeleton connections
+  for (let i = 0; i < poses.length; i++) {
+    let pose = poses[i];
+    for (let j = 0; j < connections.length; j++) {
+      let pointAIndex = connections[j][0];
+      let pointBIndex = connections[j][1];
+      let pointA = pose.keypoints[pointAIndex];
+      let pointB = pose.keypoints[pointBIndex];
+      // Only draw a line if both points are confident enough
+      if (pointA.score > 0.1 && pointB.score > 0.1) {
+        stroke(255, 0, 0);
+        strokeWeight(2);
+        line(pointA.x, pointA.y, pointB.x, pointB.y);
+      }
+    }
+  }
 
   // Draw all the tracked landmark points
   for (let i = 0; i < poses.length; i++) {
@@ -329,30 +317,17 @@ function draw() {
     }
   }
 }
-
-// Callback function for when bodyPose outputs data
-function gotPoses(results) {
-  // Save the output to the poses variable
-  poses = results;
-}
 ```
 
-Alternatively, you can open [this example code](https://github.com/ml5js/ml5-next-gen/tree/main/examples/BodyPose-keypoints) and try it yourself on p5.js web editor!
-
-### Additional Examples
-
-- [BodyPose-blazepose-keypoints](https://github.com/ml5js/ml5-next-gen/tree/main/examples/BodyPose-blazepose-keypoints): Draw the body keypoints of the detected body using Blazepose model.
-
-<!-- ### Tutorials
-
-**PoseNet on The Coding Train**
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/OIo-DIOkNVg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+## Examples
+- [BodyPose-blazepose-keypoints](https://editor.p5js.org/ml5/sketches/OukJYAJAb): Draw the body keypoints of the detected body using Blazepose model.
 
 ## Methods
-
 #### ml5.bodypose()
 
 This method is used to initialize the bodypose object.
+
+<!-- TODO: Add default model name, and explain the options, callback. -->
 
 ```javascript
 const bodypose = ml5.bodypose(?options, ?callback);
@@ -411,6 +386,41 @@ bodypose.detectStart(media, callback);
     ...
   ];
   ```
+
+  Bodypose's MoveNet model predict a set of 17 keypoints: Nose, Left Eye, Right Eye, Left Ear, Right Ear, Left Shoulder, Right Shoulder, Left Elbow, Right Elbow, Left Wrist, Right Wrist, Left Hip, Right Hip, Left Knee, Right Knee, Left Ankle, Right Ankle
+
+  See the diagram below for the position of each keypoint.
+
+  <center>
+      <img style="display:block; max-width:30%" alt="Keypoint Diagram" src="https://camo.githubusercontent.com/c3641b718d7e613b2ce111a6a4575e88ca35a60cb325efdd9113c453b2a09301/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f6d6f76656e65742f636f636f2d6b6579706f696e74732d3530302e706e67">
+  </center>
+
+  Bodypose's Blazepose model predict a set of 33 keypoints: Nose, Left Eye Inner, Left Eye, Left Eye Outer, Right Eye Inner, Right Eye, Right Eye Outer, Left Ear, Right Ear, Mouth Left, Mouth Right, Left Shoulder, Right Shoulder, Left Elbow, Right Elbow, Left Wrist, Right Wrist, Left Pinky, Right Pinky, Left Index, Right Index, Left Thumb, Right Thumb, Left Hip, Right Hip, Left Knee, Right Knee, Left Ankle, Right Ankle, Left Heel, Right Heel, Left Foot Index, Right Foot Index, Body Center, Forehead, Left Thumb, Left Hand, Right Thumb, Right Hand
+
+  See the diagram below for the position of each keypoint.
+
+  <center>
+      <img style="display:block; max-width:30%" alt="Keypoint Diagram" src="https://camo.githubusercontent.com/17082997c33fc6d2544c4aea33d9898860cf902ed5a0b865527d1dd91bbc7efa/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f6d65646961706970652f626c617a65706f73652d6b6579706f696e74732d757064617465642e706e67">
+  </center>
+
+  ```javascript
+  [
+    {
+      box: { width, height, xMax, xMin, yMax, yMin },
+      id: 1,
+      keypoints: [{ x, y, z, score, name }, ...],
+      keypoints3D: [{ x, y, z, score, name }, ...],
+      left_ankle: { x, y, z, confidence },
+      left_ear: { x, y, z, confidence },
+      left_elbow: { x, y, z, confidence },
+      ...
+      score: 0.28,
+    },
+    ...
+  ];
+  ```
+
+  _<img class="inline-img" src="assets/gettingstarted-bulb.png" alt="tip icon" aria-hidden="true"> The `keypoints3D` array contains the 3D coordinates of the keypoints. The `z` property represents the depth of the keypoint. The 2D `keypoints` still includes a Z-coordinate to provide additional depth information and helps understand the relative positioning of body parts, enhancing the accuracy of applications that primarily work with 2D data._
 
 #### bodypose.detectStop()
 
