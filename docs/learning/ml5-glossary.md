@@ -16,7 +16,7 @@ This glossary is designed to be editable by any ml5 user. If you have a term you
 
 ---
 
-### Callback
+## Callback
 
 ml5.js is heavily inspired by the syntax, patterns and style of the [p5.js](https://p5js.org/) library. However, there are several differences in how asynchronous operations are handled by ml5.js. ml5.js supports both <b>error-first callbacks</b> and Promises in all methods.
 
@@ -52,7 +52,7 @@ Error first callbacks is a convention common to many JavaScript libraries that w
 
 ---
 
-### Confidence
+## Confidence
 
 Confidence is a measure of how certain a machine learning model is about its prediction. For example, a machine learning model that is 100% confident in its prediction is certain that its prediction is correct. A machine learning model that is 0% confident in its prediction is certain that its prediction is incorrect.
 
@@ -170,7 +170,7 @@ for (let i = 0; i < poses.length; i++) {
 
 ---
 
-### Convolutional Neural Networks
+## Convolutional Neural Networks
 
 Convolutional Neural Networks (CNN) are [neural networks](/learning/ml5-glossary?id=neural-network) tuned for the compression of images and video data. They are widely used in computer vision tasks such as image classification, object detection, and image segmentation.
 
@@ -261,7 +261,7 @@ In short, a CNN is like a robot that breaks down pictures, looks for important p
 
 ---
 
-### Classification
+## Classification
 
 Classification is the process of assigning a label to a piece of data. For example, a machine learning model that is trained to classify images of cats and dogs could assign the label "cat" to an image of a cat, and the label "dog" to an image of a dog. A classifier is the model that is trained to perform classification tasks.
 
@@ -288,7 +288,7 @@ In contrast, the prediction of [regression](/learning/ml5-glossary?id=regression
 
 ---
 
-### Dataset
+## Dataset
 
 A dataset is a collection of data. Datasets are often used to train and test machine learning models. For example, a dataset of images of cats and dogs could be used to train a machine learning model to classify images of cats and dogs, and another dataset of images of cats and dogs could be used to test the performance of the machine learning model. You could compare the ground truth lables of the test dataset with the model predictions to evaluate the performance of the model.
 
@@ -364,7 +364,7 @@ Test Dataset
 
 ---
 
-### Div
+## Div
 
 A div is an HTML element that is used to define a section of a webpage. For instance, the following code defines a div and put a paragraph inside the div:
 
@@ -393,7 +393,7 @@ function gotResult(error, results) {
 
 ---
 
-### Dependencies
+## Dependencies
 
 Dependencies are libraries that are required by a project. The project may import the methods and functions from the dependencies to use them. Before you run your project, you need to install all the dependencies of the project to make sure that the project runs properly.
 
@@ -415,7 +415,7 @@ yarn
 
 ---
 
-### Feature
+## Feature
 
 A feature is an individual measurable property or characteristic of a phenomenon being observed. For example, a feature of a cat could be its weight, or the color of its fur. Here, we have three samples of data, each with two features (weight and color of the fur) and a label (cat or dog).
 
@@ -486,7 +486,7 @@ Here, the example uses the values of red, green, and blue color channels as feat
 
 ---
 
-### Hyperparameters
+## Hyperparameters
 
 Hyperparameters are parameters that are set by coders before training a machine learning model. They are often used to control the training process of a machine learning model, for instance, the batch size, the epochs, the learning rate, and the number of hidden layers, etc. Batch size is the number of samples that are used to update the weights of a machine learning model in one iteration. Epochs is the number of times that a machine learning model is trained on the entire training dataset. Learning rate is the step size at each iteration while moving toward a minimum of a loss function. The number of hidden layers is the number of layers between the input layer and the output layer of a machine learning model.
 
@@ -507,7 +507,7 @@ function trainModel() {
 
 ---
 
-### Label
+## Label
 
 Labels are used to identify the class or category of a phenomenon being observed. For example, a label of a cat image could be "cat". In the traning dataset, we need to provide the label for each sample of data to allow the model to learn the relationship between the features and the label. For example, the following training dataset contains three samples of data, each with two features (weight and color of the fur) and a label (cat or dog).
 
@@ -551,7 +551,7 @@ Here, the label is the color of the object.
 
 ---
 
-### Local Development Server
+## Local Development Server
 
 A local development server is a server that is used to launch/deploy a website or web application on a local machine, without connecting to the internet. People that are not connected to the same local network will not be able to access the website or web application. It is often used to test a website or web application before it is deployed to a production server. For example, if you run your application locally, usually it will have a URL like `http://localhost:8000/`, while you run your application on a production server, it will have a URL like `https://your-website.com/`.
 
@@ -566,7 +566,7 @@ npm run develop
 
 ---
 
-### MobileNet
+## MobileNet
 
 By [Ellen Nickles](https://github.com/ellennickles/)
 
@@ -612,7 +612,7 @@ By [Ellen Nickles](https://github.com/ellennickles/)
 
 ---
 
-### Neuron
+## Neuron
 
 In machine learning, a neuron mimics a biological neuron in brains and other parts of nervous systems. It exists as a distinct unit within a hidden layer of a [neural network](#neural-network). Each neuron is responsible for completing these two tasks:
 
@@ -621,7 +621,7 @@ In machine learning, a neuron mimics a biological neuron in brains and other par
 
 ---
 
-### Neural Network
+## Neural Network
 
 <img align="right" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Neural_network_example.svg/220px-Neural_network_example.svg.png">
 
@@ -635,7 +635,7 @@ In ml5.js, you can train your own neural network with `ml5.neuralNetwork`. For d
 
 ---
 
-### Normalization
+## Normalization
 
 Normalization is a data preprocessing technique used to adjust the values of features in a dataset to a common scale, for example, converting a range of values to `-1` to `1`, or `0` to `1`.
 
@@ -643,7 +643,7 @@ This is done to facilitate data analysis and modeling, and to reduce the impact 
 
 ---
 
-### NPM
+## NPM
 
 NPM is a package manager for JavaScript. NPM is used to install and manage JavaScript libraries.
 
@@ -653,7 +653,7 @@ You can find the npm package for ml5.js [here](https://www.npmjs.com/package/ml5
 
 ---
 
-### Overfitting
+## Overfitting
 
 Overfitting is a phenomenon that occurs when a machine learning model is trained to fit the training data too closely. Since it fails to generalize the underlying information, the trained model often performs poorly on everything other than the training data.
 
@@ -669,7 +669,7 @@ In ml5.js, overfitting can happen while training for a [neural network](#neural-
 
 ---
 
-### Promises
+## Promises
 
 ml5.js is heavily inspired by the syntax, patterns and style of the [p5.js](https://p5js.org/) library. However, there are several differences in how asynchronous operations are handled by ml5.js. ml5.js supports both <b>error-first callbacks</b> and Promises in all methods.
 
@@ -691,25 +691,25 @@ For some video tutorials about Promises, you can find this [Coding Train playlis
 
 ---
 
-### Prediction
+## Prediction
 
 A prediction is the output of a machine learning model. For example, a machine learning model that is trained to classify images of cats and dogs could make a prediction that an image is a cat.
 
 ---
 
-### Pretrained Model
+## Pretrained Model
 
 A pretrained model is a machine learning model that has been trained on a dataset. Pretrained models are often used to make predictions on new data. For example, a pretrained model that has been trained on a dataset of images of cats and dogs could be used to make predictions on new images of cats and dogs. In ml5.js, pretrained models are often used to make predictions on new data.
 
 ---
 
-### Preload Function
+## Preload Function
 
 The preload function is a function that is called before the setup function. In ml5.js, the preload function is often used to load assets, such as images, before the setup function is called.
 
 #### **R**
 
-### Regression Analysis
+## Regression Analysis
 
 Regression analysis is a predictive modeling technique that analyzes the relation between the dependent variable and the independent variable in a dataset. Regression models are models used to carry out regression analysis.
 
@@ -729,7 +729,7 @@ Two most common types of regression models are:
 
 ---
 
-### Stride
+## Stride
 
 Stride is a component of [convolutional neural networks](#convolutional-neural-networks). It's a parameter of the neural network's filter that modifies the amount of movement over the image or video.
 
@@ -739,19 +739,19 @@ In ml5.js, `strides` is a parameter in `imageClassification` layers.
 
 ---
 
-### Score
+## Score
 
 Score is a measure of how well a machine learning model performs on a given input. For example, a machine learning model that is 100% accurate has a score of 1. A machine learning model that is 0% accurate has a score of 0. In ml5.js, score is often used to evaluate the performance of a machine learning model.
 
 ---
 
-### Score Threshold
+## Score Threshold
 
 Score threshold is often used to control the minimum score required for a machine learning model to make a prediction. In ml5.js, score threshold is often used to control the minimum score required for a machine learning model to make a prediction.
 
 ---
 
-### Sigmoid Function
+## Sigmoid Function
 
 <img align="right" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Logistic-curve.svg/320px-Logistic-curve.svg.png">
 
@@ -763,19 +763,19 @@ The logistic curve, on the right, is a common exmaple of sigmoid function.
 
 ---
 
-### Test Set
+## Test Set
 
 Test set is a set of data used to test a machine learning model. Test data is used to evaluate the performance of a machine learning model. For example, a set of images of cats and dogs could be used to test a machine learning model to classify images of cats and dogs. In ml5.js, test data is often used to evaluate the performance of a custom machine learning model.
 
 ---
 
-### Training Set
+## Training Set
 
 Training set is a set of data used to train a machine learning model. Training data is used to train a machine learning model to make predictions. For example, a set of images of cats and dogs could be used to train a machine learning model to classify images of cats and dogs. In ml5.js, training set is often used to train a custom machine learning model.
 
 ---
 
-### Terminal
+## Terminal
 
 A terminal is a command line interface that is used to run commands on a computer. In ml5.js, a terminal is often used to run a [local development server](#local-development-server).
 
@@ -783,7 +783,7 @@ A terminal is a command line interface that is used to run commands on a compute
 
 ---
 
-### Underfitting
+## Underfitting
 
 Underfitting is a phenomenon that occurs when a machine learning model is trained to fit the training data too loosely. Underfitting can result in a machine learning model that is not meaningful at all, and performs badly on both training and new data.
 
@@ -793,7 +793,7 @@ Underfitting is the opposite of [overfitting](#overfitting).
 
 ---
 
-### Validation
+## Validation
 
 Validation is the initial evaluation of a model's quality. Validation checks the quality of a model's predictions against the [validation set](#validation-set).
 
@@ -803,7 +803,7 @@ Often, it's a good strategy to evaluate the model against the [validation set](#
 
 ---
 
-### Validation Set
+## Validation Set
 
 Validation set is the subset of the dataset that performs initial evaluation against a trained model.
 
@@ -819,13 +819,13 @@ Ideally, each data point in the dataset should only belong to one of these three
 
 ---
 
-### Weights
+## Weights
 
 In neural networks, weights are the parameters that are learned during the training process. Weights are used to adjust the strength of the connections between neurons in the network. The weights are adjusted during the training process to minimize the error between the predicted output and the actual output.
 
 ---
 
-### Weights Quantization
+## Weights Quantization
 
 Weights quantization is a technique used to reduce the size of a machine learning model by reducing the precision of the weights. Weights quantization is often used to make machine learning models more efficient and faster to run. For example, a machine learning model that uses 32-bit floating point numbers to represent the weights could be quantized to use 8-bit integers to represent the weights.
 
@@ -843,8 +843,10 @@ Weights quantization is a technique used to reduce the size of a machine learnin
 
 ---
 
-### Callback
+## Callback
+
 <!-- TODO: update content based on the new version of ml5.js -->
+
 ml5.js is heavily inspired by the syntax, patterns and style of the [p5.js](https://p5js.org/) library. However, there are several differences in how asynchronous operations are handled by ml5.js. ml5.js supports both <b>error-first callbacks</b> and Promises in all methods.
 
 In [p5.js](https://p5js.org/), [callbacks](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function) are passed as arguments to functions that often perform some asynchronous operation. For example, [p5.js](https://p5js.org/) defines the [**loadJSON()**](https://p5js.org/reference/#/p5/loadJSON) function as the following:
@@ -879,7 +881,7 @@ Error first callbacks is a convention common to many JavaScript libraries that w
 
 ---
 
-### Div
+## Div
 
 A div is an HTML element that is used to define a section of a webpage. For instance, the following code defines a div and put a paragraph inside the div:
 
@@ -908,7 +910,7 @@ function gotResult(error, results) {
 
 ---
 
-### Dependencies
+## Dependencies
 
 Dependencies are libraries that are required by a project. The project may import the methods and functions from the dependencies to use them. Before you run your project, you need to install all the dependencies of the project to make sure that the project runs properly.
 
@@ -928,7 +930,7 @@ yarn
 
 ---
 
-### Local Development Server
+## Local Development Server
 
 A local development server is a server that is used to launch/deploy a website or web application on a local machine, without connecting to the internet. People that are not connected to the same local network will not be able to access the website or web application. It is often used to test a website or web application before it is deployed to a production server. For example, if you run your application locally, usually it will have a URL like `http://localhost:8000/`, while you run your application on a production server, it will have a URL like `https://your-website.com/`.
 
@@ -941,7 +943,7 @@ npm run develop
 
 ---
 
-### NPM
+## NPM
 
 NPM is a package manager for JavaScript. NPM is used to install and manage JavaScript libraries.
 
@@ -949,7 +951,7 @@ You can find the npm package for ml5.js [here](https://www.npmjs.com/package/ml5
 
 ---
 
-### Promises
+## Promises
 
 ml5.js is heavily inspired by the syntax, patterns and style of the [p5.js](https://p5js.org/) library. However, there are several differences in how asynchronous operations are handled by ml5.js. ml5.js supports both <b>error-first callbacks</b> and Promises in all methods.
 
@@ -971,13 +973,13 @@ For some video tutorials about Promises, you can find this [Coding Train playlis
 
 ---
 
-### Preload Function
+## Preload Function
 
 The preload function is a function that is called before the setup function. In ml5.js, the preload function is often used to load assets, such as images, before the setup function is called.
 
 ---
 
-### Terminal
+## Terminal
 
 A terminal is a command line interface that is used to run commands on a computer. In ml5.js, a terminal is often used to run a [local development server](#local-development-server).
 
@@ -985,7 +987,7 @@ A terminal is a command line interface that is used to run commands on a compute
 
 ---
 
-### Confidence
+## Confidence
 
 Confidence is a measure of how certain a machine learning model is about its prediction. For example, a machine learning model that is 100% confident in its prediction is certain that its prediction is correct. A machine learning model that is 0% confident in its prediction is certain that its prediction is incorrect.
 
@@ -1103,7 +1105,7 @@ for (let i = 0; i < poses.length; i++) {
 
 ---
 
-### Classification
+## Classification
 
 Classification is the process of assigning a label to a piece of data. For example, a machine learning model that is trained to classify images of cats and dogs could assign the label "cat" to an image of a cat, and the label "dog" to an image of a dog. A classifier is the model that is trained to perform classification tasks.
 
@@ -1128,7 +1130,7 @@ In contrast, the prediction of [regression](/learning/ml5-glossary?id=regression
 
 ---
 
-### Dataset
+## Dataset
 
 A dataset is a collection of data. Datasets are often used to train and test machine learning models. For example, a dataset of images of cats and dogs could be used to train a machine learning model to classify images of cats and dogs, and another dataset of images of cats and dogs could be used to test the performance of the machine learning model. You could compare the ground truth lables of the test dataset with the model predictions to evaluate the performance of the model.
 
@@ -1204,7 +1206,7 @@ Test Dataset
 
 ---
 
-### Feature
+## Feature
 
 A feature is an individual measurable property or characteristic of a phenomenon being observed. For example, a feature of a cat could be its weight, or the color of its fur. Here, we have three samples of data, each with two features (weight and color of the fur) and a label (cat or dog).
 
@@ -1273,7 +1275,7 @@ Here, the example uses the values of red, green, and blue color channels as feat
 
 ---
 
-### Hyperparameters
+## Hyperparameters
 
 Hyperparameters are parameters that are set by coders before training a machine learning model. They are often used to control the training process of a machine learning model, for instance, the batch size, the epochs, the learning rate, and the number of hidden layers, etc. Batch size is the number of samples that are used to update the weights of a machine learning model in one iteration. Epochs is the number of times that a machine learning model is trained on the entire training dataset. Learning rate is the step size at each iteration while moving toward a minimum of a loss function. The number of hidden layers is the number of layers between the input layer and the output layer of a machine learning model.
 
@@ -1292,7 +1294,7 @@ function trainModel() {
 
 ---
 
-### Label
+## Label
 
 Labels are used to identify the class or category of a phenomenon being observed. For example, a label of a cat image could be "cat". In the traning dataset, we need to provide the label for each sample of data to allow the model to learn the relationship between the features and the label. For example, the following training dataset contains three samples of data, each with two features (weight and color of the fur) and a label (cat or dog).
 
@@ -1336,7 +1338,7 @@ Here, the label is the color of the object.
 
 ---
 
-### Normalization
+## Normalization
 
 Normalization is a data preprocessing technique used to adjust the values of features in a dataset to a common scale, for example, converting a range of values to `-1` to `1`, or `0` to `1`.
 
@@ -1344,7 +1346,7 @@ This is done to facilitate data analysis and modeling, and to reduce the impact 
 
 ---
 
-### Overfitting
+## Overfitting
 
 Overfitting is a phenomenon that occurs when a machine learning model is trained to fit the training data too closely. Since it fails to generalize the underlying information, the trained model often performs poorly on everything other than the training data.
 
@@ -1358,19 +1360,19 @@ In ml5.js, overfitting can happen while training for a [neural network](#neural-
 
 ---
 
-### Prediction
+## Prediction
 
 A prediction is the output of a machine learning model. For example, a machine learning model that is trained to classify images of cats and dogs could make a prediction that an image is a cat.
 
 ---
 
-### Pretrained Model
+## Pretrained Model
 
 A pretrained model is a machine learning model that has been trained on a dataset. Pretrained models are often used to make predictions on new data. For example, a pretrained model that has been trained on a dataset of images of cats and dogs could be used to make predictions on new images of cats and dogs. In ml5.js, pretrained models are often used to make predictions on new data.
 
 ---
 
-### Regression Analysis
+## Regression Analysis
 
 Regression analysis is a predictive modeling technique that analyzes the relation between the dependent variable and the independent variable in a dataset. Regression models are models used to carry out regression analysis.
 
@@ -1388,31 +1390,31 @@ Two most common types of regression models are:
 
 ---
 
-### Score
+## Score
 
 Score is a measure of how well a machine learning model performs on a given input. For example, a machine learning model that is 100% accurate has a score of 1. A machine learning model that is 0% accurate has a score of 0. In ml5.js, score is often used to evaluate the performance of a machine learning model.
 
 ---
 
-### Score Threshold
+## Score Threshold
 
 Score threshold is often used to control the minimum score required for a machine learning model to make a prediction. In ml5.js, score threshold is often used to control the minimum score required for a machine learning model to make a prediction.
 
 ---
 
-### Test Set
+## Test Set
 
 Test set is a set of data used to test a machine learning model. Test data is used to evaluate the performance of a machine learning model. For example, a set of images of cats and dogs could be used to test a machine learning model to classify images of cats and dogs. In ml5.js, test data is often used to evaluate the performance of a custom machine learning model.
 
 ---
 
-### Training Set
+## Training Set
 
 Training set is a set of data used to train a machine learning model. Training data is used to train a machine learning model to make predictions. For example, a set of images of cats and dogs could be used to train a machine learning model to classify images of cats and dogs. In ml5.js, training set is often used to train a custom machine learning model.
 
 ---
 
-### Underfitting
+## Underfitting
 
 Underfitting is a phenomenon that occurs when a machine learning model is trained to fit the training data too loosely. Underfitting can result in a machine learning model that is not meaningful at all, and performs badly on both training and new data.
 
@@ -1420,7 +1422,7 @@ Underfitting is the opposite of [overfitting](#overfitting).
 
 ---
 
-### Validation
+## Validation
 
 Validation is the initial evaluation of a model's quality. Validation checks the quality of a model's predictions against the [validation set](#validation-set).
 
@@ -1430,7 +1432,7 @@ Often, it's a good strategy to evaluate the model against the [validation set](#
 
 ---
 
-### Validation Set
+## Validation Set
 
 Validation set is the subset of the dataset that performs initial evaluation against a trained model.
 
@@ -1446,7 +1448,7 @@ Ideally, each data point in the dataset should only belong to one of these three
 
 ---
 
-### Neural Network
+## Neural Network
 
 <img align="right" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Neural_network_example.svg/220px-Neural_network_example.svg.png">
 
@@ -1460,7 +1462,7 @@ In ml5.js, you can train your own neural network with `ml5.neuralNetwork`. For d
 
 ---
 
-### Convolutional Neural Networks
+## Convolutional Neural Networks
 
 Convolutional Neural Networks (CNN) are [neural networks](/learning/ml5-glossary?id=neural-network) tuned for the compression of images and video data. They are widely used in computer vision tasks such as image classification, object detection, and image segmentation.
 
@@ -1551,7 +1553,7 @@ In short, a CNN is like a robot that breaks down pictures, looks for important p
 
 ---
 
-### MobileNet
+## MobileNet
 
 By [Ellen Nickles](https://github.com/ellennickles/)
 
@@ -1595,7 +1597,7 @@ By [Ellen Nickles](https://github.com/ellennickles/)
 
 ---
 
-### Neuron
+## Neuron
 
 In machine learning, a neuron mimics a biological neuron in brains and other parts of nervous systems. It exists as a distinct unit within a hidden layer of a [neural network](#neural-network). Each neuron is responsible for completing these two tasks:
 
@@ -1604,7 +1606,7 @@ In machine learning, a neuron mimics a biological neuron in brains and other par
 
 ---
 
-### Stride
+## Stride
 
 Stride is a component of [convolutional neural networks](#convolutional-neural-networks). It's a parameter of the neural network's filter that modifies the amount of movement over the image or video.
 
@@ -1614,7 +1616,7 @@ In ml5.js, `strides` is a parameter in `imageClassification` layers.
 
 ---
 
-### Sigmoid Function
+## Sigmoid Function
 
 <img align="right" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Logistic-curve.svg/320px-Logistic-curve.svg.png">
 
@@ -1624,13 +1626,13 @@ The logistic curve, on the right, is a common exmaple of sigmoid function.
 
 ---
 
-### Weights
+## Weights
 
 Weights are parameters that are used to train a machine learning model.
 
 ---
 
-### Weights Quantization
+## Weights Quantization
 
 Weights quantization is often used to reduce the size of a machine learning model.
 
