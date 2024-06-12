@@ -1,8 +1,8 @@
 # BodyPose
 
 <center>
-    <img style="display:block; max-width:100%" alt="pose estimation" src="https://1.bp.blogspot.com/-25aGTL-RTnY/YJ29jgiiNHI/AAAAAAAAEMM/9qJC_xqlUKo4To9xyumqKmrqKr-vVFXzgCLcBGAsYHQ/s0/three_pane_aligned%2B%25281%2529.gif">
-    <p class="img-credit"> Image Credit: <a href="">Name</a> | <a href="">Contribute ♥️</a> </p>
+  <img class="header-img" src="assets/header-bodypose.png" alt="BodyPose Header Image" >
+  <p class="img-credit"> Image Credit: <a href="">Name</a> | <a href="">Contribute ♥️</a> </p>
 </center>
 
 ## Description

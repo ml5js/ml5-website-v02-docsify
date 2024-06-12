@@ -208,7 +208,7 @@ div#app:empty::before {
 .sidebar {
   /* border-right: 1px solid rgba(0, 0, 0, 0.07); */
   padding: 1rem 0;
-  margin: 60px 0 0 0;
+  margin-top: 3.5rem;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -764,6 +764,7 @@ body.close .sidebar-toggle {
 .header-img {
   display: block;
   max-height: 400px;
+  margin-top: 2rem;
 }
 
 .img-credit {

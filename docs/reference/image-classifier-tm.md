@@ -1,8 +1,8 @@
 # Image + Teachable Machine
 
 <center>
-    <img class="header-img" alt="image classification of bird" src="assets/header-image-tm.png">
-    <p class="img-credit"> Image Credit: <a href="">Name</a> | <a href="">Contribute ♥️</a> </p>
+  <img class="header-img" src="assets/header-image-tm.png" alt="Image + Teachable Machine Header Image" >
+  <p class="img-credit"> Image Credit: <a href="">Name</a> | <a href="">Contribute ♥️</a> </p>
 </center>
 
 ## Description
@@ -76,7 +76,7 @@ let video;
 let label = "Model loading...";
 
 // model URL copied from Teachable Machine, replace with your own model URL
-let imageModelURL = 'https://teachablemachine.withgoogle.com/models/bXy2kDNi/';
+let imageModelURL = "https://teachablemachine.withgoogle.com/models/bXy2kDNi/";
 
 // Preload function to load the model
 function preload() {

@@ -1,8 +1,8 @@
-# Handpose
+# HandPose
 
 <center>
-    <img class="header-img" alt="A GIF of a person waving their hand in front of a camera. Green dots are drawn over different locations on their palm and fingers–demonstrating the capabilities of the Handpose model." src="assets/header-handpose.gif">
-    <p class="img-credit"> Image Credit: <a href="">Name</a> | <a href="">Contribute ♥️</a> </p>
+  <img class="header-img" src="assets/header-handpose.png" alt="HandPose Header Image" >
+  <p class="img-credit"> Image Credit: <a href="">Name</a> | <a href="">Contribute ♥️</a> </p>
 </center>
 
 ## Description

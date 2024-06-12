@@ -1,8 +1,8 @@
 # NeuralNetwork
 
 <center>
-    <img class="header-img" alt="Illustration of brain" src="assets/header-neural-network.png">
-    <p class="img-credit"> Image Credit: <a href="">Name</a> | <a href="">Contribute ♥️</a> </p>
+  <img class="header-img" src="assets/header-neural-network.png" alt="NeuralNetwork Header Image" >
+  <p class="img-credit"> Image Credit: <a href="">Name</a> | <a href="">Contribute ♥️</a> </p>
 </center>
 
 ## Description

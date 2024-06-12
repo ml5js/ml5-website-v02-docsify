@@ -1,8 +1,14 @@
 # Next Steps
 
+<center>
+  <img class="header-img" src="assets/header-next-steps.png" alt="Next Steps Header Image" >
+  <p class="img-credit"> Image Credit: <a href="">Name</a> | <a href="">Contribute ♥️</a> </p>
+</center>
+
 If you reach this page, we assume you have successfully installed ml5.js and built your first ml5 projects following our [Getting Started](https://ml5js.github.io/ml5-website-v02-docsify/#/) page! Here are some next steps to help you continue your ml5 journey.
 
 ## Explore More Fun Models
+
 During the Getting Started guide, you have used ml5 [Image Classifier](/reference/image-classifier) to classify images. ml5.js provides a variety of pre-trained models that you can use to build your projects. Check out the [Reference](/reference/overview) page to explore more models and their functionalities.
 
 ## Learn ML
@@ -21,7 +27,9 @@ If you would like to understand how the machine learning models work behind the 
 > In chapter 11, "the path forward passes through the field of neuroevolution, a style of machine learning that combines the genetic algorithms from Chapter 9 with the neural networks from Chapter 10. A neuroevolutionary system uses Darwinian principles to evolve the weights (and in some cases, the structure itself) of a neural network over generations of trial-and-error learning. In this chapter, I’ll demonstrate how to use neuroevolution with a familiar example from the world of gaming. I’ll then finish off with some variations on Craig Reynolds’s steering behaviors from Chapter 5, where the behaviors are learned through neuroevolution."
 >
 > <center>
+
     <img  alt="pose detection" src="assets/gettingstarted-noc.jpeg">
+
 </center>
 
 > #### ml5 Glossay 👉[ Learn](https://ml5js.github.io/ml5-website-v02-docsify/#/learning/ml5-glossary)
