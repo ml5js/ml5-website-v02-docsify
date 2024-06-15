@@ -546,9 +546,21 @@ body.close .sidebar-toggle {
 .markdown-section p.warn {
   /* check this color, if we use */
   background: rgba(66, 185, 131, 0.1);
-  border-radius: 2px;
-  padding: 1rem;
+  border: 2px solid #42b983;
+  border-radius: 10px;
+  padding: 1rem 1rem 1rem 3.5rem; /* Added left padding to make space for the icon */
+  position: relative;
 }
+
+.markdown-section p.warn::before {
+  content: "💡";
+  position: absolute;
+  left: 1rem; /* Position the icon inside the padding area */
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.8rem; /* Adjust the size of the icon as needed */
+}
+
 
 .markdown-section ul.task-list>li {
   list-style-type: none;
