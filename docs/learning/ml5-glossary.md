@@ -43,7 +43,7 @@ const classifier = ml5.imageClassifier("MobileNet", (err, model) => {
 });
 
 // Make a prediction with the selected image and pass a callback function with two arguments
-classifier.predict(image, (err, results) => {
+classifier.classify(image, (err, results) => {
   // Check for errors. If no errors, then do something with the results
 });
 ```
@@ -72,10 +72,17 @@ function gotResult(error, results) {
   if (error) {
     console.error(error);
   } else {
-    // The results are in an array ordered by confidence.
+    // The results are in an array ordered by confidence, print in console
     console.log(results);
-    createDiv(`Label: ${results[0].label}`);
-    createDiv(`Confidence: ${nf(results[0].confidence, 0, 2)}`);
+
+    // Display the results on the canvas
+    fill(255);
+    stroke(0);
+    textSize(18);
+    label = "Label: " + results[0].label;
+    confidence = "Confidence: " + nf(results[0].confidence, 0, 2);
+    text(label, 10, 360);
+    text(confidence, 10, 380);
   }
 }
 ```
@@ -116,14 +123,14 @@ for (let i = 0; i < poses.length; i++) {
     let point = poses[i].pose.keypoints[k];
 
     // get the position of each keypoint
-    let x = point.position.x;
-    let y = point.position.y;
+    let x = point.x;
+    let y = point.y;
 
     // get the confidence score of each keypoint
     let score = point.score;
 
     // get the name of each keypoint
-    let partName = point.part;
+    let partName = point.name;
 
     // draw an ellipse at each keypoint
     fill(0, 255, 0);
@@ -145,14 +152,14 @@ for (let i = 0; i < poses.length; i++) {
     let point = poses[i].pose.keypoints[k];
 
     // get the position of each keypoint
-    let x = point.position.x;
-    let y = point.position.y;
+    let x = point.x;
+    let y = point.y;
 
     // get the confidence score of each keypoint
     let score = point.score;
 
     // get the name of each keypoint
-    let partName = point.part;
+    let partName = point.name;
 
     // only draw an ellipse at each keypoint if the confidence score is higher than 0.5
     if (score > 0.5) {
@@ -681,7 +688,7 @@ With Promises, the image classification example can be used in the following way
 // No callback needs to be passed to use Promises.
 ml5
   .imageClassifier("MobileNet")
-  .then((classifier) => classifier.predict(image))
+  .then((classifier) => classifier.classify(image))
   .then((results) => {
     // Do something with the results
   });
@@ -872,7 +879,7 @@ const classifier = ml5.imageClassifier("MobileNet", (err, model) => {
 });
 
 // Make a prediction with the selected image and pass a callback function with two arguments
-classifier.predict(image, (err, results) => {
+classifier.classify(image, (err, results) => {
   // Check for errors. If no errors, then do something with the results
 });
 ```
@@ -963,7 +970,7 @@ With Promises, the image classification example can be used in the following way
 // No callback needs to be passed to use Promises.
 ml5
   .imageClassifier("MobileNet")
-  .then((classifier) => classifier.predict(image))
+  .then((classifier) => classifier.classify(image))
   .then((results) => {
     // Do something with the results
   });
@@ -1007,10 +1014,17 @@ function gotResult(error, results) {
   if (error) {
     console.error(error);
   } else {
-    // The results are in an array ordered by confidence.
+    // The results are in an array ordered by confidence, print in console
     console.log(results);
-    createDiv(`Label: ${results[0].label}`);
-    createDiv(`Confidence: ${nf(results[0].confidence, 0, 2)}`);
+
+    // Display the results on the canvas
+    fill(255);
+    stroke(0);
+    textSize(18);
+    label = "Label: " + results[0].label;
+    confidence = "Confidence: " + nf(results[0].confidence, 0, 2);
+    text(label, 10, 360);
+    text(confidence, 10, 380);
   }
 }
 ```
@@ -1051,14 +1065,14 @@ for (let i = 0; i < poses.length; i++) {
     let point = poses[i].pose.keypoints[k];
 
     // get the position of each keypoint
-    let x = point.position.x;
-    let y = point.position.y;
+    let x = point.x;
+    let y = point.y;
 
     // get the confidence score of each keypoint
     let score = point.score;
 
     // get the name of each keypoint
-    let partName = point.part;
+    let partName = point.name;
 
     // draw an ellipse at each keypoint
     fill(0, 255, 0);
@@ -1080,14 +1094,14 @@ for (let i = 0; i < poses.length; i++) {
     let point = poses[i].pose.keypoints[k];
 
     // get the position of each keypoint
-    let x = point.position.x;
-    let y = point.position.y;
+    let x = point.x;
+    let y = point.y;
 
     // get the confidence score of each keypoint
     let score = point.score;
 
     // get the name of each keypoint
-    let partName = point.part;
+    let partName = point.name;
 
     // only draw an ellipse at each keypoint if the confidence score is higher than 0.5
     if (score > 0.5) {
