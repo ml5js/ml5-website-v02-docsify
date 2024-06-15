@@ -51,6 +51,8 @@ TO-DOs
 
   <div id="app">Loading...</div>
 
+  
+
   <script>
     window.$docsify = {
       name: '', // name is removed as it appears redundantly.
@@ -79,6 +81,30 @@ TO-DOs
         tabComments: true,      // default
         tabHeadings: true       // default
       },
+
+      plugins: [
+        function pageFooter(hook, vm) {
+          var footer = [
+            '<hr/>',
+            '<footer>',
+            `<div class='footer-logo'>
+              <button class="button">
+                <a href="https://ml5-next-gen.netlify.app/">ml5.js</a>
+                </button>
+            </div>`,
+            `<div class='footer-content'>`,
+              `<p>ml5.js is an open source project developed and maintained by NYU's Interactive Telecommunications / Interactive Media Arts program and by artists, designers, students, technologists, and developers from all over the world.</p>`,
+              `<p>Feel free to write us! <a href='mailto:info@ml5js.org'>info@ml5js.org</a></p>`,
+              '<p><a href="https://ml5js.org/">ml5.js</a> &copy;2024.</p>',
+              `</div>`,
+            '</footer>',
+          ].join('');
+
+          hook.afterEach(function (html) {
+            return html + footer;
+          });
+        },
+      ],
 
     };
   </script>

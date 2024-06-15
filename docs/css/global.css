@@ -129,6 +129,45 @@ body {
   background-color: var(--color-bg);
 }
 
+footer {  
+  position: relative;
+  display:flex;
+  width: auto;
+  background-color: var(--color-bg-light);
+  border-radius: 25px;
+  flex-direction: row;
+  padding: 1rem 0;
+  margin-bottom: 1rem;
+}
+
+
+ .footer-logo {
+  margin-left: 2rem;
+  width: 30%;
+
+}
+ .footer-logo button {
+  font-size: 1.5rem;
+  background-color: var(--color-bg);
+  padding: 2.0rem 0.85rem;
+  margin: 0 0.5rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+}
+
+
+.footer-logo button a:before {
+  background: var(--color-primary);
+  
+}
+
+.footer-content{
+  padding-left: 2rem;
+  padding-right: 2rem;
+
+}
+
+
 /* headings */
 /* Also cross-check ".markdown-section a" */
 h1,
