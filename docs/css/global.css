@@ -22,6 +22,7 @@
   --color-bg-light: #f8f9fb;
   --color-bg-gray: #f0f0f0;
   --color-bg-code: var(--color-bg-light);
+  --color-bg-footer: #f3eaff;
 
   --color-border: #ddd;
   --color-border-light: #eee;
@@ -133,7 +134,7 @@ footer {
   position: relative;
   display:flex;
   width: auto;
-  background-color: var(--color-bg-light);
+  background-color: var(--color-bg-footer);
   border-radius: 25px;
   flex-direction: row;
   padding: 1rem 0;
@@ -144,8 +145,8 @@ footer {
  .footer-logo {
   margin-left: 2rem;
   width: 30%;
-
 }
+
  .footer-logo button {
   font-size: 1.5rem;
   background-color: var(--color-bg);

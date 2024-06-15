@@ -1092,6 +1092,17 @@ code .token {
   .markdown-section {
     max-width: 80%;
   }
+
+  footer {
+    flex-direction: column;
+  }
+
+  .footer-logo {
+    display:none; /* hide
+    margin:auto;
+    width: 30%;
+  }
+
 }
 
 /* ===== KEY FRAMES ===== */
