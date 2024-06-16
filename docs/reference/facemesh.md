@@ -18,12 +18,18 @@ It provides the following functionalities:
 - **Multiple Faces**: Detect multiple faces at the same time. You can specify the maximum number of faces to detect.
 
 ## Quick Start
-### Run & explore a pre-built example
+
+### _<img class="inline-img" src="assets/glossary-point-right.png" alt="tip icon" aria-hidden="true"> TRY THIS LIVE!_ Run & explore a pre-built example
 1. Open [an simple FaceMesh example we built](https://editor.p5js.org/ml5/sketches/lCurUW1TT) (FaceMesh Keypoints example) in the p5.js web editor.
 2. Press the <img class="inline-img" src="assets/facemesh-arrow-forward.png" alt="tip icon" aria-hidden="true"> `run` button to see the code in action.
 
-### Demo
+<!-- TODO: maybe consider use webcam screenshot instead of the single image one -->
+<!-- TODO: photoshop image so that all have 800 px width before styling -->
+<center>
+    <img alt="screenshot of running facemesh with p5" width="400" src="assets/facemesh-run-prebuilt-example.png">
+</center>
 
+### Demo
 [DEMO](iframes/facemesh-keypoints ":include :type=iframe width=100% height=550px")
 
 ### Model examples
