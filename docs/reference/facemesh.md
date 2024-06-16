@@ -26,7 +26,9 @@ It provides the following functionalities:
 <!-- TODO: maybe consider use webcam screenshot instead of the single image one -->
 <!-- TODO: photoshop image so that all have 800 px width before styling -->
 <center>
+<a href="https://editor.p5js.org/ml5/sketches/lCurUW1TT">
     <img alt="screenshot of running facemesh with p5" width="400" src="assets/facemesh-run-prebuilt-example.png">
+</a>
 </center>
 
 ### Demo
