@@ -164,7 +164,7 @@ Draw a green circle at the location of the `j`th keypoint.
 Note we are iterating through all the keypoints (j is ranging from 0 to the length of the keypoints array) of the detected face (i is ranging from 0 to the length of the faces array). This will result in green landmarks on all detected face(s) in the webcam video. In our case, we set the maximum number of faces to detect to 1 in the `options` object (`maxFaces: 1`), so we will only see landmarks on one face.
 
 ### Run your sketch
-And, that's it! You have successfully built the FaceMesh Keypoints example from scratch. Press the <img class="inline-img" src="assets/facemesh-arrow-forward.png" alt="tip icon" aria-hidden="true"> `run` button to see the code in action.
+And, that's it! You have successfully built the FaceMesh Keypoints example from scratch. Press the <img class="inline-img" src="assets/facemesh-arrow-forward.png" alt="tip icon" aria-hidden="true"> `run` button to see the code in action. You can also find the complete code [here](https://editor.p5js.org/ml5/sketches/lCurUW1TT).
 
 ?> If you have any questions or spot something unclear in this step-by-step code guide, we'd love to hear from you! Join us on [Discord](https://discord.com/invite/3CVauZMSt7) and let us know how we can make it better.
 
