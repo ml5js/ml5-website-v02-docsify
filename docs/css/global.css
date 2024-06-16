@@ -144,6 +144,7 @@ footer {
 
  .footer-logo {
   margin-left: 2rem;
+  margin-top: 1.5rem;
   width: 30%;
 }
 
@@ -165,7 +166,6 @@ footer {
 .footer-content{
   padding-left: 2rem;
   padding-right: 2rem;
-
 }
 
 
