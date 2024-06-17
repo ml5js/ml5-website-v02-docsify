@@ -23,32 +23,51 @@ ml5.js is heavily inspired by the syntax, patterns and style of the [p5.js](http
 In [p5.js](https://p5js.org/), [callbacks](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function) are passed as arguments to functions that often perform some asynchronous operation. For example, [p5.js](https://p5js.org/) defines the [**loadJSON()**](https://p5js.org/reference/#/p5/loadJSON) function as the following:
 
 ```js
-loadJSON("http//example.com/data.json", (results) => {
-  // Do something with the results
-});
+function preload(){
+  loadJSON("http//example.com/data.json", handleData);
+}
+
+function handleData(data) {
+  // Manipulate the data
+  // ...
+}
+
 ```
 
-Notice that the results from the callback in [p5.js](https://p5js.org/) are given as the only argument to the function. There is no error argument in the callback.
+In this case, the `handleData` function is a callback function that is passed to the `loadJSON` function. The `handleData` function will be called once the data is loaded. This is a common pattern in JavaScript libraries and frameworks.
 
-ml5.js, on the other hand, uses a pattern referred to as an <b>error-first callback</b>:
-
-> With this pattern, a callback function is passed to the method as an argument. When the operation either completes or an error is raised, the callback function is called with the Error object (if any) passed as the first argument. If no error was raised, the first argument will be passed as null. [Taken from the Node.js documentation](https://nodejs.org/api/errors.html#errors_error_first_callbacks)
-
-For example if you are using the **imageClassifier()** method, you will need to construct it in the following way:
+Very similar to [p5.js](https://p5js.org/), ml5.js also uses callbacks to handle asynchronous operations. For example, the **imageClassifier()** method in ml5.js uses a callback function to handle the results of the classification:
 
 ```js
-// Pass a callback function to constructor
-const classifier = ml5.imageClassifier("MobileNet", (err, model) => {
-  console.log("Model Loaded!");
-});
+function preload() {
+  // Pass a callback function to constructor
+  classifier = ml5.imageClassifier("MobileNet",modelLoaded);
+  img = loadImage("images/bird.jpg");
+  // ...
+}
 
-// Make a prediction with the selected image and pass a callback function with two arguments
-classifier.classify(image, (err, results) => {
-  // Check for errors. If no errors, then do something with the results
-});
+function setup() {
+  // ...
+  classifier.classify(img, gotResult);
+  // ...
+}
+
+// ...
+function modelLoaded(){
+  console.log('Model loaded!')
+}
+
+// A function to run when we get any errors and the results
+function gotResult(results) {
+  // The results are in an array ordered by confidence, print in console
+  console.log(results);
+
+  // ...
+}
+
 ```
 
-Error first callbacks is a convention common to many JavaScript libraries that we have chosen to adopt. The language JavaScript itself does not enforce this pattern. Keep in mind that most ml5.js methods and functions are asynchronous (machine learning models can take significant amounts of time to process inputs and generate outputs!). You will need to use the <b>error-first callback</b> pattern if you want to use callbacks.
+In this [example](https://editor.p5js.org/alanvww/sketches/XF-qNv4Ei), the `modelLoaded` function is a callback function that is passed to the `imageClassifier` method. The `modelLoaded` function will be called once the model is loaded. The `gotResult` function is a callback function that is passed to the `classify` method. The `gotResult` function will be called once the classification is complete.
 
 ---
 
@@ -67,23 +86,18 @@ A similar example is given by the [Getting Started](/?id=your-first-sketch) of m
 
 ```js
 // A function to run when we get any errors and the results
-function gotResult(error, results) {
-  // Display error in the console
-  if (error) {
-    console.error(error);
-  } else {
-    // The results are in an array ordered by confidence, print in console
-    console.log(results);
+function gotResult(results) {
+  // The results are in an array ordered by confidence, print in console
+  console.log(results);
 
-    // Display the results on the canvas
-    fill(255);
-    stroke(0);
-    textSize(18);
-    label = "Label: " + results[0].label;
-    confidence = "Confidence: " + nf(results[0].confidence, 0, 2);
-    text(label, 10, 360);
-    text(confidence, 10, 380);
-  }
+  // Display the results on the canvas
+  fill(255);
+  stroke(0);
+  textSize(18);
+  label = "Label: " + results[0].label;
+  confidence = "Confidence: " + nf(results[0].confidence, 0, 2);
+  text(label, 10, 360);
+  text(confidence, 10, 380);
 }
 ```
 
@@ -148,18 +162,7 @@ We can use the confidence score to filter out keypoints that are not confident e
 ```js
 for (let i = 0; i < poses.length; i++) {
   for (let k = 0; k < poses[i].pose.keypoints.length; k++) {
-    // get each keypoint
-    let point = poses[i].pose.keypoints[k];
-
-    // get the position of each keypoint
-    let x = point.x;
-    let y = point.y;
-
-    // get the confidence score of each keypoint
-    let score = point.score;
-
-    // get the name of each keypoint
-    let partName = point.name;
+    // ...
 
     // only draw an ellipse at each keypoint if the confidence score is higher than 0.5
     if (score > 0.5) {
@@ -371,34 +374,6 @@ Test Dataset
 
 ---
 
-## Div
-
-A div is an HTML element that is used to define a section of a webpage. For instance, the following code defines a div and put a paragraph inside the div:
-
-```html
-<div>
-  <p>This is a paragraph.</p>
-</div>
-```
-
-In ml5.js, divs are often used to display the output of a machine learning model. For instance, the example given by the [Getting Started](/?id=your-first-sketch) uses the following code to display the label and confidence score of the prediction:
-
-```js
-// A function to run when we get any errors and the results
-function gotResult(error, results) {
-  // Display error in the console
-  if (error) {
-    console.error(error);
-  } else {
-    // The results are in an array ordered by confidence.
-    console.log(results);
-    createDiv(`Label: ${results[0].label}`);
-    createDiv(`Confidence: ${nf(results[0].confidence, 0, 2)}`);
-  }
-}
-```
-
----
 
 ## Dependencies
 
@@ -682,7 +657,7 @@ ml5.js is heavily inspired by the syntax, patterns and style of the [p5.js](http
 
 ml5.js supports [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise). If no callback is provided to any asynchronous function then a Promise is returned.
 
-With Promises, the image classification example can be used in the following way:
+With Promises, the image classification example can be used in the following way with JavaScript ES6 arrow notation (**=>**):
 
 ```js
 // No callback needs to be passed to use Promises.
@@ -852,70 +827,63 @@ Weights quantization is a technique used to reduce the size of a machine learnin
 
 ## Callback
 
-<!-- TODO: update content based on the new version of ml5.js -->
-
 ml5.js is heavily inspired by the syntax, patterns and style of the [p5.js](https://p5js.org/) library. However, there are several differences in how asynchronous operations are handled by ml5.js. ml5.js supports both <b>error-first callbacks</b> and Promises in all methods.
 
 In [p5.js](https://p5js.org/), [callbacks](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function) are passed as arguments to functions that often perform some asynchronous operation. For example, [p5.js](https://p5js.org/) defines the [**loadJSON()**](https://p5js.org/reference/#/p5/loadJSON) function as the following:
 
 ```js
-loadJSON("http//example.com/data.json", (results) => {
-  // Do something with the results
-});
-```
-
-Notice that the results from the callback in [p5.js](https://p5js.org/) are given as the only argument to the function. There is no error argument in the callback.
-
-ml5.js, on the other hand, uses a pattern referred to as an <b>error-first callback</b>:
-
-> With this pattern, a callback function is passed to the method as an argument. When the operation either completes or an error is raised, the callback function is called with the Error object (if any) passed as the first argument. If no error was raised, the first argument will be passed as null. [Taken from the Node.js documentation](https://nodejs.org/api/errors.html#errors_error_first_callbacks)
-
-For example if you are using the **imageClassifier()** method, you will need to construct it in the following way:
-
-```js
-// Pass a callback function to constructor
-const classifier = ml5.imageClassifier("MobileNet", (err, model) => {
-  console.log("Model Loaded!");
-});
-
-// Make a prediction with the selected image and pass a callback function with two arguments
-classifier.classify(image, (err, results) => {
-  // Check for errors. If no errors, then do something with the results
-});
-```
-
-Error first callbacks is a convention common to many JavaScript libraries that we have chosen to adopt. The language JavaScript itself does not enforce this pattern. Keep in mind that most ml5.js methods and functions are asynchronous (machine learning models can take significant amounts of time to process inputs and generate outputs!). You will need to use the <b>error-first callback</b> pattern if you want to use callbacks.
-
----
-
-## Div
-
-A div is an HTML element that is used to define a section of a webpage. For instance, the following code defines a div and put a paragraph inside the div:
-
-```html
-<div>
-  <p>This is a paragraph.</p>
-</div>
-```
-
-In ml5.js, divs are often used to display the output of a machine learning model. For instance, the example given by the [Getting Started](/?id=your-first-sketch) uses the following code to display the label and confidence score of the prediction:
-
-```js
-// A function to run when we get any errors and the results
-function gotResult(error, results) {
-  // Display error in the console
-  if (error) {
-    console.error(error);
-  } else {
-    // The results are in an array ordered by confidence.
-    console.log(results);
-    createDiv(`Label: ${results[0].label}`);
-    createDiv(`Confidence: ${nf(results[0].confidence, 0, 2)}`);
-  }
+function preload(){
+  loadJSON("http//example.com/data.json", handleData);
 }
+
+function handleData(data) {
+  // Manipulate the data
+  // ...
+}
+
 ```
 
+In this case, the `handleData` function is a callback function that is passed to the `loadJSON` function. The `handleData` function will be called once the data is loaded. This is a common pattern in JavaScript libraries and frameworks.
+
+Very similar to [p5.js](https://p5js.org/), ml5.js also uses callbacks to handle asynchronous operations. For example, the **imageClassifier()** method in ml5.js uses a callback function to handle the results of the classification:
+
+```js
+function preload() {
+  // Pass a callback function to constructor
+  classifier = ml5.imageClassifier("MobileNet",modelLoaded);
+  img = loadImage("images/bird.jpg");
+  // ...
+}
+
+function setup() {
+  // ...
+  classifier.classify(img, gotResult);
+  // ...
+}
+
+// ...
+function modelLoaded(){
+  console.log('Model loaded!')
+}
+
+// A function to run when we get any errors and the results
+function gotResult(results) {
+  // The results are in an array ordered by confidence, print in console
+  console.log(results);
+
+  // ...
+}
+
+```
+
+?> Check out [this example on the p5.js web editor](https://editor.p5js.org/ml5/sketches/pjPr6XmPY).
+
+In this [example](https://editor.p5js.org/ml5/sketches/pjPr6XmPY), the `modelLoaded` function is a callback function that is passed to the `imageClassifier` method. The `modelLoaded` function will be called once the model is loaded. The `gotResult` function is a callback function that is passed to the `classify` method. The `gotResult` function will be called once the classification is complete.
+
 ---
+
+
+
 
 ## Dependencies
 
@@ -964,7 +932,8 @@ ml5.js is heavily inspired by the syntax, patterns and style of the [p5.js](http
 
 ml5.js supports [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise). If no callback is provided to any asynchronous function then a Promise is returned.
 
-With Promises, the image classification example can be used in the following way:
+With Promises, the image classification example can be used in the following way with JavaScript ES6 arrow notation (**=>**):
+
 
 ```js
 // No callback needs to be passed to use Promises.
