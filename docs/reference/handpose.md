@@ -18,9 +18,7 @@ It provides the following functionalities:
 - **Multiple Hands**: HandPose can detect multiple hands at the same time.
 
 ## Quick Start
-Run and explore a pre-built example! This HandPose example displays 21 hand keypoints that describe the geometry of each hand in real-time from the webcam.
-
-?> Click `Open in p5.js Web Editor` at the top right corner of the demo widget to see the full code.
+Run and explore a pre-built example! [This HandPose example](https://editor.p5js.org/ml5/sketches/QGH3dwJ1A) displays 21 hand keypoints that describe the geometry of each hand in real-time from the webcam.
 
 </br>
 

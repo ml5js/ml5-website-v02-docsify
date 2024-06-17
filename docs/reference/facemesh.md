@@ -36,7 +36,6 @@ Now, let's together build the [FaceMesh Keypoints example]((https://editor.p5js.
 To follow along, start by creating an empty project in the [p5.js web editor](https://editor.p5js.org/).
 
 ### Set up ml5.js
-
 Import the ml5.js library in your `index.html` file.
 
 ```html
