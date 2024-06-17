@@ -180,6 +180,28 @@ const handpose = ml5.handpose(?options, ?callback);
   }
   ```
 
+  Here is the reformatted code comments into markdown:
+
+### Options for hand detection:
+
+  - **maxHands** - Optional
+    - Number: The maximum number of hands to detect. Default: 2.
+  - **modelType** - Optional
+    - String: The type of model to use: "lite" or "full". Default: "full".
+  - **flipHorizontal** - Optional
+    - Boolean: Flip the result data horizontally. Default: false.
+  - **runtime** - Optional
+    - String: The runtime of the model: "mediapipe" or "tfjs". Default: "mediapipe".
+
+  ### For using custom or offline models:
+
+  - **solutionPath** - Optional
+    - String: The file path or URL to the model. Only used when using "mediapipe" runtime.
+  - **detectorModelUrl** - Optional
+    - String: The file path or URL to the hand detector model. Only used when using "tfjs" runtime.
+  - **landmarkModelUrl** - Optional
+    - String: The file path or URL to the hand landmark model. Only used when using "tfjs" runtime.
+
   More info on options [here](https://github.com/tensorflow/tfjs-models/tree/master/hand-pose-detection/src/mediapipe#create-a-detector) for "mediapipe" runtime.
   More info on options [here](https://github.com/tensorflow/tfjs-models/tree/master/hand-pose-detection/src/tfjs#create-a-detector) for "tfjs" runtime.
 
@@ -198,7 +220,7 @@ handpose.detectStart(media, callback);
 
 **Parameters:**
 
-- **media**: An HMTL or p5.js image, video, or canvas element to run the estimation on.
+- **media**: An HTML or p5.js image, video, or canvas element to run the estimation on.
 - **callback(output, error)**: A callback function to handle the output of the estimation. See below for an example output passed into the callback function:
 
   ```javascript
@@ -240,7 +262,7 @@ handpose.detect(media, ?callback);
 
 **Parameters:**
 
-- **media**: An HMTL or p5.js image, video, or canvas element to run the estimation on.
+- **media**: An HTML or p5.js image, video, or canvas element to run the estimation on.
 - **callback(output, error)**: OPTIONAL. A callback function to handle the output of the estimation, see output example above.
 
 **Returns:**  

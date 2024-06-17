@@ -410,7 +410,7 @@ bodypose.detectStart(media, callback);
 
 **Parameters:**
 
-- **media**: An HMTL or p5.js image, video, or canvas element to run the estimation on.
+- **media**: An HTML or p5.js image, video, or canvas element to run the estimation on.
 - **callback(output, error)**: A callback function to handle the output of the estimation. See below for an example output passed into the callback function:
 
   ```javascript

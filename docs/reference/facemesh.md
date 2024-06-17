@@ -180,6 +180,24 @@ const facemesh = ml5.facemesh(?options, ?callback);
   }
   ```
 
+  Here is the reformatted code comments into markdown as you requested:
+
+  ### Options for face detection:
+
+  - **maxFacess**
+    - Number: The maximum number of faces to detect. Defaults to 2.
+  - **refineLandmarks** 
+    - Boolean: Refine the landmarks. Defaults to false.
+  - **flipHorizontal** 
+    - Boolean: Flip the result horizontally. Defaults to false.
+  - **runtime**
+    - String: The runtime to use. "mediapipe" (default) or "tfjs".
+
+  ### For using custom or offline models:
+
+  - **solutionPath**
+    - String: The file path or URL to the model.
+
   More info on options [here](https://github.com/tensorflow/tfjs-models/tree/master/face-landmarks-detection/src/mediapipe#create-a-detector).
 
 - **callback(facemesh, error)**: OPTIONAL. A function to run once the model has been loaded. Alternatively, call `ml5.facemesh()` within the p5 `preload` function.
@@ -197,7 +215,7 @@ facemesh.detectStart(media, callback);
 
 **Parameters:**
 
-- **media**: An HMTL or p5.js image, video, or canvas element to run the estimation on.
+- **media**: An HTML or p5.js image, video, or canvas element to run the estimation on.
 - **callback(output, error)**: A callback function to handle the output of the estimation. See below for an example output passed into the callback function:
 
   ```javascript
@@ -233,7 +251,7 @@ facemesh.detect(media, ?callback);
 
 **Parameters:**
 
-- **media**: An HMTL or p5.js image, video, or canvas element to run the estimation on.
+- **media**: An HTML or p5.js image, video, or canvas element to run the estimation on.
 - **callback(output, error)**: OPTIONAL. A callback function to handle the output of the estimation, see output example above.
 
 **Returns:**  
