@@ -362,7 +362,38 @@ const bodypose = ml5.bodypose(?options, ?callback);
   }
   ```
 
+  Options for the MoveNet model only:
+  
+  - _minPoseScore_ - Optional
+    - Number: The minimum confidence score for a pose to be detected. Default: 0.25.
+  - _multiPoseMaxDimension_ - Optional
+    - Number: The target maximum dimension to use as the input to the multi-pose model. Must be a mutiple of 32. Default: 256.
+  - _enableTracking_ - Optional
+    - Boolean: Track each person across the frame with a unique ID. Default: true.
+  - _trackerType_ - Optional
+    - String: Specify what type of tracker to use. Default: "boundingBox".
+  - _trackerConfig_ - Optional
+    - Object: Specify tracker configurations. Use tf.js settings by default.
+
   See the [MoveNet documentation](https://github.com/tensorflow/tfjs-models/tree/master/pose-detection/src/movenet#create-a-detector) for more information on options.
+
+  Options for the BlazePose model only:
+  - _runtime_ - Optional
+    - String: Either "tfjs" or "mediapipe". Default: "mediapipe"
+  - _enableSegmentation_ - Optional
+    - Boolean: A boolean indicating whether to generate the segmentation mask.
+  - _smoothSegmentation_ - Optional
+    - Boolean: whether to filters segmentation masks across different input images to reduce jitter.
+
+  For using custom or offline models
+  - _modelUrl_ - Optional
+    - String: The file path or URL to the MoveNet model.
+  - _solutionPath_ - Optional
+    - String: The file path or URL to the mediaPipe BlazePose model.
+  - _detectorModelUrl_ - Optional
+    - String: The file path or URL to the tfjs BlazePose detector model.
+  - _landmarkModelUrl_ - Optional
+    - String: The file path or URL to the tfjs BlazePose landmark model.
 
 - **callback(bodypose, error)**: OPTIONAL. A function to run once the model has been loaded. Alternatively, call `ml5.bodyPix()` within the p5.js `preload` function.
 
@@ -445,6 +476,26 @@ This method can be called after a call to `bodypose.detectStart` to stop the rep
 bodypose.detectStop();
 ```
 
+For example, you can toggle the pose estimation with click event in p5.js by using this function as follows:
+
+```javascript
+// Toggle detection when mouse is pressed
+function mousePressed() {
+  toggleDetection();
+}
+
+// Call this function to start and stop detection
+function toggleDetection() {
+  if (isDetecting) {
+    bodypose.detectStop();
+    isDetecting = false;
+  } else {
+    bodyPose.detectStart(video, gotPoses);
+    isDetecting = true;
+  }
+}
+```
+
 ### bodypose.detect()
 
 This method asynchronously outputs a single pose estimation on an image media when called.
@@ -461,4 +512,84 @@ bodypose.detect(media, ?callback);
 **Returns:**  
 A promise that resolves to the estimation output.
 
-(footer needed)
+### bodypose.getSkeleton()
+
+This method returns an array of arrays, where each sub-array contains the indices of the connected keypoints.
+
+```javascript
+const connections = bodypose.getSkeleton();
+```
+
+**Returns:**  
+An array of arrays representing the connections between keypoints. For example, using BlazePose model will returns:
+
+```js
+[
+    [0,1],
+    [0,4],
+    [1,2],
+   ...
+    [28,32],
+    [29,31],
+    [30,32]
+]
+```
+
+This array represents the connections between keypoints, please refer to these images to understand the connections:
+<center>
+      <h3>MoveNet</h3>
+      <img style="display:block; max-width:60%" alt="MoveNet keypoint diagram" src="https://camo.githubusercontent.com/c3641b718d7e613b2ce111a6a4575e88ca35a60cb325efdd9113c453b2a09301/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f6d6f76656e65742f636f636f2d6b6579706f696e74732d3530302e706e67">
+  </center> <br/>
+   <center>
+      <h3>BlazeNet</h3>
+      <img style="display:block; max-width:60%" alt="BlazePose keypoint diagram" src="https://camo.githubusercontent.com/17082997c33fc6d2544c4aea33d9898860cf902ed5a0b865527d1dd91bbc7efa/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f6d65646961706970652f626c617a65706f73652d6b6579706f696e74732d757064617465642e706e67">
+  </center>
+
+  ### bodypose.loadModel()
+
+This method asynchronously loads the model and returns the bodyPose object once the model is loaded.
+
+```javascript
+bodypose.loadModel();
+```
+
+**Returns:**  
+A promise that resolves to the bodyPose object.
+
+### bodypose.renameScoreToConfidence()
+
+This method renames the `score` property to `confidence` for consistency across the detected keypoints.
+
+```javascript
+bodypose.renameScoreToConfidence(poses);
+```
+
+**Parameters:**
+
+- **poses**: An array of objects representing the original detection results. Each pose object contains keypoints, and optionally keypoints3D, which will have their `score` property renamed to `confidence`.
+
+**Example:**
+
+```javascript
+const poses = [
+  {
+    keypoints: [{ x: 100, y: 200, score: 0.9, name: 'nose' }, ...],
+    keypoints3D: [{ x: 100, y: 200, z: 0.5, score: 0.9, name: 'nose' }, ...],
+  },
+  ...
+];
+
+bodypose.renameScoreToConfidence(poses);
+
+// The poses array will now have the `score` property renamed to `confidence`:
+[
+  {
+    keypoints: [{ x: 100, y: 200, confidence: 0.9, name: 'nose' }, ...],
+    keypoints3D: [{ x: 100, y: 200, z: 0.5, confidence: 0.9, name: 'nose' }, ...],
+  },
+  ...
+];
+```
+
+**Returns:**  
+Nothing. The function modifies the `poses` array in place.
