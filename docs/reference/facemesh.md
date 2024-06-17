@@ -20,7 +20,7 @@ It provides the following functionalities:
 ## Quick Start
 Run and explore a pre-built example! This FaceMesh example displays 468 facial landmarks that describe the geometry of each face in real-time from the webcam.
 
-?> Click `Open in p5.js Web Editor` to see the full code.
+?> Click `Open in p5.js Web Editor` at the top right corner of the demo widget to see the full code.
 
 </br>
 

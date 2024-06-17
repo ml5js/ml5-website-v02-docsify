@@ -18,23 +18,15 @@ It provides the following functionalities:
 - **Multiple Hands**: HandPose can detect multiple hands at the same time.
 
 ## Quick Start
+Run and explore a pre-built example! This HandPose example displays 21 hand keypoints that describe the geometry of each hand in real-time from the webcam.
 
-### _<img class="inline-img" src="assets/glossary-point-right.png" alt="point right icon" aria-hidden="true"> TRY THIS LIVE!_ Run & explore a pre-built example
-1. Open [an simple HandPose example we built](https://editor.p5js.org/ml5/sketches/QGH3dwJ1A) (HandPose Keypoints example) in the p5.js web editor.
-2. Press the <img class="inline-img" src="assets/facemesh-arrow-forward.png" alt="run button icon" aria-hidden="true"> `run` button to see the code in action.
+?> Click `Open in p5.js Web Editor` at the top right corner of the demo widget to see the full code.
 
-<!-- TODO: maybe consider use webcam screenshot instead of the single image one -->
-<!-- TODO: photoshop image so that all have 800 px width before styling -->
-<center>
-<a href="https://editor.p5js.org/ml5/sketches/QGH3dwJ1A">
-    <img alt="screenshot of running handpose with p5" width="400" src="assets/handpose-run-prebuilt-example.png">
-</a>
-</center>
+</br>
 
-### Demo
 [DEMO](iframes/handpose-keypoints ":include :type=iframe width=100% height=550px")
 
-### Model Examples
+## Examples
 - [HandPose Keypoints](https://editor.p5js.org/ml5/sketches/QGH3dwJ1A): Draw the keypoints of the detected hand from the webcam.
 - [HandPose Single Image](https://editor.p5js.org/ml5/sketches/8VK_l3XwE): Detect the keypoints of the hand from a single image.
 - [HandPose Parts](https://editor.p5js.org/ml5/sketches/DNbSiIYKB): Draw specific hand parts of the detected hand.
