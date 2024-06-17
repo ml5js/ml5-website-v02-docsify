@@ -1,4 +1,4 @@
-# Facemesh
+# FaceMesh
 
 <center>
   <img class="header-img" src="assets/header-facemesh.png" alt="FaceMesh Header Image" >
@@ -7,123 +7,114 @@
 
 ## Description
 
-Facemesh is a machine-learning model that allows for facial landmark detection in the browser. It can detect multiple faces at once and provides 468 3D facial landmarks that describe the geometry of each face. Facemesh works best when the faces in view take up a large percentage of the image or video frame and it may struggle with small/distant faces.
+FaceMesh is a machine-learning model that allows for facial landmark detection in the browser. It can detect multiple faces at once and provides 468 3D facial landmarks that describe the geometry of each face. FaceMesh works best when the faces in view take up a large percentage of the image or video frame and it may struggle with small/distant faces.
 
-The ml5.js Facemesh model is ported from the [Mediapipe Facemesh implementation](https://github.com/tensorflow/tfjs-models/tree/master/face-landmarks-detection).
+The ml5.js FaceMesh model is ported from the [TensorFlow.js FaceMesh implementation](https://github.com/tensorflow/tfjs-models/tree/master/face-landmarks-detection).
 
-### Key Features
+It provides the following functionalities:
 
-- **Facial Landmark Detection**: Facemesh can detect the 3D coordinates of 468 keypoints on the face.
-- **Face Bounding Box**: Facemesh can provide the bounding box of each detected face.
-- **Face Parts Contour**: Facemesh can provide the 3D coordinates of the contour of each face part (lips, eyes, eyebrows, and face oval).
-- **Multiple Faces**: Facemesh can detect multiple faces at the same time. You can specify the maximum number of faces to detect.
+- **Facial Landmark Detection**: Detect the 3D coordinates of 468 keypoints on the face.
+- **Face Bounding Box**: Provide the bounding box of each detected face.
+- **Multiple Faces**: Detect multiple faces at the same time. You can specify the maximum number of faces to detect.
 
-### Output Example
+## Quick Start
+Run and explore a pre-built example! [This FaceMesh example](https://editor.p5js.org/ml5/sketches/lCurUW1TT) displays 468 facial landmarks that describe the geometry of each face in real-time from the webcam.
 
-An example of the output from Facemesh is shown below:
-
-```javascript
-[
-  {
-    keypoints: [
-      {
-        x: 331.7021942138672,
-        y: 332.43553161621094,
-        z: -18.904154300689697,
-        name: "lips",
-      },
-      // Additional keypoints here...
-    ],
-    box: {
-      xMin: 255.43195724487305,
-      yMin: 186.6709327697754,
-      xMax: 433.4109115600586,
-      yMax: 387.9571723937988,
-      width: 177.97895431518555,
-      height: 201.28623962402344,
-    },
-    lips: [
-      { x: 331.7021942138672, y: 332.43553161621094, z: -18.904154300689697 },
-      // Additional lip keypoints here...
-    ],
-    rightEye: [
-      // Keypoints for right eye
-    ],
-    faceOval: [
-      // Keypoints for face oval
-    ],
-    rightEyebrow: [
-      // Keypoints for right eyebrow
-    ],
-    leftEye: [
-      // Keypoints for left eye
-    ],
-    leftEyebrow: [
-      // Keypoints for left eyebrow
-    ],
-  },
-  // Additional objects here...
-];
-```
-
-## Getting Started
-
-Ready to give it a try? Just follow our simple instructions, and you'll be on your way to creating your very own Facemesh project in no time!
-
-### Demo
+</br>
 
 [DEMO](iframes/facemesh-keypoints ":include :type=iframe width=100% height=550px")
 
-### Quick Start
+## Examples
+- [FaceMesh Keypoints](https://editor.p5js.org/ml5/sketches/lCurUW1TT): Draw the keypoints of the detected face from the webcam.
+- [FaceMesh Single Image](https://editor.p5js.org/ml5/sketches/lqQZrDJHF): Detect the keypoints of the face from a single image.
+- [FaceMesh Parts](https://editor.p5js.org/ml5/sketches/9y9W7eAee): Draw specific face parts of the detected face.
 
-Before you start, let's create an empty project in the [p5 web editor](https://editor.p5js.org/).
+## Step-by-Step Guide
+Now, let's together build the [FaceMesh Keypoints example]((https://editor.p5js.org/ml5/sketches/lCurUW1TT)) from scratch, and in the process, learn how to use the FaceMesh model.
 
-First of all, copy and paste the following code into your **index.html** file. If you are not familiar with the p5 web editor interface, you can find a guide on how to find your **index.html** file [here](/?id=try-ml5js-online-1).
+### Create a new project
+To follow along, start by creating an empty project in the [p5.js web editor](https://editor.p5js.org/).
+
+### Set up ml5.js
+
+Import the ml5.js library in your `index.html` file.
 
 ```html
 <script src="https://unpkg.com/ml5@alpha/dist/ml5.js"></script>
 ```
 
-Then, add the code below to your **sketch.js** file:
+?> If you are not familiar with how to import the ml5.js library and need more detailed guidance, please check out our [Getting Started](/?id=set-up-ml5js) page.
 
-```js
+### Load model
+Let's open the `sketch.js` file and define a variable to store the FaceMesh model.
+
+```javascript
 let faceMesh;
-let video;
-let faces = [];
-// set options to detect only one face
-let options = { maxFaces: 1, refineLandmarks: false, flipHorizontal: false };
+```
 
+Next, we can create a `options` object to customize the model's behavior. For example, we can set the maximum number of faces to detect to 1, disable the refinement of landmarks (further refine the landmark coordinates around the eyes and lips at the cost of compute), and prevent the model from flipping the image horizontally.
+
+```javascript
+let options = { maxFaces: 1, refineLandmarks: false, flipHorizontal: false };
+```
+?> If you would like to know more about the available configuration settings for `options`, please check out the [Methods](/reference/facemesh?id=methods) section.
+
+Now, we are ready to load a model configed as `options` specifies and store it in the `faceMesh` variable.
+
+Let's create a `preload` function to load the FaceMesh model. The `preload` function is a p5.js function that runs before the `setup` and `draw` function. This is where we load the model to ensure it is ready before we use it.
+
+```javascript
 function preload() {
-  // Load the faceMesh model
   faceMesh = ml5.faceMesh(options);
 }
+```
 
+### Fetch webcam video
+
+Define a variable `video` to hold the webcam video.
+
+```javascript
+let video;
+```
+
+Resize the canvas dimensions to 640x480, a common resolution for webcams.
+
+```javascript
 function setup() {
   createCanvas(640, 480);
-  // Create the webcam video and hide it
+```
+
+Fetch the webcam video, resize it to fit the canvas, and hide it from the display.
+
+```javascript
+  // Create the video and hide it
   video = createCapture(VIDEO);
   video.size(width, height);
   video.hide();
+}
+```
+
+### Detect keypoints with the model
+Define a `faces` variable to store the detected faces. Note that the `faces` variable will store an array of detected faces, and each face has a property `keypoints` that will contain an array of keypoints.
+
+```javascript
+let faces = [];
+```
+
+To start detecting the keypoints of the face, in the `setup` function, we need to call the `detectStart` method of the `faceMesh` object. This method takes the webcam video as input and a callback function to handle the output.
+```javascript
+function setup() {
+  ...
+  video.hide();
+
   // Start detecting faces from the webcam video
   faceMesh.detectStart(video, gotFaces);
 }
+```
 
-function draw() {
-  // Draw the webcam video
-  image(video, 0, 0, width, height);
+The `gotFaces()` function is a callback function that will be called when the `faceMesh.detectStart()` method detects faces. Once the faces are detected, the output `results` will be passed to `gotFaces()`, and then saved to the `faces` variable.
 
-  // Draw all the tracked face points
-  for (let i = 0; i < faces.length; i++) {
-    let face = faces[i];
-    for (let j = 0; j < face.keypoints.length; j++) {
-      let keypoint = face.keypoints[j];
-      fill(0, 255, 0);
-      noStroke();
-      circle(keypoint.x, keypoint.y, 5);
-    }
-  }
-}
-
+```javascript
 // Callback function for when faceMesh outputs data
 function gotFaces(results) {
   // Save the output to the faces variable
@@ -131,21 +122,41 @@ function gotFaces(results) {
 }
 ```
 
-Alternatively, you can open [this example code](https://github.com/ml5js/ml5-next-gen/tree/main/examples/FaceMesh-keypoints) and try it yourself on p5.js web editor!
+### Draw keypoints on the canvas
+In the `draw()` function, draw the webcam video on the canvas.
+  
+```javascript
+function draw() {
+  image(video, 0, 0, width, height);
+```
 
-### Additional Examples
+Iterate all faces of the `faces` array, fetch the `i`th dectected face, and store it in the `face` variable. 
 
-- [FaceMesh-parts](https://github.com/ml5js/ml5-next-gen/tree/main/examples/FaceMesh-parts): Draw the face parts of the detected face.
-- [FaceMesh-single-image](https://github.com/ml5js/ml5-next-gen/tree/main/examples/FaceMesh-single-image): Detect faces in a single image.
+```javascript
+// Draw all the tracked face points
+  for (let i = 0; i < faces.length; i++) {
+    let face = faces[i];
+```
+Iterate though all the keypoints of the `i`th detected face, fetch the `j`th keypoint, and store it in the `keypoint` variable.
+```javascript
+    for (let j = 0; j < face.keypoints.length; j++) {
+      let keypoint = face.keypoints[j];
+```
+Draw a green circle at the location of the `j`th keypoint.
+```javascript
+      fill(0, 255, 0);
+      noStroke();
+      circle(keypoint.x, keypoint.y, 5);
+    }
+  }
+}
+```
+Note we are iterating through all the keypoints (j is ranging from 0 to the length of the keypoints array) of the detected face (i is ranging from 0 to the length of the faces array). This will result in green landmarks on all detected face(s) in the webcam video. In our case, we set the maximum number of faces to detect to 1 in the `options` object (`maxFaces: 1`), so we will only see landmarks on one face.
 
-TODO (link p5 web editor examples once uploaded)
+### Run your sketch
+And, that's it! You have successfully built the FaceMesh Keypoints example from scratch. Press the <img class="inline-img" src="assets/facemesh-arrow-forward.png" alt="tip icon" aria-hidden="true"> `run` button to see the code in action. You can also find the complete code [here](https://editor.p5js.org/ml5/sketches/lCurUW1TT).
 
-<!-- ### Tutorials
-
-**PoseNet on The Coding Train**
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/OIo-DIOkNVg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-TODO (link new youtube video once uploaded) -->
+?> If you have any questions or spot something unclear in this step-by-step code guide, we'd love to hear from you! Join us on [Discord](https://discord.com/invite/3CVauZMSt7) and let us know how we can make it better.
 
 ## Methods
 
