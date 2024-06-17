@@ -18,7 +18,7 @@ It provides the following functionalities:
 - **Multiple Faces**: Detect multiple faces at the same time. You can specify the maximum number of faces to detect.
 
 ## Quick Start
-Run and explore a pre-built example! This example draws the keypoints of the detected face from the webcam.
+Run and explore a pre-built example! This FaceMesh example displays 468 facial landmarks that describe the geometry of each face in real-time from the webcam.
 
 ?> Click `Open in p5.js Web Editor` to see the full code.
 
