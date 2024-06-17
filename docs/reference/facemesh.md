@@ -18,23 +18,13 @@ It provides the following functionalities:
 - **Multiple Faces**: Detect multiple faces at the same time. You can specify the maximum number of faces to detect.
 
 ## Quick Start
+Run and explore a pre-built example! This example draws the keypoints of the detected face from the webcam.
 
-### _<img class="inline-img" src="assets/glossary-point-right.png" alt="tip icon" aria-hidden="true"> TRY THIS LIVE!_ Run & explore a pre-built example
-1. Open [an simple FaceMesh example we built](https://editor.p5js.org/ml5/sketches/lCurUW1TT) (FaceMesh Keypoints example) in the p5.js web editor.
-2. Press the <img class="inline-img" src="assets/facemesh-arrow-forward.png" alt="tip icon" aria-hidden="true"> `run` button to see the code in action.
+?> Click `Open in p5.js Web Editor` to see the full code.
 
-<!-- TODO: maybe consider use webcam screenshot instead of the single image one -->
-<!-- TODO: photoshop image so that all have 800 px width before styling -->
-<center>
-<a href="https://editor.p5js.org/ml5/sketches/lCurUW1TT">
-    <img alt="screenshot of running facemesh with p5" width="400" src="assets/facemesh-run-prebuilt-example.png">
-</a>
-</center>
-
-### Demo
 [DEMO](iframes/facemesh-keypoints ":include :type=iframe width=100% height=550px")
 
-### Model examples
+## Examples
 - [FaceMesh Keypoints](https://editor.p5js.org/ml5/sketches/lCurUW1TT): Draw the keypoints of the detected face from the webcam.
 - [FaceMesh Single Image](https://editor.p5js.org/ml5/sketches/lqQZrDJHF): Detect the keypoints of the face from a single image.
 - [FaceMesh Parts](https://editor.p5js.org/ml5/sketches/9y9W7eAee): Draw specific face parts of the detected face.
@@ -105,10 +95,10 @@ Fetch the webcam video, resize it to fit the canvas, and hide it from the displa
 ```
 
 ### Detect keypoints with the model
-Define a `faces` variable to store the detected faces.
+Define a `faces` variable to store the detected faces. Note that the `faces` variable will store an array of detected faces, and each face has a property `keypoints` that will contain an array of keypoints.
 
 ```javascript
-let faces;
+let faces = [];
 ```
 
 To start detecting the keypoints of the face, in the `setup` function, we need to call the `detectStart` method of the `faceMesh` object. This method takes the webcam video as input and a callback function to handle the output.
