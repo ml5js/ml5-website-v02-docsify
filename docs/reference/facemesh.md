@@ -20,8 +20,6 @@ It provides the following functionalities:
 ## Quick Start
 Run and explore a pre-built example! This FaceMesh example displays 468 facial landmarks that describe the geometry of each face in real-time from the webcam.
 
-?> Click `Open in p5.js Web Editor` at the top right corner of the demo widget to see the full code.
-
 </br>
 
 [DEMO](iframes/facemesh-keypoints ":include :type=iframe width=100% height=550px")
@@ -31,7 +29,7 @@ Run and explore a pre-built example! This FaceMesh example displays 468 facial l
 - [FaceMesh Single Image](https://editor.p5js.org/ml5/sketches/lqQZrDJHF): Detect the keypoints of the face from a single image.
 - [FaceMesh Parts](https://editor.p5js.org/ml5/sketches/9y9W7eAee): Draw specific face parts of the detected face.
 
-## Step-by-Step Code Guide
+## Step-by-Step Guide
 Now, let's together build the [FaceMesh Keypoints example]((https://editor.p5js.org/ml5/sketches/lCurUW1TT)) from scratch, and in the process, learn how to use the FaceMesh model.
 
 ### Create a new project

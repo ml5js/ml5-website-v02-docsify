@@ -32,7 +32,7 @@ Run and explore a pre-built example! This HandPose example displays 21 hand keyp
 - [HandPose Parts](https://editor.p5js.org/ml5/sketches/DNbSiIYKB): Draw specific hand parts of the detected hand.
 - [HandPose Start-stop](https://editor.p5js.org/ml5/sketches/W9vFFT5RM): Start and stop the detection of the hand.
 
-## Step-by-Step Code Guide
+## Step-by-Step Guide
 Now, let's together build the [HandPose Keypoints example](https://editor.p5js.org/ml5/sketches/QGH3dwJ1A) from scratch, and in the process, learn how to use the HandPose model.
 
 ### Create a new project
