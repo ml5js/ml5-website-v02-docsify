@@ -179,22 +179,20 @@ const facemesh = ml5.facemesh(?options, ?callback);
   }
   ```
 
-  Here is the reformatted code comments into markdown as you requested:
-
   ### Options for face detection:
 
-  - **maxFacess**
+  - _maxFacess_
     - Number: The maximum number of faces to detect. Defaults to 2.
-  - **refineLandmarks** 
+  - _refineLandmarks_ 
     - Boolean: Refine the landmarks. Defaults to false.
-  - **flipHorizontal** 
+  - _flipHorizontal_ 
     - Boolean: Flip the result horizontally. Defaults to false.
-  - **runtime**
+  - _runtime_
     - String: The runtime to use. "mediapipe" (default) or "tfjs".
 
   ### For using custom or offline models:
 
-  - **solutionPath**
+  - _solutionPath_
     - String: The file path or URL to the model.
 
   More info on options [here](https://github.com/tensorflow/tfjs-models/tree/master/face-landmarks-detection/src/mediapipe#create-a-detector).

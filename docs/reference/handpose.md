@@ -180,27 +180,28 @@ const handpose = ml5.handpose(?options, ?callback);
 
   Here is the reformatted code comments into markdown:
 
-### Options for hand detection:
+  ### Options for hand detection:
 
-  - **maxHands** - Optional
+  - _maxHands_ - Optional
     - Number: The maximum number of hands to detect. Default: 2.
-  - **modelType** - Optional
+  - _modelType_ - Optional
     - String: The type of model to use: "lite" or "full". Default: "full".
-  - **flipHorizontal** - Optional
+  - _flipHorizontal_ - Optional
     - Boolean: Flip the result data horizontally. Default: false.
-  - **runtime** - Optional
+  - _runtime_ - Optional
     - String: The runtime of the model: "mediapipe" or "tfjs". Default: "mediapipe".
 
   ### For using custom or offline models:
 
-  - **solutionPath** - Optional
+  - _solutionPath_ - Optional
     - String: The file path or URL to the model. Only used when using "mediapipe" runtime.
-  - **detectorModelUrl** - Optional
+  - _detectorModelUrl_ - Optional
     - String: The file path or URL to the hand detector model. Only used when using "tfjs" runtime.
-  - **landmarkModelUrl** - Optional
+  - _landmarkModelUrl_ - Optional
     - String: The file path or URL to the hand landmark model. Only used when using "tfjs" runtime.
 
   More info on options [here](https://github.com/tensorflow/tfjs-models/tree/master/hand-pose-detection/src/mediapipe#create-a-detector) for "mediapipe" runtime.
+  
   More info on options [here](https://github.com/tensorflow/tfjs-models/tree/master/hand-pose-detection/src/tfjs#create-a-detector) for "tfjs" runtime.
 
 - **callback(handpose, error)**: OPTIONAL. A function to run once the model has been loaded. Alternatively, call `ml5.handpose()` within the p5 `preload` function.
