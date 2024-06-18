@@ -33,6 +33,7 @@
   --color-table-even: #fbfbfb;
 
   /* we use rgb values here to add transparency later. */
+  --color-warn-rgb: 255, 90, 90;
   --color-sidebar-scrollbar-rgb: 136, 136, 136;
   --color-sidebar-toggle-bg-rgb: 255, 255, 255;
 
@@ -130,9 +131,9 @@ body {
   background-color: var(--color-bg);
 }
 
-footer {  
+footer {
   position: relative;
-  display:flex;
+  display: flex;
   width: auto;
   background-color: var(--color-bg-footer);
   border-radius: 25px;
@@ -142,13 +143,13 @@ footer {
 }
 
 
- .footer-logo {
+.footer-logo {
   margin-left: 2rem;
   margin-top: 1.5rem;
   width: 30%;
 }
 
- .footer-logo button {
+.footer-logo button {
   font-size: 1.5rem;
   background-color: var(--color-bg);
   padding: 2.0rem 0.85rem;
@@ -160,10 +161,10 @@ footer {
 
 .footer-logo button a:before {
   background: var(--color-primary);
-  
+
 }
 
-.footer-content{
+.footer-content {
   padding-left: 2rem;
   padding-right: 2rem;
 }
