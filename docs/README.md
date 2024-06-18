@@ -74,7 +74,7 @@ function preload() {
 }
 ```
 
-_<img class="inline-img" src="assets/gettingstarted-bulb.png" alt="tip icon" aria-hidden="true"> If you are not familiar with terms like `pretrained model`, `classification`, `classifier`, `preload function`, `MobileNet` and would like to learn more about them, check out our [ml5 Glossary](/learning/ml5-glossary) for a quick intro._
+_<img class="inline-img" src="assets/gettingstarted-bulb.png" alt="tip icon" aria-hidden="true"> If you are not familiar with terms like `pretrained model`, `classification`, `classifier`, `preload function`, `MobileNet` and would like to learn more about them, check out our [ml5 Glossary](/learn/ml5-glossary) for a quick intro._
 
 ## Load an image for the model to identify {docsify-ignore}
 
@@ -130,7 +130,7 @@ function gotResult(results) {
 }
 ```
 
-_<img class="inline-img" src="assets/gettingstarted-bulb.png" alt="tip icon" aria-hidden="true">If you are not familiar with the concept of `callback` and would like to learn more about it, check out our [ml5 Glossary](/learning/ml5-glossary) for more information._
+_<img class="inline-img" src="assets/gettingstarted-bulb.png" alt="tip icon" aria-hidden="true">If you are not familiar with the concept of `callback` and would like to learn more about it, check out our [ml5 Glossary](/learn/ml5-glossary) for more information._
 
 ## Display the results on the canvas {docsify-ignore}
 
@@ -188,7 +188,7 @@ function setup() {
 }
 ```
 
-_<img class="inline-img" src="assets/gettingstarted-bulb.png" alt="tip icon" aria-hidden="true"> If you are not familiar with terms like `label`, `confidence` and would like to learn more about them, check out our [ml5 Glossary](/learning/ml5-glossary) for a quick intro._
+_<img class="inline-img" src="assets/gettingstarted-bulb.png" alt="tip icon" aria-hidden="true"> If you are not familiar with terms like `label`, `confidence` and would like to learn more about them, check out our [ml5 Glossary](/learn/ml5-glossary) for a quick intro._
 
 ## Run Your Sketch {docsify-ignore}
 

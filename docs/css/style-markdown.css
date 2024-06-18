@@ -401,6 +401,7 @@ body.close .sidebar-toggle {
   /* make this color variable*/
   background-color: rgba(--color-sidebar-toggle-bg-rgb, 0.8);
   transition: 1s background-color;
+  transition: transform 250ms ease;
   width: 300px;
   transform: translateX(0px);
   padding: 15px;
@@ -415,6 +416,7 @@ body.close .sidebar-toggle {
   background-color: transparent;
   width: auto;
   transform: translateX(240px);
+  transition: transform 250ms ease;
   padding: 15px;
 }
 
