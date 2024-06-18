@@ -215,7 +215,7 @@ div#app:empty::before {
   left: 0;
   width: 300px;
   overflow-y: auto;
-  transition: transform 250ms ease-out;
+  transition: transform 250ms ease;
   z-index: 20;
   background-color: var(--color-bg-light);
 }
@@ -401,6 +401,7 @@ body.close .sidebar-toggle {
   /* make this color variable*/
   background-color: rgba(--color-sidebar-toggle-bg-rgb, 0.8);
   transition: 1s background-color;
+  transition: transform 250ms ease;
   width: 300px;
   transform: translateX(0px);
   padding: 15px;
@@ -415,6 +416,7 @@ body.close .sidebar-toggle {
   background-color: transparent;
   width: auto;
   transform: translateX(240px);
+  transition: transform 250ms ease;
   padding: 15px;
 }
 
@@ -434,7 +436,6 @@ body.close .sidebar-toggle {
   width: calc(100% - 300px);
   position: relative;
   left: 300px;
-  transition: all 250ms ease;
   /* here */
   display: flex;
   justify-content: center;
@@ -1091,7 +1092,7 @@ code .token {
 
   .sidebar {
     left: -300px;
-    transition: transform 250ms ease-out;
+    transition: transform 250ms ease;
   }
 
   .content {
