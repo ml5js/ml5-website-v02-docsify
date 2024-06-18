@@ -215,7 +215,7 @@ div#app:empty::before {
   left: 0;
   width: 300px;
   overflow-y: auto;
-  transition: transform 250ms ease-out;
+  transition: transform 250ms ease;
   z-index: 20;
   background-color: var(--color-bg-light);
 }
@@ -436,7 +436,6 @@ body.close .sidebar-toggle {
   width: calc(100% - 300px);
   position: relative;
   left: 300px;
-  transition: all 250ms ease;
   /* here */
   display: flex;
   justify-content: center;
@@ -1093,7 +1092,7 @@ code .token {
 
   .sidebar {
     left: -300px;
-    transition: transform 250ms ease-out;
+    transition: transform 250ms ease;
   }
 
   .content {
