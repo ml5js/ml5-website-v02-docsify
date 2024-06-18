@@ -362,6 +362,12 @@ const bodypose = ml5.bodypose(?options, ?callback);
   }
   ```
 
+  Options for both models:
+  - _modelType_ - Optional
+    - String: The type of model to use. Default: "MULTIPOSE_LIGHTNING".
+  - _enableSmoothing_ - Optional
+    - Boolean: Whether to smooth the pose landmarks across different input images to reduce jitter. Default: true.
+
   Options for the MoveNet model only:
   
   - _minPoseScore_ - Optional
