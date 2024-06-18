@@ -7,30 +7,30 @@
 
 ## Description
 
-The image classifier is a pre-trained model that can recognize the content of an image. It can identify objects, animals, and even people in a picture. The image classifier uses a neural network to analyze the image and provide a list of possible labels for the content of the image.
+The ml5.js imageClassifier is a pre-trained model that can recognize the content of an image. It can identify objects, animals, and even people in a picture. The image classifier uses a neural network to analyze the image and provide a list of possible labels for the content of the image.
 
-The ml5.js image classifier uses the pre-trained MobileNet model by default. You can optionally load and use other models such as Darknet as well as a custom-trained model, DoodleNet, which is also built upon the MobileNet architecture and trained on images from the Google Quick, Draw dataset.
+The ml5.js imageClassifier uses the pre-trained MobileNet model by default. You can optionally load and use other models such as Darknet as well as a custom-trained model, DoodleNet, which is also built upon the MobileNet architecture and trained on images from the Google Quick, Draw dataset.
 
 It provides the following functionalities:
 
-- **Image Classification**: The image classifier can recognize the content of an image and provide a list of possible labels.
-- **Video Object Detection**: The image classifier can also be used to classify objects in a video stream.
+- **Image Classification**: ImageClassifier can recognize the content of an image and provide a list of possible labels.
+- **Video Object Detection**: ImageClassifier can also be used to classify objects in a video stream.
 
 ?> If you want to **train your own image classification model with customized labels**, check out our [Image + Teachable Machine](/reference/image-classifier-tm) to get started!
 
 ## Quick Start
-Run and explore a pre-built example! [This Image Classifier example](https://editor.p5js.org/ml5/sketches/pjPr6XmPY) classifies the content of an image and displays the results on the canvas.
+Run and explore a pre-built example! [This ImageClassifier example](https://editor.p5js.org/ml5/sketches/pjPr6XmPY) classifies the content of an image and displays the results on the canvas.
 
 </br>
 
 [DEMO](iframes/image-classifier ":include :type=iframe width=100% height=550px")
 
 ## Examples
-- [Image Classifier Single Image](https://editor.p5js.org/ml5/sketches/pjPr6XmPY): Classify the content of an image and display the results on the canvas.
-- [Image Classifier Video](https://editor.p5js.org/ml5/sketches/K0sjaEO19): Classify the content of objects in a video stream.
+- [ImageClassifier Single Image](https://editor.p5js.org/ml5/sketches/pjPr6XmPY): Classify the content of an image and display the results on the canvas.
+- [ImageClassifier Video](https://editor.p5js.org/ml5/sketches/K0sjaEO19): Classify the content of objects in a video stream.
 
 ## Step-by-Step Guide
-Now, let's together build the [Image Classifier Single Image example](https://editor.p5js.org/ml5/sketches/pjPr6XmPY) from scratch, and in the process, learn how to use the Image Classifier model.
+Now, let's together build the [ImageClassifier Single Image example](https://editor.p5js.org/ml5/sketches/pjPr6XmPY) from scratch, and in the process, learn how to use the ImageClassifier model.
 
 ### Create a new project
 To follow along, start by creating an empty project in the [p5.js web editor](https://editor.p5js.org/).
@@ -45,19 +45,21 @@ Import the ml5.js library in your `index.html` file.
 ?> If you are not familiar with how to import the ml5.js library and need more detailed guidance, please check out our [Getting Started](/?id=set-up-ml5js) page.
 
 ### Load model
-Let's open the `sketch.js` file and define a variable to store the Image Classifier model.
+Let's open the `sketch.js` file and define a variable to store the ImageClassifier model.
 
 ```javascript
 let classifier;
 ```
 
-Now, we can load the Image Classifier model in the `preload` function. Using the `preload` function ensures that the model is loaded before the `setup` and `draw` functions are called. Note here we can specify the model name we want to use, such as `MobileNet`.
+Now, we can load the ImageClassifier model in the `preload` function. Using the `preload` function ensures that the model is loaded before the `setup` and `draw` functions are called. Note here we can specify the model name we want to use, such as `MobileNet`.
 
 ```javascript
 function preload() {
   classifier = ml5.imageClassifier("MobileNet");
 }
 ```
+
+?> If you would like to use a different model such as `Darknet`, specify configuration options for the model, or tailor a callback function to run once the model is loaded, you can pass these as arguments to the `ml5.imageClassifier(?modelName, ?options, ?callback)` method. See the [ml5.imageClassifier() method](/reference/image-classifier?id=ml5imageclassifier) for more details.
 
 ### Load an image
 Next, let's load an image that we want to classify. Unfold the project directory by clicking the arrow `>` at the top left corner of the p5.js editor. Create a new folder called `images`. And upload a bird image named `bird.png` to the `images` folder. Remember to login to see this option.
@@ -78,7 +80,7 @@ function preload() {
 ```
 
 ### Classify the image with the model
-Within the `setup` function, call the `classify` method on the `classifier` object to classify the image. The `classify` method takes the image and a callback function as arguments.
+Within the `setup` function, call the `classify` method on the `classifier` object to classify the image. The `classify` method takes the image and a callback function as parameters.
 
 ```javascript
 function setup() {
@@ -138,7 +140,7 @@ Finally, display the label and confidence on the canvas.
 ```
 
 ### Run your sketch
-Voila! You have successfully built the Image Classifier Single Image example. Press the <img class="inline-img" src="assets/facemesh-arrow-forward.png" alt="run button icon" aria-hidden="true"> `run` button to see the code in action. You can also find the [complete code](https://editor.p5js.org/ml5/sketches/pjPr6XmPY) in the p5.js web editor.
+Voila! You have successfully built the ImageClassifier Single Image example. Press the <img class="inline-img" src="assets/facemesh-arrow-forward.png" alt="run button icon" aria-hidden="true"> `run` button to see the code in action. You can also find the [complete code](https://editor.p5js.org/ml5/sketches/pjPr6XmPY) in the p5.js web editor.
 
 ?> If you have any questions or spot something unclear in this step-by-step code guide, we'd love to hear from you! Join us on [Discord](https://discord.com/invite/3CVauZMSt7) and let us know how we can make it better.
 

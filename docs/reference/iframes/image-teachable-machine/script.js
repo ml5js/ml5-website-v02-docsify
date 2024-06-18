@@ -24,11 +24,13 @@ function preload() {
 
 function setup() {
   createCanvas(640, 480);
-  background(255);
 
-  // Using webcam feed as video input, hiding html element to avoid duplicate with canvas
+  // Create the webcam video and hide it
   video = createCapture(VIDEO);
+  video.size(width, height);
   video.hide();
+
+  // Start detecting objects in the video
   classifier.classifyStart(video, gotResult);
 }
 
@@ -42,7 +44,7 @@ function draw() {
   text(label, 20, 50);
 }
 
-// A function to run when we get the results and any errors
+// A function to run when we get the results
 function gotResult(results) {
   //update label variable which is displayed on the canvas
   label = results[0].label;
