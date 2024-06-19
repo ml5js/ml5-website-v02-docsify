@@ -7,7 +7,7 @@
 
 ## Description
 
-ml5.js bodyPose is a pretrained pose estimation model that can estimate poses and track key body parts in real-time. It is developed leveraging TensorFlow's [MoveNet](https://www.tensorflow.org/hub/tutorials/movenet#:~:text=MoveNet%20is%20an%20ultra%20fast,known%20as%20Lightning%20and%20Thunder) and [Blazepose](https://ai.google.dev/edge/mediapipe/solutions/vision/pose_landmarker) models.
+ml5.js bodyPose is a pretrained full-body pose estimation model that can estimate poses and track key body parts in real-time. It is developed leveraging TensorFlow's [MoveNet](https://www.tensorflow.org/hub/tutorials/movenet#:~:text=MoveNet%20is%20an%20ultra%20fast,known%20as%20Lightning%20and%20Thunder) and [Blazepose](https://ai.google.dev/edge/mediapipe/solutions/vision/pose_landmarker) models.
 
 It offers flexibility for:
 
@@ -16,6 +16,7 @@ It offers flexibility for:
 - **Choose between two models**: MoveNet (17 keypoints, optimized for speed) and BlazePose (33 keypoints, optimized for precision).
 
 ## Quick Start
+
 Run and explore a pre-built example! [This bodyPose example](https://editor.p5js.org/ml5/sketches/vpSI23x0A) uses the MoveNet model to detect body poses in real-time from the webcam video.
 
 </br>
@@ -23,6 +24,7 @@ Run and explore a pre-built example! [This bodyPose example](https://editor.p5js
 [DEMO](iframes/pose-estimation ":include :type=iframe width=100% height=550px")
 
 ## Examples
+
 - [bodyPose MoveNet Keypoints](https://editor.p5js.org/ml5/sketches/vpSI23x0A): Draw the keypoints of the detected body using MoveNet model.
 - [bodyPose BlazePose keypoints](https://editor.p5js.org/ml5/sketches/OukJYAJAb): Draw the keypoints of the detected body using BlazePose model.
 
@@ -32,7 +34,7 @@ This step-by-step guide uses a p5.js sketch running on the [p5.js web editor](ht
 
 ### Set up ml5.js
 
-Import the ml5.js library in your `index.html` file.
+Import the ml5.js library in your `index.html` file by copying the following `<script>` tag.
 
 ```html
 <script src="https://unpkg.com/ml5@alpha/dist/ml5.js"></script>
@@ -72,15 +74,11 @@ Resize the canvas dimensions to 640x480, a common resolution for webcams.
 ```javascript
 function setup() {
   createCanvas(640, 480);
-}
 ```
 
 Fetch the webcam video, resize it to fit the canvas, and hide it from the display.
 
 ```javascript
-function setup() {
-  createCanvas(640, 480);
-
   // Create the video and hide it
   video = createCapture(VIDEO);
   video.size(width, height);
@@ -100,11 +98,7 @@ To start detecting poses in the webcam video, call the `bodyPose.detectStart()` 
 
 ```javascript
 function setup() {
-  createCanvas(640, 480);
-
-  // Create the video and hide it
-  video = createCapture(VIDEO);
-  video.size(width, height);
+  ...
   video.hide();
 
   // Start detecting poses in the webcam video
@@ -115,22 +109,14 @@ function setup() {
 The `gotPoses()` function is a callback function that will be called when the `bodyPose.detectStart()` method detects poses. Once the poses are detected, the output `results` will be passed to `gotPoses()`, and then saved to the `poses` variable.
 
 ```javascript
+// Callback function for when the model returns pose data
 function gotPoses(results) {
-  // Save the output to the poses variable
+  // Store the model's results in a global variable
   poses = results;
 }
 ```
 
 ### Draw skeleton on the canvas
-
-In the `draw()` function, draw the webcam video on the canvas.
-
-```javascript
-function draw() {
-  // Draw the webcam video
-  image(video, 0, 0, width, height);
-}
-```
 
 We can draw the skeleton by connecting the keypoints of the detected poses with lines. To achieve this, we first need to understand which keypoints are connected to each other. Define a variable `connections` to hold the skeleton connections.
 
@@ -142,32 +128,27 @@ Use `bodyPose.getSkeleton()` in the `setup()` function to get the connections be
 
 ```javascript
 function setup() {
-  createCanvas(640, 480);
-
-  // Create the video and hide it
-  video = createCapture(VIDEO);
-  video.size(width, height);
-  video.hide();
-
-  // Start detecting poses in the webcam video
+  ...
   bodyPose.detectStart(video, gotPoses);
   // Get the skeleton connection information
   connections = bodyPose.getSkeleton();
 }
 ```
 
-Next, we can start drawing the skeleton connections. We iterate through the `poses` array, where each object `pose` is a pose of a person, containing an array of `keypoints`. Each `keypoint` object has the properties `x`, `y`, and `score`. The `score` is the confidence score of the keypoint prediction.
+In the `draw()` function, draw the webcam video on the canvas.
 
 ```javascript
 function draw() {
-  // Draw the webcam video
+  // Display the video
   image(video, 0, 0, width, height);
+```
 
+Next, we can start drawing the skeleton connections. We iterate through the `poses` array, where each object `pose` is a pose of a person, containing an array of `keypoints`. Each `keypoint` object has the properties `x`, `y`, and `score`. The `score` is the confidence score of the keypoint prediction.
+
+```javascript
   // Draw the skeleton connections
   for (let i = 0; i < poses.length; i++) {
     let pose = poses[i];
-  }
-}
 ```
 
 Within each pose, we only want to draw the skeleton connections that the model has a high confidence in predicting. To do this, we need to check for each link in the `connections` array and whether the `keypoints` that constitute the link have a confidence `score` greater than 0.1. If they do, we draw a line connecting the keypoints.
@@ -177,38 +158,16 @@ We iterate through the connections array, with each item being a link of `pointA
 Use the indices to retrieve the `pointA` and `pointB` objects from the `pose.keypoints`. As with all keypoints, `pointA` is an object with properties `x`, `y`, and `score`.
 
 ```javascript
-function draw() {
-  // Draw the webcam video
-  image(video, 0, 0, width, height);
-
-  // Draw the skeleton connections
-  for (let i = 0; i < poses.length; i++) {
-    let pose = poses[i];
     for (let j = 0; j < connections.length; j++) {
       let pointAIndex = connections[j][0];
       let pointBIndex = connections[j][1];
       let pointA = pose.keypoints[pointAIndex];
       let pointB = pose.keypoints[pointBIndex];
-    }
-  }
-}
 ```
 
 Now, we can draw the line connecting the keypoints if both points have a confidence score greater than 0.1.
 
 ```javascript
-function draw() {
-  // Draw the webcam video
-  image(video, 0, 0, width, height);
-
-  // Draw the skeleton connections
-  for (let i = 0; i < poses.length; i++) {
-    let pose = poses[i];
-    for (let j = 0; j < connections.length; j++) {
-      let pointAIndex = connections[j][0];
-      let pointBIndex = connections[j][1];
-      let pointA = pose.keypoints[pointAIndex];
-      let pointB = pose.keypoints[pointBIndex];
       // Only draw a line if both points are confident enough
       if (pointA.score > 0.1 && pointB.score > 0.1) {
         stroke(255, 0, 0);
@@ -217,7 +176,6 @@ function draw() {
       }
     }
   }
-}
 ```
 
 ### Draw keypoints on the canvas
@@ -227,98 +185,23 @@ We can also represent each of the keypoints on the canvas. To do this, we will i
 We can get each person's pose from the `poses` array. Each `pose` object contains an array of `keypoints`.
 
 ```javascript
-function draw() {
-  // Draw the webcam video
-  image(video, 0, 0, width, height);
-
-  // Draw the skeleton connections
+  // Iterate all the poses
   for (let i = 0; i < poses.length; i++) {
     let pose = poses[i];
-    for (let j = 0; j < connections.length; j++) {
-      let pointAIndex = connections[j][0];
-      let pointBIndex = connections[j][1];
-      let pointA = pose.keypoints[pointAIndex];
-      let pointB = pose.keypoints[pointBIndex];
-      // Only draw a line if both points are confident enough
-      if (pointA.score > 0.1 && pointB.score > 0.1) {
-        stroke(255, 0, 0);
-        strokeWeight(2);
-        line(pointA.x, pointA.y, pointB.x, pointB.y);
-      }
-    }
-  }
-
-  // Draw all the tracked landmark points
-  for (let i = 0; i < poses.length; i++) {
-    let pose = poses[i];
-  }
-}
 ```
 
 Next, we iterate through all of the keypoints in `keypoints`.
 
 ```javascript
-function draw() {
-  // Draw the webcam video
-  image(video, 0, 0, width, height);
-
-  // Draw the skeleton connections
-  for (let i = 0; i < poses.length; i++) {
-    let pose = poses[i];
-    for (let j = 0; j < connections.length; j++) {
-      let pointAIndex = connections[j][0];
-      let pointBIndex = connections[j][1];
-      let pointA = pose.keypoints[pointAIndex];
-      let pointB = pose.keypoints[pointBIndex];
-      // Only draw a line if both points are confident enough
-      if (pointA.score > 0.1 && pointB.score > 0.1) {
-        stroke(255, 0, 0);
-        strokeWeight(2);
-        line(pointA.x, pointA.y, pointB.x, pointB.y);
-      }
-    }
-  }
-
-  // Draw all the tracked landmark points
-  for (let i = 0; i < poses.length; i++) {
-    let pose = poses[i];
+    // Iterate all the keypoints for each pose
     for (let j = 0; j < pose.keypoints.length; j++) {
       let keypoint = pose.keypoints[j];
-    }
-  }
-}
 ```
 
 For each keypoint, we only want to draw a circle if the keypoint's confidence is greater than 0.1. We can use the `score` property of the keypoint object to check the confidence score.
 
 ```javascript
-function draw() {
-  // Draw the webcam video
-  image(video, 0, 0, width, height);
-
-  // Draw the skeleton connections
-  for (let i = 0; i < poses.length; i++) {
-    let pose = poses[i];
-    for (let j = 0; j < connections.length; j++) {
-      let pointAIndex = connections[j][0];
-      let pointBIndex = connections[j][1];
-      let pointA = pose.keypoints[pointAIndex];
-      let pointB = pose.keypoints[pointBIndex];
-      // Only draw a line if both points are confident enough
-      if (pointA.score > 0.1 && pointB.score > 0.1) {
-        stroke(255, 0, 0);
-        strokeWeight(2);
-        line(pointA.x, pointA.y, pointB.x, pointB.y);
-      }
-    }
-  }
-
-  // Draw all the tracked landmark points
-  for (let i = 0; i < poses.length; i++) {
-    let pose = poses[i];
-    for (let j = 0; j < pose.keypoints.length; j++) {
-      let keypoint = pose.keypoints[j];
-      // Only draw a circle if the keypoint's confidence is bigger than 0.1
+      // Only draw a circle if the keypoint's confidence is greater than 0.1
       if (keypoint.score > 0.1) {
         fill(0, 255, 0);
         noStroke();
@@ -330,6 +213,7 @@ function draw() {
 ```
 
 ### Run your sketch
+
 Voila! You have successfully built the BodyPose model to detect and draw body poses in real-time from the webcam video. Press the <img class="inline-img" src="assets/facemesh-arrow-forward.png" alt="run button icon" aria-hidden="true"> `run` button to see the code in action. You can also find the [complete code](https://editor.p5js.org/ml5/sketches/vpSI23x0A) in the p5.js web editor.
 
 ?> If you have any questions or spot something unclear in this step-by-step code guide, we'd love to hear from you! Join us on [Discord](https://discord.com/invite/3CVauZMSt7) and let us know how we can make it better.
@@ -338,12 +222,12 @@ Voila! You have successfully built the BodyPose model to detect and draw body po
 
 ### ml5.bodypose()
 
-This method is used to initialize the bodyPose object.
+This method is used to load the bodyPose model and store it in a variable. The `?` means the argument is optional!
 
 <!-- TODO: Add default model name, and explain the options, callback. -->
 
 ```javascript
-const bodypose = ml5.bodypose(?options, ?callback);
+let bodypose = ml5.bodypose(?options, ?callback);
 ```
 
 **Parameters:**
@@ -354,7 +238,6 @@ const bodypose = ml5.bodypose(?options, ?callback);
   {
     modelType: "MULTIPOSE_LIGHTNING" // "MULTIPOSE_LIGHTNING", "SINGLEPOSE_LIGHTNING", or "SINGLEPOSE_THUNDE"
     enableSmoothing: true,
-
     minPoseScore: 0.25,
     multiPoseMaxDimension: 256,
     enableTracking: true,
@@ -366,14 +249,14 @@ const bodypose = ml5.bodypose(?options, ?callback);
 
   See the [MoveNet documentation](https://github.com/tensorflow/tfjs-models/tree/master/pose-detection/src/movenet#create-a-detector) for more information on options.
 
-- **callback(bodypose, error)**: OPTIONAL. A function to run once the model has been loaded. Alternatively, call `ml5.bodyPix()` within the p5.js `preload` function.
+- **callback(bodypose, error)**: OPTIONAL. A "callback" function that runs when the model has been successfully loaded. Most ml5.js example call `ml5.bodyPose()` in the p5.js `preload()` function and no callback is needed.
 
 **Returns:**  
 The bodyPose object.
 
 ### bodypose.detectStart()
 
-This method continuously outputs pose estimations on an image media through a callback function.
+This method starts the pose detection process and runs it continuously on real-time video.
 
 ```javascript
 bodypose.detectStart(media, callback);
@@ -382,7 +265,7 @@ bodypose.detectStart(media, callback);
 **Parameters:**
 
 - **media**: An HMTL or p5.js image, video, or canvas element to run the estimation on.
-- **callback(output, error)**: A callback function to handle the output of the estimation. See below for an example output passed into the callback function:
+- **callback(results, error)**: A callback function to handle the results of the pose estimation. See below for an example of the model's results:
 
   ```javascript
   [
@@ -441,7 +324,7 @@ bodypose.detectStart(media, callback);
 
 ### bodypose.detectStop()
 
-This method can be called after a call to `bodypose.detectStart` to stop the repeating pose estimation.
+This method can be called to stop the continuous pose estimation process.
 
 ```javascript
 bodypose.detectStop();
@@ -449,7 +332,7 @@ bodypose.detectStop();
 
 ### bodypose.detect()
 
-This method asynchronously outputs a single pose estimation on an image media when called.
+This method runs the pose estimation on an image once, not continuously!
 
 ```javascript
 bodypose.detect(media, ?callback);
@@ -458,9 +341,6 @@ bodypose.detect(media, ?callback);
 **Parameters:**
 
 - **media**: An HTML or p5.js image, video, or canvas element to run the estimation on.
-- **callback(output, error)**: OPTIONAL. A callback function to handle the output of the estimation, see output example above.
+- **callback(output, error)**: OPTIONAL. A callback function to handle the results of the pose estimation. See the results above for an example of the model's output.
 
-**Returns:**  
-A promise that resolves to the estimation output.
-
-(footer needed)
+<br>
