@@ -227,5 +227,3 @@ imageClassifier.classify(media, ?kNumber, ?callback);
 
 **Returns:**  
 A promise that resolves to the estimation output.
-
-(footer needed)

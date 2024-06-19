@@ -59,7 +59,7 @@ function setup() {
   createCanvas(640, 480);
   // Create the video
   video = createCapture(VIDEO);
-  video.size(width, height);
+  video.size(640, 480);
   video.hide();
 
   bodyPix.detectStart(video, gotResults);
@@ -169,5 +169,3 @@ bodySegmentation.detect(media, ?callback);
 
 **Returns:**  
 A promise that resolves to the segmentation output.
-
-(footer needed)

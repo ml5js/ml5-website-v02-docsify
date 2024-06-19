@@ -81,7 +81,7 @@ Fetch the webcam video, resize it to fit the canvas, and hide it from the displa
 ```javascript
   // Create the video and hide it
   video = createCapture(VIDEO);
-  video.size(width, height);
+  video.size(640, 480);
   video.hide();
 }
 ```
@@ -342,5 +342,3 @@ bodypose.detect(media, ?callback);
 
 - **media**: An HTML or p5.js image, video, or canvas element to run the estimation on.
 - **callback(output, error)**: OPTIONAL. A callback function to handle the results of the pose estimation. See the results above for an example of the model's output.
-
-<br>

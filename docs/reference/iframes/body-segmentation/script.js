@@ -19,7 +19,7 @@ function setup() {
   createCanvas(640, 480);
   // Create the video
   video = createCapture(VIDEO);
-  video.size(width, height);
+  video.size(640, 480);
   video.hide();
 
   bodyPix.detectStart(video, gotResults);
