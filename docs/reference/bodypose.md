@@ -15,17 +15,18 @@ It offers flexibility for:
 - **Video and image inputs**: Estimate poses from both images and live or recorded videos.
 - **Choose between two models**: MoveNet (17 keypoints, optimized for speed) and BlazePose (33 keypoints, optimized for precision).
 
-## Demo
+## Quick Start
+Run and explore a pre-built example! [This bodyPose example](https://editor.p5js.org/ml5/sketches/vpSI23x0A) uses the MoveNet model to detect body poses in real-time from the webcam video.
+
+</br>
 
 [DEMO](iframes/pose-estimation ":include :type=iframe width=100% height=550px")
 
-This bodyPose example uses the MoveNet model (default model if not specified by user) to detect body poses in real-time from the webcam video. The detected keypoints are then visualized on the canvas.
+## Examples
+- [bodyPose MoveNet Keypoints](https://editor.p5js.org/ml5/sketches/vpSI23x0A): Draw the keypoints of the detected body using MoveNet model.
+- [bodyPose BlazePose keypoints](https://editor.p5js.org/ml5/sketches/OukJYAJAb): Draw the keypoints of the detected body using BlazePose model.
 
-?>  You can also [open the demo in the p5.js web editor](https://editor.p5js.org/ml5/sketches/vpSI23x0A), and then press the run button to see the code in action!
-
-To understand the code in detail, take a look at the following tutorial.
-
-## Tutorial
+## Step-by-Step Guide
 
 This step-by-step guide uses a p5.js sketch running on the [p5.js web editor](https://editor.p5js.org/). To follow along, start by creating an empty project in the editor.
 
@@ -37,7 +38,7 @@ Import the ml5.js library in your `index.html` file.
 <script src="https://unpkg.com/ml5@alpha/dist/ml5.js"></script>
 ```
 
-_<img class="inline-img" src="assets/gettingstarted-bulb.png" alt="tip icon" aria-hidden="true"> If you are not familiar with how to import the ml5.js library and need more detailed guidance, please check out our [Getting Started](/?id=set-up-ml5js) tutorial._
+?> If you are not familiar with how to import the ml5.js library and need more detailed guidance, please check out our [Getting Started](/?id=set-up-ml5js) tutorial.
 
 ### Load model
 
@@ -56,7 +57,7 @@ function preload() {
 }
 ```
 
-_<img class="inline-img" src="assets/gettingstarted-bulb.png" alt="tip icon" aria-hidden="true"> You can also pass a model name, an options object, and a customized callback function to the `ml5.bodyPose()` function (e.g., `ml5.bodyPose('BlazePose', options, modelLoaded)`) to change the default configuration of the model. For more information on the available configuration settings, refer to the [Methods](/reference/bodypose?id=ml5bodypose) section on this page._
+?> You can also pass a model name, an options object, and a customized callback function to the `ml5.bodyPose()` function (e.g., `ml5.bodyPose('BlazePose', options, modelLoaded)`) to change the default configuration of the model. For more information on the available configuration settings, refer to the [Methods](/reference/bodypose?id=ml5bodypose) section on this page.
 
 ### Fetch webcam video
 
@@ -328,9 +329,10 @@ function draw() {
 }
 ```
 
-## Examples
+### Run your sketch
+Voila! You have successfully built the BodyPose model to detect and draw body poses in real-time from the webcam video. Press the <img class="inline-img" src="assets/facemesh-arrow-forward.png" alt="run button icon" aria-hidden="true"> `run` button to see the code in action. You can also find the [complete code](https://editor.p5js.org/ml5/sketches/vpSI23x0A) in the p5.js web editor.
 
-- [bodyPose BlazePose keypoints](https://editor.p5js.org/ml5/sketches/OukJYAJAb): Draw the keypoints of the detected body using BlazePose model.
+?> If you have any questions or spot something unclear in this step-by-step code guide, we'd love to hear from you! Join us on [Discord](https://discord.com/invite/3CVauZMSt7) and let us know how we can make it better.
 
 ## Methods
 
@@ -435,7 +437,7 @@ bodypose.detectStart(media, callback);
   ];
   ```
 
-  _<img class="inline-img" src="assets/gettingstarted-bulb.png" alt="tip icon" aria-hidden="true"> The `keypoints3D` array contains the 3D coordinates of the keypoints, with the `z` property representing the depth of each keypoint. The 2D `keypoints` still include z-coordinates to provide additional depth information. This helps in understanding the relative positioning of body parts, enhancing the accuracy of applications that primarily work with 2D data._
+  ?> The `keypoints3D` array contains the 3D coordinates of the keypoints, with the `z` property representing the depth of each keypoint. The 2D `keypoints` still include z-coordinates to provide additional depth information. This helps in understanding the relative positioning of body parts, enhancing the accuracy of applications that primarily work with 2D data.
 
 ### bodypose.detectStop()
 
