@@ -95,7 +95,7 @@ Fetch the webcam video, resize it to fit the canvas, and hide it from the displa
 ```javascript
   // Create the video and hide it
   video = createCapture(VIDEO);
-  video.size(width, height);
+  video.size(640, 480);
   video.hide();
 }
 ```
@@ -253,5 +253,3 @@ facemesh.detect(media, ?callback);
 
 **Returns:**  
 A promise that resolves to the estimation output.
-
-<br>
