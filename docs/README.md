@@ -30,7 +30,7 @@ Unfold the project directory by clicking the arrow `>` at the top left corner of
 In the `index.html` file, copy and paste the following CDN link inside the `<head>` tag.
 
 ```html
-<script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
+<script src="https://unpkg.com/ml5@alpha/dist/ml5.min.js"></script>
 ```
 
 <center>

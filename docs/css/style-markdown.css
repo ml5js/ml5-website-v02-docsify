@@ -436,7 +436,7 @@ body.close .sidebar-toggle {
   width: calc(100% - 300px);
   position: relative;
   left: 300px;
-  /* here */
+  transition: left 250ms ease, width 250ms ease;
   display: flex;
   justify-content: center;
 }
@@ -1101,7 +1101,6 @@ code .token {
     max-width: 100vw;
     position: static;
     padding-top: 60px;
-    transition: transform 250ms ease;
   }
 
   .markdown-section {
