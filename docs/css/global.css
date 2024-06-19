@@ -22,7 +22,6 @@
   --color-bg-light: #f8f9fb;
   --color-bg-gray: #f0f0f0;
   --color-bg-code: var(--color-bg-light);
-  --color-bg-footer: #f3eaff;
 
   --color-border: #ddd;
   --color-border-light: #eee;
@@ -33,6 +32,8 @@
   --color-table-even: #fbfbfb;
 
   /* we use rgb values here to add transparency later. */
+  --color-footer-rgb: 125, 119, 218;
+  /* --color-footer-rgb is based on the secondary color, #7d77da */
   --color-warn-rgb: 255, 90, 90;
   --color-sidebar-scrollbar-rgb: 136, 136, 136;
   --color-sidebar-toggle-bg-rgb: 255, 255, 255;
@@ -135,33 +136,31 @@ footer {
   position: relative;
   display: flex;
   width: auto;
-  background-color: var(--color-bg-footer);
-  border-radius: 25px;
+  background-color: var(--color-bg-light);
+  /* border: 1px solid rgba(var(--color-footer-rgb), 0.3); */
+  border-radius: var(--border-radius);
   flex-direction: row;
+  align-items: flex-start;
   padding: 1rem 0;
-  margin-bottom: 1rem;
+  margin-top: 5rem;
 }
 
-
 .footer-logo {
-  margin-left: 2rem;
-  margin-top: 1.5rem;
-  width: 30%;
+  margin: 1.5rem 0 1.5rem 2rem;
+  /* width: 30%; */
 }
 
 .footer-logo button {
-  font-size: 1.5rem;
   background-color: var(--color-bg);
   padding: 2.0rem 0.85rem;
   margin: 0 0.5rem;
+  font-size: 1.5rem;
   font-weight: var(--font-weight-bold);
   color: var(--color-primary);
 }
 
-
 .footer-logo button a:before {
   background: var(--color-primary);
-
 }
 
 .footer-content {

@@ -1107,15 +1107,17 @@ code .token {
     max-width: 80%;
   }
 
-  footer {
+  /* Good suggestion! But's let's try without it for a while. (M) */
+  /* footer {
     flex-direction: column;
-  }
+  } */
 
+  /*
   .footer-logo {
     display: none;
     margin: auto;
     width: 30%;
-  }
+  } */
 
 }
 
