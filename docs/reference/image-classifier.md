@@ -2,7 +2,7 @@
 
 <center>
   <img class="header-img" src="assets/header-image-classifier.png" alt="ImageClassifier Header Image" >
-  <p class="img-credit"> Image Credit: <a href="">Name</a> | <a href="">Contribute ♥️</a> </p>
+  <p class="img-credit"> Image Credit: <a href="https://thenounproject.com/creator/ifkirianto.if" target="_blank" title="Iki">Iki</a> | <a href='mailto:info@ml5js.org'>Contribute ♥️</a> </p>
 </center>
 
 ## Description
@@ -19,6 +19,7 @@ It provides the following functionalities:
 ?> If you want to **train your own image classification model with customized labels**, check out our [Image + Teachable Machine](/reference/image-classifier-tm) to get started!
 
 ## Quick Start
+
 Run and explore a pre-built example! [This ImageClassifier example](https://editor.p5js.org/ml5/sketches/pjPr6XmPY) classifies the content of an image and displays the results on the canvas.
 
 </br>
@@ -26,16 +27,20 @@ Run and explore a pre-built example! [This ImageClassifier example](https://edit
 [DEMO](iframes/image-classifier ":include :type=iframe width=100% height=550px")
 
 ## Examples
+
 - [ImageClassifier Single Image](https://editor.p5js.org/ml5/sketches/pjPr6XmPY): Classify the content of an image and display the results on the canvas.
 - [ImageClassifier Video](https://editor.p5js.org/ml5/sketches/K0sjaEO19): Classify the content of objects in a video stream.
 
 ## Step-by-Step Guide
+
 Now, let's together build the [ImageClassifier Single Image example](https://editor.p5js.org/ml5/sketches/pjPr6XmPY) from scratch, and in the process, learn how to use the ImageClassifier model.
 
 ### Create a new project
+
 To follow along, start by creating an empty project in the [p5.js web editor](https://editor.p5js.org/).
 
 ### Set up ml5.js
+
 Import the ml5.js library in your `index.html` file.
 
 ```html
@@ -45,6 +50,7 @@ Import the ml5.js library in your `index.html` file.
 ?> If you are not familiar with how to import the ml5.js library and need more detailed guidance, please check out our [Getting Started](/?id=set-up-ml5js) page.
 
 ### Load model
+
 Let's open the `sketch.js` file and define a variable to store the ImageClassifier model.
 
 ```javascript
@@ -62,6 +68,7 @@ function preload() {
 ?> If you would like to use a different model such as `Darknet`, specify configuration options for the model, or tailor a callback function to run once the model is loaded, you can pass these as arguments to the `ml5.imageClassifier(?modelName, ?options, ?callback)` method. See the [ml5.imageClassifier() method](/reference/image-classifier?id=ml5imageclassifier) for more details.
 
 ### Load an image
+
 Next, let's load an image that we want to classify. Unfold the project directory by clicking the arrow `>` at the top left corner of the p5.js editor. Create a new folder called `images`. And upload a bird image named `bird.png` to the `images` folder. Remember to login to see this option.
 
 We are ready to write the code to load the image that we just uploaded. Define a variable `img` to store the image.
@@ -80,6 +87,7 @@ function preload() {
 ```
 
 ### Classify the image with the model
+
 Within the `setup` function, call the `classify` method on the `classifier` object to classify the image. The `classify` method takes the image and a callback function as parameters.
 
 ```javascript
@@ -100,6 +108,7 @@ function gotResult(results) {
 ```
 
 ### Display the results
+
 We need to first display the image itself on the canvas. Add the following code to the `setup` function.
 
 ```javascript
@@ -127,8 +136,8 @@ function gotResult(results) {
 Let's get the top 1 label that model feels most confident about. `results[0]` is the object with the highest confidence score. We can then extract the label and confidence from this object. `nf()` is used to format the confidence score to two decimal places.
 
 ```javascript
-  label = "Label: " + results[0].label;
-  confidence = "Confidence: " + nf(results[0].confidence, 0, 2);
+label = "Label: " + results[0].label;
+confidence = "Confidence: " + nf(results[0].confidence, 0, 2);
 ```
 
 Finally, display the label and confidence on the canvas.
@@ -140,6 +149,7 @@ Finally, display the label and confidence on the canvas.
 ```
 
 ### Run your sketch
+
 Voila! You have successfully built the ImageClassifier Single Image example. Press the <img class="inline-img" src="assets/facemesh-arrow-forward.png" alt="run button icon" aria-hidden="true"> `run` button to see the code in action. You can also find the [complete code](https://editor.p5js.org/ml5/sketches/pjPr6XmPY) in the p5.js web editor.
 
 ?> If you have any questions or spot something unclear in this step-by-step code guide, we'd love to hear from you! Join us on [Discord](https://discord.com/invite/3CVauZMSt7) and let us know how we can make it better.
@@ -167,7 +177,7 @@ The imageClassifier object.
 
 #### imageClassifier.classifyStart()
 
-This method repeatedly outputs classification labels on an image media through a callback function. 
+This method repeatedly outputs classification labels on an image media through a callback function.
 
 ```javascript
 imageClassifier.classifyStart(media, ?kNumber, callback);
@@ -178,20 +188,20 @@ imageClassifier.classifyStart(media, ?kNumber, callback);
 - **media**: An HTML or p5.js image, video, or canvas element to run the classification on.
 - **kNumber**: The number of labels returned by the image classification.
 - **callback(output, error)**: A callback function to handle the output of the classification. See below for an example output passed into the callback function:
-  
-    ```javascript
-    [
-      {
-        label: "zebra",
-        confidence: 0.98,
-      },
-      {
-        label: "tiger",
-        confidence: 0.89,
-      },
-      // Additional objects here...
-    ]
-    ```
+
+  ```javascript
+  [
+    {
+      label: "zebra",
+      confidence: 0.98,
+    },
+    {
+      label: "tiger",
+      confidence: 0.89,
+    },
+    // Additional objects here...
+  ];
+  ```
 
 #### imageClassifier.classifyStop()
 

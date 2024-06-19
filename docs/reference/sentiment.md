@@ -2,7 +2,7 @@
 
 <center>
   <img class="header-img" src="assets/header-sentiment.png" alt="Sentiment Header Image" >
-  <p class="img-credit"> Image Credit: <a href="">Name</a> | <a href="">Contribute ♥️</a> </p>
+  <p class="img-credit"> Image Credit: <a href="https://thenounproject.com/creator/ifkirianto.if" target="_blank" title="Iki">Iki</a> | <a href='mailto:info@ml5js.org'>Contribute ♥️</a> </p>
 </center>
 
 ## Description
@@ -12,9 +12,11 @@ Sentiment is a model trained to predict the sentiment of any given text. For exa
 The model is trained using IMDB reviews that have been truncated to a maximum of 200 words, only the 20000 most used words in the reviews are used.
 
 It provides the following functionalities:
+
 - **Sentiment Analysis**: The model can predict the sentiment of a given text.
 
 ## Quick Start
+
 Run and explore a pre-built example! [This Sentiment example](https://editor.p5js.org/ml5/sketches/hopIvsCGL) predicts the sentiment of the given text.
 
 </br>
@@ -22,15 +24,19 @@ Run and explore a pre-built example! [This Sentiment example](https://editor.p5j
 [DEMO](iframes/sentiment ":include :type=iframe width=100% height=550px")
 
 ## Examples
+
 - [Sentiment Analysis](https://editor.p5js.org/ml5/sketches/hopIvsCGL): Predict the sentiment of the given text.
 
 ## Step-by-Step Guide
+
 Now, let's together build the [Sentiment Analysis example](https://editor.p5js.org/ml5/sketches/hopIvsCGL) from scratch, and in the process, learn how to use the Sentiment model.
 
 ### Create a new project
+
 To follow along, start by creating an empty project in the [p5.js web editor](https://editor.p5js.org/).
 
 ### Set up ml5.js
+
 Import the ml5.js library in your `index.html` file.
 
 ```html
@@ -40,6 +46,7 @@ Import the ml5.js library in your `index.html` file.
 ?> If you are not familiar with how to import the ml5.js library and need more detailed guidance, please check out our [Getting Started](/?id=set-up-ml5js) page.
 
 ### Load model
+
 Let's open the `sketch.js` file and define a variable to store the Sentiment model, and a variable to store the status of the model.
 
 ```javascript
@@ -57,7 +64,7 @@ function setup() {
 Now, we can load the Sentiment model by calling the `ml5.sentiment(?modelName, ?callback)` function in the `setup` function. Currently, the Sentiment model only supports the 'movieReviews' model, and we may support more models in the future.
 
 ```javascript
-  sentiment = ml5.sentiment('movieReviews', modelReady);
+sentiment = ml5.sentiment("movieReviews", modelReady);
 ```
 
 We can also add a status element to display the status of the model. `createP()` is a p5.js function that creates a paragraph element in the DOM.
@@ -75,9 +82,11 @@ function modelReady() {
   statusEl.html("Model loaded");
 }
 ```
+
 Once the model is loaded, the status element `statusEl` will be updated to "Model loaded".
 
 ### Set up UI for user interaction
+
 To give the user some guidance on how to interact with the model, we can add a prompt message. Open the `index.html` file and add the prompt message within the `<body>` tag.
 
 ```html
@@ -112,16 +121,19 @@ function setup() {
   statusEl = createP("Loading Model...");
   inputBox = createInput("Today is the happiest day and is full of rainbows!");
 ```
+
 Set the size of the input box to 75 pixels.
 
 ```javascript
-  inputBox.attribute("size", "75");
+inputBox.attribute("size", "75");
 ```
+
 Now, we can create a button that the user can click to predict the sentiment of the text. We can use the `createButton()` function to create a button in the DOM, and set the button text to "submit".
 
 ```javascript
-  submitBtn = createButton("submit");
+submitBtn = createButton("submit");
 ```
+
 Lastly, we can add a paragraph element to display the sentiment prediction result.
 
 ```javascript
@@ -130,6 +142,7 @@ Lastly, we can add a paragraph element to display the sentiment prediction resul
 ```
 
 ### Predict sentiment with the model
+
 Now that we have set up the UI, we can predict the sentiment of the text input by the user. Let's define a function `getSentiment()` that will be called when the user clicks the submit button or presses the enter key.
 
 It will get the values from the user input, and store it in a variable `text`.
@@ -143,8 +156,8 @@ function getSentiment() {
 Make the prediction using the `predict()` method of the `sentiment` object.
 
 ```javascript
-  // make the prediction
-  let prediction = sentiment.predict(text);
+// make the prediction
+let prediction = sentiment.predict(text);
 ```
 
 And display the sentiment score in the paragraph element `sentimentResult`.
@@ -158,6 +171,7 @@ And display the sentiment score in the paragraph element `sentimentResult`.
 The only thing left is to call the `getSentiment()` function when the user clicks the submit button, or presses the enter key.
 
 We can use the `mousePressed()` function of the `submitBtn` object, which calls a function when the mouse is pressed over the element.
+
 ```javascript
 function setup() {
   ...
@@ -180,6 +194,7 @@ function keyPressed() {
 ```
 
 ### Run your sketch
+
 That's it! You have successfully built a Sentiment Analysis model that predicts the sentiment of the given text. Press the <img class="inline-img" src="assets/facemesh-arrow-forward.png" alt="run button icon" aria-hidden="true"> `run` button to see the code in action. You can also find the [complete code](https://editor.p5js.org/ml5/sketches/hopIvsCGL) in the p5.js web editor.
 
 ?> If you have any questions or spot something unclear in this step-by-step code guide, we'd love to hear from you! Join us on [Discord](https://discord.com/invite/3CVauZMSt7) and let us know how we can make it better.
