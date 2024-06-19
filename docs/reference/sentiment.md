@@ -96,7 +96,7 @@ To give the user some guidance on how to interact with the model, we can add a p
 </body>
 ```
 
-To allow the user to interact with the model, we need a input field for the user to provide the text to predict the sentiment of, a button to submit the text, and a paragraph element to display the sentiment prediction result. Let's define the variables to store these elements.
+To allow the user to interact with the model, we need a input field for the user to provide the text to predict the sentiment of, a button to submit the text, and a paragraph element to display the sentiment prediction result. Let's define the variables to store these elements in the `sketch.js` file.
 
 ```javascript
 let inputBox;
