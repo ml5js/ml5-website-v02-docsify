@@ -2,7 +2,7 @@
 
 <center>
   <img class="header-img" src="assets/header-getting-started.png" alt="Getting Started Header Image" >
-  <p class="img-credit"> Image Credit: <a href="">Name</a> | <a href="">Contribute ♥️</a> </p>
+  <p class="img-credit"> Image Credit: <a href="https://thenounproject.com/creator/ifkirianto.if" target="_blank" title="Iki">Iki</a> | <a href='mailto:info@ml5js.org'>Contribute ♥️</a> </p>
 </center>
 
 Welcome! We're going to walk through how to start using ml5.js by creating a simple image classification program.

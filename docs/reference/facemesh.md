@@ -2,7 +2,7 @@
 
 <center>
   <img class="header-img" src="assets/header-facemesh.png" alt="FaceMesh Header Image" >
-  <p class="img-credit"> Image Credit: <a href="">Name</a> | <a href="">Contribute ♥️</a> </p>
+  <p class="img-credit"> Image Credit: <a href="https://thenounproject.com/creator/ifkirianto.if" target="_blank" title="Iki">Iki</a> | <a href='mailto:info@ml5js.org'>Contribute ♥️</a> </p>
 </center>
 
 ## Description
@@ -40,6 +40,7 @@ Now, let's together build the [FaceMesh Keypoints example](<(https://editor.p5js
 To follow along, start by creating an empty project in the [p5.js web editor](https://editor.p5js.org/).
 
 ### Set up ml5.js
+
 Import the ml5.js library in your `index.html` file.
 
 ```html

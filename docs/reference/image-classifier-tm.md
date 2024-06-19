@@ -2,7 +2,7 @@
 
 <center>
   <img class="header-img" src="assets/header-image-tm.png" alt="Image + Teachable Machine Header Image" >
-  <p class="img-credit"> Image Credit: <a href="">Name</a> | <a href="">Contribute ♥️</a> </p>
+  <p class="img-credit"> Image Credit: <a href="https://thenounproject.com/creator/ifkirianto.if" target="_blank" title="Iki">Iki</a> | <a href='mailto:info@ml5js.org'>Contribute ♥️</a> </p>
 </center>
 
 ## Description
@@ -20,6 +20,7 @@ It provides the following functionalities:
 - **Video Object Detection**: The Image + Teachable Machine model can also be used to classify objects into categories that you define in real-time video.
 
 ## Quick Start
+
 Run and explore a pre-built example! [This Image + Teachable Machine example](https://editor.p5js.org/ml5/sketches/ImageModel_TM) classifies the content of an image from the webcam feed using a Teachable Machine model.
 
 </br>
@@ -27,15 +28,19 @@ Run and explore a pre-built example! [This Image + Teachable Machine example](ht
 [DEMO](iframes/image-teachable-machine ":include :type=iframe width=100% height=550px")
 
 ## Examples
+
 - [Image + Teachable Machine Video](https://editor.p5js.org/ml5/sketches/ImageModel_TM): Classify the content of an image from the webcam feed using a Teachable Machine model.
 
 ## Step-by-Step Guide
+
 Now, let's together build the [Image + Teachable Machine Video example](https://editor.p5js.org/ml5/sketches/ImageModel_TM) from scratch, and in the process, learn how to use the Image + Teachable Machine model.
 
 ### Create a new project
+
 To follow along, start by creating an empty project in the [p5.js web editor](https://editor.p5js.org/).
 
 ### Set up ml5.js
+
 Import the ml5.js library in your `index.html` file.
 
 ```html
@@ -45,6 +50,7 @@ Import the ml5.js library in your `index.html` file.
 ?> If you are not familiar with how to import the ml5.js library and need more detailed guidance, please check out our [Getting Started](/?id=set-up-ml5js) page.
 
 ### Load model
+
 Let's open the `sketch.js` file and define a variable to store the Image + Teachable Machine model.
 
 ```javascript
@@ -52,6 +58,7 @@ let classifier;
 ```
 
 Before we load the model, we need to get the model URL from the Teachable Machine platform. Follow the steps below to create a Teachable Machine model:
+
 - Step 1: Open [Teachable Machine](https://teachablemachine.withgoogle.com/train) and create a new "Image Project".
 - Step 2: Choose "Standard image model".
 - Step 3: Click the "Edit" icon to rename "Class 1" to your desired label. In our case, "daytime".
@@ -103,6 +110,7 @@ Fetch the webcam video, resize it to fit the canvas, and hide it from the displa
 ```
 
 ### Classify the video with the model
+
 To store the classification result, define a variable `label`. We can initialize it with a loading message to display on the canvas before the model finishes loading.
 
 ```javascript
@@ -132,6 +140,7 @@ function gotResult(results) {
 ```
 
 ### Display the results
+
 Before we display the label predicted by the model, we need to draw the webcam video on the canvas.
 
 ```javascript
@@ -150,6 +159,7 @@ Now, we can display the classification result on the canvas.
 ```
 
 ### Run your sketch
+
 Congratulations! You have successfully built the Image + Teachable Machine Video example. Press the <img class="inline-img" src="assets/facemesh-arrow-forward.png" alt="run button icon" aria-hidden="true"> `run` button to see the code in action. You can also find the [complete code](https://editor.p5js.org/ml5/sketches/ImageModel_TM) in the p5.js web editor.
 
 ?> If you have any questions or spot something unclear in this step-by-step code guide, we'd love to hear from you! Join us on [Discord](https://discord.com/invite/3CVauZMSt7) and let us know how we can make it better.
