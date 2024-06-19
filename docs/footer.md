@@ -11,7 +11,7 @@
     </p>
     <p class="img-credit" style="text-align: left">
       <a href="https://ml5js.org/">ml5.js</a> &copy; 2024.
-      Icon made by <a href="https://thenounproject.com/creator/ifkirianto.if" title="Iki">Iki</a> from <a href="https://thenounproject.com/" title="Noun Project">Noun Project</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC BY 3.0</a>
+      Icon from <a href="https://thenounproject.com/" title="Noun Project" target="_blank" >Noun Project</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC BY 3.0</a>
     </p>
   </div> 
 </footer>
