@@ -78,6 +78,24 @@ function modelReady() {
 Once the model is loaded, the status element `statusEl` will be updated to "Model loaded".
 
 ### Set up UI for user interaction
+To give the user some guidance on how to interact with the model, we can add a prompt message. Open the `index.html` file and add the prompt message within the `<body>` tag.
+
+```html
+<body>
+  <h1>Sentiment Analysis Demo</h1>
+  <p>
+    This example uses model trained on movie reviews. This model scores the
+    sentiment of text with a value between 0 ("negative") and 1 ("positive").
+    The movie reviews were truncated to a maximum of 200 words and only the
+    20,000 most common words in the reviews are used.
+    <br />
+    Press 'Enter' on your keyboard or 'Submit' to see score!
+  </p>
+
+  <script src="sketch.js"></script>
+</body>
+```
+
 To allow the user to interact with the model, we need a input field for the user to provide the text to predict the sentiment of, a button to submit the text, and a paragraph element to display the sentiment prediction result. Let's define the variables to store these elements.
 
 ```javascript
