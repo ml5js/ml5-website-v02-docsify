@@ -2,7 +2,7 @@
 
 <center>
   <img class="header-img" src="assets/header-facemesh.png" alt="FaceMesh Header Image" >
-  <p class="img-credit"> Image Credit: <a href="https://thenounproject.com/creator/ifkirianto.if" target="_blank" title="Iki">Iki</a> | <a href='mailto:info@ml5js.org'>Contribute ♥️</a> </p>
+  <p class="img-credit"> Image Credit: <a href="https://thenounproject.com/creator/pglen/" target="_blank" title="Paweł Gleń">Paweł Gleń</a> | <a href='mailto:info@ml5js.org'>Contribute ♥️</a> </p>
 </center>
 
 ## Description

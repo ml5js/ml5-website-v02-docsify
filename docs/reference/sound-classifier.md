@@ -2,7 +2,7 @@
 
 <center>
   <img class="header-img" src="assets/header-sound-classifier.png" alt="SoundClassifier Header Image" >
-  <p class="img-credit"> Image Credit: <a href="https://thenounproject.com/creator/ifkirianto.if" target="_blank" title="Iki">Iki</a> | <a href='mailto:info@ml5js.org'>Contribute ♥️</a> </p>
+  <p class="img-credit"> Image Credit: <a href="https://thenounproject.com/creator/kantortegalsari/" target="_blank" title="Kantor Tegalsari">Kantor Tegalsari</a> | <a href='mailto:info@ml5js.org'>Contribute ♥️</a> </p>
 </center>
 
 ## Description

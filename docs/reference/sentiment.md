@@ -2,7 +2,7 @@
 
 <center>
   <img class="header-img" src="assets/header-sentiment.png" alt="Sentiment Header Image" >
-  <p class="img-credit"> Image Credit: <a href="https://thenounproject.com/creator/ifkirianto.if" target="_blank" title="Iki">Iki</a> | <a href='mailto:info@ml5js.org'>Contribute ♥️</a> </p>
+  <p class="img-credit"> Image Credit: <a href="https://thenounproject.com/creator/kartini7/" target="_blank" title="kartini 1">kartini 1</a> | <a href='mailto:info@ml5js.org'>Contribute ♥️</a> </p>
 </center>
 
 ## Description

@@ -2,7 +2,7 @@
 
 <center>
   <img class="header-img" src="assets/header-reference-overview.png" alt="Reference Overview Header Image" >
-  <p class="img-credit"> Image Credit: <a href="https://thenounproject.com/creator/ifkirianto.if" target="_blank" title="Iki">Iki</a> | <a href='mailto:info@ml5js.org'>Contribute ♥️</a> </p>
+  <p class="img-credit"> Image Credit: <a href="https://thenounproject.com/creator/diasytrisniaty/" target="_blank" title="diasy tristiady">diasy tristiady</a> | <a href='mailto:info@ml5js.org'>Contribute ♥️</a> </p>
 </center>
 
 Welcome to the ml5.js reference page! Here you can browse the various categories of functionality that ml5.js provides. We have categorized the functionality of ml5.js based on whether you want to customize the model and train with your own data.

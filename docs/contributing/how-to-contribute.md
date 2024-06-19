@@ -2,7 +2,7 @@
 
 <center>
   <img class="header-img" src="assets/header-how-to-contribute.png" alt="How To Contribute Header Image" >
-  <p class="img-credit"> Image Credit: <a href="https://thenounproject.com/creator/ifkirianto.if" target="_blank" title="Iki">Iki</a> | <a href='mailto:info@ml5js.org'>Contribute ♥️</a> </p>
+  <p class="img-credit"> Image Credit: <a href="https://thenounproject.com/creator/hassan2959/" target="_blank" title="hassan grewal">hassan grewal</a> | <a href='mailto:info@ml5js.org'>Contribute ♥️</a> </p>
 </center>
 
 Our community is always looking for enthusiasts to help in all different ways.
