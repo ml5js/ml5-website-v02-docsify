@@ -2,7 +2,7 @@
 
 <center>
   <img class="header-img" src="assets/header-handpose.png" alt="HandPose Header Image" >
-  <p class="img-credit"> Image Credit: <a href="https://thenounproject.com/creator/ifkirianto.if" target="_blank" title="Iki">Iki</a> | <a href='mailto:info@ml5js.org'>Contribute ♥️</a> </p>
+  <p class="img-credit"> Image Credit: <a href="https://thenounproject.com/creator/dinosoftlab/" target="_blank" title="DinosoftLabs">DinosoftLabs</a> | <a href='mailto:info@ml5js.org'>Contribute ♥️</a> </p>
 </center>
 
 ## Description
