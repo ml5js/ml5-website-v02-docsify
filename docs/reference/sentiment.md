@@ -19,7 +19,7 @@ Run and explore a pre-built example! [This Sentiment example](https://editor.p5j
 
 </br>
 
-[DEMO](iframes/handpose-keypoints ":include :type=iframe width=100% height=550px")
+[DEMO](iframes/sentiment ":include :type=iframe width=100% height=550px")
 
 ## Examples
 - [Sentiment Analysis](https://editor.p5js.org/ml5/sketches/hopIvsCGL): Predict the sentiment of the given text.
