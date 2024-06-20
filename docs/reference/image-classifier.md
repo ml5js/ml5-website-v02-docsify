@@ -7,11 +7,11 @@
 
 ## Description
 
-The ml5.js imageClassifier is a pre-trained model that can recognize the content of an image. It can identify objects, animals, and even people in a picture. The image classifier uses a neural network to analyze the image and provide a list of possible labels for the content of the image.
+The ml5.js imageClassifier is a pre-trained model that can recognize the content of an image. It can identify objects, animals, and even people in a picture. The image classifier uses a neural network to analyze the image and provide a list of possible labels for the content of the image in its entirety.
 
-The ml5.js imageClassifier uses the pre-trained MobileNet model by default. You can optionally load and use other models such as Darknet as well as a custom-trained model, DoodleNet, which is also built upon the MobileNet architecture and trained on images from the Google Quick, Draw dataset.
+The ml5.js imageClassifier uses the pre-trained MobileNet model by default. You can optionally load and use other models such as Darknet as well as a custom-trained model, DoodleNet, which is also built upon the MobileNet architecture and trained on images from the Google _Quick, Draw!_ dataset.
 
-It provides the following functionalities:
+It provides the following functionality:
 
 - **Image Classification**: ImageClassifier can recognize the content of an image and provide a list of possible labels.
 - **Video Object Detection**: ImageClassifier can also be used to classify objects in a video stream.
@@ -88,7 +88,7 @@ function preload() {
 
 ### Classify the image with the model
 
-Within the `setup` function, call the `classify` method on the `classifier` object to classify the image. The `classify` method takes the image and a callback function as parameters.
+Within the `setup` function, call the `classify` method on the `classifier` object to - you guessed right - classify the image. The `classify` method takes the image and a callback function as parameters.
 
 ```javascript
 function setup() {
@@ -100,9 +100,9 @@ function setup() {
 The callback function `gotResult` is a function that will be called when the `classify` method finishes classifying the image. Now, let's define the `gotResult` function.
 
 ```javascript
-// A function to run when we get any errors and the results
+// Callback function for when classification has finished
 function gotResult(results) {
-  // The results are in an array ordered by confidence, print in console
+  // The results are in an array ordered by confidence
   console.log(results);
 }
 ```
@@ -113,7 +113,7 @@ We need to first display the image itself on the canvas. Add the following code 
 
 ```javascript
 function setup() {
-  ...
+  // ...
   classifier.classify(img, gotResult);
   image(img, 0, 0, width, height);
 }
@@ -122,9 +122,9 @@ function setup() {
 We can then display the classification results on the canvas. With `fill()`, `stroke()`, and `textSize()`, we can set up the text style.
 
 ```javascript
-// A function to run when we get any errors and the results
+// Callback function for when classification has finished
 function gotResult(results) {
-  // The results are in an array ordered by confidence, print in console
+  // The results are in an array ordered by confidence
   console.log(results);
 
   // Display the results on the canvas
@@ -166,11 +166,20 @@ const classifier = ml5.imageClassifier(?modelName, ?options, ?callback);
 
 **Parameters:**
 
-- **modelName**: OPTIONAL. Name of the underlying model to use.
+- **modelName**: Optional. Name of the underlying model to use. Possible values are `mobilenet`, `darknet` (28 MB in size), `darknet-tiny` (4 MB), `doodlenet`, or a URL to a compatible model file.
 
-- **options**: OPTIONAL. An object to change the default configuration of the model.
+- **options**: Optional. An object to change the default configuration of the model.
 
-- **callback(handPose, error)**: OPTIONAL. A function to run once the model has been loaded. Alternatively, call `ml5.imageClassifier()` within the p5 `preload` function.
+The default options for the default `mobilenet` model are
+
+```
+{
+  alpha: 1.0,
+  topk: 3
+}
+```
+
+- **callback(classifier, error)**: Optional. A function to run once the model has been loaded. Alternatively, call `ml5.imageClassifier()` within the p5 `preload` function.
 
 **Returns:**  
 The imageClassifier object.
@@ -186,7 +195,9 @@ imageClassifier.classifyStart(media, ?kNumber, callback);
 **Parameters:**
 
 - **media**: An HTML or p5.js image, video, or canvas element to run the classification on.
+
 - **kNumber**: The number of labels returned by the image classification.
+
 - **callback(output, error)**: A callback function to handle the output of the classification. See below for an example output passed into the callback function:
 
   ```javascript
@@ -222,8 +233,10 @@ imageClassifier.classify(media, ?kNumber, ?callback);
 **Parameters:**
 
 - **media**: An HTML or p5.js image, video, or canvas element to run the classification on.
+
 - **kNumber**: The number of labels returned by the image classification.
-- **callback(output, error)**: OPTIONAL. A callback function to handle the output of the classification.
+
+- **callback(output, error)**: Optional. A callback function to handle the output of the classification.
 
 **Returns:**  
 A promise that resolves to the estimation output.
