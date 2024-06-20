@@ -155,7 +155,7 @@ Within each pose, we only want to draw the skeleton connections that the model h
 
 We iterate through the connections array, with each item being a link of `pointA` and `pointB`. For instance, `connections[1]` is `[0, 2]`, where 0 is the index of `pointA` and 2 is the index of `pointB`. Thus, `let pointAIndex = connections[j][0];` means we get the starting point (pointA) of the link `j`, and `let pointBIndex = connections[j][1];` means we get the ending point (pointB) of the link `j`.
 
-Use the indices to retrieve the `pointA` and `pointB` objects from the `pose.keypoints`. As with all keypoints, `pointA` is an object with properties `x`, `y`, and `score`.
+Use the indices to retrieve the `pointA` and `pointB` objects from the `pose.keypoints`. As with all keypoints, `pointA` is an object with properties `x`, `y`, and `confidence`.
 
 ```javascript
     for (let j = 0; j < connections.length; j++) {
@@ -277,7 +277,7 @@ let bodypose = ml5.bodypose(?model, ?options, ?callback);
 
   See See the [MoveNet documentation](https://github.com/tensorflow/tfjs-models/tree/master/pose-detection/src/movenet#create-a-detector) and the [BlazePose documentation](https://github.com/tensorflow/tfjs-models/tree/master/pose-detection/src/blazepose_tfjs#create-a-detector) for more information on available options.
 
-- **callback(bodypose, error)**: OPTIONAL. A "callback" function that runs when the model has been successfully loaded. Most ml5.js example call `ml5.bodyPose()` in the p5.js `preload()` function and no callback is needed.
+- **callback(bodypose, error)**: Optional. A "callback" function that runs when the model has been successfully loaded. Most ml5.js example call `ml5.bodyPose()` in the p5.js `preload()` function and no callback is needed.
 
 **Returns:**  
 The bodyPose object.
@@ -300,7 +300,7 @@ bodypose.detectStart(media, callback);
     {
       box: { width, height, xMax, xMin, yMax, yMin },
       id: 1,
-      keypoints: [{ x, y, score, name }, ...],
+      keypoints: [{ x, y, confidence, name }, ...],
       left_ankle: { x, y, confidence },
       left_ear: { x, y, confidence },
       left_elbow: { x, y, confidence },
@@ -336,8 +336,8 @@ bodypose.detectStart(media, callback);
     {
       box: { width, height, xMax, xMin, yMax, yMin },
       id: 1,
-      keypoints: [{ x, y, z, score, name }, ...],
-      keypoints3D: [{ x, y, z, score, name }, ...],
+      keypoints: [{ x, y, z, confidence, name }, ...],
+      keypoints3D: [{ x, y, z, confidence, name }, ...],
       left_ankle: { x, y, z, confidence },
       left_ear: { x, y, z, confidence },
       left_elbow: { x, y, z, confidence },
@@ -428,51 +428,3 @@ This array represents the connections between keypoints, please refer to these i
       <img style="display:block; max-width:30%" alt="BlazePose keypoint diagram" src="https://camo.githubusercontent.com/17082997c33fc6d2544c4aea33d9898860cf902ed5a0b865527d1dd91bbc7efa/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f6d65646961706970652f626c617a65706f73652d6b6579706f696e74732d757064617465642e706e67">
   </center>
 
-  ### bodypose.loadModel()
-
-This method asynchronously loads the model and returns the bodyPose object once the model is loaded.
-
-```javascript
-bodypose.loadModel();
-```
-
-**Returns:**  
-A promise that resolves to the bodyPose object.
-
-### bodypose.renameScoreToConfidence()
-
-This method renames the `score` property to `confidence` for consistency across the detected keypoints.
-
-```javascript
-bodypose.renameScoreToConfidence(poses);
-```
-
-**Parameters:**
-
-- **poses**: An array of objects representing the original detection results. Each pose object contains keypoints, and optionally keypoints3D, which will have their `score` property renamed to `confidence`.
-
-**Example:**
-
-```javascript
-const poses = [
-  {
-    keypoints: [{ x: 100, y: 200, score: 0.9, name: 'nose' }, ...],
-    keypoints3D: [{ x: 100, y: 200, z: 0.5, score: 0.9, name: 'nose' }, ...],
-  },
-  ...
-];
-
-bodypose.renameScoreToConfidence(poses);
-
-// The poses array will now have the `score` property renamed to `confidence`:
-[
-  {
-    keypoints: [{ x: 100, y: 200, confidence: 0.9, name: 'nose' }, ...],
-    keypoints3D: [{ x: 100, y: 200, z: 0.5, confidence: 0.9, name: 'nose' }, ...],
-  },
-  ...
-];
-```
-
-**Returns:**  
-Nothing. The function modifies the `poses` array in place.

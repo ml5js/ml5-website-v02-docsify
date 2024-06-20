@@ -177,10 +177,10 @@ And, that's it! You have successfully built the FaceMesh Keypoints example from 
 
 #### ml5.faceMesh()
 
-This method is used to initialize the facemesh object.
+This method is used to initialize the faceMesh object.
 
 ```javascript
-const facemesh = ml5.faceMesh(?options, ?callback);
+const faceMesh = ml5.faceMesh(?options, ?callback);
 ```
 
 **Parameters:**
@@ -229,17 +229,17 @@ const facemesh = ml5.faceMesh(?options, ?callback);
 
   More info on options [here](https://github.com/tensorflow/tfjs-models/tree/master/face-landmarks-detection/src/mediapipe#create-a-detector).
 
-- **callback(facemesh, error)**: Optional. A function to run once the model has been loaded. Alternatively, call `ml5.faceMesh()` within the p5 `preload` function.
+- **callback(faceMesh, error)**: Optional. A function to run once the model has been loaded. Alternatively, call `ml5.faceMesh()` within the p5 `preload` function.
 
 **Returns:**  
-The facemesh object.
+The faceMesh object.
 
-### facemesh.detectStart()
+### faceMesh.detectStart()
 
 This method repeatedly outputs face estimations on an image media through a callback function.
 
 ```javascript
-facemesh.detectStart(media, callback);
+faceMesh.detectStart(media, callback);
 ```
 
 **Parameters:**
@@ -262,26 +262,26 @@ facemesh.detectStart(media, callback);
 
   [Here](https://github.com/tensorflow/tfjs-models/blob/master/face-landmarks-detection/mesh_map.jpg) is a diagram for the position of each keypoint (download and zoom in to see the index).
 
-### facemesh.detectStop()
+### faceMesh.detectStop()
 
-This method can be called after a call to `facemesh.detectStart` to stop the repeating face estimation.
+This method can be called after a call to `faceMesh.detectStart` to stop the repeating face estimation.
 
 ```javascript
-facemesh.detectStop();
+faceMesh.detectStop();
 ```
 
-### facemesh.detect()
+### faceMesh.detect()
 
 This method asynchronously outputs a single face estimation on an image media when called.
 
 ```javascript
-facemesh.detect(media, ?callback);
+faceMesh.detect(media, ?callback);
 ```
 
 **Parameters:**
 
 - **media**: An HTML or p5.js image, video, or canvas element to run the estimation on.
-- **callback(output, error)**: OPTIONAL. A callback function to handle the output of the estimation, see output example above.
+- **callback(output, error)**: Optional. A callback function to handle the output of the estimation, see output example above.
 
 **Returns:**  
 A promise that resolves to the estimation output.

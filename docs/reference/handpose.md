@@ -190,8 +190,6 @@ const handpose = ml5.handpose(?options, ?callback);
   }
   ```
 
-  Here is the reformatted code comments into markdown:
-
   Options for hand detection:
 
   - _maxHands_ - Optional
@@ -239,8 +237,8 @@ handpose.detectStart(media, callback);
     {
       confidence,
       handedness,
-      keypoints: [{ x, y, score, name }, ...],
-      keypoints3D: [{ x, y, z, score, name }, ...],
+      keypoints: [{ x, y, confidence, name }, ...],
+      keypoints3D: [{ x, y, z, confidence, name }, ...],
       index_finger_dip: { x, y, x3D, y3D, z3D },
       index_finger_mcp: { x, y, x3D, y3D, z3D },
       ...
