@@ -651,28 +651,6 @@ In ml5.js, overfitting can happen while training for a [neural network](#neural-
 
 ---
 
-## Promises
-
-ml5.js is heavily inspired by the syntax, patterns and style of the [p5.js](https://p5js.org/) library. However, there are several differences in how asynchronous operations are handled by ml5.js. ml5.js supports both <b>error-first callbacks</b> and Promises in all methods.
-
-ml5.js supports [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise). If no callback is provided to any asynchronous function then a Promise is returned.
-
-With Promises, the image classification example can be used in the following way with JavaScript ES6 arrow notation (**=>**):
-
-```js
-// No callback needs to be passed to use Promises.
-ml5
-  .imageClassifier("MobileNet")
-  .then((classifier) => classifier.classify(image))
-  .then((results) => {
-    // Do something with the results
-  });
-```
-
-For some video tutorials about Promises, you can find this [Coding Train playlist](https://www.youtube.com/playlist?list=PLRqwX-V7Uu6bKLPQvPRNNE65kBL62mVfx). There is also a [video tutorial about the ES6 arrow notation (**=>**)](https://youtu.be/mrYMzpbFz18).
-
----
-
 ## Prediction
 
 A prediction is the output of a machine learning model. For example, a machine learning model that is trained to classify images of cats and dogs could make a prediction that an image is a cat.
@@ -923,29 +901,6 @@ npm run develop
 NPM is a package manager for JavaScript. NPM is used to install and manage JavaScript libraries.
 
 You can find the npm package for ml5.js [here](https://www.npmjs.com/package/ml5).
-
----
-
-## Promises
-
-ml5.js is heavily inspired by the syntax, patterns and style of the [p5.js](https://p5js.org/) library. However, there are several differences in how asynchronous operations are handled by ml5.js. ml5.js supports both <b>error-first callbacks</b> and Promises in all methods.
-
-ml5.js supports [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise). If no callback is provided to any asynchronous function then a Promise is returned.
-
-With Promises, the image classification example can be used in the following way with JavaScript ES6 arrow notation (**=>**):
-
-
-```js
-// No callback needs to be passed to use Promises.
-ml5
-  .imageClassifier("MobileNet")
-  .then((classifier) => classifier.classify(image))
-  .then((results) => {
-    // Do something with the results
-  });
-```
-
-For some video tutorials about Promises, you can find this [Coding Train playlist](https://www.youtube.com/playlist?list=PLRqwX-V7Uu6bKLPQvPRNNE65kBL62mVfx). There is also a [video tutorial about the ES6 arrow notation (**=>**)](https://youtu.be/mrYMzpbFz18).
 
 ---
 
