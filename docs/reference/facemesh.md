@@ -33,7 +33,7 @@ Run and explore a pre-built example! [This FaceMesh example](https://editor.p5js
 
 ## Step-by-Step Guide
 
-Now, let's together build the [FaceMesh Keypoints example](<(https://editor.p5js.org/ml5/sketches/lCurUW1TT)>) from scratch, and in the process, learn how to use the FaceMesh model.
+Now, let's together build the [FaceMesh Keypoints example](https://editor.p5js.org/ml5/sketches/lCurUW1TT) from scratch, and in the process, learn how to use the FaceMesh model.
 
 ### Create a new project
 
@@ -165,7 +165,7 @@ Draw a green circle at the location of the `j`th keypoint.
 }
 ```
 
-Note we are iterating through all the keypoints (j is ranging from 0 to the length of the keypoints array) of the detected face (i is ranging from 0 to the length of the faces array). This will result in green landmarks on all detected face(s) in the webcam video. In our case, we set the maximum number of faces to detect to 1 in the `options` object (`maxFaces: 1`), so we will only see landmarks on one face.
+Note we are iterating through all the keypoints (`j` is ranging from 0 to the length of the keypoints array) of the detected face (`i` is ranging from 0 to the length of the faces array). This will result in green landmarks on all detected face(s) in the webcam video. In our case, we set the maximum number of faces to detect to 1 in the `options` object (`maxFaces: 1`), so we will only see landmarks on one face.
 
 ### Run your sketch
 
@@ -175,23 +175,23 @@ And, that's it! You have successfully built the FaceMesh Keypoints example from 
 
 ## Methods
 
-### ml5.facemesh()
+#### ml5.faceMesh()
 
 This method is used to initialize the facemesh object.
 
 ```javascript
-const facemesh = ml5.facemesh(?options, ?callback);
+const facemesh = ml5.faceMesh(?options, ?callback);
 ```
 
 **Parameters:**
 
-- **options**: OPTIONAL. An object to change the default configuration of the model. The default and available options are:
+- **options**: Optional. An object to change the default configuration of the model. The default and available options are:
 
   ```javascript
   {
       maxFaces: 1,
       refineLandmarks: false,
-      flipHirzontal: false
+      flipHorizontal: false
   }
   ```
 
@@ -211,9 +211,25 @@ const facemesh = ml5.facemesh(?options, ?callback);
   - _solutionPath_
     - String: The file path or URL to the model.
 
+  Options for face detection:
+
+  - _maxFacess_
+    - Number: The maximum number of faces to detect. Defaults to 2.
+  - _refineLandmarks_ 
+    - Boolean: Refine the landmarks. Defaults to false.
+  - _flipHorizontal_ 
+    - Boolean: Flip the result horizontally. Defaults to false.
+  - _runtime_
+    - String: The runtime to use. "mediapipe" (default) or "tfjs".
+
+  For using custom or offline models:
+
+  - _solutionPath_
+    - String: The file path or URL to the model.
+
   More info on options [here](https://github.com/tensorflow/tfjs-models/tree/master/face-landmarks-detection/src/mediapipe#create-a-detector).
 
-- **callback(facemesh, error)**: OPTIONAL. A function to run once the model has been loaded. Alternatively, call `ml5.facemesh()` within the p5 `preload` function.
+- **callback(facemesh, error)**: Optional. A function to run once the model has been loaded. Alternatively, call `ml5.faceMesh()` within the p5 `preload` function.
 
 **Returns:**  
 The facemesh object.
@@ -235,9 +251,9 @@ facemesh.detectStart(media, callback);
   [
     {
       box: { width, height, xMax, xMin, yMax, yMin },
-      keypoints: [{x, y, z, name}, ... ],
-      faceOval: [{x, y, z}, ...],
-      leftEye: [{x, y, z}, ...],
+      keypoints: [{ x, y, z, name }, ... ],
+      faceOval: { x, y, width, height, centerX, centerY, keypoints: [{ x, y, z }, ... ]},
+      leftEye: { x, y, width, height, centerX, centerY, keypoints: [{ x, y, z }, ... ]},
       ...
     },
     ...
