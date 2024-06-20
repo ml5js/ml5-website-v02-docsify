@@ -232,7 +232,8 @@ let bodypose = ml5.bodypose(?options, ?callback);
 
 **Parameters:**
 
-- **options**: OPTIONAL. An object to change the default configuration of the model. The default and available options are:
+- **options**: OPTIONAL
+  - Object: An object to change the default configuration of the model. The default and available options are:
 
   ```javascript
   {
@@ -398,7 +399,8 @@ bodypose.detect(media, ?callback);
 **Parameters:**
 
 - **media**: An HTML or p5.js image, video, or canvas element to run the estimation on.
-- **callback(output, error)**: OPTIONAL. A callback function to handle the results of the pose estimation. See the results above for an example of the model's output.
+- **callback(output, error)**: OPTIONAL
+  - A callback function to handle the results of the pose estimation. See the results above for an example of the model's output.
 
 **Returns:**  
 A promise that resolves to the estimation output.

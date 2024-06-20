@@ -166,7 +166,7 @@ Voila! You have successfully built the HandPose Keypoints example. Press the <im
 
 ## Methods
 
-#### ml5.handpose()
+### ml5.handpose()
 
 This method is used to initialize the handpose object.
 
@@ -176,11 +176,13 @@ const handpose = ml5.handpose(?options, ?callback);
 
 **Parameters:**
 
-- **options**: OPTIONAL. An object to change the default configuration of the model. The default and available options are:
+- **options**: OPTIONAL
+  - An object to change the default configuration of the model. The default and available options are:
 
   ```javascript
   {
     maxHands: 2,
+    flipHorizontal: false,
     runtime: "mediapipe",
     modelType: "full",
     solutionPath: "https://cdn.jsdelivr.net/npm/@mediapipe/hands",
@@ -191,7 +193,7 @@ const handpose = ml5.handpose(?options, ?callback);
 
   Here is the reformatted code comments into markdown:
 
-  ### Options for hand detection:
+  Options for hand detection:
 
   - _maxHands_ - Optional
     - Number: The maximum number of hands to detect. Default: 2.
@@ -202,7 +204,7 @@ const handpose = ml5.handpose(?options, ?callback);
   - _runtime_ - Optional
     - String: The runtime of the model: "mediapipe" or "tfjs". Default: "mediapipe".
 
-  ### For using custom or offline models:
+  For using custom or offline models:
 
   - _solutionPath_ - Optional
     - String: The file path or URL to the model. Only used when using "mediapipe" runtime.
@@ -215,12 +217,13 @@ const handpose = ml5.handpose(?options, ?callback);
   
   More info on options [here](https://github.com/tensorflow/tfjs-models/tree/master/hand-pose-detection/src/tfjs#create-a-detector) for "tfjs" runtime.
 
-- **callback(handpose, error)**: OPTIONAL. A function to run once the model has been loaded. Alternatively, call `ml5.handpose()` within the p5 `preload` function.
+- **callback(handpose, error)**: OPTIONAL
+  - A function to run once the model has been loaded. Alternatively, call `ml5.handpose()` within the p5 `preload` function.
 
 **Returns:**  
 The handpose object.
 
-#### handpose.detectStart()
+### handpose.detectStart()
 
 This method repeatedly outputs hand estimations on an image media through a callback function.
 
@@ -254,15 +257,35 @@ handpose.detectStart(media, callback);
       <img alt="handpose keypoints diagram" width="600" src="assets/handpose-keypoints-map.png">
   </center>
 
-#### handpose.detectStop()
+### handpose.detectStop()
 
-This method can be called after a call to `handpose.detectStart` to stop the repeating hand estimation.
+This method can be called to stop the continuous pose estimation process.
 
 ```javascript
 handpose.detectStop();
 ```
 
-#### handpose.detect()
+For example, you can toggle the hand pose estimation with click event in p5.js by using this function as follows:
+
+```javascript
+// Toggle detection when mouse is pressed
+function mousePressed() {
+  toggleDetection();
+}
+
+// Call this function to start and stop detection
+function toggleDetection() {
+  if (isDetecting) {
+    handpose.detectStop();
+    isDetecting = false;
+  } else {
+    handpose.detectStart(video, gotHands);
+    isDetecting = true;
+  }
+}
+```
+
+### handpose.detect()
 
 This method asynchronously outputs a single hand estimation on an image media when called.
 
@@ -273,7 +296,8 @@ handpose.detect(media, ?callback);
 **Parameters:**
 
 - **media**: An HTML or p5.js image, video, or canvas element to run the estimation on.
-- **callback(output, error)**: OPTIONAL. A callback function to handle the output of the estimation, see output example above.
+- **callback(output, error)**: OPTIONAL
+  - A callback function to handle the output of the estimation, see output example above.
 
 **Returns:**  
 A promise that resolves to the estimation output.

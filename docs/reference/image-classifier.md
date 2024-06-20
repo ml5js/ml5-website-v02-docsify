@@ -156,26 +156,39 @@ Voila! You have successfully built the ImageClassifier Single Image example. Pre
 
 ## Methods
 
-#### ml5.imageClassifier()
+### ml5.imageClassifier()
 
 This method is used to initialize the imageClassifer object.
 
 ```javascript
-const classifier = ml5.imageClassifier(?modelName, ?options, ?callback);
+const classifier = ml5.imageClassifier(modelNameOrUrl, ?options, ?callback);
 ```
 
 **Parameters:**
 
-- **modelName**: OPTIONAL. Name of the underlying model to use.
+- **modelNameOrUrl**: OPTIONAL
+  - String: The name or the URL of the model to use. Current model name options are: 'mobilenet', 'darknet', 'darknet-tiny', and 'doodlenet'.
 
-- **options**: OPTIONAL. An object to change the default configuration of the model.
+- **options**: OPTIONAL
+  - Object: An object to change the default configuration of the model. (Only available for MobileNet)
+    Default value:
+    ```javascript
+    {
+      version: 2,
+      alpha: 1.0,
+      topk: 3,
+    }
+    ```
+    - _version_: The MobileNet version to use. Default is 2.
+    - _alpha_: The width multiplier for the MobileNet. Default is 1.0.
+    - _topk_: The number of labels to return. Default is 3.
 
 - **callback(handPose, error)**: OPTIONAL. A function to run once the model has been loaded. Alternatively, call `ml5.imageClassifier()` within the p5 `preload` function.
 
 **Returns:**  
 The imageClassifier object.
 
-#### imageClassifier.classifyStart()
+### imageClassifier.classifyStart()
 
 This method repeatedly outputs classification labels on an image media through a callback function.
 
@@ -203,7 +216,7 @@ imageClassifier.classifyStart(media, ?kNumber, callback);
   ];
   ```
 
-#### imageClassifier.classifyStop()
+### imageClassifier.classifyStop()
 
 This method can be called after a call to `imageClassifier.classifyStart` to stop the repeating classifications.
 
@@ -211,7 +224,7 @@ This method can be called after a call to `imageClassifier.classifyStart` to sto
 imageClassifier.classifyStop();
 ```
 
-#### imageClassifier.classify()
+### imageClassifier.classify()
 
 This method asynchronously outputs a single image classification on an image media when called.
 

@@ -175,7 +175,7 @@ And, that's it! You have successfully built the FaceMesh Keypoints example from 
 
 ## Methods
 
-#### ml5.facemesh()
+### ml5.facemesh()
 
 This method is used to initialize the facemesh object.
 
@@ -195,7 +195,7 @@ const facemesh = ml5.facemesh(?options, ?callback);
   }
   ```
 
-  ### Options for face detection:
+  Options for face detection:
 
   - _maxFacess_
     - Number: The maximum number of faces to detect. Defaults to 2.
@@ -206,7 +206,7 @@ const facemesh = ml5.facemesh(?options, ?callback);
   - _runtime_
     - String: The runtime to use. "mediapipe" (default) or "tfjs".
 
-  ### For using custom or offline models:
+  For using custom or offline models:
 
   - _solutionPath_
     - String: The file path or URL to the model.
@@ -218,7 +218,7 @@ const facemesh = ml5.facemesh(?options, ?callback);
 **Returns:**  
 The facemesh object.
 
-#### facemesh.detectStart()
+### facemesh.detectStart()
 
 This method repeatedly outputs face estimations on an image media through a callback function.
 
@@ -246,7 +246,7 @@ facemesh.detectStart(media, callback);
 
   [Here](https://github.com/tensorflow/tfjs-models/blob/master/face-landmarks-detection/mesh_map.jpg) is a diagram for the position of each keypoint (download and zoom in to see the index).
 
-#### facemesh.detectStop()
+### facemesh.detectStop()
 
 This method can be called after a call to `facemesh.detectStart` to stop the repeating face estimation.
 
@@ -254,7 +254,7 @@ This method can be called after a call to `facemesh.detectStart` to stop the rep
 facemesh.detectStop();
 ```
 
-#### facemesh.detect()
+### facemesh.detect()
 
 This method asynchronously outputs a single face estimation on an image media when called.
 
