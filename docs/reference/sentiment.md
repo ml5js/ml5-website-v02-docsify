@@ -228,7 +228,7 @@ const sentiment = ml5.sentiment(model, ?callback);
 #### Parameters
 
 - **model**: REQUIRED. Defaults to 'moviereviews'. You can also use a path to a `manifest.json` file via a relative or absolute path.
-- **callback**: OPTIONAL. A callback function that is called once the model has loaded. If no callback is provided, it will return a promise that will be resolved once the model has loaded.
+- **callback**: Optional. A callback function that is called once the model has loaded. If no callback is provided, it will return a promise that will be resolved once the model has loaded.
 
 ---
 

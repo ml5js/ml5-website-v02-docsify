@@ -41,8 +41,8 @@ const magic = ml5.magicFeature(requiredInput, ?optionalInput1, ?optionalInput2);
 #### Parameters
 
 - **requiredInput**: REQUIRED. Notice there is no question mark in front of the input.
-- **optionalInput1**: OPTIONAL. Notice the `?` indicates an optional parameter.
-- **optionalInput2**: OPTIONAL. A description of some kind of object with some properties. Notice the `?` indicates an optional parameter.
+- **optionalInput1**: Optional. Notice the `?` indicates an optional parameter.
+- **optionalInput2**: Optional. A description of some kind of object with some properties. Notice the `?` indicates an optional parameter.
 
   ```js
   {
