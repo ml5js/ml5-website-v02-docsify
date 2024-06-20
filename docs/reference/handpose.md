@@ -2,7 +2,7 @@
 
 <center>
   <img class="header-img" src="assets/header-handpose.png" alt="HandPose Header Image" >
-  <p class="img-credit"> Image Credit: <a href="">Name</a> | <a href="">Contribute ♥️</a> </p>
+  <p class="img-credit"> Image Credit: <a href="https://thenounproject.com/creator/dinosoftlab/" target="_blank" title="DinosoftLabs">DinosoftLabs</a> | <a href='mailto:info@ml5js.org'>Contribute ♥️</a> </p>
 </center>
 
 ## Description
@@ -18,6 +18,7 @@ It provides the following functionalities:
 - **Multiple Hands**: HandPose can detect multiple hands at the same time.
 
 ## Quick Start
+
 Run and explore a pre-built example! [This HandPose example](https://editor.p5js.org/ml5/sketches/QGH3dwJ1A) displays 21 hand keypoints that describe the geometry of each hand in real-time from the webcam.
 
 </br>
@@ -25,15 +26,18 @@ Run and explore a pre-built example! [This HandPose example](https://editor.p5js
 [DEMO](iframes/handpose-keypoints ":include :type=iframe width=100% height=550px")
 
 ## Examples
+
 - [HandPose Keypoints](https://editor.p5js.org/ml5/sketches/QGH3dwJ1A): Draw the keypoints of the detected hand from the webcam.
 - [HandPose Single Image](https://editor.p5js.org/ml5/sketches/8VK_l3XwE): Detect the keypoints of the hand from a single image.
 - [HandPose Parts](https://editor.p5js.org/ml5/sketches/DNbSiIYKB): Draw specific hand parts of the detected hand.
 - [HandPose Start-stop](https://editor.p5js.org/ml5/sketches/W9vFFT5RM): Start and stop the detection of the hand.
 
 ## Step-by-Step Guide
+
 Now, let's together build the [HandPose Keypoints example](https://editor.p5js.org/ml5/sketches/QGH3dwJ1A) from scratch, and in the process, learn how to use the HandPose model.
 
 ### Create a new project
+
 To follow along, start by creating an empty project in the [p5.js web editor](https://editor.p5js.org/).
 
 ### Set up ml5.js
@@ -47,6 +51,7 @@ Import the ml5.js library in your `index.html` file.
 ?> If you are not familiar with how to import the ml5.js library and need more detailed guidance, please check out our [Getting Started](/?id=set-up-ml5js) page.
 
 ### Load model
+
 Let's open the `sketch.js` file and define a variable to store the HandPose model.
 
 ```javascript
@@ -62,6 +67,7 @@ function preload() {
 ```
 
 ### Fetch webcam video
+
 Let's define a variable `video` to store the webcam video.
 
 ```javascript
@@ -80,12 +86,13 @@ Fetch the webcam video, resize it to fit the canvas, and hide it from the displa
 ```javascript
   // Create the video and hide it
   video = createCapture(VIDEO);
-  video.size(width, height);
+  video.size(640, 480);
   video.hide();
 }
 ```
 
 ### Detect hand keypoints with the model
+
 Before we use the HandPose model to detect hand keypoints, we need to define a variable `hands` to store the detected hands. Note that the `hands` variable will store an array of detected hands, and each hand has a property `keypoints` that will contain an array of keypoints.
 
 ```javascript
@@ -93,6 +100,7 @@ let hands = [];
 ```
 
 To start detecting the keypoints of the hands, in the `setup` function, we need to call the `detectStart` method of the `handPose` object. This method takes the webcam video as input and a callback function to handle the output.
+
 ```javascript
 function setup() {
   ...
@@ -114,6 +122,7 @@ function gotHands(results) {
 ```
 
 ### Draw the keypoints on the canvas
+
 Before we draw the keypoints, we need to draw the webcam video on the canvas.
 
 ```javascript
@@ -121,7 +130,7 @@ function draw() {
   image(video, 0, 0, width, height);
 ```
 
-Now, we can loop through the `hands` array, fetch the `i`th dectected hand, and store it in the `hand` variable. 
+Now, we can loop through the `hands` array, fetch the `i`th dectected hand, and store it in the `hand` variable.
 
 ```javascript
   // Draw all the tracked hand points
@@ -146,9 +155,11 @@ Finally, draw a green circle at the location of the `j`th keypoint.
   }
 }
 ```
+
 Note we are iterating through all the keypoints (j is ranging from 0 to the length of the keypoints array) of the detected hand (i is ranging from 0 to the length of the hands array). This will result in green landmarks on all detected hand(s) in the webcam video.
 
 ### Run your sketch
+
 Voila! You have successfully built the HandPose Keypoints example. Press the <img class="inline-img" src="assets/facemesh-arrow-forward.png" alt="run button icon" aria-hidden="true"> `run` button to see the code in action. You can also find the [complete code](https://editor.p5js.org/ml5/sketches/QGH3dwJ1A) in the p5.js web editor.
 
 ?> If you have any questions or spot something unclear in this step-by-step code guide, we'd love to hear from you! Join us on [Discord](https://discord.com/invite/3CVauZMSt7) and let us know how we can make it better.
@@ -266,5 +277,3 @@ handpose.detect(media, ?callback);
 
 **Returns:**  
 A promise that resolves to the estimation output.
-
-<br>

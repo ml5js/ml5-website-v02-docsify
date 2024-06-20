@@ -2,7 +2,7 @@
 
 <center>
   <img class="header-img" src="assets/header-neural-network.png" alt="NeuralNetwork Header Image" >
-  <p class="img-credit"> Image Credit: <a href="">Name</a> | <a href="">Contribute ♥️</a> </p>
+  <p class="img-credit"> Image Credit: <a href="https://thenounproject.com/creator/lutfidiarycoc/" target="_blank" title="LUTFI GANI AL ACHMAD">LUTFI GANI AL ACHMAD</a> | <a href='mailto:info@ml5js.org'>Contribute ♥️</a> </p>
 </center>
 
 ## Description

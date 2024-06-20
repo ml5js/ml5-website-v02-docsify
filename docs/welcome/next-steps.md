@@ -2,7 +2,7 @@
 
 <center>
   <img class="header-img" src="assets/header-next-steps.png" alt="Next Steps Header Image" >
-  <p class="img-credit"> Image Credit: <a href="">Name</a> | <a href="">Contribute ♥️</a> </p>
+  <p class="img-credit"> Image Credit: <a href="https://thenounproject.com/creator/creativepriyanka/" target="_blank" title="WEBTECHOPS LLP">WEBTECHOPS LLP</a> | <a href='mailto:info@ml5js.org'>Contribute ♥️</a> </p>
 </center>
 
 If you reach this page, we assume you have successfully installed ml5.js and built your first ml5 projects following our [Getting Started](https://ml5js.github.io/ml5-website-v02-docsify/#/) page! Here are some next steps to help you continue your ml5 journey.
@@ -32,7 +32,7 @@ If you would like to understand how the machine learning models work behind the 
 
 </center>
 
-> #### ml5 Glossay 👉[ Learn](https://ml5js.github.io/ml5-website-v02-docsify/#/learning/ml5-glossary)
+> #### ml5 Glossay 👉[ Learn](https://ml5js.github.io/ml5-website-v02-docsify/#/learn/ml5-glossary)
 >
 > Have you ever felt confused about a term we used here at ml5? No worries, we've got you covered! Check out this glossary. Here, we explain and define programming techniques and machine learning terminologies specific to ml5 that are mentioned in our libraries, website, and examples.
 
