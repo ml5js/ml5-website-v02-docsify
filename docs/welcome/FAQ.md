@@ -2,7 +2,7 @@
 
 <center>
   <img class="header-img" src="assets/header-faq.png" alt="Frequently Asked Question Header Image" >
-  <p class="img-credit"> Image Credit: <a href="">Name</a> | <a href="">Contribute ♥️</a> </p>
+  <p class="img-credit"> Image Credit: <a href="https://thenounproject.com/creator/purpleiconn/" target="_blank" title="Purple iconn">Purple iconn</a> | <a href='mailto:info@ml5js.org'>Contribute ♥️</a> </p>
 </center>
 
 ## Can I always use ml5.js in p5 web editor?

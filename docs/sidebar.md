@@ -18,13 +18,13 @@
 
 - **ml5 Models**
 
-- [Bodypose](/reference/bodypose.md)
+- [BodyPose](/reference/bodypose.md)
 - [BodySegmentation](/reference/body-segmentation.md)
-- [Handpose](/reference/handpose.md)
-- [Facemesh](/reference/facemesh.md)
+- [HandPose](/reference/handpose.md)
+- [FaceMesh](/reference/facemesh.md)
 - [ImageClassifier](/reference/image-classifier.md)
+- [SoundClassifier](/reference/sound-classifier.md)
 - [Sentiment](/reference/sentiment.md)
-  <!-- * [SoundClassifier](/reference/sound-classifier.md) -->
 
 <div class="sidebar-spacer">&nbsp;</div>
 
@@ -37,15 +37,15 @@
 <div class="sidebar-spacer">&nbsp;</div>
 
 - **Train your own model!**
-- [Neural Networks](/reference/neural-network.md)
+- [NeuralNetwork](/reference/neural-network.md)
 
 <div class="sidebar-spacer">&nbsp;</div>
 
-- **Learning**
+- **Learn**
   <div class="sidebar-section-divider">&nbsp;</div>
 
-- [ml5 Glossary](/learning/ml5-glossary.md)
-  <!-- * [Community Tutorial Library](/learning/community-tutorial-library.md) -->
+- [ml5 Glossary](/learn/ml5-glossary.md)
+  <!-- * [Community Tutorial Library](/learn/community-tutorial-library.md) -->
 
 <div class="sidebar-spacer">&nbsp;</div>
 

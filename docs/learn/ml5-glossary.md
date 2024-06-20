@@ -182,7 +182,7 @@ for (let i = 0; i < poses.length; i++) {
 
 ## Convolutional Neural Networks
 
-Convolutional Neural Networks (CNN) are [neural networks](/learning/ml5-glossary?id=neural-network) tuned for the compression of images and video data. They are widely used in computer vision tasks such as image classification, object detection, and image segmentation.
+Convolutional Neural Networks (CNN) are [neural networks](/learn/ml5-glossary?id=neural-network) tuned for the compression of images and video data. They are widely used in computer vision tasks such as image classification, object detection, and image segmentation.
 
 Here is a simple explanation of how CNNs work:
 
@@ -287,7 +287,7 @@ The prediction of classification task is a class.
 | Happy      |
 | Sad        |
 
-In contrast, the prediction of [regression](/learning/ml5-glossary?id=regression-analysis) task is a numerical value.
+In contrast, the prediction of [regression](/learn/ml5-glossary?id=regression-analysis) task is a numerical value.
 
 | Prediction |
 | ---------- |
@@ -306,7 +306,7 @@ See an example of a training dataset and a test dataset below.
 
 Training Dataset
 
-| Sample # | [Feature Vector](/learning/ml5-glossary?id=feature) | Label |
+| Sample # | [Feature Vector](/learn/ml5-glossary?id=feature) | Label |
 | -------- | --------------------------------------------------- | ----- |
 | sample 1 | (5.8, 0)                                            | Cat   |
 | sample 2 | (36, 2)                                             | Dog   |
@@ -314,7 +314,7 @@ Training Dataset
 
 Test Dataset
 
-| Sample # | [Feature Vector](/learning/ml5-glossary?id=feature) | Prediction Label | Ground Truth Label |
+| Sample # | [Feature Vector](/learn/ml5-glossary?id=feature) | Prediction Label | Ground Truth Label |
 | -------- | --------------------------------------------------- | ---------------- | ------------------ |
 | sample 1 | (4.5, 0)                                            | ?                | Cat                |
 | sample 2 | (30, 2)                                             | ?                | Dog                |
@@ -1104,7 +1104,7 @@ The prediction of classification task is a class.
 | Happy      |
 | Sad        |
 
-In contrast, the prediction of [regression](/learning/ml5-glossary?id=regression-analysis) task is a numerical value.
+In contrast, the prediction of [regression](/learn/ml5-glossary?id=regression-analysis) task is a numerical value.
 
 | Prediction |
 | ---------- |
@@ -1121,7 +1121,7 @@ See an example of a training dataset and a test dataset below.
 
 Training Dataset
 
-| Sample # | [Feature Vector](/learning/ml5-glossary?id=feature) | Label |
+| Sample # | [Feature Vector](/learn/ml5-glossary?id=feature) | Label |
 | -------- | --------------------------------------------------- | ----- |
 | sample 1 | (5.8, 0)                                            | Cat   |
 | sample 2 | (36, 2)                                             | Dog   |
@@ -1129,7 +1129,7 @@ Training Dataset
 
 Test Dataset
 
-| Sample # | [Feature Vector](/learning/ml5-glossary?id=feature) | Prediction Label | Ground Truth Label |
+| Sample # | [Feature Vector](/learn/ml5-glossary?id=feature) | Prediction Label | Ground Truth Label |
 | -------- | --------------------------------------------------- | ---------------- | ------------------ |
 | sample 1 | (4.5, 0)                                            | ?                | Cat                |
 | sample 2 | (30, 2)                                             | ?                | Dog                |
@@ -1447,7 +1447,7 @@ In ml5.js, you can train your own neural network with `ml5.neuralNetwork`. For d
 
 ## Convolutional Neural Networks
 
-Convolutional Neural Networks (CNN) are [neural networks](/learning/ml5-glossary?id=neural-network) tuned for the compression of images and video data. They are widely used in computer vision tasks such as image classification, object detection, and image segmentation.
+Convolutional Neural Networks (CNN) are [neural networks](/learn/ml5-glossary?id=neural-network) tuned for the compression of images and video data. They are widely used in computer vision tasks such as image classification, object detection, and image segmentation.
 
 Here is a simple explanation of how CNNs work:
 

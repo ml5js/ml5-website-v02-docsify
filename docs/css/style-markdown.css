@@ -215,7 +215,7 @@ div#app:empty::before {
   left: 0;
   width: 300px;
   overflow-y: auto;
-  transition: transform 250ms ease-out;
+  transition: transform 250ms ease;
   z-index: 20;
   background-color: var(--color-bg-light);
 }
@@ -401,6 +401,7 @@ body.close .sidebar-toggle {
   /* make this color variable*/
   background-color: rgba(--color-sidebar-toggle-bg-rgb, 0.8);
   transition: 1s background-color;
+  transition: transform 250ms ease;
   width: 300px;
   transform: translateX(0px);
   padding: 15px;
@@ -415,6 +416,7 @@ body.close .sidebar-toggle {
   background-color: transparent;
   width: auto;
   transform: translateX(240px);
+  transition: transform 250ms ease;
   padding: 15px;
 }
 
@@ -431,11 +433,10 @@ body.close .sidebar-toggle {
 .content {
   padding-top: 60px;
   padding-bottom: 60px;
-  width:calc(100% - 300px);
+  width: calc(100% - 300px);
   position: relative;
   left: 300px;
-  transition: all 250ms ease;
-  /* here */
+  transition: left 250ms ease, width 250ms ease;
   display: flex;
   justify-content: center;
 }
@@ -510,31 +511,31 @@ body.close .sidebar-toggle {
 }
 
 .markdown-section p.tip {
-  /* color check */
-  background-color: var(--color-bg-light);
-  border-bottom-right-radius: 2px;
-  border-left: 4px solid #f66;
-  border-top-right-radius: 2px;
-  margin: 2em 0;
-  padding: 12px 24px 12px 30px;
+  color: var(--color-text-light);
+  background-color: var(--color-bg-code);
+  /* border-bottom-right-radius: 2px; */
+  /* border-top-right-radius: 2px; */
+  border-radius: var(--border-radius);
+  margin: -1rem 0;
+  padding: 0.75rem 1.5rem 0.75rem 1.875rem;
   position: relative;
 }
 
 .markdown-section p.tip:before {
   /* not used - we use an image instead. */
-  background-color: #f66;
+  background-color: var(--color-tertiary);
   border-radius: 100%;
   color: #fff;
   content: '!';
-  font-size: 14px;
+  font-size: 0.8rem;
   font-weight: var(--font-weight-bold);
-  left: -12px;
-  line-height: 20px;
+  left: -0.5rem;
+  line-height: 1rem;
   position: absolute;
-  height: 20px;
-  width: 20px;
+  height: 1rem;
+  width: 1rem;
   text-align: center;
-  top: 14px;
+  top: 0.9rem;
 }
 
 .markdown-section p.tip code {
@@ -547,20 +548,23 @@ body.close .sidebar-toggle {
 
 .markdown-section p.warn {
   /* check this color, if we use */
-  background: rgba(66, 185, 131, 0.1);
-  border: 2px solid #42b983;
-  border-radius: 10px;
-  padding: 1rem 1rem 1rem 3.5rem; /* Added left padding to make space for the icon */
+  background: rgba(var(--color-warn-rgb), 0.03);
+  border: 1px solid rgba(var(--color-warn-rgb), 0.5);
+  border-radius: var(--border-radius);
+  padding: 1rem 1rem 1rem 3.5rem;
+  /* Added left padding to make space for the icon */
   position: relative;
 }
 
 .markdown-section p.warn::before {
   content: "💡";
   position: absolute;
-  left: 1rem; /* Position the icon inside the padding area */
+  left: 1rem;
+  /* Position the icon inside the padding area */
   top: 50%;
   transform: translateY(-50%);
-  font-size: 1.8rem; /* Adjust the size of the icon as needed */
+  font-size: 1.8rem;
+  /* Adjust the size of the icon as needed */
 }
 
 
@@ -1080,7 +1084,6 @@ code .token {
   body.close .sidebar-toggle {
     transform: translateX(240px);
   }
-  
 
   /* the icon on the left bottom */
   .sidebar-toggle {
@@ -1089,7 +1092,7 @@ code .token {
 
   .sidebar {
     left: -300px;
-    transition: transform 250ms ease-out;
+    transition: transform 250ms ease;
   }
 
   .content {
@@ -1098,25 +1101,27 @@ code .token {
     max-width: 100vw;
     position: static;
     padding-top: 60px;
-    transition: transform 250ms ease;
   }
 
   .markdown-section {
     max-width: 80%;
   }
 
-  footer {
+  /* Good suggestion! But's let's try without it for a while. (M) */
+  /* footer {
     flex-direction: column;
-  }
+  } */
 
+  /*
   .footer-logo {
-    display:none; /* hide
-    margin:auto;
+    display: none;
+    margin: auto;
     width: 30%;
-  }
+  } */
 
 }
 
+/* this can be removed..? */
 /* ===== KEY FRAMES ===== */
 @keyframes octocat-wave {
 

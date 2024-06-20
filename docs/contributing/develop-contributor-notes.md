@@ -2,7 +2,7 @@
 
 <center>
   <img class="header-img" src="assets/header-contributor-notes.png" alt="Develop Contributor Notes Header Image" >
-  <p class="img-credit"> Image Credit: <a href="">Name</a> | <a href="">Contribute ♥️</a> </p>
+  <p class="img-credit"> Image Credit: <a href="https://thenounproject.com/creator/fajarstudio/" target="_blank" title="Fajar Studio">Fajar Studio</a> | <a href='mailto:info@ml5js.org'>Contribute ♥️</a> </p>
 </center>
 
 _By ml5-library Dev Team_ [(source)](https://github.com/ml5js/ml5-library/blob/main/CONTRIBUTING.md)
@@ -19,7 +19,7 @@ ml5.js is comprised a number of sister repositories which you can find at the [m
 
 - **The 2 main repositories you'll likely be working with**:
   - [ml5-library](https://github.com/ml5js/ml5-library)
-    - this is the main ml5js library. When building the library, all of the files in the `/src` directory get bundled into the `ml5.js` library. Releases to the ml5 library get sent to `npm` and are hosted at https://unpkg.com/ (e.g. `https://unpkg.com/ml5@0.2.1/dist/ml5.min.js`). When adding new features or updates to the ml5 library, you should also add an example in the `examples/` subdirectory of this repo to showcase how your new feature works. Usually examples are submitted in a simple p5.js sketch, but they can also be in vanilla javascript.
+    - this is the main ml5js library. When building the library, all of the files in the `/src` directory get bundled into the `ml5.js` library. Releases to the ml5 library get sent to `npm` and are hosted at https://unpkg.com/ (e.g. `https://unpkg.com/ml5@alpha/dist/ml5.min.js`). When adding new features or updates to the ml5 library, you should also add an example in the `examples/` subdirectory of this repo to showcase how your new feature works. Usually examples are submitted in a simple p5.js sketch, but they can also be in vanilla javascript.
   - [ml5-website](https://github.com/ml5js/ml5-website)
     - the ml5-website is what you see here: https://ml5js.org/. As we make changes to the ml5 API and examples, the website also needs to be updated. For now, we're working with a manual process to updating changes, but we're working on development processes to help sync all these efforts. For now, make sure to update the ml5-website when making changes to ml5-library and vice-versa.
 - **Data and models**:

@@ -2,7 +2,7 @@
 
 <center>
   <img class="header-img" src="assets/header-body-segmentation.png" alt="BodySegmentation Header Image" >
-  <p class="img-credit"> Image Credit: <a href="">Name</a> | <a href="">Contribute ♥️</a> </p>
+  <p class="img-credit"> Image Credit: <a href="https://thenounproject.com/creator/ibrandify/" target="_blank" title="ibrandify">ibrandify</a> | <a href='mailto:info@ml5js.org'>Contribute ♥️</a> </p>
 </center>
 
 ## Description
@@ -59,7 +59,7 @@ function setup() {
   createCanvas(640, 480);
   // Create the video
   video = createCapture(VIDEO);
-  video.size(width, height);
+  video.size(640, 480);
   video.hide();
 
   bodyPix.detectStart(video, gotResults);
@@ -169,5 +169,3 @@ bodySegmentation.detect(media, ?callback);
 
 **Returns:**  
 A promise that resolves to the segmentation output.
-
-(footer needed)
