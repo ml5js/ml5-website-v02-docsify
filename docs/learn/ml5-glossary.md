@@ -141,7 +141,7 @@ for (let i = 0; i < poses.length; i++) {
     let y = point.y;
 
     // get the confidence score of each keypoint
-    let score = point.score;
+    let confidence = point.confidence;
 
     // get the name of each keypoint
     let partName = point.name;
@@ -152,12 +152,18 @@ for (let i = 0; i < poses.length; i++) {
 
     // mark the corresponding part name and confidence score at each keypoint
     text(partName, x + 15, y + 5);
-    text(score.toFixed(2), x + 15, y + 20);
+    text(confidence.toFixed(2), x + 15, y + 20);
   }
 }
 ```
 
-We can use the confidence score to filter out keypoints that are not confident enough. For example, we can set a threshold of 0.5, and only draw keypoints that have a confidence score higher than 0.5:
+---
+
+## Confidence Score Threshold
+
+Score threshold is often used to control the minimum confidence score required for a machine learning model to make a prediction. In ml5.js, confidence score threshold is often used to control the minimum confidence score required for a machine learning model to make a prediction.
+
+Adding to the previous code example, we can set a threshold of 0.5, and only draw keypoints that have a confidence score higher than 0.5:
 
 ```js
 for (let i = 0; i < poses.length; i++) {
@@ -165,14 +171,14 @@ for (let i = 0; i < poses.length; i++) {
     // ...
 
     // only draw an ellipse at each keypoint if the confidence score is higher than 0.5
-    if (score > 0.5) {
+    if (confidence > 0.5) {
       // draw an ellipse at the keypoint
       fill(0, 255, 0);
       ellipse(x, y, 5, 5);
 
       // mark the corresponding part name and confidence score at the keypoint
       text(partName, x + 15, y + 5);
-      text(score.toFixed(2), x + 15, y + 20);
+      text(confidence.toFixed(2), x + 15, y + 20);
     }
   }
 }
@@ -705,11 +711,6 @@ Score is a measure of how well a machine learning model performs on a given inpu
 
 ---
 
-## Score Threshold
-
-Score threshold is often used to control the minimum score required for a machine learning model to make a prediction. In ml5.js, score threshold is often used to control the minimum score required for a machine learning model to make a prediction.
-
----
 
 ## Sigmoid Function
 
@@ -933,23 +934,18 @@ A similar example is given by the [Getting Started](/?id=your-first-sketch) of m
 
 ```js
 // A function to run when we get any errors and the results
-function gotResult(error, results) {
-  // Display error in the console
-  if (error) {
-    console.error(error);
-  } else {
-    // The results are in an array ordered by confidence, print in console
-    console.log(results);
+function gotResult(results) {
+  // The results are in an array ordered by confidence, print in console
+  console.log(results);
 
-    // Display the results on the canvas
-    fill(255);
-    stroke(0);
-    textSize(18);
-    label = "Label: " + results[0].label;
-    confidence = "Confidence: " + nf(results[0].confidence, 0, 2);
-    text(label, 10, 360);
-    text(confidence, 10, 380);
-  }
+  // Display the results on the canvas
+  fill(255);
+  stroke(0);
+  textSize(18);
+  label = "Label: " + results[0].label;
+  confidence = "Confidence: " + nf(results[0].confidence, 0, 2);
+  text(label, 10, 360);
+  text(confidence, 10, 380);
 }
 ```
 
@@ -993,7 +989,7 @@ for (let i = 0; i < poses.length; i++) {
     let y = point.y;
 
     // get the confidence score of each keypoint
-    let score = point.score;
+    let confidence = point.confidence;
 
     // get the name of each keypoint
     let partName = point.name;
@@ -1004,38 +1000,33 @@ for (let i = 0; i < poses.length; i++) {
 
     // mark the corresponding part name and confidence score at each keypoint
     text(partName, x + 15, y + 5);
-    text(score.toFixed(2), x + 15, y + 20);
+    text(confidence.toFixed(2), x + 15, y + 20);
   }
 }
 ```
 
-We can use the confidence score to filter out keypoints that are not confident enough. For example, we can set a threshold of 0.5, and only draw keypoints that have a confidence score higher than 0.5:
+---
+
+## Confidence Score Threshold
+
+Score threshold is often used to control the minimum confidence score required for a machine learning model to make a prediction. In ml5.js, confidence score threshold is often used to control the minimum confidence score required for a machine learning model to make a prediction.
+
+Adding to the previous code example, we can set a threshold of 0.5, and only draw keypoints that have a confidence score higher than 0.5:
 
 ```js
 for (let i = 0; i < poses.length; i++) {
   for (let k = 0; k < poses[i].pose.keypoints.length; k++) {
-    // get each keypoint
-    let point = poses[i].pose.keypoints[k];
-
-    // get the position of each keypoint
-    let x = point.x;
-    let y = point.y;
-
-    // get the confidence score of each keypoint
-    let score = point.score;
-
-    // get the name of each keypoint
-    let partName = point.name;
+    // ...
 
     // only draw an ellipse at each keypoint if the confidence score is higher than 0.5
-    if (score > 0.5) {
+    if (confidence > 0.5) {
       // draw an ellipse at the keypoint
       fill(0, 255, 0);
       ellipse(x, y, 5, 5);
 
       // mark the corresponding part name and confidence score at the keypoint
       text(partName, x + 15, y + 5);
-      text(score.toFixed(2), x + 15, y + 20);
+      text(confidence.toFixed(2), x + 15, y + 20);
     }
   }
 }
@@ -1331,12 +1322,6 @@ Two most common types of regression models are:
 ## Score
 
 Score is a measure of how well a machine learning model performs on a given input. For example, a machine learning model that is 100% accurate has a score of 1. A machine learning model that is 0% accurate has a score of 0. In ml5.js, score is often used to evaluate the performance of a machine learning model.
-
----
-
-## Score Threshold
-
-Score threshold is often used to control the minimum score required for a machine learning model to make a prediction. In ml5.js, score threshold is often used to control the minimum score required for a machine learning model to make a prediction.
 
 ---
 
