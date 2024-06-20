@@ -7,11 +7,11 @@
 
 ## Description
 
-HandPose is a machine-learning model that allows for palm detection and hand-skeleton finger tracking in the browser. It can detect multiple hands at a time and for each hand, provides 21 2D and 3D hand keypoints that describe important locations on the palm and fingers.
+HandPose is a machine-learning model that allows for palm detection and hand-skeleton finger tracking in the browser. It can detect multiple hands at a time and for each hand, and provides 21 2D and 3D hand keypoints that describe important locations on the palm and fingers.
 
-The ml5.js HandPose model is ported from the [TensorFlow.js HandPose implementation](https://github.com/google/mediapipe/blob/master/docs/solutions/hands.md).
+The ml5.js HandPose model is based on the [HandPose implementation](https://github.com/google/mediapipe/blob/master/docs/solutions/hands.md) by TensorFlow.js.
 
-It provides the following functionalities:
+The following functionality is provided:
 
 - **Hand Keypoint Detection**: HandPose can detect the 2D and 3D coordinates of 21 keypoints on a hand.
 - **Handedness**: HandPose can determine the handedness (left or right) of the detected hand.
@@ -103,7 +103,7 @@ To start detecting the keypoints of the hands, in the `setup` function, we need 
 
 ```javascript
 function setup() {
-  ...
+  // ...
   video.hide();
 
   // Start detecting hands from the webcam video
@@ -156,7 +156,7 @@ Finally, draw a green circle at the location of the `j`th keypoint.
 }
 ```
 
-Note we are iterating through all the keypoints (j is ranging from 0 to the length of the keypoints array) of the detected hand (i is ranging from 0 to the length of the hands array). This will result in green landmarks on all detected hand(s) in the webcam video.
+Note we are iterating through all the keypoints (`j` is ranging from 0 to the length of the keypoints array) of the detected hand (`i` is ranging from 0 to the length of the hands array). This will result in green landmarks on all detected hand(s) in the webcam video.
 
 ### Run your sketch
 
@@ -176,8 +176,7 @@ const handpose = ml5.handpose(?options, ?callback);
 
 **Parameters:**
 
-- **options**: OPTIONAL
-  - An object to change the default configuration of the model. The default and available options are:
+- **options**: Optional. An object to change the default configuration of the model. The default and available options are:
 
   ```javascript
   {
@@ -217,8 +216,7 @@ const handpose = ml5.handpose(?options, ?callback);
   
   More info on options [here](https://github.com/tensorflow/tfjs-models/tree/master/hand-pose-detection/src/tfjs#create-a-detector) for "tfjs" runtime.
 
-- **callback(handpose, error)**: OPTIONAL
-  - A function to run once the model has been loaded. Alternatively, call `ml5.handpose()` within the p5 `preload` function.
+- **callback(handpose, error)**: Optional. A function to run once the model has been loaded. Alternatively, call `ml5.handpose()` within the p5 `preload` function.
 
 **Returns:**  
 The handpose object.
@@ -239,7 +237,7 @@ handpose.detectStart(media, callback);
   ```javascript
   [
     {
-      score,
+      confidence,
       handedness,
       keypoints: [{ x, y, score, name }, ...],
       keypoints3D: [{ x, y, z, score, name }, ...],
@@ -296,8 +294,8 @@ handpose.detect(media, ?callback);
 **Parameters:**
 
 - **media**: An HTML or p5.js image, video, or canvas element to run the estimation on.
-- **callback(output, error)**: OPTIONAL
-  - A callback function to handle the output of the estimation, see output example above.
+
+- **callback(output, error)**: Optional. A callback function to handle the output of the estimation, see output example above.
 
 **Returns:**  
 A promise that resolves to the estimation output.

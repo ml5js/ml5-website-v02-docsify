@@ -7,7 +7,7 @@
 
 ## Description
 
-ml5.js bodyPose is a pretrained full-body pose estimation model that can estimate poses and track key body parts in real-time. It is developed leveraging TensorFlow's [MoveNet](https://www.tensorflow.org/hub/tutorials/movenet#:~:text=MoveNet%20is%20an%20ultra%20fast,known%20as%20Lightning%20and%20Thunder) and [Blazepose](https://ai.google.dev/edge/mediapipe/solutions/vision/pose_landmarker) models.
+ml5.js bodyPose is a pretrained full-body pose estimation model that can estimate poses and track key body parts in real-time. It is developed leveraging TensorFlow's [MoveNet](https://www.tensorflow.org/hub/tutorials/movenet#:~:text=MoveNet%20is%20an%20ultra%20fast,known%20as%20Lightning%20and%20Thunder) and [BlazePose](https://ai.google.dev/edge/mediapipe/solutions/vision/pose_landmarker) models.
 
 It offers flexibility for:
 
@@ -59,7 +59,7 @@ function preload() {
 }
 ```
 
-?> You can also pass a model name, an options object, and a customized callback function to the `ml5.bodyPose()` function (e.g., `ml5.bodyPose('BlazePose', options, modelLoaded)`) to change the default configuration of the model. For more information on the available configuration settings, refer to the [Methods](/reference/bodypose?id=ml5bodypose) section on this page.
+?> You can also pass a model name, an options object, and a customized callback function to the `ml5.bodyPose()` function (e.g., `ml5.bodyPose("BlazePose", options, modelLoaded)`) to change the default configuration of the model. For more information on the available configuration settings, refer to the [Methods](/reference/bodypose?id=ml5bodypose) section on this page.
 
 ### Fetch webcam video
 
@@ -98,7 +98,7 @@ To start detecting poses in the webcam video, call the `bodyPose.detectStart()` 
 
 ```javascript
 function setup() {
-  ...
+  // ...
   video.hide();
 
   // Start detecting poses in the webcam video
@@ -128,7 +128,7 @@ Use `bodyPose.getSkeleton()` in the `setup()` function to get the connections be
 
 ```javascript
 function setup() {
-  ...
+  // ...
   bodyPose.detectStart(video, gotPoses);
   // Get the skeleton connection information
   connections = bodyPose.getSkeleton();
@@ -143,7 +143,7 @@ function draw() {
   image(video, 0, 0, width, height);
 ```
 
-Next, we can start drawing the skeleton connections. We iterate through the `poses` array, where each object `pose` is a pose of a person, containing an array of `keypoints`. Each `keypoint` object has the properties `x`, `y`, and `score`. The `score` is the confidence score of the keypoint prediction.
+Next, we can start drawing the skeleton connections. We iterate through the `poses` array, where each object `pose` is a pose of a person, containing an array of `keypoints`. Each `keypoint` object has the properties `x`, `y`, and `confidence`. The `confidence` is the confidence score of the keypoint prediction (a number between zero and one).
 
 ```javascript
   // Draw the skeleton connections
@@ -151,7 +151,7 @@ Next, we can start drawing the skeleton connections. We iterate through the `pos
     let pose = poses[i];
 ```
 
-Within each pose, we only want to draw the skeleton connections that the model has a high confidence in predicting. To do this, we need to check for each link in the `connections` array and whether the `keypoints` that constitute the link have a confidence `score` greater than 0.1. If they do, we draw a line connecting the keypoints.
+Within each pose, we only want to draw the skeleton connections that the model has a high confidence in predicting. To do this, we need to check for each link in the `connections` array and whether the `keypoints` that constitute the link have a `confidence` score greater than 0.1. If they do, we draw a line connecting the keypoints.
 
 We iterate through the connections array, with each item being a link of `pointA` and `pointB`. For instance, `connections[1]` is `[0, 2]`, where 0 is the index of `pointA` and 2 is the index of `pointB`. Thus, `let pointAIndex = connections[j][0];` means we get the starting point (pointA) of the link `j`, and `let pointBIndex = connections[j][1];` means we get the ending point (pointB) of the link `j`.
 
@@ -168,8 +168,8 @@ Use the indices to retrieve the `pointA` and `pointB` objects from the `pose.key
 Now, we can draw the line connecting the keypoints if both points have a confidence score greater than 0.1.
 
 ```javascript
-      // Only draw a line if both points are confident enough
-      if (pointA.score > 0.1 && pointB.score > 0.1) {
+      // Only draw a line if we have confidence in both points
+      if (pointA.confidence > 0.1 && pointB.confidence > 0.1) {
         stroke(255, 0, 0);
         strokeWeight(2);
         line(pointA.x, pointA.y, pointB.x, pointB.y);
@@ -185,7 +185,7 @@ We can also represent each of the keypoints on the canvas. To do this, we will i
 We can get each person's pose from the `poses` array. Each `pose` object contains an array of `keypoints`.
 
 ```javascript
-  // Iterate all the poses
+  // Iterate through all the poses
   for (let i = 0; i < poses.length; i++) {
     let pose = poses[i];
 ```
@@ -193,16 +193,16 @@ We can get each person's pose from the `poses` array. Each `pose` object contain
 Next, we iterate through all of the keypoints in `keypoints`.
 
 ```javascript
-    // Iterate all the keypoints for each pose
+    // Iterate through all the keypoints for each pose
     for (let j = 0; j < pose.keypoints.length; j++) {
       let keypoint = pose.keypoints[j];
 ```
 
-For each keypoint, we only want to draw a circle if the keypoint's confidence is greater than 0.1. We can use the `score` property of the keypoint object to check the confidence score.
+For each keypoint, we only want to draw a circle if the keypoint's confidence is greater than 0.1. We can use the `confidence` property of the keypoint object to check the confidence score.
 
 ```javascript
       // Only draw a circle if the keypoint's confidence is greater than 0.1
-      if (keypoint.score > 0.1) {
+      if (keypoint.confidence > 0.1) {
         fill(0, 255, 0);
         noStroke();
         circle(keypoint.x, keypoint.y, 10);
@@ -227,13 +227,16 @@ This method is used to load the bodyPose model and store it in a variable. The `
 <!-- TODO: Add default model name, and explain the options, callback. -->
 
 ```javascript
-let bodypose = ml5.bodypose(?options, ?callback);
+let bodypose = ml5.bodypose(?model, ?options, ?callback);
 ```
 
 **Parameters:**
 
-- **options**: OPTIONAL
-  - Object: An object to change the default configuration of the model. The default and available options are:
+- **model**: Optional. Which model to use: the possible options are `MoveNet` (default) and `BlazePose`.
+
+- **options**: Optional. An object to change the default configuration of the model. The available options differ depending on which of the two underlying models are used.
+
+  The default and available options are:
 
   ```javascript
   {
@@ -254,21 +257,6 @@ let bodypose = ml5.bodypose(?options, ?callback);
   - _enableSmoothing_ - Optional
     - Boolean: Whether to smooth the pose landmarks across different input images to reduce jitter. Default: true.
 
-  Options for the MoveNet model only:
-  
-  - _minPoseScore_ - Optional
-    - Number: The minimum confidence score for a pose to be detected. Default: 0.25.
-  - _multiPoseMaxDimension_ - Optional
-    - Number: The target maximum dimension to use as the input to the multi-pose model. Must be a mutiple of 32. Default: 256.
-  - _enableTracking_ - Optional
-    - Boolean: Track each person across the frame with a unique ID. Default: true.
-  - _trackerType_ - Optional
-    - String: Specify what type of tracker to use. Default: "boundingBox".
-  - _trackerConfig_ - Optional
-    - Object: Specify tracker configurations. Use tf.js settings by default.
-
-  See the [MoveNet documentation](https://github.com/tensorflow/tfjs-models/tree/master/pose-detection/src/movenet#create-a-detector) for more information on options.
-
   Options for the BlazePose model only:
   - _runtime_ - Optional
     - String: Either "tfjs" or "mediapipe". Default: "mediapipe"
@@ -286,6 +274,8 @@ let bodypose = ml5.bodypose(?options, ?callback);
     - String: The file path or URL to the tfjs BlazePose detector model.
   - _landmarkModelUrl_ - Optional
     - String: The file path or URL to the tfjs BlazePose landmark model.
+
+  See See the [MoveNet documentation](https://github.com/tensorflow/tfjs-models/tree/master/pose-detection/src/movenet#create-a-detector) and the [BlazePose documentation](https://github.com/tensorflow/tfjs-models/tree/master/pose-detection/src/blazepose_tfjs#create-a-detector) for more information on available options.
 
 - **callback(bodypose, error)**: OPTIONAL. A "callback" function that runs when the model has been successfully loaded. Most ml5.js example call `ml5.bodyPose()` in the p5.js `preload()` function and no callback is needed.
 
@@ -315,7 +305,7 @@ bodypose.detectStart(media, callback);
       left_ear: { x, y, confidence },
       left_elbow: { x, y, confidence },
       ...
-      score: 0.28,
+      confidence: 0.28,
     },
     ...
   ];
@@ -352,7 +342,7 @@ bodypose.detectStart(media, callback);
       left_ear: { x, y, z, confidence },
       left_elbow: { x, y, z, confidence },
       ...
-      score: 0.28,
+      confidence: 0.28,
     },
     ...
   ];
@@ -399,8 +389,8 @@ bodypose.detect(media, ?callback);
 **Parameters:**
 
 - **media**: An HTML or p5.js image, video, or canvas element to run the estimation on.
-- **callback(output, error)**: OPTIONAL
-  - A callback function to handle the results of the pose estimation. See the results above for an example of the model's output.
+
+- **callback(output, error)**: Optional. A callback function to handle the results of the pose estimation. See the results above for an example of the model's output.
 
 **Returns:**  
 A promise that resolves to the estimation output.
