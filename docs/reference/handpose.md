@@ -45,7 +45,7 @@ To follow along, start by creating an empty project in the [p5.js web editor](ht
 Import the ml5.js library in your `index.html` file.
 
 ```html
-<script src="https://unpkg.com/ml5@alpha/dist/ml5.js"></script>
+<script src="https://unpkg.com/ml5@1/dist/ml5.js"></script>
 ```
 
 ?> If you are not familiar with how to import the ml5.js library and need more detailed guidance, please check out our [Getting Started](/?id=set-up-ml5js) page.
