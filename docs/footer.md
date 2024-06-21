@@ -1,6 +1,6 @@
 <footer>
   <div class='footer-logo'>
-    <button class="button"><a href="https://ml5-next-gen.netlify.app/">ml5.js</a></button>
+    <button class="button"><a href="https://ml5js.org/">ml5.js</a></button>
    </div>
   <div class='footer-content'>
     <p>
