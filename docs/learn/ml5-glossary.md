@@ -12,6 +12,29 @@ This glossary is designed to be editable by any ml5 user. If you have a term you
 
 <img class="inline-img" src="assets/glossary-point-right.png" alt="tip icon" aria-hidden="true"> Click on the tabs on the right to see the glossary by letter.
 
+#### **B**
+
+---
+
+## Batch Size
+Batch size is a term used in machine learning to describe the number of samples that are used to update the weights of a machine learning model in one iteration. For example, if you have a dataset of 100 samples and you set the batch size to 10, the model will update the weights after processing 10 samples. The model will repeat this process until all the samples in the dataset are processed.
+
+In ml5.js, you can set the batch size when you train a neural network with the `train()` method. For example, the following code sets the batch size to 12:
+
+```js
+function trainModel() {
+  const trainingOptions = {
+    epochs: 32,
+    batchSize: 12,
+  };
+  nn.train(trainingOptions, finishedTraining);
+}
+
+function finishedTraining() {
+  console.log("Model trained!");
+}
+```
+
 #### **C**
 
 ---
@@ -409,6 +432,31 @@ or
 ```js
 # install dependencies
 yarn
+```
+
+#### **E**
+
+---
+
+## Epochs
+Epochs is a term used in machine learning to describe the number of times that a machine learning model is trained on the entire training dataset. For example, if you have a dataset of 100 samples and you set the epochs to 10, the model will train on the entire dataset 10 times. The model will update the weights of the model after processing all the samples in the dataset.
+
+With a sample size of 96 and a batch size of 12, each epoch will consist of 8 iterations (since 96 / 12 = 8). To run 32 epochs, you will perform 32 * 8 = 256 updates to the weights.
+
+In ml5.js, you can set the epochs when you train a neural network with the `train()` method. For example, the following code sets the epochs to 32:
+
+```js
+function trainModel() {
+  const trainingOptions = {
+    epochs: 32,
+    batchSize: 12,
+  };
+  nn.train(trainingOptions, finishedTraining);
+}
+
+function finishedTraining() {
+  console.log("Model trained!");
+}
 ```
 
 #### **F**
@@ -1603,6 +1651,28 @@ In machine learning, a neuron mimics a biological neuron in brains and other par
 
 1. Calculates the weighted sum of input values multiplied by their corresponding weights.
 2. Passes the weighted sum as an input to an activation function.
+
+---
+
+## Batch Size
+
+Batch size is a term used in machine learning to describe the number of samples that are used to update the weights of a machine learning model in one iteration. For example, if you have a dataset of 100 samples and you set the batch size to 10, the model will update the weights after processing 10 samples. The model will repeat this process until all the samples in the dataset are processed.
+
+In ml5.js, you can set the batch size when you train a neural network with the `train()` method. For example, the following code sets the batch size to 12:
+
+```js
+function trainModel() {
+  const trainingOptions = {
+    epochs: 32,
+    batchSize: 12,
+  };
+  nn.train(trainingOptions, finishedTraining);
+}
+
+function finishedTraining() {
+  console.log("Model trained!");
+}
+```
 
 ---
 
