@@ -184,7 +184,7 @@ const classifier = ml5.imageClassifier(modelNameOrUrl, ?options, ?callback);
     - _alpha_: The width multiplier for the MobileNet. Default is 1.0.
     - _topk_: The number of labels to return. Default is 3.
 
-- **callback(classifier, error)**: Optional. A function to run once the model has been loaded. Alternatively, call `ml5.imageClassifier()` within the p5 `preload` function.
+- **callback(classifier)**: Optional. A function to run once the model has been loaded. Alternatively, call `ml5.imageClassifier()` within the p5 `preload` function.
 
 **Returns:**  
 The imageClassifier object.
@@ -203,7 +203,7 @@ imageClassifier.classifyStart(media, ?kNumber, callback);
 
 - **kNumber**: The number of labels returned by the image classification.
 
-- **callback(output, error)**: A callback function to handle the output of the classification. See below for an example output passed into the callback function:
+- **callback(results)**: A callback function to handle the output of the classification. See below for an example output passed into the callback function:
 
   ```javascript
   [
@@ -241,7 +241,7 @@ imageClassifier.classify(media, ?kNumber, ?callback);
 
 - **kNumber**: The number of labels returned by the image classification.
 
-- **callback(output, error)**: Optional. A callback function to handle the output of the classification.
+- **callback(results)**: Optional. A callback function to handle the output of the classification.
 
 **Returns:**  
 A promise that resolves to the estimation output.

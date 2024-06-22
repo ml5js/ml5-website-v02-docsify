@@ -277,7 +277,7 @@ let bodypose = ml5.bodypose(?model, ?options, ?callback);
 
   See See the [MoveNet documentation](https://github.com/tensorflow/tfjs-models/tree/master/pose-detection/src/movenet#create-a-detector) and the [BlazePose documentation](https://github.com/tensorflow/tfjs-models/tree/master/pose-detection/src/blazepose_tfjs#create-a-detector) for more information on available options.
 
-- **callback(bodypose, error)**: Optional. A "callback" function that runs when the model has been successfully loaded. Most ml5.js example call `ml5.bodyPose()` in the p5.js `preload()` function and no callback is needed.
+- **callback(bodypose)**: Optional. A "callback" function that runs when the model has been successfully loaded. Most ml5.js example call `ml5.bodyPose()` in the p5.js `preload()` function and no callback is needed.
 
 **Returns:**  
 The bodyPose object.
@@ -293,7 +293,7 @@ bodypose.detectStart(media, callback);
 **Parameters:**
 
 - **media**: An HTML or p5.js image, video, or canvas element to run the estimation on.
-- **callback(results, error)**: A callback function to handle the results of the pose estimation. See below for an example of the model's results:
+- **callback(results)**: A callback function to handle the results of the pose estimation. See below for an example of the model's results:
 
   ```javascript
   [
@@ -390,7 +390,7 @@ bodypose.detect(media, ?callback);
 
 - **media**: An HTML or p5.js image, video, or canvas element to run the estimation on.
 
-- **callback(output, error)**: Optional. A callback function to handle the results of the pose estimation. See the results above for an example of the model's output.
+- **callback(results)**: Optional. A callback function to handle the results of the pose estimation. See the results above for an example of the model's output.
 
 **Returns:**  
 A promise that resolves to the estimation output.

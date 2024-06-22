@@ -229,7 +229,7 @@ const faceMesh = ml5.faceMesh(?options, ?callback);
 
   More info on options [here](https://github.com/tensorflow/tfjs-models/tree/master/face-landmarks-detection/src/mediapipe#create-a-detector).
 
-- **callback(faceMesh, error)**: Optional. A function to run once the model has been loaded. Alternatively, call `ml5.faceMesh()` within the p5 `preload` function.
+- **callback(faceMesh)**: Optional. A function to run once the model has been loaded. Alternatively, call `ml5.faceMesh()` within the p5 `preload` function.
 
 **Returns:**  
 The faceMesh object.
@@ -245,7 +245,7 @@ faceMesh.detectStart(media, callback);
 **Parameters:**
 
 - **media**: An HTML or p5.js image, video, or canvas element to run the estimation on.
-- **callback(output, error)**: A callback function to handle the output of the estimation. See below for an example output passed into the callback function:
+- **callback(results)**: A callback function to handle the output of the estimation. See below for an example output passed into the callback function:
 
   ```javascript
   [
@@ -281,7 +281,7 @@ faceMesh.detect(media, ?callback);
 **Parameters:**
 
 - **media**: An HTML or p5.js image, video, or canvas element to run the estimation on.
-- **callback(output, error)**: Optional. A callback function to handle the output of the estimation, see output example above.
+- **callback(results)**: Optional. A callback function to handle the output of the estimation, see output example above.
 
 **Returns:**  
 A promise that resolves to the estimation output.

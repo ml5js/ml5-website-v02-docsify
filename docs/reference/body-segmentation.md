@@ -92,7 +92,7 @@ Alternatively, you can open [this example code](https://github.com/ml5js/ml5-nex
 
 ## Methods
 
-#### ml5.bodySegmentation()
+### ml5.bodySegmentation()
 
 This method is used to initialize the bodySegmentation object.
 
@@ -102,9 +102,13 @@ const bodySegmentation = ml5.bodySegmentation(?modelName, ?options, ?callback);
 
 **Parameters:**
 
-- **modelName**: OPTIONAL: A string specifying which model to use, "SelfieSegmentation" or "BodyPix".
+- **modelName**: Optional. A string specifying which model to use. Types of model:
+  - _BodyPix_ (default): A general-purpose model that can be used to segment people and body parts.
+  - _SelfieSegmentation_: A model that can be used to segment people from the background.
 
-- **options**: OPTIONAL. An object to change the default configuration of the model. See the example options object:
+  
+
+- **options**: Optional. An object to change the default configuration of the model. See the example options object:
 
   ```javascript
   {
@@ -114,18 +118,24 @@ const bodySegmentation = ml5.bodySegmentation(?modelName, ?options, ?callback);
   }
   ```
 
-  [More info on options for SelfieSegmentation model with mediaPipe runtime](https://github.com/tensorflow/tfjs-models/tree/master/body-segmentation/src/selfie_segmentation_mediapipe#create-a-detector).
+  Important Option:
+  - **maskType**: The type of mask to output. The options are:
+    - _background_: A mask of the background. The result is an image with transparent pixels on the background and black pixels on the person.
+    - _body_: A mask of the person. The result is an image with black pixels on the background and transparent pixels on the person.
+    - _parts_: **BodyPix** only. A mask of the body parts. The result is an image with white pixels on the background and various color pixels for each body part.
 
-  [More info on options for SelfieSegmentation model with tfjs runtime](https://github.com/tensorflow/tfjs-models/tree/master/body-segmentation/src/selfie_segmentation_tfjs#create-a-detector).
+    [More info on options for SelfieSegmentation model with mediaPipe runtime](https://github.com/tensorflow/tfjs-models/tree/master/body-segmentation/src/selfie_segmentation_mediapipe#create-a-detector).
 
-  [More infor on options for BodyPix model.](https://github.com/tensorflow/tfjs-models/blob/master/body-segmentation/src/body_pix/README.md#create-a-detector)
+    [More info on options for SelfieSegmentation model with tfjs runtime](https://github.com/tensorflow/tfjs-models/tree/master/body-segmentation/src/selfie_segmentation_tfjs#create-a-detector).
 
-- **callback(bodySegmentation, error)**: OPTIONAL. A function to run once the model has been loaded. Alternatively, call `ml5.bodySegmentation()` within the p5 `preload` function.
+    [More infor on options for BodyPix model.](https://github.com/tensorflow/tfjs-models/blob/master/body-segmentation/src/body_pix/README.md#create-a-detector)
+
+- **callback(bodySegmentation)**: OPTIONAL. A function to run once the model has been loaded. Alternatively, call `ml5.bodySegmentation()` within the p5 `preload` function.
 
 **Returns:**  
 The bodySegmentation object.
 
-#### bodySegmentation.detectStart()
+### bodySegmentation.detectStart()
 
 This method repeatedly outputs segmentation masks on an image media through a callback function.
 
@@ -137,7 +147,7 @@ bodySegmentation.detectStart(media, callback);
 
 - **media**: An HTML or p5.js image, video, or canvas element to run the segmentation on.
 
-- **callback(output, error)**: A function to handle the output of `bodySegmentation.detectStart()`. Likely a function to do something with the segmented image. See below for the output passed into the callback function:
+- **callback(results)**: A function to handle the output of `bodySegmentation.detectStart()`. Likely a function to do something with the segmented image. See below for the output passed into the callback function:
 
   ```javascript
   {
@@ -146,26 +156,10 @@ bodySegmentation.detectStart(media, callback);
   }
   ```
 
-#### bodySegmentation.detectStop()
+### bodySegmentation.detectStop()
 
 This method can be called after a call to `bodySegmentation.detectStart` to stop the repeating pose estimation.
 
 ```javascript
 bodySegmentation.detectStop();
 ```
-
-#### bodySegmentation.detect()
-
-This method asynchronously outputs a single segmentation mask on an image media when called.
-
-```javascript
-bodySegmentation.detect(media, ?callback);
-```
-
-**Parameters:**
-
-- **media**: An HTML or p5.js image, video, or canvas element to run the segmentation on.
-- **callback(output, error)**: OPTIONAL. A callback function to handle the output of the estimation, see output example above.
-
-**Returns:**  
-A promise that resolves to the segmentation output.
