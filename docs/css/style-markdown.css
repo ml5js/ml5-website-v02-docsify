@@ -1062,10 +1062,6 @@ code .token {
     position: fixed;
   }
 
-  .app-nav {
-    margin-top: 16px;
-  }
-
   .app-nav li ul {
     top: 30px;
   }
