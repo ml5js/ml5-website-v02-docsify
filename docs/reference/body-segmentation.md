@@ -7,13 +7,13 @@
 
 ## Description
 
-The ml5.js BodySegmentation provides two models, `SelfieSegmentation` and `BodyPix`. The `SelfieSegmentation` model focuses on segmenting the human subject from the background. The `BodyPix` model is primarily used for detailed body part segmentation (e.g., distinguishing between different limbs) in images and videos.
+The ml5.js BodySegmentation provides two models, `SelfieSegmentation` and `BodyPix`. The `SelfieSegmentation` model focuses on segmenting the human subject from the background. The `BodyPix` model is primarily used for detailed body part segmentation (e.g., distinguishing between different limbs) in images and videos. Although BodyPix can also perform person/background segmentation, it is more computationally intensive.
 
 The ml5.js BodySegmentation is built on top of the [TensorFlow.js BodyPix model and the MediaPipe Selfie Segmentation model](https://github.com/tensorflow/tfjs-models/tree/master/body-segmentation).
 
 It provides following functionalities:
-- **Real-time person segmentation**: The `SelfieSegmentation` model can segment people from the background in real-time, and is designed to be lightweight.
-- **Real-time body part segmentation**: The `BodyPix` model can segment 24 body parts in real-time, but more computationally intensive.
+- **Real-time person/background segmentation**: The `SelfieSegmentation` model can segment people from the background in real-time, and is designed to be lightweight. The `BodyPix` model can also be used for this purpose, but is more computationally intensive.
+- **Real-time body part segmentation**: The `BodyPix` model can segment 24 body parts in real-time.
 
 ## Quick Start
 
