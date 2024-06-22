@@ -9,7 +9,7 @@
 
 Mostly!
 
-Some of the ml5.js sketches don't currently work in the [p5.js web editor](). This is due to how the editor handles data files and network communication regarding making requests to external data, such as the large model files ml5.js uses.
+Some of the ml5.js sketches don't currently work in the [p5.js web editor](https://editor.p5js.org/). This is due to how the editor handles data files and network communication regarding making requests to external data, such as the large model files ml5.js uses.
 
 There are lots of developments in the p5.js web editor as well as in ml5.js to make sure these environments all play nicely together. If something doesn't work in the web editor, the best thing to do is to try and run things locally if possible.
 
@@ -23,6 +23,6 @@ For more discussion about node.js and ml5.js, visit this [issue thread](https://
 
 ## What happened to older ml5.js releases?
 
-We are constantly updating the library, but you can still access older versions at any time by changing the version number in your script. The [archived website](https://archive.ml5js.org/) and [documentation](https://archive-docs.ml5js.org/) cover materials for version `0.12.2` and earlier.
+We are constantly updating the library, but you can still access older versions at any time by changing the version number in your script. The [archived website](https://archive.ml5js.org/) and [documentation](https://archive-docs.ml5js.org/) cover materials for versions `0.12.2` and earlier.
 
 <br>
