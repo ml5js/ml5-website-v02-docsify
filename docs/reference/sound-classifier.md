@@ -202,7 +202,7 @@ Voila! You have successfully built the Sound Classification example. Press the <
 
 ## Methods
 
-#### ml5.soundClassifier()
+### ml5.soundClassifier()
 
 This method is used to initialize the soundClassifier object.
 
@@ -250,8 +250,9 @@ let soundclassifier = ml5.soundClassifier(?model, ?options, ?callback)
 
   - **callback**: Optional. A function to run once the model has been loaded. Alternatively, call `ml5.soundClassifier()` within the p5 `preload` function.
 
+--- 
 
-#### soundClassifier.classifyStart()
+### soundClassifier.classifyStart()
 This method repeatedly outputs classification labels on an audio media through a callback function.
 
 ```js
@@ -279,7 +280,9 @@ soundClassifier.classifyStart(numOrCallback, callback);
 - **Promise:** If no callback is provided, the method returns a promise that resolves when the classification process starts and provides the classification results.
 - **Callback Results:** If a callback is provided, the results are passed directly to the callback function.
 
-#### soundClassifier.classifyStop()
+---
+
+### soundClassifier.classifyStop()
 This method can be called after a call to `soundClassifier.classifyStart` to stop the repeating classifications.
 
 ```js

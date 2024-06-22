@@ -154,98 +154,6 @@ Voila! You have successfully built the ImageClassifier Single Image example. Pre
 
 ?> If you have any questions or spot something unclear in this step-by-step code guide, we'd love to hear from you! Join us on [Discord](https://discord.com/invite/3CVauZMSt7) and let us know how we can make it better.
 
-## Methods
-
-### ml5.imageClassifier()
-
-This method is used to initialize the imageClassifer object.
-
-```javascript
-const classifier = ml5.imageClassifier(modelNameOrUrl, ?options, ?callback);
-```
-
-**Parameters:**
-
-- **modelName**: Optional.
-  - String: Name of the underlying model to use. Possible values are `mobilenet`, `darknet` (28 MB in size), `darknet-tiny` (4 MB), `doodlenet`, or a URL to a compatible model file.
-
-- **options**: Optional. 
-  - Object: An object to change the default configuration of the model.
-
-    The default options for the default `mobilenet` model are
-
-    ```
-    {
-      alpha: 1.0,
-      topk: 3
-    }
-    ```
-    - _version_: The MobileNet version to use. Default is 2.
-    - _alpha_: The width multiplier for the MobileNet. Default is 1.0.
-    - _topk_: The number of labels to return. Default is 3.
-
-- **callback(classifier)**: Optional. A function to run once the model has been loaded. Alternatively, call `ml5.imageClassifier()` within the p5 `preload` function.
-
-**Returns:**  
-The imageClassifier object.
-
-### imageClassifier.classifyStart()
-
-This method repeatedly outputs classification labels on an image media through a callback function.
-
-```javascript
-imageClassifier.classifyStart(media, ?kNumber, callback);
-```
-
-**Parameters:**
-
-- **media**: An HTML or p5.js image, video, or canvas element to run the classification on.
-
-- **kNumber**: The number of labels returned by the image classification.
-
-- **callback(results)**: A callback function to handle the output of the classification. See below for an example output passed into the callback function:
-
-  ```javascript
-  [
-    {
-      label: "zebra",
-      confidence: 0.98,
-    },
-    {
-      label: "tiger",
-      confidence: 0.89,
-    },
-    // Additional objects here...
-  ];
-  ```
-
-### imageClassifier.classifyStop()
-
-This method can be called after a call to `imageClassifier.classifyStart` to stop the repeating classifications.
-
-```javascript
-imageClassifier.classifyStop();
-```
-
-### imageClassifier.classify()
-
-This method asynchronously outputs a single image classification on an image media when called.
-
-```javascript
-imageClassifier.classify(media, ?kNumber, ?callback);
-```
-
-**Parameters:**
-
-- **media**: An HTML or p5.js image, video, or canvas element to run the classification on.
-
-- **kNumber**: The number of labels returned by the image classification.
-
-- **callback(results)**: Optional. A callback function to handle the output of the classification.
-
-**Returns:**  
-A promise that resolves to the estimation output.
-
 ## Properties
 
 ### imageClassifier.modelName
@@ -355,3 +263,103 @@ A promise that resolves to the estimation output.
   - Promise
 
 ---
+
+
+## Methods
+
+### ml5.imageClassifier()
+
+This method is used to initialize the imageClassifer object.
+
+```javascript
+const classifier = ml5.imageClassifier(modelNameOrUrl, ?options, ?callback);
+```
+
+**Parameters:**
+
+- **modelName**: Optional.
+  - String: Name of the underlying model to use. Possible values are `mobilenet`, `darknet` (28 MB in size), `darknet-tiny` (4 MB), `doodlenet`, or a URL to a compatible model file.
+
+- **options**: Optional. 
+  - Object: An object to change the default configuration of the model.
+
+    The default options for the default `mobilenet` model are
+
+    ```
+    {
+      alpha: 1.0,
+      topk: 3
+    }
+    ```
+    - _version_: The MobileNet version to use. Default is 2.
+    - _alpha_: The width multiplier for the MobileNet. Default is 1.0.
+    - _topk_: The number of labels to return. Default is 3.
+
+- **callback(classifier, error)**: Optional. A function to run once the model has been loaded. Alternatively, call `ml5.imageClassifier()` within the p5 `preload` function.
+
+**Returns:**  
+The imageClassifier object.
+
+--- 
+
+### imageClassifier.classifyStart()
+
+This method repeatedly outputs classification labels on an image media through a callback function.
+
+```javascript
+imageClassifier.classifyStart(media, ?kNumber, callback);
+```
+
+**Parameters:**
+
+- **media**: An HTML or p5.js image, video, or canvas element to run the classification on.
+
+- **kNumber**: The number of labels returned by the image classification.
+
+- **callback(results, error)**: A callback function to handle the output of the classification. See below for an example output passed into the callback function:
+
+  ```javascript
+  [
+    {
+      label: "zebra",
+      confidence: 0.98,
+    },
+    {
+      label: "tiger",
+      confidence: 0.89,
+    },
+    // Additional objects here...
+  ];
+  ```
+
+---
+
+### imageClassifier.classifyStop()
+
+This method can be called after a call to `imageClassifier.classifyStart` to stop the repeating classifications.
+
+```javascript
+imageClassifier.classifyStop();
+```
+
+--- 
+
+### imageClassifier.classify()
+
+This method asynchronously outputs a single image classification on an image media when called.
+
+```javascript
+imageClassifier.classify(media, ?kNumber, ?callback);
+```
+
+**Parameters:**
+
+- **media**: An HTML or p5.js image, video, or canvas element to run the classification on.
+
+- **kNumber**: The number of labels returned by the image classification.
+
+- **callback(results, error)**: Optional. A callback function to handle the output of the classification.
+
+**Returns:**  
+A promise that resolves to the estimation output.
+

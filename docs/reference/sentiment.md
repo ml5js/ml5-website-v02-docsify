@@ -199,45 +199,6 @@ That's it! You have successfully built a Sentiment Analysis model that predicts 
 
 ?> If you have any questions or spot something unclear in this step-by-step code guide, we'd love to hear from you! Join us on [Discord](https://discord.com/invite/3CVauZMSt7) and let us know how we can make it better.
 
-## Methods
-
-### ml5.sentiment()
-
-This method is used to load the sentiment model and store it in a variable. The ? means the argument is optional!
-
-```js
-let sentiment = ml5.sentiment(model, ?callback);
-```
-
-#### Parameters
-
-- **model**: REQUIRED. Defaults to 'movieReviews'. You can also use a path to a `manifest.json` file via a relative or absolute path.
-- **callback(sentiment)**: Optional. A callback function that is called once the model has loaded. If no callback is provided, it will return a promise that will be resolved once the model has loaded.
-
----
-
-### sentiment.predict()
-
-This method is used to predict the sentiment of a given text.
-
-```js
-sentiment.predict(text);
-```
-
-**Parameters:**
-
-- **text**: Required. 
-  - String: A string of text to predict. 
-
-**Return:**
-
-- **Object**: Scores the sentiment of given text with a value between 0 ("negative") and 1 ("positive"). See below for an example output:
-  ```javascript
-  {
-    score: 0.9999948740005493;
-  }
-  ```
-
 ## Properties
 
 ### sentiment.ready
@@ -292,4 +253,43 @@ sentiment.predict(text);
 - **Type**
   - Number
 
+
+## Methods
+
+### ml5.sentiment()
+
+This method is used to load the sentiment model and store it in a variable. The ? means the argument is optional!
+
+```js
+let sentiment = ml5.sentiment(model, ?callback);
+```
+
+#### Parameters
+
+- **model**: REQUIRED. Defaults to 'movieReviews'. You can also use a path to a `manifest.json` file via a relative or absolute path.
+- **callback(sentiment, error)**: Optional. A callback function that is called once the model has loaded. If no callback is provided, it will return a promise that will be resolved once the model has loaded.
+
 ---
+
+### sentiment.predict()
+
+This method is used to predict the sentiment of a given text.
+
+```js
+sentiment.predict(text);
+```
+
+**Parameters:**
+
+- **text**: Required. 
+  - String: A string of text to predict. 
+
+**Return:**
+
+- **Object**: Scores the sentiment of given text with a value between 0 ("negative") and 1 ("positive"). See below for an example output:
+  ```javascript
+  {
+    score: 0.9999948740005493;
+  }
+  ```
+

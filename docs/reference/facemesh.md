@@ -173,101 +173,6 @@ And, that's it! You have successfully built the FaceMesh Keypoints example from 
 
 ?> If you have any questions or spot something unclear in this step-by-step code guide, we'd love to hear from you! Join us on [Discord](https://discord.com/invite/3CVauZMSt7) and let us know how we can make it better.
 
-## Methods
-
-#### ml5.faceMesh()
-
-This method is used to initialize the faceMesh object.
-
-```javascript
-const faceMesh = ml5.faceMesh(?options, ?callback);
-```
-
-**Parameters:**
-
-- **options**: Optional. An object to change the default configuration of the model. The default and available options are:
-
-  ```javascript
-  {
-      maxFaces: 1,
-      refineLandmarks: false,
-      flipHorizontal: false
-  }
-  ```
-
-  Options for face detection:
-
-  - _maxFacess_
-    - Number: The maximum number of faces to detect. Defaults to 2.
-  - _refineLandmarks_ 
-    - Boolean: Refine the landmarks. Defaults to false.
-  - _flipHorizontal_ 
-    - Boolean: Flip the result horizontally. Defaults to false.
-  - _runtime_
-    - String: The runtime to use. "tfjs" (default) or "mediapipe".
-
-  For using custom or offline models:
-
-  - _solutionPath_
-    - String: The file path or URL to the model.
-
-  More info on options [here](https://github.com/tensorflow/tfjs-models/tree/master/face-landmarks-detection/src/mediapipe#create-a-detector).
-
-- **callback(faceMesh)**: Optional. A function to run once the model has been loaded. Alternatively, call `ml5.faceMesh()` within the p5 `preload` function.
-
-**Returns:**  
-
-- **Object**: The faceMesh object. This object contains the methods to start and stop the detection process.
-
-### faceMesh.detectStart()
-
-This method repeatedly outputs face estimations on an image media through a callback function.
-
-```javascript
-faceMesh.detectStart(media, callback);
-```
-
-**Parameters:**
-
-- **media**: An HTML or p5.js image, video, or canvas element to run the estimation on.
-- **callback(results)**: A callback function to handle the output of the estimation. See below for an example output passed into the callback function:
-
-  ```javascript
-  [
-    {
-      box: { width, height, xMax, xMin, yMax, yMin },
-      keypoints: [{ x, y, z, name }, ... ],
-      faceOval: { x, y, width, height, centerX, centerY, keypoints: [{ x, y, z }, ... ]},
-      leftEye: { x, y, width, height, centerX, centerY, keypoints: [{ x, y, z }, ... ]},
-      ...
-    },
-    ...
-  ]
-  ```
-
-  [Here](https://github.com/tensorflow/tfjs-models/blob/master/face-landmarks-detection/mesh_map.jpg) is a diagram for the position of each keypoint (download and zoom in to see the index).
-
-### faceMesh.detectStop()
-
-This method can be called after a call to `faceMesh.detectStart` to stop the repeating face estimation.
-
-```javascript
-faceMesh.detectStop();
-```
-
-### faceMesh.detect()
-
-This method asynchronously outputs a single face estimation on an image media when called.
-
-```javascript
-faceMesh.detect(media, ?callback);
-```
-
-**Parameters:**
-
-- **media**: An HTML or p5.js image, video, or canvas element to run the estimation on.
-- **callback(results)**: Optional. A callback function to handle the output of the estimation, see output example above.
-
 ## Properties
 
 ### faceMesh.model
@@ -348,3 +253,105 @@ faceMesh.detect(media, ?callback);
   - A promise that resolves when the model has loaded.
 - **Type**
   - Promise
+
+## Methods
+
+### ml5.faceMesh()
+
+This method is used to initialize the faceMesh object.
+
+```javascript
+const faceMesh = ml5.faceMesh(?options, ?callback);
+```
+
+**Parameters:**
+
+- **options**: Optional. An object to change the default configuration of the model. The default and available options are:
+
+  ```javascript
+  {
+      maxFaces: 1,
+      refineLandmarks: false,
+      flipHorizontal: false
+  }
+  ```
+
+  Options for face detection:
+
+  - _maxFacess_
+    - Number: The maximum number of faces to detect. Defaults to 2.
+  - _refineLandmarks_ 
+    - Boolean: Refine the landmarks. Defaults to false.
+  - _flipHorizontal_ 
+    - Boolean: Flip the result horizontally. Defaults to false.
+  - _runtime_
+    - String: The runtime to use. "tfjs" (default) or "mediapipe".
+
+  For using custom or offline models:
+
+  - _solutionPath_
+    - String: The file path or URL to the model.
+
+  More info on options [here](https://github.com/tensorflow/tfjs-models/tree/master/face-landmarks-detection/src/mediapipe#create-a-detector).
+
+- **callback(faceMesh, error)**: Optional. A function to run once the model has been loaded. Alternatively, call `ml5.faceMesh()` within the p5 `preload` function.
+
+**Returns:**  
+
+- **Object**: The faceMesh object. This object contains the methods to start and stop the detection process.
+
+---
+
+### faceMesh.detectStart()
+
+This method repeatedly outputs face estimations on an image media through a callback function.
+
+```javascript
+faceMesh.detectStart(media, callback);
+```
+
+**Parameters:**
+
+- **media**: An HTML or p5.js image, video, or canvas element to run the estimation on.
+- **callback(results, error)**: A callback function to handle the output of the estimation. See below for an example output passed into the callback function:
+
+  ```javascript
+  [
+    {
+      box: { width, height, xMax, xMin, yMax, yMin },
+      keypoints: [{ x, y, z, name }, ... ],
+      faceOval: { x, y, width, height, centerX, centerY, keypoints: [{ x, y, z }, ... ]},
+      leftEye: { x, y, width, height, centerX, centerY, keypoints: [{ x, y, z }, ... ]},
+      ...
+    },
+    ...
+  ]
+  ```
+
+  [Here](https://github.com/tensorflow/tfjs-models/blob/master/face-landmarks-detection/mesh_map.jpg) is a diagram for the position of each keypoint (download and zoom in to see the index).
+
+---
+
+### faceMesh.detectStop()
+
+This method can be called after a call to `faceMesh.detectStart` to stop the repeating face estimation.
+
+```javascript
+faceMesh.detectStop();
+```
+
+---
+
+### faceMesh.detect()
+
+This method asynchronously outputs a single face estimation on an image media when called.
+
+```javascript
+faceMesh.detect(media, ?callback);
+```
+
+**Parameters:**
+
+- **media**: An HTML or p5.js image, video, or canvas element to run the estimation on.
+- **callback(results, error)**: Optional. A callback function to handle the output of the estimation, see output example above.
+

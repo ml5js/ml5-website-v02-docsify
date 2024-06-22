@@ -146,109 +146,6 @@ You have successfully built the BodySegmentation Mask Body Part example! Press t
 
 ?> If you have any questions or spot something unclear in this step-by-step code guide, we'd love to hear from you! Join us on [Discord](https://discord.com/invite/3CVauZMSt7) and let us know how we can make it better.
 
-## Methods
-
-### ml5.bodySegmentation()
-
-This method is used to initialize the bodySegmentation object.
-
-```javascript
-const bodySegmentation = ml5.bodySegmentation(?modelName, ?options, ?callback);
-```
-
-**Parameters:**
-
-- **modelName**: Optional. A string specifying which model to use. Types of model:
-  - _SelfieSegmentation_(default): A model that can be used to segment people from the background.
-  - _BodyPix_: A model that can be used to segment people and body parts.
-
-  
-
-- **options**: Optional. An object to change the default configuration of the model. See the example options object:
-
-  ```javascript
-  {
-    runtime: "tfjs", // "tfjs" or "mediapipe"
-    modelType: "general", // "general" or "landscape"
-    maskType: "background" // "background", "body", or "parts" (used to change the type of segmentation mask output)
-  }
-  ```
-
-  Important Option:
-  - **maskType**: The type of mask to output. The options are:
-    - _background_: A mask of the background. The result is an image with transparent pixels on the background and black pixels on the person.
-    - _body_: A mask of the person. The result is an image with black pixels on the background and transparent pixels on the person.
-    - _parts_: **BodyPix** only. A mask of the body parts. The result is an image with white pixels on the background and various color pixels for each body part.
-
-  [More info on options for SelfieSegmentation model with tfjs runtime](https://github.com/tensorflow/tfjs-models/tree/master/body-segmentation/src/selfie_segmentation_tfjs#create-a-detector).
-
-  [More info on options for SelfieSegmentation model with mediaPipe runtime](https://github.com/tensorflow/tfjs-models/tree/master/body-segmentation/src/selfie_segmentation_mediapipe#create-a-detector).
-
-  [More info on options for BodyPix model.](https://github.com/tensorflow/tfjs-models/blob/master/body-segmentation/src/body_pix/README.md#create-a-detector)
-
-- **callback(bodySegmentation, error)**: Optional. A function to run once the model has been loaded. Alternatively, call `ml5.bodySegmentation()` within the p5 `preload` function.
-
-**Returns:**  
-
-- **Object**: The bodySegmentation object. This object contains the methods to start and stop the body segment detection process.
-
-### bodySegmentation.detectStart()
-
-This method repeatedly outputs segmentation masks on an image media through a callback function.
-
-```javascript
-bodySegmentation.detectStart(media, callback);
-```
-
-**Parameters:**
-
-- **media**: An HTML or p5.js image, video, or canvas element to run the segmentation on.
-
-- **callback(output, error)**: Optional. A callback function to handle the results of the body segmentation.
-
-The `output` will contain an object with the following properties. Based on the `maskType` option, the `mask` (and `maskImageData`) will contain either a mask of the detected background, or a mask of the detected persons, or a (colored) mask of the detected body parts of the detected persons.
-
-  ```javascript
-  {
-    mask: {}, // a p5 Image object, can be directly passed into p5 image() function
-    maskImageData: {}, // the mask as an ImageData object
-    data: [], // an array of raw detection results
-    imageData: {}, // an ImageData object of the raw detection results
-  }
-  ```
-
-The `data` array contains the underlying segmentation result of the image, stored as one number per pixel of the input image. (With the BodyPix model, the right hand is e.g. the number 11, which is the same as `bodySegmentation.LEFT_HAND`.)
-
-  _results.mask_ under different _maskType_ options:
-  - _background_: A mask of the background. _results.mask_ is an image with transparent pixels on the background and black pixels on the person.
-  - _body_: A mask of the person. _results.mask_ is an image with black pixels on the background and transparent pixels on the person.
-  - _parts_: **BodyPix** only. _results.mask_ is an image with white pixels on the background and various color pixels for each body part.
-
-### bodySegmentation.detectStop()
-
-This method can be called after a call to `bodySegmentation.detectStart` to stop the repeating pose estimation.
-
-```javascript
-bodySegmentation.detectStop();
-```
-
-### bodySegmentation.detect()
-
-This method asynchronously outputs a single segmentation mask on an image media when called.
-
-```javascript
-bodySegmentation.detect(media, ?callback);
-```
-
-**Parameters:**
-
-- **media**: An HTML or p5.js image, video, or canvas element to run the segmentation on.
-
-- **callback(output, error)**: Optional. A callback function to handle the output of the estimation, see output example above.
-
-**Returns:**  
-A promise that resolves to the segmentation output.
-
 ## Properties
 
 ### bodySegmentation.modelName
@@ -322,4 +219,115 @@ A promise that resolves to the segmentation output.
   - Promise
 
 ---
+
+
+
+## Methods
+
+### ml5.bodySegmentation()
+
+This method is used to initialize the bodySegmentation object.
+
+```javascript
+const bodySegmentation = ml5.bodySegmentation(?modelName, ?options, ?callback);
+```
+
+**Parameters:**
+
+- **modelName**: Optional. A string specifying which model to use. Types of model:
+  - _SelfieSegmentation_(default): A model that can be used to segment people from the background.
+  - _BodyPix_: A model that can be used to segment people and body parts.
+
+  
+
+- **options**: Optional. An object to change the default configuration of the model. See the example options object:
+
+  ```javascript
+  {
+    runtime: "tfjs", // "tfjs" or "mediapipe"
+    modelType: "general", // "general" or "landscape"
+    maskType: "background" // "background", "body", or "parts" (used to change the type of segmentation mask output)
+  }
+  ```
+
+  Important Option:
+  - **maskType**: The type of mask to output. The options are:
+    - _background_: A mask of the background. The result is an image with transparent pixels on the background and black pixels on the person.
+    - _body_: A mask of the person. The result is an image with black pixels on the background and transparent pixels on the person.
+    - _parts_: **BodyPix** only. A mask of the body parts. The result is an image with white pixels on the background and various color pixels for each body part.
+
+  [More info on options for SelfieSegmentation model with tfjs runtime](https://github.com/tensorflow/tfjs-models/tree/master/body-segmentation/src/selfie_segmentation_tfjs#create-a-detector).
+
+  [More info on options for SelfieSegmentation model with mediaPipe runtime](https://github.com/tensorflow/tfjs-models/tree/master/body-segmentation/src/selfie_segmentation_mediapipe#create-a-detector).
+
+  [More info on options for BodyPix model.](https://github.com/tensorflow/tfjs-models/blob/master/body-segmentation/src/body_pix/README.md#create-a-detector)
+
+- **callback(bodySegmentation, error)**: Optional. A function to run once the model has been loaded. Alternatively, call `ml5.bodySegmentation()` within the p5 `preload` function.
+
+**Returns:**  
+
+- **Object**: The bodySegmentation object. This object contains the methods to start and stop the body segment detection process.
+
+---
+
+### bodySegmentation.detectStart()
+
+This method repeatedly outputs segmentation masks on an image media through a callback function.
+
+```javascript
+bodySegmentation.detectStart(media, callback);
+```
+
+**Parameters:**
+
+- **media**: An HTML or p5.js image, video, or canvas element to run the segmentation on.
+
+- **callback(output, error)**: Optional. A callback function to handle the results of the body segmentation.
+
+The `output` will contain an object with the following properties. Based on the `maskType` option, the `mask` (and `maskImageData`) will contain either a mask of the detected background, or a mask of the detected persons, or a (colored) mask of the detected body parts of the detected persons.
+
+  ```javascript
+  {
+    mask: {}, // a p5 Image object, can be directly passed into p5 image() function
+    maskImageData: {}, // the mask as an ImageData object
+    data: [], // an array of raw detection results
+    imageData: {}, // an ImageData object of the raw detection results
+  }
+  ```
+
+The `data` array contains the underlying segmentation result of the image, stored as one number per pixel of the input image. (With the BodyPix model, the right hand is e.g. the number 11, which is the same as `bodySegmentation.LEFT_HAND`.)
+
+  _results.mask_ under different _maskType_ options:
+  - _background_: A mask of the background. _results.mask_ is an image with transparent pixels on the background and black pixels on the person.
+  - _body_: A mask of the person. _results.mask_ is an image with black pixels on the background and transparent pixels on the person.
+  - _parts_: **BodyPix** only. _results.mask_ is an image with white pixels on the background and various color pixels for each body part.
+
+---
+
+### bodySegmentation.detectStop()
+
+This method can be called after a call to `bodySegmentation.detectStart` to stop the repeating pose estimation.
+
+```javascript
+bodySegmentation.detectStop();
+```
+
+---
+
+### bodySegmentation.detect()
+
+This method asynchronously outputs a single segmentation mask on an image media when called.
+
+```javascript
+bodySegmentation.detect(media, ?callback);
+```
+
+**Parameters:**
+
+- **media**: An HTML or p5.js image, video, or canvas element to run the segmentation on.
+
+- **callback(output, error)**: Optional. A callback function to handle the output of the estimation, see output example above.
+
+**Returns:**  
+A promise that resolves to the segmentation output.
 
