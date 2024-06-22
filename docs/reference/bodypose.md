@@ -21,7 +21,7 @@ Run and explore a pre-built example! [This bodyPose example](https://editor.p5js
 
 </br>
 
-[DEMO](iframes/pose-estimation ":include :type=iframe width=100% height=550px")
+[DEMO](iframes/bodypose ":include :type=iframe width=100% height=550px")
 
 ## Examples
 
@@ -312,7 +312,6 @@ Voila! You have successfully built the BodyPose model to detect and draw body po
 - **Type**
   - Promise
 
-
 ## Methods
 
 ### ml5.bodypose()
@@ -347,12 +346,14 @@ let bodypose = ml5.bodypose(?model, ?options, ?callback);
   ```
 
   Options for both models:
+
   - _modelType_ - Optional
     - String: The type of model to use. Default: "MULTIPOSE_LIGHTNING".
   - _enableSmoothing_ - Optional
     - Boolean: Whether to smooth the pose landmarks across different input images to reduce jitter. Default: true.
-  
+
   Options for the MoveNet model only:
+
   - _minPoseScore_ - Optional
     - Number: The minimum confidence score for a pose to be detected. Default: 0.25.
   - _multiPoseMaxDimension_ - Optional
@@ -365,6 +366,7 @@ let bodypose = ml5.bodypose(?model, ?options, ?callback);
     - Object: Specify tracker configurations. Use tf.js settings by default.
 
   Options for the BlazePose model only:
+
   - _runtime_ - Optional
     - String: Either "tfjs" or "mediapipe". Default: "tfjs"
   - _enableSegmentation_ - Optional
@@ -373,6 +375,7 @@ let bodypose = ml5.bodypose(?model, ?options, ?callback);
     - Boolean: whether to filters segmentation masks across different input images to reduce jitter.
 
   For using custom or offline models
+
   - _modelUrl_ - Optional
     - String: The file path or URL to the MoveNet model.
   - _solutionPath_ - Optional
@@ -386,7 +389,7 @@ let bodypose = ml5.bodypose(?model, ?options, ?callback);
 
 - **callback(bodypose, error)**: Optional. A "callback" function that runs when the model has been successfully loaded. Most ml5.js example call `ml5.bodyPose()` in the p5.js `preload()` function and no callback is needed.
 
-**Returns:**  
+**Returns:**
 
 - **Object**: The bodyPose object. This object contains the methods to start and stop the pose detection process.
 
@@ -516,23 +519,16 @@ This method returns an array of arrays, where each sub-array contains the indice
 const connections = bodypose.getSkeleton();
 ```
 
-**Returns:**  
+**Returns:**
 
 - **Array**: An array of arrays representing the connections between keypoints. For example, using BlazePose model will returns:
 
 ```js
-[
-    [0,1],
-    [0,4],
-    [1,2],
-   ...
-    [28,32],
-    [29,31],
-    [30,32]
-]
+[[0, 1], [0, 4], [1, 2], ...[28, 32], [29, 31], [30, 32]];
 ```
 
 This array represents the connections between keypoints, please refer to these images to understand the connections:
+
 <center>
       <h3>MoveNet</h3>
       <img style="display:block; max-width:30%" alt="MoveNet keypoint diagram" src="https://camo.githubusercontent.com/c3641b718d7e613b2ce111a6a4575e88ca35a60cb325efdd9113c453b2a09301/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f6d6f76656e65742f636f636f2d6b6579706f696e74732d3530302e706e67">
