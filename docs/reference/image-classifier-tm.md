@@ -224,7 +224,7 @@ imageClassifier.classify(media, ?kNumber, ?callback);
 
 - **media**: An HTML or p5.js image, video, or canvas element to run the classification on.
 - **kNumber**: The number of labels returned by the image classification.
-- **callback(output, error)**: OPTIONAL. A callback function to handle the output of the classification.
+- **callback(output, error)**: Optional. A callback function to handle the output of the classification.
 
 **Returns:**  
 A promise that resolves to the estimation output.

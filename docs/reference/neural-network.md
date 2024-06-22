@@ -307,317 +307,121 @@ Now you can run your sketch and interact with the sliders to change the RGB valu
 | `.load()`             | allows you to load a trained model                                                                                                     |
 
 ### ml5.neuralNetwork()
-There are a number of ways to initialize the `ml5.neuralNetwork`. Below we cover the possibilities:
 
-1. Minimal Configuration Method
-2. Defining inputs and output labels as numbers or as arrays of labels
-3. Loading External Data
-4. Loading a pre-trained Model
-5. A convolutional neural network for image classification tasks
-6. Defining custom layers
+This method initializes the `neuralNetwork` object.
 
-#### Minimal Configuration Method
-
-**Minimal Configuration Method**: If you plan to create data in real-time, you can just set the type of task you want to accomplish `('regression' | 'classification')` and then create the neuralNetwork. You will have to add data later on, but ml5 will figure the inputs and outputs based on the data your add.
-
-```js
-const options = {
-  task: "regression", // or 'classification'
-};
-const nn = ml5.neuralNetwork(options);
+```javascript
+const nn = ml5.neuralNetwork(options, callback);
 ```
 
-#### Defining inputs and output labels as numbers or as arrays of labels
+**Parameters:**
 
-**Defining inputs and output labels as numbers or as arrays of labels**: If you plan to create data in real-time, you can just set the type of task you want to accomplish `('regression' | 'classification')` and then create the neuralNetwork. To be more specific about your inputs and outputs, you can also define the _names of the labels for your inputs and outputs_ as arrays OR _the number of inputs and outputs_. You will have to add data later on. Note that if you add data as JSON, your JSON Keys should match those defined in the `options`. If you add data as arrays, make sure the order you add your data match those given in the `options`.
-
-- **As arrays of labels**
-  ```js
-  const options = {
-    task: 'classification' // or 'regression'
-    inputs:['r', 'g','b'],
-    outputs: ['color']
+- **options**: Required. An object to configure the neural network. The available options are:
+  ```javascript
+  {
+    inputs: [], // can also be a number
+    outputs: [], // can also be a number
+    dataUrl: null,
+    modelUrl: null,
+    layers: [], // custom layers
+    task: null, // 'classification', 'regression', 'imageClassification'
+    debug: false, // determines whether or not to show the training visualization
+    learningRate: 0.2,
+    hiddenUnits: 16,
   }
-  const nn = ml5.neuralNetwork(options)
   ```
-- **As numbers**
-  ```js
-  const options = {
-    task: 'classification' // or 'regression'
-    inputs: 3, // r, g, b
-    outputs: 2 // red-ish, blue-ish
-  }
-  const nn = ml5.neuralNetwork(options)
-  ```
+  - _inputs_ - Optional
+    - Array | Number: Input labels as an array or number of inputs. Default: [].
+  - _outputs_ - Optional
+    - Array | Number: Output labels as an array or number of outputs. Default: [].
+  - _dataUrl_ - Optional
+    - String: The URL to a CSV or JSON file containing the data.
+  - _modelUrl_ - Optional
+    - String: The URL to a pre-trained model.
+  - _layers_ - Optional
+    - Array: Custom layers for the neural network.
+  - _task_ - Required
+    - String: The type of task: 'classification', 'regression', 'imageClassification'.
+  - _debug_ - Optional
+    - Boolean: Show the training visualization. Default: false.
+  - _learningRate_ - Optional
+    - Number: The learning rate for training. Default: 0.2.
+  - _hiddenUnits_ - Optional
+    - Number: Number of hidden units in the default layer. Default: 16.
 
-#### Loading External Data
+- **callback(nn)**: Optional. A function to run once the model has been initialized.
 
-**Loading External Data**: You can initialize `ml5.neuralNetwork` specifying an external url to some data structured as a CSV or a JSON file. If you pass in data as part of the options, you will need to provide a **callback function** that will be called when your data has finished loading. Furthermore, you will **need to specify which properties** in the data that ml5.neuralNetwork will use for inputs and outputs.
+**Returns:** 
 
-```js
-const options = {
-    dataUrl: 'data/colorData.csv'
-    task: 'classification' // or 'regression'
-    inputs: ['r', 'g','b'], // r, g, b
-    outputs: ['color'] // red-ish, blue-ish
-}
-
-const nn = ml5.neuralNetwork(options, dataLoaded)
-
-function dataLoaded(){
-  // continue on your neural network journey
-  nn.normalizeData();
-  // ...
-}
-```
-
-#### Loading a pre-trained Model
-
-**Loading a pre-trained Model**: If you've trained a model using the `ml5.neuralNetwork` and saved it out using the `ml5.neuralNetwork.save()` then you can load in the **model**, the **weights**, and the **metadata**.
-
-```js
-const options = {
-  task: "classification", // or 'regression'
-};
-const nn = ml5.neuralNetwork(options);
-
-const modelDetails = {
-  model: "model/model.json",
-  metadata: "model/model_meta.json",
-  weights: "model/model.weights.bin",
-};
-nn.load(modelDetails, modelLoaded);
-
-function modelLoaded() {
-  // continue on your neural network journey
-  // use nn.classify() for classifications or nn.predict() for regressions
-}
-```
-
-#### A convolutional neural network for image classification tasks
-
-**A convolutional neural network for image classification tasks**: You can use convolutional neural networks in the `ml5.neuralNetwork` by setting the `task:"imageClassification"`.
-
-```js
-const IMAGE_WIDTH = 64;
-const IMAGE_HEIGHT = 64;
-const IMAGE_CHANNELS = 4;
-const options = {
-  task: "imageClassification",
-  inputs: [IMAGE_WIDTH, IMAGE_HEIGHT, IMAGE_CHANNELS],
-  outputs: ["label"],
-};
-const nn = ml5.neuralNetwork(options);
-```
-
-#### Defining Custom Layers
-
-**Defaults**: By default the `ml5.neuralNetwork` has simple default architectures for the `classification`, `regression` and `imageClassificaiton` tasks.
-
-- default `classification` layers:
-  ```js
-  layers: [
-    {
-      type: "dense",
-      units: this.options.hiddenUnits,
-      activation: "relu",
-    },
-    {
-      type: "dense",
-      activation: "softmax",
-    },
-  ];
-  ```
-- default `regression` layers:
-  ```js
-  layers: [
-    {
-      type: "dense",
-      units: this.options.hiddenUnits,
-      activation: "relu",
-    },
-    {
-      type: "dense",
-      activation: "sigmoid",
-    },
-  ];
-  ```
-- default `imageClassification` layers:
-  ```js
-  layers = [
-    {
-      type: "conv2d",
-      filters: 8,
-      kernelSize: 5,
-      strides: 1,
-      activation: "relu",
-      kernelInitializer: "varianceScaling",
-    },
-    {
-      type: "maxPooling2d",
-      poolSize: [2, 2],
-      strides: [2, 2],
-    },
-    {
-      type: "conv2d",
-      filters: 16,
-      kernelSize: 5,
-      strides: 1,
-      activation: "relu",
-      kernelInitializer: "varianceScaling",
-    },
-    {
-      type: "maxPooling2d",
-      poolSize: [2, 2],
-      strides: [2, 2],
-    },
-    {
-      type: "flatten",
-    },
-    {
-      type: "dense",
-      kernelInitializer: "varianceScaling",
-      activation: "softmax",
-    },
-  ];
-  ```
-
-**Defining Custom Layers**: You can define custom neural network architecture by defining your layers in the `options` that are passed to the `ml5.neuralNetwork` on initialization.
-
-- A neural network with 3 layers
-  ```js
-  const options = {
-    debug: true,
-    task: "classification",
-    layers: [
-      {
-        type: "dense",
-        units: 16,
-        activation: "relu",
-      },
-      {
-        type: "dense",
-        units: 16,
-        activation: "sigmoid",
-      },
-      {
-        type: "dense",
-        activation: "sigmoid",
-      },
-    ],
-  };
-  const nn = ml5.neuralNetwork(options);
-  ```
-
-#### Arguments for `ml5.neuralNetwork(options)`
-
-The options that can be specified are:
-
-```js
-const DEFAULTS = {
-  inputs: [], // can also be a number
-  outputs: [], // can also be a number
-  dataUrl: null,
-  modelUrl: null,
-  layers: [], // custom layers
-  task: null, // 'classification', 'regression', 'imageClassificaiton'
-  debug: false, // determines whether or not to show the training visualization
-  learningRate: 0.2,
-  hiddenUnits: 16,
-};
-```
-
-<!--
-* **inputsOrOptions**: REQUIRED. An `options` object or a number specifying the number of inputs.
-* **outputsOrCallback**: OPTIONAL. A callback to be called after your data is loaded as specified in the `options.dataUrl` or a `number` specifying the number of `outputs`.
-
--->
-
-### .addData()
-
-> If you are not uploading data using the `dataUrl` property of the options given to the constructor, then you can add data to a "blank" neural network class using the `.addData()` function.
-
-```js
-neuralNetwork.addData(xs, ys);
-```
-
-📥 **Inputs**
-
-- **xs**: Required. Array | Object.
-  - If an array is given, then the inputs must be ordered as specified in the constructor. If no labels are given in the constructor, then the order that your data are added here will set the order of how you will pass data to `.predict()` or `.classify()`.
-  - If an object is given, then feed in key/value pairs.
-  - if `task:imageClassification`: you can supply a HTMLImageElement or HTMLCanvasElement or a flat 1-D array of the pixel values such that the dimensions match with the defined image size in the `options.inputs: [IMAGE_WIDTH, IMAGE_HEIGHT, IMAGE_CHANNELS]`
-- **ys**: Required. Array | Object.
-  - If an array is given, then the inputs must be ordered as specified in the constructor.
-  - If an object is given, then feed in key/value pairs.
-
-📤 **Outputs**
-
-- n/a: adds data to `neuralNetwork.data.data.raw`
+- **Object**: The neuralNetwork object. This object contains methods to add data, normalize data, train the model, and make predictions.
 
 ---
 
----
+### nn.addData()
 
-### .normalizeData()
+This method adds data to the neural network.
 
-> normalizes the data on a scale from 0 to 1. The data being normalized are part of the `NeuralNetworkData` class which can be accessed in: `neuralNetwork.data.data.raw`
-
-```js
-neuralNetwork.normalizeData();
+```javascript
+nn.addData(xs, ys);
 ```
 
-📥 **Inputs**
+**Parameters:**
+
+- **xs**: Required. Array | Object. Input data.
+  - If an array is given, the inputs must be ordered as specified in the constructor. If no labels are given in the constructor, then the order that your data are added here will set the order of how you will pass data to `.predict()` or `.classify()`.
+  - If an object is given, then feed in key/value pairs.
+  - If an object is given, provide key/value pairs.
+  - If task is `imageClassification`, provide an HTMLImageElement, HTMLCanvasElement, or a flat 1-D array of pixel values.
+- **ys**: Required. Array | Object. Output data.
+  - If an array is given, the outputs must be ordered as specified in the constructor.
+  - If an object is given, provide key/value pairs.
+
+**Returns:**
+
+- n/a: Adds data to `neuralNetworkData.data.raw`.
+
+---
+
+### nn.normalizeData()
+
+This method normalizes the data on a scale from 0 to 1.
+
+```javascript
+nn.normalizeData();
+```
+
+**Parameters:**
 
 - n/a
 
-📤 **Outputs**
+**Returns:**
 
-- n/a: normalizes the data in `neuralNetwork.data.data.raw` and adds `inputs` and `output` tensors to `neuralNetwork.data.data.tensor` as well as the `inputMin`, `inputMax`, `outputMin`, and `outputMax` as tensors. The `inputMin`, `inputMax`, `outputMin`, and `outputMax` are also added to `neuralNetwork.data.data` as Numbers.
-
----
+- n/a: normalizes the data in `neuralNetworkData.data.raw` and adds `inputs` and `output` tensors to `neuralNetworkData.data.tensor` as well as the `inputMin`, `inputMax`, `outputMin`, and `outputMax` as tensors. The `inputMin`, `inputMax`, `outputMin`, and `outputMax` are also added to `neuralNetworkData.data` as Numbers.
 
 ---
 
-### .train()
+### nn.train()
 
-> trains the model with the data loaded during the instantiation of the `NeuralNetwork` or the data added using `neuralNetwork.addData()`
+This method trains the model with the data loaded during the instantiation or added using `.addData()`.
 
-```js
-neuralNetwork.train(?optionsOrCallback, ?optionsOrWhileTraining, ?callback);
+```javascript
+nn.train(?optionsOrCallback, ?optionsOrWhileTraining, ?callback);
 ```
 
-📥 **Inputs**
+**Parameters:**
 
 - **optionsOrCallback**: Optional.
-  - If an object of options is given, then `optionsOrCallback` will be an object where you can specify the `batchSize` and `epochs`:
-    ```js
+  - If an object of options is given, specify `batchSize` and `epochs`:
+    ```javascript
     {
       batchSize: 24,
       epochs: 32,
-    };
-    ```
-  - If a callback function is given here then this will be a callback that will be called when the training is finished.
-    ```js
-    function doneTraining() {
-      console.log("done!");
     }
     ```
-  - If a callback function is given here and a second callback function is given, `optionsOrCallback` will be a callback function that is called after each `epoch` of training, and the `optionsOrWhileTraining` callback function will be a callback function that is called when the training has completed:
-    ```js
-    function whileTraining(epoch, loss) {
-      console.log(`epoch: ${epoch}, loss:${loss}`);
-    }
-    function doneTraining() {
-      console.log("done!");
-    }
-    neuralNetwork.train(whileTraining, doneTraining);
-    ```
+  - If a callback function is given, it will be called when the training is finished.
 - **optionsOrWhileTraining**: Optional.
-  - If an object of options is given as the first parameter, then `optionsOrWhileTraining` will be a callback function that is fired after the training as finished.
-  - If a callback function is given as the first parameter to handle the `whileTraining`, then `optionsOrWhileTraining` will be a callback function that is fired after the training as finished.
+  - If an object of options is given as the first parameter, specify a callback function to be called when the training is finished.
 - **callback**: Optional. Function.
-
   - If an object of options is given as the first parameter and a callback function is given as a second parameter, then this `callback` parameter will be a callback function that is fired after the training as finished.
 
   ```js
@@ -634,200 +438,182 @@ neuralNetwork.train(?optionsOrCallback, ?optionsOrWhileTraining, ?callback);
   neuralNetwork.train(trainingOptions, whileTraining, doneTraining);
   ```
 
-📤 **Outputs**
+**Returns:**
 
-- n/a: Here, `neuralNetwork.model` is created and the model is trained.
-
----
+- n/a: Creates and trains the `nn.model`.
 
 ---
 
-### .predict()
+### nn.predict()
 
-> Given an input, will return an array of predictions.
+This method returns an array of predictions for the given input.
 
-```js
-neuralNetwork.predict(inputs, callback);
+```javascript
+nn.predict(inputs, callback);
 ```
 
-📥 **Inputs**
+**Parameters:**
 
-- **inputs**: Required. Array | Object.
-  - If an array is given, then the input values should match the order that the data are specified in the `inputs` of the constructor options.
-  - If an object is given, then the input values should be given as a key/value pair. The keys must match the keys given in the inputs of the constructor options and/or the keys added when the data were added in `.addData()`.
-- **callback**: Required. Function. A function to handle the results of `.predict()`.
+- **inputs**: Required. Array | Object. Input values.
+  - If an array is given, match the order specified in the constructor options.
+  - If an object is given, provide key/value pairs matching the keys specified in the constructor options.
+- **callback(results)**: Required. Function. A function to handle the results of `.predict()`.
 
-📤 **Outputs**
+**Returns:**
 
-- **Array**: Returns an array of objects. Each object contains `{value, label}`.
-
----
+- **Array**: An array of objects, each containing `{value, label}`.
 
 ---
 
-#### .predictMultiple()
+### nn.predictMultiple()
 
-> Given an input, will return an array of arrays of predictions.
+This method returns an array of arrays of predictions for the given input.
 
-```js
-neuralNetwork.predictMultiple(inputs, callback);
+```javascript
+nn.predictMultiple(inputs, callback);
 ```
 
-📥 **Inputs**
-
-- **inputs**: Required. Array of arrays | Array of objects.
-  - If an array of arrays is given, then the input values of each child array should match the order that the data are specified in the `inputs` of the constructor options.
-  - If an array of objects is given, then the input values of each child object should be given as a key/value pair. The keys must match the keys given in the inputs of the constructor options and/or the keys added when the data were added in `.addData()`.
-- **callback**: Required. Function. A function to handle the results of `.predictMultiple()`.
-
-📤 **Outputs**
-
-- **Array**: Returns an array of arrays. Each child array contains objects. Each object contains `{value, label}`.
-
----
-
----
-
-### .classify()
-
-> Given an input, will return an array of classifications.
-
-```js
-neuralNetwork.classify(inputs, callback);
-```
-
-📥 **Inputs**
-
-- **inputs**: Required. Array | Object.
-  - If an array is given, then the input values should match the order that the data are specified in the `inputs` of the constructor options.
-  - If an object is given, then the input values should be given as a key/value pair. The keys must match the keys given in the inputs of the constructor options and/or the keys added when the data were added in `.addData()`.
-- **callback**: Required. Function. A function to handle the results of `.classify()`.
-
-📤 **Outputs**
-
-- **Array**: Returns an array of objects. Each object contains `{label, confidence}`.
-
----
-
----
-
-### .classifyMultiple()
-
-> Given an input, will return an array of arrays of classifications.
-
-```js
-neuralNetwork.classifyMultiple(inputs, callback);
-```
-
-📥 **Inputs**
+**Parameters:**
 
 - **inputs**: Required. Array of arrays | Array of objects.
   - If an array of arrays is given, then the input values of each child array should match the order that the data are specified in the `inputs` of the constructor options.
   - If an array of objects is given, then the input values of each child object should be given as a key/value pair. The keys must match the keys given in the inputs of the constructor options and/or the keys added when the data were added in `.addData()`.
 - **callback**: Required. Function. A function to handle the results of `.classifyMultiple()`.
 
-📤 **Outputs**
+**Returns:**
 
-- **Array**: Returns an array of arrays. Each child array contains objects. Each object contains `{label, confidence}`.
-
----
+- **Array**: An array of arrays, each containing objects with `{value, label}`.
 
 ---
 
-### .saveData()
+### nn.classify()
 
-> Saves the data that has been added
+This method returns an array of classifications for the given input.
 
-```js
-neuralNetwork.saveData(?outputName, ?callback);
+```javascript
+nn.classify(inputs, callback);
 ```
 
-📥 **Inputs**
+**Parameters:**
 
-- **outputName**: Optional. String. An output name you'd like your data to be called. If no input is given, then the name will be `data_YYYY-MM-DD_mm-hh`.
-- **callback**: Optional. function. A callback that is called after the data has been saved.
+- **inputs**: Required. Array | Object. Input values.
+  - If an array is given, match the order specified in the constructor options.
+  - If an object is given, provide key/value pairs matching the keys specified in the constructor options.
+- **callback(results)**: Required. Function. A function to handle the results of `.classify()`.
 
-📤 **Outputs**
+**Returns:**
 
-- n/a: downloads the data to a `.json` file in your `downloads` folder.
+- **Array**: An array of objects, each containing `{label, confidence}`.
 
 ---
 
----
+### nn.classifyMultiple()
 
-### .loadData()
+This method returns an array of arrays of classifications for the given input.
 
-> loads the data to `neuralNetwork.data.data.raw`
-
-```js
-neuralnetwork.loadData(filesOrPath, ?callback);
+```javascript
+nn.classifyMultiple(inputs, callback);
 ```
 
-📥 **Inputs**
+**Parameters:**
+
+- **inputs**: Required. Array of arrays | Array of objects. Input values.
+  - If an array of arrays is given, match the order specified in the constructor options.
+  - If an array of objects is given, provide key/value pairs matching the keys specified in the constructor options.
+- **callback(results)**: Required. Function. A function to handle the results of `.classifyMultiple()`.
+
+**Returns:**
+
+- **Array**: An array of arrays, each containing objects with `{label, confidence}`.
+
+---
+
+### nn.saveData()
+
+This method saves the added data to a JSON file.
+
+```javascript
+nn.saveData(outputName, callback);
+```
+
+**Parameters:**
+
+- **outputName**: Optional. String. The name of the saved file. Default is `data_YYYY-MM-DD_mm-hh`.
+- **callback**: Optional. Function. A callback function to be called after the data has been saved.
+
+**Returns:**
+
+- n/a: Downloads the data to a `.json` file.
+
+---
+
+### nn.loadData()
+
+This method loads data to `neuralNetworkData.data.raw`.
+
+```javascript
+nn.loadData(filesOrPath, callback);
+```
+
+**Parameters:**
 
 - **filesOrPath**: REQUIRED. String | InputFiles. A string path to a `.json` data object or InputFiles from html input `type="file"`. Must be structured for example as: `{"data": [ { xs:{input0:1, input1:2}, ys:{output0:"a"},  ...]}`
 - **callback**: Optional. function. A callback that is called after the data has been loaded.
 
-📤 **Outputs**
+**Returns:**
 
-- n/a: set `neuralNetwork.data.data.raw` to the array specified in the `"data"` property of the incoming `.json` file.
-
----
+- n/a: Sets `neuralNetworkData.data.raw` to the array specified in the incoming JSON file.
 
 ---
 
-### .save()
+### nn.save()
 
-> Saves the trained model
+This method saves the trained model.
 
-```js
-neuralNetwork.save(?outputName, ?callback);
+```javascript
+nn.save(outputName, callback);
 ```
 
-📥 **Inputs**
+**Parameters:**
 
-- **outputName**: Optional. String. An output name you'd like your model to be called. If no input is given, then the name will be `model`.
-- **callback**: Optional. function. A callback that is called after the model has been saved.
+- **outputName**: Optional. String. The name of the saved file. Default is `model`.
+- **callback**: Optional. Function. A callback function to be called after the model has been saved.
 
-📤 **Outputs**
+**Returns:**
 
-- n/a: downloads the model to a `.json` file and a `model.weights.bin` binary file in your `downloads` folder.
-
----
+- n/a: Downloads the model to a `.json` file and a `model.weights.bin` binary file.
 
 ---
 
-### .load()
+### nn.load()
 
-> Loads a pre-trained model
+This method loads a pre-trained model.
 
-```js
-neuralNetwork.load(filesOrPath, ?callback);
+```javascript
+nn.load(filesOrPath, callback);
 ```
 
-📥 **Inputs**
+**Parameters:**
 
-- **filesOrPath**: REQUIRED. String | InputFiles.
+- **filesOrPath**: Required. String | InputFiles. The URL to the `model.json` file, or InputFiles from an HTML input element.
   - If a string path to the `model.json` data object is given, then the `model.json`, `model_meta.json` file and its accompanying `model.weights.bin` file will be loaded. Note that the names must match.
   - If InputFiles from html input `type="file"`. Then make sure to select ALL THREE of the `model.json`, `model_meta.json` and the `model.weights.bin` file together to upload otherwise the load will throw an error.
-  - Method 1: using a json object. In this case, the paths to the specific files are set directly.
-    ```js
+  - Method 1: Using a JSON object with paths to specific files:
+    ```javascript
     const modelInfo = {
       model: "path/to/model.json",
       metadata: "path/to/model_meta.json",
       weights: "path/to/model.weights.bin",
     };
-    neuralNetwork.load(modelInfo, modelLoadedCallback);
+    nn.load(modelInfo, modelLoadedCallback);
     ```
-  - Method 2: specifying only the path to th model.json. In this case, the `model_meta.json` and the `model.weights.bin` are assumed to be in the same directory, named exactly like `model_meta.json` and `model.weights.bin`.
-    ```js
-    neuralNetwork.load("path/to/model.json", modelLoadedCallback);
+  - Method 2: Specifying only the path to the `model.json`. Assumes the `model_meta.json` and `model.weights.bin` are in the same directory:
+    ```javascript
+    nn.load("path/to/model.json", modelLoadedCallback);
     ```
-  - Method 3: using the `<input type="file" multiple>`
-- **callback**: Optional. function. A callback that is called after the model has been loaded.
+  - Method 3: Using `<input type="file" multiple>`:
+- **callback**: Optional. Function. A callback function to be called after the model has been loaded.
 
-📤 **Outputs**
+**Returns:**
 
-- n/a: loads the model to `neuralNetwork.model`
-
----
+- n/a: Loads the model to `nn.model`.

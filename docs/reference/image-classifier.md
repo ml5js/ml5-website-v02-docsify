@@ -154,37 +154,155 @@ Voila! You have successfully built the ImageClassifier Single Image example. Pre
 
 ?> If you have any questions or spot something unclear in this step-by-step code guide, we'd love to hear from you! Join us on [Discord](https://discord.com/invite/3CVauZMSt7) and let us know how we can make it better.
 
+## Properties
+
+### imageClassifier.modelName
+
+- **Description**
+  - The name of the model being used, typically one of "mobilenet", "darknet", "darknet-tiny", or "doodlenet".
+- **Type**
+  - String
+
+---
+
+### imageClassifier.modelUrl
+
+- **Description**
+  - The URL of the model if a custom model is being used.
+- **Type**
+  - String
+
+---
+
+### imageClassifier.model
+
+- **Description**
+  - The TensorFlow.js model used for image classification.
+- **Type**
+  - tf.LayersModel
+
+---
+
+### imageClassifier.modelToUse
+
+- **Description**
+  - The specific model module to be used for image classification, such as MobileNet, Darknet, or Doodlenet.
+- **Type**
+  - Object
+
+---
+
+### imageClassifier.mapStringToIndex
+
+- **Description**
+  - An array mapping string labels to indices for custom models.
+- **Type**
+  - Array
+
+---
+
+### imageClassifier.version
+
+- **Description**
+  - The version of the model being used, applicable to MobileNet.
+- **Type**
+  - Number
+
+---
+
+### imageClassifier.alpha
+
+- **Description**
+  - The alpha value (width multiplier) of the model being used, applicable to MobileNet.
+- **Type**
+  - Number
+
+---
+
+### imageClassifier.topk
+
+- **Description**
+  - The number of top predictions to return, applicable to MobileNet.
+- **Type**
+  - Number
+
+---
+
+### imageClassifier.isClassifying
+
+- **Description**
+  - A flag indicating whether the classification loop is currently running.
+- **Type**
+  - Boolean
+
+---
+
+### imageClassifier.signalStop
+
+- **Description**
+  - A flag used to signal the classification loop to stop.
+- **Type**
+  - Boolean
+
+---
+
+### imageClassifier.prevCall
+
+- **Description**
+  - Tracks the previous call to `classifyStart` or `classifyStop` to handle warnings.
+- **Type**
+  - String
+
+---
+
+### imageClassifier.ready
+
+- **Description**
+  - A promise that resolves when the model has loaded.
+- **Type**
+  - Promise
+
+---
+
+
 ## Methods
 
-#### ml5.imageClassifier()
+### ml5.imageClassifier()
 
 This method is used to initialize the imageClassifer object.
 
 ```javascript
-const classifier = ml5.imageClassifier(?modelName, ?options, ?callback);
+const classifier = ml5.imageClassifier(modelNameOrUrl, ?options, ?callback);
 ```
 
 **Parameters:**
 
-- **modelName**: Optional. Name of the underlying model to use. Possible values are `mobilenet`, `darknet` (28 MB in size), `darknet-tiny` (4 MB), `doodlenet`, or a URL to a compatible model file.
+- **modelName**: Optional.
+  - String: Name of the underlying model to use. Possible values are `mobilenet`, `darknet` (28 MB in size), `darknet-tiny` (4 MB), `doodlenet`, or a URL to a compatible model file.
 
-- **options**: Optional. An object to change the default configuration of the model.
+- **options**: Optional. 
+  - Object: An object to change the default configuration of the model.
 
-The default options for the default `mobilenet` model are
+    The default options for the default `mobilenet` model are
 
-```
-{
-  alpha: 1.0,
-  topk: 3
-}
-```
+    ```
+    {
+      alpha: 1.0,
+      topk: 3
+    }
+    ```
+    - _version_: The MobileNet version to use. Default is 2.
+    - _alpha_: The width multiplier for the MobileNet. Default is 1.0.
+    - _topk_: The number of labels to return. Default is 3.
 
 - **callback(classifier, error)**: Optional. A function to run once the model has been loaded. Alternatively, call `ml5.imageClassifier()` within the p5 `preload` function.
 
 **Returns:**  
 The imageClassifier object.
 
-#### imageClassifier.classifyStart()
+--- 
+
+### imageClassifier.classifyStart()
 
 This method repeatedly outputs classification labels on an image media through a callback function.
 
@@ -198,7 +316,7 @@ imageClassifier.classifyStart(media, ?kNumber, callback);
 
 - **kNumber**: The number of labels returned by the image classification.
 
-- **callback(output, error)**: A callback function to handle the output of the classification. See below for an example output passed into the callback function:
+- **callback(results, error)**: A callback function to handle the output of the classification. See below for an example output passed into the callback function:
 
   ```javascript
   [
@@ -214,7 +332,9 @@ imageClassifier.classifyStart(media, ?kNumber, callback);
   ];
   ```
 
-#### imageClassifier.classifyStop()
+---
+
+### imageClassifier.classifyStop()
 
 This method can be called after a call to `imageClassifier.classifyStart` to stop the repeating classifications.
 
@@ -222,7 +342,9 @@ This method can be called after a call to `imageClassifier.classifyStart` to sto
 imageClassifier.classifyStop();
 ```
 
-#### imageClassifier.classify()
+--- 
+
+### imageClassifier.classify()
 
 This method asynchronously outputs a single image classification on an image media when called.
 
@@ -236,7 +358,8 @@ imageClassifier.classify(media, ?kNumber, ?callback);
 
 - **kNumber**: The number of labels returned by the image classification.
 
-- **callback(output, error)**: Optional. A callback function to handle the output of the classification.
+- **callback(results, error)**: Optional. A callback function to handle the output of the classification.
 
 **Returns:**  
 A promise that resolves to the estimation output.
+

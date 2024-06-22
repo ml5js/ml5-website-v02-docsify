@@ -159,7 +159,7 @@ Within each pose, we only want to draw the skeleton connections that the model h
 
 We iterate through the connections array, with each item being a link of `pointA` and `pointB`. For instance, `connections[1]` is `[0, 2]`, where 0 is the index of `pointA` and 2 is the index of `pointB`. Thus, `let pointAIndex = connections[j][0];` means we get the starting point (pointA) of the link `j`, and `let pointBIndex = connections[j][1];` means we get the ending point (pointB) of the link `j`.
 
-Use the indices to retrieve the `pointA` and `pointB` objects from the `pose.keypoints`. As with all keypoints, `pointA` is an object with properties `x`, `y`, and `score`.
+Use the indices to retrieve the `pointA` and `pointB` objects from the `pose.keypoints`. As with all keypoints, `pointA` is an object with properties `x`, `y`, and `confidence`.
 
 ```javascript
     for (let j = 0; j < connections.length; j++) {
@@ -222,6 +222,97 @@ Voila! You have successfully built the BodyPose model to detect and draw body po
 
 ?> If you have any questions or spot something unclear in this step-by-step code guide, we'd love to hear from you! Join us on [Discord](https://discord.com/invite/3CVauZMSt7) and let us know how we can make it better.
 
+## Properties
+
+### bodyPose.modelName
+
+- **Description**
+  - The name of the model being used, either "MoveNet" or "BlazePose".
+- **Type**
+  - String
+
+---
+
+### bodyPose.model
+
+- **Description**
+  - The TensorFlow.js model used for pose detection.
+- **Type**
+  - tf.LayersModel
+
+---
+
+### bodyPose.config
+
+- **Description**
+  - Configuration options provided by the user for the model.
+- **Type**
+  - Object
+
+---
+
+### bodyPose.runtimeConfig
+
+- **Description**
+  - Configuration options related to the runtime behavior of the model.
+- **Type**
+  - Object
+
+---
+
+### bodyPose.detectMedia
+
+- **Description**
+  - The media element (image, video, or canvas) on which pose detection is performed.
+- **Type**
+  - HTMLElement
+
+---
+
+### bodyPose.detectCallback
+
+- **Description**
+  - The callback function to handle pose detection results.
+- **Type**
+  - Function
+
+---
+
+### bodyPose.detecting
+
+- **Description**
+  - A flag indicating whether the detection loop is currently running.
+- **Type**
+  - Boolean
+
+---
+
+### bodyPose.signalStop
+
+- **Description**
+  - A flag used to signal the detection loop to stop.
+- **Type**
+  - Boolean
+
+---
+
+### bodyPose.prevCall
+
+- **Description**
+  - Tracks the previous call to `detectStart` or `detectStop` to handle warnings.
+- **Type**
+  - String
+
+---
+
+### bodyPose.ready
+
+- **Description**
+  - A promise that resolves when the model has loaded.
+- **Type**
+  - Promise
+
+
 ## Methods
 
 ### ml5.bodypose()
@@ -240,12 +331,66 @@ let bodypose = ml5.bodypose(?model, ?options, ?callback);
 
 - **options**: Optional. An object to change the default configuration of the model. The available options differ depending on which of the two underlying models are used.
 
-See See the [MoveNet documentation](https://github.com/tensorflow/tfjs-models/tree/master/pose-detection/src/movenet#create-a-detector) and the [BlazePose documentation](https://github.com/tensorflow/tfjs-models/tree/master/pose-detection/src/blazepose_tfjs#create-a-detector) for more information on available options.
+  The default and available options are:
+
+  ```javascript
+  {
+    modelType: "MULTIPOSE_LIGHTNING" // "MULTIPOSE_LIGHTNING", "SINGLEPOSE_LIGHTNING", or "SINGLEPOSE_THUNDE"
+    enableSmoothing: true,
+    minPoseScore: 0.25,
+    multiPoseMaxDimension: 256,
+    enableTracking: true,
+    trackerType: "boundingBox", // "keypoint" or "boundingBox"
+    trackerConfig: {},
+    modelUrl: undefined,
+  }
+  ```
+
+  Options for both models:
+  - _modelType_ - Optional
+    - String: The type of model to use. Default: "MULTIPOSE_LIGHTNING".
+  - _enableSmoothing_ - Optional
+    - Boolean: Whether to smooth the pose landmarks across different input images to reduce jitter. Default: true.
+  
+  Options for the MoveNet model only:
+  - _minPoseScore_ - Optional
+    - Number: The minimum confidence score for a pose to be detected. Default: 0.25.
+  - _multiPoseMaxDimension_ - Optional
+    - Number: The target maximum dimension to use as the input to the multi-pose model. Must be a mutiple of 32. Default: 256.
+  - _enableTracking_ - Optional
+    - Boolean: Track each person across the frame with a unique ID. Default: true.
+  - _trackerType_ - Optional
+    - String: Specify what type of tracker to use. Default: "boundingBox".
+  - _trackerConfig_ - Optional
+    - Object: Specify tracker configurations. Use tf.js settings by default.
+
+  Options for the BlazePose model only:
+  - _runtime_ - Optional
+    - String: Either "tfjs" or "mediapipe". Default: "tfjs"
+  - _enableSegmentation_ - Optional
+    - Boolean: A boolean indicating whether to generate the segmentation mask.
+  - _smoothSegmentation_ - Optional
+    - Boolean: whether to filters segmentation masks across different input images to reduce jitter.
+
+  For using custom or offline models
+  - _modelUrl_ - Optional
+    - String: The file path or URL to the MoveNet model.
+  - _solutionPath_ - Optional
+    - String: The file path or URL to the mediaPipe BlazePose model.
+  - _detectorModelUrl_ - Optional
+    - String: The file path or URL to the tfjs BlazePose detector model.
+  - _landmarkModelUrl_ - Optional
+    - String: The file path or URL to the tfjs BlazePose landmark model.
+
+  See See the [MoveNet documentation](https://github.com/tensorflow/tfjs-models/tree/master/pose-detection/src/movenet#create-a-detector) and the [BlazePose documentation](https://github.com/tensorflow/tfjs-models/tree/master/pose-detection/src/blazepose_tfjs#create-a-detector) for more information on available options.
 
 - **callback(bodypose, error)**: Optional. A "callback" function that runs when the model has been successfully loaded. Most ml5.js example call `ml5.bodyPose()` in the p5.js `preload()` function and no callback is needed.
 
 **Returns:**  
-The bodyPose object.
+
+- **Object**: The bodyPose object. This object contains the methods to start and stop the pose detection process.
+
+---
 
 ### bodypose.detectStart()
 
@@ -257,8 +402,7 @@ bodypose.detectStart(media, callback);
 
 **Parameters:**
 
-- **media**: An HMTL or p5.js image, video, or canvas element to run the estimation on.
-
+- **media**: An HTML or p5.js image, video, or canvas element to run the estimation on.
 - **callback(results, error)**: A callback function to handle the results of the pose estimation. See below for an example of the model's results:
 
   ```javascript
@@ -266,7 +410,7 @@ bodypose.detectStart(media, callback);
     {
       box: { width, height, xMax, xMin, yMax, yMin },
       id: 1,
-      keypoints: [{ x, y, score, name }, ...],
+      keypoints: [{ x, y, confidence, name }, ...],
       left_ankle: { x, y, confidence },
       left_ear: { x, y, confidence },
       left_elbow: { x, y, confidence },
@@ -302,8 +446,8 @@ bodypose.detectStart(media, callback);
     {
       box: { width, height, xMax, xMin, yMax, yMin },
       id: 1,
-      keypoints: [{ x, y, z, score, name }, ...],
-      keypoints3D: [{ x, y, z, score, name }, ...],
+      keypoints: [{ x, y, z, confidence, name }, ...],
+      keypoints3D: [{ x, y, z, confidence, name }, ...],
       left_ankle: { x, y, z, confidence },
       left_ear: { x, y, z, confidence },
       left_elbow: { x, y, z, confidence },
@@ -316,6 +460,8 @@ bodypose.detectStart(media, callback);
 
   ?> The `keypoints3D` array contains the 3D coordinates of the keypoints, with the `z` property representing the depth of each keypoint. The 2D `keypoints` still include z-coordinates to provide additional depth information. This helps in understanding the relative positioning of body parts, enhancing the accuracy of applications that primarily work with 2D data.
 
+---
+
 ### bodypose.detectStop()
 
 This method can be called to stop the continuous pose estimation process.
@@ -323,6 +469,28 @@ This method can be called to stop the continuous pose estimation process.
 ```javascript
 bodypose.detectStop();
 ```
+
+For example, you can toggle the pose estimation with click event in p5.js by using this function as follows:
+
+```javascript
+// Toggle detection when mouse is pressed
+function mousePressed() {
+  toggleDetection();
+}
+
+// Call this function to start and stop detection
+function toggleDetection() {
+  if (isDetecting) {
+    bodypose.detectStop();
+    isDetecting = false;
+  } else {
+    bodyPose.detectStart(video, gotPoses);
+    isDetecting = true;
+  }
+}
+```
+
+---
 
 ### bodypose.detect()
 
@@ -336,4 +504,40 @@ bodypose.detect(media, ?callback);
 
 - **media**: An HTML or p5.js image, video, or canvas element to run the estimation on.
 
-- **callback(output, error)**: Optional. A callback function to handle the results of the pose estimation. See the results above for an example of the model's output.
+- **callback(results, error)**: Optional. A callback function to handle the results of the pose estimation. See the results above for an example of the model's output.
+
+---
+
+### bodypose.getSkeleton()
+
+This method returns an array of arrays, where each sub-array contains the indices of the connected keypoints.
+
+```javascript
+const connections = bodypose.getSkeleton();
+```
+
+**Returns:**  
+
+- **Array**: An array of arrays representing the connections between keypoints. For example, using BlazePose model will returns:
+
+```js
+[
+    [0,1],
+    [0,4],
+    [1,2],
+   ...
+    [28,32],
+    [29,31],
+    [30,32]
+]
+```
+
+This array represents the connections between keypoints, please refer to these images to understand the connections:
+<center>
+      <h3>MoveNet</h3>
+      <img style="display:block; max-width:30%" alt="MoveNet keypoint diagram" src="https://camo.githubusercontent.com/c3641b718d7e613b2ce111a6a4575e88ca35a60cb325efdd9113c453b2a09301/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f6d6f76656e65742f636f636f2d6b6579706f696e74732d3530302e706e67">
+  </center> <br/>
+   <center>
+      <h3>BlazePose</h3>
+      <img style="display:block; max-width:30%" alt="BlazePose keypoint diagram" src="https://camo.githubusercontent.com/17082997c33fc6d2544c4aea33d9898860cf902ed5a0b865527d1dd91bbc7efa/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f6d65646961706970652f626c617a65706f73652d6b6579706f696e74732d757064617465642e706e67">
+  </center>
