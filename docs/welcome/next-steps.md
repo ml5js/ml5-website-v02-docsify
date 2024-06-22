@@ -15,27 +15,32 @@ During the Getting Started guide, you have used ml5 [Image Classifier](/referenc
 
 If you would like to understand how the machine learning models work behind the scenes, we recommend you to learn more about theory of machine learning algorithms. Here are some resources to help you get started:
 
-> #### Beginner's Guide to Machine Learning with ml5.js 👉[ Learn](https://youtu.be/26uABexmOX4?si=nqPoD6bQrVTU-YFw) _By Daniel Shiffman_
->
-> This playlist provides an introduction to developing creative coding projects with machine learning. The theory and application of machine learning algorithms is demonstrated in JavaScript using the p5.js and ml5.js libraries.
->
-> <iframe width="560" height="315" src="https://www.youtube.com/embed/26uABexmOX4?si=HXJRrgTkPhjN5hrr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+#### ml5 Glossay 👉[ Learn](https://ml5js.github.io/ml5-website-v02-docsify/#/learn/ml5-glossary)
 
-> #### The Nature of Code - Chapter 10. Neural Networks & Chapter 11. Neuroevolution 👉[ Learn](https://natureofcode.com/book/chapter-10-neural-networks/) _By Daniel Shiffman_
->
-> In chapter 10, "we’ll begin with a conceptual overview of the properties and features of neural networks and build the simplest possible example of one (a network that consists of a single neuron). Afterwards, we’ll examine strategies for creating a “Brain” object that can be inserted into our Vehicle class and used to determine steering. Finally, we’ll also look at techniques for visualizing and animating a network of neurons."
->
-> In chapter 11, "the path forward passes through the field of neuroevolution, a style of machine learning that combines the genetic algorithms from Chapter 9 with the neural networks from Chapter 10. A neuroevolutionary system uses Darwinian principles to evolve the weights (and in some cases, the structure itself) of a neural network over generations of trial-and-error learning. In this chapter, I’ll demonstrate how to use neuroevolution with a familiar example from the world of gaming. I’ll then finish off with some variations on Craig Reynolds’s steering behaviors from Chapter 5, where the behaviors are learned through neuroevolution."
->
-><center>
+Have you ever felt confused about a term we used here at ml5? No worries, we've created a glossary to help! In it, we explain and define programming techniques and machine learning terminologies specific to ml5 that are mentioned in our libraries, website, and examples.
 
-> <img alt="pose detection" src="assets/gettingstarted-noc.jpeg">
+---
+
+#### The Nature of Code - Chapter 10 & Chapter 11 **By Daniel Shiffman** 👉[ Learn](https://natureofcode.com/book/chapter-10-neural-networks/)
+
+##### Chapter 10. Neural Networks
+"We’ll begin with a conceptual overview of the properties and features of neural networks and build the simplest possible example of one (a network that consists of a single neuron). Afterwards, we’ll examine strategies for creating a “Brain” object that can be inserted into our Vehicle class and used to determine steering. Finally, we’ll also look at techniques for visualizing and animating a network of neurons."
+
+##### Chapter 11. Neuroevolution
+"The path forward passes through the field of neuroevolution, a style of machine learning that combines the genetic algorithms from Chapter 9 with the neural networks from Chapter 10. A neuroevolutionary system uses Darwinian principles to evolve the weights (and in some cases, the structure itself) of a neural network over generations of trial-and-error learning. In this chapter, I’ll demonstrate how to use neuroevolution with a familiar example from the world of gaming. I’ll then finish off with some variations on Craig Reynolds’s steering behaviors from Chapter 5, where the behaviors are learned through neuroevolution."
+
+<center>
+
+<img alt="pose detection" src="assets/gettingstarted-noc.jpeg">
 
 </center>
 
-> #### ml5 Glossay 👉[ Learn](https://ml5js.github.io/ml5-website-v02-docsify/#/learn/ml5-glossary)
->
-> Have you ever felt confused about a term we used here at ml5? No worries, we've got you covered! Check out this glossary. Here, we explain and define programming techniques and machine learning terminologies specific to ml5 that are mentioned in our libraries, website, and examples.
+---
+
+#### Beginner's Guide to Machine Learning with ml5.js **By Daniel Shiffman** 👉[ Learn](https://youtu.be/26uABexmOX4?si=nqPoD6bQrVTU-YFw)
+
+This playlist provides an introduction to developing creative coding projects with machine learning. The theory and application of machine learning algorithms is demonstrated in JavaScript using the p5.js and ml5.js libraries.
+<iframe width="560" height="315" src="https://www.youtube.com/embed/26uABexmOX4?si=HXJRrgTkPhjN5hrr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## Join Community
 

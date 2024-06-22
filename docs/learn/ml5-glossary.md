@@ -2,7 +2,7 @@
 
 <br/>
 
-Have you ever felt confused about a term we used here at ml5? No worries, we've got you covered! Check out this glossary. Here, we explain and define programming techniques and machine learning terms specific to ml5 that are mentioned in our libraries, website, and examples.
+Have you ever felt confused about a term we used here at ml5? No worries, we've created a glossary to help! In this glossary, we explain and define programming techniques and machine learning terminologies specific to ml5 that are mentioned in our libraries, website, and examples.
 
 This glossary is designed to be editable by any ml5 user. If you have a term you'd like to add or update, please do! We'd love to hear from you. You can view the source code and submit a pull request at [our GitHub repository](https://github.com/ml5js/ml5-website-v02-docsify). No worries if you're not familiar with pull requests; you can also contribute through this Google form! <img class="inline-img" src="assets/glossary-point-right.png" alt="tip icon" aria-hidden="true"> [ml5 Glossary Contribution Form](https://forms.gle/nRSRm7zESJUeestw8)
 
