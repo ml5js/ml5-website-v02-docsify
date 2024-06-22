@@ -25,4 +25,32 @@ For more discussion about node.js and ml5.js, visit this [issue thread](https://
 
 We are constantly updating the library, but you can still access older versions at any time by changing the version number in your script. The [archived website](https://archive.ml5js.org/) and [documentation](https://archive-docs.ml5js.org/) cover materials for versions `0.12.2` and earlier.
 
+### ml5.js 0.12.2 models and functions
+
+#### Updated new models!
+- FeatureExtractor - coming back soon! (use 0.12.2 for now)
+- ObjectDetection - coming back soon! (use 0.12.2 for now)
+- PoseNet - Updated! (now BodyPose)
+- BodyPix - Updated! (now BodySegmentation)
+- HandPose - Updated! Still HandPose!
+- FaceMesh - Updated! Still FaceMesh!
+- FaceApi - Deprecated, use FaceMesh instead!
+- UNet - Deprecated, use BodySegmentation instead!
+- Image Classification - the same!
+- Sound Classification - the same!
+- Sentiment Analysis - the same!
+- Neural Network – mostly the same, updates for neuroevolution!
+
+#### Deprecated, use 0.12.2
+- KNNClassifer - coming soon?
+- kmeans - coming soon?
+- StyleTransfer
+- pix2pix
+- CVAE
+- DCGan
+- SketchRNN
+- PitchDetection
+- CharRNN
+- Word2Vec
+
 <br>
