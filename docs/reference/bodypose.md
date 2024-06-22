@@ -427,7 +427,7 @@ This array represents the connections between keypoints, please refer to these i
       <img style="display:block; max-width:30%" alt="MoveNet keypoint diagram" src="https://camo.githubusercontent.com/c3641b718d7e613b2ce111a6a4575e88ca35a60cb325efdd9113c453b2a09301/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f6d6f76656e65742f636f636f2d6b6579706f696e74732d3530302e706e67">
   </center> <br/>
    <center>
-      <h3>BlazeNet</h3>
+      <h3>BlazePose</h3>
       <img style="display:block; max-width:30%" alt="BlazePose keypoint diagram" src="https://camo.githubusercontent.com/17082997c33fc6d2544c4aea33d9898860cf902ed5a0b865527d1dd91bbc7efa/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f6d65646961706970652f626c617a65706f73652d6b6579706f696e74732d757064617465642e706e67">
   </center>
 
