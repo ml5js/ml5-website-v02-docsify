@@ -263,7 +263,7 @@ let bodypose = ml5.bodypose(?model, ?options, ?callback);
 
   Options for the BlazePose model only:
   - _runtime_ - Optional
-    - String: Either "tfjs" or "mediapipe". Default: "mediapipe"
+    - String: Either "tfjs" or "mediapipe". Default: "tfjs"
   - _enableSegmentation_ - Optional
     - Boolean: A boolean indicating whether to generate the segmentation mask.
   - _smoothSegmentation_ - Optional
