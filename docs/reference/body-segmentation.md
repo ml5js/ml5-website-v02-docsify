@@ -7,10 +7,11 @@
 
 ## Description
 
-BodySegmentation divides an image input into the people and the background, and then further divide the people into different body parts. The model can detect multiple people at once and for each person, provides 24 body parts that describe important locations on the body.
+The ml5.js BodySegmentation divides an image input into the people and the background, and then further divide the people into different body parts. The model can detect multiple people at once and for each person, provides 24 body parts that describe important locations on the body.
 
-### Key Features
+It is built on top of the TensorFlow.js BodyPix model and the MediaPipe Selfie Segmentation model.
 
+It provides following functionalities:
 - **Real-time person segmentation**: The model can segment people from the background in real-time.
 - **Real-time body part segmentation**: The model can segment body parts in real-time.
 
@@ -118,7 +119,7 @@ const bodySegmentation = ml5.bodySegmentation(?modelName, ?options, ?callback);
 
   [More info on options for SelfieSegmentation model with tfjs runtime](https://github.com/tensorflow/tfjs-models/tree/master/body-segmentation/src/selfie_segmentation_tfjs#create-a-detector).
 
-  [More infor on options for BodyPix model.](https://github.com/tensorflow/tfjs-models/blob/master/body-segmentation/src/body_pix/README.md#create-a-detector)
+  [More info on options for BodyPix model.](https://github.com/tensorflow/tfjs-models/blob/master/body-segmentation/src/body_pix/README.md#create-a-detector)
 
 - **callback(bodySegmentation, error)**: OPTIONAL. A function to run once the model has been loaded. Alternatively, call `ml5.bodySegmentation()` within the p5 `preload` function.
 
