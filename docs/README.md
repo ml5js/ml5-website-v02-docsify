@@ -29,7 +29,7 @@ Once you have the p5.js web editor open, unfold the project directory by clickin
 Now, let's switch to the `index.html` file and copy and paste the following CDN link inside the `<head>` tag.
 
 ```html
-<script src="https://unpkg.com/ml5@alpha/dist/ml5.min.js"></script>
+<script src="https://unpkg.com/ml5@1/dist/ml5.min.js"></script>
 ```
 
 <center>
