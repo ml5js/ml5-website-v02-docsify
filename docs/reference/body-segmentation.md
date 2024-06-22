@@ -159,8 +159,8 @@ const bodySegmentation = ml5.bodySegmentation(?modelName, ?options, ?callback);
 **Parameters:**
 
 - **modelName**: Optional. A string specifying which model to use. Types of model:
-  - _BodyPix_ (default): A general-purpose model that can be used to segment people and body parts.
-  - _SelfieSegmentation_: A model that can be used to segment people from the background.
+  - _SelfieSegmentation_(default): A model that can be used to segment people from the background.
+  - _BodyPix_: A model that can be used to segment people and body parts.
 
   
 
