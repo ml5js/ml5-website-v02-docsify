@@ -23,7 +23,7 @@ Run and explore a pre-built example! [This FaceMesh example](https://editor.p5js
 
 </br>
 
-[DEMO](iframes/facemesh-keypoints ":include :type=iframe width=100% height=550px")
+[DEMO](iframes/facemesh ":include :type=iframe width=100% height=550px")
 
 ## Examples
 
@@ -280,9 +280,9 @@ const faceMesh = ml5.faceMesh(?options, ?callback);
 
   - _maxFacess_
     - Number: The maximum number of faces to detect. Defaults to 2.
-  - _refineLandmarks_ 
+  - _refineLandmarks_
     - Boolean: Refine the landmarks. Defaults to false.
-  - _flipHorizontal_ 
+  - _flipHorizontal_
     - Boolean: Flip the result horizontally. Defaults to false.
   - _runtime_
     - String: The runtime to use. "tfjs" (default) or "mediapipe".
@@ -296,7 +296,7 @@ const faceMesh = ml5.faceMesh(?options, ?callback);
 
 - **callback(faceMesh, error)**: Optional. A function to run once the model has been loaded. Alternatively, call `ml5.faceMesh()` within the p5 `preload` function.
 
-**Returns:**  
+**Returns:**
 
 - **Object**: The faceMesh object. This object contains the methods to start and stop the detection process.
 
@@ -354,4 +354,3 @@ faceMesh.detect(media, ?callback);
 
 - **media**: An HTML or p5.js image, video, or canvas element to run the estimation on.
 - **callback(results, error)**: Optional. A callback function to handle the output of the estimation, see output example above.
-

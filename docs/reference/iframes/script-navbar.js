@@ -32,7 +32,7 @@ function navbar(linkToWebEditor = "") {
       <!-- RIGHT BUTTONS -->
       <div class="buttons-right">
         <button>
-          <a href="${linkToWebEditor}" target="_blank">
+          <a href="${linkToWebEditor}" target="_blank" class="link-to-p5">
             Open in p5.js Web Editor
           </a>
         </button>

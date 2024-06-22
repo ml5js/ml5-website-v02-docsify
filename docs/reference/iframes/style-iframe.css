@@ -7,11 +7,11 @@ body {
   color: var(--color-text-light);
   background-color: var(--color-bg-light);
   font-family: var(--body-font-family);
-  font-size: 0.9rem;
+  font-size: 1.0rem;
 }
 
 h1 {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
 }
 
 a {
@@ -34,6 +34,11 @@ a:hover {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.text-highlight {
+  font-weight: bold;
+  color: var(--color-secondary);
 }
 
 iframe {
@@ -99,4 +104,8 @@ canvas {
 
 .iframe-navbar button:hover {
   /* background-color: var(--color-text-highlight); */
+}
+
+.link-to-p5 {
+  color: var(--color-text-p5);
 }

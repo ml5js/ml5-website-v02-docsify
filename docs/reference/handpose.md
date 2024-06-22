@@ -23,7 +23,7 @@ Run and explore a pre-built example! [This HandPose example](https://editor.p5js
 
 </br>
 
-[DEMO](iframes/handpose-keypoints ":include :type=iframe width=100% height=550px")
+[DEMO](iframes/handpose ":include :type=iframe width=100% height=550px")
 
 ## Examples
 
@@ -245,7 +245,6 @@ Voila! You have successfully built the HandPose Keypoints example. Press the <im
 - **Type**
   - Promise
 
-
 ## Methods
 
 ### ml5.handpose()
@@ -292,12 +291,12 @@ const handpose = ml5.handpose(?options, ?callback);
     - String: The file path or URL to the hand landmark model. Only used when using "tfjs" runtime.
 
   More info on options [here](https://github.com/tensorflow/tfjs-models/tree/master/hand-pose-detection/src/mediapipe#create-a-detector) for "mediapipe" runtime.
-  
+
   More info on options [here](https://github.com/tensorflow/tfjs-models/tree/master/hand-pose-detection/src/tfjs#create-a-detector) for "tfjs" runtime.
 
 - **callback(handpose, error)**: Optional. A function to run once the model has been loaded. Alternatively, call `ml5.handpose()` within the p5 `preload` function.
 
-**Returns:** 
+**Returns:**
 
 - **Object**: The handpose object. This object contains the methods to start and stop the hand pose detection process.
 
@@ -367,7 +366,8 @@ function toggleDetection() {
 }
 ```
 
---- 
+---
+
 ### handpose.detect()
 
 This method asynchronously outputs a single hand estimation on an image media when called.
@@ -381,4 +381,3 @@ handpose.detect(media, ?callback);
 - **media**: An HTML or p5.js image, video, or canvas element to run the estimation on.
 
 - **callback(results, error)**: Optional. A callback function to handle the output of the estimation, see output example above.
-

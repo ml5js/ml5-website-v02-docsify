@@ -25,7 +25,7 @@ Run and explore a pre-built example! [This Image + Teachable Machine example](ht
 
 </br>
 
-[DEMO](iframes/image-teachable-machine ":include :type=iframe width=100% height=550px")
+[DEMO](iframes/image-classifier-tm ":include :type=iframe width=100% height=550px")
 
 ## Examples
 
