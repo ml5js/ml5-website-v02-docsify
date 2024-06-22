@@ -37,7 +37,7 @@ Before you start, let's create an empty project in the [p5 web editor](https://e
 First of all, copy and paste the following code into your **index.html** file. If you are not familiar with the p5 web editor interface, you can find a guide on how to find your **index.html** file [here](/?id=try-ml5js-online-1).
 
 ```html
-<script src="https://unpkg.com/ml5@alpha/dist/ml5.js"></script>
+<script src="https://unpkg.com/ml5@1/dist/ml5.js"></script>
 ```
 
 Then, add the code below to your **sketch.js** file:
