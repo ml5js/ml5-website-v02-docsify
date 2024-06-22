@@ -20,7 +20,7 @@ If opting to train your own model, try [Google's Teachable Machine](https://teac
 
 ## Quick Start
 
-Run and explore a pre-built example! [This SoundClassifier example]() recognizes speech commands using SpeechCommands18w.
+Run and explore a pre-built example! [This SoundClassifier example](https://github.com/ml5js/ml5-next-gen/tree/main/examples/soundClassifier-speech-command) recognizes speech commands using SpeechCommands18w.
 
 </br>
 
@@ -28,9 +28,12 @@ Run and explore a pre-built example! [This SoundClassifier example]() recognizes
 
 ## Examples
 
+- [SoundClassifier Speech Commands](https://github.com/ml5js/ml5-next-gen/tree/main/examples/soundClassifier-speech-command): Sound classification using the SpeechCommands18w model.
+- [SoundClassifier Teachable Machine](https://github.com/ml5js/ml5-next-gen/tree/main/examples/soundClassifier-teachable-machine): Sound classification using a custom model with Google's Teachable Machine.
+
 ## Step-by-Step Guide
 
-Let's build the Sound Classification example from scratch, and in the process, learn how to use SoundClassifier!
+Let's build the [Sound Classification example](https://github.com/ml5js/ml5-next-gen/tree/main/examples/soundClassifier-speech-command) from scratch, and in the process, learn how to use SoundClassifier!
 
 ### Create a new project
 
@@ -193,7 +196,7 @@ Finally, we display the classification results on the canvas and again, use `fil
 
 ### Run your sketch
 
-Voila! You have successfully built the Sound Classification example. Press the <img class="inline-img" src="assets/facemesh-arrow-forward.png" alt="run button icon" aria-hidden="true"> `run` button to see the code in action. You can also find the [complete code]() in the p5.js web editor.
+Voila! You have successfully built the Sound Classification example. Press the <img class="inline-img" src="assets/facemesh-arrow-forward.png" alt="run button icon" aria-hidden="true"> `run` button to see the code in action. You can also find the [complete code](https://github.com/ml5js/ml5-next-gen/tree/main/examples/soundClassifier-speech-command) in the p5.js web editor.
 
 ?> If you have any questions or spot something unclear in this step-by-step code guide, we'd love to hear from you! Join us on [Discord](https://discord.com/invite/3CVauZMSt7) and let us know how we can make it better.
 
