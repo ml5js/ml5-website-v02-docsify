@@ -14,8 +14,6 @@ This glossary is designed to be editable by any ml5 user. If you have a term you
 
 #### **C**
 
----
-
 ## Callback
 
 ml5.js is heavily inspired by the syntax, patterns and style of the [p5.js](https://p5js.org/) library. However, there are several differences in how asynchronous operations are handled by ml5.js. ml5.js supports both <b>error-first callbacks</b> and Promises in all methods.
@@ -302,8 +300,6 @@ In contrast, the prediction of [regression](/learn/ml5-glossary?id=regression-an
 
 #### **D**
 
----
-
 ## Dataset
 
 A dataset is a collection of data. Datasets are often used to train and test machine learning models. For example, a dataset of images of cats and dogs could be used to train a machine learning model to classify images of cats and dogs, and another dataset of images of cats and dogs could be used to test the performance of the machine learning model. You could compare the ground truth lables of the test dataset with the model predictions to evaluate the performance of the model.
@@ -401,8 +397,6 @@ yarn
 
 #### **F**
 
----
-
 ## Feature
 
 A feature is an individual measurable property or characteristic of a phenomenon being observed. For example, a feature of a cat could be its weight, or the color of its fur. Here, we have three samples of data, each with two features (weight and color of the fur) and a label (cat or dog).
@@ -472,8 +466,6 @@ Here, the example uses the values of red, green, and blue color channels as feat
 
 #### **H**
 
----
-
 ## Hyperparameters
 
 Hyperparameters are parameters that are set by coders before training a machine learning model. They are often used to control the training process of a machine learning model, for instance, the batch size, the epochs, the learning rate, and the number of hidden layers, etc. Batch size is the number of samples that are used to update the weights of a machine learning model in one iteration. Epochs is the number of times that a machine learning model is trained on the entire training dataset. Learning rate is the step size at each iteration while moving toward a minimum of a loss function. The number of hidden layers is the number of layers between the input layer and the output layer of a machine learning model.
@@ -492,8 +484,6 @@ function trainModel() {
 ```
 
 #### **L**
-
----
 
 ## Label
 
@@ -552,8 +542,6 @@ npm run develop
 
 #### **M**
 
----
-
 ## MobileNet
 
 By [Ellen Nickles](https://github.com/ellennickles/)
@@ -598,8 +586,6 @@ By [Ellen Nickles](https://github.com/ellennickles/)
 
 #### **N**
 
----
-
 ## Neuron
 
 In machine learning, a neuron mimics a biological neuron in brains and other parts of nervous systems. It exists as a distinct unit within a hidden layer of a [neural network](#neural-network). Each neuron is responsible for completing these two tasks:
@@ -639,8 +625,6 @@ You can find the npm package for ml5.js [here](https://www.npmjs.com/package/ml5
 
 #### **O**
 
----
-
 ## Overfitting
 
 Overfitting is a phenomenon that occurs when a machine learning model is trained to fit the training data too closely. Since it fails to generalize the underlying information, the trained model often performs poorly on everything other than the training data.
@@ -654,8 +638,6 @@ Overfitting is the opposite of [underfitting](#underfitting).
 In ml5.js, overfitting can happen while training for a [neural network](#neural-network). Some common strategies to avoid overfitting include: training with more data, feature selection, regularization.
 
 #### **P**
-
----
 
 ## Prediction
 
@@ -691,9 +673,23 @@ Two most common types of regression models are:
 <img align="center" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmiro.medium.com%2Fmax%2F1450%2F1*QY3CSyA4BzAU6sEPFwp9ZQ.png&f=1&nofb=1&ipt=b1ede474256f60310c332de4a15d65bf041bb3c028ff015b380b2dc3f5982ae1&ipo=images" width="40%">
 <figcaption>A typical logistic regression model</figcaption>
 
-#### **S**
+---
+
+## Runtime
+
+In ml5.js, the term **runtime** refers to the environment or framework that executes the machine learning models. Currently, ml5.js supports two primary runtimes: `tfjs` (TensorFlow.js) and `mediapipe`. Each runtime offers different functionalities and performance characteristics tailored to specific use cases.
+
+To choose a runtime for a model in ml5.js, you typically need to specify the runtime option when loading or initializing the model. Here’s an example of how to select `mediapipe` as the runtime for a model:
+
+```javascript
+const model = ml5.modelName({ runtime: 'mediapipe' });
+```
+
+While `tfjs` serves as the default and general-purpose runtime in ml5.js, `mediapipe` offers as an experimental option. Users can select the appropriate runtime based on their specific needs and performance requirements.
 
 ---
+
+#### **S**
 
 ## Stride
 
@@ -711,7 +707,6 @@ Score is a measure of how well a machine learning model performs on a given inpu
 
 ---
 
-
 ## Sigmoid Function
 
 <img align="right" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Logistic-curve.svg/320px-Logistic-curve.svg.png">
@@ -721,8 +716,6 @@ A sigmoid function is a mathematical function having a characteristic "S"-shaped
 The logistic curve, on the right, is a common exmaple of sigmoid function.
 
 #### **T**
-
----
 
 ## Test Set
 
@@ -742,8 +735,6 @@ A terminal is a command line interface that is used to run commands on a compute
 
 #### **U**
 
----
-
 ## Underfitting
 
 Underfitting is a phenomenon that occurs when a machine learning model is trained to fit the training data too loosely. Underfitting can result in a machine learning model that is not meaningful at all, and performs badly on both training and new data.
@@ -751,8 +742,6 @@ Underfitting is a phenomenon that occurs when a machine learning model is traine
 Underfitting is the opposite of [overfitting](#overfitting).
 
 #### **V**
-
----
 
 ## Validation
 
@@ -776,9 +765,9 @@ Traditionally, we divide the dataset into the three distinct subsets:
 
 Ideally, each data point in the dataset should only belong to one of these three preceding subsets.
 
-#### **W**
-
 ---
+
+#### **W**
 
 ## Weights
 
@@ -801,8 +790,6 @@ Weights quantization is a technique used to reduce the size of a machine learnin
 <img class="inline-img" src="assets/glossary-point-right.png" alt="tip icon" aria-hidden="true"> Click on the tabs on the right to see the glossary by topic.
 
 #### **Web Application Development**
-
----
 
 ## Callback
 
@@ -916,8 +903,6 @@ The preload function is a function that is called before the setup function. In 
 A terminal is a command line interface that is used to run commands on a computer. In ml5.js, a terminal is often used to run a [local development server](#local-development-server).
 
 #### **Machine Learning Essentials**
-
----
 
 ## Confidence
 
@@ -1368,8 +1353,6 @@ Traditionally, we divide the dataset into the three distinct subsets:
 Ideally, each data point in the dataset should only belong to one of these three preceding subsets.
 
 #### **Deep Learning**
-
----
 
 ## Neural Network
 
