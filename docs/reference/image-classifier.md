@@ -262,8 +262,6 @@ Voila! You have successfully built the ImageClassifier Single Image example. Pre
 - **Type**
   - Promise
 
----
-
 
 ## Methods
 

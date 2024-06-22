@@ -203,9 +203,9 @@ That's it! You have successfully built a Sentiment Analysis model that predicts 
 
 ### sentiment.ready
 
-- Description
+- **Description**
   - Boolean value that specifies if the model has loaded.
-- Type
+- **Type**
   - Boolean
 
 ---
