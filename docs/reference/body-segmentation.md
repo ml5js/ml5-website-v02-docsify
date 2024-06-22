@@ -29,7 +29,7 @@ Run and explore a pre-built example! [This BodySegmentation example](https://edi
 - [BodySegmentation Mask Person](https://editor.p5js.org/ml5/sketches/h6TN8umP5): Segment the person from webcam input.
 
 ## Step-by-Step Guide
-Now, let's together build the [BodySegmentation Mask Body Part example](https://editor.p5js.org/ml5/sketches/ruoyal-RC) from scratch, and in the process, learn how to use the HandPose model.
+Now, let's together build the [BodySegmentation Mask Body Part example](https://editor.p5js.org/ml5/sketches/ruoyal-RC) from scratch, and in the process, learn how to use the BodySegmentation models.
 
 ### Create a new project
 
@@ -48,7 +48,7 @@ Import the ml5.js library in your `index.html` file.
 Let's open the `sketch.js` file and define a variable to store the BodySegmentation model.
 
 ```javascript
-let bodyPix;
+let bodySegmentation;
 ```
 
 In this example, we would like to segment body parts from the webcam input. Let's specify the mask type as `parts` in the options object.
@@ -59,13 +59,13 @@ let options = {
 };
 ```
 
-?> You can also specify the model type as `person` or `background` in the options object. For more information on the options object, please refer to the [Methods](/reference/body-segmentation?id=methods) section.
+?> You can also specify the mask type as `person` or `background` in the options object. For more information on the options object, please refer to the [Methods](/reference/body-segmentation?id=methods) section.
 
 Now, let's preload the BodySegmentation model with the specified options. Using the `preload` function ensures that the model is loaded before the `setup` and `draw` functions are called.
 
 ```javascript
 function preload() {
-  bodyPix = ml5.bodySegmentation("BodyPix", options);
+  bodySegmentation = ml5.bodySegmentation("BodyPix", options);
 }
 ```
 
@@ -101,7 +101,7 @@ We can now use the BodySegmentation model to detect body parts from the webcam i
 let segmentation;
 ```
 
-To start detecting the body parts, in the `setup` function, we need to call the `detectStart` method of the `bodyPix` object. This method takes the webcam video as input and a callback function to handle the output.
+To start detecting the body parts, in the `setup` function, we need to call the `detectStart` method of the `bodySegmentation` object. This method takes the webcam video as input and a callback function to handle the output.
 
 ```javascript
 function setup() {
@@ -109,19 +109,19 @@ function setup() {
   video.hide();
 
   // Start detecting body parts from the webcam video
-  bodyPix.detectStart(video, gotResults);
+  bodySegmentation.detectStart(video, gotResults);
 }
 ```
 
-The `gotResults()` function is a callback function that will be called when the `bodyPix.detectStart()` method detects body parts. Once the body parts are detected, the output `result` will be passed to `gotResults()`, and then saved to the `segmentation` variable.
+The `gotResults()` function is a callback function that will be called when the `bodySegmentation.detectStart()` method detects body parts. Once the body parts are detected, the output `result` will be passed to `gotResults()`, and then saved to the `segmentation` variable.
 
 ```javascript
 function gotResults(result) {
-  segmentation = result.mask;
+  segmentation = result;
 }
 ```
 
-?> The `result` object also contains the `maskImageData` property, which stores the segmentation mask as an ImageData object. For more information on the output object, please refer to the [Methods](/reference/body-segmentation?id=methods) section.
+?> The `result` object also contains additional properties. For more information on the output object, please refer to the [Methods](/reference/body-segmentation?id=methods) section.
 
 ### Display the segmented body parts
 Before we display the segmented body parts, let's clear the canvas and draw the webcam video.
@@ -136,7 +136,7 @@ If the `segmentation` variable is not empty, we can display the segmented body p
 
 ```javascript
   if (segmentation) {
-    image(segmentation, 0, 0, width, height);
+    image(segmentation.mask, 0, 0, width, height);
   }
 }
 ```
@@ -168,9 +168,9 @@ const bodySegmentation = ml5.bodySegmentation(?modelName, ?options, ?callback);
 
   ```javascript
   {
-    runtime: "tfjs", // "mediapipe" or "tfjs"
+    runtime: "tfjs", // "tfjs" or "mediapipe"
     modelType: "general", // "general" or "landscape"
-    maskType: :"background", //"background", "body", or "parts" (used to change the type of segmentation mask output)
+    maskType: "background" // "background", "body", or "parts" (used to change the type of segmentation mask output)
   }
   ```
 
@@ -180,13 +180,13 @@ const bodySegmentation = ml5.bodySegmentation(?modelName, ?options, ?callback);
     - _body_: A mask of the person. The result is an image with black pixels on the background and transparent pixels on the person.
     - _parts_: **BodyPix** only. A mask of the body parts. The result is an image with white pixels on the background and various color pixels for each body part.
 
-    [More info on options for SelfieSegmentation model with mediaPipe runtime](https://github.com/tensorflow/tfjs-models/tree/master/body-segmentation/src/selfie_segmentation_mediapipe#create-a-detector).
+  [More info on options for SelfieSegmentation model with tfjs runtime](https://github.com/tensorflow/tfjs-models/tree/master/body-segmentation/src/selfie_segmentation_tfjs#create-a-detector).
 
-    [More info on options for SelfieSegmentation model with tfjs runtime](https://github.com/tensorflow/tfjs-models/tree/master/body-segmentation/src/selfie_segmentation_tfjs#create-a-detector).
+  [More info on options for SelfieSegmentation model with mediaPipe runtime](https://github.com/tensorflow/tfjs-models/tree/master/body-segmentation/src/selfie_segmentation_mediapipe#create-a-detector).
 
   [More info on options for BodyPix model.](https://github.com/tensorflow/tfjs-models/blob/master/body-segmentation/src/body_pix/README.md#create-a-detector)
 
-- **callback(bodySegmentation)**: OPTIONAL. A function to run once the model has been loaded. Alternatively, call `ml5.bodySegmentation()` within the p5 `preload` function.
+- **callback(bodySegmentation, error)**: Optional. A function to run once the model has been loaded. Alternatively, call `ml5.bodySegmentation()` within the p5 `preload` function.
 
 **Returns:**  
 
@@ -204,14 +204,20 @@ bodySegmentation.detectStart(media, callback);
 
 - **media**: An HTML or p5.js image, video, or canvas element to run the segmentation on.
 
-- **callback(results)**: A function to handle the output of `bodySegmentation.detectStart()`. Likely a function to do something with the segmented image. Based on your options, the `results` can be a mask of the background, a mask of the person, or a mask of the body parts. Regardless of the scenario, the segmentation information deemed valuable is consistently stored within the `mask` property of the resulting object. See below for the output passed into the callback function:
+- **callback(output, error)**: Optional. A callback function to handle the results of the body segmentation.
+
+The `output` will contain an object with the following properties. Based on the `maskType` option, the `mask` (and `maskImageData`) will contain either a mask of the detected background, or a mask of the detected persons, or a (colored) mask of the detected body parts of the detected persons.
 
   ```javascript
   {
-    mask: {},//A p5 Image object, can be directly passed into p5 image() function
-    maskImageData: {}//A ImageData object
+    mask: {}, // a p5 Image object, can be directly passed into p5 image() function
+    maskImageData: {}, // the mask as an ImageData object
+    data: [], // an array of raw detection results
+    imageData: {}, // an ImageData object of the raw detection results
   }
   ```
+
+The `data` array contains the underlying segmentation result of the image, stored as one number per pixel of the input image. (With the BodyPix model, the right hand is e.g. the number 11, which is the same as `bodySegmentation.LEFT_HAND`.)
 
   _results.mask_ under different _maskType_ options:
   - _background_: A mask of the background. _results.mask_ is an image with transparent pixels on the background and black pixels on the person.
@@ -225,6 +231,23 @@ This method can be called after a call to `bodySegmentation.detectStart` to stop
 ```javascript
 bodySegmentation.detectStop();
 ```
+
+### bodySegmentation.detect()
+
+This method asynchronously outputs a single segmentation mask on an image media when called.
+
+```javascript
+bodySegmentation.detect(media, ?callback);
+```
+
+**Parameters:**
+
+- **media**: An HTML or p5.js image, video, or canvas element to run the segmentation on.
+
+- **callback(output, error)**: Optional. A callback function to handle the output of the estimation, see output example above.
+
+**Returns:**  
+A promise that resolves to the segmentation output.
 
 ## Properties
 
@@ -299,3 +322,4 @@ bodySegmentation.detectStop();
   - Promise
 
 ---
+
