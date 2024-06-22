@@ -200,6 +200,90 @@ Voila! You have successfully built the Sound Classification example. Press the <
 
 ?> If you have any questions or spot something unclear in this step-by-step code guide, we'd love to hear from you! Join us on [Discord](https://discord.com/invite/3CVauZMSt7) and let us know how we can make it better.
 
+## Properties
+
+### SoundClassifier Properties
+
+#### soundClassifier.model
+
+- **Description**: 
+  - The loaded model instance. Initially set to `null` and assigned after the model is loaded.
+- **Type**: 
+  - Object | Null
+
+---
+
+#### soundClassifier.options
+
+- **Description**: 
+  - Configuration options provided during initialization. These options control the behavior and performance of the model.
+- **Type**: 
+  - Object
+
+---
+
+#### soundClassifier.isClassifying
+
+- **Description**: 
+  - A flag indicating whether the classification loop is currently running. It is set to `true` when classification is in progress and `false` otherwise.
+- **Type**: 
+  - Boolean
+
+---
+
+#### soundClassifier.signalStop
+
+- **Description**: 
+  - A flag used to signal the classification loop to stop. It is set to `true` to stop the classification process.
+- **Type**: 
+  - Boolean
+
+---
+
+#### soundClassifier.prevCall
+
+- **Description**: 
+  - Tracks the previous call to detect if `classifyStart` or `classifyStop` was called. Helps manage the state of the classifier.
+- **Type**: 
+  - String
+
+---
+
+#### soundClassifier.modelName
+
+- **Description**: 
+  - The name of the model to use. It is set based on the provided `modelNameOrUrl` parameter during initialization.
+- **Type**: 
+  - String | Null
+
+---
+
+#### soundClassifier.modelUrl
+
+- **Description**: 
+  - The URL of the model to use. It is set based on the provided `modelNameOrUrl` parameter during initialization.
+- **Type**: 
+  - String | Null
+
+---
+
+#### soundClassifier.modelToUse
+
+- **Description**: 
+  - The specific model module to use (e.g., `speechCommands`). It is determined based on the `modelName`.
+- **Type**: 
+  - Object | Null
+
+---
+
+#### soundClassifier.ready
+
+- **Description**: 
+  - A promise that resolves when the model is successfully loaded and ready to be used. This ensures the model is fully prepared before any classification starts.
+- **Type**: 
+  - `Promise`
+
+
 ## Methods
 
 ### ml5.soundClassifier()
