@@ -156,6 +156,11 @@ bodySegmentation.detectStart(media, callback);
   }
   ```
 
+  _results.mask_ under different _maskType_ options:
+  - _background_: A mask of the background. _results.mask_ is an image with transparent pixels on the background and black pixels on the person.
+  - _body_: A mask of the person. _results.mask_ is an image with black pixels on the background and transparent pixels on the person.
+  - _parts_: **BodyPix** only. _results.mask_ is an image with white pixels on the background and various color pixels for each body part.
+
 ### bodySegmentation.detectStop()
 
 This method can be called after a call to `bodySegmentation.detectStart` to stop the repeating pose estimation.
