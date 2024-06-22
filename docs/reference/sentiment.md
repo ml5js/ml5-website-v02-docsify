@@ -219,20 +219,22 @@ That's it! You have successfully built a Sentiment Analysis model that predicts 
 
 ## Methods
 
-#### Initialize
+### ml5.sentiment()
+
+This method is used to load the sentiment model and store it in a variable. The ? means the argument is optional!
 
 ```js
-const sentiment = ml5.sentiment(model, ?callback);
+let sentiment = ml5.sentiment(model, ?callback);
 ```
 
 #### Parameters
 
-- **model**: REQUIRED. Defaults to 'moviereviews'. You can also use a path to a `manifest.json` file via a relative or absolute path.
-- **callback**: Optional. A callback function that is called once the model has loaded. If no callback is provided, it will return a promise that will be resolved once the model has loaded.
+- **model**: REQUIRED. Defaults to 'movieReviews'. You can also use a path to a `manifest.json` file via a relative or absolute path.
+- **callback(sentiment)**: Optional. A callback function that is called once the model has loaded. If no callback is provided, it will return a promise that will be resolved once the model has loaded.
 
 ---
 
-#### .predict()
+### sentiment.predict()
 
 > Given a number, will make magicSparkles
 
@@ -240,11 +242,12 @@ const sentiment = ml5.sentiment(model, ?callback);
 sentiment.predict(text);
 ```
 
-📥 **Inputs**
+**Parameters:**
 
-- **text**: Required. String. A string of text to predict
+- **text**: Required. 
+  - String: A string of text to predict. 
 
-📤 **Outputs**
+**Return:**
 
 - **Object**: Scores the sentiment of given text with a value between 0 ("negative") and 1 ("positive"). See below for an example output:
   ```javascript

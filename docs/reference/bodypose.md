@@ -280,7 +280,8 @@ let bodypose = ml5.bodypose(?model, ?options, ?callback);
 - **callback(bodypose)**: Optional. A "callback" function that runs when the model has been successfully loaded. Most ml5.js example call `ml5.bodyPose()` in the p5.js `preload()` function and no callback is needed.
 
 **Returns:**  
-The bodyPose object.
+
+- **Object**: The bodyPose object. This object contains the methods to start and stop the pose detection process.
 
 ### bodypose.detectStart()
 
@@ -392,9 +393,6 @@ bodypose.detect(media, ?callback);
 
 - **callback(results)**: Optional. A callback function to handle the results of the pose estimation. See the results above for an example of the model's output.
 
-**Returns:**  
-A promise that resolves to the estimation output.
-
 ### bodypose.getSkeleton()
 
 This method returns an array of arrays, where each sub-array contains the indices of the connected keypoints.
@@ -404,7 +402,8 @@ const connections = bodypose.getSkeleton();
 ```
 
 **Returns:**  
-An array of arrays representing the connections between keypoints. For example, using BlazePose model will returns:
+
+- **Array**: An array of arrays representing the connections between keypoints. For example, using BlazePose model will returns:
 
 ```js
 [

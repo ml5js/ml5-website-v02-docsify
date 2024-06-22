@@ -232,7 +232,8 @@ const faceMesh = ml5.faceMesh(?options, ?callback);
 - **callback(faceMesh)**: Optional. A function to run once the model has been loaded. Alternatively, call `ml5.faceMesh()` within the p5 `preload` function.
 
 **Returns:**  
-The faceMesh object.
+
+- **Object**: The faceMesh object. This object contains the methods to start and stop the detection process.
 
 ### faceMesh.detectStart()
 
@@ -283,5 +284,3 @@ faceMesh.detect(media, ?callback);
 - **media**: An HTML or p5.js image, video, or canvas element to run the estimation on.
 - **callback(results)**: Optional. A callback function to handle the output of the estimation, see output example above.
 
-**Returns:**  
-A promise that resolves to the estimation output.

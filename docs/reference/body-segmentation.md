@@ -133,7 +133,8 @@ const bodySegmentation = ml5.bodySegmentation(?modelName, ?options, ?callback);
 - **callback(bodySegmentation)**: OPTIONAL. A function to run once the model has been loaded. Alternatively, call `ml5.bodySegmentation()` within the p5 `preload` function.
 
 **Returns:**  
-The bodySegmentation object.
+
+- **Object**: The bodySegmentation object. This object contains the methods to start and stop the body segment detection process.
 
 ### bodySegmentation.detectStart()
 

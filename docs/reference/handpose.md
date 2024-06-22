@@ -216,8 +216,9 @@ const handpose = ml5.handpose(?options, ?callback);
 
 - **callback(handpose)**: Optional. A function to run once the model has been loaded. Alternatively, call `ml5.handpose()` within the p5 `preload` function.
 
-**Returns:**  
-The handpose object.
+**Returns:** 
+
+- **Object**: The handpose object. This object contains the methods to start and stop the hand pose detection process.
 
 ### handpose.detectStart()
 
@@ -294,6 +295,3 @@ handpose.detect(media, ?callback);
 - **media**: An HTML or p5.js image, video, or canvas element to run the estimation on.
 
 - **callback(results)**: Optional. A callback function to handle the output of the estimation, see output example above.
-
-**Returns:**  
-A promise that resolves to the estimation output.
