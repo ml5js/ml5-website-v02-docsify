@@ -204,23 +204,7 @@ const faceMesh = ml5.faceMesh(?options, ?callback);
   - _flipHorizontal_ 
     - Boolean: Flip the result horizontally. Defaults to false.
   - _runtime_
-    - String: The runtime to use. "mediapipe" (default) or "tfjs".
-
-  For using custom or offline models:
-
-  - _solutionPath_
-    - String: The file path or URL to the model.
-
-  Options for face detection:
-
-  - _maxFacess_
-    - Number: The maximum number of faces to detect. Defaults to 2.
-  - _refineLandmarks_ 
-    - Boolean: Refine the landmarks. Defaults to false.
-  - _flipHorizontal_ 
-    - Boolean: Flip the result horizontally. Defaults to false.
-  - _runtime_
-    - String: The runtime to use. "mediapipe" (default) or "tfjs".
+    - String: The runtime to use. "tfjs" (default) or "mediapipe".
 
   For using custom or offline models:
 

@@ -182,9 +182,8 @@ const handpose = ml5.handpose(?options, ?callback);
   {
     maxHands: 2,
     flipHorizontal: false,
-    runtime: "mediapipe",
+    runtime: "tfjs",
     modelType: "full",
-    solutionPath: "https://cdn.jsdelivr.net/npm/@mediapipe/hands",
     detectorModelUrl: undefined, //default to use the tf.hub model
     landmarkModelUrl: undefined, //default to use the tf.hub model
   }
@@ -199,7 +198,7 @@ const handpose = ml5.handpose(?options, ?callback);
   - _flipHorizontal_ - Optional
     - Boolean: Flip the result data horizontally. Default: false.
   - _runtime_ - Optional
-    - String: The runtime of the model: "mediapipe" or "tfjs". Default: "mediapipe".
+    - String: The runtime of the model: "mediapipe" or "tfjs". Default: "tfjs".
 
   For using custom or offline models:
 
