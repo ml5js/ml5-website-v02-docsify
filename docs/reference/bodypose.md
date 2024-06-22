@@ -25,12 +25,16 @@ Run and explore a pre-built example! [This bodyPose example](https://editor.p5js
 
 ## Examples
 
-- [bodyPose MoveNet Keypoints](https://editor.p5js.org/ml5/sketches/vpSI23x0A): Draw the keypoints of the detected body using MoveNet model.
-- [bodyPose BlazePose keypoints](https://editor.p5js.org/ml5/sketches/OukJYAJAb): Draw the keypoints of the detected body using BlazePose model.
+- [BodyPose MoveNet Keypoints](https://editor.p5js.org/ml5/sketches/vpSI23x0A): Draw the keypoints of the detected body using MoveNet model.
+- [BodyPose BlazePose keypoints](https://editor.p5js.org/ml5/sketches/OukJYAJAb): Draw the keypoints of the detected body using BlazePose model.
 
 ## Step-by-Step Guide
 
-This step-by-step guide uses a p5.js sketch running on the [p5.js web editor](https://editor.p5js.org/). To follow along, start by creating an empty project in the editor.
+Now, let's together build the [BodyPose Keypoints example](https://editor.p5js.org/ml5/sketches/vpSI23x0A) from scratch, and in the process, learn how to use the HandPose model.
+
+### Create a new project
+
+To follow along, start by creating an empty project in the [p5.js web editor](https://editor.p5js.org/).
 
 ### Set up ml5.js
 

@@ -7,88 +7,144 @@
 
 ## Description
 
-BodySegmentation divides an image input into the people and the background, and then further divide the people into different body parts. The model can detect multiple people at once and for each person, provides 24 body parts that describe important locations on the body.
+The ml5.js BodySegmentation provides two models, `SelfieSegmentation` and `BodyPix`. The `SelfieSegmentation` model focuses on segmenting the human subject from the background. The `BodyPix` model is primarily used for detailed body part segmentation (e.g., distinguishing between different limbs) in images and videos. Although BodyPix can also perform person/background segmentation, it is more computationally intensive.
 
-### Key Features
+The ml5.js BodySegmentation is built on top of the [TensorFlow.js BodyPix model and the MediaPipe Selfie Segmentation model](https://github.com/tensorflow/tfjs-models/tree/master/body-segmentation).
 
-- **Real-time person segmentation**: The model can segment people from the background in real-time.
-- **Real-time body part segmentation**: The model can segment body parts in real-time.
+It provides following functionalities:
+- **Real-time person/background segmentation**: The `SelfieSegmentation` model can segment people from the background in real-time, and is designed to be lightweight. The `BodyPix` model can also be used for this purpose, but is more computationally intensive.
+- **Real-time body part segmentation**: The `BodyPix` model can segment 24 body parts in real-time.
 
-### Output Example
+## Quick Start
 
-Based on your options, the output can be a mask of the background, a mask of the person, or a mask of the body parts. Regardless of the scenario, the segmentation information deemed valuable is consistently stored within the mask property of the resulting object.
+Run and explore a pre-built example! [This BodySegmentation example](https://editor.p5js.org/ml5/sketches/ruoyal-RC) demonstrates how to use the BodySegmentation `BodyPix` model to segment body parts from webcam input.
 
-```javascript
-result.mask;
-```
+</br>
 
-## Getting Started
+[DEMO](iframes/body-segmentation ":include :type=iframe width=100% height=550px")
 
-Integrating Body Segmentation into your ml5.js projects is straightforward. Our documentation and user-friendly API will help you make the most of this combined model!
+## Examples
+- [BodySegmentation Mask Body Parts](https://editor.p5js.org/ml5/sketches/ruoyal-RC): Segment body parts from webcam input.
+- [BodySegmentation Mask Background](https://editor.p5js.org/ml5/sketches/KNsdeNhrp): Segment the background from webcam input.
+- [BodySegmentation Mask Person](https://editor.p5js.org/ml5/sketches/h6TN8umP5): Segment the person from webcam input.
 
-### Demo
+## Step-by-Step Guide
+Now, let's together build the [BodySegmentation Mask Body Part example](https://editor.p5js.org/ml5/sketches/ruoyal-RC) from scratch, and in the process, learn how to use the HandPose model.
 
-[DEMO](iframes/body-segmentation ":include :type=iframe class='demo-iframe'width=100% height=550px")
+### Create a new project
 
-### Quick Start
+To follow along, start by creating an empty project in the [p5.js web editor](https://editor.p5js.org/).
 
-Before you start, let's create an empty project in the [p5 web editor](https://editor.p5js.org/).
-
-First of all, copy and paste the following code into your **index.html** file. If you are not familiar with the p5 web editor interface, you can find a guide on how to find your **index.html** file [here](/?id=try-ml5js-online-1).
+### Set up ml5.js
+Import the ml5.js library in your `index.html` file.
 
 ```html
 <script src="https://unpkg.com/ml5@1/dist/ml5.js"></script>
 ```
 
-Then, add the code below to your **sketch.js** file:
+?> If you are not familiar with how to import the ml5.js library and need more detailed guidance, please check out our [Getting Started](/?id=set-up-ml5js) page.
 
-```js
+### Load model
+Let's open the `sketch.js` file and define a variable to store the BodySegmentation model.
+
+```javascript
 let bodyPix;
-let video;
-let segmentation;
+```
 
+In this example, we would like to segment body parts from the webcam input. Let's specify the mask type as `parts` in the options object.
+
+```javascript
 let options = {
   maskType: "parts",
 };
+```
 
+?> You can also specify the model type as `person` or `background` in the options object. For more information on the options object, please refer to the [Methods](/reference/body-segmentation?id=methods) section.
+
+Now, let's preload the BodySegmentation model with the specified options. Using the `preload` function ensures that the model is loaded before the `setup` and `draw` functions are called.
+
+```javascript
 function preload() {
   bodyPix = ml5.bodySegmentation("BodyPix", options);
 }
+```
 
+### Fetch webcam video
+
+Let's define a variable `video` to store the webcam video.
+
+```javascript
+let video;
+```
+
+Resize the canvas dimensions to 640x480, a common resolution for webcams.
+
+```javascript
 function setup() {
   createCanvas(640, 480);
-  // Create the video
+```
+
+Fetch the webcam video, resize it to fit the canvas, and hide it from the display.
+
+```javascript
+  // Create the video and hide it
   video = createCapture(VIDEO);
   video.size(640, 480);
   video.hide();
+}
+```
 
+### Detect body parts with the model
+We can now use the BodySegmentation model to detect body parts from the webcam input. Let's define a variable `segmentation` to store the segmented body parts.
+
+```javascript
+let segmentation;
+```
+
+To start detecting the body parts, in the `setup` function, we need to call the `detectStart` method of the `bodyPix` object. This method takes the webcam video as input and a callback function to handle the output.
+
+```javascript
+function setup() {
+  // ...
+  video.hide();
+
+  // Start detecting body parts from the webcam video
   bodyPix.detectStart(video, gotResults);
 }
+```
 
-function draw() {
-  background(255);
-  image(video, 0, 0);
-  if (segmentation) {
-    image(segmentation, 0, 0, width, height);
-  }
-}
-// callback function for body segmentation
+The `gotResults()` function is a callback function that will be called when the `bodyPix.detectStart()` method detects body parts. Once the body parts are detected, the output `result` will be passed to `gotResults()`, and then saved to the `segmentation` variable.
+
+```javascript
 function gotResults(result) {
   segmentation = result.mask;
 }
 ```
 
-Alternatively, you can open [this example code](https://github.com/ml5js/ml5-next-gen/tree/main/examples/BodySegmentation-maskbodyparts) and try it yourself on p5.js web editor!
+?> The `result` object also contains the `maskImageData` property, which stores the segmentation mask as an ImageData object. For more information on the output object, please refer to the [Methods](/reference/body-segmentation?id=methods) section.
 
-### Additional Examples
+### Display the segmented body parts
+Before we display the segmented body parts, let's clear the canvas and draw the webcam video.
 
-- [BodySegmentation-maskbackground](https://github.com/ml5js/ml5-next-gen/tree/main/examples/BodySegmentation-maskbackground): Mask the background of an image.
-- [BodySegmentation-maskperson](https://github.com/ml5js/ml5-next-gen/tree/main/examples/BodySegmentation-maskperson): Mask the person in an image.
+```javascript
+function draw() {
+  background(255);
+  image(video, 0, 0);
+```
 
-<!-- ### Tutorials
+If the `segmentation` variable is not empty, we can display the segmented body parts on the canvas.
 
-**PoseNet on The Coding Train**
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/OIo-DIOkNVg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+```javascript
+  if (segmentation) {
+    image(segmentation, 0, 0, width, height);
+  }
+}
+```
+
+### Run your sketch
+You have successfully built the BodySegmentation Mask Body Part example! Press the <img class="inline-img" src="assets/facemesh-arrow-forward.png" alt="run button icon" aria-hidden="true"> `run` button to see the code in action. You can also find the [complete code](https://editor.p5js.org/ml5/sketches/ruoyal-RC) in the p5.js web editor.
+
+?> If you have any questions or spot something unclear in this step-by-step code guide, we'd love to hear from you! Join us on [Discord](https://discord.com/invite/3CVauZMSt7) and let us know how we can make it better.
 
 ## Methods
 
@@ -118,7 +174,7 @@ const bodySegmentation = ml5.bodySegmentation(?modelName, ?options, ?callback);
 
   [More info on options for SelfieSegmentation model with tfjs runtime](https://github.com/tensorflow/tfjs-models/tree/master/body-segmentation/src/selfie_segmentation_tfjs#create-a-detector).
 
-  [More infor on options for BodyPix model.](https://github.com/tensorflow/tfjs-models/blob/master/body-segmentation/src/body_pix/README.md#create-a-detector)
+  [More info on options for BodyPix model.](https://github.com/tensorflow/tfjs-models/blob/master/body-segmentation/src/body_pix/README.md#create-a-detector)
 
 - **callback(bodySegmentation, error)**: OPTIONAL. A function to run once the model has been loaded. Alternatively, call `ml5.bodySegmentation()` within the p5 `preload` function.
 
@@ -137,7 +193,7 @@ bodySegmentation.detectStart(media, callback);
 
 - **media**: An HTML or p5.js image, video, or canvas element to run the segmentation on.
 
-- **callback(output, error)**: A function to handle the output of `bodySegmentation.detectStart()`. Likely a function to do something with the segmented image. See below for the output passed into the callback function:
+- **callback(output, error)**: A function to handle the output of `bodySegmentation.detectStart()`. Likely a function to do something with the segmented image. Based on your options, the `output` can be a mask of the background, a mask of the person, or a mask of the body parts. Regardless of the scenario, the segmentation information deemed valuable is consistently stored within the `mask` property of the resulting object. See below for the output passed into the callback function:
 
   ```javascript
   {

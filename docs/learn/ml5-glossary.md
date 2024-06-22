@@ -869,13 +869,21 @@ Ideally, each data point in the dataset should only belong to one of these three
 
 ## Weights
 
-In neural networks, weights are the parameters that are learned during the training process. Weights are used to adjust the strength of the connections between neurons in the network. The weights are adjusted during the training process to minimize the error between the predicted output and the actual output.
+In deep learning, weights are the parameters within a neural network that transform input data within the network's layers. They are crucial in determining the strength and direction of the signals between neurons.
+
+Here's how they work:
+
+- Initialization: Weights are initially set to small random values before training starts.
+- Forward Pass: When data passes through the network, weights multiply the input values. This multiplication helps in transforming the inputs to outputs at each neuron.
+- Learning and Adjusting: During training, the network makes predictions and compares them to the actual values. The difference, or error, is calculated.
+- Backpropagation: The error is propagated back through the network, and weights are adjusted to minimize this error. This adjustment is done using algorithms like gradient descent, which update the weights in the direction that reduces the error the most.
+- Optimization: Over multiple epochs, the weights are continuously adjusted to improve the model's accuracy. The network learns to make better predictions by fine-tuning these weights.
 
 ---
 
 ## Weights Quantization
 
-Weights quantization is a technique used to reduce the size of a machine learning model by reducing the precision of the weights. Weights quantization is often used to make machine learning models more efficient and faster to run. For example, a machine learning model that uses 32-bit floating point numbers to represent the weights could be quantized to use 8-bit integers to represent the weights.
+Weights quantization in deep learning reduces the precision of weights from 32-bit floating-point numbers to lower bit-width representations, such as 8-bit integers, to improve computational efficiency and reduce memory usage. This process involves scaling and mapping the weights to a smaller set of discrete values. During inference, the quantized weights are converted back to their approximate original values using the scaling factor. The primary benefits of quantization include reduced memory requirements, faster computations, and lower power consumption, making it especially useful for deploying models on resource-constrained devices like smartphones and IoT devices. However, this technique may introduce some loss in accuracy, which can be managed through careful tuning and sometimes re-training of the model.
 
 <!-- tabs:end -->
 
@@ -1686,6 +1694,29 @@ In ml5.js, `strides` is a parameter in `imageClassification` layers.
 
 ---
 
+## Epochs
+Epochs is a term used in machine learning to describe the number of times that a machine learning model is trained on the entire training dataset. For example, if you have a dataset of 100 samples and you set the epochs to 10, the model will train on the entire dataset 10 times. The model will update the weights of the model after processing all the samples in the dataset.
+
+With a sample size of 96 and a batch size of 12, each epoch will consist of 8 iterations (since 96 / 12 = 8). To run 32 epochs, you will perform 32 * 8 = 256 updates to the weights.
+
+In ml5.js, you can set the epochs when you train a neural network with the `train()` method. For example, the following code sets the epochs to 32:
+
+```js
+function trainModel() {
+  const trainingOptions = {
+    epochs: 32,
+    batchSize: 12,
+  };
+  nn.train(trainingOptions, finishedTraining);
+}
+
+function finishedTraining() {
+  console.log("Model trained!");
+}
+```
+
+---
+
 ## Sigmoid Function
 
 <img align="right" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Logistic-curve.svg/320px-Logistic-curve.svg.png">
@@ -1698,12 +1729,20 @@ The logistic curve, on the right, is a common exmaple of sigmoid function.
 
 ## Weights
 
-Weights are parameters that are used to train a machine learning model.
+In deep learning, weights are the parameters within a neural network that transform input data within the network's layers. They are crucial in determining the strength and direction of the signals between neurons.
+
+Here's how they work:
+
+- Initialization: Weights are initially set to small random values before training starts.
+- Forward Pass: When data passes through the network, weights multiply the input values. This multiplication helps in transforming the inputs to outputs at each neuron.
+- Learning and Adjusting: During training, the network makes predictions and compares them to the actual values. The difference, or error, is calculated.
+- Backpropagation: The error is propagated back through the network, and weights are adjusted to minimize this error. This adjustment is done using algorithms like gradient descent, which update the weights in the direction that reduces the error the most.
+- Optimization: Over multiple epochs, the weights are continuously adjusted to improve the model's accuracy. The network learns to make better predictions by fine-tuning these weights.
 
 ---
 
 ## Weights Quantization
 
-Weights quantization is often used to reduce the size of a machine learning model.
+Weights quantization in deep learning reduces the precision of weights from 32-bit floating-point numbers to lower bit-width representations, such as 8-bit integers, to improve computational efficiency and reduce memory usage. This process involves scaling and mapping the weights to a smaller set of discrete values. During inference, the quantized weights are converted back to their approximate original values using the scaling factor. The primary benefits of quantization include reduced memory requirements, faster computations, and lower power consumption, making it especially useful for deploying models on resource-constrained devices like smartphones and IoT devices. However, this technique may introduce some loss in accuracy, which can be managed through careful tuning and sometimes re-training of the model.
 
 <!-- tabs:end -->
