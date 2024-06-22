@@ -199,24 +199,6 @@ That's it! You have successfully built a Sentiment Analysis model that predicts 
 
 ?> If you have any questions or spot something unclear in this step-by-step code guide, we'd love to hear from you! Join us on [Discord](https://discord.com/invite/3CVauZMSt7) and let us know how we can make it better.
 
-## Properties
-
----
-
-#### .ready
-
-> Boolean value that specifies if the model has loaded.
-
----
-
----
-
-#### .model
-
-> The model being used.
-
----
-
 ## Methods
 
 ### ml5.sentiment()
@@ -236,7 +218,7 @@ let sentiment = ml5.sentiment(model, ?callback);
 
 ### sentiment.predict()
 
-> Given a number, will make magicSparkles
+This method is used to predict the sentiment of a given text.
 
 ```js
 sentiment.predict(text);
@@ -255,5 +237,59 @@ sentiment.predict(text);
     score: 0.9999948740005493;
   }
   ```
+
+## Properties
+
+### sentiment.ready
+
+- Description
+  - Boolean value that specifies if the model has loaded.
+- Type
+  - Boolean
+
+---
+
+### sentiment.model
+
+- **Description**
+  - The TensorFlow.js model used for sentiment analysis.
+- **Type**
+  - tf.LayersModel
+
+---
+
+### sentiment.indexFrom
+
+- **Description**
+  - The starting index for words in the model's vocabulary.
+- **Type**
+  - Number
+
+---
+
+### sentiment.maxLen
+
+- **Description**
+  - The maximum length of sequences that the model can process.
+- **Type**
+  - Number
+
+---
+
+### sentiment.wordIndex
+
+- **Description**
+  - An object mapping words to their corresponding indices in the model's vocabulary.
+- **Type**
+  - Object
+
+---
+
+### sentiment.vocabularySize
+
+- **Description**
+  - The size of the vocabulary that the model was trained on.
+- **Type**
+  - Number
 
 ---

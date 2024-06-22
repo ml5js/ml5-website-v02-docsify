@@ -225,3 +225,77 @@ This method can be called after a call to `bodySegmentation.detectStart` to stop
 ```javascript
 bodySegmentation.detectStop();
 ```
+
+## Properties
+
+### bodySegmentation.modelName
+
+- **Description**
+  - The name of the model being used, typically "BodyPix" or "SelfieSegmentation".
+- **Type**
+  - String
+
+---
+
+### bodySegmentation.video
+
+- **Description**
+  - The video element on which segmentation is performed.
+- **Type**
+  - HTMLVideoElement
+
+---
+
+### bodySegmentation.model
+
+- **Description**
+  - The TensorFlow.js model used for body segmentation.
+- **Type**
+  - tf.LayersModel
+
+---
+
+### bodySegmentation.config
+
+- **Description**
+  - Configuration options provided by the user for the model.
+- **Type**
+  - Object
+
+---
+
+### bodySegmentation.runtimeConfig
+
+- **Description**
+  - Configuration options related to the runtime behavior of the model.
+- **Type**
+  - Object
+
+---
+
+### bodySegmentation.detectMedia
+
+- **Description**
+  - The media element (image, video, or canvas) on which body segmentation is performed.
+- **Type**
+  - HTMLElement
+
+---
+
+### bodySegmentation.detectCallback
+
+- **Description**
+  - The callback function to handle body segmentation results.
+- **Type**
+  - Function
+
+---
+
+### bodySegmentation.ready
+
+- **Description**
+  - A promise that resolves when the model has loaded.
+- **Type**
+  - Promise
+
+---

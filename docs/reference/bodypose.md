@@ -260,6 +260,18 @@ let bodypose = ml5.bodypose(?model, ?options, ?callback);
     - String: The type of model to use. Default: "MULTIPOSE_LIGHTNING".
   - _enableSmoothing_ - Optional
     - Boolean: Whether to smooth the pose landmarks across different input images to reduce jitter. Default: true.
+  
+  Options for the MoveNet model only:
+  - _minPoseScore_ - Optional
+    - Number: The minimum confidence score for a pose to be detected. Default: 0.25.
+  - _multiPoseMaxDimension_ - Optional
+    - Number: The target maximum dimension to use as the input to the multi-pose model. Must be a mutiple of 32. Default: 256.
+  - _enableTracking_ - Optional
+    - Boolean: Track each person across the frame with a unique ID. Default: true.
+  - _trackerType_ - Optional
+    - String: Specify what type of tracker to use. Default: "boundingBox".
+  - _trackerConfig_ - Optional
+    - Object: Specify tracker configurations. Use tf.js settings by default.
 
   Options for the BlazePose model only:
   - _runtime_ - Optional
@@ -431,3 +443,93 @@ This array represents the connections between keypoints, please refer to these i
       <img style="display:block; max-width:30%" alt="BlazePose keypoint diagram" src="https://camo.githubusercontent.com/17082997c33fc6d2544c4aea33d9898860cf902ed5a0b865527d1dd91bbc7efa/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f6d65646961706970652f626c617a65706f73652d6b6579706f696e74732d757064617465642e706e67">
   </center>
 
+
+## Properties
+
+### bodyPose.modelName
+
+- **Description**
+  - The name of the model being used, either "MoveNet" or "BlazePose".
+- **Type**
+  - String
+
+---
+
+### bodyPose.model
+
+- **Description**
+  - The TensorFlow.js model used for pose detection.
+- **Type**
+  - tf.LayersModel
+
+---
+
+### bodyPose.config
+
+- **Description**
+  - Configuration options provided by the user for the model.
+- **Type**
+  - Object
+
+---
+
+### bodyPose.runtimeConfig
+
+- **Description**
+  - Configuration options related to the runtime behavior of the model.
+- **Type**
+  - Object
+
+---
+
+### bodyPose.detectMedia
+
+- **Description**
+  - The media element (image, video, or canvas) on which pose detection is performed.
+- **Type**
+  - HTMLElement
+
+---
+
+### bodyPose.detectCallback
+
+- **Description**
+  - The callback function to handle pose detection results.
+- **Type**
+  - Function
+
+---
+
+### bodyPose.detecting
+
+- **Description**
+  - A flag indicating whether the detection loop is currently running.
+- **Type**
+  - Boolean
+
+---
+
+### bodyPose.signalStop
+
+- **Description**
+  - A flag used to signal the detection loop to stop.
+- **Type**
+  - Boolean
+
+---
+
+### bodyPose.prevCall
+
+- **Description**
+  - Tracks the previous call to `detectStart` or `detectStop` to handle warnings.
+- **Type**
+  - String
+
+---
+
+### bodyPose.ready
+
+- **Description**
+  - A promise that resolves when the model has loaded.
+- **Type**
+  - Promise

@@ -268,3 +268,83 @@ faceMesh.detect(media, ?callback);
 - **media**: An HTML or p5.js image, video, or canvas element to run the estimation on.
 - **callback(results)**: Optional. A callback function to handle the output of the estimation, see output example above.
 
+## Properties
+
+### faceMesh.model
+
+- **Description**
+  - The TensorFlow.js model used for face landmarks detection.
+- **Type**
+  - tf.LayersModel
+
+---
+
+### faceMesh.config
+
+- **Description**
+  - Configuration options provided by the user for the model.
+- **Type**
+  - Object
+
+---
+
+### faceMesh.runtimeConfig
+
+- **Description**
+  - Configuration options related to the runtime behavior of the model.
+- **Type**
+  - Object
+
+---
+
+### faceMesh.detectMedia
+
+- **Description**
+  - The media element (image, video, or canvas) on which face detection is performed.
+- **Type**
+  - HTMLElement
+
+---
+
+### faceMesh.detectCallback
+
+- **Description**
+  - The callback function to handle face detection results.
+- **Type**
+  - Function
+
+---
+
+### faceMesh.detecting
+
+- **Description**
+  - A flag indicating whether the detection loop is currently running.
+- **Type**
+  - Boolean
+
+---
+
+### faceMesh.signalStop
+
+- **Description**
+  - A flag used to signal the detection loop to stop.
+- **Type**
+  - Boolean
+
+---
+
+### faceMesh.prevCall
+
+- **Description**
+  - Tracks the previous call to `detectStart` or `detectStop` to handle warnings.
+- **Type**
+  - String
+
+---
+
+### faceMesh.ready
+
+- **Description**
+  - A promise that resolves when the model has loaded.
+- **Type**
+  - Promise

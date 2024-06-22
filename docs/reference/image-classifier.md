@@ -245,3 +245,113 @@ imageClassifier.classify(media, ?kNumber, ?callback);
 
 **Returns:**  
 A promise that resolves to the estimation output.
+
+## Properties
+
+### imageClassifier.modelName
+
+- **Description**
+  - The name of the model being used, typically one of "mobilenet", "darknet", "darknet-tiny", or "doodlenet".
+- **Type**
+  - String
+
+---
+
+### imageClassifier.modelUrl
+
+- **Description**
+  - The URL of the model if a custom model is being used.
+- **Type**
+  - String
+
+---
+
+### imageClassifier.model
+
+- **Description**
+  - The TensorFlow.js model used for image classification.
+- **Type**
+  - tf.LayersModel
+
+---
+
+### imageClassifier.modelToUse
+
+- **Description**
+  - The specific model module to be used for image classification, such as MobileNet, Darknet, or Doodlenet.
+- **Type**
+  - Object
+
+---
+
+### imageClassifier.mapStringToIndex
+
+- **Description**
+  - An array mapping string labels to indices for custom models.
+- **Type**
+  - Array
+
+---
+
+### imageClassifier.version
+
+- **Description**
+  - The version of the model being used, applicable to MobileNet.
+- **Type**
+  - Number
+
+---
+
+### imageClassifier.alpha
+
+- **Description**
+  - The alpha value (width multiplier) of the model being used, applicable to MobileNet.
+- **Type**
+  - Number
+
+---
+
+### imageClassifier.topk
+
+- **Description**
+  - The number of top predictions to return, applicable to MobileNet.
+- **Type**
+  - Number
+
+---
+
+### imageClassifier.isClassifying
+
+- **Description**
+  - A flag indicating whether the classification loop is currently running.
+- **Type**
+  - Boolean
+
+---
+
+### imageClassifier.signalStop
+
+- **Description**
+  - A flag used to signal the classification loop to stop.
+- **Type**
+  - Boolean
+
+---
+
+### imageClassifier.prevCall
+
+- **Description**
+  - Tracks the previous call to `classifyStart` or `classifyStop` to handle warnings.
+- **Type**
+  - String
+
+---
+
+### imageClassifier.ready
+
+- **Description**
+  - A promise that resolves when the model has loaded.
+- **Type**
+  - Promise
+
+---

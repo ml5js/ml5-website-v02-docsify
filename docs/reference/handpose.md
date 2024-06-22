@@ -294,3 +294,84 @@ handpose.detect(media, ?callback);
 - **media**: An HTML or p5.js image, video, or canvas element to run the estimation on.
 
 - **callback(results)**: Optional. A callback function to handle the output of the estimation, see output example above.
+
+## Properties
+
+### handPose.model
+
+- **Description**
+  - The TensorFlow.js model used for hand pose detection.
+- **Type**
+  - tf.LayersModel
+
+---
+
+### handPose.config
+
+- **Description**
+  - Configuration options provided by the user for the model.
+- **Type**
+  - Object
+
+---
+
+### handPose.runtimeConfig
+
+- **Description**
+  - Configuration options related to the runtime behavior of the model.
+- **Type**
+  - Object
+
+---
+
+### handPose.detectMedia
+
+- **Description**
+  - The media element (image, video, or canvas) on which hand pose detection is performed.
+- **Type**
+  - HTMLElement
+
+---
+
+### handPose.detectCallback
+
+- **Description**
+  - The callback function to handle hand pose detection results.
+- **Type**
+  - Function
+
+---
+
+### handPose.detecting
+
+- **Description**
+  - A flag indicating whether the detection loop is currently running.
+- **Type**
+  - Boolean
+
+---
+
+### handPose.signalStop
+
+- **Description**
+  - A flag used to signal the detection loop to stop.
+- **Type**
+  - Boolean
+
+---
+
+### handPose.prevCall
+
+- **Description**
+  - Tracks the previous call to `detectStart` or `detectStop` to handle warnings.
+- **Type**
+  - String
+
+---
+
+### handPose.ready
+
+- **Description**
+  - A promise that resolves when the model has loaded.
+- **Type**
+  - Promise
