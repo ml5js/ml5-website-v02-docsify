@@ -37,8 +37,6 @@ function finishedTraining() {
 
 #### **C**
 
----
-
 ## Callback
 
 ml5.js is heavily inspired by the syntax, patterns and style of the [p5.js](https://p5js.org/) library. However, there are several differences in how asynchronous operations are handled by ml5.js. ml5.js supports both <b>error-first callbacks</b> and Promises in all methods.
@@ -46,32 +44,51 @@ ml5.js is heavily inspired by the syntax, patterns and style of the [p5.js](http
 In [p5.js](https://p5js.org/), [callbacks](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function) are passed as arguments to functions that often perform some asynchronous operation. For example, [p5.js](https://p5js.org/) defines the [**loadJSON()**](https://p5js.org/reference/#/p5/loadJSON) function as the following:
 
 ```js
-loadJSON("http//example.com/data.json", (results) => {
-  // Do something with the results
-});
+function preload(){
+  loadJSON("http//example.com/data.json", handleData);
+}
+
+function handleData(data) {
+  // Manipulate the data
+  // ...
+}
+
 ```
 
-Notice that the results from the callback in [p5.js](https://p5js.org/) are given as the only argument to the function. There is no error argument in the callback.
+In this case, the `handleData` function is a callback function that is passed to the `loadJSON` function. The `handleData` function will be called once the data is loaded. This is a common pattern in JavaScript libraries and frameworks.
 
-ml5.js, on the other hand, uses a pattern referred to as an <b>error-first callback</b>:
-
-> With this pattern, a callback function is passed to the method as an argument. When the operation either completes or an error is raised, the callback function is called with the Error object (if any) passed as the first argument. If no error was raised, the first argument will be passed as null. [Taken from the Node.js documentation](https://nodejs.org/api/errors.html#errors_error_first_callbacks)
-
-For example if you are using the **imageClassifier()** method, you will need to construct it in the following way:
+Very similar to [p5.js](https://p5js.org/), ml5.js also uses callbacks to handle asynchronous operations. For example, the **imageClassifier()** method in ml5.js uses a callback function to handle the results of the classification:
 
 ```js
-// Pass a callback function to constructor
-const classifier = ml5.imageClassifier("MobileNet", (err, model) => {
-  console.log("Model Loaded!");
-});
+function preload() {
+  // Pass a callback function to constructor
+  classifier = ml5.imageClassifier("MobileNet",modelLoaded);
+  img = loadImage("images/bird.jpg");
+  // ...
+}
 
-// Make a prediction with the selected image and pass a callback function with two arguments
-classifier.predict(image, (err, results) => {
-  // Check for errors. If no errors, then do something with the results
-});
+function setup() {
+  // ...
+  classifier.classify(img, gotResult);
+  // ...
+}
+
+// ...
+function modelLoaded(){
+  console.log('Model loaded!')
+}
+
+// A function to run when we get any errors and the results
+function gotResult(results) {
+  // The results are in an array ordered by confidence, print in console
+  console.log(results);
+
+  // ...
+}
+
 ```
 
-Error first callbacks is a convention common to many JavaScript libraries that we have chosen to adopt. The language JavaScript itself does not enforce this pattern. Keep in mind that most ml5.js methods and functions are asynchronous (machine learning models can take significant amounts of time to process inputs and generate outputs!). You will need to use the <b>error-first callback</b> pattern if you want to use callbacks.
+In this [example](https://editor.p5js.org/alanvww/sketches/XF-qNv4Ei), the `modelLoaded` function is a callback function that is passed to the `imageClassifier` method. The `modelLoaded` function will be called once the model is loaded. The `gotResult` function is a callback function that is passed to the `classify` method. The `gotResult` function will be called once the classification is complete.
 
 ---
 
@@ -90,16 +107,18 @@ A similar example is given by the [Getting Started](/?id=your-first-sketch) of m
 
 ```js
 // A function to run when we get any errors and the results
-function gotResult(error, results) {
-  // Display error in the console
-  if (error) {
-    console.error(error);
-  } else {
-    // The results are in an array ordered by confidence.
-    console.log(results);
-    createDiv(`Label: ${results[0].label}`);
-    createDiv(`Confidence: ${nf(results[0].confidence, 0, 2)}`);
-  }
+function gotResult(results) {
+  // The results are in an array ordered by confidence, print in console
+  console.log(results);
+
+  // Display the results on the canvas
+  fill(255);
+  stroke(0);
+  textSize(18);
+  label = "Label: " + results[0].label;
+  confidence = "Confidence: " + nf(results[0].confidence, 0, 2);
+  text(label, 10, 360);
+  text(confidence, 10, 380);
 }
 ```
 
@@ -139,14 +158,14 @@ for (let i = 0; i < poses.length; i++) {
     let point = poses[i].pose.keypoints[k];
 
     // get the position of each keypoint
-    let x = point.position.x;
-    let y = point.position.y;
+    let x = point.x;
+    let y = point.y;
 
     // get the confidence score of each keypoint
-    let score = point.score;
+    let confidence = point.confidence;
 
     // get the name of each keypoint
-    let partName = point.part;
+    let partName = point.name;
 
     // draw an ellipse at each keypoint
     fill(0, 255, 0);
@@ -154,38 +173,33 @@ for (let i = 0; i < poses.length; i++) {
 
     // mark the corresponding part name and confidence score at each keypoint
     text(partName, x + 15, y + 5);
-    text(score.toFixed(2), x + 15, y + 20);
+    text(confidence.toFixed(2), x + 15, y + 20);
   }
 }
 ```
 
-We can use the confidence score to filter out keypoints that are not confident enough. For example, we can set a threshold of 0.5, and only draw keypoints that have a confidence score higher than 0.5:
+---
+
+## Confidence Score Threshold
+
+Score threshold is often used to control the minimum confidence score required for a machine learning model to make a prediction. In ml5.js, confidence score threshold is often used to control the minimum confidence score required for a machine learning model to make a prediction.
+
+Adding to the previous code example, we can set a threshold of 0.5, and only draw keypoints that have a confidence score higher than 0.5:
 
 ```js
 for (let i = 0; i < poses.length; i++) {
   for (let k = 0; k < poses[i].pose.keypoints.length; k++) {
-    // get each keypoint
-    let point = poses[i].pose.keypoints[k];
-
-    // get the position of each keypoint
-    let x = point.position.x;
-    let y = point.position.y;
-
-    // get the confidence score of each keypoint
-    let score = point.score;
-
-    // get the name of each keypoint
-    let partName = point.part;
+    // ...
 
     // only draw an ellipse at each keypoint if the confidence score is higher than 0.5
-    if (score > 0.5) {
+    if (confidence > 0.5) {
       // draw an ellipse at the keypoint
       fill(0, 255, 0);
       ellipse(x, y, 5, 5);
 
       // mark the corresponding part name and confidence score at the keypoint
       text(partName, x + 15, y + 5);
-      text(score.toFixed(2), x + 15, y + 20);
+      text(confidence.toFixed(2), x + 15, y + 20);
     }
   }
 }
@@ -309,8 +323,6 @@ In contrast, the prediction of [regression](/learn/ml5-glossary?id=regression-an
 
 #### **D**
 
----
-
 ## Dataset
 
 A dataset is a collection of data. Datasets are often used to train and test machine learning models. For example, a dataset of images of cats and dogs could be used to train a machine learning model to classify images of cats and dogs, and another dataset of images of cats and dogs could be used to test the performance of the machine learning model. You could compare the ground truth lables of the test dataset with the model predictions to evaluate the performance of the model.
@@ -387,34 +399,6 @@ Test Dataset
 
 ---
 
-## Div
-
-A div is an HTML element that is used to define a section of a webpage. For instance, the following code defines a div and put a paragraph inside the div:
-
-```html
-<div>
-  <p>This is a paragraph.</p>
-</div>
-```
-
-In ml5.js, divs are often used to display the output of a machine learning model. For instance, the example given by the [Getting Started](/?id=your-first-sketch) uses the following code to display the label and confidence score of the prediction:
-
-```js
-// A function to run when we get any errors and the results
-function gotResult(error, results) {
-  // Display error in the console
-  if (error) {
-    console.error(error);
-  } else {
-    // The results are in an array ordered by confidence.
-    console.log(results);
-    createDiv(`Label: ${results[0].label}`);
-    createDiv(`Confidence: ${nf(results[0].confidence, 0, 2)}`);
-  }
-}
-```
-
----
 
 ## Dependencies
 
@@ -460,8 +444,6 @@ function finishedTraining() {
 ```
 
 #### **F**
-
----
 
 ## Feature
 
@@ -532,8 +514,6 @@ Here, the example uses the values of red, green, and blue color channels as feat
 
 #### **H**
 
----
-
 ## Hyperparameters
 
 Hyperparameters are parameters that are set by coders before training a machine learning model. They are often used to control the training process of a machine learning model, for instance, the batch size, the epochs, the learning rate, and the number of hidden layers, etc. Batch size is the number of samples that are used to update the weights of a machine learning model in one iteration. Epochs is the number of times that a machine learning model is trained on the entire training dataset. Learning rate is the step size at each iteration while moving toward a minimum of a loss function. The number of hidden layers is the number of layers between the input layer and the output layer of a machine learning model.
@@ -552,8 +532,6 @@ function trainModel() {
 ```
 
 #### **L**
-
----
 
 ## Label
 
@@ -612,8 +590,6 @@ npm run develop
 
 #### **M**
 
----
-
 ## MobileNet
 
 By [Ellen Nickles](https://github.com/ellennickles/)
@@ -658,8 +634,6 @@ By [Ellen Nickles](https://github.com/ellennickles/)
 
 #### **N**
 
----
-
 ## Neuron
 
 In machine learning, a neuron mimics a biological neuron in brains and other parts of nervous systems. It exists as a distinct unit within a hidden layer of a [neural network](#neural-network). Each neuron is responsible for completing these two tasks:
@@ -699,8 +673,6 @@ You can find the npm package for ml5.js [here](https://www.npmjs.com/package/ml5
 
 #### **O**
 
----
-
 ## Overfitting
 
 Overfitting is a phenomenon that occurs when a machine learning model is trained to fit the training data too closely. Since it fails to generalize the underlying information, the trained model often performs poorly on everything other than the training data.
@@ -714,30 +686,6 @@ Overfitting is the opposite of [underfitting](#underfitting).
 In ml5.js, overfitting can happen while training for a [neural network](#neural-network). Some common strategies to avoid overfitting include: training with more data, feature selection, regularization.
 
 #### **P**
-
----
-
-## Promises
-
-ml5.js is heavily inspired by the syntax, patterns and style of the [p5.js](https://p5js.org/) library. However, there are several differences in how asynchronous operations are handled by ml5.js. ml5.js supports both <b>error-first callbacks</b> and Promises in all methods.
-
-ml5.js supports [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise). If no callback is provided to any asynchronous function then a Promise is returned.
-
-With Promises, the image classification example can be used in the following way:
-
-```js
-// No callback needs to be passed to use Promises.
-ml5
-  .imageClassifier("MobileNet")
-  .then((classifier) => classifier.predict(image))
-  .then((results) => {
-    // Do something with the results
-  });
-```
-
-For some video tutorials about Promises, you can find this [Coding Train playlist](https://www.youtube.com/playlist?list=PLRqwX-V7Uu6bKLPQvPRNNE65kBL62mVfx). There is also a [video tutorial about the ES6 arrow notation (**=>**)](https://youtu.be/mrYMzpbFz18).
-
----
 
 ## Prediction
 
@@ -773,9 +721,23 @@ Two most common types of regression models are:
 <img align="center" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmiro.medium.com%2Fmax%2F1450%2F1*QY3CSyA4BzAU6sEPFwp9ZQ.png&f=1&nofb=1&ipt=b1ede474256f60310c332de4a15d65bf041bb3c028ff015b380b2dc3f5982ae1&ipo=images" width="40%">
 <figcaption>A typical logistic regression model</figcaption>
 
-#### **S**
+---
+
+## Runtime
+
+In ml5.js, the term **runtime** refers to the environment or framework that executes the machine learning models. Currently, ml5.js supports two primary runtimes: `tfjs` (TensorFlow.js) and `mediapipe`. Each runtime offers different functionalities and performance characteristics tailored to specific use cases.
+
+To choose a runtime for a model in ml5.js, you typically need to specify the runtime option when loading or initializing the model. Here’s an example of how to select `mediapipe` as the runtime for a model:
+
+```javascript
+const model = ml5.modelName({ runtime: 'mediapipe' });
+```
+
+While `tfjs` serves as the default and general-purpose runtime in ml5.js, `mediapipe` offers as an experimental option. Users can select the appropriate runtime based on their specific needs and performance requirements.
 
 ---
+
+#### **S**
 
 ## Stride
 
@@ -793,12 +755,6 @@ Score is a measure of how well a machine learning model performs on a given inpu
 
 ---
 
-## Score Threshold
-
-Score threshold is often used to control the minimum score required for a machine learning model to make a prediction. In ml5.js, score threshold is often used to control the minimum score required for a machine learning model to make a prediction.
-
----
-
 ## Sigmoid Function
 
 <img align="right" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Logistic-curve.svg/320px-Logistic-curve.svg.png">
@@ -808,8 +764,6 @@ A sigmoid function is a mathematical function having a characteristic "S"-shaped
 The logistic curve, on the right, is a common exmaple of sigmoid function.
 
 #### **T**
-
----
 
 ## Test Set
 
@@ -829,8 +783,6 @@ A terminal is a command line interface that is used to run commands on a compute
 
 #### **U**
 
----
-
 ## Underfitting
 
 Underfitting is a phenomenon that occurs when a machine learning model is trained to fit the training data too loosely. Underfitting can result in a machine learning model that is not meaningful at all, and performs badly on both training and new data.
@@ -838,8 +790,6 @@ Underfitting is a phenomenon that occurs when a machine learning model is traine
 Underfitting is the opposite of [overfitting](#overfitting).
 
 #### **V**
-
----
 
 ## Validation
 
@@ -863,9 +813,9 @@ Traditionally, we divide the dataset into the three distinct subsets:
 
 Ideally, each data point in the dataset should only belong to one of these three preceding subsets.
 
-#### **W**
-
 ---
+
+#### **W**
 
 ## Weights
 
@@ -897,74 +847,65 @@ Weights quantization in deep learning reduces the precision of weights from 32-b
 
 #### **Web Application Development**
 
----
-
 ## Callback
-
-<!-- TODO: update content based on the new version of ml5.js -->
 
 ml5.js is heavily inspired by the syntax, patterns and style of the [p5.js](https://p5js.org/) library. However, there are several differences in how asynchronous operations are handled by ml5.js. ml5.js supports both <b>error-first callbacks</b> and Promises in all methods.
 
 In [p5.js](https://p5js.org/), [callbacks](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function) are passed as arguments to functions that often perform some asynchronous operation. For example, [p5.js](https://p5js.org/) defines the [**loadJSON()**](https://p5js.org/reference/#/p5/loadJSON) function as the following:
 
 ```js
-loadJSON("http//example.com/data.json", (results) => {
-  // Do something with the results
-});
-```
-
-Notice that the results from the callback in [p5.js](https://p5js.org/) are given as the only argument to the function. There is no error argument in the callback.
-
-ml5.js, on the other hand, uses a pattern referred to as an <b>error-first callback</b>:
-
-> With this pattern, a callback function is passed to the method as an argument. When the operation either completes or an error is raised, the callback function is called with the Error object (if any) passed as the first argument. If no error was raised, the first argument will be passed as null. [Taken from the Node.js documentation](https://nodejs.org/api/errors.html#errors_error_first_callbacks)
-
-For example if you are using the **imageClassifier()** method, you will need to construct it in the following way:
-
-```js
-// Pass a callback function to constructor
-const classifier = ml5.imageClassifier("MobileNet", (err, model) => {
-  console.log("Model Loaded!");
-});
-
-// Make a prediction with the selected image and pass a callback function with two arguments
-classifier.predict(image, (err, results) => {
-  // Check for errors. If no errors, then do something with the results
-});
-```
-
-Error first callbacks is a convention common to many JavaScript libraries that we have chosen to adopt. The language JavaScript itself does not enforce this pattern. Keep in mind that most ml5.js methods and functions are asynchronous (machine learning models can take significant amounts of time to process inputs and generate outputs!). You will need to use the <b>error-first callback</b> pattern if you want to use callbacks.
-
----
-
-## Div
-
-A div is an HTML element that is used to define a section of a webpage. For instance, the following code defines a div and put a paragraph inside the div:
-
-```html
-<div>
-  <p>This is a paragraph.</p>
-</div>
-```
-
-In ml5.js, divs are often used to display the output of a machine learning model. For instance, the example given by the [Getting Started](/?id=your-first-sketch) uses the following code to display the label and confidence score of the prediction:
-
-```js
-// A function to run when we get any errors and the results
-function gotResult(error, results) {
-  // Display error in the console
-  if (error) {
-    console.error(error);
-  } else {
-    // The results are in an array ordered by confidence.
-    console.log(results);
-    createDiv(`Label: ${results[0].label}`);
-    createDiv(`Confidence: ${nf(results[0].confidence, 0, 2)}`);
-  }
+function preload(){
+  loadJSON("http//example.com/data.json", handleData);
 }
+
+function handleData(data) {
+  // Manipulate the data
+  // ...
+}
+
 ```
 
+In this case, the `handleData` function is a callback function that is passed to the `loadJSON` function. The `handleData` function will be called once the data is loaded. This is a common pattern in JavaScript libraries and frameworks.
+
+Very similar to [p5.js](https://p5js.org/), ml5.js also uses callbacks to handle asynchronous operations. For example, the **imageClassifier()** method in ml5.js uses a callback function to handle the results of the classification:
+
+```js
+function preload() {
+  // Pass a callback function to constructor
+  classifier = ml5.imageClassifier("MobileNet",modelLoaded);
+  img = loadImage("images/bird.jpg");
+  // ...
+}
+
+function setup() {
+  // ...
+  classifier.classify(img, gotResult);
+  // ...
+}
+
+// ...
+function modelLoaded(){
+  console.log('Model loaded!')
+}
+
+// A function to run when we get any errors and the results
+function gotResult(results) {
+  // The results are in an array ordered by confidence, print in console
+  console.log(results);
+
+  // ...
+}
+
+```
+
+?> Check out [this example on the p5.js web editor](https://editor.p5js.org/ml5/sketches/pjPr6XmPY).
+
+In this [example](https://editor.p5js.org/ml5/sketches/pjPr6XmPY), the `modelLoaded` function is a callback function that is passed to the `imageClassifier` method. The `modelLoaded` function will be called once the model is loaded. The `gotResult` function is a callback function that is passed to the `classify` method. The `gotResult` function will be called once the classification is complete.
+
 ---
+
+
+
 
 ## Dependencies
 
@@ -1007,28 +948,6 @@ You can find the npm package for ml5.js [here](https://www.npmjs.com/package/ml5
 
 ---
 
-## Promises
-
-ml5.js is heavily inspired by the syntax, patterns and style of the [p5.js](https://p5js.org/) library. However, there are several differences in how asynchronous operations are handled by ml5.js. ml5.js supports both <b>error-first callbacks</b> and Promises in all methods.
-
-ml5.js supports [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise). If no callback is provided to any asynchronous function then a Promise is returned.
-
-With Promises, the image classification example can be used in the following way:
-
-```js
-// No callback needs to be passed to use Promises.
-ml5
-  .imageClassifier("MobileNet")
-  .then((classifier) => classifier.predict(image))
-  .then((results) => {
-    // Do something with the results
-  });
-```
-
-For some video tutorials about Promises, you can find this [Coding Train playlist](https://www.youtube.com/playlist?list=PLRqwX-V7Uu6bKLPQvPRNNE65kBL62mVfx). There is also a [video tutorial about the ES6 arrow notation (**=>**)](https://youtu.be/mrYMzpbFz18).
-
----
-
 ## Preload Function
 
 The preload function is a function that is called before the setup function. In ml5.js, the preload function is often used to load assets, such as images, before the setup function is called.
@@ -1040,8 +959,6 @@ The preload function is a function that is called before the setup function. In 
 A terminal is a command line interface that is used to run commands on a computer. In ml5.js, a terminal is often used to run a [local development server](#local-development-server).
 
 #### **Machine Learning Essentials**
-
----
 
 ## Confidence
 
@@ -1058,16 +975,18 @@ A similar example is given by the [Getting Started](/?id=your-first-sketch) of m
 
 ```js
 // A function to run when we get any errors and the results
-function gotResult(error, results) {
-  // Display error in the console
-  if (error) {
-    console.error(error);
-  } else {
-    // The results are in an array ordered by confidence.
-    console.log(results);
-    createDiv(`Label: ${results[0].label}`);
-    createDiv(`Confidence: ${nf(results[0].confidence, 0, 2)}`);
-  }
+function gotResult(results) {
+  // The results are in an array ordered by confidence, print in console
+  console.log(results);
+
+  // Display the results on the canvas
+  fill(255);
+  stroke(0);
+  textSize(18);
+  label = "Label: " + results[0].label;
+  confidence = "Confidence: " + nf(results[0].confidence, 0, 2);
+  text(label, 10, 360);
+  text(confidence, 10, 380);
 }
 ```
 
@@ -1107,14 +1026,14 @@ for (let i = 0; i < poses.length; i++) {
     let point = poses[i].pose.keypoints[k];
 
     // get the position of each keypoint
-    let x = point.position.x;
-    let y = point.position.y;
+    let x = point.x;
+    let y = point.y;
 
     // get the confidence score of each keypoint
-    let score = point.score;
+    let confidence = point.confidence;
 
     // get the name of each keypoint
-    let partName = point.part;
+    let partName = point.name;
 
     // draw an ellipse at each keypoint
     fill(0, 255, 0);
@@ -1122,38 +1041,33 @@ for (let i = 0; i < poses.length; i++) {
 
     // mark the corresponding part name and confidence score at each keypoint
     text(partName, x + 15, y + 5);
-    text(score.toFixed(2), x + 15, y + 20);
+    text(confidence.toFixed(2), x + 15, y + 20);
   }
 }
 ```
 
-We can use the confidence score to filter out keypoints that are not confident enough. For example, we can set a threshold of 0.5, and only draw keypoints that have a confidence score higher than 0.5:
+---
+
+## Confidence Score Threshold
+
+Score threshold is often used to control the minimum confidence score required for a machine learning model to make a prediction. In ml5.js, confidence score threshold is often used to control the minimum confidence score required for a machine learning model to make a prediction.
+
+Adding to the previous code example, we can set a threshold of 0.5, and only draw keypoints that have a confidence score higher than 0.5:
 
 ```js
 for (let i = 0; i < poses.length; i++) {
   for (let k = 0; k < poses[i].pose.keypoints.length; k++) {
-    // get each keypoint
-    let point = poses[i].pose.keypoints[k];
-
-    // get the position of each keypoint
-    let x = point.position.x;
-    let y = point.position.y;
-
-    // get the confidence score of each keypoint
-    let score = point.score;
-
-    // get the name of each keypoint
-    let partName = point.part;
+    // ...
 
     // only draw an ellipse at each keypoint if the confidence score is higher than 0.5
-    if (score > 0.5) {
+    if (confidence > 0.5) {
       // draw an ellipse at the keypoint
       fill(0, 255, 0);
       ellipse(x, y, 5, 5);
 
       // mark the corresponding part name and confidence score at the keypoint
       text(partName, x + 15, y + 5);
-      text(score.toFixed(2), x + 15, y + 20);
+      text(confidence.toFixed(2), x + 15, y + 20);
     }
   }
 }
@@ -1452,12 +1366,6 @@ Score is a measure of how well a machine learning model performs on a given inpu
 
 ---
 
-## Score Threshold
-
-Score threshold is often used to control the minimum score required for a machine learning model to make a prediction. In ml5.js, score threshold is often used to control the minimum score required for a machine learning model to make a prediction.
-
----
-
 ## Test Set
 
 Test set is a set of data used to test a machine learning model. Test data is used to evaluate the performance of a machine learning model. For example, a set of images of cats and dogs could be used to test a machine learning model to classify images of cats and dogs. In ml5.js, test data is often used to evaluate the performance of a custom machine learning model.
@@ -1501,8 +1409,6 @@ Traditionally, we divide the dataset into the three distinct subsets:
 Ideally, each data point in the dataset should only belong to one of these three preceding subsets.
 
 #### **Deep Learning**
-
----
 
 ## Neural Network
 
