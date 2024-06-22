@@ -201,3 +201,96 @@ Voila! You have successfully built the Sound Classification example. Press the <
 ?> If you have any questions or spot something unclear in this step-by-step code guide, we'd love to hear from you! Join us on [Discord](https://discord.com/invite/3CVauZMSt7) and let us know how we can make it better.
 
 ## Methods
+
+#### ml5.soundClassifier()
+
+This method is used to initialize the soundClassifier object.
+
+```js
+let soundclassifier = ml5.soundClassifier(?model, ?options, ?callback)
+```
+
+**Parameters:**
+
+- **model**: Optional. Model name or URL path to a `model.json`. Here are some options:
+  - `SpeechCommands18w`: loads the 18w speech commands
+    ```js
+    let classifier = ml5.soundClassifier("SpeechCommands18w", modelReady);
+    ```
+  - Custom model made in Google's Teachable Machine:
+    ```js
+    let classifier = ml5.soundClassifier("path/to/model.json", modelReady);
+    ```
+- **options**: Optional. An object describing a model accuracy and performance. 
+  The default and available options are:
+
+  ```js
+  {
+    overlapFactor: 0.5,
+    includeSpectrogram: false,
+    probabilityThreshold: 0,
+    invokeCallbackOnNoiseAndUnknown: false,
+    includeEmbedding: false
+  };
+  ```
+
+  Options include:
+  - **overlapFactor** - Optional
+    - Number: Controls how often the recognizer performs prediction on spectrograms. Must be >=0 and <1 (default: 0.5). For example, if each spectrogram is 1000 ms long and overlapFactor is set to 0.25, the prediction will happen every 250 ms.
+  - **includeSpectrogram** - Optional
+    - Boolean: Let the callback function be invoked with the spectrogram data included in the argument. Default: false
+  - **probabilityThreshold** - Optional
+    - Number: The callback function will be invoked if and only if the maximum probability score of all the words is greater than this threshold. Default: 0.
+  - **invokeCallbackOnNoiseAndUnknown** - Optional
+    - Boolean: Whether the callback function will be invoked if the "word" with the maximum probability score is the "unknown" or "background noise" token. Default: false.
+  - **includeEmbedding** - Optional
+    - Boolean: Whether an internal activation from the underlying model will be included in the callback argument, in addition to the probability scores. Note: if this field is set as true, the value of invokeCallbackOnNoiseAndUnknown will be overridden to true and the value of probabilityThreshold will be overridden to 0.
+    
+  (credit: [TensorFlow.js](https://www.npmjs.com/package/@tensorflow-models/speech-commands))
+
+  - **callback**: Optional. A function to run once the model has been loaded. Alternatively, call `ml5.soundClassifier()` within the p5 `preload` function.
+
+
+#### soundClassifier.classifyStart()
+This method repeatedly outputs classification labels on an audio media through a callback function.
+
+```js
+soundClassifier.classifyStart(numOrCallback, callback);
+```
+**Parameters:**
+
+- **numOrCallback:** Optional. A number representing the number of classes to classify or a callback function to handle the results. If no number is provided, the default is the length of the labels in the model.
+- **callback:** Optional. A function to handle the classification results. The callback function will receive an array of objects with the following structure:
+
+  ```js
+  [
+    {
+      label: "up",
+      confidence: 0.92
+    },
+    {
+      label: "down",
+      confidence: 0.05
+    },
+    // Additional objects here...
+  ]
+  ```
+**Returns:**
+- **Promise:** If no callback is provided, the method returns a promise that resolves when the classification process starts and provides the classification results.
+- **Callback Results:** If a callback is provided, the results are passed directly to the callback function.
+
+#### soundClassifier.classifyStop()
+This method can be called after a call to `soundClassifier.classifyStart` to stop the repeating classifications.
+
+```js
+soundClassifier.classifyStop();
+```
+
+**Returns:**
+None
+
+
+
+
+
+
