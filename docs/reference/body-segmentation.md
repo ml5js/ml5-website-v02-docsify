@@ -168,7 +168,7 @@ const bodySegmentation = ml5.bodySegmentation(?modelName, ?options, ?callback);
 
   ```javascript
   {
-    runtime: "mediapipe", // "mediapipe" or "tfjs"
+    runtime: "tfjs", // "mediapipe" or "tfjs"
     modelType: "general", // "general" or "landscape"
     maskType: :"background", //"background", "body", or "parts" (used to change the type of segmentation mask output)
   }
