@@ -20,7 +20,7 @@ If opting to train your own model, try [Google's Teachable Machine](https://teac
 
 ## Quick Start
 
-Run and explore a pre-built example! [This SoundClassifier example](https://github.com/ml5js/ml5-next-gen/tree/main/examples/soundClassifier-speech-command) recognizes speech commands using SpeechCommands18w.
+Run and explore a pre-built example! [This SoundClassifier example](https://editor.p5js.org/ml5/sketches/HUm7NYMW3) recognizes speech commands using SpeechCommands18w.
 
 </br>
 
@@ -28,12 +28,12 @@ Run and explore a pre-built example! [This SoundClassifier example](https://gith
 
 ## Examples
 
-- [SoundClassifier Speech Commands](https://github.com/ml5js/ml5-next-gen/tree/main/examples/soundClassifier-speech-command): Sound classification using the SpeechCommands18w model.
-- [SoundClassifier Teachable Machine](https://github.com/ml5js/ml5-next-gen/tree/main/examples/soundClassifier-teachable-machine): Sound classification using a custom model with Google's Teachable Machine.
+- [SoundClassifier Speech Commands](https://editor.p5js.org/ml5/sketches/HUm7NYMW3): Sound classification using the SpeechCommands18w model.
+- [SoundClassifier Teachable Machine](https://editor.p5js.org/ml5/sketches/mXeiNXSTU): Sound classification using a custom model with Google's Teachable Machine.
 
 ## Step-by-Step Guide
 
-Let's build the [Sound Classification example](https://github.com/ml5js/ml5-next-gen/tree/main/examples/soundClassifier-speech-command) from scratch, and in the process, learn how to use SoundClassifier!
+Let's build the [Sound Classification example](https://editor.p5js.org/ml5/sketches/HUm7NYMW3) from scratch, and in the process, learn how to use SoundClassifier!
 
 ### Create a new project
 
@@ -196,7 +196,7 @@ Finally, we display the classification results on the canvas and again, use `fil
 
 ### Run your sketch
 
-Voila! You have successfully built the Sound Classification example. Press the <img class="inline-img" src="assets/facemesh-arrow-forward.png" alt="run button icon" aria-hidden="true"> `run` button to see the code in action. You can also find the [complete code](https://github.com/ml5js/ml5-next-gen/tree/main/examples/soundClassifier-speech-command) in the p5.js web editor.
+Voila! You have successfully built the Sound Classification example. Press the <img class="inline-img" src="assets/facemesh-arrow-forward.png" alt="run button icon" aria-hidden="true"> `run` button to see the code in action. You can also find the [complete code](https://editor.p5js.org/ml5/sketches/HUm7NYMW3) in the p5.js web editor.
 
 ?> If you have any questions or spot something unclear in this step-by-step code guide, we'd love to hear from you! Join us on [Discord](https://discord.com/invite/3CVauZMSt7) and let us know how we can make it better.
 
@@ -206,83 +206,82 @@ Voila! You have successfully built the Sound Classification example. Press the <
 
 #### soundClassifier.model
 
-- **Description**: 
+- **Description**:
   - The loaded model instance. Initially set to `null` and assigned after the model is loaded.
-- **Type**: 
+- **Type**:
   - Object | Null
 
 ---
 
 #### soundClassifier.options
 
-- **Description**: 
+- **Description**:
   - Configuration options provided during initialization. These options control the behavior and performance of the model.
-- **Type**: 
+- **Type**:
   - Object
 
 ---
 
 #### soundClassifier.isClassifying
 
-- **Description**: 
+- **Description**:
   - A flag indicating whether the classification loop is currently running. It is set to `true` when classification is in progress and `false` otherwise.
-- **Type**: 
+- **Type**:
   - Boolean
 
 ---
 
 #### soundClassifier.signalStop
 
-- **Description**: 
+- **Description**:
   - A flag used to signal the classification loop to stop. It is set to `true` to stop the classification process.
-- **Type**: 
+- **Type**:
   - Boolean
 
 ---
 
 #### soundClassifier.prevCall
 
-- **Description**: 
+- **Description**:
   - Tracks the previous call to detect if `classifyStart` or `classifyStop` was called. Helps manage the state of the classifier.
-- **Type**: 
+- **Type**:
   - String
 
 ---
 
 #### soundClassifier.modelName
 
-- **Description**: 
+- **Description**:
   - The name of the model to use. It is set based on the provided `modelNameOrUrl` parameter during initialization.
-- **Type**: 
+- **Type**:
   - String | Null
 
 ---
 
 #### soundClassifier.modelUrl
 
-- **Description**: 
+- **Description**:
   - The URL of the model to use. It is set based on the provided `modelNameOrUrl` parameter during initialization.
-- **Type**: 
+- **Type**:
   - String | Null
 
 ---
 
 #### soundClassifier.modelToUse
 
-- **Description**: 
+- **Description**:
   - The specific model module to use (e.g., `speechCommands`). It is determined based on the `modelName`.
-- **Type**: 
+- **Type**:
   - Object | Null
 
 ---
 
 #### soundClassifier.ready
 
-- **Description**: 
+- **Description**:
   - A promise that resolves when the model is successfully loaded and ready to be used. This ensures the model is fully prepared before any classification starts.
-- **Type**: 
+- **Type**:
   - `Promise`
-
 
 ## Methods
 
@@ -305,7 +304,7 @@ let soundclassifier = ml5.soundClassifier(?model, ?options, ?callback)
     ```js
     let classifier = ml5.soundClassifier("path/to/model.json", modelReady);
     ```
-- **options**: Optional. An object describing a model accuracy and performance. 
+- **options**: Optional. An object describing a model accuracy and performance.
   The default and available options are:
 
   ```js
@@ -319,6 +318,7 @@ let soundclassifier = ml5.soundClassifier(?model, ?options, ?callback)
   ```
 
   Options include:
+
   - **overlapFactor** - Optional
     - Number: Controls how often the recognizer performs prediction on spectrograms. Must be >=0 and <1 (default: 0.5). For example, if each spectrogram is 1000 ms long and overlapFactor is set to 0.25, the prediction will happen every 250 ms.
   - **includeSpectrogram** - Optional
@@ -329,19 +329,21 @@ let soundclassifier = ml5.soundClassifier(?model, ?options, ?callback)
     - Boolean: Whether the callback function will be invoked if the "word" with the maximum probability score is the "unknown" or "background noise" token. Default: false.
   - **includeEmbedding** - Optional
     - Boolean: Whether an internal activation from the underlying model will be included in the callback argument, in addition to the probability scores. Note: if this field is set as true, the value of invokeCallbackOnNoiseAndUnknown will be overridden to true and the value of probabilityThreshold will be overridden to 0.
-    
+
   (credit: [TensorFlow.js](https://www.npmjs.com/package/@tensorflow-models/speech-commands))
 
   - **callback**: Optional. A function to run once the model has been loaded. Alternatively, call `ml5.soundClassifier()` within the p5 `preload` function.
 
---- 
+---
 
 ### soundClassifier.classifyStart()
+
 This method repeatedly outputs classification labels on an audio media through a callback function.
 
 ```js
 soundClassifier.classifyStart(numOrCallback, callback);
 ```
+
 **Parameters:**
 
 - **numOrCallback:** Optional. A number representing the number of classes to classify or a callback function to handle the results. If no number is provided, the default is the length of the labels in the model.
@@ -351,22 +353,25 @@ soundClassifier.classifyStart(numOrCallback, callback);
   [
     {
       label: "up",
-      confidence: 0.92
+      confidence: 0.92,
     },
     {
       label: "down",
-      confidence: 0.05
+      confidence: 0.05,
     },
     // Additional objects here...
-  ]
+  ];
   ```
-**Returns:**
+
+  **Returns:**
+
 - **Promise:** If no callback is provided, the method returns a promise that resolves when the classification process starts and provides the classification results.
 - **Callback Results:** If a callback is provided, the results are passed directly to the callback function.
 
 ---
 
 ### soundClassifier.classifyStop()
+
 This method can be called after a call to `soundClassifier.classifyStart` to stop the repeating classifications.
 
 ```js
@@ -375,9 +380,3 @@ soundClassifier.classifyStop();
 
 **Returns:**
 None
-
-
-
-
-
-
