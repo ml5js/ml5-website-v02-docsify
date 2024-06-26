@@ -60,7 +60,7 @@ let faceMesh;
 Next, we can create a `options` object to customize the model's behavior. For example, we can set the maximum number of faces to detect to 1, disable the refinement of landmarks (further refine the landmark coordinates around the eyes and lips at the cost of compute), and prevent the model from flipping the image horizontally.
 
 ```javascript
-let options = { maxFaces: 1, refineLandmarks: false, flipHorizontal: false };
+let options = { maxFaces: 1, refineLandmarks: false, flipped: false };
 ```
 
 ?> If you would like to know more about the available configuration settings for `options`, please check out the [Methods](/reference/facemesh?id=methods) section.
@@ -272,7 +272,7 @@ const faceMesh = ml5.faceMesh(?options, ?callback);
   {
       maxFaces: 1,
       refineLandmarks: false,
-      flipHorizontal: false
+      flipped: false
   }
   ```
 
@@ -282,7 +282,7 @@ const faceMesh = ml5.faceMesh(?options, ?callback);
     - Number: The maximum number of faces to detect. Defaults to 2.
   - _refineLandmarks_
     - Boolean: Refine the landmarks. Defaults to false.
-  - _flipHorizontal_
+  - _flipped_
     - Boolean: Flip the result horizontally. Defaults to false.
   - _runtime_
     - String: The runtime to use. "tfjs" (default) or "mediapipe".
