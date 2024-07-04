@@ -342,7 +342,7 @@ let bodypose = ml5.bodypose(?model, ?options, ?callback);
     trackerType: "boundingBox", // "keypoint" or "boundingBox"
     trackerConfig: {},
     modelUrl: undefined,
-    flippped: false
+    flipped: false
   }
   ```
 
