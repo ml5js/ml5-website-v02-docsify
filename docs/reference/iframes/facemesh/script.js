@@ -6,7 +6,7 @@
 let faceMesh;
 let video;
 let faces = [];
-let options = { maxFaces: 1, refineLandmarks: false, flipHorizontal: false };
+let options = { maxFaces: 1, refineLandmarks: false, flipped: false };
 
 function preload() {
   // Load the faceMesh model

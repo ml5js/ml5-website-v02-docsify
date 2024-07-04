@@ -262,7 +262,7 @@ const handpose = ml5.handpose(?options, ?callback);
   ```javascript
   {
     maxHands: 2,
-    flipHorizontal: false,
+    flipped: false,
     runtime: "tfjs",
     modelType: "full",
     detectorModelUrl: undefined, //default to use the tf.hub model
@@ -276,7 +276,7 @@ const handpose = ml5.handpose(?options, ?callback);
     - Number: The maximum number of hands to detect. Default: 2.
   - _modelType_ - Optional
     - String: The type of model to use: "lite" or "full". Default: "full".
-  - _flipHorizontal_ - Optional
+  - _flipped_ - Optional
     - Boolean: Flip the result data horizontally. Default: false.
   - _runtime_ - Optional
     - String: The runtime of the model: "mediapipe" or "tfjs". Default: "tfjs".
