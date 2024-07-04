@@ -342,6 +342,7 @@ let bodypose = ml5.bodypose(?model, ?options, ?callback);
     trackerType: "boundingBox", // "keypoint" or "boundingBox"
     trackerConfig: {},
     modelUrl: undefined,
+    flippped: false
   }
   ```
 
@@ -351,6 +352,8 @@ let bodypose = ml5.bodypose(?model, ?options, ?callback);
     - String: The type of model to use. Default: "MULTIPOSE_LIGHTNING".
   - _enableSmoothing_ - Optional
     - Boolean: Whether to smooth the pose landmarks across different input images to reduce jitter. Default: true.
+  - _flipped_ - Optional
+    - Boolean: Flip the result horizontally. Defaults to false.
 
   Options for the MoveNet model only:
 

@@ -238,7 +238,7 @@ const bodySegmentation = ml5.bodySegmentation(?modelName, ?options, ?callback);
   - _SelfieSegmentation_(default): A model that can be used to segment people from the background.
   - _BodyPix_: A model that can be used to segment people and body parts.
 
-  
+
 
 - **options**: Optional. An object to change the default configuration of the model. See the example options object:
 
@@ -246,15 +246,18 @@ const bodySegmentation = ml5.bodySegmentation(?modelName, ?options, ?callback);
   {
     runtime: "tfjs", // "tfjs" or "mediapipe"
     modelType: "general", // "general" or "landscape"
-    maskType: "background" // "background", "body", or "parts" (used to change the type of segmentation mask output)
+    maskType: "background", // "background", "body", or "parts" (used to change the type of segmentation mask output)
+    flipped: false,
   }
   ```
 
   Important Option:
-  - **maskType**: The type of mask to output. The options are:
+  - _maskType_: The type of mask to output. The options are:
     - _background_: A mask of the background. The result is an image with transparent pixels on the background and black pixels on the person.
     - _body_: A mask of the person. The result is an image with black pixels on the background and transparent pixels on the person.
     - _parts_: **BodyPix** only. A mask of the body parts. The result is an image with white pixels on the background and various color pixels for each body part.
+  - _flipped_ - Optional
+    - Boolean: Flip the result horizontally. Defaults to false.
 
   [More info on options for SelfieSegmentation model with tfjs runtime](https://github.com/tensorflow/tfjs-models/tree/master/body-segmentation/src/selfie_segmentation_tfjs#create-a-detector).
 
@@ -264,7 +267,7 @@ const bodySegmentation = ml5.bodySegmentation(?modelName, ?options, ?callback);
 
 - **callback(bodySegmentation, error)**: Optional. A function to run once the model has been loaded. Alternatively, call `ml5.bodySegmentation()` within the p5 `preload` function.
 
-**Returns:**  
+**Returns:**
 
 - **Object**: The bodySegmentation object. This object contains the methods to start and stop the body segment detection process.
 
@@ -328,6 +331,5 @@ bodySegmentation.detect(media, ?callback);
 
 - **callback(output, error)**: Optional. A callback function to handle the output of the estimation, see output example above.
 
-**Returns:**  
+**Returns:**
 A promise that resolves to the segmentation output.
-
