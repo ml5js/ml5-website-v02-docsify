@@ -30,7 +30,7 @@ Run and explore a pre-built example! [This bodyPose example](https://editor.p5js
 
 ## Step-by-Step Guide
 
-Now, let's together build the [BodyPose Keypoints example](https://editor.p5js.org/ml5/sketches/vpSI23x0A) from scratch, and in the process, learn how to use the HandPose model.
+Now, let's together build the [BodyPose Keypoints example](https://editor.p5js.org/ml5/sketches/vpSI23x0A) from scratch, and in the process, learn how to use the BodyPose model.
 
 ### Create a new project
 
