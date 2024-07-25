@@ -6,7 +6,7 @@
 </center>
 
 ## What happened to older ml5.js releases?
-We noticed that many people have experienced issues with the library recently, seeing errors such as *"... is not a function"*. 😢 This is most likely due to code that was written for the library prior to the recent 1.0 release. The following should help you resolve any errors! 💫 💜
+We noticed that many people have experienced issues with the library recently, seeing errors such as *"... is not a function"*. <img class="inline-img" src="assets/faq-cry.png" alt="tip icon" aria-hidden="true"> This is most likely due to code that was written for the library prior to the recent 1.0 release. The following should help you resolve any errors! <img class="inline-img" src="assets/faq-dizzy.png" alt="tip icon" aria-hidden="true"> <img class="inline-img" src="assets/faq-purple-heart.png" alt="tip icon" aria-hidden="true">
 
 ### Quick Fix!
 In the ml5 library's script tag, change latest to 0.12.2. If you are using p5.js, you can find the script tag in the index.html file of your p5 sketch.
@@ -23,7 +23,7 @@ to this:
 <script src="https://unpkg.com/ml5@0.12.2/dist/ml5.min.js"></script>
 ```
 
-Hope this works! 🤞
+Hope this works! <img class="inline-img" src="assets/faq-crossed-fingers.png" alt="tip icon" aria-hidden="true">
 
 ### Why are there errors?
 We recently released a new version of the library, updating from version `0.12.2` to `1.0.1` (yay!!!). The library was re-designed be even friendlier, and included several breaking changes. Some functions from the previous version (`0.12.2`) no longer exist in `1.0.1`. For example, `poseNet.on("pose", gotPose)` has been removed and changed to `bodyPose.detectStart(video, gotPose)`.
@@ -32,7 +32,12 @@ The `ml5@latest` tag automatically uses the latest version of the library, which
 
 Since we have passed the `1.0.0` landmark, we will be following semantic versioning for future releases. Going forward, we recommend specifying a major version number in the script tag, such as `ml5@1`. Using `ml5@latest` might cause issues if and when there are additional breaking changes.
 
-We will still host version `0.12` of the library, however, it will no longer receive feature updates. The [archived website](https://archive.ml5js.org/) and [documentation](https://archive-docs.ml5js.org/) cover materials for versions `0.12` and earlier. We recommend giving the new library a try! The new reference document is a great place to start as well as a collection of example sketches showcasing the models and functions!
+### Can I still access the older releases of the ml5.js, website and documentation?
+We will still host version `0.12` of the library, however, it will no longer receive feature updates. You can still use the older versions of the library by specifying `ml5@0.12.2` (or earlier versions) in the `script` tag, just as what was done in the [Quick Fix](/welcome/faq?id=quick-fix) above.
+
+The [archived website](https://archive.ml5js.org/) and [documentation](https://archive-docs.ml5js.org/) cover materials for versions `0.12` and earlier. 
+
+We recommend giving the new library a try! The new reference document is a great place to start as well as a collection of example sketches showcasing the models and functions!
 
 ### ml5.js 0.12.2 models and functions
 
