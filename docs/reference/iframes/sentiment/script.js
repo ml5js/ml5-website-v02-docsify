@@ -4,44 +4,42 @@
 // https://opensource.org/licenses/MIT
 
 let sentiment;
-let statusEl; // to display model loading status
 let submitBtn;
 let inputBox;
 let sentimentResult;
 
+function preload() {
+  // Initialize the sentiment analysis model
+  sentiment = ml5.sentiment("MovieReviews");
+}
+
 function setup() {
   noCanvas();
-  // initialize sentiment analysis model
-  sentiment = ml5.sentiment("movieReviews", modelReady);
 
-  // setup the html dom elements
-  statusEl = createP("Loading Model...");
+  // Setup the DOM elements
   inputBox = createInput("Today is the happiest day and is full of rainbows!");
   inputBox.attribute("size", "75");
   submitBtn = createButton("submit");
-  sentimentResult = createP("Sentiment score:");
+  sentimentResult = createP("Sentiment confidence:");
 
-  // predicting the sentiment when submit button is pressed
+  // Start predicting when the submit button is pressed
   submitBtn.mousePressed(getSentiment);
 }
 
 function getSentiment() {
-  // get the values from the input
+  // Use the value of the input box
   let text = inputBox.value();
 
-  // make the prediction
-  let prediction = sentiment.predict(text);
-
-  // display sentiment result on html page
-  sentimentResult.html("Sentiment score: " + prediction.score);
+  // Start making the prediction
+  sentiment.predict(text, gotResult);
 }
 
-// a callback function that is called when model is ready
-function modelReady() {
-  statusEl.html("Model loaded");
+function gotResult(prediction) {
+  // Display sentiment result via the DOM
+  sentimentResult.html("Sentiment confidence: " + prediction.confidence);
 }
 
-// predicting the sentiment when 'Enter' key is pressed
+// Start predicting when the Enter key is pressed
 function keyPressed() {
   if (keyCode == ENTER) {
     getSentiment();
