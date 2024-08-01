@@ -5,339 +5,384 @@
   <p class="img-credit"> Image Credit: <a href="https://thenounproject.com/creator/fajarstudio/" target="_blank" title="Fajar Studio">Fajar Studio</a> | <a href='mailto:info@ml5js.org'>Contribute ♥️</a> </p>
 </center>
 
-_By ml5-library Dev Team_ [(source)](https://github.com/ml5js/ml5-library/blob/main/CONTRIBUTING.md)
+_last updated: 10, July 2024 [(source)](https://github.com/ml5js/ml5-next-gen/blob/main/CONTRIBUTING.md)_
 
-> Welcome to the ml5 project! Developing ml5 is not just about developing machine learning software, it is about making machine learning approachable for a broad audience of artists, creative coders, and students. The library provides access to machine learning algorithms and models in the browser, building on top of TensorFlow.js with no other external dependencies. The library is supported by code examples, tutorials, and sample datasets with an emphasis on ethical computing. Bias in data, stereotypical harms, and responsible crowdsourcing are part of the documentation around data collection and usage. We're building **friendly** machine learning for the web - we're glad you're here!
+Welcome to the ml5.js project! Developing ml5.js is not just about developing machine learning software, it is about making machine learning approachable for a broad audience of artists, creative coders, and students. The library provides access to machine learning algorithms and models in the browser, building on top of TensorFlow.js with no other external dependencies. The library is supported by code examples, tutorials, and sample datasets with an emphasis on ethical computing. Bias in data, stereotypical harms, and responsible crowdsourcing are part of the documentation around data collection and usage. We're building friendly machine learning for the web - we're glad you're here!
 
-<center>
-    <img alt="friendly machine learning for the web" src="assets/contributing-header.png">
-</center>
+## Table of Content
 
-## The ml5 ecosystem (last updated: 24, May 2020) {docsify-ignore}
+- [How to Contribute](#how-to-contribute)
+  - [Table of Content](#table-of-content)
+  - [The ml5.js Ecosystem](#the-ml5js-ecosystem)
+  - [Contribution Workflow](#contribution-workflow)
+  - [Setup Development Environment](#setup-development-environment)
+  - [Code Formatting](#code-formatting)
+    - [For Visual Studio Code](#for-visual-studio-code)
+    - [For Command Line](#for-command-line)
+  - [Building the Library](#building-the-library)
+  - [Making Releases](#making-releases)
+  - [Unit Tests](#unit-tests)
+  - [Update p5 Web Editor Sketches](#update-p5-web-editor-sketches)
+  - [All Contributors](#all-contributors)
+  - [API Implementation Guideline](#api-implementation-guideline)
+    - [General Guidelines](#general-guidelines)
+    - [Image/Video-Based Detection Models](#imagevideo-based-detection-models)
+  - [Utils](#utils)
+    - [handleOptions](#handleoptions)
+      - [`userObject`](#userobject)
+      - [`moldObject`](#moldobject)
+      - [Define a Rule in `moldObject`](#define-a-rule-in-moldobject)
+      - [Functions As Rules](#functions-as-rules)
 
-ml5.js is comprised a number of sister repositories which you can find at the [ml5 github organization - github.com/ml5js](https://github.com/ml5js). As a contributor of ml5 you should be aware of the other parallel repositories of the ml5 project.
+## The ml5.js Ecosystem
 
-- **The 2 main repositories you'll likely be working with**:
-  - [ml5-library](https://github.com/ml5js/ml5-library)
-    - this is the main ml5js library. When building the library, all of the files in the `/src` directory get bundled into the `ml5.js` library. Releases to the ml5 library get sent to `npm` and are hosted at https://unpkg.com/ (e.g. `https://unpkg.com/ml5@1/dist/ml5.min.js`). When adding new features or updates to the ml5 library, you should also add an example in the `examples/` subdirectory of this repo to showcase how your new feature works. Usually examples are submitted in a simple p5.js sketch, but they can also be in vanilla javascript.
-  - [ml5-website](https://github.com/ml5js/ml5-website)
-    - the ml5-website is what you see here: https://ml5js.org/. As we make changes to the ml5 API and examples, the website also needs to be updated. For now, we're working with a manual process to updating changes, but we're working on development processes to help sync all these efforts. For now, make sure to update the ml5-website when making changes to ml5-library and vice-versa.
-- **Data and models**:
-  - [ml5-data-and-models](https://github.com/ml5js/ml5-data-and-models)
-    - This repository stores data sets and pre-trained models you can use in ml5.js.
-  - [pix2pix_models](https://github.com/ml5js/pix2pix_models):
-    - A collection of pix2pix models
+ml5.js is comprised a number of related repositories which you can find at the ml5.js github organization - [github.com/ml5js](https://github.com/ml5js). As a contributor of ml5.js you should be aware of the other parallel repositories of the ml5.js project.
 
-* **Training your own models**:
-  - [training-lstm](https://github.com/ml5js/training-lstm)
-    - Multi-layer Recurrent Neural Networks (LSTM, RNN) for character-level language models in Python using Tensorflow and modified to work with tensorflow.js and ml5js
-  - [training-word2vec](https://github.com/ml5js/training-word2vec)
-    - How to train your own word2vec model for use with ml5.js
-  - [training-styletransfer](https://github.com/ml5js/training-styletransfer)
-    - This repository contains a slightly modified version of Fast Style Transfer in TensorFlow. It trains a neural network on the style of any image you provide it and outputs a model you can use in ml5.js with the ml5.styleTransfer() method.
-  - [training-pix2pix](https://github.com/ml5js/training-pix2pix)
-    - documentation coming soon
+Here is a list of the repositories you most likely will be working with:
 
-## Contributing Workflow {docsify-ignore}
+- **[ml5-next-gen (this repository)](https://github.com/ml5js/ml5-next-gen)**: The main repository for the ml5.js library. The source code in this repository is bundled into the `ml5.js` library files and gets published on [npm](https://www.npmjs.com/package/ml5).
+- **[ml5-website-v03-docsify](https://github.com/ml5js/ml5-website-v02-docsify)**: The repository for the [ml5.js documentation webpage](https://docs.ml5js.org), which is built using [Docsify](https://docsify.js.org/). It contains documentation and and reference materials for the ml5.js library users.
+- **[ml5-website-v02-gatsby](https://github.com/ml5js/ml5-website-v02-gatsby)**: The repository for the [main ml5.js website](https://ml5js.org), which is built using [Gatsby](https://www.gatsbyjs.com/). It contains information about the ml5.js project, community, and resources.
 
-Preamble: If you're interested in to contribute to the ml5 project, just know you can always open an issue to ask questions or flag things that may seem confusing, unclear or intimidating. Our goal is to make ml5 as open and supportive as possible for those who want to be involved. Ok, now that's out of the way, here's how a general workflow for what contributions might look like to ml5.
+## Contribution Workflow
 
-### For bug fixes
+**Preamble**: If you're interested in contributing to the ml5.js project, just know you can always open an issue to ask questions or flag things that may seem confusing, unclear or intimidating. Our goal is to make ml5.js as open and supportive as possible for those who want to be involved. Ok, now that's out of the way, here's how a general workflow for what contributions to ml5.js might look like.
 
-1. you read the CONTRIBUTING.md docs ❤️
-2. you take a peek at the [issues](https://github.com/ml5js/ml5-library/issues) and identify one you'd like to address OR you file an issue about a bug you discovered. 🐛
-3. you make a comment on an existing issue or post your issue and indicate that you're curious to do your best to solve it 🔬
-4. you create a new branch on your `forked` copy of the ml5-library and call it something meaningful like `fix-detection-results`
-5. you jam on fixing the bug, commit your changes with meaningful commit messages, and push your changes to your bug fix branch (e.g. `fix-detection-results`)
-6. when ready, make a pull request to the `main` branch of ml5-library. Prepend "[NEEDS RELEASE]" to the title if the bug you found was in the current ml5 release - the version of ml5 which is on npm.
-7. the ml5 dev team will review your changes and quite likely correspond with you on your changes. When all looks good, a `ready for release` label will be added to your PR and your changes will be merged in and release with the next public update to the library. 🎉
-8. hi-fives 👏 and hugs 🤗
+1. Read the CONTRIBUTING.md document. ❤️
+2. Take a peek at the [issues](https://github.com/ml5js/ml5-next-gen/issues) page and identify something you'd like to address **or** file a new issue. The issue could be about fixing a bug, adding a new feature, updating an existing feature, or anything else. 🚩
+3. Make a comment on the existing issue **or** indicate on your new issue that you're curious to do your best to solve it. 🔬
+4. Make a forked copy of the ml5-next-gen repository and create a branch with a meaningful name such as `fix-detection-results`. 🍴
+5. Jam on some coding sessions, commit your changes with descriptive commit messages, and push your changes to your branch. 💻
+6. When ready, [make a pull request to the `main` branch of ml5-next-gen](https://github.com/ml5js/ml5-next-gen/compare). 📄
+7. The ml5.js dev team will review your changes and reply with feedback or questions. When all looks good, your changes will be merged in and released with the next public update to the library. 🎉
+8. Hi-fives 👏 and hugs 🤗
 
-### For new features or feature additions/updates
+**Note**: If you are new to making contributions on GitHub, a great resource to check out is [first-contributions](https://github.com/firstcontributions/first-contributions), a repository that walks you through the process of making your first contribution. If you have any questions about the contribution workflow of ml5.js, please don't hesitate to reach out to the ml5.js team.
 
-1. you read the CONTRIBUTING.md docs ❤️
-2. you take a peek at the [issues](https://github.com/ml5js/ml5-library/issues) and identify one you'd like to address OR you file an issue about the feature you're looking to add or update. 🐛
-3. you make a comment on an existing issue or post your issue and indicate that you're curious to do your best to add this to ml5-library 🔬
-4. you create a new branch on your `forked` copy of the ml5-library and call it something meaningful like `new-generative-model-x`
-5. you jam on your new feature, commit your changes with meaningful commit messages, and push your changes to your new feature branch (e.g. `new-generative-model-x`)
-6. you should also add an example of your new feature to the `examples/` directory so that other people can learn how to use your new feature.
-7. when ready, make a pull request to the `main` branch of ml5-library.
-8. the ml5 dev team will review your changes and quite likely correspond with you on your changes. When all looks good, your changes will be merged in. 🎉
-9. hi-fives 👏 and hugs 🤗
+## Setup Development Environment
 
-**Now that you have a general impression for what this process might look like, you can get started!**
+We use node.js as our development environment for bundling code, running tests, and more. If you've never used node.js before, please [download and install Node.js here](https://nodejs.org/en/download/prebuilt-installer). Please select the lts/iron (`v20.x.x (LTS)`) of Node.js for your operating system and architecture of your computer.
 
-## Getting Started {docsify-ignore}
+If you already have a different version of Node.js installed, we recommend installing a Node.js version manager: [nvm](https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating) for macOS and Linux operating systems, and [nvm-windows](https://github.com/coreybutler/nvm-windows) Windows operating system. A Node.js version manager that allows you to quickly switch between different versions of Node.js.
 
-If you want to help develop this library, here are the steps to get started:
+**macOS and Linux:** To switch to the compatible Node.js version, run the following commands after installing nvm:
 
-### Setup
-
-We use node.js as our development environment for bundling code, running tests, and more. If you've never used node.js before, here's the steps to get node up and running on your machine. Installation requirements differ according to your computer's operating system. Please refer to the correct setup section for your specific environment
-
-- [windows]()
-- [macOS]()
-
-#### For Windows Users
-
-- Install node.js Version 10: https://nodejs.org/en/download/
-
-#### For macOS Users
-
-For mac users, we recommend installing nodejs through homebrew which is a package manager. Even further, we recommend installing nodejs using nvm which is a node version manager so that you can install different versions of nodejs and switch between them. You can skip all that and use install nodejs - https://nodejs.org/en/download/ - but we do recommend using homebrew, etc.
-
-This is how you can do this:
-
-**Install [homebrew](https://brew.sh/)**
-
-Open up your terminal and paste + enter:
-
-```sh
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
+nvm install
+nvm use
 ```
 
-Next use homebrew to **install nvm and node** using the `brew` command (ref: https://www.wdiaz.org/how-to-install-nvm-with-homebrew/):
+**Windows:** To switch to the compatible Node.js version, run the following commands after installing nvm-windows:
 
-```sh
-brew install nvm
-mkdir ~/.nvm
-nvm install node
-nvm install 10.15
-nvm use 10
-
-nvm run node --version
+```
+nvm install 20
+nvm use 20
 ```
 
-NOTE: you may need to add the reference to nvm and node into your `bash_profile` in which case you can paste the following into the `~/.bash_profile` or `~/.zshenv` file if you are using ZSH, or in `~/.bashrc` for BASH or `~/.zshrc` for ZSH ref: https://www.wdiaz.org/how-to-install-nvm-with-homebrew/):
+We use [Yarn](https://yarnpkg.com/) instead of npm to help us better manage dependencies from TensorFlow.js. Yarn is a newer package manager that is very similar to NPM. [Here is a cheat sheet for NPM vs Yarn commands](https://www.digitalocean.com/community/tutorials/nodejs-npm-yarn-cheatsheet).
 
-```sh
-export NVM_DIR="$HOME/.nvm"
-NVM_HOMEBREW="/usr/local/opt/nvm/nvm.sh"
-[ -s "$NVM_HOMEBREW" ] && \. "$NVM_HOMEBREW"
+Enable Corepack with the following command:
+
+```
+corepack enable
 ```
 
-### Developing ml5
+Then, run the following commands to install the dependencies and start the development server. Corepack may ask to download Yarn, select yes when prompted:
 
-1. Fork the repository to your account, and then clone it your computer:
+```
+yarn
+yarn start
+```
 
-   ```bash
-   git clone https://github.com/YOURGITHUBHANDLE/ml5-library.git
+You should see something similar to this in the terminal:
+
+```
+[webpack-dev-server] Project is running at:
+[webpack-dev-server] Loopback: http://localhost:8080/
+...
+...
+webpack 5.x.x compiled successfully in 8360 ms
+```
+
+A local server will start, hosting a built version of the ml5.js library at http://localhost:8080/dist/ml5.js. While the server is running, Webpack will automatically rebuild the library if you change and save any file in the `/src` folder.
+
+A webpage at http://localhost:8080/examples/ should automatically open with the directory listing of the example sketches. Select one of the sketches to test run `ml5.js` with some example code.
+
+## Code Formatting
+
+To keep the coding style consistent, ml5.js uses the [Prettier code formatter](https://prettier.io/). Follow the instructions below to set up Prettier in your development environment.
+
+### For Visual Studio Code
+
+If you are using Visual Studio Code, you can install the Prettier extension by going to the **Extensions** tab and search for "Prettier". Click on **Prettier - Code formatter** and click **Install**.
+
+Go to **File > Preferences > Settings**, search for "default formatter" and make sure **Prettier - Code formatter** is selected for **Editor: Default Formatter**.
+
+To automatically format a document when saving it, search for "format on save" in the settings and make sure **Editor: Format On Save** is checked. Otherwise, you can use the VS Code keyboard shortcut to format an opened document, which is <kbd>shift</kbd> + <kbd>alt</kbd> + <kbd>f</kbd> on Windows or <kbd>shift</kbd> + <kbd>option</kbd> + <kbd>f</kbd> on Mac by default.
+
+### For Command Line
+
+You can also format a document via the command line. To format all JavaScript documents in the repo, use:
+
+```
+yarn run format
+```
+
+To format a specific document, use
+
+```
+npx prettier --write path/to/file
+```
+
+For more options with the command line, please refer to the [Prettier Documentation](https://prettier.io/docs/en/cli.html).
+
+## Building the Library
+
+To build the ml5.js library for production and publishing, run the following commands:
+
+```
+yarn
+yarn run build
+```
+
+This will create a production version of the library in `/dist` directory.
+
+## Making Releases
+
+1. Create a new pull request on the main branch to update the SemVer number in `package.json`. Increment the version number based on [semantic versioning rules](https://semver.org/).
+
+2. Merge the pull request.
+
+3. Switch to the main branch and make sure the code is up to date by running the following command:
+
+```
+git checkout main
+git pull
+```
+
+4. Make sure all dependencies have been installed by running the following command:
+
+```
+yarn
+```
+
+5. Build the project with the following command and wait for the build to complete:
+
+```
+yarn run build
+```
+
+6. Run the following command and log in with an npm account that has write access to the `ml5` package. You may be redirected to a browser window for authentication.
+
+```
+npm login
+```
+
+7. Publish the package with the following command. You may be redirected to a browser window for authentication.
+
+```
+npm publish --access public
+```
+
+8. The package should now be available at. (Replace `<version>` with the new SemVer set in step 1).
+
+```
+   https://unpkg.com/ml5@<version>/dist/ml5.js
+```
+
+9. Update the example code on the p5 web editor. Follow the instructions in the [Update p5 Web Editor Sketches](#update-p5-web-editor-sketches) section.
+
+## Unit Tests
+
+To run the unit tests, run the following command:
+
+```
+yarn test
+```
+
+Currently, ml5 have a very limited number of unit tests. Tests is an area we are investigating, and we hope to improve it in the near future. We encourage anyone with experience or knowledge about unit tests to open an issue for discussion and contribution.
+
+## Update p5 Web Editor Sketches
+
+To update the p5 Web Editor sketches, first create a `.env` file with the following content:
+
+```
+  P5_USERNAME=<p5 web editor username here>
+  P5_PASSWORD=<p5 web editor password here>
+```
+
+Then, run the following command:
+
+```
+yarn run upload-examples
+```
+
+The script will match the directory name of a local example sketch with the name of the sketch on the web editor. If a local directory name is the same as a sketch name on the web editor (case sensitive), the content of the sketch will be updated (with the sharing URL unchanged). If a local directory name is not found on the web editor, a new web editor sketch will be created. If a web editor sketch does not have a matching local directory name, the script will NOT automatically delete the web editor sketch. Any deletion should be done manually on the web editor.
+
+Updating an existing sketch will not affect the collections on the p5 web editor. Newly uploaded sketches will not be automatically added to any collections.
+
+Currently, this script cannot upload non-text files such as images or binaries. Those files that have not been uploaded will be listed and will require manual uploading.
+
+## All Contributors
+
+If you contributed to the project in any way, we would like to include you in our [contributors list in README.md](https://github.com/ml5js/ml5-next-gen?tab=readme-ov-file#contributors).
+
+To add a new contributor, create a new branch from main. Then, enter the following command in the terminal:
+
+```
+yarn all-contributors add
+```
+
+Complete the instructions in the terminal. This will automatically update `README.md` and `.all-contributorsrc` files with the new contributor.
+
+Make a pull request to merge the new branch into main. Once the branch gets merged, the new contributor will be listed!
+
+## API Implementation Guideline
+
+This guideline provides a high-level concept of what the ml5.js library's API should look like, serving as a reference to keep the ml5.js interface consistent and friendly.
+
+### General Guidelines
+
+1. ml5.js is a standalone library; however, ml5.js prioritizes compatibility with [p5.js library](https://p5js.org/).
+2. All ml5.js functions called by the user are defined with "camelCase".
+
+3. All ml5.js model objects are instantiated with a factory function with the style `ml5.<modelName>`. For example:
+
+   ```javascript
+   let bodyPose = ml5.bodyPose("BlazePose");
+   let neuralNetwork = ml5.neuralNetwork();
    ```
 
-2. Install dependencies:
+4. The factory functions `ml5.<modelName>` should support p5.js's `preload()` as well as the callback interface. The factory functions should synchronously return an unready instance of the ml5.js model object. When the model becomes ready, the factory functions should call the callback function with the (now ready) instance of the object and also signal p5.js if `preload()` function is present.
 
-   ```bash
-   cd ml5-library
-   npm install
+5. When a string parameter or option is passed into any ml5.js function as a configuration setting, it is matched case _insensitively_. For example, the following calls produce the same result:
+
+   ```javascript
+   let bodyPose = ml5.bodyPose("BlazePose", { modelType: "Full" });
    ```
 
-3. This project is developed using [Webpack](https://webpack.js.org/). Webpack is a module bundler that "bundles" different files into one file. This file is usually called a library.
+   ```javascript
+   let bodyPose = ml5.bodyPose("blazepose", { modelType: "full" });
+   ```
 
-Under the `/src` folder there are sub-folders for all `ml5` methods. Before building the library, you can check to see everything is working:
+6. When possible, parameters and options should be optional and have default values in lieu of user definition.
 
-- Run this command from the root of the project:
+7. ml5.js should throw a friendly warning when the user passes in an invalid parameter or option, and proceed with the default value when possible. For example:
+   ```javascript
+   let bodyPose = ml5.bodyPose({ modelType: "foo" });
+   // Console:
+   // 🟪ml5.js warns: The 'modelType' option for bodyPose has to be set to 'lite', 'full', or 'heavy', but it is being set to 'foo' instead.
+   //
+   // ml5.js is using default value of 'full'.
+   ```
+8. An ml5.js function should be able to accept parameters in any order when possible. For example, the following calls produce the same result:
 
-  ```bash
-  npm run start
-  ```
+   ```javascript
+   let bodyPose = ml5.bodyPose("blazepose", { modelType: "full" });
+   ```
 
-  That should output something similar to this:
+   ```javascript
+   let bodyPose = ml5.bodyPose({ modelType: "full" }, "blazepose");
+   ```
 
-  ```bash
-  Project is running at http://localhost:8080/
-  webpack output is served from /
+9. Asynchronous ml5.js functions should use the callback interface.
+   **Note**: Currently, some ml5.js functions also provides the promise/async await interface. However, ml5.js does not officially support the promise/async await interface. We are considering fully supporting the promise/async await interface in the future and will follow [p5.js](https://p5js.org/)'s lead.
 
-  Hash: 16b80528bf532975b279
-  Version: webpack 2.6.1
-  Time: 4905ms
-    Asset     Size  Chunks                    Chunk Names
-  ml5.js  1.55 MB       0  [emitted]  [big]  main
-  chunk    {0} ml5.js (main) 1.5 MB [entry] [rendered]
-      [9] (webpack)/buildin/global.js 509 bytes {0} [built]
-    [191] ./src/index.js 403 bytes {0} [built]
-    [192] ./~/babel-polyfill/lib/index.js 833 bytes {0} [built]
-    [193] (webpack)-dev-server/client?http://localhost:8080 5.68 kB {0} [built]
-    [196] ./src/ImageNet/index.js 5.63 kB {0} [built]
-    [198] ./src/Lstm/index.js 7.7 kB {0} [built]
-    [200] ./src/NeuralNetwork/index.js 6.8 kB {0} [built]
-    [204] ./~/babel-polyfill/~/regenerator-runtime/runtime.js 24.4 kB {0} [built]
-    [404] ./~/core-js/shim.js 8.18 kB {0} [built]
-    [507] ./~/strip-ansi/index.js 161 bytes {0} [built]
-    [509] ./~/url/url.js 23.3 kB {0} [built]
-    [511] (webpack)-dev-server/client/overlay.js 3.73 kB {0} [built]
-    [512] (webpack)-dev-server/client/socket.js 897 bytes {0} [built]
-    [513] (webpack)/hot/emitter.js 77 bytes {0} [built]
-    [515] multi (webpack)-dev-server/client?http://localhost:8080 babel-polyfill ./src/index.js 52 bytes {0} [built]
-      + 501 hidden modules
-  webpack: Compiled successfully.
-  ```
+10. ml5.js should call the callback functions with the pattern `callback(result, error)`.
 
-  <center>
-  <img style="display:block;" alt="image of terminal window with webpack message" src="assets/contributing-ml5-webpack-build.png">
-  </center>
-  <center>
-  <img style="display:block;" alt="ml5.js shows compiled library" src="assets/contributing-ml5-localhost.png">
-  </center>
+### Image/Video-Based Detection Models
 
-  If you see this message, it means the project is actively being built by Webpack's `webpack-dev-server`. Any changes you make to any file in the `/src` folder will automatically rebuild the `ml5.js` and `ml5.min.js` libraries as long as the server continues to run.
+1. For image-based detection models, `ml5.<modelName>` should accept 3 optional parameters, `modelName`, `options`, and `modelReady`.
 
-4. Develop!
+- **modelName**: A string, case insensitively specify the underlying model to use.
+- **options**: An object, specifies configuration setting for the ml5.js model.
+- **modelReady**: A callback function that is called when the underlying model is ready. An instance of ml5.js model is passed into the its first parameter no error occurs. Otherwise, an error object is pass into the second parameter.
 
-Run this command from the root of the project:
+## Utils
 
-```bash
-npm run manual-test
-```
+This section documents the utility functions found in the `src/utils` folder.
 
-This creates a new folder called `/manual-test` in the project's root folder. The `/manual-test` folder contains an `index.html` file with the following content:
+### [handleOptions](src\utils\handleOptions.js)
 
-```html
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>ml5.js manual test</title>
-    <script src="http://localhost:8080/ml5.js"></script>
-  </head>
-  <body>
-    <script>
-      // Your scripts would be written here
-    </script>
-  </body>
-</html>
-```
-
-This is just a simple `html` file that has a reference to the `ml5` library.
-
-Next, open the `/src/index.js` file and add this after the last line:
+`handleOptions` is a function that filters a user defined options object based on rules in a mold object, returning a filtered options object. The function logs friendly warnings in the console when one of the user defined options violates the rules.
 
 ```js
-console.log("Hello Test Development!");
+const filteredOptions = handleOptions(userObject, moldObject);
 ```
 
-If you now go to `http://localhost:8080/` and open the console, you should see `Hello Test Development!`. As you make changes, you will simply need to reload the `index.html` page to see them.
+#### `userObject`
 
-5. Once you have finished testing, you can build the library. Just close the `webpack-dev-server` and run
+The `userObject` is an object defined by the user to configure the options of a model. For example, the below object configures the `handpose` model to detect a maximum of 4 hands using the "full" variant:
 
-```bash
-npm run build
+```js
+const optionsObject = {
+  maxHands: 4,
+  modelType: full,
+};
 ```
 
-That should output something very similar to the `webpack-dev-server` from step 3 but you'll notice at the end is this line:
+#### `moldObject`
 
-```bash
-> webpack --config webpack.prod.babel.js
-> Done in 15.13s.
+Inspired by [Mongoose Models](https://mongoosejs.com/docs/models.html), the `moldObject` defines how the `userObject` should be filtered. Here is an example `optionsObject`:
+
+```js
+const mold = {
+  maxHands: {
+    type: "number",
+    min: 1,
+    default: 2,
+  },
+  runtime: {
+    type: "enum",
+    enums: ["mediapipe", "tfjs"],
+    default: "mediapipe",
+  },
+  modelType: {
+    type: "enum",
+    enums: ["lite", "full"],
+    default: "full",
+  },
+};
 ```
 
-If you see this, it means the library was successfully built and minified.
+This particular `moldObject` allows the user to have a `maxHands` option with a minimum value of 1, a `runtime` option with the value of either `mediapipe` or `tfjs`, and a `modelType` option with the value of either `lite` or `full`.
 
-6. (OPTIONAL) Commit your changes. We are using [Commitizen](https://github.com/commitizen/cz-cli) to commit changes. Commitizen is a tool that allows you to specify commits in a more precise way. You can run it instead of your regular `git commit -m 'msg'` with:
+#### Define a Rule in `moldObject`
 
-```bash
-npm run commit
+The `moldObject` consists of key-value pairs. The key defines the name of an allowed option, and the value is an object that contains rules on how the option should be filtered. Here are the rules:
+
+- `type` (required): A string defining the correct type, can be `"number"`, `"enum"`, `"boolean"`, `"string"`, `"object"`, or `"undefined"`.
+- `default` (required): The default value in case the user does not provide a value or provides an erroneous value for the option.
+- `ignore` (optional): A boolean defining whether the key should be ignored. Defaults to false. Useful when set to a dynamically evaluated value (see section below).
+- `alias` (optional): A string defining an alternative name for this option.
+- Specifically for `type: "number"`:
+  - `min` (optional): A number defining the minimum value.
+  - `max` (optional): A number defining the maximum value.
+  - `integer` (optional): A boolean defining whether the value should be an integer. Defaults to `false`.
+  - `multipleOf` (optional): A number. When defined, the user value must be a multiple of this number.
+- Specifically for `type: "enum"`:
+  - `enums` (required): An array defining a list of valid values.
+  - `caseInsensitive` (optional): A boolean defining whether to checks the user value against the enum list case-insensitively. Defaults to `true`.
+
+#### Functions As Rules
+
+A rule can be a constant value or a function that is dynamically evaluated. The function will be called with the current filtered object as its parameter. Below is an example usage:
+
+```js
+const mold = {
+  runtime: {
+    type: "enum",
+    enums: ["mediapipe", "tfjs"],
+    default: "mediapipe",
+  },
+  maxHands: {
+    type: "number",
+    min: 1,
+    default: (filteredObject) => filteredObject.runtime === "mediapipe" ? 4 : 2;
+  },
+};
 ```
 
-That will show you an interactive prompt to commit:
+When the user sets the runtime to `mediapipe`, the default value of `maxHands` is `4`, and when the user sets the runtime to `tfjs`, the default `maxHands` is `2`.
 
-```bash
-? Select the type of change that you're committing: (Use arrow keys)
-❯ feat:     A new feature
-  fix:      A bug fix
-  docs:     Documentation only changes
-  style:    Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
-  refactor: A code change that neither fixes a bug nor adds a feature
-  perf:     A code change that improves performance
-  test:     Adding missing tests or correcting existing tests
-```
-
-Just be sure to add files before running commitizen!
-
-7. (OPTIONAL) Push your code and submit a Pull Request!
-
-## Running Unit Tests {docsify-ignore}
-
-We’re still rolling out all of our unit tests, but if you want to contribute to their development or just test with the models that have more robust unit tests in place:
-
-- To run all tests continuously as you update
-  `npm run test`
-
-- To run all tests once
-  `npm run test:single`
-
-- To run a test on a single model
-  `npm run test -- --model=YourModelNameHere`
-
-This last one is case sensitive!
-
-## Making Releases (For the ml5 core team) {docsify-ignore}
-
-**NOTE: This section needs to be updated to align with the new `main` branch structure.**
-
-Work in progress - we are working on making a few scripts to make it easier to make releases and deployments. For now, to address the long-winded process noted in https://github.com/ml5js/ml5-library/issues/387, we are experimenting with some devOps scripts.
-
-In the instance you're ready to make a new release from `development` to `release`:
-
-Steps:
-
-1. change the version number and checkout a new branch:
-
-```
-newversion=0.3.2 npm run release:prep
-```
-
-you'll be now in: `v0.3.2`
-
-2. update the readme
-
-```
-pversion=0.3.1 npm run update:readme
-```
-
-3. Run install & build
-
-```
-npm run release:build
-```
-
-4. Add and commit and push changes
-
-```
-npm run release:commitAndPush
-```
-
-5. Add tags and push
-
-```
-npm run release:tag
-```
-
-Go to Github and wait for tests to pass, then `squash and merge` the newly created `v0.3.2` branch to `development`;
-
-6. Go back to your terminal:
-
-```
-npm run development:sync
-```
-
-7. Now go back to github and make a PR from `development` to `release`, wait for tests to pass, then `squash and merge` `development` into `release`
-
-8. Go back to your terminal:
-
-```
-npm run release:sync
-```
-
-9. publish to npm
-
-```
-npm run publish:npm
-```
-
-10. Enter your multi-factor auth when prompted where it says `OTP` (one time password): `your OTP code`
-11. Your new npm version should be released!
-12. Lastly, go to Github and document that new release with `release notes`.
-
-## Additional Resources {docsify-ignore}
-
-- [How to Contribute to an Open Source Project on GitHub](https://egghead.io/courses/how-to-contribute-to-an-open-source-project-on-github)
-- [How to Write an Open Source JavaScript Library](https://egghead.io/courses/how-to-write-an-open-source-javascript-library)
+**Caveat:** the options gets processed from top to bottom in the order defined in the `moldObject`, and the `filteredObject` only contains the options that has already been processed. Thus, `runtime` must be placed above `maxHands` in the `moldObject` for the function to work properly.
