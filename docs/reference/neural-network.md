@@ -305,6 +305,8 @@ Now you can run your sketch and interact with the sliders to change the RGB valu
 | `.loadData()`         | allows you to load data previously saved from the `.saveData()` function                                                               |
 | `.save()`             | allows you to save the trained model                                                                                                   |
 | `.load()`             | allows you to load a trained model                                                                                                     |
+| `.mutate()`           | allows you to mutate the weights of a model                                                                                            |
+| `.crossover()`        | allows you to create a new neural network with crossover                                                                               |
 
 ### ml5.neuralNetwork()
 
@@ -617,3 +619,48 @@ nn.load(filesOrPath, callback);
 **Returns:**
 
 - n/a: Loads the model to `nn.model`.
+
+---
+
+### nn.mutate()
+
+This method mutates the weights of a model.
+
+```javascript
+nn.mutate(rate, mutateFunction);
+```
+
+**Parameters:**
+
+- **rate**: Optional. Number. The rate of mutation. Default is `0.1`.
+- **mutateFunction**: Optional. Function. A function to mutate the weights. Default is a random Gaussian function.
+
+**Returns:**
+
+- n/a: Mutates the weights of the model.
+
+?> This method is created to build neuroevolution systems. If you are interested in neuroevolution, you can learn more about it with [Nature of Code Chapter 11](https://natureofcode.com/neuroevolution/).
+
+---
+
+### nn.crossover()
+
+This method creates a new neural network with crossover.
+
+```javascript
+nn.crossover(other);
+```
+
+**Parameters:**
+
+- **other**: Required. Object. Another neural network object.
+
+**Returns:**
+
+- **Object**: A new neural network object with the weights of the two models crossed over.
+
+?> This method is created to build neuroevolution systems. If you are interested in neuroevolution, you can learn more about it with [Nature of Code Chapter 11](https://natureofcode.com/neuroevolution/).
+
+
+
+  
