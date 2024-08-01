@@ -51,6 +51,13 @@ TO-DOs
 
   <div id="app">Loading...</div>
 
+    <div id="banner" style="display: none;">
+      <div id="banner-content">
+        💜 <a href="https://archive-docs.ml5js.org/#/" target="_blank">Looking for the old ml5.js reference (v0.12.2)? Find it 
+        here!</a>
+      </div>
+      <button id="close-banner">&times;</button>
+    </div>
 
 
   <script>
@@ -100,6 +107,29 @@ TO-DOs
       ]
 
     };
+
+  // Banner functionality
+  document.addEventListener('DOMContentLoaded', function () {
+    var banner = document.getElementById('banner');
+    var closeBanner = document.getElementById('close-banner');
+
+    // Check if the banner was previously dismissed
+    if (sessionStorage.getItem('ml5BannerDismissed') !== 'true') {
+      // Show the banner
+      banner.style.display = 'flex';
+    }
+
+    closeBanner.addEventListener('click', function () {
+      banner.style.opacity = '0';
+      banner.style.transform = 'translate(0px, 20px)';
+      setTimeout(function () {
+        banner.style.display = 'none';
+      }, 300);
+
+      // Set a flag in sessionStorage to remember the banner was dismissed
+      sessionStorage.setItem('ml5BannerDismissed', 'true');
+    });
+  });
   </script>
 
   <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
