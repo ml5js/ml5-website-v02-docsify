@@ -1050,7 +1050,7 @@ code .token {
 
   .sidebar-toggle,
   .sidebar,
-  .app-nav {
+  .app-nav, #banner {
     display: none;
   }
 }
@@ -1095,7 +1095,6 @@ code .token {
     left: 0;
     width: 100%;
     max-width: 100vw;
-    position: static;
     padding-top: 60px;
   }
 
