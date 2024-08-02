@@ -6,6 +6,8 @@ Have you ever felt confused about a term we used here at ml5? No worries, we've 
 
 This glossary is designed to be editable by any ml5 user. If you have a term you'd like to add or update, please do! We'd love to hear from you. You can view the source code and submit a pull request at [our GitHub repository](https://github.com/ml5js/ml5-website-v02-docsify). No worries if you're not familiar with pull requests; you can also contribute through this Google form! <img class="inline-img" src="assets/glossary-point-right.png" alt="tip icon" aria-hidden="true"> [ml5 Glossary Contribution Form](https://forms.gle/nRSRm7zESJUeestw8)
 
+
+
 <!-- tabs:start -->
 
 #### **By Letter**
@@ -1652,3 +1654,37 @@ Here's how they work:
 Weights quantization in deep learning reduces the precision of weights from 32-bit floating-point numbers to lower bit-width representations, such as 8-bit integers, to improve computational efficiency and reduce memory usage. This process involves scaling and mapping the weights to a smaller set of discrete values. During inference, the quantized weights are converted back to their approximate original values using the scaling factor. The primary benefits of quantization include reduced memory requirements, faster computations, and lower power consumption, making it especially useful for deploying models on resource-constrained devices like smartphones and IoT devices. However, this technique may introduce some loss in accuracy, which can be managed through careful tuning and sometimes re-training of the model.
 
 <!-- tabs:end -->
+
+<script>
+
+const links = document.querySelectorAll('a');
+
+const allowedHosts = ['127.0.0.1', 'docs.ml5js.org'];
+
+links.forEach(link => {
+  link.addEventListener('click', (e) => {
+    const url = new URL(link.href);
+    const isAllowedHost = allowedHosts.includes(url.hostname) || url.hostname.endsWith('.netlify.app');
+    
+    if (!isAllowedHost) {
+      // If it's not an allowed host, let the link work normally
+      console.log('External link, allowing normal behavior');
+      return;
+    }
+
+    e.preventDefault(); // Prevent the default link behavior for allowed hosts
+    console.log('Internal link clicked');
+
+    const clickedHash = link.hash;
+    const currentHash = window.location.hash;
+
+    if (clickedHash !== currentHash) {
+      // Update the URL with the new hash
+      window.location.hash = clickedHash;
+    }
+
+    // Refresh the page
+    location.reload();
+  });
+});
+</script>

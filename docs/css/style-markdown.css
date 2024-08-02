@@ -216,7 +216,7 @@ div#app:empty::before {
   width: 300px;
   overflow-y: auto;
   transition: transform 250ms ease;
-  z-index: 20;
+  z-index: 950;
   background-color: var(--color-bg-light);
 }
 
@@ -236,7 +236,7 @@ div#app:empty::before {
 
 .sidebar>h1 .app-nav {
   display: block;
-  position: static;
+  position: relative;
 }
 
 .sidebar .sidebar-nav {
@@ -326,7 +326,7 @@ div#app:empty::before {
   text-align: center;
   transition: opacity 0.3s;
   width: 300px;
-  z-index: 30;
+  z-index: 1000;
   cursor: pointer;
 }
 
@@ -487,6 +487,7 @@ body.close .sidebar-toggle {
   margin-bottom: 1rem;
   overflow: auto;
   width: 100%;
+  z-index: 1;
 }
 
 .markdown-section th {
@@ -585,6 +586,8 @@ body.close .sidebar-toggle {
 
 .markdown-section h1 a span {
   color: var(--color-text);
+  overflow-wrap: anywhere;
+  text-overflow: ellipsis;
   font-size: 3.0rem;
 }
 
