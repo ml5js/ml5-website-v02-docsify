@@ -1656,35 +1656,37 @@ Weights quantization in deep learning reduces the precision of weights from 32-b
 <!-- tabs:end -->
 
 <script>
-
-const links = document.querySelectorAll('a');
-
+const tabsContent = document.querySelectorAll('.docsify-tabs__content');
 const allowedHosts = ['127.0.0.1', 'docs.ml5js.org'];
 
-links.forEach(link => {
-  link.addEventListener('click', (e) => {
-    const url = new URL(link.href);
-    const isAllowedHost = allowedHosts.includes(url.hostname) || url.hostname.endsWith('.netlify.app');
-    
-    if (!isAllowedHost) {
-      // If it's not an allowed host, let the link work normally
-      console.log('External link, allowing normal behavior');
-      return;
-    }
-
-    e.preventDefault(); // Prevent the default link behavior for allowed hosts
-    console.log('Internal link clicked');
-
-    const clickedHash = link.hash;
-    const currentHash = window.location.hash;
-
-    if (clickedHash !== currentHash) {
-      // Update the URL with the new hash
-      window.location.hash = clickedHash;
-    }
-
-    // Refresh the page
-    location.reload();
+tabsContent.forEach(content => {
+  const links = content.querySelectorAll('p a');
+  
+  links.forEach(link => {
+    link.addEventListener('click', (e) => {
+      const url = new URL(link.href);
+      const isAllowedHost = allowedHosts.includes(url.hostname) || url.hostname.endsWith('.netlify.app');
+      
+      if (!isAllowedHost) {
+        // If it's not an allowed host, let the link work normally
+        console.log('External link, allowing normal behavior');
+        return;
+      }
+      
+      e.preventDefault(); // Prevent the default link behavior for allowed hosts
+      console.log('Internal link clicked');
+      
+      const clickedHash = link.hash;
+      const currentHash = window.location.hash;
+      
+      if (clickedHash !== currentHash) {
+        // Update the URL with the new hash
+        window.location.hash = clickedHash;
+      }
+      
+      // Refresh the page
+      location.reload();
+    });
   });
 });
 </script>
