@@ -265,10 +265,8 @@ a[disabled] {
 
 @media (max-width: 768px) {
   #banner {
-    width: 70%;
-    padding: 1rem;
-    bottom: 1rem;
-    font-size: 0.9rem;
+    display: none;
+    visibility: hidden;
   }
 
   #banner-content {

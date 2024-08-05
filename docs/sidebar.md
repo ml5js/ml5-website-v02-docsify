@@ -5,7 +5,7 @@
 
 - [Getting Started](/)
 - [Next Steps](/welcome/next-steps.md)
-- [FAQ](/welcome/faq.md)
+- [FAQ](/welcome/FAQ.md)
 
 <div class="sidebar-spacer">&nbsp;</div>
 
