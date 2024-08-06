@@ -242,15 +242,6 @@ Voila! You have successfully built the BodyPose model to detect and draw body po
 
 ---
 
-### bodyPose.config
-
-- **Description**
-  - Configuration options provided by the user for the model.
-- **Type**
-  - Object
-
----
-
 ### bodyPose.runtimeConfig
 
 - **Description**
@@ -314,14 +305,14 @@ Voila! You have successfully built the BodyPose model to detect and draw body po
 
 ## Methods
 
-### ml5.bodypose()
+### ml5.bodyPose()
 
 This method is used to load the bodyPose model and store it in a variable. The `?` means the argument is optional!
 
 <!-- TODO: Add default model name, and explain the options, callback. -->
 
 ```javascript
-let bodypose = ml5.bodypose(?model, ?options, ?callback);
+let bodypose = ml5.bodyPose(?model, ?options, ?callback);
 ```
 
 **Parameters:**
@@ -403,13 +394,13 @@ let bodypose = ml5.bodypose(?model, ?options, ?callback);
 This method starts the pose detection process and runs it continuously on real-time video.
 
 ```javascript
-bodypose.detectStart(media, callback);
+bodypose.detectStart(media, gotPoses);
 ```
 
 **Parameters:**
 
 - **media**: An HTML or p5.js image, video, or canvas element to run the estimation on.
-- **callback(results, error)**: A callback function to handle the results of the pose estimation. See below for an example of the model's results:
+- **gotPoses(results, error)**: A callback function to handle the results of the pose estimation. See below for an example of the model's results:
 
   ```javascript
   [
@@ -511,6 +502,10 @@ bodypose.detect(media, ?callback);
 - **media**: An HTML or p5.js image, video, or canvas element to run the estimation on.
 
 - **callback(results, error)**: Optional. A callback function to handle the results of the pose estimation. See the results above for an example of the model's output.
+
+**Returns:**
+
+- **Array**: An array of poses.
 
 ---
 
