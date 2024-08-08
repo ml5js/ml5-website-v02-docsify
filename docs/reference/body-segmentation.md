@@ -246,7 +246,7 @@ const bodySegmentation = ml5.bodySegmentation(?modelName, ?options, ?callback);
   {
     runtime: "tfjs", // "tfjs" or "mediapipe"
     modelType: "general", // "general" or "landscape"
-    maskType: "background", // "background", "body", or "parts" (used to change the type of segmentation mask output)
+    maskType: "background", // "background", "person", or "parts" (used to change the type of segmentation mask output)
     flipped: false,
   }
   ```
@@ -254,7 +254,7 @@ const bodySegmentation = ml5.bodySegmentation(?modelName, ?options, ?callback);
   Important Option:
   - _maskType_: The type of mask to output. The options are:
     - _background_: A mask of the background. The result is an image with transparent pixels on the background and black pixels on the person.
-    - _body_: A mask of the person. The result is an image with black pixels on the background and transparent pixels on the person.
+    - _person_: A mask of the person. The result is an image with black pixels on the background and transparent pixels on the person.
     - _parts_: **BodyPix** only. A mask of the body parts. The result is an image with white pixels on the background and various color pixels for each body part.
   - _flipped_ - Optional
     - Boolean: Flip the result horizontally. Defaults to false.
