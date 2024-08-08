@@ -252,7 +252,7 @@ Voila! You have successfully built the HandPose Keypoints example. Press the <im
 This method is used to initialize the handpose object.
 
 ```javascript
-const handpose = ml5.handpose(?options, ?callback);
+const handpose = ml5.handPose(?options, ?callback);
 ```
 
 **Parameters:**
