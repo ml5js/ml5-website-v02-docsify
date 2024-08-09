@@ -247,12 +247,12 @@ Voila! You have successfully built the HandPose Keypoints example. Press the <im
 
 ## Methods
 
-### ml5.handpose()
+### ml5.handPose()
 
-This method is used to initialize the handpose object.
+This method is used to initialize the handPose object.
 
 ```javascript
-const handpose = ml5.handPose(?options, ?callback);
+const handPose = ml5.handPose(?options, ?callback);
 ```
 
 **Parameters:**
@@ -294,20 +294,20 @@ const handpose = ml5.handPose(?options, ?callback);
 
   More info on options [here](https://github.com/tensorflow/tfjs-models/tree/master/hand-pose-detection/src/tfjs#create-a-detector) for "tfjs" runtime.
 
-- **callback(handpose, error)**: Optional. A function to run once the model has been loaded. Alternatively, call `ml5.handpose()` within the p5 `preload` function.
+- **callback(handPose, error)**: Optional. A function to run once the model has been loaded. Alternatively, call `ml5.handPose()` within the p5 `preload` function.
 
 **Returns:**
 
-- **Object**: The handpose object. This object contains the methods to start and stop the hand pose detection process.
+- **Object**: The handPose object. This object contains the methods to start and stop the hand pose detection process.
 
 ---
 
-### handpose.detectStart()
+### handPose.detectStart()
 
 This method repeatedly outputs hand estimations on an image media through a callback function.
 
 ```javascript
-handpose.detectStart(media, callback);
+handPose.detectStart(media, callback);
 ```
 
 **Parameters:**
@@ -333,17 +333,17 @@ handpose.detectStart(media, callback);
   See the diagram below for the position of each keypoint.
 
   <center>
-      <img alt="handpose keypoints diagram" width="600" src="assets/handpose-keypoints-map.png">
+      <img alt="handPose keypoints diagram" width="600" src="assets/handpose-keypoints-map.png">
   </center>
 
 ---
 
-### handpose.detectStop()
+### handPose.detectStop()
 
 This method can be called to stop the continuous pose estimation process.
 
 ```javascript
-handpose.detectStop();
+handPose.detectStop();
 ```
 
 For example, you can toggle the hand pose estimation with click event in p5.js by using this function as follows:
@@ -357,10 +357,10 @@ function mousePressed() {
 // Call this function to start and stop detection
 function toggleDetection() {
   if (isDetecting) {
-    handpose.detectStop();
+    handPose.detectStop();
     isDetecting = false;
   } else {
-    handpose.detectStart(video, gotHands);
+    handPose.detectStart(video, gotHands);
     isDetecting = true;
   }
 }
@@ -368,12 +368,12 @@ function toggleDetection() {
 
 ---
 
-### handpose.detect()
+### handPose.detect()
 
 This method asynchronously outputs a single hand estimation on an image media when called.
 
 ```javascript
-handpose.detect(media, ?callback);
+handPose.detect(media, ?callback);
 ```
 
 **Parameters:**
