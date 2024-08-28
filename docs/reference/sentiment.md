@@ -9,7 +9,7 @@
 
 Sentiment is a model trained to predict the sentiment of any given text. For example, it can predict how positive or negative a review is with a value between 0 ("negative") and 1 ("positive").
 
-The model is trained using IMDB reviews that have been truncated to a maximum of 200 words, only the 20000 most used words in the reviews are used.
+The model is trained using IMDB reviews that have been truncated to a maximum of 200 words, and only the 20000 most used words in the reviews are used.
 
 It provides the following functionalities:
 
@@ -47,11 +47,21 @@ Import the ml5.js library in your `index.html` file.
 
 ### Load model
 
-Let's open the `sketch.js` file and define a variable to store the Sentiment model, and a variable to store the status of the model.
+Let's open the `sketch.js` file and define a variable to store the Sentiment model.
 
 ```javascript
 let sentiment;
-let statusEl;
+```
+
+Now, create a `preload` function and load the Sentiment model by calling the `ml5.sentiment(model, ?callback)` method. Using the `preload` function lets us make sure that the model is loaded correctly before the `setup` and `draw` functions are called.
+
+Currently, the Sentiment model only supports the 'movieReviews' model, and we may support more models in the future.
+
+```javascript
+function preload() {
+  // Initialize the sentiment analysis model
+  sentiment = ml5.sentiment("MovieReviews");
+}
 ```
 
 Since we are not going to draw anything on the canvas and will instead update the HTML elements directly to interact with the model, we can remove the canvas within the `setup` function.
@@ -59,31 +69,8 @@ Since we are not going to draw anything on the canvas and will instead update th
 ```javascript
 function setup() {
   noCanvas();
-```
-
-Now, we can load the Sentiment model by calling the `ml5.sentiment(?modelName, ?callback)` function in the `setup` function. Currently, the Sentiment model only supports the 'movieReviews' model, and we may support more models in the future.
-
-```javascript
-sentiment = ml5.sentiment("movieReviews", modelReady);
-```
-
-We can also add a status element to display the status of the model. `createP()` is a p5.js function that creates a paragraph element in the DOM.
-
-```javascript
-  statusEl = createP("Loading model...");
 }
 ```
-
-You may have noticed that we have passed a callback function `modelReady` as the second argument to the `ml5.sentiment()` function. `modelReady` is a callback function that will be called once the model has loaded. We can define the `modelReady` function as follows:
-
-```javascript
-// a callback function that is called when model is ready
-function modelReady() {
-  statusEl.html("Model loaded");
-}
-```
-
-Once the model is loaded, the status element `statusEl` will be updated to "Model loaded".
 
 ### Set up UI for user interaction
 
@@ -105,7 +92,7 @@ To give the user some guidance on how to interact with the model, we can add a p
 </body>
 ```
 
-To allow the user to interact with the model, we need a input field for the user to provide the text to predict the sentiment of, a button to submit the text, and a paragraph element to display the sentiment prediction result. Let's define the variables to store these elements in the `sketch.js` file.
+To allow the user to interact with the model, we need an input field for the user to provide the text to predict the sentiment of, a button to submit the text, and a paragraph element to display the sentiment prediction result. Let's define the variables to store these elements in the `sketch.js` file.
 
 ```javascript
 let inputBox;
@@ -113,12 +100,12 @@ let submitBtn;
 let sentimentResult;
 ```
 
-Let's tackle these one by one! We can start with the input field to receive the text input from the user. Use the `createInput()` function to create an input field in the DOM, and set the default text to "Today is the happiest day and is full of rainbows!".
+Let's tackle these one by one! We can start with the input field to receive the text input from the user. In `setup`, use the `createInput` function to create an input field in the DOM, and set the default text to "Today is the happiest day and is full of rainbows!".
 
 ```javascript
 function setup() {
   ...
-  statusEl = createP("Loading Model...");
+  // Set up the DOM elements
   inputBox = createInput("Today is the happiest day and is full of rainbows!");
 ```
 
@@ -128,7 +115,7 @@ Set the size of the input box to 75 pixels.
 inputBox.attribute("size", "75");
 ```
 
-Now, we can create a button that the user can click to predict the sentiment of the text. We can use the `createButton()` function to create a button in the DOM, and set the button text to "submit".
+Now, we can create a button that the user can click to predict the sentiment of the text. We can use the `createButton` function to create a button in the DOM, and set the button text to "submit".
 
 ```javascript
 submitBtn = createButton("submit");
@@ -137,55 +124,57 @@ submitBtn = createButton("submit");
 Lastly, we can add a paragraph element to display the sentiment prediction result.
 
 ```javascript
-  sentimentResult = createP("Sentiment score:");
+  sentimentResult = createP("Sentiment confidence:");
 }
 ```
 
 ### Predict sentiment with the model
 
-Now that we have set up the UI, we can predict the sentiment of the text input by the user. Let's define a function `getSentiment()` that will be called when the user clicks the submit button or presses the enter key.
+Now that we have set up the UI, we can predict the sentiment of the text input by the user. Let's define a function `getSentiment` that will be called when the user clicks the submit button or presses the enter key.
 
 It will get the values from the user input, and store it in a variable `text`.
 
 ```javascript
 function getSentiment() {
-  // get the values from the input
+  // Use the value of the input box
   let text = inputBox.value();
 ```
 
-Make the prediction using the `predict()` method of the `sentiment` object.
+Make the prediction using the `predict` method of the `sentiment` object. Here, we pass two parameters: the input text and a customized callback function `gotResult`.
 
 ```javascript
-// make the prediction
-let prediction = sentiment.predict(text);
-```
-
-And display the sentiment score in the paragraph element `sentimentResult`.
-
-```javascript
-  // display sentiment result on html page
-  sentimentResult.html("Sentiment score: " + prediction.score);
+  // Start making the prediction
+  sentiment.predict(text, gotResult);
 }
 ```
 
-The only thing left is to call the `getSentiment()` function when the user clicks the submit button, or presses the enter key.
+The `gotResult` function is a callback function that will be called when the `predict` method predicts the text's sentiment. Once the sentiment is predicted, the output `prediction` will be passed to `gotResult`, and then display the sentiment confidence in the paragraph element `sentimentResult`.
 
-We can use the `mousePressed()` function of the `submitBtn` object, which calls a function when the mouse is pressed over the element.
+```javascript
+function gotResult(prediction) {
+  // Display sentiment result via the DOM
+  sentimentResult.html("Sentiment confidence: " + prediction.confidence);
+}
+```
+
+The only thing left is to call the `getSentiment` function when the user clicks the submit button or presses the 'enter' key.
+
+To do this, let's first go back to the `setup` function. We can use the `mousePressed` function of the `submitBtn` object, which will call a function when the mouse is pressed over the element.
 
 ```javascript
 function setup() {
   ...
-  sentimentResult = createP("Sentiment score:");
+  sentimentResult = createP("Sentiment confidence:");
 
-  // predicting the sentiment when submit button is pressed
+  // Start predicting when the submit button is pressed
   submitBtn.mousePressed(getSentiment);
 }
 ```
 
-And call the `getSentiment()` function when the user presses the enter key.
+Now, we'll create a `keyPressed` function and call the `getSentiment` function when the user presses the 'enter' key.
 
 ```javascript
-// predicting the sentiment when 'Enter' key is pressed
+// Start predicting when the 'Enter' key is pressed
 function keyPressed() {
   if (keyCode == ENTER) {
     getSentiment();
@@ -292,4 +281,3 @@ sentiment.predict(text);
     score: 0.9999948740005493;
   }
   ```
-
