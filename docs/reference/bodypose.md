@@ -17,7 +17,7 @@ It offers flexibility for:
 
 ## Quick Start
 
-Run and explore a pre-built example! [This bodyPose example](https://editor.p5js.org/ml5/sketches/vpSI23x0A) uses the MoveNet model to detect body poses in real-time from the webcam video.
+Run and explore a pre-built example! [This bodyPose example](https://editor.p5js.org/ml5/sketches/hMN9GdrO3) uses the MoveNet model to detect body poses in real-time from the webcam video.
 
 </br>
 
@@ -25,12 +25,12 @@ Run and explore a pre-built example! [This bodyPose example](https://editor.p5js
 
 ## Examples
 
-- [BodyPose MoveNet Keypoints](https://editor.p5js.org/ml5/sketches/vpSI23x0A): Draw the keypoints of the detected body using MoveNet model.
+- [BodyPose MoveNet Keypoints](https://editor.p5js.org/ml5/sketches/hMN9GdrO3): Draw the keypoints of the detected body using MoveNet model.
 - [BodyPose BlazePose keypoints](https://editor.p5js.org/ml5/sketches/OukJYAJAb): Draw the keypoints of the detected body using BlazePose model.
 
 ## Step-by-Step Guide
 
-Now, let's together build the [BodyPose Keypoints example](https://editor.p5js.org/ml5/sketches/vpSI23x0A) from scratch, and in the process, learn how to use the BodyPose model.
+Now, let's together build the [BodyPose Keypoints example](https://editor.p5js.org/ml5/sketches/hMN9GdrO3) from scratch, and in the process, learn how to use the BodyPose model.
 
 ### Create a new project
 
@@ -218,7 +218,7 @@ For each keypoint, we only want to draw a circle if the keypoint's confidence is
 
 ### Run your sketch
 
-Voila! You have successfully built the BodyPose model to detect and draw body poses in real-time from the webcam video. Press the <img class="inline-img" src="assets/facemesh-arrow-forward.png" alt="run button icon" aria-hidden="true"> `run` button to see the code in action. You can also find the [complete code](https://editor.p5js.org/ml5/sketches/vpSI23x0A) in the p5.js web editor.
+Voila! You have successfully built the BodyPose model to detect and draw body poses in real-time from the webcam video. Press the <img class="inline-img" src="assets/facemesh-arrow-forward.png" alt="run button icon" aria-hidden="true"> `run` button to see the code in action. You can also find the [complete code](https://editor.p5js.org/ml5/sketches/hMN9GdrO3) in the p5.js web editor.
 
 ?> If you have any questions or spot something unclear in this step-by-step code guide, we'd love to hear from you! Join us on [Discord](https://discord.com/invite/3CVauZMSt7) and let us know how we can make it better.
 
