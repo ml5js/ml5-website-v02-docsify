@@ -17,7 +17,7 @@ It offers flexibility for:
 
 ## Quick Start
 
-Run and explore a pre-built example! [This bodyPose example](https://editor.p5js.org/ml5/sketches/vpSI23x0A) uses the MoveNet model to detect body poses in real-time from the webcam video.
+Run and explore a pre-built example! [This bodyPose example](https://editor.p5js.org/ml5/sketches/hMN9GdrO3) uses the MoveNet model to detect body poses in real-time from the webcam video.
 
 </br>
 
