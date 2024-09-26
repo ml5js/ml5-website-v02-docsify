@@ -1,51 +1,49 @@
-/*
- * 👋 Hello! This is an ml5.js example made and shared with ❤️.
- * Learn more about the ml5.js project: https://ml5js.org/
- * ml5.js license and Code of Conduct: https://github.com/ml5js/ml5-next-gen/blob/main/LICENSE.md
- *
- * This example demonstrates detecting objects in a live video through ml5.imageClassifier.
- */
-
-// A variable to initialize the Image Classifier
+// Classifier Variable
 let classifier;
+// Model URL
+let imageModelURL = "https://teachablemachine.withgoogle.com/models/4-WUyljZZ/";
 
-// A variable to hold the video we want to classify
+// Video
 let video;
+// To store the classification
+let label = "";
 
-// Variable for displaying the results on the canvas
-let label = "Model loading...";
-
-let imageModelURL = 'https://teachablemachine.withgoogle.com/models/bXy2kDNi/';
-
+// Load the model first
 function preload() {
-  ml5.setBackend("webgl");
-  classifier = ml5.imageClassifier(imageModelURL + "model.json");
+  classifier = ml5.imageClassifier(imageModelURL + "model.json", {
+    flipped: true,
+  });
 }
 
 function setup() {
-  createCanvas(640, 480);
-
-  // Create the webcam video and hide it
-  video = createCapture(VIDEO);
-  video.size(640, 480);
+  createCanvas(320, 260);
+  // Create the video
+  video = createCapture(VIDEO, { flipped: true });
+  video.size(320, 240);
   video.hide();
-
-  // Start detecting objects in the video
   classifier.classifyStart(video, gotResult);
 }
 
 function draw() {
-  //Each video frame is painted on the canvas
+  background(0);
+  // Draw the video
   image(video, 0, 0);
 
-  //Printing class with the highest probability on the canvas
+  // Draw the label
   fill(255);
-  textSize(32);
-  text(label, 20, 50);
+  textSize(16);
+  textAlign(CENTER);
+  text(label, width / 2, height - 4);
 }
 
-// A function to run when we get the results
+// Get a prediction for the current video frame
+function classifyVideo() {
+  classifier.classify(flippedVideo, gotResult);
+}
+
+// When we get a result
 function gotResult(results) {
-  //update label variable which is displayed on the canvas
+  // The results are in an array ordered by confidence.
+  // console.log(results[0]);
   label = results[0].label;
 }
