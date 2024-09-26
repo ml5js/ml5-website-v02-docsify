@@ -61,9 +61,9 @@ Before we load the model, we need to get the model URL from the Teachable Machin
 
 - Step 1: Open [Teachable Machine](https://teachablemachine.withgoogle.com/train) and create a new "Image Project".
 - Step 2: Choose "Standard image model".
-- Step 3: Click the "Edit" icon to rename "Class 1" to your desired label. In our case, "daytime".
-- Step 4: Click the "Webcam" icon and long press "Hold to Record" button to capture some happy faces samples of yourself.
-- Step 5: Repeat steps 3 and 4 for the second labels, in our case "nighttime". If you need more than two labels, click "Add a class", and then rename "Class 3" (or 'Class 4,' 'Class 5,' etc.) to whatever you prefer.
+- Step 3: Click the "Edit" icon to rename "Class 1" to your desired label. In our case, "thermos".
+- Step 4: Click the "Webcam" icon and long press "Hold to Record" button to capture some thermos photos.
+- Step 5: Repeat steps 3 and 4 for the second labels, in our case "eraser". If you need more than two labels, click "Add a class", and then rename "Class 3" (or 'Class 4,' 'Class 5,' etc.) to whatever you prefer.
 - Step 6: Click the "Train Model" button to train your model.
 - Step 7: Click the "Export Model" button, and in the pop-up window, click the "Upload my model" button to get the model URL.
 - Step 8: Copy the model URL in the "Your shareable link" field.
