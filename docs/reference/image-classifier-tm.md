@@ -21,7 +21,7 @@ It provides the following functionalities:
 
 ## Quick Start
 
-Run and explore a pre-built example! [This Image + Teachable Machine example](https://editor.p5js.org/ml5/sketches/ImageModel_TM) classifies the content of an image from the webcam feed using a Teachable Machine model.
+Run and explore a pre-built example! [This Image + Teachable Machine example](https://editor.p5js.org/ima_ml/sketches/vOSSEZwGf) classifies the content of an image from the webcam feed using a Teachable Machine model.
 
 </br>
 
@@ -29,11 +29,11 @@ Run and explore a pre-built example! [This Image + Teachable Machine example](ht
 
 ## Examples
 
-- [Image + Teachable Machine Video](https://editor.p5js.org/ml5/sketches/ImageModel_TM): Classify the content of an image from the webcam feed using a Teachable Machine model.
+- [Image + Teachable Machine Video](https://editor.p5js.org/ima_ml/sketches/vOSSEZwGf): Classify the content of an image from the webcam feed using a Teachable Machine model.
 
 ## Step-by-Step Guide
 
-Now, let's together build the [Image + Teachable Machine Video example](https://editor.p5js.org/ml5/sketches/ImageModel_TM) from scratch, and in the process, learn how to use the Image + Teachable Machine model.
+Now, let's together build the [Image + Teachable Machine Video example](https://editor.p5js.org/ima_ml/sketches/vOSSEZwGf) from scratch, and in the process, learn how to use the Image + Teachable Machine model.
 
 ### Create a new project
 
@@ -71,15 +71,16 @@ Before we load the model, we need to get the model URL from the Teachable Machin
 After we have the model URL, we can store it in a variable in the `sketch.js` file.
 
 ```javascript
-let imageModelURL = "https://teachablemachine.withgoogle.com/models/bXy2kDNi/";
+let imageModelURL = "https://teachablemachine.withgoogle.com/models/4-WUyljZZ/";
 ```
 
-Now, we can load the model that we just trained in the `preload` function. Using the `preload` function ensures that the model is loaded before the `setup` and `draw` functions are called. Note that we set the backend to `webgl` to support the Teachable Machine model.
+Now, we can load the model that we just trained in the `preload` function. Using the `preload` function ensures that the model is loaded before the `setup` and `draw` functions are called.
 
 ```javascript
 function preload() {
-  ml5.setBackend("webgl");
-  classifier = ml5.imageClassifier(imageModelURL + "model.json");
+  classifier = ml5.imageClassifier(imageModelURL + "model.json", {
+    flipped: true,
+  });
 }
 ```
 
@@ -103,18 +104,18 @@ Fetch the webcam video, resize it to fit the canvas, and hide it from the displa
 
 ```javascript
   // Create the video and hide it
-  video = createCapture(VIDEO);
-  video.size(640, 480);
+  video = createCapture(VIDEO, { flipped: true });
+  video.size(320, 240);
   video.hide();
 }
 ```
 
 ### Classify the video with the model
 
-To store the classification result, define a variable `label`. We can initialize it with a loading message to display on the canvas before the model finishes loading.
+To store the classification result, define a variable `label`.
 
 ```javascript
-let label = "Model loading...";
+let label = "";
 ```
 
 We can now start classifying the video with the Teachable Machine model. In the `setup` function, call the `classifyStart` method on the `classifier` object.
@@ -153,14 +154,15 @@ Now, we can display the classification result on the canvas.
 ```javascript
   // Display the label on the canvas
   fill(255);
-  textSize(32);
-  text(label, 20, 50);
+  textSize(16);
+  textAlign(CENTER);
+  text(label, width / 2, height - 4);
 }
 ```
 
 ### Run your sketch
 
-Congratulations! You have successfully built the Image + Teachable Machine Video example. Press the <img class="inline-img" src="assets/facemesh-arrow-forward.png" alt="run button icon" aria-hidden="true"> `run` button to see the code in action. You can also find the [complete code](https://editor.p5js.org/ml5/sketches/ImageModel_TM) in the p5.js web editor.
+Congratulations! You have successfully built the Image + Teachable Machine Video example. Press the <img class="inline-img" src="assets/facemesh-arrow-forward.png" alt="run button icon" aria-hidden="true"> `run` button to see the code in action. You can also find the [complete code](https://editor.p5js.org/ima_ml/sketches/vOSSEZwGf) in the p5.js web editor.
 
 ?> If you have any questions or spot something unclear in this step-by-step code guide, we'd love to hear from you! Join us on [Discord](https://discord.com/invite/3CVauZMSt7) and let us know how we can make it better.
 
