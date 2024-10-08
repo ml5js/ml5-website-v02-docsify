@@ -1,9 +1,9 @@
 name: Bug/Maintenance Report
 description: File a bug report.
 title: "[Bug]: "
-labels: ["bug",]
+labels: ["bug"]
 projects: []
-assignees:
+assignees: []
 body:
   - type: markdown
     attributes:
