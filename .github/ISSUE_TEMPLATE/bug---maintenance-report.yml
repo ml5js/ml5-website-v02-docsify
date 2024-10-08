@@ -11,9 +11,9 @@ body:
         Thanks for taking the time to fill out this bug report!
   - type: dropdown
     id: issueType
-    multiple: true
     attributes:
       label: Issue type
+      multiple: true
       options:
         - Bug
         - Typo
