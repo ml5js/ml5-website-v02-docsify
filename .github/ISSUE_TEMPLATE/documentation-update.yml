@@ -1,7 +1,7 @@
-name: Bug & Maintenance Report
-description: Propose changes for bugs, typos, broken links, and other minor fixes.
-title: "[Bug]: "
-labels: ["bug"]
+name: Documentation Update
+description: Propose content improvements and code example requests.
+title: ""
+labels: ["documentation"]
 projects: []
 assignees: []
 body:
@@ -12,29 +12,19 @@ body:
   - type: dropdown
     id: type
     attributes:
-      label: Issue Type
+      label: Update Type
       multiple: true
       options:
-        - Bug
-        - Typo
-        - Broken links
+        - Content
+        - Code Example
         - Other
-      default: 0
     validations:
       required: true
-  - type: input
-    id: link
-    attributes:
-      label: Link to the issue
-      description: Where did the problem occur?
-      placeholder: https://example.com
-    validations:
-      required: false
   - type: textarea
     id: description
     attributes:
-      label: Issue description
-      placeholder: Tell us what you see!(Also include screenshot, if applicable.)
+      label: Description
+      placeholder: Tell us what changes you would like to see in the docs!
     validations:
       required: true
   - type: checkboxes

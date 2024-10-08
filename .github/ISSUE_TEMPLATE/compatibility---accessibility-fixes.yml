@@ -1,7 +1,7 @@
-name: Bug & Maintenance Report
-description: Propose changes for bugs, typos, broken links, and other minor fixes.
-title: "[Bug]: "
-labels: ["bug"]
+name: Compatibility & Accessibility Fixes
+description: Create a report for compatibility/accessibility features that we need to improve.
+title: "[A11y]: "
+labels: ["a11y"]
 projects: []
 assignees: []
 body:
@@ -12,13 +12,10 @@ body:
   - type: dropdown
     id: type
     attributes:
-      label: Issue Type
-      multiple: true
+      label: Issue type
       options:
-        - Bug
-        - Typo
-        - Broken links
-        - Other
+        - Compatibility
+        - Accessibility
       default: 0
     validations:
       required: true
@@ -33,10 +30,23 @@ body:
   - type: textarea
     id: description
     attributes:
-      label: Issue description
+      label: Description
       placeholder: Tell us what you see!(Also include screenshot, if applicable.)
     validations:
       required: true
+  - type: input
+    id: context
+    attributes:
+      label: Operating Systems and Browsers
+      placeholder: iOS 18, Safari...
+    validations:
+      required: false
+  - type: textarea
+    id: solution
+    attributes:
+      label: Potential Solution
+    validations:
+      required: false
   - type: checkboxes
     id: terms
     attributes:
