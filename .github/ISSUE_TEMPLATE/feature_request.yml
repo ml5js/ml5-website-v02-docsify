@@ -16,7 +16,7 @@ body:
     validations:
       required: true
   - type: textarea
-    id: solution&context
+    id: solution_context
     attributes:
       label: Describe the potential solution & Additional context/use case
     validations:
