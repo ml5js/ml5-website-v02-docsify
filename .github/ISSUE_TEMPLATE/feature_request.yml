@@ -1,0 +1,31 @@
+name: Feature Request
+description: Propose new features or visual/function enhancements on the website itself
+labels: ["enhancement"]
+projects: []
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+  - type: textarea
+    id: description
+    attributes:
+      label: Feature description
+      placeholder: A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+    validations:
+      required: true
+  - type: textarea
+    id: solution_context
+    attributes:
+      label: Describe the potential solution & Additional context/use case
+    validations:
+      required: false
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct]() (WIP). 
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true

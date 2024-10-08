@@ -1,0 +1,57 @@
+name: Compatibility & Accessibility Fixes
+description: Create a report for compatibility/accessibility features that we need to improve.
+title: "[A11y]: "
+labels: ["a11y"]
+projects: []
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+  - type: dropdown
+    id: type
+    attributes:
+      label: Issue type
+      options:
+        - Compatibility
+        - Accessibility
+      default: 0
+    validations:
+      required: true
+  - type: input
+    id: link
+    attributes:
+      label: Link to the issue
+      description: Where did the problem occur?
+      placeholder: https://example.com
+    validations:
+      required: false
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      placeholder: Tell us what you see!(Also include screenshot, if applicable.)
+    validations:
+      required: true
+  - type: input
+    id: context
+    attributes:
+      label: Operating Systems and Browsers
+      placeholder: iOS 18, Safari...
+    validations:
+      required: false
+  - type: textarea
+    id: solution
+    attributes:
+      label: Potential Solution
+    validations:
+      required: false
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct]() (WIP). 
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true

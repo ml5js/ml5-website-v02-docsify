@@ -1,0 +1,47 @@
+name: Bug & Maintenance Report
+description: Propose changes for bugs, typos, broken links, and other minor fixes.
+title: "[Bug]: "
+labels: ["bug"]
+projects: []
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+  - type: dropdown
+    id: type
+    attributes:
+      label: Issue Type
+      multiple: true
+      options:
+        - Bug
+        - Typo
+        - Broken links
+        - Other
+      default: 0
+    validations:
+      required: true
+  - type: input
+    id: link
+    attributes:
+      label: Link to the issue
+      description: Where did the problem occur?
+      placeholder: https://example.com
+    validations:
+      required: false
+  - type: textarea
+    id: description
+    attributes:
+      label: Issue description
+      placeholder: Tell us what you see!(Also include screenshot, if applicable.)
+    validations:
+      required: true
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct]() (WIP). 
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true

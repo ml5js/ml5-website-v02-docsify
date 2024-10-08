@@ -1,0 +1,36 @@
+name: Documentation Update
+description: Propose content improvements and code example requests.
+labels: ["documentation"]
+projects: []
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+  - type: dropdown
+    id: type
+    attributes:
+      label: Update Type
+      multiple: true
+      options:
+        - Content
+        - Code Example
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      placeholder: Tell us what changes you would like to see in the docs!
+    validations:
+      required: true
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct]() (WIP). 
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true
