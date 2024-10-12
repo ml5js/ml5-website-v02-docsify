@@ -446,8 +446,8 @@ bodypose.detectStart(media, gotPoses);
       keypoints: [{ x, y, z, confidence, name }, ...],
       keypoints3D: [{ x, y, z, confidence, name }, ...],
       nose: { x, y, confidence, keypoint3D: { x, y, z, confidence } },
-      left_eye_inner: { x, y, z, confidence, keypoint3D: { x, y, z, confidence } },
-      left_eye: { x, y, z, confidence, keypoint3D: { x, y, z, confidence } },
+      left_eye_inner: { x, y, confidence, keypoint3D: { x, y, z, confidence } },
+      left_eye: { x, y, confidence, keypoint3D: { x, y, z, confidence } },
       ...
       confidence: 0.28,
     },
