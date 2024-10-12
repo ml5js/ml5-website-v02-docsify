@@ -445,9 +445,9 @@ bodypose.detectStart(media, gotPoses);
       id: 1,
       keypoints: [{ x, y, z, confidence, name }, ...],
       keypoints3D: [{ x, y, z, confidence, name }, ...],
-      left_ankle: { x, y, z, confidence },
-      left_ear: { x, y, z, confidence },
-      left_elbow: { x, y, z, confidence },
+      nose: { x, y, confidence, keypoint3D: { x, y, z, confidence }}
+      left_eye_inner: { x, y, z, confidence, keypoint3D: { x, y, z, confidence } },
+      left_eye: { x, y, z, confidence, keypoint3D: { x, y, z, confidence } },
       ...
       confidence: 0.28,
     },
@@ -455,7 +455,7 @@ bodypose.detectStart(media, gotPoses);
   ];
   ```
 
-  ?> The `keypoints3D` array contains the 3D coordinates of the keypoints, with the `z` property representing the depth of each keypoint. The 2D `keypoints` still include z-coordinates to provide additional depth information. This helps in understanding the relative positioning of body parts, enhancing the accuracy of applications that primarily work with 2D data.
+  ?> The `keypoints3D` array and `keypoint3D` property contain the 3D coordinates of the keypoints. The x, y, and z represent absolute distance in meters in a 2 x 2 x 2 meter cubic space. The range for each axis goes from -1 to 1 (therefore 2m total delta). The z is always perpendicular to the xy plane that passes the center of the hip, so the coordinate for the hip center is (0, 0, 0).
 
 ---
 
