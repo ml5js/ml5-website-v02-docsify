@@ -278,6 +278,6 @@ sentiment.predict(text);
 - **Object**: Scores the sentiment of given text with a value between 0 ("negative") and 1 ("positive"). See below for an example output:
   ```javascript
   {
-    score: 0.9999948740005493;
+    confidence: 0.9999948740005493;
   }
   ```
