@@ -146,81 +146,6 @@ You have successfully built the BodySegmentation Mask Body Part example! Press t
 
 ?> If you have any questions or spot something unclear in this step-by-step code guide, we'd love to hear from you! Join us on [Discord](https://discord.com/invite/3CVauZMSt7) and let us know how we can make it better.
 
-## Properties
-
-### bodySegmentation.modelName
-
-- **Description**
-  - The name of the model being used, typically "BodyPix" or "SelfieSegmentation".
-- **Type**
-  - String
-
----
-
-### bodySegmentation.video
-
-- **Description**
-  - The video element on which segmentation is performed.
-- **Type**
-  - HTMLVideoElement
-
----
-
-### bodySegmentation.model
-
-- **Description**
-  - The TensorFlow.js model used for body segmentation.
-- **Type**
-  - tf.LayersModel
-
----
-
-### bodySegmentation.config
-
-- **Description**
-  - Configuration options provided by the user for the model.
-- **Type**
-  - Object
-
----
-
-### bodySegmentation.runtimeConfig
-
-- **Description**
-  - Configuration options related to the runtime behavior of the model.
-- **Type**
-  - Object
-
----
-
-### bodySegmentation.detectMedia
-
-- **Description**
-  - The media element (image, video, or canvas) on which body segmentation is performed.
-- **Type**
-  - HTMLElement
-
----
-
-### bodySegmentation.detectCallback
-
-- **Description**
-  - The callback function to handle body segmentation results.
-- **Type**
-  - Function
-
----
-
-### bodySegmentation.ready
-
-- **Description**
-  - A promise that resolves when the model has loaded.
-- **Type**
-  - Promise
-
----
-
-
 
 ## Methods
 
@@ -237,8 +162,6 @@ const bodySegmentation = ml5.bodySegmentation(?modelName, ?options, ?callback);
 - **modelName**: Optional. A string specifying which model to use. Types of model:
   - _SelfieSegmentation_(default): A model that can be used to segment people from the background.
   - _BodyPix_: A model that can be used to segment people and body parts.
-
-
 
 - **options**: Optional. An object to change the default configuration of the model. See the example options object:
 
