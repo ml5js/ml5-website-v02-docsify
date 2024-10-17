@@ -29,7 +29,13 @@ Run and explore a pre-built example! [This Image + Teachable Machine example](ht
 
 ## Examples
 
+### p5 sketches
+
 - [Image + Teachable Machine Video](https://editor.p5js.org/ima_ml/sketches/vOSSEZwGf): Classify the content of an image from the webcam feed using a Teachable Machine model.
+
+### Video Tutorials
+
+- [Image Classification with ml5.js](https://thecodingtrain.com/tracks/ml5js-beginners-guide/ml5/1-classification/image-classification) by The Coding Train
 
 ## Step-by-Step Guide
 

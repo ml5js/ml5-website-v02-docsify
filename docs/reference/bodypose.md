@@ -25,8 +25,14 @@ Run and explore a pre-built example! [This bodyPose example](https://editor.p5js
 
 ## Examples
 
+### p5 sketches
+
 - [BodyPose MoveNet Keypoints](https://editor.p5js.org/ml5/sketches/hMN9GdrO3): Draw the keypoints of the detected body using MoveNet model.
 - [BodyPose BlazePose keypoints](https://editor.p5js.org/ml5/sketches/OukJYAJAb): Draw the keypoints of the detected body using BlazePose model.
+
+### Video Tutorials
+
+- [Pose Estimation with ml5.js](https://thecodingtrain.com/tracks/ml5js-beginners-guide/ml5/7-bodypose/pose-detection) by The Coding Train
 
 ## Step-by-Step Guide
 

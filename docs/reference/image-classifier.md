@@ -28,8 +28,14 @@ Run and explore a pre-built example! [This ImageClassifier example](https://edit
 
 ## Examples
 
+### p5 sketches
+
 - [ImageClassifier Single Image](https://editor.p5js.org/ml5/sketches/pjPr6XmPY): Classify the content of an image and display the results on the canvas.
 - [ImageClassifier Video](https://editor.p5js.org/ml5/sketches/K0sjaEO19): Classify the content of objects in a video stream.
+
+### Video Tutorials
+
+- [Image Classification with ml5.js](https://thecodingtrain.com/tracks/ml5js-beginners-guide/ml5/1-classification/image-classification) by The Coding Train
 
 ## Step-by-Step Guide
 
