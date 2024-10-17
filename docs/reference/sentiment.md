@@ -279,6 +279,6 @@ sentiment.predict(text);
   
 ```javascript
 {
-  confidence: 0.9999948740005493;
+    confidence: 0.9999948740005493;
 }
 ```
