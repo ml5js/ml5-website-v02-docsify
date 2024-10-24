@@ -276,18 +276,6 @@ Now you can run your sketch and interact with the sliders to change the RGB valu
 
 ?> If you have any questions or spot something unclear in this step-by-step code guide, we'd love to hear from you! Join us on [Discord](https://discord.com/invite/3CVauZMSt7) and let us know how we can make it better.
 
-## Properties
-
-| property             | description                                                                             | datatype   |
-| :------------------- | --------------------------------------------------------------------------------------- | ---------- |
-| `.callback`          | the callback to be called after data is loaded on initialization                        | `function` |
-| `.options`           | the options for how the neuralNetwork should be configured on initialization            | `object`   |
-| `.neuralNetwork`     | the `neuralNetwork` class where all of the tensorflow.js model operations are organized | `class`    |
-| `.neuralNetworkData` | the `neuralNetworkData` class where all of the data handling operations are organized   | `class`    |
-| `.neuralNetworkVis`  | the `neuralNetworkVis` class where all of the tf-vis operations are organized           | `class`    |
-| `.data`              | The property that stores all of the training data after `.train()` is called            | `class`    |
-| `.ready`             | set to true if the model is loaded and ready, false if it is not.                       | `boolean`  |
-
 ## Methods
 
 ### Overview
