@@ -15,7 +15,7 @@ It provides folowing functionalities:
 - **Classification**: The neural network can be used to classify input data into different categories. For example, you can train a neural network to classify images of cats and dogs.
 - **Regression**: The neural network can be used to predict a continuous value based on input data. For example, you can train a neural network to predict the price of a house based on its size and location.
 
-?> If you are not familiar with the concept of **classification**, **regression**, **neuron**, **neural networks**, and **weights**, you can learn more about them with [ml5 glossary](/glossary).
+?> If you are not familiar with the concept of **classification**, **regression**, **neuron**, **neural networks**, and **weights**, you can learn more about them with [ml5 glossary](/learn/ml5-glossary).
 
 ## Quick Start
 Run and explore a pre-built example! [This Neural Network example](https://editor.p5js.org/ml5/sketches/eGHBdmCLe) trains a model to classify the color of an RGB value.
@@ -275,18 +275,6 @@ function draw() {
 Now you can run your sketch and interact with the sliders to change the RGB values of the test data. The canvas will display the predicted color label based on the RGB values you set. You can also find the [complete code](https://editor.p5js.org/ml5/sketches/eGHBdmCLe) in the p5.js web editor.
 
 ?> If you have any questions or spot something unclear in this step-by-step code guide, we'd love to hear from you! Join us on [Discord](https://discord.com/invite/3CVauZMSt7) and let us know how we can make it better.
-
-## Properties
-
-| property             | description                                                                             | datatype   |
-| :------------------- | --------------------------------------------------------------------------------------- | ---------- |
-| `.callback`          | the callback to be called after data is loaded on initialization                        | `function` |
-| `.options`           | the options for how the neuralNetwork should be configured on initialization            | `object`   |
-| `.neuralNetwork`     | the `neuralNetwork` class where all of the tensorflow.js model operations are organized | `class`    |
-| `.neuralNetworkData` | the `neuralNetworkData` class where all of the data handling operations are organized   | `class`    |
-| `.neuralNetworkVis`  | the `neuralNetworkVis` class where all of the tf-vis operations are organized           | `class`    |
-| `.data`              | The property that stores all of the training data after `.train()` is called            | `class`    |
-| `.ready`             | set to true if the model is loaded and ready, false if it is not.                       | `boolean`  |
 
 ## Methods
 
