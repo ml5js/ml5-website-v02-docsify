@@ -1,5 +1,5 @@
 /* Import Google Fonts */
-@import url(https://fonts.googleapis.com/css?family=Arvo:wght@700&Nunito+Sans:ital,opsz,wght@1,6..12,400;600&Noto+Sans+Mono:wght@500&display=swap);
+@import url('https://fonts.googleapis.com/css2?family=Arvo:wght@400&family=Lato:wght@300;400;700&family=Noto+Sans+Mono:wght@400&display=swap');
 
 /* Variables */
 :root {
@@ -17,6 +17,7 @@
   --color-text-highlight-green: #adffc5;
   --color-text-p5: #EC3865;
 
+  --color-text-button: #1F1F20;
   --color-text-link: #6a709c;
 
   --color-bg: #ffffff;
@@ -59,7 +60,7 @@
 
   /* Fonts */
   --font-serif: "Arvo", serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-sans-serif: "Nunito Sans", system-ui, -apple-system, "Helvetica", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-sans-serif: "Lato", system-ui, -apple-system, "Helvetica", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-monospace: "Noto Sans Mono", monospace;
   --font-emoji: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-weight-bold: 600;
@@ -77,14 +78,15 @@
   /* Headings */
   --heading-color: var(--color-text-dark);
   --heading-font-family: var(--font-serif);
+  --heading-font-weight: var(--font-weight-normal);
   --heading-small-font-family: var(--font-sans-serif);
-  --heading-font-weight: var(--font-weight-bold);
+  --heading-small-font-weight: var(--font-weight-bold);
 
   /* Buttons */
   --button-hover-color: #ffffff;
   --button-hover-bg-color: var(--color-secondary);
   --button-font-family: var(--font-serif);
-  --button-font-weight: var(--font-weight-bold);
+  --button-font-weight: var(--font-weight-normal);
 
   /* Navbar */
   --navbar-init-height: 6rem;
@@ -100,8 +102,6 @@
 
 /* Reset some default styles */
 * {
-  -webkit-font-smoothing: antialiased;
-  /* Make fonts smoother and better looking on webkit browsers */
   -webkit-overflow-scrolling: touch;
   /* Use momentum-based scrolling on webkit browsers */
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -122,7 +122,6 @@ body {
 
 body {
   -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
   color: var(--body-color);
   font-family: var(--body-font-family);
   font-size: var(--body-font-size);
@@ -175,7 +174,7 @@ footer {
 h1,
 h2 {
   font-family: var(--heading-font-family);
-  font-weight: var(--heading-font-weight);
+  letter-spacing: -0.02rem;
 }
 
 h3,
@@ -183,7 +182,7 @@ h4,
 h5,
 h6 {
   font-family: var(--heading-small-font-family);
-  font-weight: var(--heading-font-weight);
+  font-weight: var(--heading-small-font-weight);
 }
 
 /* ===== LINKS ===== */
@@ -205,10 +204,13 @@ a[disabled] {
   opacity: 0.6;
 }
 
+p {
+  -webkit-font-smoothing: antialiased;
+}
 
 /* Banner */
 #banner {
-  font-family: var(--body-font-family);
+  font-family: var(--heading-font-family);
   line-height: var(--body-line-height);
   word-spacing: 1px;
   position: fixed;
@@ -228,7 +230,7 @@ a[disabled] {
   z-index: 1000;
   opacity: 1;
   transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
 #banner-content {
@@ -239,13 +241,13 @@ a[disabled] {
   text-overflow: ellipsis;
 }
 
-#banner-content a{
+#banner-content a {
   color: var(--color-text);
   text-decoration: none;
-  
+
 }
 
-#banner-content a:hover{
+#banner-content a:hover {
   color: var(--color-primary);
   text-decoration: underline;
 }
