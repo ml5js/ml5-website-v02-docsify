@@ -31,6 +31,7 @@ Run and explore a pre-built example! [This HandPose example](https://editor.p5js
 - [HandPose Single Image](https://editor.p5js.org/ml5/sketches/8VK_l3XwE): Detect the keypoints of the hand from a single image.
 - [HandPose Parts](https://editor.p5js.org/ml5/sketches/DNbSiIYKB): Draw specific hand parts of the detected hand.
 - [HandPose Start-stop](https://editor.p5js.org/ml5/sketches/W9vFFT5RM): Start and stop the detection of the hand.
+- [HandPose Skeletal Connections](https://editor.p5js.org/ml5/sketches/fnboooD-K): Draw skeletal connections of the hand.
 
 ## Step-by-Step Guide
 
@@ -300,3 +301,13 @@ handPose.detect(media, ?callback);
 - **media**: An HTML or p5.js image, video, or canvas element to run the estimation on.
 
 - **callback(results, error)**: Optional. A callback function to handle the output of the estimation, see output example above.
+
+---
+
+### handPose.getConnections()
+
+This method returns the skeletal connection information of the hand in the form of `[[0,1], [1,2], ...]` .
+
+```javascript
+handPose.getConnections();
+```
