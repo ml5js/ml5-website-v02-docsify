@@ -31,6 +31,7 @@ Run and explore a pre-built example! [This FaceMesh example](https://editor.p5js
 - [FaceMesh Single Image](https://editor.p5js.org/ml5/sketches/lqQZrDJHF): Detect the keypoints of the face from a single image.
 - [FaceMesh Parts](https://editor.p5js.org/ml5/sketches/9y9W7eAee): Draw specific face parts of the detected face.
 - [FaceMesh Triangle Mesh](https://editor.p5js.org/ml5/sketches/8mT3aRjUe): Draw a triangular mesh of the face.
+- [FaceMesh UV Map](https://editor.p5js.org/ml5/sketches/-H7dLfUqC): Demonstrates UV mapping of the face.
 
 ## Step-by-Step Guide
 
@@ -283,4 +284,24 @@ This method returns a nested array of keypoint indices. Each sub-array contains 
 
 ```javascript
 faceMesh.getTriangles();
+```
+
+---
+
+### faceMesh.getConnections()
+
+This method returns returns vertex indices for the "edges" in the form of `[[a,b], [a, b], ... ]`.
+
+```javascript
+faceMesh.getConnections();
+```
+
+---
+
+### faceMesh.getUVCoords()
+
+This method returns UV coordinates for each keypoint in the form of `[[u,v], [u,v], ...]`.
+
+```javascript
+faceMesh.getUVCoords();
 ```
