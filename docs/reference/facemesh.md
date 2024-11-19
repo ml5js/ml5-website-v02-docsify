@@ -30,6 +30,7 @@ Run and explore a pre-built example! [This FaceMesh example](https://editor.p5js
 - [FaceMesh Keypoints](https://editor.p5js.org/ml5/sketches/lCurUW1TT): Draw the keypoints of the detected face from the webcam.
 - [FaceMesh Single Image](https://editor.p5js.org/ml5/sketches/lqQZrDJHF): Detect the keypoints of the face from a single image.
 - [FaceMesh Parts](https://editor.p5js.org/ml5/sketches/9y9W7eAee): Draw specific face parts of the detected face.
+- [FaceMesh Triangle Mesh](https://editor.p5js.org/ml5/sketches/8mT3aRjUe): Draw a triangular mesh of the face.
 
 ## Step-by-Step Guide
 
@@ -273,3 +274,13 @@ faceMesh.detect(media, ?callback);
 
 - **media**: An HTML or p5.js image, video, or canvas element to run the estimation on.
 - **callback(results, error)**: Optional. A callback function to handle the output of the estimation, see output example above.
+
+---
+
+### faceMesh.getTriangles()
+
+This method returns a nested array of keypoint indices. Each sub-array contains three indices, representing the keypoints that form a triangle.
+
+```javascript
+faceMesh.getTriangles();
+```
