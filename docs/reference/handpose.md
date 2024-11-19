@@ -328,5 +328,5 @@ function setup() {
 Please refer to this image to understand the connections:
 
   <center>
-      <img alt="handPose keypoints diagram" width="600" src="assets/handpose-keypoints-map.png">
+      <img alt="handPose keypoints diagram" width="600" src="assets/handpose-connections.png">
   </center>
