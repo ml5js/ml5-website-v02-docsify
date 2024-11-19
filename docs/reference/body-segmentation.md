@@ -256,3 +256,13 @@ bodySegmentation.detect(media, ?callback);
 
 **Returns:**
 A promise that resolves to the segmentation output.
+
+---
+
+### bodySegmentation.getPartsId()
+
+This method returns an object containing all the body part constants as key-value pairs, similar to the `getSkeleton()` method in BodyPose.
+
+```javascript
+bodySegmentation.getPartsId();
+```
