@@ -261,7 +261,7 @@ A promise that resolves to the segmentation output.
 
 ### bodySegmentation.getPartsId()
 
-This method returns an object containing all the body part constants as key-value pairs, similar to the `getSkeleton()` method in BodyPose.
+This method returns an object containing all the body part constants as key-value pairs.
 
 ```javascript
 bodySegmentation.getPartsId();

@@ -29,6 +29,7 @@ Run and explore a pre-built example! [This bodyPose example](https://editor.p5js
 
 - [BodyPose MoveNet Keypoints](https://editor.p5js.org/ml5/sketches/hMN9GdrO3): Draw the keypoints of the detected body using MoveNet model.
 - [BodyPose BlazePose keypoints](https://editor.p5js.org/ml5/sketches/OukJYAJAb): Draw the keypoints of the detected body using BlazePose model.
+- [BodyPose Skeletal Connections](https://editor.p5js.org/ml5/sketches/YBuqxIH1S): Draw the skeletons on poses for the MoveNet model.
 
 ### Video Tutorials
 
@@ -431,6 +432,24 @@ bodypose.detect(media, ?callback);
 **Returns:**
 
 - **Array**: An array of poses.
+
+---
+
+### bodypose.getConnections()
+
+This method returns an array of arrays, where each sub-array contains the indices of the connected keypoints.
+
+```javascript
+const connections = bodypose.getConnections();
+```
+
+**Returns:**
+
+- **Array**: An array of arrays representing the connections between keypoints. For example, using MoveNet model will returns:
+
+```js
+[[0, 1], [0, 2], [1, 3], ...[12, 14], [13, 15], [14, 16]];
+```
 
 ---
 
