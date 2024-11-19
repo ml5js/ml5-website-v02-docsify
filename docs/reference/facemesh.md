@@ -283,7 +283,7 @@ faceMesh.detect(media, ?callback);
 This method returns a nested array of keypoint indices. Each sub-array contains three indices, representing the keypoints that form a triangle.
 
 ```javascript
-faceMesh.getTriangles();
+triangulation = faceMesh.getTriangles();
 ```
 
 ---
@@ -293,7 +293,7 @@ faceMesh.getTriangles();
 This method returns returns vertex indices for the "edges" in the form of `[[a,b], [a, b], ... ]`.
 
 ```javascript
-faceMesh.getConnections();
+connections = faceMesh.getConnections();
 ```
 
 ---
@@ -303,5 +303,5 @@ faceMesh.getConnections();
 This method returns UV coordinates for each keypoint in the form of `[[u,v], [u,v], ...]`.
 
 ```javascript
-faceMesh.getUVCoords();
+uvCoords = faceMesh.getUVCoords();
 ```

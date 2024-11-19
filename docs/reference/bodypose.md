@@ -435,27 +435,34 @@ bodypose.detect(media, ?callback);
 
 ---
 
-### bodypose.getConnections() / bodypose.getSkeleton() 
+### bodypose.getConnections() / bodypose.getSkeleton()
 
 This method returns an array of arrays, where each sub-array contains the indices of the connected keypoints.
 
 ```javascript
-const connections = bodypose.getConnections();
+const connections;
+function setup() {
+  ...
+  const connections = bodypose.getConnections(); // or bodypose.getSkeleton();
+  ...
+}
 ```
 
 **Returns:**
 
 - **Array**: An array of arrays representing the connections between keypoints. For example, using BlazePose model will return:
 
-```js
-[[0, 1], [0, 4], [1, 2], ...[28, 32], [29, 31], [30, 32]];
-```
-using MoveNet model will return:
-```js
-[[0, 1], [0, 2], [1, 3], ...[12, 14], [13, 15], [14, 16]];
-```
+  ```js
+  [[0, 1], [0, 4], [1, 2], ...[28, 32], [29, 31], [30, 32]];
+  ```
 
-This array represents the connections between keypoints, please refer to these images to understand the connections:
+  using MoveNet model will return:
+
+  ```js
+  [[0, 1], [0, 2], [1, 3], ...[12, 14], [13, 15], [14, 16]];
+  ```
+
+These arrays represents the connections between keypoints, please refer to these images to understand the connections:
 
 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
   <div style="text-align: center;">

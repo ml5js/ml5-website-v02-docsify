@@ -306,8 +306,27 @@ handPose.detect(media, ?callback);
 
 ### handPose.getConnections()
 
-This method returns the skeletal connection information of the hand in the form of `[[0,1], [1,2], ...]` .
+This method returns the skeletal connection information between the hand keypoints in array format.
 
 ```javascript
-handPose.getConnections();
+const connections;
+function setup() {
+  ...
+  connections = handPose.getConnections();
+  ...
+}
 ```
+
+**Returns:**
+
+- **Array**: An array of arrays representing the connections between keypoints.
+
+  ```js
+  [[0, 1], [1, 2], [2, 3], ...[17, 18], [18, 19], [19, 20]];
+  ```
+
+Please refer to this image to understand the connections:
+
+  <center>
+      <img alt="handPose keypoints diagram" width="600" src="assets/handpose-keypoints-map.png">
+  </center>
