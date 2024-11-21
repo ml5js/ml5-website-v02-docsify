@@ -32,6 +32,9 @@ Run and explore a pre-built example! [This ImageClassifier example](https://edit
 
 - [ImageClassifier Single Image](https://editor.p5js.org/ml5/sketches/pjPr6XmPY): Classify the content of an image and display the results on the canvas.
 - [ImageClassifier Video](https://editor.p5js.org/ml5/sketches/K0sjaEO19): Classify the content of objects in a video stream.
+- [Image classification with DoodleNet](https://editor.p5js.org/ima_ml/sketches/0KtSHucVH): Classify the content of simple drawings using the DoodleNet model.
+
+?> DoodleNet is a model created by [@yining1023](https://github.com/yining1023) that is trained on the Google [Quick, Draw!](https://quickdraw.withgoogle.com/data) dataset. It allows you to classify simple drawings in real-time.
 
 ### Video Tutorials
 
