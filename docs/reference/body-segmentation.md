@@ -27,6 +27,7 @@ Run and explore a pre-built example! [This BodySegmentation example](https://edi
 - [BodySegmentation Mask Body Parts](https://editor.p5js.org/ml5/sketches/ruoyal-RC): Segment body parts from webcam input.
 - [BodySegmentation Mask Background](https://editor.p5js.org/ml5/sketches/KNsdeNhrp): Segment the background from webcam input.
 - [BodySegmentation Mask Person](https://editor.p5js.org/ml5/sketches/h6TN8umP5): Segment the person from webcam input.
+- [BodySegmentation Select Body Parts](https://editor.p5js.org/ml5/sketches/R5rug0HKk): Segment selected body part(s) from webcam input.
 
 ## Step-by-Step Guide
 Now, let's together build the [BodySegmentation Mask Body Part example](https://editor.p5js.org/ml5/sketches/ruoyal-RC) from scratch, and in the process, learn how to use the BodySegmentation models.
@@ -256,3 +257,48 @@ bodySegmentation.detect(media, ?callback);
 
 **Returns:**
 A promise that resolves to the segmentation output.
+
+---
+
+### bodySegmentation.getPartsId()
+
+This method returns an object containing all the body part constants as key-value pairs for select certain body parts.
+
+```javascript
+let parts = bodySegmentation.getPartsId();
+```
+
+Example usage of this method: [BodySegmentation Select Body Parts](https://editor.p5js.org/ml5/sketches/R5rug0HKk)
+
+**Returns:**
+
+- **Object**: An object representing the connections between keypoints.
+
+  ```js
+  {
+    LEFT_FACE: 0
+    RIGHT_FACE: 1
+    LEFT_UPPER_ARM_FRONT: 2
+    LEFT_UPPER_ARM_BACK: 3
+    RIGHT_UPPER_ARM_FRONT: 4
+    RIGHT_UPPER_ARM_BACK: 5
+    LEFT_LOWER_ARM_FRONT: 6
+    LEFT_LOWER_ARM_BACK: 7
+    RIGHT_LOWER_ARM_FRONT: 8
+    RIGHT_LOWER_ARM_BACK: 9
+    LEFT_HAND: 10
+    RIGHT_HAND: 11
+    TORSO_FRONT: 12
+    TORSO_BACK: 13
+    LEFT_UPPER_LEG_FRONT: 14
+    LEFT_UPPER_LEG_BACK: 15
+    RIGHT_UPPER_LEG_FRONT: 16
+    RIGHT_UPPER_LEG_BACK: 17
+    LEFT_LOWER_LEG_FRONT: 18
+    LEFT_LOWER_LEG_BACK: 19
+    RIGHT_LOWER_LEG_FRONT: 20
+    RIGHT_LOWER_LEG_BACK: 21
+    LEFT_FOOT: 22
+    RIGHT_FOOT: 23
+  }
+  ```
