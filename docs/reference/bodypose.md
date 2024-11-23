@@ -251,7 +251,7 @@ let bodypose = ml5.bodyPose(?model, ?options, ?callback);
 
   ```javascript
   {
-    modelType: "MULTIPOSE_LIGHTNING" // "MULTIPOSE_LIGHTNING", "SINGLEPOSE_LIGHTNING", or "SINGLEPOSE_THUNDER".
+    modelType: "MULTIPOSE_LIGHTNING", // "MULTIPOSE_LIGHTNING", "SINGLEPOSE_LIGHTNING", or "SINGLEPOSE_THUNDER".
     enableSmoothing: true,
     minPoseScore: 0.25,
     multiPoseMaxDimension: 256,
