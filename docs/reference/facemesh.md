@@ -199,8 +199,8 @@ const faceMesh = ml5.faceMesh(?options, ?callback);
 
   Options for face detection:
 
-  - _maxFacess_
-    - Number: The maximum number of faces to detect. Defaults to 2.
+  - _maxFaces_
+    - Number: The maximum number of faces to detect. Defaults to 1.
   - _refineLandmarks_
     - Boolean: Refine the landmarks. Defaults to false.
   - _flipped_
