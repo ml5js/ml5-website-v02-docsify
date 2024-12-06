@@ -21,7 +21,7 @@ It provides the following functionalities:
 
 ## Quick Start
 
-Run and explore a pre-built example! [This Image + Teachable Machine example](https://editor.p5js.org/ima_ml/sketches/vOSSEZwGf) classifies the content of an image from the webcam feed using a Teachable Machine model.
+Run and explore a pre-built example! [This Image + Teachable Machine example](https://editor.p5js.org/ml5/sketches/VvGXajA36) classifies the content of an image from the webcam feed using a Teachable Machine model.
 
 </br>
 
@@ -31,7 +31,7 @@ Run and explore a pre-built example! [This Image + Teachable Machine example](ht
 
 ### p5 sketches
 
-- [Image + Teachable Machine Video](https://editor.p5js.org/ima_ml/sketches/vOSSEZwGf): Classify the content of an image from the webcam feed using a Teachable Machine model.
+- [Image + Teachable Machine Video](https://editor.p5js.org/ml5/sketches/VvGXajA36): Classify the content of an image from the webcam feed using a Teachable Machine model.
 
 ### Video Tutorials
 
@@ -39,7 +39,7 @@ Run and explore a pre-built example! [This Image + Teachable Machine example](ht
 
 ## Step-by-Step Guide
 
-Now, let's together build the [Image + Teachable Machine Video example](https://editor.p5js.org/ima_ml/sketches/vOSSEZwGf) from scratch, and in the process, learn how to use the Image + Teachable Machine model.
+Now, let's together build the [Image + Teachable Machine Video example](https://editor.p5js.org/ml5/sketches/VvGXajA36) from scratch, and in the process, learn how to use the Image + Teachable Machine model.
 
 ### Create a new project
 
@@ -168,7 +168,7 @@ Now, we can display the classification result on the canvas.
 
 ### Run your sketch
 
-Congratulations! You have successfully built the Image + Teachable Machine Video example. Press the <img class="inline-img" src="assets/facemesh-arrow-forward.png" alt="run button icon" aria-hidden="true"> `run` button to see the code in action. You can also find the [complete code](https://editor.p5js.org/ima_ml/sketches/vOSSEZwGf) in the p5.js web editor.
+Congratulations! You have successfully built the Image + Teachable Machine Video example. Press the <img class="inline-img" src="assets/facemesh-arrow-forward.png" alt="run button icon" aria-hidden="true"> `run` button to see the code in action. You can also find the [complete code](https://editor.p5js.org/ml5/sketches/VvGXajA36) in the p5.js web editor.
 
 ?> If you have any questions or spot something unclear in this step-by-step code guide, we'd love to hear from you! Join us on [Discord](https://discord.com/invite/3CVauZMSt7) and let us know how we can make it better.
 
