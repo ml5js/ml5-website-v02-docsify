@@ -15,7 +15,7 @@ During the Getting Started guide, you have used ml5 [Image Classifier](/referenc
 
 If you would like to understand how the machine learning models work behind the scenes, we recommend you to learn more about theory of machine learning algorithms. Here are some resources to help you get started:
 
-#### ml5 Glossay 👉[ Learn](https://ml5js.github.io/ml5-website-v02-docsify/#/learn/ml5-glossary)
+#### ml5 Glossary 👉[ Learn](/learn/ml5-glossary)
 
 Have you ever felt confused about a term we used here at ml5? No worries, we've created a glossary to help! In it, we explain and define programming techniques and machine learning terminologies specific to ml5 that are mentioned in our libraries, website, and examples.
 
