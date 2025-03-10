@@ -202,9 +202,9 @@ const faceMesh = ml5.faceMesh(?options, ?callback);
   - _maxFaces_
     - Number: The maximum number of faces to detect. Defaults to 1.
   - _refineLandmarks_
-    - Boolean: Refine the landmarks. Defaults to false.
+    - Boolean: Refine the landmarks so the left and right iris keypoints are included. Defaults to `false`. 
   - _flipped_
-    - Boolean: Flip the result horizontally. Defaults to false.
+    - Boolean: Flip the result horizontally. Defaults to `false`.
   - _runtime_
     - String: The runtime to use. "tfjs" (default) or "mediapipe".
 
