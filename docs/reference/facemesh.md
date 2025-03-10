@@ -305,3 +305,6 @@ This method returns UV coordinates for each keypoint in the form of `[[u,v], [u,
 ```javascript
 uvCoords = faceMesh.getUVCoords();
 ```
+
+Please refer to this image to understand the coordinates:
+![facemesh UV coordinates reference](/docs//assets/facemesh-map.jpg)
