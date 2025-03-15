@@ -815,9 +815,13 @@ Traditionally, we divide the dataset into the three distinct subsets:
 
 Ideally, each data point in the dataset should only belong to one of these three preceding subsets.
 
----
+--- 
 
 #### **W**
+
+## WebGPU
+
+WebGPU is a web standard that provides a low-level API for rendering graphics and performing computations on the GPU. It is designed to provide better performance and more control over the GPU compared to existing web graphics APIs like WebGL. 
 
 ## Weights
 
