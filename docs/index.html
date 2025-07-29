@@ -6,169 +6,302 @@ TO-DOs
 
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
 
-<head>
-  <meta charset="UTF-8" />
+		<title>
+			Reference | ml5 - A friendly machine learning library for the web.
+		</title>
 
-  <title>Reference | ml5 - A friendly machine learning library for the web.</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta
+			name="description"
+			content="A friendly machine learning library for the web."
+		/>
+		<meta
+			name="viewport"
+			content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+		/>
+		<!-- Google / Search Engine Tags -->
+		<meta
+			itemprop="name"
+			content="Reference | ml5 - A friendly machine learning library for the web."
+		/>
+		<meta
+			itemprop="description"
+			content="A friendly machine learning library for the web."
+		/>
+		<meta itemprop="image" content="http://ml5js.org/favicon/og-image.png" />
 
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="description" content="A friendly machine learning library for the web." />
-  <meta name="viewport"
-    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
-  <!-- Google / Search Engine Tags -->
-  <meta itemprop="name" content="Reference | ml5 - A friendly machine learning library for the web.">
-  <meta itemprop="description" content="A friendly machine learning library for the web.">
-  <meta itemprop="image" content="http://ml5js.org/favicon/og-image.png">
-  
-  <!-- Facebook Meta Tags -->
-  <meta property="og:url" content="https://docs.ml5js.org">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Reference | ml5 - A friendly machine learning library for the web.">
-  <meta property="og:description" content="A friendly machine learning library for the web.">
-  <meta property="og:image" content="https://ml5js.org/favicon/og-image.png" />
-  <meta property="og:image:width" content="1280" />
-  <meta property="og:image:width" content="640" />
+		<!-- Facebook Meta Tags -->
+		<meta property="og:url" content="https://docs.ml5js.org" />
+		<meta property="og:type" content="website" />
+		<meta
+			property="og:title"
+			content="Reference | ml5 - A friendly machine learning library for the web."
+		/>
+		<meta
+			property="og:description"
+			content="A friendly machine learning library for the web."
+		/>
+		<meta
+			property="og:image"
+			content="https://ml5js.org/favicon/og-image.png"
+		/>
+		<meta property="og:image:width" content="1280" />
+		<meta property="og:image:width" content="640" />
 
-  <!-- Twitter Meta Tags -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Reference | ml5 - A friendly machine learning library for the web.">
-  <meta name="twitter:description" content="A friendly machine learning library for the web.">
-  <meta name="twitter:image" content="https://ml5js.org/favicon/og-image.png">
+		<!-- Twitter Meta Tags -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta
+			name="twitter:title"
+			content="Reference | ml5 - A friendly machine learning library for the web."
+		/>
+		<meta
+			name="twitter:description"
+			content="A friendly machine learning library for the web."
+		/>
+		<meta
+			name="twitter:image"
+			content="https://ml5js.org/favicon/og-image.png"
+		/>
 
-  <link rel="icon" type="image/x-icon" href="assets/favicon/favicon.ico">
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
-  <link rel="manifest" href="assets/favicon/site.webmanifest">
-  
+		<link rel="icon" type="image/x-icon" href="assets/favicon/favicon.ico" />
+		<link
+			rel="apple-touch-icon"
+			sizes="180x180"
+			href="assets/favicon/apple-touch-icon.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="assets/favicon/favicon-32x32.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="16x16"
+			href="assets/favicon/favicon-16x16.png"
+		/>
+		<link rel="manifest" href="assets/favicon/site.webmanifest" />
 
-  <link rel="stylesheet" href="css/global.css" />
-  <link rel="stylesheet" href="css/style-markdown.css" />
-</head>
+		<link rel="stylesheet" href="css/global.css" />
+		<link rel="stylesheet" href="css/style-markdown.css" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
 
-<body>
-  <header>
-    <nav class="navbar">
-      <div class="logo">
-        <button class="button">
-          <a href="https://ml5js.org/">ml5.js</a>
-        </button>
-      </div>
-      <div class="menu">
-        <button class="button">
-          <a href="#">Getting Started</a>
-        </button>
-        <button class="button">
-          <a href="#/reference/overview">Reference</a>
-        </button>
-        <button class="button">
-          <a href="https://ml5js.org/learn/">Learn</a>
-        </button>
-        <button class="button">
-          <a href="https://ml5js.org/community/">Community</a>
-        </button>
-        <button class="button">
-          <a href="https://ml5js.org/about/">About</a>
-        </button>
-      </div>
-    </nav>
-  </header>
+	<body>
+		<header>
+			<nav class="navbar">
+				<div class="logo">
+					<button class="button">
+						<a href="https://ml5js.org/">ml5.js</a>
+					</button>
+				</div>
+				<div class="menu">
+					<button class="button">
+						<a href="#">Getting Started</a>
+					</button>
+					<button class="button">
+						<a href="#/reference/overview">Reference</a>
+					</button>
+					<button class="button">
+						<a href="https://ml5js.org/learn/">Learn</a>
+					</button>
+					<button class="button">
+						<a href="https://ml5js.org/community/">Community</a>
+					</button>
+					<button class="button">
+						<a href="https://ml5js.org/about/">About</a>
+					</button>
+				</div>
+			</nav>
+		</header>
 
-  <div id="app">Loading...</div>
+		<div id="app">Loading...</div>
 
-    <div id="banner" style="display: none;">
-      <div id="banner-content">
-        💜 <a href="https://archive-docs.ml5js.org/#/" target="_blank">Looking for the old ml5.js reference (v0.12.2)? Find it 
-        here!</a>
-      </div>
-      <button id="close-banner">&times;</button>
-    </div>
+		<div id="banner" style="display: none">
+			<div id="banner-content">
+				💜
+				<a href="https://archive-docs.ml5js.org/#/" target="_blank"
+					>Looking for the old ml5.js reference (v0.12.2)? Find it here!</a
+				>
+			</div>
+			<button id="close-banner">&times;</button>
+		</div>
 
+		<script>
+			window.$docsify = {
+				// your existing config
+				name: '',
+				repo: 'https://github.com/ml5js/ml5-website-v02-docsify/tree/main/docs',
+				loadSidebar: 'sidebar.md',
+				alias: {
+					'/.*/sidebar.md': '/./sidebar.md',
+				},
+				subMaxLevel: 2,
+				relativePath: true,
+				maxLevel: 2,
+				mergeNavbar: true,
+				auto2top: true,
+				topMargin: 30,
+				search: {
+					maxAge: 86400000,
+					paths: 'auto',
+					placeholder: 'Search',
+					noData: 'No Results!',
+					depth: 1,
+					hideOtherSidebarContent: true,
+				},
+				executeScript: true,
+				tabs: {
+					persist: true,
+					sync: true,
+					theme: 'classic',
+					tabComments: true,
+					tabHeadings: true,
+				},
+				copyCode: {
+					buttonText: 'Copy',
+					errorText: 'Error',
+					successText: 'Copied!',
+					duration: 1200,
+				},
+				plugins: [
+					// inline code comment plugin
+					function (hook) {
+						hook.beforeEach(function (content) {
+							return content.replace(
+								/```code-comment\s*(\w+)?\s*\n([\s\S]*?)```/g,
+								(match, lang = 'code', rawCode) => {
+									const lines = rawCode
+										.trim()
+										.split('\n')
+										.map((line) => {
+											const parts = line.split('|')
+											const code = (parts[0] || '').trimEnd()
+											const comment = (parts[1] || '').trim()
 
-  <script>
-    window.$docsify = {
-      name: '', // name is removed as it appears redundantly.
-      repo: 'https://github.com/ml5js/ml5-website-v02-docsify/tree/main/docs',
-      loadSidebar: 'sidebar.md',
-      alias: {
-        '/.*/sidebar.md': '/./sidebar.md',
-      },
-      subMaxLevel: 2,
-      relativePath: true,
-      maxLevel: 2,
-      mergeNavbar: true,
-      auto2top: true,
-      topMargin: 30,
-      search: {
-        maxAge: 86400000, // Expiration time, the default one day
-        paths: 'auto',
-        placeholder: 'Search',
-        noData: 'No Results!',
-        depth: 1, // Headline depth, 1 - 6
-        hideOtherSidebarContent: true, // whether or not to hide other sidebar content
-      },
-      executeScript: true,
-      tabs: {
-        persist: true,      // default
-        sync: true,      // default
-        theme: 'classic', // default
-        tabComments: true,      // default
-        tabHeadings: true       // default
-      },
+											const safeCode = code
+												.replace(/&/g, '&amp;')
+												.replace(/"/g, '&quot;')
+												.replace(/</g, '&lt;')
+												.replace(/>/g, '&gt;')
 
-      plugins: [
-        function (hook, vm) {
-          // hook.beforeEach(function (content) {
-          //   return content;
-          // });
+											const safeComment = comment
+												.replace(/&/g, '&amp;')
+												.replace(/"/g, '&quot;')
+												.replace(/</g, '&lt;')
+												.replace(/>/g, '&gt;')
 
-          hook.afterEach(function (html, next) {
-            fetch('footer.md')
-              .then(response => response.text())
-              .then(footer => {
-                next(html + footer);
-              });
-          });
-        }
-      ]
+											if (comment) {
+												return `<span class="highlight-line" data-code="${safeCode}" data-comment="${safeComment}"></span>`
+											} else {
+												return `<span class="normal-line" data-code="${safeCode}"></span>`
+											}
+										})
+										.join('\n')
 
-    };
+									return `<pre class="code-comment-wrapper" data-lang="${lang.toLowerCase()}">
+			  <code class="language-code-comment">\n${lines}\n</code>
+			</pre>`
+								}
+							)
+						})
+					},
 
-  // Banner functionality
-  document.addEventListener('DOMContentLoaded', function () {
-    var banner = document.getElementById('banner');
-    var closeBanner = document.getElementById('close-banner');
+					// ✅ copy icon plugin
+					function (hook) {
+						hook.doneEach(() => {
+							document
+								.querySelectorAll('.markdown-section pre')
+								.forEach((block) => {
+									if (block.querySelector('.copy-icon-button')) return
 
-    // Check if the banner was previously dismissed
-    if (sessionStorage.getItem('ml5BannerDismissed') !== 'true') {
-      // Show the banner
-      banner.style.display = 'flex';
-    }
+									const button = document.createElement('button')
+									button.className = 'copy-icon-button'
+									button.innerHTML = `
+			          <svg viewBox="0 0 24 24" width="18" height="18">
+			            <path fill="currentColor" d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 18H8V7h11v16z"/>
+			          </svg>
+			        `
 
-    closeBanner.addEventListener('click', function () {
-      banner.style.opacity = '0';
-      banner.style.transform = 'translate(0px, 20px)';
-      setTimeout(function () {
-        banner.style.display = 'none';
-      }, 300);
+									const toast = document.createElement('div')
+									toast.className = 'copy-toast'
+									toast.textContent = 'Copied!'
+									block.appendChild(toast)
 
-      // Set a flag in sessionStorage to remember the banner was dismissed
-      sessionStorage.setItem('ml5BannerDismissed', 'true');
-    });
-  });
-  </script>
+									button.addEventListener('click', () => {
+										let code = ''
 
-  <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
-  <!-- Plugins -->
-  <!-- Search -->
-  <script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
-  <!-- External JS -->
-  <script src="//unpkg.com/docsify/lib/plugins/external-script.min.js"></script>
-  <!-- Copy to clipboard -->
-  <script src="//unpkg.com/docsify-copy-code"></script>
-  <!-- docsify-tabs (latest v1.x.x) -->
-  <script src="https://cdn.jsdelivr.net/npm/docsify-tabs@1"></script>
-</body>
+										const codeTag = block.querySelector('code')
+										const commentLines = block.querySelectorAll(
+											'.highlight-line, .normal-line'
+										)
 
+										// if using custom inline comment format
+										if (commentLines.length > 0) {
+											code = Array.from(commentLines)
+												.map((line) => line.getAttribute('data-code') || '')
+												.join('\n')
+										} else {
+											code = codeTag?.innerText || ''
+										}
+
+										navigator.clipboard.writeText(code).then(() => {
+											button.classList.add('copied')
+											toast.classList.add('visible')
+
+											setTimeout(() => {
+												button.classList.remove('copied')
+												toast.classList.remove('visible')
+											}, 1200)
+										})
+									})
+
+									block.appendChild(button)
+								})
+						})
+					},
+				],
+			}
+
+			// Banner functionality
+			document.addEventListener('DOMContentLoaded', function () {
+				var banner = document.getElementById('banner')
+				var closeBanner = document.getElementById('close-banner')
+
+				if (sessionStorage.getItem('ml5BannerDismissed') !== 'true') {
+					banner.style.display = 'flex'
+				}
+
+				closeBanner.addEventListener('click', function () {
+					banner.style.opacity = '0'
+					banner.style.transform = 'translate(0px, 20px)'
+					setTimeout(function () {
+						banner.style.display = 'none'
+					}, 300)
+					sessionStorage.setItem('ml5BannerDismissed', 'true')
+				})
+			})
+		</script>
+
+		<script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+		<!-- Plugins -->
+		<!-- Search -->
+		<script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
+		<!-- External JS -->
+		<script src="//unpkg.com/docsify/lib/plugins/external-script.min.js"></script>
+		<!-- Copy to clipboard -->
+		// //
+		<!-- <script src="//unpkg.com/docsify-copy-code"></script> -->
+		// //
+		<!-- <script src="https://unpkg.com/docsify-copy-code/dist/docsify-copy-code.min.js"></script> -->
+		<!-- docsify-tabs (latest v1.x.x) -->
+		<script src="https://cdn.jsdelivr.net/npm/docsify-tabs@1"></script>
+	</body>
 </html>
