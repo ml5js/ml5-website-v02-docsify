@@ -179,11 +179,10 @@ TO-DOs
 								/```code-comment\s*(\w+)?\s*\n([\s\S]*?)```/g,
 								(match, lang = 'code', rawCode) => {
 									const lines = rawCode
-										.trim()
 										.split('\n')
 										.map((line) => {
 											const parts = line.split('|')
-											const code = (parts[0] || '').trimEnd()
+											const code = parts[0] || ''
 											const comment = (parts[1] || '').trim()
 
 											const safeCode = code
