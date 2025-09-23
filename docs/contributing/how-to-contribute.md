@@ -17,6 +17,6 @@ Our community is always looking for enthusiasts to help in all different ways.
 
 
 
-- **Illustration**. Contribute to the visual appeal of the ml5 website by creating header images for our documentation or the hero sketch on the homepage. If your are intersted, email your work to <a href="mailto:info@ml5js.org">info@ml5js.org</a>!
+- **Illustration**. Contribute to the visual appeal of the ml5 website by creating header images for our documentation or the hero sketch on the homepage. If your are interested, email your work to <a href="mailto:info@ml5js.org">info@ml5js.org</a>!
 
 We welcome all forms of socially and technically driven contributions. No contribution is too small. If you need more information, please contact us at <a href="mailto:info@ml5js.org">info@ml5js.org</a> or via [Github](https://github.com/ml5js/ml5-library/issues).
