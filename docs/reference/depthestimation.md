@@ -131,4 +131,4 @@ This result is an object, and it contains the following properties:
 - [Mesh](https://editor.p5js.org/nasif-co/sketches/X-e1DEZr4): Creates a live 3D mesh geometry of the webcam video.
 
 ## Learn more
-Check out the community article [Finding the Z-axis](https://ml5js.org/blog/bringing-depth-estimation/) to learn more about the way depth estimation was implemented into ml5.
+Check out the community article [Finding the Z-axis](https://ml5js.org/blog/bringing-depth-estimation/) to learn more about the way depth estimation was implemented in ml5.
