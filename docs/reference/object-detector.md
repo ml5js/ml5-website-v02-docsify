@@ -18,7 +18,7 @@ Run and explore a pre-built example! [This webcam example](https://editor.p5js.o
 
 <br/>
 
-[DEMO](iframes/object-detection ":include :type=iframe width=100% height=550px")
+[DEMO](iframes/object-detector ":include :type=iframe width=100% height=550px")
 
 ## Examples
 
