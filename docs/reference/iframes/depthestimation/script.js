@@ -16,7 +16,9 @@ let videoHeight = 480;
 
 function preload() {
   // Load and start the depth estimation model
-  depthEstimator = ml5.depthEstimation();
+  depthEstimator = ml5.depthEstimation({
+    normalizeDynamically: true,
+  });
 }
 
 function setup() {
