@@ -7,9 +7,9 @@
 
 ## Description
 
-The ml5.js objectDetection is a pre-trained model that can detect object from an image or a video, including live video source such as webcam.
+The ml5.js objectDetector is a pre-trained model that can detect object from an image or a video, including live video source such as webcam.
 
-The ml5.js objectDetection uses pre-trained [Tensorflow.js CocoSsd model](https://github.com/tensorflow/tfjs-models/tree/master/coco-ssd). You can find more about this model in the Model and Data Provenance section.
+The ml5.js objectDetector uses pre-trained [Tensorflow.js CocoSsd model](https://github.com/tensorflow/tfjs-models/tree/master/coco-ssd). You can find more about this model in the Model and Data Provenance section.
 
 Support for more models such as Transformer.js is under development, so stay tuned!
 
@@ -23,21 +23,21 @@ Run and explore a pre-built example! [This webcam example](https://editor.p5js.o
 ## Examples
 
 ### p5 sketches
-- [ObjectDetection Webcam](https://editor.p5js.org/codingeffects2023/sketches/pyC9DA8pV)
-- [ObjectDetection Image](https://editor.p5js.org/codingeffects2023/sketches/5aMBINT-N)
-- [ObjectDetection Video](https://editor.p5js.org/codingeffects2023/sketches/KixZ5yn50)
+- [objectDetector Webcam](https://editor.p5js.org/codingeffects2023/sketches/pyC9DA8pV)
+- [objectDetector Image](https://editor.p5js.org/codingeffects2023/sketches/5aMBINT-N)
+- [objectDetector Video](https://editor.p5js.org/codingeffects2023/sketches/KixZ5yn50)
 
 
 ### Video Tutorials
 - [ml5.js: Object Detection with COCO-SSD](https://youtu.be/QEzRxnuaZCk) by the Coding Train
 
-Please note that the above tutorial is based on a deprecated version of ml5.js objectDetection, which means the tutorial code is not compatible with the current ml5.js objectDetection.
+Please note that the above tutorial is based on a deprecated version of ml5.js objectDetector, which means the tutorial code is not compatible with the current ml5.js objectDetector.
 
 However the code difference isn't enormouse and the video is still a great resource to get yourself familiar with the model!
 
 ## Step-by-Step Guide
 
-Now, let's together build the [ObjectDetection Webcam](https://editor.p5js.org/codingeffects2023/sketches/pyC9DA8pV) example from scratch.
+Now, let's together build the [objectDetector Webcam](https://editor.p5js.org/codingeffects2023/sketches/pyC9DA8pV) example from scratch.
 
 ### Create a new project
 
