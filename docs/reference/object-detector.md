@@ -53,7 +53,7 @@ Import the ml5.js library in your `index.html` file by copying the following `<s
 
 ?> If you are not familiar with how to import the ml5.js library and need more detailed guidance, please check out our [Getting Started](/?id=set-up-ml5js) tutorial.
 
-## Declare variables
+### Declare variables
 
 ```javascript
 let video;
@@ -93,6 +93,16 @@ function preload(){
   detector = ml5.objectDetector("cocossd");
 }
 ```
+
+Note that preload function is deprecated in p5.js 2.0, you need to load the model through async setup() and await.
+
+```javascript
+async function setup(){
+  detector = await ml5.objectDetector("cocossd");
+}
+```
+
+### Start Detection
 
 Now, inside setup function, call detectStart method on the model.
 
