@@ -21,7 +21,6 @@ We will using a p5.js sketch running on the [p5.js web editor](https://editor.p5
 
 Once you have the p5.js web editor open, unfold the project directory by clicking the arrow `>` at the top left corner.
 
-<!-- TODO: photoshop image so that all have 800 px width before styling -->
 <center>
     <img alt="screenshot of sketch files on the p5 web editor interface" width="800" src="assets/gettingstarted-sketch-folder-alpha.png">
 </center>
@@ -36,9 +35,27 @@ Now, let's switch to the `index.html` file and copy and paste the following CDN 
     <img alt="screenshot of importing ml5 library in index.html file" width="800" src="assets/gettingstarted-import-lib-alpha.png">
 </center>
 
+We can check if the ml5.js library has been imported successfully by using the `console.log()` method. Use the project directory to switch back to the `sketch.js` file and include this line of code inside the `setup()` function:
+
+```js
+console.log("ml5 version:", ml5.version);
+```
+
+Press the run button on the top left corner of the editor to run the sketch.
+
+<center>
+    <img alt="screenshot of adding console.log method to p5 sketch" width="800" src="assets/gettingstarted-ml5-version-run.png">
+</center>
+
+If everything loaded properly, you should see the version number of the ml5.js library show up in the console.
+
+<center>
+    <img alt="screenshot of p5 console showing ml5 version" width="800" src="assets/gettingstarted-ml5-version-console.png">
+</center>
+
 ## Load pretrained ml5.js model {docsify-ignore}
 
-Use the project directory to switch back to the `sketch.js` file. We will define a variable called `classifier` to hold the image classifier model.
+In the `sketch.js` file, we will define a variable called `classifier` to hold the image classifier model.
 
 ```js
 let classifier;
@@ -59,7 +76,7 @@ function preload() {
 Let's unfold the project directory again by clicking the arrow `>` at the top left corner of the p5.js editor.
 
 <center>
-    <img alt="screenshot of sketch files on the p5 web editor interface" width="800" src="assets/gettingstarted-sketch-folder-alpha.png">
+    <img alt="screenshot of opening sketch files on the p5 web editor interface" width="800" src="assets/gettingstarted-sketch-folder-alpha.png">
 </center>
 
 Select the `+` to create a new folder called `images`.
