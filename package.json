@@ -1,0 +1,22 @@
+{
+  "name": "ml5-website-v02-docsify",
+  "version": "1.0.0",
+  "description": "This repository is for the work-in-progress ml5.js website, which is built using Docsify. It contains documentation and and reference materials for for the ml5.js library models.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ml5js/ml5-website-v02-docsify.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ml5js/ml5-website-v02-docsify/issues"
+  },
+  "homepage": "https://github.com/ml5js/ml5-website-v02-docsify#readme"
+}
