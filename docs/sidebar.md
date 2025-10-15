@@ -26,6 +26,7 @@
 - [SoundClassifier](/reference/sound-classifier.md)
 - [Sentiment](/reference/sentiment.md)
 - [ObjectDetection](/reference/object-detection.md)
+- [DepthEstimation](/reference/depthestimation.md)
 
 <div class="sidebar-spacer">&nbsp;</div>
 

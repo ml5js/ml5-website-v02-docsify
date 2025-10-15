@@ -2,7 +2,7 @@
 
 <center>
   <img class="header-img" src="assets/header-contributor-notes.png" alt="Develop Contributor Notes Header Image" >
-  <p class="img-credit"> Image Credit: <a href="https://thenounproject.com/creator/fajarstudio/" target="_blank" title="Fajar Studio">Fajar Studio</a> | <a href='mailto:info@ml5js.org'>Contribute ♥️</a> </p>
+  <p class="img-credit"> Image Credit: <a href="https://thenounproject.com/creator/fajarstudio/" target="_blank" title="Fajar Studio">Fajar Studio</a> | <a href='https://forms.gle/5EpwYabG8hLn4p926' target="contribute-form">Contribute ♥️</a> </p>
 </center>
 
 _last updated: 10, July 2024 [(source)](https://github.com/ml5js/ml5-next-gen/blob/main/CONTRIBUTING.md)_

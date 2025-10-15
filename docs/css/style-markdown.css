@@ -458,7 +458,7 @@ body.close .sidebar-toggle {
   /* border-bottom-right-radius: 2px; */
   /* border-top-right-radius: 2px; */
   border-radius: var(--border-radius);
-  margin: -1rem 0;
+  margin: -2rem 0;
   padding: 0.75rem 1.5rem 0.75rem 1.875rem;
   position: relative;
 }
