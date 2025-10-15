@@ -1,43 +1,38 @@
-# ObjectDetector
-
-<center>
-  <img class="header-img" src="assets/header-image-classifier.png" alt="ImageClassifier Header Image" >
-  <p class="img-credit"> Image Credit: <a href="https://thenounproject.com/creator/naveena.160" target="_blank" title="Naveen">Naveen</a> | <a href='mailto:info@ml5js.org'>Contribute ♥️</a> </p>
-</center>
+# ObjectDetection
 
 ## Description
 
-The ml5.js objectDetector is a pre-trained model that can detect object from an image or a video, including live video source such as webcam.
+The ml5.js objectDetection is a pre-trained model that can detect object from an image or a video, including live video source such as webcam.
 
-The ml5.js objectDetector uses pre-trained [Tensorflow.js CocoSsd model](https://github.com/tensorflow/tfjs-models/tree/master/coco-ssd). You can find more about this model in the Model and Data Provenance section.
+The ml5.js objectDetection uses pre-trained [Tensorflow.js CocoSsd model](https://github.com/tensorflow/tfjs-models/tree/master/coco-ssd).
 
-Support for more models such as Transformer.js is under development, so stay tuned!
+Support for more models such as Transformers.js is under development, so stay tuned!
 
 ## Quick Start
 Run and explore a pre-built example! [This webcam example](https://editor.p5js.org/codingeffects2023/sketches/pyC9DA8pV) detects object in real-time and draws bounding boxes and labels on the objects detected.
 
 <br/>
 
-[DEMO](iframes/object-detector ":include :type=iframe width=100% height=550px")
+[DEMO](iframes/object-detection ":include :type=iframe width=100% height=550px")
 
 ## Examples
 
 ### p5 sketches
-- [objectDetector Webcam](https://editor.p5js.org/codingeffects2023/sketches/pyC9DA8pV)
-- [objectDetector Image](https://editor.p5js.org/codingeffects2023/sketches/5aMBINT-N)
-- [objectDetector Video](https://editor.p5js.org/codingeffects2023/sketches/KixZ5yn50)
+- [objectDetection Webcam](https://editor.p5js.org/codingeffects2023/sketches/pyC9DA8pV)
+- [objectDetection Image](https://editor.p5js.org/codingeffects2023/sketches/5aMBINT-N)
+- [objectDetection Video](https://editor.p5js.org/codingeffects2023/sketches/KixZ5yn50)
 
 
 ### Video Tutorials
 - [ml5.js: Object Detection with COCO-SSD](https://youtu.be/QEzRxnuaZCk) by the Coding Train
 
-Please note that the above tutorial is based on a deprecated version of ml5.js objectDetector, which means the tutorial code is not compatible with the current ml5.js objectDetector.
+Please note that the above tutorial is based on a deprecated version, which means the tutorial code is not compatible with the current ml5.objectDetection.
 
 However the code difference isn't enormouse and the video is still a great resource to get yourself familiar with the model!
 
 ## Step-by-Step Guide
 
-Now, let's together build the [objectDetector Webcam](https://editor.p5js.org/codingeffects2023/sketches/pyC9DA8pV) example from scratch.
+Now, let's together build the [objectDetection Webcam](https://editor.p5js.org/codingeffects2023/sketches/pyC9DA8pV) example from scratch.
 
 ### Create a new project
 
@@ -85,12 +80,12 @@ function draw() {
 
 ### Load model
 
-Use preload function to load ml5.objectDetector with the supported model [CocoSsd](https://github.com/tensorflow/tfjs-models/tree/master/coco-ssd).
+Use preload function to load ml5.objectDetection with the supported model [CocoSsd](https://github.com/tensorflow/tfjs-models/tree/master/coco-ssd).
 
 
 ```javascript
 function preload(){
-  detector = ml5.objectDetector("cocossd");
+  detector = ml5.objectDetection("cocossd");
 }
 ```
 
@@ -98,7 +93,7 @@ Note that preload function is deprecated in p5.js 2.0, you need to load the mode
 
 ```javascript
 async function setup(){
-  detector = await ml5.objectDetector("cocossd");
+  detector = await ml5.objectDetection("cocossd");
 }
 ```
 
@@ -126,7 +121,7 @@ function gotDetections(results) {
 
 When you console.log detections, you can find out what the detection data looks like.
 <center>
-    <img style="display:block; max-width:75%" alt="ObjectDetector data on a console" src="./assets/object-detector-console.png">
+    <img style="display:block; max-width:75%" alt="ObjectDetection data on a console" src="./assets/object-detection-console.png">
 </center>
 
 Now that we got the data, we can start drawing things with it!

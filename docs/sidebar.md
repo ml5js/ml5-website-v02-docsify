@@ -25,7 +25,7 @@
 - [ImageClassifier](/reference/image-classifier.md)
 - [SoundClassifier](/reference/sound-classifier.md)
 - [Sentiment](/reference/sentiment.md)
-- [ObjectDetector](/reference/object-detector.md)
+- [ObjectDetection](/reference/object-detection.md)
 
 <div class="sidebar-spacer">&nbsp;</div>
 
