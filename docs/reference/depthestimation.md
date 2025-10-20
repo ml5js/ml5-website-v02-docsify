@@ -197,7 +197,7 @@ These are its properties:
   - Type: 2D array of floating point numbers in the 0 - 1 range.
 - `mask`: The mask of the people detected in the image and for whom depth values were estimated. It can be used directly with the `mask()` function in p5.
   - Type: `p5.Image` object
-- `sourceFrame`: The exact frame that was analyzed to create the depth map. Because depth estimation is not immediate, the result can fall out of sync from the source video. By using this value instead of the video, the depth data is guaranteed to be in sync. See a [demo sketch](https://editor.p5js.org/nasif-co/sketches/Z_1xMhUPl) showcasing the difference.
+- `sourceFrame`: The exact frame that was analyzed to create the depth map. Because depth estimation is not immediate, the result can fall out of sync from the source video. By using this value instead of the video, the depth data is guaranteed to be in sync. See a [demo sketch](https://editor.p5js.org/ml5/sketches/W8irRhKOw) showcasing the difference.
   - Type: `p5.Image`
 - `width`: Width of the depth map
   - Type: number (integer)
