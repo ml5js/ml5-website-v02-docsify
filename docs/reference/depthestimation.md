@@ -14,13 +14,13 @@ Get up and running with the [webcam example](https://editor.p5js.org/ml5/sketche
 ## Examples
 - [Webcam](https://editor.p5js.org/ml5/sketches/1AlSdDhwA): Show the live depth map of the video captured by the webcam.
 - [Video](https://editor.p5js.org/ml5/sketches/YGAqvhn1o): Generate the depth map of a video file as it plays.
-- [Single Image](https://editor.p5js.org/ml5/sketches/VpVUFgtOU): Depth map of an image using single-shot estimation.
+- [Single Image](https://editor.p5js.org/ml5/sketches/VpVUFgtOU): Depth map of an image using single frame estimation.
 - [Mask Background](https://editor.p5js.org/ml5/sketches/zxi8xUuq4): Showcases how to mask out the background from the depth result.
 - [Point Cloud](https://editor.p5js.org/ml5/sketches/7EOC8txJ1): Creates a live 3D point cloud visualization of the webcam video.
 - [Mesh](https://editor.p5js.org/ml5/sketches/CE2f9l38k): Creates a live 3D mesh geometry of the webcam video.
 
 ## Step-by-Step Guide
-### Initialization and options
+### Initialization and Options
 Before starting, make sure you have included the ml5 library in your `index.html` file:
 
 ```html
@@ -52,12 +52,12 @@ async function setup() {
 }
 ```
 
-### Estimating depth
-As with many other ml5 models, you have two options to run depth estimation on the image, video or webcam of your choice: _Continuous Estimation_ and _Single Shot Estimation_ .
+### Estimating Depth
+As with many other ml5 models, you have two options to run depth estimation on the image, video or webcam of your choice: _Continuous Estimation_ and _Single Frame Estimation_ .
 
 For any of these, make sure you first load the image, video or start the webcam capture. This is the media we will pass to the model.
 
-#### Continuous estimation
+#### Continuous Estimation
 This method is used to continuously estimate depth on every frame of a video or webcam feed.
 ```js
 // Make sure to load the model in preload or async in p5 2.0!
@@ -75,7 +75,7 @@ function gotResults(result) {
 ```
 Using this method, the depth estimator will take care of doing estimation of a frame and waiting for it to finish before working on the next frame. Any time a depth map is ready, it will fire the callback function to provide it.
 
-#### Single shot estimation
+#### Single Frame Estimation
 This method is used to estimate depth once, for a single image:
 ```js
 // Make sure to load the image and the model in preload or asyn in p5 2.0!
@@ -90,7 +90,7 @@ function gotResults(result) {
 ```
 Because the estimation takes time, we pass in a callback function that will fire when estimation is ready. The `estimate` method is called in setup because it **will only run once**. If calling it multiple times, it is prudent to wait for each operation to finish before starting the next one.
 
-### Using the depth result
+### Using the Depth Result
 Whenever the callback function fires, we have acces to the depth result that contains all the depth information.
 ```js
 let depthMap;
@@ -171,7 +171,7 @@ depthEstimator.estimateStop()
 ```
 
 ### depthEstimator.estimate()
-This method is used for _Single Shot Estimation_: estimating depth one time on a single image or video/webcam frame.
+This method is used for _Single Frame Estimation_: estimating depth one time on a single image or video/webcam frame.
 
 ```js
 depthEstimator.estimate(media, callback)
