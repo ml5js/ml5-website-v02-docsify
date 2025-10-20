@@ -5,19 +5,19 @@ The ml5.js DepthEstimation module offers a pretrained model for inferring depth 
 
 ## Quick Start
 
-Get up and running with the [webcam example](https://editor.p5js.org/nasif-co/sketches/Pep6DjEtD), which shows a realtime depth map estimated from the webcam video.
+Get up and running with the [webcam example](https://editor.p5js.org/ml5/sketches/1AlSdDhwA), which shows a realtime depth map estimated from the webcam video.
 
 </br>
 
 [DEMO](iframes/depthestimation ":include :type=iframe width=100% height=550px")
 
 ## Examples
-- [Webcam](https://editor.p5js.org/nasif-co/sketches/Pep6DjEtD): Show the live depth map of the video captured by the webcam.
-- [Video](https://editor.p5js.org/nasif-co/sketches/vifmzXg6o): Generate the depth map of a video file as it plays.
-- [Single Image](https://editor.p5js.org/nasif-co/sketches/_TcZofgrt): Depth map of an image using single-shot estimation.
-- [Mask Background](https://editor.p5js.org/nasif-co/sketches/Z_1xMhUPl): Showcases how to mask out the background from the depth result.
-- [Point Cloud](https://editor.p5js.org/nasif-co/sketches/VbT8hEoDz): Creates a live 3D point cloud visualization of the webcam video.
-- [Mesh](https://editor.p5js.org/nasif-co/sketches/X-e1DEZr4): Creates a live 3D mesh geometry of the webcam video.
+- [Webcam](https://editor.p5js.org/ml5/sketches/1AlSdDhwA): Show the live depth map of the video captured by the webcam.
+- [Video](https://editor.p5js.org/ml5/sketches/YGAqvhn1o): Generate the depth map of a video file as it plays.
+- [Single Image](https://editor.p5js.org/ml5/sketches/VpVUFgtOU): Depth map of an image using single-shot estimation.
+- [Mask Background](https://editor.p5js.org/ml5/sketches/zxi8xUuq4): Showcases how to mask out the background from the depth result.
+- [Point Cloud](https://editor.p5js.org/ml5/sketches/7EOC8txJ1): Creates a live 3D point cloud visualization of the webcam video.
+- [Mesh](https://editor.p5js.org/ml5/sketches/CE2f9l38k): Creates a live 3D mesh geometry of the webcam video.
 
 ## Step-by-Step Guide
 ### Initialization and options
