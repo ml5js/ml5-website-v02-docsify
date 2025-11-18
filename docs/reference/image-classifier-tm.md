@@ -2,7 +2,7 @@
 
 <center>
   <img class="header-img" src="assets/header-image-tm.png" alt="Image + Teachable Machine Header Image" >
-  <p class="img-credit"> Image Credit: <a href="https://thenounproject.com/creator/admin885/" target="_blank" title="Juicy Fish">Juicy Fish</a> | <a href='mailto:info@ml5js.org'>Contribute ♥️</a> </p>
+  <p class="img-credit"> Image Credit: <a href="https://thenounproject.com/creator/admin885/" target="_blank" title="Juicy Fish">Juicy Fish</a> | <a href='https://forms.gle/5EpwYabG8hLn4p926' target="contribute-form">Contribute ♥️</a> </p>
 </center>
 
 ## Description

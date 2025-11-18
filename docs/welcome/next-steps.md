@@ -2,7 +2,7 @@
 
 <center>
   <img class="header-img" src="assets/header-next-steps.png" alt="Next Steps Header Image" >
-  <p class="img-credit"> Image Credit: <a href="https://thenounproject.com/creator/creativepriyanka/" target="_blank" title="WEBTECHOPS LLP">WEBTECHOPS LLP</a> | <a href='mailto:info@ml5js.org'>Contribute ♥️</a> </p>
+  <p class="img-credit"> Image Credit: <a href="https://thenounproject.com/creator/creativepriyanka/" target="_blank" title="WEBTECHOPS LLP">WEBTECHOPS LLP</a> | <a href='https://forms.gle/5EpwYabG8hLn4p926' target="contribute-form">Contribute ♥️</a> </p>
 </center>
 
 If you reach this page, we assume you have successfully installed ml5.js and built your first ml5 projects following our [Getting Started](/) page! Here are some next steps to help you continue your ml5 journey.

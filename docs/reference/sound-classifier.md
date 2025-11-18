@@ -2,7 +2,7 @@
 
 <center>
   <img class="header-img" src="assets/header-sound-classifier.png" alt="SoundClassifier Header Image" >
-  <p class="img-credit"> Image Credit: <a href="https://thenounproject.com/creator/kantortegalsari/" target="_blank" title="Kantor Tegalsari">Kantor Tegalsari</a> | <a href='mailto:info@ml5js.org'>Contribute ♥️</a> </p>
+  <p class="img-credit"> Image Credit: <a href="https://thenounproject.com/creator/kantortegalsari/" target="_blank" title="Kantor Tegalsari">Kantor Tegalsari</a> | <a href='https://forms.gle/5EpwYabG8hLn4p926' target="contribute-form">Contribute ♥️</a> </p>
 </center>
 
 ## Description
