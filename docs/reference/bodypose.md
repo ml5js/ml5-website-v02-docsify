@@ -21,7 +21,7 @@ Run and explore a pre-built example! [This bodyPose example](https://editor.p5js
 
 </br>
 
-[DEMO](iframes/bodypose ":include :type=iframe width=100% height=550px")
+[DEMO](iframes/bodypose ':include :type=iframe width=100% height=550px')
 
 ## Examples
 
@@ -63,10 +63,11 @@ let bodyPose;
 
 Create a `preload()` function to load the bodyPose model.
 
-```javascript
+# Example
+
+```code-comment javascript
 function preload() {
-  // Load the bodyPose model
-  bodyPose = ml5.bodyPose();
+  bodyPose = ml5.bodyPose();    | load the bodyPose model
 }
 ```
 
@@ -89,9 +90,8 @@ function setup() {
 
 Fetch the webcam video, resize it to fit the canvas, and hide it from the display.
 
-```javascript
-  // Create the video and hide it
-  video = createCapture(VIDEO);
+```code-comment javascript
+  video = createCapture(VIDEO); | Create the video and hide it
   video.size(640, 480);
   video.hide();
 }
@@ -107,13 +107,11 @@ let poses = [];
 
 To start detecting poses in the webcam video, call the `bodyPose.detectStart()` method. Here, we pass two parameters: the webcam video and a customized callback function `gotPoses`.
 
-```javascript
+```code-comment javascript
 function setup() {
-  // ...
-  video.hide();
-
-  // Start detecting poses in the webcam video
-  bodyPose.detectStart(video, gotPoses);
+	// ...
+	video.hide();
+	bodyPose.detectStart(video, gotPoses); | Start detecting poses in the webcam video
 }
 ```
 
@@ -122,8 +120,8 @@ The `gotPoses()` function is a callback function that will be called when the `b
 ```javascript
 // Callback function for when the model returns pose data
 function gotPoses(results) {
-  // Store the model's results in a global variable
-  poses = results;
+	// Store the model's results in a global variable
+	poses = results;
 }
 ```
 
@@ -137,12 +135,11 @@ let connections;
 
 Use `bodyPose.getSkeleton()` in the `setup()` function to get the connections between keypoints. This method returns an array of arrays, where each sub-array contains the indices of the connected keypoints. For example, `[[0, 1], [0, 2], ...]` means that keypoints 0 (Nose) and 1 (Left Eye) are connected, keypoints 0 (Nose) and 2 (Right Eye) are connected, and so on.
 
-```javascript
+```code-comment javascript
 function setup() {
-  // ...
-  bodyPose.detectStart(video, gotPoses);
-  // Get the skeleton connection information
-  connections = bodyPose.getSkeleton();
+	// ...
+	bodyPose.detectStart(video, gotPoses);
+	connections = bodyPose.getSkeleton(); | Get the skeleton connection information
 }
 ```
 
@@ -398,18 +395,18 @@ For example, you can toggle the pose estimation with click event in p5.js by usi
 ```javascript
 // Toggle detection when mouse is pressed
 function mousePressed() {
-  toggleDetection();
+	toggleDetection();
 }
 
 // Call this function to start and stop detection
 function toggleDetection() {
-  if (isDetecting) {
-    bodypose.detectStop();
-    isDetecting = false;
-  } else {
-    bodyPose.detectStart(video, gotPoses);
-    isDetecting = true;
-  }
+	if (isDetecting) {
+		bodypose.detectStop();
+		isDetecting = false;
+	} else {
+		bodyPose.detectStart(video, gotPoses);
+		isDetecting = true;
+	}
 }
 ```
 
