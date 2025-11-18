@@ -162,7 +162,7 @@ div#app:empty::before {
 	background-color: var(--color-bg-light);
 }
 
-.sidebar > h1 {
+.sidebar>h1 {
 	/* not-used in our design */
 	margin: 0 auto 1rem;
 	font-size: 1.2rem;
@@ -170,13 +170,13 @@ div#app:empty::before {
 	text-align: center;
 }
 
-.sidebar > h1 a {
+.sidebar>h1 a {
 	/* not-used in our design */
 	color: inherit;
 	text-decoration: none;
 }
 
-.sidebar > h1 .app-nav {
+.sidebar>h1 .app-nav {
 	display: block;
 	position: relative;
 }
@@ -202,7 +202,7 @@ div#app:empty::before {
 	font-size: 1rem;
 }
 
-.sidebar li > p {
+.sidebar li>p {
 	margin: 0;
 }
 
@@ -232,7 +232,7 @@ div#app:empty::before {
 	text-decoration-thickness: 3px;
 }
 
-.sidebar ul li.active > a {
+.sidebar ul li.active>a {
 	border-right: 2px solid var(--color-text-highlight);
 	color: var(--color-secondary);
 	font-weight: var(--font-weight-bold);
@@ -314,7 +314,7 @@ div#app:empty::before {
 /* ===== SIDEBAR TOGGLE ===== */
 body:not(.ready) [data-cloak],
 body:not(.ready) .app-nav,
-body:not(.ready) > nav {
+body:not(.ready)>nav {
 	display: none;
 }
 
@@ -387,12 +387,12 @@ body.close .sidebar-toggle {
 	position: relative;
 }
 
-.markdown-section > * {
+.markdown-section>* {
 	box-sizing: border-box;
 	font-size: inherit;
 }
 
-.markdown-section > :first-child {
+.markdown-section> :first-child {
 	margin-top: 0 !important;
 }
 
@@ -487,8 +487,8 @@ body.close .sidebar-toggle {
 
 .markdown-section p.warn {
 	/* check this color, if we use */
-	background: rgba(var(--color-warn-rgb));
-	border: 1px solid rgb(204, 204, 132);
+	background: rgba(var(--color-warn-rgb), 0.03);
+	border: 1px solid rgba(var(--color-warn-rgb), 0.5);
 	border-radius: var(--border-radius);
 	padding: 1rem 1rem 1rem 3.5rem;
 	/* Added left padding to make space for the icon */
@@ -506,7 +506,7 @@ body.close .sidebar-toggle {
 	/* Adjust the size of the icon as needed */
 }
 
-.markdown-section ul.task-list > li {
+.markdown-section ul.task-list>li {
 	list-style-type: none;
 }
 
@@ -633,13 +633,13 @@ body.close .sidebar-toggle {
 	position: relative;
 }
 
-.markdown-section pre > code,
+.markdown-section pre>code,
 .markdown-section output {
 	border-radius: 2px;
 	display: block;
 }
 
-.markdown-section pre > code,
+.markdown-section pre>code,
 .markdown-section output::after {
 	-moz-osx-font-smoothing: initial;
 	-webkit-font-smoothing: initial;
@@ -653,7 +653,7 @@ body.close .sidebar-toggle {
 	white-space: pre-wrap;
 }
 
-.markdown-section > :not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) code {
+.markdown-section> :not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) code {
 	font-size: 0.9rem;
 }
 
@@ -672,7 +672,7 @@ body.close .sidebar-toggle {
 }
 
 /* ensure inline code isn’t affected */
-.markdown-section pre > code {
+.markdown-section pre>code {
 	background: none;
 	padding: 0;
 	margin: 0;
@@ -682,11 +682,11 @@ body.close .sidebar-toggle {
 	word-wrap: break-word;
 }
 
-.markdown-section p + pre {
+.markdown-section p+pre {
 	margin-top: 0.5rem;
 }
 
-.markdown-section pre + p {
+.markdown-section pre+p {
 	margin-top: 0.5rem;
 }
 
@@ -695,11 +695,11 @@ body.close .sidebar-toggle {
 	border: 1px dotted #ccc;
 }
 
-.markdown-section output > :first-child {
+.markdown-section output> :first-child {
 	margin-top: 0;
 }
 
-.markdown-section output > :last-child {
+.markdown-section output> :last-child {
 	margin-bottom: 0;
 }
 
@@ -827,7 +827,7 @@ section.cover ul {
 	padding: 0;
 }
 
-section.cover .cover-main > p:last-child a {
+section.cover .cover-main>p:last-child a {
 	border-color: var(--color-secondary);
 	border-radius: 2rem;
 	border-style: solid;
@@ -843,26 +843,26 @@ section.cover .cover-main > p:last-child a {
 	transition: all 0.15s ease;
 }
 
-section.cover .cover-main > p:last-child a:last-child {
+section.cover .cover-main>p:last-child a:last-child {
 	background-color: var(--color-secondary);
 	color: #fff;
 }
 
-section.cover .cover-main > p:last-child a:last-child:hover {
+section.cover .cover-main>p:last-child a:last-child:hover {
 	color: inherit;
 	opacity: 0.8;
 }
 
-section.cover .cover-main > p:last-child a:hover {
+section.cover .cover-main>p:last-child a:hover {
 	color: inherit;
 }
 
-section.cover blockquote > p > a {
+section.cover blockquote>p>a {
 	border-bottom: 2px solid var(--color-secondary);
 	transition: color 0.3s;
 }
 
-section.cover blockquote > p > a:hover {
+section.cover blockquote>p>a:hover {
 	color: var(--color-secondary);
 }
 
@@ -1057,6 +1057,7 @@ code .token {
 }
 
 @media print {
+
 	.sidebar-toggle,
 	.sidebar,
 	.app-nav,
@@ -1066,6 +1067,7 @@ code .token {
 }
 
 @media screen and (max-width: 1060px) {
+
 	.sidebar-toggle,
 	.sidebar {
 		position: fixed;
@@ -1127,6 +1129,7 @@ code .token {
 /* this can be removed..? */
 /* ===== KEY FRAMES ===== */
 @keyframes octocat-wave {
+
 	0%,
 	100% {
 		transform: rotate(0);
@@ -1207,7 +1210,8 @@ code .token {
 	content: attr(data-lang);
 	position: absolute;
 	top: 10px;
-	right: 42px; /* move left to make room for button */
+	right: 42px;
+	/* move left to make room for button */
 	background: #e0e7ff;
 	color: #1e1e2f;
 	font-size: 0.72rem;
@@ -1226,7 +1230,7 @@ code .token {
 }
 
 /* actual code block */
-.markdown-section pre > code {
+.markdown-section pre>code {
 	display: block;
 	background: #fff;
 	color: #1e1e2f;
@@ -1322,36 +1326,42 @@ code .token {
 .code-comment-wrapper[data-lang='javascript']::before,
 pre[data-lang='js']::before,
 pre[data-lang='javascript']::before {
-	background: #ded6ff; /* lavender */
+	background: #ded6ff;
+	/* lavender */
 	color: #2f265f;
 }
 
 .code-comment-wrapper[data-lang='html']::before,
 pre[data-lang='html']::before {
-	background: #fbebd2; /* peach */
+	background: #fbebd2;
+	/* peach */
 	color: #593b00;
 }
 
 .code-comment-wrapper[data-lang='css']::before,
 pre[data-lang='css']::before {
-	background: #dafdfa; /* mint */
+	background: #dafdfa;
+	/* mint */
 	color: #003f3f;
 }
 
 .code-comment-wrapper[data-lang='json']::before,
 pre[data-lang='json']::before {
-	background: #fce9ff; /* magenta */
+	background: #fce9ff;
+	/* magenta */
 	color: #521847;
 }
 
 .code-comment-wrapper[data-lang='bash']::before,
 pre[data-lang='bash']::before {
-	background: #e8ffe3; /* green */
+	background: #e8ffe3;
+	/* green */
 	color: #2b4a2a;
 }
 
 .code-comment-wrapper[data-lang='processing']::before,
 pre[data-lang='processing']::before {
-	background: #fff0f5; /* blush */
+	background: #fff0f5;
+	/* blush */
 	color: #5c2a3c;
 }
