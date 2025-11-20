@@ -67,7 +67,7 @@ Create a `preload()` function to load the bodyPose model.
 
 ```code-comment javascript
 function preload() {
-  bodyPose = ml5.bodyPose();    | load the bodyPose model
+  bodyPose = ml5.bodyPose();    // load the bodyPose model
 }
 ```
 
@@ -91,7 +91,7 @@ function setup() {
 Fetch the webcam video, resize it to fit the canvas, and hide it from the display.
 
 ```code-comment javascript
-  video = createCapture(VIDEO); | Create the video and hide it
+  video = createCapture(VIDEO); // Create the video and hide it
   video.size(640, 480);
   video.hide();
 }
@@ -109,9 +109,8 @@ To start detecting poses in the webcam video, call the `bodyPose.detectStart()` 
 
 ```code-comment javascript
 function setup() {
-	// ...
 	video.hide();
-	bodyPose.detectStart(video, gotPoses); | Start detecting poses in the webcam video
+	bodyPose.detectStart(video, gotPoses); // Start detecting poses in the webcam video
 }
 ```
 
@@ -137,9 +136,8 @@ Use `bodyPose.getSkeleton()` in the `setup()` function to get the connections be
 
 ```code-comment javascript
 function setup() {
-	// ...
 	bodyPose.detectStart(video, gotPoses);
-	connections = bodyPose.getSkeleton(); | Get the skeleton connection information
+	connections = bodyPose.getSkeleton(); // Get the skeleton connection information
 }
 ```
 
