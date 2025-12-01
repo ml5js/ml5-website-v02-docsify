@@ -9,7 +9,7 @@ The ml5.js objectDetection uses pre-trained [Tensorflow.js CocoSsd model](https:
 Support for more models such as Transformers.js is under development, so stay tuned!
 
 ## Quick Start
-Run and explore a pre-built example! [This webcam example](https://editor.p5js.org/codingeffects2023/sketches/pyC9DA8pV) detects object in real-time and draws bounding boxes and labels on the objects detected.
+Run and explore a pre-built example! [This webcam example](https://editor.p5js.org/ml5/sketches/onwqDXmAX9) detects object in real-time and draws bounding boxes and labels on the objects detected.
 
 <br/>
 
@@ -18,9 +18,9 @@ Run and explore a pre-built example! [This webcam example](https://editor.p5js.o
 ## Examples
 
 ### p5 sketches
-- [objectDetection Webcam](https://editor.p5js.org/codingeffects2023/sketches/pyC9DA8pV)
-- [objectDetection Image](https://editor.p5js.org/codingeffects2023/sketches/5aMBINT-N)
-- [objectDetection Video](https://editor.p5js.org/codingeffects2023/sketches/KixZ5yn50)
+- [objectDetection Webcam](https://editor.p5js.org/ml5/sketches/onwqDXmAX9)
+- [objectDetection Image](https://editor.p5js.org/ml5/sketches/XI3vSRJbz)
+- [objectDetection Video](https://editor.p5js.org/ml5/sketches/oHzNJKNtq)
 
 
 ### Video Tutorials
@@ -32,7 +32,7 @@ However the code difference isn't enormouse and the video is still a great resou
 
 ## Step-by-Step Guide
 
-Now, let's together build the [objectDetection Webcam](https://editor.p5js.org/codingeffects2023/sketches/pyC9DA8pV) example from scratch.
+Now, let's together build the [objectDetection Webcam](https://editor.p5js.org/ml5/sketches/onwqDXmAX9) example from scratch.
 
 ### Create a new project
 
