@@ -307,4 +307,4 @@ uvCoords = faceMesh.getUVCoords();
 ```
 
 Please refer to this image to understand the coordinates:
-![facemesh UV coordinates reference](/assets/facemesh-map.jpg)
+![facemesh UV coordinates reference](assets/facemesh-map.jpg)
