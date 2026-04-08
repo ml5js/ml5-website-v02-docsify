@@ -7,30 +7,34 @@
 
 ## Description
 
-The ml5.js Neural Network allows you to create and train your own machine learning models in the browser. You can use the neural network to perform classification tasks, where the model predicts a label based on the input data, or regression tasks, where the model predicts a value based on the input data. 
+The REALLY AWESOME ml5.js Neural Network allows you to create and train your own machine learning models in the browser. You can use the neural network to perform classification tasks, where the model predicts a label based on the input data, or regression tasks, where the model predicts a value based on the input data.
 
 The neural network is a type of machine learning model that is inspired by the human brain. It is made up of layers of neurons that are connected to each other. Each neuron takes in input data, processes it, and passes the output to the next layer of neurons. The neural network learns by adjusting the weights of the connections between neurons to minimize the error in its predictions.
 
 It provides folowing functionalities:
+
 - **Classification**: The neural network can be used to classify input data into different categories. For example, you can train a neural network to classify images of cats and dogs.
 - **Regression**: The neural network can be used to predict a continuous value based on input data. For example, you can train a neural network to predict the price of a house based on its size and location.
 
 ?> If you are not familiar with the concept of **classification**, **regression**, **neuron**, **neural networks**, and **weights**, you can learn more about them with [ml5 glossary](/learn/ml5-glossary).
 
 ## Quick Start
+
 Run and explore a pre-built example! [This Neural Network example](https://editor.p5js.org/ml5/sketches/eGHBdmCLe) trains a model to classify the color of an RGB value.
 
 </br>
 
-[DEMO](iframes/neural-network ":include :type=iframe width=100% height=550px")
+[DEMO](iframes/neural-network ':include :type=iframe width=100% height=550px')
 
 ## Examples
+
 - [NeuralNetwork Color Classifier](https://editor.p5js.org/ml5/sketches/eGHBdmCLe): Train a model to classify the color of an RGB value (red-ish, green-ish, blue-ish).
 - [NeuralNetwork Mouse Gesture](https://editor.p5js.org/ml5/sketches/FdXAgrA3N): Train a model to recognize mouse gestures (up, down, left, right).
 - [NeuralNetwork Load Model](https://editor.p5js.org/ml5/sketches/U-aljtx7x): Load a pre-trained model and use it for classification.
 - [NeuralNetwork Train and Save](https://editor.p5js.org/ml5/sketches/rR51vvi-u): Train a model and save it for later use.
 
 ## Step-by-Step Guide
+
 This step-by-step guide uses a p5.js sketch running on the [p5.js web editor](https://editor.p5js.org/). To follow along, start by creating an empty project in the editor.
 
 ### Set up ml5.js
@@ -44,6 +48,7 @@ Import the ml5.js library in your `index.html` file by copying the following `<s
 ?> If you are not familiar with how to import the ml5.js library and need more detailed guidance, please check out our [Getting Started](/?id=set-up-ml5js) tutorial.
 
 ### Initialize the model
+
 First of all, create a variable `classifier` to store the neural network model.
 
 ```javascript
@@ -63,11 +68,11 @@ function setup() {
 Create a variable `options` to configure the model.
 
 ```javascript
-  // Set the options for the neural network
-  let options = {
-    task: "classification",
-    debug: true,
-  };
+// Set the options for the neural network
+let options = {
+  task: 'classification',
+  debug: true,
+};
 ```
 
 Initialize the neural network model with the options.
@@ -77,22 +82,24 @@ Initialize the neural network model with the options.
   classifier = ml5.neuralNetwork(options);
 }
 ```
+
 ?> If you would like to configure the model with greater flexibility (such as defining inputs and outputs, loading external data, or creating custom layers), refer to the [Methods](/reference/neural-network?id=methods) section for more details.
 
 ### Prepare training dataset
+
 Different from other pre-trained ml5.js models, the ml5.js Neural Network allows you to train a custom model with your own data. You can create your own data or load data from a file. In this example, we will create our own data. In your `sketch.js` file, define an array of data that contains RGB values and their corresponding color labels.
 
 ```javascript
 let data = [
-  { r: 255, g: 0, b: 0, color: "red-ish" },
-  { r: 254, g: 0, b: 0, color: "red-ish" },
-  { r: 253, g: 0, b: 0, color: "red-ish" },
-  { r: 0, g: 255, b: 0, color: "green-ish" },
-  { r: 0, g: 254, b: 0, color: "green-ish" },
-  { r: 0, g: 253, b: 0, color: "green-ish" },
-  { r: 0, g: 0, b: 255, color: "blue-ish" },
-  { r: 0, g: 0, b: 254, color: "blue-ish" },
-  { r: 0, g: 0, b: 253, color: "blue-ish" },
+  { r: 255, g: 0, b: 0, color: 'red-ish' },
+  { r: 254, g: 0, b: 0, color: 'red-ish' },
+  { r: 253, g: 0, b: 0, color: 'red-ish' },
+  { r: 0, g: 255, b: 0, color: 'green-ish' },
+  { r: 0, g: 254, b: 0, color: 'green-ish' },
+  { r: 0, g: 253, b: 0, color: 'green-ish' },
+  { r: 0, g: 0, b: 255, color: 'blue-ish' },
+  { r: 0, g: 0, b: 254, color: 'blue-ish' },
+  { r: 0, g: 0, b: 253, color: 'blue-ish' },
 ];
 ```
 
@@ -111,22 +118,23 @@ function setup() {
   for (let i = 0; i < data.length; i++) {
     let item = data[i];
 ```
+
 We extract the RGB values of the sample, and generate three features: `r`, `g`, and `b`.
 
 ```javascript
-    let inputs = [item.r, item.g, item.b];
+let inputs = [item.r, item.g, item.b];
 ```
 
 We also extract the color label of the sample and store it as the target output that model will predict.
 
 ```javascript
-    let outputs = [item.color];
+let outputs = [item.color];
 ```
 
 Now, we can add the sample to the neural network model.
 
 ```javascript
-    classifier.addData(inputs, outputs);
+classifier.addData(inputs, outputs);
 ```
 
 Lastly, normalize the data to ensure that the features are on a similar scale.
@@ -135,9 +143,11 @@ Lastly, normalize the data to ensure that the features are on a similar scale.
   classifier.normalizeData();
 }
 ```
+
 ?> If you are not familiar with the concept of **normalization**, you can learn more about it with [ml5 glossary](/learn/ml5-glossary?id=normalization).
 
 ### Train the model
+
 Now, we can train the neural network model with the training data. Define the training options, such as the number of epochs and batch size.
 
 ```javascript
@@ -170,6 +180,7 @@ function finishedTraining() {
 ```
 
 ### Prepare test data
+
 We can start by creating three variables to store the features `r`, `g`, and `b` of the test data.
 
 ```javascript
@@ -183,7 +194,7 @@ let b = 0;
 Let's also create a `label` variable to store the predicted color label, and set it to "training" initially. This variable will be updated with the predicted label after the classification.
 
 ```javascript
-let label = "training";
+let label = 'training';
 ```
 
 If we keep the RGB values of the test data fixed as initially set, the model will always predict the color label "red-ish," since the test data is always {r: 255, g: 0, b: 0}. Let's add some interactivity by allowing users to change the RGB values of the test data using sliders.
@@ -226,6 +237,7 @@ And update the background color of the canvas with the new RGB values.
 ```
 
 ### Make a classification on the test data
+
 Now, we can make a classification on the test data using the `classify()` function. Remember we will call this function after the model is trained.
 
 ```javascript
@@ -258,6 +270,7 @@ function handleResults(results, error) {
 ```
 
 ### Display the classification result
+
 We know that the `label` variable stores the predicted color label. Let's display the predicted color label on the canvas. In the `draw()` function, add the following code to display the `label` in the center of the canvas.
 
 ```javascript
@@ -272,6 +285,7 @@ function draw() {
 ```
 
 ### Run your sketch
+
 Now you can run your sketch and interact with the sliders to change the RGB values of the test data. The canvas will display the predicted color label based on the RGB values you set. You can also find the [complete code](https://editor.p5js.org/ml5/sketches/eGHBdmCLe) in the p5.js web editor.
 
 ?> If you have any questions or spot something unclear in this step-by-step code guide, we'd love to hear from you! Join us on [Discord](https://discord.com/invite/3CVauZMSt7) and let us know how we can make it better.
@@ -307,6 +321,7 @@ const nn = ml5.neuralNetwork(options, callback);
 **Parameters:**
 
 - **options**: Required. An object to configure the neural network. The available options are:
+
   ```javascript
   {
     inputs: [], // can also be a number
@@ -320,6 +335,7 @@ const nn = ml5.neuralNetwork(options, callback);
     hiddenUnits: 16,
   }
   ```
+
   - _inputs_ - Optional
     - Array | Number: Input labels as an array or number of inputs. Default: [].
   - _outputs_ - Optional
@@ -341,7 +357,7 @@ const nn = ml5.neuralNetwork(options, callback);
 
 - **callback(nn)**: Optional. A function to run once the model has been initialized.
 
-**Returns:** 
+**Returns:**
 
 - **Object**: The neuralNetwork object. This object contains methods to add data, normalize data, train the model, and make predictions.
 
@@ -423,7 +439,7 @@ nn.train(?optionsOrCallback, ?optionsOrWhileTraining, ?callback);
     console.log(`epoch: ${epoch}, loss:${loss}`);
   }
   function doneTraining() {
-    console.log("done!");
+    console.log('done!');
   }
   neuralNetwork.train(trainingOptions, whileTraining, doneTraining);
   ```
@@ -591,15 +607,15 @@ nn.load(filesOrPath, callback);
   - Method 1: Using a JSON object with paths to specific files:
     ```javascript
     const modelInfo = {
-      model: "path/to/model.json",
-      metadata: "path/to/model_meta.json",
-      weights: "path/to/model.weights.bin",
+      model: 'path/to/model.json',
+      metadata: 'path/to/model_meta.json',
+      weights: 'path/to/model.weights.bin',
     };
     nn.load(modelInfo, modelLoadedCallback);
     ```
   - Method 2: Specifying only the path to the `model.json`. Assumes the `model_meta.json` and `model.weights.bin` are in the same directory:
     ```javascript
-    nn.load("path/to/model.json", modelLoadedCallback);
+    nn.load('path/to/model.json', modelLoadedCallback);
     ```
   - Method 3: Using `<input type="file" multiple>`:
 - **callback**: Optional. Function. A callback function to be called after the model has been loaded.
@@ -648,7 +664,3 @@ nn.crossover(other);
 - **Object**: A new neural network object with the weights of the two models crossed over.
 
 ?> This method is created to build neuroevolution systems. If you are interested in neuroevolution, you can learn more about it with [Nature of Code Chapter 11](https://natureofcode.com/neuroevolution/).
-
-
-
-  
