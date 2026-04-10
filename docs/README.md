@@ -1,60 +1,12 @@
 <center>
-<svg xmlns="http://www.w3.org/2000/svg" width="600" height="150" viewBox="0 0 600 150">
-  <defs>
-    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#6d28d9"/>
-      <stop offset="60%" style="stop-color:#9333ea"/>
-      <stop offset="100%" style="stop-color:#db2777"/>
-    </linearGradient>
-    <filter id="glow">
-      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#9333ea" flood-opacity="0.35"/>
-    </filter>
-  </defs>
-
-  <!-- Soft purple pill background -->
-  <rect x="40" y="25" width="520" height="95" rx="48" fill="#f5f0ff" opacity="0.75"/>
-
-  <!-- Sparkle top-left -->
-  <g transform="translate(78,52) rotate(20)">
-    <path d="M0,-13 L3,-3 L13,0 L3,3 L0,13 L-3,3 L-13,0 L-3,-3 Z" fill="#a855f7"/>
-  </g>
-  <!-- Sparkle top-right -->
-  <g transform="translate(522,48) rotate(-15)">
-    <path d="M0,-10 L2.5,-2.5 L10,0 L2.5,2.5 L0,10 L-2.5,2.5 L-10,0 L-2.5,-2.5 Z" fill="#ec4899"/>
-  </g>
-  <!-- Sparkle bottom-right -->
-  <g transform="translate(545,108)">
-    <path d="M0,-8 L2,-2 L8,0 L2,2 L0,8 L-2,2 L-8,0 L-2,-2 Z" fill="#7c3aed" opacity="0.75"/>
-  </g>
-  <!-- Sparkle bottom-left -->
-  <g transform="translate(62,110)">
-    <path d="M0,-8 L2,-2 L8,0 L2,2 L0,8 L-2,2 L-8,0 L-2,-2 Z" fill="#c026d3" opacity="0.75"/>
-  </g>
-
-  <!-- Floating dots -->
-  <circle cx="115" cy="32" r="4.5" fill="#c084fc" opacity="0.65"/>
-  <circle cx="485" cy="118" r="4.5" fill="#f0abfc" opacity="0.65"/>
-  <circle cx="160" cy="122" r="3" fill="#a855f7" opacity="0.5"/>
-  <circle cx="445" cy="28" r="3" fill="#ec4899" opacity="0.5"/>
-  <circle cx="570" cy="72" r="3.5" fill="#7c3aed" opacity="0.4"/>
-  <circle cx="30" cy="72" r="3.5" fill="#9333ea" opacity="0.4"/>
-
-  <!-- Cute heart below text -->
-  <path d="M300,130 C300,130 286,119 286,111 C286,105 291,101 296,103 C298,104 300,107 300,107 C300,107 302,104 304,103 C309,101 314,105 314,111 C314,119 300,130 300,130 Z" fill="#ec4899" opacity="0.65"/>
-
-  <!-- Main title text -->
-  <text x="300" y="90"
-        font-family="Georgia, 'Times New Roman', serif"
-        font-size="52"
-        font-weight="bold"
-        text-anchor="middle"
-        fill="url(#titleGrad)"
-        filter="url(#glow)">Getting Started</text>
-
-  <!-- Squiggly underline -->
-  <path d="M130,102 Q180,110 230,102 Q280,94 330,102 Q380,110 430,102 Q460,96 470,102"
-        stroke="url(#titleGrad)" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.6"/>
-</svg>
+<div style="padding:28px 0 8px;">
+  <span style="font-family:Georgia,'Times New Roman',serif; font-size:2.8rem; font-weight:bold; background:linear-gradient(135deg,#6d28d9 0%,#9333ea 55%,#db2777 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; display:inline-block;">✦ Getting Started ✦</span>
+  <div style="margin-top:6px;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="380" height="14">
+      <path d="M10,7 Q65,13 120,7 Q175,1 230,7 Q285,13 340,7 Q358,4 370,7" stroke="#9333ea" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.55"/>
+    </svg>
+  </div>
+</div>
 </center>
 
 <center>
