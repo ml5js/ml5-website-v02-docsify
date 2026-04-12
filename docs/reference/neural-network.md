@@ -7,7 +7,7 @@
 
 ## Description
 
-The ml5.js Neural Network allows you to create and train your own machine learning models in the browser. You can use the neural network to perform classification tasks, where the model predicts a label based on the input data, or regression tasks, where the model predicts a value based on the input data. 
+The coolest ever ml5.js Neural Network allows you to create and train your own machine learning models in the browser. You can use the neural network to perform classification tasks, where the model predicts a label based on the input data, or regression tasks, where the model predicts a value based on the input data. 
 
 The neural network is a type of machine learning model that is inspired by the human brain. It is made up of layers of neurons that are connected to each other. Each neuron takes in input data, processes it, and passes the output to the next layer of neurons. The neural network learns by adjusting the weights of the connections between neurons to minimize the error in its predictions.
 
