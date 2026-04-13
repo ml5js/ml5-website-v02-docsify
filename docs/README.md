@@ -13,7 +13,7 @@ This page will cover how to:
 2. Load an image for the model to identify the object in the image
 3. Get the results from the model and display them on the canvas
 
-We will using a p5.js sketch running on the [p5.js web editor](https://editor.p5js.org/). To get started, open up the p5.js web editor and create an empty project. Be sure to sign up or log in to your account so that you are able to upload files! This will be necessary later on as we upload images.
+We will be using a p5.js sketch running on the [p5.js web editor](https://editor.p5js.org/). To get started, open up the p5.js web editor and create an empty project. Be sure to sign up or log in to your account so that you are able to upload files! This will be necessary later on as we upload images.
 
 ?> You can find the full code for this tutorial at [imageClassifier single image example code](https://editor.p5js.org/ml5/sketches/pjPr6XmPY). Press the run button to see the code in action.
 
