@@ -1,7 +1,7 @@
 {
   "name": "ml5-website-v02-docsify",
   "version": "1.0.0",
-  "description": "This repository is for the work-in-progress ml5.js website, which is built using Docsify. It contains documentation and and reference materials for for the ml5.js library models.",
+  "description": "This repository is for the work-in-progress ml5.js website, which is built using Docsify. It contains documentation and reference materials for the ml5.js library models.",
   "main": "index.js",
   "directories": {
     "doc": "docs"
