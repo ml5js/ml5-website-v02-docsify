@@ -49,7 +49,7 @@ Here is a list of the repositories you most likely will be working with:
 
 **Preamble**: If you're interested in contributing to the ml5.js project, just know you can always open an issue to ask questions or flag things that may seem confusing, unclear or intimidating. Our goal is to make ml5.js as open and supportive as possible for those who want to be involved. Ok, now that's out of the way, here's how a general workflow for what contributions to ml5.js might look like.
 
-1. Read the [CONTRIBUTING.md](https://github.com/ml5js/ml5-library/blob/main/CONTRIBUTING.md) document. ❤️
+1. Read the [CONTRIBUTING.md](https://github.com/ml5js/ml5-next-gen/blob/main/CONTRIBUTING.md) document. ❤️
 2. Take a peek at the [issues](https://github.com/ml5js/ml5-next-gen/issues) page and identify something you'd like to address **or** file a new issue. The issue could be about fixing a bug, adding a new feature, updating an existing feature, or anything else. 🚩
 3. Make a comment on the existing issue **or** indicate on your new issue that you're curious to do your best to solve it. 🔬
 4. Make a forked copy of the ml5-next-gen repository and create a branch with a meaningful name such as `fix-detection-results`. 🍴
