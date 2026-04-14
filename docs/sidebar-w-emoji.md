@@ -38,6 +38,7 @@
 
 - **Train your own model!** 💡
 - [Neural Networks](/reference/neural-network.md)
+- [Feature Extractor](/reference/feature-extractor.md)
 
 <div class="sidebar-spacer">&nbsp;</div>
 
