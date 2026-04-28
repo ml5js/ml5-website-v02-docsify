@@ -7,7 +7,7 @@
 
 ## Description
 
-The ml5.js Image + Teachable Machine model allows you to create a model that can recognize the content of an image from a set of labels that you define. For example, you can train a model to tell the difference between a cat and a dog, happy and sad faces, or even between a hot dog and a sandwich.
+The ml5.js Image + Teachable Machine model allows you to create a model that tries to recognize the content of an image from a set of labels that you define. For example, you can train a model to tell the difference between a cat and a dog, happy and sad faces, or even between a hot dog and a sandwich.
 
 The ml5.js Image + Teachable Machine model is a combination of [the ml5.js imageClassifier](/reference/image-classifier) and the Teachable Machine platform. Instead of using pre-trained models like MobileNet or Darknet, you can train your own model with the [Teachable Machine](https://teachablemachine.withgoogle.com/).
 
@@ -16,7 +16,7 @@ The ml5.js Image + Teachable Machine model is a combination of [the ml5.js image
 It provides the following functionalities:
 
 - **Custom Labels**: Train your model with customized labels to recognize specific objects, animals, or people.
-- **Image Classification**: The Image + Teachable Machine model can recognize the content of an image from a set of labels that you define.
+- **Image Classification**: The Image + Teachable Machine model tries to recognize the content of an image from a set of labels that you define.
 - **Video Object Detection**: The Image + Teachable Machine model can also be used to classify objects into categories that you define in real-time video.
 
 ## Quick Start

@@ -12,8 +12,8 @@ The ml5.js BodySegmentation provides two models, `SelfieSegmentation` and `BodyP
 The ml5.js BodySegmentation is built on top of the [TensorFlow.js BodyPix model and the MediaPipe Selfie Segmentation model](https://github.com/tensorflow/tfjs-models/tree/master/body-segmentation).
 
 It provides following functionalities:
-- **Real-time person/background segmentation**: The `SelfieSegmentation` model can segment people from the background in real-time, and is designed to be lightweight. The `BodyPix` model can also be used for this purpose, but is more computationally intensive.
-- **Real-time body part segmentation**: The `BodyPix` model can segment 24 body parts in real-time.
+- **Real-time person/background segmentation**: The `SelfieSegmentation` model tries to segment people from the background in real-time, and is designed to be lightweight. The `BodyPix` model can also be used for this purpose, but is more computationally intensive.
+- **Real-time body part segmentation**: The `BodyPix` model tries to segment 24 body parts in real-time.
 
 ## Quick Start
 

@@ -7,13 +7,13 @@
 
 ## Description
 
-Sentiment is a model trained to predict the sentiment of any given text. For example, it can predict how positive or negative a review is with a value between 0 ("negative") and 1 ("positive").
+Sentiment is a model trained to predict the sentiment of any given text. For example, it tries to predict how positive or negative a review is with a value between 0 ("negative") and 1 ("positive").
 
 The model is trained using IMDB reviews that have been truncated to a maximum of 200 words, and only the 20000 most used words in the reviews are used.
 
 It provides the following functionalities:
 
-- **Sentiment Analysis**: The model can predict the sentiment of a given text.
+- **Sentiment Analysis**: The model tries to predict the sentiment of a given text.
 
 ## Quick Start
 

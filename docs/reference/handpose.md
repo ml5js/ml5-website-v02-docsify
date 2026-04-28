@@ -7,15 +7,15 @@
 
 ## Description
 
-HandPose is a machine-learning model that allows for palm detection and hand-skeleton finger tracking in the browser. It can detect multiple hands at a time and for each hand, and provides 21 2D and 3D hand keypoints that describe important locations on the palm and fingers.
+HandPose is a machine-learning model that allows for palm detection and hand-skeleton finger tracking in the browser. It tries to detect multiple hands at a time and for each hand, and provides 21 2D and 3D hand keypoints that describe important locations on the palm and fingers.
 
 The ml5.js HandPose model is based on the [HandPose implementation](https://github.com/google/mediapipe/blob/master/docs/solutions/hands.md) by TensorFlow.js.
 
 The following functionality is provided:
 
-- **Hand Keypoint Detection**: HandPose can detect the 2D and 3D coordinates of 21 keypoints on a hand.
-- **Handedness**: HandPose can determine the handedness (left or right) of the detected hand.
-- **Multiple Hands**: HandPose can detect multiple hands at the same time.
+- **Hand Keypoint Detection**: HandPose tries to detect the 2D and 3D coordinates of 21 keypoints on a hand.
+- **Handedness**: HandPose tries to determine the handedness (left or right) of the detected hand.
+- **Multiple Hands**: HandPose tries to detect multiple hands at the same time.
 
 ## Quick Start
 
