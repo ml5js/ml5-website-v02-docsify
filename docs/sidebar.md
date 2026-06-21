@@ -47,6 +47,7 @@
   <div class="sidebar-section-divider">&nbsp;</div>
 
 - [ml5 Glossary](/learn/ml5-glossary.md)
+- [Using ml5.js Offline](/learn/using-ml5-offline.md)
   <!-- * [Community Tutorial Library](/learn/community-tutorial-library.md) -->
 
 <div class="sidebar-spacer">&nbsp;</div>
