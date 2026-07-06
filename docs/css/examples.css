@@ -1,0 +1,209 @@
+/* ============================================================
+   Examples grid styles — used in docs/reference/overview.md
+   ============================================================ */
+
+/* ── Search bar ─────────────────────────────────────────────── */
+#examples-search-wrap {
+  position: relative;
+  max-width: 480px;
+  margin: 1.2rem 0 1.8rem;
+}
+#examples-search-wrap svg {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 15px;
+  height: 15px;
+  pointer-events: none;
+  color: var(--color-text-light);
+}
+#examples-search {
+  width: 100%;
+  padding: 0.5rem 1rem 0.5rem 2.3rem;
+  font-size: 0.9rem;
+  font-family: var(--font-sans-serif);
+  border: 1.5px solid var(--color-border);
+  border-radius: 999px;
+  background: var(--color-bg);
+  color: var(--color-text);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+#examples-search:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(136, 51, 255, 0.1);
+}
+#examples-search::placeholder {
+  color: var(--color-text-light);
+}
+
+/* ── Model type sections ────────────────────────────────────── */
+.ex-group {
+  margin-bottom: 2rem;
+}
+.ex-group-header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--color-border-light);
+}
+.ex-group-title {
+  font-family: var(--font-sans-serif);
+  font-size: 1rem;
+  font-weight: var(--font-weight-bold);
+  margin: 0;
+  color: var(--color-text-dark);
+}
+.ex-group-ref {
+  font-size: 0.76rem;
+  font-family: var(--font-sans-serif);
+  color: var(--color-text-link);
+  text-decoration: none;
+  opacity: 0.8;
+}
+.ex-group-ref:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+/* ── Card grid ───────────────────────────────────────────────── */
+.ex-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+@media (max-width: 900px) {
+  .ex-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .ex-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Individual card ─────────────────────────────────────────*/
+#examples-page .ex-card {
+  background: var(--color-bg-light);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  padding: 0.45rem 0.7rem;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.15s;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+#examples-page .ex-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-color: var(--color-secondary);
+  text-decoration: none;
+}
+#examples-page .ex-card:hover .ex-card-name {
+  color: var(--color-primary);
+}
+#examples-page .ex-card-name {
+  font-family: var(--font-sans-serif);
+  font-size: 0.82rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-dark);
+  margin: 0 0 0.1rem;
+  line-height: 1.2;
+}
+#examples-page .ex-card-desc {
+  font-size: 0.74rem;
+  color: var(--color-text-light);
+  line-height: 1.3;
+  margin: 0;
+}
+
+/* ── Hidden states (search filter) ──────────────────────────── */
+.ex-card.ex-hidden        { display: none; }
+.ex-group.ex-group-hidden { display: none; }
+
+/* ── No-results message ──────────────────────────────────────── */
+#examples-no-results {
+  display: none;
+  padding: 1.5rem 0;
+  color: var(--color-text-light);
+  font-size: 0.88rem;
+  font-style: italic;
+}
+
+/* ── Community Applications ──────────────────────────────────── */
+#community-apps {
+  margin-top: 3rem;
+  padding-top: 1.8rem;
+  border-top: 1px solid var(--color-border-light);
+}
+#community-apps h3 {
+  font-family: var(--font-sans-serif);
+  font-size: 1rem;
+  font-weight: var(--font-weight-bold);
+  margin: 0 0 0.3rem;
+  color: var(--color-text-dark);
+}
+.community-apps-intro {
+  font-size: 0.85rem;
+  color: var(--color-text-light);
+  margin: 0 0 1.2rem;
+  line-height: 1.5;
+}
+.app-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 1.2rem;
+}
+@media (max-width: 900px) {
+  .app-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .app-grid { grid-template-columns: 1fr; }
+}
+#examples-page .app-card {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  padding: 0.45rem 0.7rem;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.15s;
+}
+#examples-page .app-card:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+}
+#examples-page .app-card-tag {
+  font-size: 0.65rem;
+  font-family: var(--font-sans-serif);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 0 0 0.1rem;
+  line-height: 1.2;
+}
+#examples-page .app-card-name {
+  font-family: var(--font-sans-serif);
+  font-size: 0.82rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-dark);
+  margin: 0 0 0.1rem;
+  line-height: 1.2;
+}
+#examples-page .app-card-desc {
+  font-size: 0.74rem;
+  color: var(--color-text-light);
+  line-height: 1.3;
+  margin: 0;
+}
+.contribute-cta {
+  font-size: 0.83rem;
+  color: var(--color-text-light);
+  line-height: 1.6;
+}
+.contribute-cta a {
+  color: var(--color-primary);
+}

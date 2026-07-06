@@ -46,6 +46,7 @@ TO-DOs
 
 	<link rel="stylesheet" href="css/global.css" />
 	<link rel="stylesheet" href="css/style-markdown.css" />
+	<link rel="stylesheet" href="css/examples.css" />
 	<link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet" />
 </head>
 
@@ -277,6 +278,40 @@ TO-DOs
 							})
 					})
 				},
+				// ✅ examples page search
+				function (hook) {
+					hook.doneEach(function () {
+						var input = document.getElementById('examples-search');
+						var noResults = document.getElementById('examples-no-results');
+						if (!input || !noResults) return; // only runs on the examples page
+
+						input.addEventListener('input', function () {
+						var query = input.value.trim().toLowerCase();
+						var anyVisible = false;
+
+						document.querySelectorAll('.ex-group').forEach(function (group) {
+							var groupName = (group.dataset.group || '').toLowerCase();
+							var cards = group.querySelectorAll('.ex-card');
+							var groupHasMatch = false;
+
+							cards.forEach(function (card) {
+							var cardName = (card.dataset.name || '').toLowerCase();
+							var matches = !query
+								|| cardName.indexOf(query) !== -1
+								|| groupName.indexOf(query) !== -1;
+
+							card.classList.toggle('ex-hidden', !matches);
+							if (matches) groupHasMatch = true;
+							});
+
+							group.classList.toggle('ex-group-hidden', !groupHasMatch);
+							if (groupHasMatch) anyVisible = true;
+						});
+
+						noResults.style.display = anyVisible ? 'none' : 'block';
+						});
+					});
+				}
 			],
 		}
 
