@@ -63,8 +63,6 @@ let bodyPose;
 
 Create a `preload()` function to load the bodyPose model.
 
-# Example
-
 ```code-comment javascript
 function preload() {
   bodyPose = ml5.bodyPose();    // load the bodyPose model

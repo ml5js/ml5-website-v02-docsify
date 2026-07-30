@@ -1,49 +1,6 @@
-/* the markdown-section link overrides the global link styles */
-.anchor {
-	display: inline-block;
-	text-decoration: none;
-}
-
-.anchor:hover {
-	text-decoration: underline;
-	text-decoration-thickness: 3px;
-	text-decoration-color: var(--color-text-highlight);
-}
-
-.anchor span {
-	color: var(--color-text-link);
-}
-
-/* Keyboard Input */
-/* not used? Consider removing this. */
-kbd {
-	border: solid 1px var(--color-border-dark);
-	border-radius: 3px;
-	display: inline-block;
-	font-size: 12px !important;
-	line-height: 12px;
-	margin-bottom: 3px;
-	padding: 3px 5px;
-	vertical-align: middle;
-}
-
-/* List Items with Checkbox */
-li input[type='checkbox'] {
-	margin: 0 0.2em 0.25em 0;
-	vertical-align: middle;
-}
-
-/* Emoji */
-/* the two below are not used. */
-img.emoji {
-	height: 1.2em;
-	vertical-align: middle;
-}
-
-span.emoji {
-	font-size: 1.2em;
-	vertical-align: middle;
-}
+/* =========================================
+   1. DOCSIFY APP LAYOUT & NAVIGATION
+   ========================================= */
 
 /* main tag */
 main {
@@ -61,6 +18,12 @@ main.hidden {
 /* ===== LOADING PROGRESS ===== */
 body:not(.ready) {
 	overflow: hidden;
+}
+
+body:not(.ready) [data-cloak],
+body:not(.ready) .app-nav,
+body:not(.ready)>nav {
+	display: none;
 }
 
 div#app {
@@ -88,7 +51,6 @@ div#app:empty::before {
 
 /* ===== TOP NAVIGATION BAR ===== */
 /* Doscify's default styles */
-
 .github-corner {
 	/* quick fix for the github corner */
 	/* We don't use it */
@@ -101,17 +63,18 @@ div#app:empty::before {
 	width: 100%;
 	height: calc(3.5rem + 1px);
 	/* 1px: fine adjustment to keep consistency */
-
 	position: fixed;
 	top: 0;
 	z-index: 1000;
-
 	background-color: rgba(255, 255, 255, 1);
 	border-bottom: #ddd solid 1px;
-
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+}
+
+.app-nav {
+	transition: transform 250ms ease-out;
 }
 
 .logo {
@@ -121,7 +84,6 @@ div#app:empty::before {
 .logo button {
 	font-size: 1.5rem;
 	/* font-weight: var(--font-weight-bold); */
-
 	color: var(--color-primary);
 	background-color: transparent;
 	padding: 0.3rem 0.8rem;
@@ -255,25 +217,6 @@ div#app:empty::before {
 	background: rgba(var(--color-sidebar-scrollbar-rgb), 0.1);
 }
 
-.sidebar-toggle {
-	background-color: rgba(var(--color-sidebar-toggle-bg-rgb), 0.8);
-	border: 0;
-	outline: none;
-	padding: 15px;
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	text-align: center;
-	transition: opacity 0.3s;
-	width: 300px;
-	z-index: 1000;
-	cursor: pointer;
-}
-
-.sidebar-toggle:hover .sidebar-toggle-button {
-	opacity: 0.4;
-}
-
 /* bullet shape for the list */
 .app-sub-sidebar li::before {
 	content: '•';
@@ -312,10 +255,33 @@ div#app:empty::before {
 }
 
 /* ===== SIDEBAR TOGGLE ===== */
-body:not(.ready) [data-cloak],
-body:not(.ready) .app-nav,
-body:not(.ready)>nav {
-	display: none;
+.sidebar-toggle {
+	/* the icon on the left bottom */
+	background-color: rgba(var(--color-sidebar-toggle-bg-rgb), 0.8);
+	border: 0;
+	outline: none;
+	padding: 15px;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	text-align: center;
+	transition: opacity 0.3s, transform 250ms ease, background-color 1s;
+	width: auto;
+	transform: translateX(240px);
+	z-index: 1000;
+	cursor: pointer;
+}
+
+.sidebar-toggle span {
+	background-color: var(--color-secondary);
+	display: block;
+	margin-bottom: 4px;
+	width: 20px;
+	height: 3px;
+}
+
+.sidebar-toggle:hover .sidebar-toggle-button {
+	opacity: 0.4;
 }
 
 body.sticky .sidebar,
@@ -338,36 +304,14 @@ body.close .app-nav {
 
 body.close .sidebar-toggle {
 	/* make this color variable*/
-	background-color: rgba(--color-sidebar-toggle-bg-rgb, 0.8);
-	transition: 1s background-color;
-	transition: transform 250ms ease;
 	width: 300px;
 	transform: translateX(0px);
-	padding: 15px;
 }
 
-.app-nav {
-	transition: transform 250ms ease-out;
-}
 
-/* the icon on the left bottom */
-.sidebar-toggle {
-	background-color: transparent;
-	width: auto;
-	transform: translateX(240px);
-	transition: transform 250ms ease;
-	padding: 15px;
-}
-
-.sidebar-toggle span {
-	background-color: var(--color-secondary);
-	display: block;
-	margin-bottom: 4px;
-	width: 20px;
-	height: 3px;
-}
-
-/* ===== MARKDOWN SECTION ===== */
+/* =========================================
+   2. MARKDOWN SECTION (.markdown-section)
+   ========================================= */
 .content {
 	padding-top: 60px;
 	padding-bottom: 60px;
@@ -396,6 +340,111 @@ body.close .sidebar-toggle {
 	margin-top: 0 !important;
 }
 
+/* the markdown-section link overrides the global link styles */
+.anchor {
+	display: inline-block;
+	text-decoration: none;
+}
+
+.anchor:hover {
+	text-decoration: underline;
+	text-decoration-thickness: 3px;
+	text-decoration-color: var(--color-text-highlight);
+}
+
+.anchor span {
+	color: var(--color-text-link);
+}
+
+.markdown-section a {
+	font-weight: var(--font-weight-bold);
+}
+
+.markdown-section h1 a {
+	padding-top: 1rem;
+	margin: 1rem 0;
+	font-weight: var(--font-weight-normal);
+}
+
+.markdown-section h1 a span {
+	color: var(--color-text);
+	overflow-wrap: anywhere;
+	text-overflow: ellipsis;
+	font-size: 3rem;
+}
+
+.markdown-section h2 a {
+	margin: 3rem 0 0 0;
+	font-weight: var(--font-weight-normal);
+}
+
+.markdown-section h2 a span {
+	color: var(--color-secondary);
+	font-size: 1.5rem;
+}
+
+.markdown-section h3 a {
+	margin: 1rem 0 0 0;
+}
+
+.markdown-section h3 a span {
+	color: var(--color-text-dark);
+	font-size: 1.2rem;
+}
+
+.markdown-section h4 a,
+.markdown-section h5 a,
+.markdown-section h6 a {
+	margin: 1rem 0 0 0;
+}
+
+.markdown-section h4 a span,
+.markdown-section h5 a span,
+.markdown-section h6 a span {
+	color: var(--color-text-dark);
+	font-size: 1rem;
+}
+
+.markdown-section figure,
+.markdown-section p {
+	margin: 1.05em 0;
+}
+
+.markdown-section p,
+.markdown-section ul,
+.markdown-section ol {
+	line-height: 1.5rem;
+	word-spacing: 0.05rem;
+}
+
+.markdown-section ul,
+.markdown-section ol {
+	padding-left: 1.5rem;
+}
+
+.markdown-section ul.task-list>li {
+	list-style-type: none;
+}
+
+/* List Items with Checkbox */
+li input[type='checkbox'] {
+	margin: 0 0.2em 0.25em 0;
+	vertical-align: middle;
+}
+
+.markdown-section blockquote {
+	border-left: 4px solid var(--color-text-highlight);
+	color: var(--color-text-light);
+	margin: 2em 0;
+	padding-left: 1.2rem;
+	font-style: italic;
+}
+
+.markdown-section blockquote p {
+	font-weight: var(--font-weight-bold);
+	margin-left: 0;
+}
+
 .markdown-section hr {
 	border: none;
 	border-bottom: 1px solid var(--color-border);
@@ -403,52 +452,14 @@ body.close .sidebar-toggle {
 	margin: 4em 0 1em 0;
 }
 
-/* Images, iframes & other Box Models */
-.markdown-section img {
-	max-width: 100%;
-	border-radius: var(--border-radius);
-}
-
-.markdown-section iframe {
-	border: 1px solid var(--color-border-light);
-	border-radius: var(--border-radius);
-	/* fix horizontal overflow on iOS Safari */
-	width: 1px;
-	min-width: 100%;
-}
-
-/* table styles */
-.markdown-section table {
-	border-collapse: collapse;
-	border-spacing: 0;
-	display: block;
-	margin-bottom: 1rem;
-	overflow: auto;
-	width: 100%;
-	z-index: 1;
-}
-
-.markdown-section th {
-	border: 1px solid var(--color-border);
+.markdown-section em,
+.markdown-section b,
+.markdown-section strong {
+	color: var(--color-text-light);
 	font-weight: var(--font-weight-bold);
-
-	background-color: var(--color-table-header);
-	padding: 6px 13px;
 }
 
-.markdown-section td {
-	border: 1px solid var(--color-border);
-	padding: 6px 13px;
-}
-
-.markdown-section tr {
-	border: 1px solid var(--color-border);
-}
-
-.markdown-section tr:nth-child(2n) {
-	background-color: var(--color-table-even);
-}
-
+/* Callouts (Tips, Warnings) */
 .markdown-section p.tip {
 	color: var(--color-text-light);
 	background-color: var(--color-bg-code);
@@ -506,230 +517,50 @@ body.close .sidebar-toggle {
 	/* Adjust the size of the icon as needed */
 }
 
-.markdown-section ul.task-list>li {
-	list-style-type: none;
+/* table styles */
+.markdown-section table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	display: block;
+	margin-bottom: 1rem;
+	overflow: auto;
+	width: 100%;
+	z-index: 1;
 }
 
-.markdown-section a {
+.markdown-section th {
+	border: 1px solid var(--color-border);
 	font-weight: var(--font-weight-bold);
+	background-color: var(--color-table-header);
+	padding: 6px 13px;
 }
 
-.markdown-section h1 a {
-	padding-top: 1rem;
-	margin: 1rem 0;
-	font-weight: var(--font-weight-normal);
+.markdown-section td {
+	border: 1px solid var(--color-border);
+	padding: 6px 13px;
 }
 
-.markdown-section h1 a span {
-	color: var(--color-text);
-	overflow-wrap: anywhere;
-	text-overflow: ellipsis;
-	font-size: 3rem;
+.markdown-section tr {
+	border: 1px solid var(--color-border);
 }
 
-.markdown-section h2 a {
-	margin: 3rem 0 0 0;
-	font-weight: var(--font-weight-normal);
+.markdown-section tr:nth-child(2n) {
+	background-color: var(--color-table-even);
 }
 
-.markdown-section h2 a span {
-	color: var(--color-secondary);
-	font-size: 1.5rem;
-}
-
-.markdown-section h3 a {
-	margin: 1rem 0 0 0;
-}
-
-.markdown-section h3 a span {
-	color: var(--color-text-dark);
-	font-size: 1.2rem;
-}
-
-.markdown-section h4 a {
-	margin: 1rem 0 0 0;
-}
-
-.markdown-section h4 a span {
-	color: var(--color-text-dark);
-	font-size: 1rem;
-}
-
-.markdown-section h5 a {
-	margin: 1rem 0 0 0;
-}
-
-.markdown-section h5 a span {
-	color: var(--color-text-dark);
-	font-size: 1rem;
-}
-
-.markdown-section h6 a {
-	margin: 1rem 0 0 0;
-}
-
-.markdown-section h6 a span {
-	color: var(--color-text-dark);
-	font-size: 1rem;
-}
-
-.markdown-section figure,
-.markdown-section p {
-	margin: 1.05em 0;
-}
-
-.markdown-section p,
-.markdown-section ul,
-.markdown-section ol {
-	line-height: 1.5rem;
-	word-spacing: 0.05rem;
-}
-
-.markdown-section ul,
-.markdown-section ol {
-	padding-left: 1.5rem;
-}
-
-.markdown-section blockquote {
-	border-left: 4px solid var(--color-text-highlight);
-	color: var(--color-text-light);
-	margin: 2em 0;
-	padding-left: 1.2rem;
-	font-style: italic;
-}
-
-.markdown-section blockquote p {
-	font-weight: var(--font-weight-bold);
-	margin-left: 0;
-}
-
-.markdown-section iframe {
-	margin: -0.75em 0;
-}
-
-.markdown-section em,
-.markdown-section b,
-.markdown-section strong {
-	color: var(--color-text-light);
-	font-weight: var(--font-weight-bold);
-}
-
-.markdown-section code,
-.markdown-section pre,
-.markdown-section output::after {
-	font-family: var(--font-monospace);
-}
-
-.markdown-section code,
-.markdown-section pre {
-	background-color: var(--color-bg-code);
+/* Images, iframes & other Box Models */
+.markdown-section img {
+	max-width: 100%;
 	border-radius: var(--border-radius);
 }
 
-.markdown-section pre,
-.markdown-section output {
-	/* here! */
-	margin: 1.2em 0;
-	position: relative;
-}
-
-.markdown-section pre>code,
-.markdown-section output {
-	border-radius: 2px;
-	display: block;
-}
-
-.markdown-section pre>code,
-.markdown-section output::after {
-	-moz-osx-font-smoothing: initial;
-	-webkit-font-smoothing: initial;
-}
-
-.markdown-section code {
-	border-radius: 2px;
-	color: var(--color-code-keyword-function);
-	margin: 0 2px;
-	padding: 3px 5px;
-	white-space: pre-wrap;
-}
-
-.markdown-section> :not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) code {
-	font-size: 0.9rem;
-}
-
-/* unify all pre/code block styling */
-.markdown-section pre {
-	background-color: #f9fafc;
-	border-radius: 12px;
-	padding: 1.2rem 1.4rem;
-	margin: 1.6rem 0;
-	overflow-x: auto;
-	position: relative;
-	font-family: 'Fira Code', monospace;
-	font-size: 0.95rem;
-	line-height: 1.6rem;
-	box-shadow: 0 0 0 1px #e5e7eb;
-}
-
-/* ensure inline code isn’t affected */
-.markdown-section pre>code {
-	background: none;
-	padding: 0;
-	margin: 0;
-	display: block;
-	color: #1e1e2f;
-	white-space: pre-wrap;
-	word-wrap: break-word;
-}
-
-.markdown-section p+pre {
-	margin-top: 0.5rem;
-}
-
-.markdown-section pre+p {
-	margin-top: 0.5rem;
-}
-
-.markdown-section output {
-	padding: 1.7rem 1.4rem;
-	border: 1px dotted #ccc;
-}
-
-.markdown-section output> :first-child {
-	margin-top: 0;
-}
-
-.markdown-section output> :last-child {
-	margin-bottom: 0;
-}
-
-.markdown-section code::after,
-.markdown-section code::before,
-.markdown-section output::after,
-.markdown-section output::before {
-	letter-spacing: 0.05rem;
-}
-
-/* code language that appears the right top corner*/
-.markdown-section pre::after,
-.markdown-section output::after {
-	color: var(--color-tertiary);
-	font-size: 0.8rem;
-	font-family: var(--body-font-family);
-	font-weight: var(--font-weight-bold);
-	text-align: right;
-	line-height: 0.9rem;
-
-	height: 0.9rem;
-	position: absolute;
-	right: 0;
-	top: 0;
-	padding: 0.6rem 0.9rem 0;
-}
-
-.markdown-section pre::after,
-.markdown-section output::after {
-	content: attr(data-lang);
+.markdown-section iframe {
+	border: 1px solid var(--color-border-light);
+	border-radius: var(--border-radius);
+	/* fix horizontal overflow on iOS Safari */
+	width: 1px;
+	min-width: 100%;
+	margin: -0.75em 0;
 }
 
 /* for header images on each page */
@@ -750,120 +581,145 @@ body.close .sidebar-toggle {
 	max-height: 1rem;
 }
 
-section.cover {
-	position: relative;
-	align-items: center;
-	background-position: center center;
-	background-repeat: no-repeat;
-	background-size: cover;
-	min-height: 100vh;
-	width: 100%;
-	display: none;
-}
-
-section.cover.show {
-	display: flex;
-}
-
-section.cover.has-mask .mask {
-	background-color: #fff;
-	opacity: 0.8;
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	width: 100%;
-}
-
-section.cover .cover-main {
-	flex: 1;
-	margin: 0 16px;
-	text-align: center;
-	position: relative;
-}
-
-section.cover a {
-	color: inherit;
-	text-decoration: none;
-}
-
-section.cover a:hover {
-	text-decoration: none;
-}
-
-section.cover p {
-	line-height: 1.5rem;
-	margin: 1em 0;
-}
-
-section.cover h1 {
-	color: inherit;
-	font-size: 2.5rem;
-	font-weight: var(--font-weight-light);
-	margin: 0.625rem 0 2.5rem;
-	position: relative;
-	text-align: center;
-}
-
-section.cover h1 a {
-	display: block;
-}
-
-section.cover h1 small {
-	bottom: -0.4375rem;
-	font-size: 1rem;
-	position: absolute;
-}
-
-section.cover blockquote {
-	font-size: 1.5rem;
-	text-align: center;
-}
-
-section.cover ul {
-	line-height: 1.8;
-	list-style-type: none;
-	margin: 1em auto;
-	max-width: 500px;
-	padding: 0;
-}
-
-section.cover .cover-main>p:last-child a {
-	border-color: var(--color-secondary);
-	border-radius: 2rem;
-	border-style: solid;
-	border-width: 1px;
-	box-sizing: border-box;
-	color: var(--color-secondary);
+/* Keyboard Input */
+/* not used? Consider removing this. */
+kbd {
+	border: solid 1px var(--color-border-dark);
+	border-radius: 3px;
 	display: inline-block;
-	font-size: 1.05rem;
-	letter-spacing: 0.1rem;
-	margin: 0.5rem 1rem;
-	padding: 0.75em 2rem;
-	text-decoration: none;
-	transition: all 0.15s ease;
+	font-size: 12px !important;
+	line-height: 12px;
+	margin-bottom: 3px;
+	padding: 3px 5px;
+	vertical-align: middle;
 }
 
-section.cover .cover-main>p:last-child a:last-child {
-	background-color: var(--color-secondary);
-	color: #fff;
+/* Emoji */
+/* the two below are not used. */
+img.emoji {
+	height: 1.2em;
+	vertical-align: middle;
 }
 
-section.cover .cover-main>p:last-child a:last-child:hover {
-	color: inherit;
-	opacity: 0.8;
+span.emoji {
+	font-size: 1.2em;
+	vertical-align: middle;
 }
 
-section.cover .cover-main>p:last-child a:hover {
-	color: inherit;
+
+/* =========================================
+   3. CODE BLOCKS & SYNTAX HIGHLIGHTING
+   ========================================= */
+
+/* Unified fonts for code elements */
+.markdown-section code,
+.markdown-section pre,
+.markdown-section output::after {
+	font-family: var(--font-monospace);
 }
 
-section.cover blockquote>p>a {
-	border-bottom: 2px solid var(--color-secondary);
-	transition: color 0.3s;
+.markdown-section code::after,
+.markdown-section code::before,
+.markdown-section output::after,
+.markdown-section output::before {
+	letter-spacing: 0.05rem;
 }
 
-section.cover blockquote>p>a:hover {
-	color: var(--color-secondary);
+/* Block level (pre) */
+.markdown-section pre {
+	/* unify all pre/code block styling */
+	position: relative;
+	background-color: #f9fafc;
+	border-radius: 12px;
+	padding: 0;
+	/* here! */
+	margin: 1.6rem 0;
+	overflow: hidden;
+	font-family: 'Fira Code', monospace;
+	box-shadow: 0 0 0 1px #e5e7eb;
+}
+
+.markdown-section p+pre,
+.markdown-section pre+p {
+	margin-top: 0.5rem;
+}
+
+/* hide default Docsify label */
+.markdown-section pre::after,
+.markdown-section output::after {
+	content: none !important;
+}
+
+/* code language that appears the right top corner*/
+.markdown-section pre::before {
+	content: attr(data-lang);
+	position: absolute;
+	top: 10px;
+	right: 42px;
+	/* move left to make room for button */
+	background: #e0e7ff;
+	color: #1e1e2f;
+	font-size: 0.72rem;
+	font-weight: bold;
+	padding: 1px 7px;
+	border-radius: 6px;
+	text-transform: lowercase;
+	z-index: 10;
+	pointer-events: none;
+}
+
+/* actual code block */
+/* ensure inline code isn’t affected */
+.markdown-section pre>code {
+	display: block;
+	background: #fff;
+	color: #1e1e2f;
+	padding: 1.2rem 1.4rem;
+	margin: 0;
+	font-size: 0.95rem;
+	line-height: 1.6rem;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+	border-radius: 0;
+}
+
+/* Font Smoothing fix */
+.markdown-section pre>code,
+.markdown-section output::after {
+	-moz-osx-font-smoothing: initial;
+	-webkit-font-smoothing: initial;
+}
+
+/* Inline code */
+.markdown-section code {
+	background-color: var(--color-bg-code);
+	border-radius: 2px;
+	color: var(--color-code-keyword-function);
+	margin: 0 2px;
+	padding: 3px 5px;
+	white-space: pre-wrap;
+}
+
+.markdown-section> :not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) code {
+	font-size: 0.9rem;
+}
+
+/* Output block */
+.markdown-section output {
+	margin: 1.2em 0;
+	position: relative;
+	display: block;
+	padding: 1.7rem 1.4rem;
+	border: 1px dotted #ccc;
+	border-radius: 2px;
+}
+
+.markdown-section output> :first-child {
+	margin-top: 0;
+}
+
+.markdown-section output> :last-child {
+	margin-bottom: 0;
 }
 
 /* ===== CODE HIGHLIGHTING ===== */
@@ -975,6 +831,17 @@ code .token {
 	cursor: help;
 }
 
+.token.custom-highlight {
+	color: var(--color-code-custom-highlight);
+	font-weight: var(--font-weight-bold);
+	/* font-style: italic; */
+}
+
+
+/* =========================================
+   4. CUSTOM UI COMPONENTS
+   ========================================= */
+
 /* ===== BUTTONS ===== */
 .button {
 	display: flex;
@@ -1034,117 +901,9 @@ code .token {
 
 /* Copy to clipboard button */
 /* .docsify-copy-code-button {
-	font-size: 0.8rem;
-	border-radius: 0 var(--border-radius);
+  font-size: 0.8rem;
+  border-radius: 0 var(--border-radius);
 } */
-
-/* ===== RESPONSIVE STYLES ===== */
-@media screen and (max-width: 700px) {
-	.navbar .menu {
-		display: none !important;
-	}
-
-	#demo,
-	.demo-iframe {
-		display: none !important;
-	}
-}
-
-@media screen and (min-width: 700px) {
-	.navbar {
-		/* padding: 0 0.5em; */
-	}
-}
-
-@media print {
-
-	.sidebar-toggle,
-	.sidebar,
-	.app-nav,
-	#banner {
-		display: none;
-	}
-}
-
-@media screen and (max-width: 1060px) {
-
-	.sidebar-toggle,
-	.sidebar {
-		position: fixed;
-	}
-
-	.app-nav li ul {
-		top: 30px;
-	}
-
-	main {
-		height: auto;
-		min-height: 100vh;
-		overflow-x: hidden;
-	}
-
-	/* sidebar toggle */
-	body.close .sidebar {
-		transform: translateX(300px);
-	}
-
-	body.close .sidebar-toggle {
-		transform: translateX(240px);
-	}
-
-	/* the icon on the left bottom */
-	.sidebar-toggle {
-		transform: translateX(0px);
-	}
-
-	.sidebar {
-		left: -300px;
-		transition: transform 250ms ease;
-	}
-
-	.content {
-		left: 0;
-		width: 100%;
-		max-width: 100vw;
-		padding-top: 60px;
-	}
-
-	.markdown-section {
-		max-width: 80%;
-	}
-
-	/* Good suggestion! But's let's try without it for a while. (M) */
-	/* footer {
-    flex-direction: column;
-  } */
-
-	/*
-  .footer-logo {
-    display: none;
-    margin: auto;
-    width: 30%;
-  } */
-}
-
-/* this can be removed..? */
-/* ===== KEY FRAMES ===== */
-@keyframes octocat-wave {
-
-	0%,
-	100% {
-		transform: rotate(0);
-	}
-
-	20%,
-	60% {
-		transform: rotate(-25deg);
-	}
-
-	40%,
-	80% {
-		transform: rotate(10deg);
-	}
-}
 
 /* ===== COPY BUTTON ===== */
 .copy-icon-button {
@@ -1192,53 +951,6 @@ code .token {
 
 .copy-toast.visible {
 	opacity: 1;
-}
-
-/* ===== CODE BLOCKS CONTAINER ===== */
-.markdown-section pre {
-	position: relative;
-	background: #f9fafc;
-	border-radius: 12px;
-	padding: 0;
-	margin: 2em 0;
-	overflow: hidden;
-	font-family: 'Fira Code', monospace;
-}
-
-/* top-right language label */
-.markdown-section pre::before {
-	content: attr(data-lang);
-	position: absolute;
-	top: 10px;
-	right: 42px;
-	/* move left to make room for button */
-	background: #e0e7ff;
-	color: #1e1e2f;
-	font-size: 0.72rem;
-	font-weight: bold;
-	padding: 1px 7px;
-	border-radius: 6px;
-	text-transform: lowercase;
-	z-index: 10;
-	pointer-events: none;
-}
-
-/* hide default Docsify label */
-.markdown-section pre::after,
-.markdown-section output::after {
-	content: none !important;
-}
-
-/* actual code block */
-.markdown-section pre>code {
-	display: block;
-	background: #fff;
-	color: #1e1e2f;
-	padding: 1.2rem 1.4rem;
-	font-size: 0.95rem;
-	line-height: 1.5rem;
-	white-space: pre-wrap;
-	word-wrap: break-word;
 }
 
 /* ===== INLINE COMMENT EXPLANATIONS ===== */
@@ -1364,4 +1076,238 @@ pre[data-lang='processing']::before {
 	background: #fff0f5;
 	/* blush */
 	color: #5c2a3c;
+}
+
+
+/* =========================================
+   5. COVER PAGE (section.cover)
+   ========================================= */
+section.cover {
+	position: relative;
+	align-items: center;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	min-height: 100vh;
+	width: 100%;
+	display: none;
+}
+
+section.cover.show {
+	display: flex;
+}
+
+section.cover.has-mask .mask {
+	background-color: #fff;
+	opacity: 0.8;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+}
+
+section.cover .cover-main {
+	flex: 1;
+	margin: 0 16px;
+	text-align: center;
+	position: relative;
+}
+
+section.cover a {
+	color: inherit;
+	text-decoration: none;
+}
+
+section.cover a:hover {
+	text-decoration: none;
+}
+
+section.cover p {
+	line-height: 1.5rem;
+	margin: 1em 0;
+}
+
+section.cover h1 {
+	color: inherit;
+	font-size: 2.5rem;
+	font-weight: var(--font-weight-light);
+	margin: 0.625rem 0 2.5rem;
+	position: relative;
+	text-align: center;
+}
+
+section.cover h1 a {
+	display: block;
+}
+
+section.cover h1 small {
+	bottom: -0.4375rem;
+	font-size: 1rem;
+	position: absolute;
+}
+
+section.cover blockquote {
+	font-size: 1.5rem;
+	text-align: center;
+}
+
+section.cover ul {
+	line-height: 1.8;
+	list-style-type: none;
+	margin: 1em auto;
+	max-width: 500px;
+	padding: 0;
+}
+
+section.cover .cover-main>p:last-child a {
+	border-color: var(--color-secondary);
+	border-radius: 2rem;
+	border-style: solid;
+	border-width: 1px;
+	box-sizing: border-box;
+	color: var(--color-secondary);
+	display: inline-block;
+	font-size: 1.05rem;
+	letter-spacing: 0.1rem;
+	margin: 0.5rem 1rem;
+	padding: 0.75em 2rem;
+	text-decoration: none;
+	transition: all 0.15s ease;
+}
+
+section.cover .cover-main>p:last-child a:last-child {
+	background-color: var(--color-secondary);
+	color: #fff;
+}
+
+section.cover .cover-main>p:last-child a:last-child:hover {
+	color: inherit;
+	opacity: 0.8;
+}
+
+section.cover .cover-main>p:last-child a:hover {
+	color: inherit;
+}
+
+section.cover blockquote>p>a {
+	border-bottom: 2px solid var(--color-secondary);
+	transition: color 0.3s;
+}
+
+section.cover blockquote>p>a:hover {
+	color: var(--color-secondary);
+}
+
+
+/* =========================================
+   6. RESPONSIVE / MEDIA QUERIES
+   ========================================= */
+
+@media screen and (min-width: 700px) {
+	.navbar {
+		/* padding: 0 0.5em; */
+	}
+}
+
+@media screen and (max-width: 1060px) {
+
+	.sidebar-toggle,
+	.sidebar {
+		position: fixed;
+	}
+
+	.app-nav li ul {
+		top: 30px;
+	}
+
+	main {
+		height: auto;
+		min-height: 100vh;
+		overflow-x: hidden;
+	}
+
+	/* sidebar toggle */
+	body.close .sidebar {
+		transform: translateX(300px);
+	}
+
+	body.close .sidebar-toggle {
+		transform: translateX(240px);
+	}
+
+	/* the icon on the left bottom */
+	.sidebar-toggle {
+		transform: translateX(0px);
+	}
+
+	.sidebar {
+		left: -300px;
+		transition: transform 250ms ease;
+	}
+
+	.content {
+		left: 0;
+		width: 100%;
+		max-width: 100vw;
+		padding-top: 60px;
+	}
+
+	.markdown-section {
+		max-width: 80%;
+	}
+
+	/* Good suggestion! But's let's try without it for a while. (M) */
+	/* footer {
+    flex-direction: column;
+  } */
+
+	/*
+  .footer-logo {
+    display: none;
+    margin: auto;
+    width: 30%;
+  } */
+}
+
+@media screen and (max-width: 700px) {
+	.navbar .menu {
+		display: none !important;
+	}
+
+	#demo,
+	.demo-iframe {
+		display: none !important;
+	}
+}
+
+@media print {
+
+	.sidebar-toggle,
+	.sidebar,
+	.app-nav,
+	#banner {
+		display: none;
+	}
+}
+
+/* =========================================
+   7. KEY FRAMES
+   ========================================= */
+/* this can be removed..? */
+@keyframes octocat-wave {
+
+	0%,
+	100% {
+		transform: rotate(0);
+	}
+
+	20%,
+	60% {
+		transform: rotate(-25deg);
+	}
+
+	40%,
+	80% {
+		transform: rotate(10deg);
+	}
 }
