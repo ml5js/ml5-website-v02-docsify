@@ -1,12 +1,19 @@
+/* style-markdown.css */
+
 /* =========================================
    1. RESET & BASE
    ========================================= */
 * {
 	-webkit-overflow-scrolling: touch;
+	/* Use momentum-based scrolling on webkit browsers */
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	/* Remove tap highlight color on webkit browsers */
 	-webkit-text-size-adjust: none;
+	/* Prevent webkit browsers from adjusting the text size */
 	-webkit-touch-callout: none;
+	/* Disable the default callout shown on long press on webkit browsers */
 	box-sizing: border-box;
+	/* Include padding and border in element's total width and height */
 }
 
 html,
@@ -22,7 +29,7 @@ body {
 
 body {
 	-moz-osx-font-smoothing: grayscale;
-	letter-spacing: var(--body-letter-spacing);
+	letter-spacing: 0;
 	margin: 0;
 	overflow-x: hidden;
 }
@@ -50,6 +57,62 @@ div {
 /* =========================================
    2. GLOBAL TYPOGRAPHY
    ========================================= */
+h1,
+h2,
+h3,
+.markdown-section h1,
+.markdown-section h2,
+.markdown-section h3 {
+	font-family: var(--heading-font-family);
+	font-weight: var(--heading-font-weight);
+	letter-spacing: -0.03rem;
+	color: var(--heading-color);
+}
+
+h4,
+h5,
+h6,
+.markdown-section h4,
+.markdown-section h5,
+.markdown-section h6 {
+	font-family: var(--heading-small-font-family);
+	font-weight: var(--heading-font-weight);
+	color: var(--heading-color);
+}
+
+h1,
+.markdown-section h1 {
+	font-size: 2.3rem;
+	margin: 2rem 0 1.5rem 0;
+}
+
+h2,
+.markdown-section h2 {
+	font-size: 1.7rem;
+	color: var(--color-secondary);
+	margin: 1rem 0;
+}
+
+h3,
+.markdown-section h3 {
+	font-size: 1.5rem;
+}
+
+h4,
+.markdown-section h4 {
+	font-size: 1.3rem;
+}
+
+h5,
+.markdown-section h5 {
+	font-size: 1.15rem;
+}
+
+h6,
+.markdown-section h6 {
+	font-size: 1.0rem;
+}
+
 a {
 	text-decoration: none;
 	color: var(--link-color);
@@ -66,8 +129,9 @@ a[disabled] {
 }
 
 /* =========================================
-   3. DOCSIFY LAYOUT & NAVIGATION
+   3. DOCSIFY APP LAYOUT & NAVIGATION
    ========================================= */
+/* main tag */
 main {
 	display: block;
 	position: relative;
@@ -80,6 +144,7 @@ main.hidden {
 	display: none;
 }
 
+/* ===== LOADING PROGRESS ===== */
 body:not(.ready) {
 	overflow: hidden;
 }
@@ -113,12 +178,16 @@ div#app:empty::before {
 	z-index: 999999;
 }
 
+/* ===== TOP NAVIGATION BAR ===== */
+/* Doscify's default styles */
 .github-corner {
 	/* quick fix for the github corner */
 	/* We don't use it */
 	display: none;
 }
 
+/* Doscify will add the "app-nav" class to the <nav> element using JS. */
+/* We use .navbar for custom styles */
 .navbar {
 	width: 100%;
 	height: calc(3.5rem + 1px);
@@ -168,6 +237,7 @@ div#app:empty::before {
 	margin-left: 0;
 }
 
+/* ===== SIDEBAR ===== */
 .sidebar {
 	padding: 1rem 0;
 	margin-top: calc(3.5rem + 1px);
@@ -272,21 +342,11 @@ div#app:empty::before {
 	background: rgba(var(--color-sidebar-scrollbar-rgb), 0.1);
 }
 
-.sidebar::-webkit-scrollbar {
-	width: 4px;
-}
-
-.sidebar::-webkit-scrollbar-thumb {
-	background: transparent;
-	border-radius: 4px;
-}
-
-.sidebar:hover::-webkit-scrollbar-thumb {
-	background: rgba(var(--color-sidebar-scrollbar-rgb), 0.4);
-}
-
-.sidebar:hover::-webkit-scrollbar-track {
-	background: rgba(var(--color-sidebar-scrollbar-rgb), 0.1);
+/* bullet shape for the list */
+.app-sub-sidebar li::before {
+	content: '•';
+	padding-right: 0.4rem;
+	float: left;
 }
 
 /* the horizontal line */
@@ -320,6 +380,7 @@ div#app:empty::before {
 	font-weight: var(--font-weight-bold);
 }
 
+/* ===== SIDEBAR TOGGLE ===== */
 .sidebar-toggle {
 	/* the icon on the left bottom */
 	background-color: rgba(var(--color-sidebar-toggle-bg-rgb), 0.8);
@@ -467,6 +528,7 @@ footer {
 /* =========================================
    4. MARKDOWN SECTION
    ========================================= */
+/* ===== MARKDOWN SECTION ===== */
 .content {
 	padding-top: 60px;
 	padding-bottom: 60px;
@@ -516,61 +578,34 @@ footer {
 	font-weight: var(--font-weight-bold);
 }
 
+.markdown-section h1 a,
+.markdown-section h2 a,
+.markdown-section h3 a,
+.markdown-section h4 a,
+.markdown-section h5 a,
+.markdown-section h6 a {
+	font-weight: inherit;
+}
+
 .markdown-section h1 a {
 	padding-top: 1rem;
-	margin: 1rem 0;
-	font-weight: var(--heading-font-weight);
 }
 
 .markdown-section h1 a span {
 	color: var(--color-text);
 	overflow-wrap: anywhere;
 	text-overflow: ellipsis;
-	font-size: 2.3rem;
-	font-family: var(--heading-font-family);
 }
 
 .markdown-section h2 a {
 	margin: 3rem 0 0 0;
-	font-weight: var(--heading-font-weight);
 }
 
 .markdown-section h2 a span {
 	color: var(--color-secondary);
-	font-size: 1.7rem;
-	font-family: var(--heading-font-family);
 }
 
-.markdown-section h3 a {
-	margin: 1rem 0 0 0;
-}
-
-.markdown-section h3 a span {
-	color: var(--color-text-dark);
-	font-size: 1.5rem;
-	font-family: var(--heading-font-family);
-}
-
-.markdown-section h4 a span {
-	color: var(--color-text-dark);
-	font-size: 1.3rem;
-	font-family: var(--heading-small-font-family);
-}
-
-.markdown-section h5 a span {
-	color: var(--color-text-dark);
-	font-size: 1.15rem;
-	font-family: var(--heading-small-font-family);
-}
-
-.markdown-section h6 a span {
-	color: var(--color-text-dark);
-	font-size: 1.0rem;
-	font-family: var(--heading-small-font-family);
-}
-
-.markdown-section figure,
-.markdown-section p {
+.markdown-section figure {
 	margin: 1.05em 0;
 }
 
@@ -672,6 +707,7 @@ li input[type='checkbox'] {
 	/* Adjust the size of the icon as needed */
 }
 
+/* table styles */
 .markdown-section table {
 	border-collapse: collapse;
 	border-spacing: 0;
@@ -702,6 +738,7 @@ li input[type='checkbox'] {
 	background-color: var(--color-table-even);
 }
 
+/* Images, iframes & other Box Models */
 .markdown-section img {
 	max-width: 100%;
 	border-radius: var(--border-radius);
@@ -734,6 +771,7 @@ li input[type='checkbox'] {
 	max-height: 1rem;
 }
 
+/* Keyboard Input */
 /* not used? Consider removing this. */
 kbd {
 	border: solid 1px var(--color-border-dark);
@@ -746,6 +784,7 @@ kbd {
 	vertical-align: middle;
 }
 
+/* Emoji */
 /* the two below are not used. */
 img.emoji {
 	height: 1.2em;
@@ -761,6 +800,7 @@ span.emoji {
 /* =========================================
    5. CODE BLOCKS & SYNTAX HIGHLIGHTING
    ========================================= */
+/* ===== CODE BLOCKS CONTAINER ===== */
 .markdown-section code,
 .markdown-section pre,
 .markdown-section output::after {
@@ -798,6 +838,7 @@ span.emoji {
 	content: none !important;
 }
 
+/* top-right language label */
 /* code language that appears the right top corner*/
 .markdown-section pre::before {
 	content: attr(data-lang);
@@ -867,6 +908,7 @@ span.emoji {
 	margin-bottom: 0;
 }
 
+/* ===== CODE HIGHLIGHTING ===== */
 code .token {
 	-moz-osx-font-smoothing: initial;
 	-webkit-font-smoothing: initial;
@@ -984,6 +1026,7 @@ code .token {
 /* =========================================
    6. CUSTOM UI COMPONENTS
    ========================================= */
+/* ===== BUTTONS ===== */
 .button {
 	display: flex;
 	justify-content: center;
@@ -1036,11 +1079,13 @@ code .token {
 	top: -50%;
 }
 
+/* Copy to clipboard button */
 /* .docsify-copy-code-button {
   font-size: 0.8rem;
   border-radius: 0 var(--border-radius);
 } */
 
+/* ===== COPY BUTTON ===== */
 .copy-icon-button {
 	position: absolute;
 	top: -20px;
@@ -1088,6 +1133,7 @@ code .token {
 	opacity: 1;
 }
 
+/* ===== INLINE COMMENT EXPLANATIONS ===== */
 .code-comment-wrapper {
 	display: block;
 	background: #f9fafc;
@@ -1166,6 +1212,7 @@ code .token {
 	display: none;
 }
 
+/* ===== LANGUAGE LABEL COLORS ===== */
 .code-comment-wrapper[data-lang='js']::before,
 .code-comment-wrapper[data-lang='javascript']::before,
 pre[data-lang='js']::before,
@@ -1207,8 +1254,6 @@ pre[data-lang='processing']::before {
 
 /* =========================================
    7. COVER PAGE
-	 (We don't use this!)
-	 (Docsify's default setting; we keep it here for reference.)
    ========================================= */
 section.cover {
 	position: relative;
@@ -1332,6 +1377,7 @@ section.cover blockquote>p>a:hover {
 /* =========================================
    8. RESPONSIVE / MEDIA QUERIES
    ========================================= */
+/* ===== RESPONSIVE STYLES ===== */
 @media (max-width: 768px) {
 	#banner {
 		display: none;
@@ -1422,6 +1468,7 @@ section.cover blockquote>p>a:hover {
 	}
 }
 
+/* ===== KEY FRAMES ===== */
 /* this can be removed..? */
 @keyframes octocat-wave {
 
