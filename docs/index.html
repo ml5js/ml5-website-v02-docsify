@@ -344,14 +344,25 @@ TO-DOs
 
 	<!-- Custom Styling in Code Block -->
 	<script>
+		// custom highlight for specific keywords in code blocks
 		Prism.languages.insertBefore('javascript', 'keyword', {
-			'custom-highlight': /\b(async|await|anyWord1|anyWord2)\b/
+			'custom-highlight': /\b(function|add|more)\b/,
+			'custom-highlight-1': /\b(async|await|add|more)\b/,
+			'custom-highlight-2': /\b(add|more)\b/
+		});
+
+		// custom wrap for comment symbols (//) to preserve copy functionality
+		Prism.hooks.add('wrap', function (env) {
+			if (env.type === 'comment') {
+				env.content = env.content.replace(/^(\/\/\s*)/, '<span class="hide-slash">$1</span>');
+			}
 		});
 	</script>
 
 	<!-- Copy to clipboard -->
-	<!-- <script src="//unpkg.com/docsify-copy-code"></script> -->
-	<!-- <script src="https://unpkg.com/docsify-copy-code/dist/docsify-copy-code.min.js"></script> -->
+	<!-- We don't use this as Yafira made our custom one! -->
+	<!-- <script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script> -->
+
 
 	<!-- docsify-tabs (latest v1.x.x) -->
 	<script src="https://cdn.jsdelivr.net/npm/docsify-tabs@1"></script>

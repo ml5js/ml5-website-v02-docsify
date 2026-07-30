@@ -53,40 +53,28 @@ Import the ml5.js library in your `index.html` file.
 
 ### Load model
 
-Let's open the `sketch.js` file and define a variable to store the HandPose model.
+Let's open the `sketch.js` file in the p5.js Web Editor and follow the steps below to load the model. Using `async` and `await` ensures that the model is fully loaded before the draw() function begins.
 
 ```javascript
-let handPose;
-```
+let handPose; // Define a variable to store the HandPose model.
 
-Now, we can load the HandPose model in the `preload` function. Using the `preload` function ensures that the model is loaded before the `setup` and `draw` functions are called.
-
-```javascript
-function preload() {
-  handPose = ml5.handPose();
+async function setup() { // Make sure to add "async" before "function setup()".
+  handPose = await ml5.handPose(); // Wait until the HandPose model is fully loaded.
 }
 ```
 
+?> Please note that this syntax is supported starting with p5.js 2.0. Find out how to change the p5.js version here!
+
 ### Fetch webcam video
 
-Let's define a variable `video` to store the webcam video.
-
 ```javascript
-let video;
-```
 
-Resize the canvas dimensions to 640x480, a common resolution for webcams.
+let video; // Let's define a variable `video` to store the webcam video.
 
-```javascript
 function setup() {
-  createCanvas(640, 480);
-```
+  createCanvas(640, 480); // Resize the canvas dimensions to 640x480, a common resolution for webcams.
 
-Fetch the webcam video, resize it to fit the canvas, and hide it from the display.
-
-```javascript
-  // Create the video and hide it
-  video = createCapture(VIDEO);
+  video = createCapture(VIDEO); // Fetch the webcam video, resize it to fit the canvas, and hide it from the display.
   video.size(640, 480);
   video.hide();
 }
@@ -269,6 +257,7 @@ handPose.detectStop();
 For example, you can toggle the hand pose estimation with click event in p5.js by using this function as follows:
 
 ```javascript
+
 // Toggle detection when mouse is pressed
 function mousePressed() {
   toggleDetection();

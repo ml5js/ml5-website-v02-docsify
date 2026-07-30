@@ -885,6 +885,62 @@ span.emoji {
 	white-space: pre-wrap;
 }
 
+/*  */
+.markdown-section pre>code {
+	/* padding-right: 280px !important; */
+	/* box-sizing: border-box; */
+}
+
+/* custom styles for comments in code block */
+.token.comment {
+	display: block;
+	width: calc(50% - 1rem);
+	margin-left: auto;
+
+	white-space: normal;
+	word-break: break-word;
+	background-color: #f3f4f6;
+	color: var(--color-text-dark) !important;
+	font-family: var(--body-font-family) !important;
+	font-weight: var(--font-weight-normal) !important;
+	font-style: normal !important;
+	font-size: 0.95rem;
+	line-height: 1.5;
+	padding: 0.5rem 0.75rem;
+
+	/* 
+   * negative margins:
+   * - margin-top: Pulls block comment up to align with the code line.
+   * - margin-bottom: Removes markdown newline gap, snapping the next code line right below.
+   */
+	margin-top: -1.6rem;
+	margin-bottom: -1.6rem;
+}
+
+.token.comment:first-child {
+	/* the first comment needs extra top margin */
+	margin-top: 1.2rem;
+	margin-bottom: -1.6rem;
+}
+
+.token.comment .hide-slash {
+	font-size: 0;
+	opacity: 0;
+	pointer-events: none;
+}
+
+/* return the style in a mobile view */
+@media screen and (max-width: 768px) {
+	.token.comment {
+		width: 100%;
+		margin-left: 0;
+		margin-top: 0.5rem;
+		margin-bottom: 0.5rem;
+	}
+}
+
+/* ///// */
+
 .markdown-section> :not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) code {
 	font-size: 0.9rem;
 }
@@ -1015,6 +1071,16 @@ code .token {
 }
 
 .token.custom-highlight {
+	color: var(--color-tertiary);
+	font-weight: var(--font-weight-bold);
+}
+
+.token.custom-highlight-1 {
+	color: var(--color-code-custom-highlight);
+	font-weight: var(--font-weight-bold);
+}
+
+.token.custom-highlight-2 {
 	color: var(--color-code-custom-highlight);
 	font-weight: var(--font-weight-bold);
 }
