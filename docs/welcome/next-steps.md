@@ -42,8 +42,8 @@ Have you ever felt confused about a term we used here at ml5? No worries, we've 
 This playlist provides an introduction to developing creative coding projects with machine learning. The theory and application of machine learning algorithms is demonstrated in JavaScript using the p5.js and ml5.js libraries.
 <iframe width="560" height="315" src="https://www.youtube.com/embed/26uABexmOX4?si=HXJRrgTkPhjN5hrr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-## Join Community
+<!-- ## Join Community -->
 
-We are on [Discord](https://discord.com/invite/3CVauZMSt7). If you have any questions about ml5.js, would like to contribute to ml5.js, or simply want to share your project with a group of creative and talented people like you, don't hesitate to join us!
+<!-- We are on [Discord](https://discord.com/invite/3CVauZMSt7). If you have any questions about ml5.js, would like to contribute to ml5.js, or simply want to share your project with a group of creative and talented people like you, don't hesitate to join us! -->
 
 <br>
