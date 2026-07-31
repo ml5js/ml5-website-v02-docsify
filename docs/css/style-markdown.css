@@ -814,13 +814,14 @@ span.emoji {
 }
 
 .markdown-section pre {
-	/* unify all pre/code block styling */
 	position: relative;
 	background-color: #f9fafc;
 	border-radius: 12px;
-	padding: 0;
-	/* here! */
+
+	/* adjust paddings and margins here for code block! */
 	margin: 1.6rem 0;
+	padding: 1.6rem 0;
+
 	overflow: hidden;
 	font-family: 'Fira Code', monospace;
 	box-shadow: 0 0 0 1px #e5e7eb;
@@ -855,11 +856,10 @@ span.emoji {
 	pointer-events: none;
 }
 
-/* actual code block */
-/* ensure inline code isn’t affected */
+/* CUSTOM CODE BLOCK */
+/* This will also change the inline code style. */
 .markdown-section pre>code {
 	display: block;
-	background: #fff;
 	color: #1e1e2f;
 	padding: 1.2rem 1.4rem;
 	margin: 0;
@@ -883,12 +883,6 @@ span.emoji {
 	margin: 0 2px;
 	padding: 3px 5px;
 	white-space: pre-wrap;
-}
-
-/*  */
-.markdown-section pre>code {
-	/* padding-right: 280px !important; */
-	/* box-sizing: border-box; */
 }
 
 /* custom styles for comments in code block */
@@ -939,7 +933,7 @@ span.emoji {
 	}
 }
 
-/* ///// */
+/* CUSTOM CODE BLOCK (end) */
 
 .markdown-section> :not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) code {
 	font-size: 0.9rem;
@@ -1071,17 +1065,17 @@ code .token {
 }
 
 .token.custom-highlight {
-	color: var(--color-tertiary);
+	color: var(--color-code-custom-highlight);
 	font-weight: var(--font-weight-bold);
 }
 
 .token.custom-highlight-1 {
-	color: var(--color-code-custom-highlight);
+	color: var(--color-code-custom-highlight-1);
 	font-weight: var(--font-weight-bold);
 }
 
 .token.custom-highlight-2 {
-	color: var(--color-code-custom-highlight);
+	color: var(--color-code-custom-highlight-2);
 	font-weight: var(--font-weight-bold);
 }
 
@@ -1142,8 +1136,8 @@ code .token {
 }
 
 /* .docsify-copy-code-button {
-  font-size: 0.8rem;
-  border-radius: 0 var(--border-radius);
+	font-size: 0.8rem;
+	border-radius: 0 var(--border-radius);
 } */
 
 .copy-icon-button {

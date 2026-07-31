@@ -63,7 +63,9 @@
 	--color-code-deleted: #202746;
 	--color-code-inserted: #202746;
 	--color-code-important: #ff00c8;
-	--color-code-custom-highlight: #f66;
+	--color-code-custom-highlight: var(--color-secondary);
+	--color-code-custom-highlight-1: var(--color-quaternary);
+	--color-code-custom-highlight-2: var(--color-tertiary);
 
 	--font-serif: "Arvo", serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 	--font-sans-serif: "Lato", system-ui, -apple-system, "Helvetica", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
