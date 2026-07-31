@@ -9,6 +9,13 @@
 	box-sizing: border-box;
 }
 
+/* new way in Docsify v5 to add scroll padding at the top */
+:root {
+	--scroll-padding-top: 30px;
+	--_button-size: 100px;
+	--_content-size: 100px;
+}
+
 html,
 body {
 	height: 100%;
@@ -169,7 +176,7 @@ div#app:empty::before {
 }
 
 .sidebar {
-	padding: 1rem 0;
+	padding: 1rem 0 1rem 1.6rem;
 	margin-top: calc(3.5rem + 1px);
 	position: absolute;
 	top: 0;
@@ -214,13 +221,19 @@ div#app:empty::before {
 	display: none;
 }
 
+/* for sidebar title (first) and second-level items */
 .sidebar ul {
-	/* font for sidebar title  */
-	margin: 0 0 0 1.6rem;
-	padding: 0;
 	font-family: var(--body-font-family);
 	font-size: 1rem;
 	list-style: none;
+	padding-left: 0 !important;
+	margin-left: 0 !important;
+}
+
+/* for third-level items and beyond */
+.sidebar-nav ul ul ul {
+	padding-left: 1.0rem !important;
+	line-height: 1.4rem;
 }
 
 .sidebar li>p {
@@ -306,9 +319,12 @@ div#app:empty::before {
 
 /* custom global search wrapper: aligns input and results with sidebar-nav */
 .sidebar .search {
+	/* had to hard code this number... */
+	/* otherwise the width will be slightly changing when searching. */
+	width: 244px;
 	border-bottom: none;
-	padding: 1.6rem 1.6rem 0 1.6rem;
-	width: 100%;
+	padding: 0.6rem 0 1.6rem 0;
+	margin: 0;
 	box-sizing: border-box;
 }
 
@@ -353,15 +369,39 @@ div#app:empty::before {
 	background: transparent;
 }
 
-/* Search result highlight keyword */
-.search .search-keyword {
-	color: var(--color-primary);
-	font-style: normal;
+.sidebar .search .results-status {
+	color: var(--color-text-light);
+	padding: 1.25rem 0 0 0;
+}
+
+.sidebar .search .results-panel .matching-post .title {
 	font-weight: var(--font-weight-bold);
 }
 
+.sidebar .search .results-panel .matching-post .content {
+	font-size: 0.85rem;
+	line-height: 1.2rem;
+}
+
+.sidebar .search .results-panel .matching-post mark {
+	background-color: rgba(97, 252, 255, 0.2);
+	color: var(--color-primary) !important;
+	font-weight: var(--font-weight-bold);
+}
+
+.sidebar .search .results-panel .matching-post a:hover {
+	color: var(--color-secondary);
+}
+
+.search .clear-button {
+	background-color: var(--color-secondary);
+	width: 1.6rem;
+	height: 1.6rem;
+	/* also check the script in index.html */
+}
+
+/* the icon on the left bottom */
 .sidebar-toggle {
-	/* the icon on the left bottom */
 	background-color: rgba(var(--color-sidebar-toggle-bg-rgb), 0.8);
 	border: 0;
 	outline: none;
@@ -504,9 +544,11 @@ footer {
 }
 
 /* =========================================
-   4. MARKDOWN SECTION
+   MARKDOWN SECTION
    ========================================= */
-.content {
+
+/* We need main> so that .content style won't apply to other elements (for example, .content inside the search result.) */
+main>.content {
 	padding-top: 60px;
 	padding-bottom: 60px;
 	width: calc(100% - 300px);
@@ -656,60 +698,50 @@ li input[type='checkbox'] {
 	font-weight: var(--font-weight-bold);
 }
 
-.markdown-section p.tip {
-	color: var(--color-text-light);
-	background-color: var(--color-bg-code);
-	border-radius: var(--border-radius);
-	margin: -2rem 0;
-	padding: 0.75rem 1.5rem 0.75rem 1.875rem;
-	position: relative;
-}
+/* DOCSIFY CALLOUTS (Tip & Important) */
 
-.markdown-section p.tip:before {
-	/* not used - we use an image instead. */
-	background-color: var(--color-tertiary);
-	border-radius: 100%;
-	color: #fff;
-	content: '!';
-	font-size: 0.8rem;
-	font-weight: var(--font-weight-bold);
-	left: -0.5rem;
-	line-height: 1rem;
-	position: absolute;
-	height: 1rem;
-	width: 1rem;
-	text-align: center;
-	top: 0.9rem;
-}
-
-.markdown-section p.tip code {
-	background-color: #efefef;
-}
-
-.markdown-section p.tip em {
-	color: #34495e;
-}
-
-.markdown-section p.warn {
-	/* check this color, if we use */
-	background: rgba(var(--color-warn-rgb), 0.03);
-	border: 1px solid rgba(var(--color-warn-rgb), 0.5);
+/* Tip (?>) */
+.markdown-section .tip {
+	background: rgba(var(--color-callout-tip-rgb), 0.03);
+	border: 1px solid rgba(var(--color-callout-tip-rgb), 0.5);
 	border-radius: var(--border-radius);
 	padding: 1rem 1rem 1rem 3.5rem;
 	position: relative;
-	/* Added left padding to make space for the icon */
 }
 
-.markdown-section p.warn::before {
+.markdown-section .tip::before {
 	content: '💡';
 	position: absolute;
 	left: 1rem;
 	top: 50%;
 	transform: translateY(-50%);
 	font-size: 1.8rem;
-	/* Position the icon inside the padding area */
-	/* Adjust the size of the icon as needed */
 }
+
+/* Important (!>) */
+.markdown-section .important {
+	background: rgba(var(--color-callout-important-rgb), 0.03);
+	border: 1px solid rgba(var(--color-callout-important-rgb), 0.5);
+	border-radius: var(--border-radius);
+	padding: 1rem 1rem 1rem 3.5rem;
+	position: relative;
+}
+
+.markdown-section .important::before {
+	content: '🦄';
+	position: absolute;
+	left: 1rem;
+	top: 50%;
+	transform: translateY(-50%);
+	font-size: 1.8rem;
+}
+
+.markdown-section .tip p,
+.markdown-section .important p {
+	margin: 0;
+}
+
+/* DOCSIFY CALLOUTS (end) */
 
 .markdown-section table {
 	border-collapse: collapse;
@@ -893,7 +925,8 @@ span.emoji {
 
 	white-space: normal;
 	word-break: break-word;
-	background-color: #f3f4f6;
+	/* background-color: #f3f4f6; */
+	background-color: #fff;
 	color: var(--color-text-dark) !important;
 	font-family: var(--body-font-family) !important;
 	font-weight: var(--font-weight-normal) !important;
@@ -1135,11 +1168,7 @@ code .token {
 	top: -50%;
 }
 
-/* .docsify-copy-code-button {
-	font-size: 0.8rem;
-	border-radius: 0 var(--border-radius);
-} */
-
+/* custom copy icon button */
 .copy-icon-button {
 	position: absolute;
 	top: -20px;

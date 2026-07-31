@@ -38,8 +38,8 @@
 
 	/* we use rgb values here to add transparency later. */
 	--color-footer-rgb: 125, 119, 218;
-	/* --color-footer-rgb is based on the secondary color, #7d77da */
-	--color-warn-rgb: 255, 90, 90;
+	--color-callout-tip-rgb: 255, 90, 90;
+	--color-callout-important-rgb: 136, 51, 255;
 	--color-sidebar-scrollbar-rgb: 136, 136, 136;
 	--color-sidebar-toggle-bg-rgb: 255, 255, 255;
 

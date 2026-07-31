@@ -63,7 +63,7 @@ async function setup() { // Make sure to add "async" before "function setup()".
 }
 ```
 
-?> Please note that this syntax is supported starting with p5.js 2.0. Find out how to change the p5.js version here!
+!> Please note that this syntax is supported starting with p5.js 2.0. Find out how to change the p5.js version here!
 
 ### Fetch webcam video
 
