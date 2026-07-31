@@ -1,5 +1,5 @@
 // ==========================================
-// Banner Functionality
+// Banner by Alan :D
 // ==========================================
 
 document.addEventListener('DOMContentLoaded', function () {

@@ -3,6 +3,7 @@
 // ==========================================
 
 (function () {
+  // Inspired by Yafira, her code was merged into the official docsify copy-code plugin!
   const prismCustomPlugin = function (hook) {
     const injectPrismRules = () => {
       if (typeof Prism !== 'undefined' && Prism.languages.javascript) {
@@ -53,6 +54,7 @@
     hook.doneEach(injectPrismRules);
   };
 
+  // Examples search by Ryan :D 
   const examplesSearchPlugin = function (hook) {
     hook.doneEach(function () {
       var input = document.getElementById('examples-search');
