@@ -46,10 +46,10 @@ Import the ml5.js library in your `index.html` file.
 ?> If you are not familiar with how to import the ml5.js library and need more detailed guidance, please check out our [Getting Started](/?id=set-up-ml5js) page.
 
 ### Load model
-Let's open the `sketch.js` file and define a variable to store the BodySegmentation model.
+Let's open the `sketch.js` file in the p5.js Web Editor and follow the steps below to load the model.
 
 ```javascript
-let bodySegmentation;
+let bodySegmentation; //Define a variable to store the BodySegmentation model.
 ```
 
 In this example, we would like to segment body parts from the webcam input. Let's specify the mask type as `parts` in the options object.
@@ -62,11 +62,12 @@ let options = {
 
 ?> You can also specify the mask type as `person` or `background` in the options object. For more information on the options object, please refer to the [Methods](/reference/body-segmentation?id=methods) section.
 
-Now, let's preload the BodySegmentation model with the specified options. Using the `preload` function ensures that the model is loaded before the `setup` and `draw` functions are called.
+Now, let's load the BodySegmentation model with the specified options. Using `async` and `await` ensures that the model is fully loaded before the `draw()` function begins.
 
 ```javascript
-function preload() {
-  bodySegmentation = ml5.bodySegmentation("BodyPix", options);
+async function setup() { // Make sure to add "async" before "function setup ()".
+  bodySegmentation = await ml5. bodySegmentation ("BodyPix", options); 
+  // Wait until the BodySegmentation model is fully loaded.
 }
 ```
 

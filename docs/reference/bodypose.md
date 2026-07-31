@@ -55,17 +55,13 @@ Import the ml5.js library in your `index.html` file by copying the following `<s
 
 ### Load model
 
-Open the `sketch.js` file. Define a variable to hold the bodyPose model.
+Let's open the `sketch.js` file in the p5.js Web Editor and follow the steps below to load the model. Using `async` and `await` ensures that the model is fully loaded before the `draw()` function begins.
 
 ```javascript
-let bodyPose;
-```
+let bodyPose; //Define a variable to hold the bodyPose model.
 
-Create a `preload()` function to load the bodyPose model.
-
-```code-comment javascript
-function preload() {
-  bodyPose = ml5.bodyPose();    // load the bodyPose model
+async function setup() { // Make sure to add "async" before "function setup ()".
+  bodyPose = await ml5. bodyPose (); // Wait until the bodyPose model is fully loaded.
 }
 ```
 
