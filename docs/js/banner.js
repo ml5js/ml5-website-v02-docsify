@@ -3,8 +3,8 @@
 // ==========================================
 
 document.addEventListener('DOMContentLoaded', function () {
-  let banner = document.getElementById('banner');
-  let closeBanner = document.getElementById('close-banner');
+  const banner = document.getElementById('banner');
+  const closeBanner = document.getElementById('close-banner');
 
   if (banner && closeBanner) {
     // Check if banner was previously dismissed

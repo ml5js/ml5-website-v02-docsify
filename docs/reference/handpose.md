@@ -56,25 +56,29 @@ Import the ml5.js library in your `index.html` file.
 Let's open the `sketch.js` file in the p5.js Web Editor and follow the steps below to load the model. Using `async` and `await` ensures that the model is fully loaded before the `draw()` function begins.
 
 ```javascript
-let handPose; // Define a variable to store the HandPose model.
-
-async function setup() { // Make sure to add "async" before "function setup()".
-  handPose = await ml5.handPose(); // Wait until the HandPose model is fully loaded.
+// Define a variable to store the HandPose model.
+let handPose;
+// Make sure to add "async" before "function setup()".
+async function setup() {
+  // Wait until the HandPose model is fully loaded.
+  handPose = await ml5.handPose();
 }
 ```
 
-!> Please note that this syntax is supported starting with p5.js 2.0. Find out how to change the p5.js version here!
+!> Please note that this syntax is supported starting with p5.js 2.0!
+<!-- Find out how to change the p5.js version here! -->
 
 ### Fetch webcam video
 
 ```javascript
-
-let video; // Let's define a variable `video` to store the webcam video.
+// Let's define a variable `video` to store the webcam video.
+let video;
 
 function setup() {
-  createCanvas(640, 480); // Resize the canvas dimensions to 640x480, a common resolution for webcams.
-
-  video = createCapture(VIDEO); // Fetch the webcam video, resize it to fit the canvas, and hide it from the display.
+  // Resize the canvas dimensions to 640x480, a common resolution for webcams.
+  createCanvas(640, 480);
+  // Fetch the webcam video, resize it to fit the canvas, and hide it from the display.
+  video = createCapture(VIDEO);
   video.size(640, 480);
   video.hide();
 }

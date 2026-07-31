@@ -12,8 +12,6 @@
 /* new way in Docsify v5 to add scroll padding at the top */
 :root {
 	--scroll-padding-top: 30px;
-	--_button-size: 100px;
-	--_content-size: 100px;
 }
 
 html,
@@ -285,23 +283,6 @@ div#app:empty::before {
 	background: rgba(var(--color-sidebar-scrollbar-rgb), 0.1);
 }
 
-.sidebar::-webkit-scrollbar {
-	width: 4px;
-}
-
-.sidebar::-webkit-scrollbar-thumb {
-	background: transparent;
-	border-radius: 4px;
-}
-
-.sidebar:hover::-webkit-scrollbar-thumb {
-	background: rgba(var(--color-sidebar-scrollbar-rgb), 0.4);
-}
-
-.sidebar:hover::-webkit-scrollbar-track {
-	background: rgba(var(--color-sidebar-scrollbar-rgb), 0.1);
-}
-
 /* the horizontal line */
 .sidebar-section-divider {
 	height: 1px;
@@ -393,12 +374,15 @@ div#app:empty::before {
 	color: var(--color-secondary);
 }
 
-.search .clear-button {
-	background-color: var(--color-secondary);
-	width: 1.6rem;
-	height: 1.6rem;
-	/* also check the script in index.html */
+.sidebar .search .clear-button {
+	/* docsify will try to override these styles. */
+	/* !important is very necessary! */
+	background-color: var(--color-secondary) !important;
+	width: 1.6rem !important;
+	height: 1.6rem !important;
+	/* also check the script in index.html and custom-plugins.js */
 }
+
 
 /* the icon on the left bottom */
 .sidebar-toggle {
@@ -612,6 +596,7 @@ main>.content {
 }
 
 .markdown-section h2 a {
+	padding-top: 1rem;
 	margin: 3rem 0 0 0;
 	font-weight: var(--heading-font-weight);
 }
@@ -847,12 +832,12 @@ span.emoji {
 
 .markdown-section pre {
 	position: relative;
-	background-color: #f9fafc;
+	background-color: var(--color-bg-code);
 	border-radius: 12px;
 
 	/* adjust paddings and margins here for code block! */
 	margin: 1.6rem 0;
-	padding: 1.6rem 0;
+	padding: 1.4rem 0;
 
 	overflow: hidden;
 	font-family: 'Fira Code', monospace;
@@ -864,21 +849,39 @@ span.emoji {
 	margin-top: 0.5rem;
 }
 
-/* hide default Docsify label */
-.markdown-section pre::after,
-.markdown-section output::after {
-	content: none !important;
+.docsify-copy-code-button {
+	font-family: 'Fira Code', monospace;
+	text-transform: lowercase !important;
+	line-height: 17px !important;
+
+	position: absolute;
+	right: 1.4rem !important;
+	top: 0.7rem !important;
+	z-index: 100 !important;
+
+	font-size: 0.72rem !important;
+	font-weight: bold !important;
+	padding: 1px 7px !important;
+	border-radius: 6px !important;
+	border: 1px solid var(--color-text-p5) !important;
+
+	color: #FFF !important;
+	background: var(--color-text-p5) !important;
+}
+
+.docsify-copy-code-button:hover {
+	background: #FFF !important;
+	color: var(--color-text-p5) !important;
+	border: 1px solid var(--color-text-p5) !important;
 }
 
 /* code language that appears the right top corner*/
 .markdown-section pre::before {
 	content: attr(data-lang);
 	position: absolute;
-	top: 10px;
-	right: 42px;
-	/* move left to make room for button */
-	background: #e0e7ff;
-	color: #1e1e2f;
+	right: 1.4rem;
+	top: 0.7rem;
+
 	font-size: 0.72rem;
 	font-weight: bold;
 	padding: 1px 7px;
@@ -888,11 +891,10 @@ span.emoji {
 	pointer-events: none;
 }
 
-/* CUSTOM CODE BLOCK */
-/* This will also change the inline code style. */
 .markdown-section pre>code {
+	background-color: transparent;
 	display: block;
-	color: #1e1e2f;
+	color: var(--color-text);
 	padding: 1.2rem 1.4rem;
 	margin: 0;
 	font-size: 0.95rem;
@@ -909,6 +911,7 @@ span.emoji {
 }
 
 .markdown-section code {
+	/* This will also change the inline code style. */
 	background-color: var(--color-bg-code);
 	border-radius: 2px;
 	color: var(--color-code-keyword-function);
@@ -917,48 +920,48 @@ span.emoji {
 	white-space: pre-wrap;
 }
 
-/* custom styles for comments in code block */
-.token.comment {
+/* CUSTOM CODE BLOCK */
+
+/* styling for comments sitting right next to the code */
+.token.comment.inline-comment {
+	/* add more */
+}
+
+/* styling for comments on their own line (bubbles) */
+.token.comment.bubble-comment {
 	display: block;
-	width: calc(50% - 1rem);
+	width: 50%;
+
+	/* pushes the bubble to the right */
 	margin-left: auto;
 
 	white-space: normal;
 	word-break: break-word;
-	/* background-color: #f3f4f6; */
 	background-color: #fff;
-	color: var(--color-text-dark) !important;
+	color: var(--color-secondary) !important;
+
 	font-family: var(--body-font-family) !important;
 	font-weight: var(--font-weight-normal) !important;
 	font-style: normal !important;
 	font-size: 0.95rem;
 	line-height: 1.5;
-	padding: 0.5rem 0.75rem;
+	padding: 0.5rem 1.0rem;
+	border-radius: var(--border-radius);
 
-	/* 
-   * negative margins:
-   * - margin-top: Pulls block comment up to align with the code line.
-   * - margin-bottom: Removes markdown newline gap, snapping the next code line right below.
-   */
-	margin-top: -1.6rem;
-	margin-bottom: -1.6rem;
+	/* negative margin to reduce spacing */
+	margin-bottom: -1.5rem;
 }
 
-.token.comment:first-child {
-	/* the first comment needs extra top margin */
-	margin-top: 1.2rem;
-	margin-bottom: -1.6rem;
-}
-
-.token.comment .hide-slash {
+/* hide the '//' part for bubble comments */
+.token.comment.bubble-comment .hide-slash {
 	font-size: 0;
 	opacity: 0;
 	pointer-events: none;
 }
 
-/* return the style in a mobile view */
+/* mobile view adjustments for bubbles */
 @media screen and (max-width: 768px) {
-	.token.comment {
+	.token.comment.bubble-comment {
 		width: 100%;
 		margin-left: 0;
 		margin-top: 0.5rem;
@@ -1168,125 +1171,6 @@ code .token {
 	top: -50%;
 }
 
-/* custom copy icon button */
-.copy-icon-button {
-	position: absolute;
-	top: -20px;
-	right: -100px;
-	background: transparent;
-	border: none;
-	padding: 4px;
-	cursor: pointer;
-	color: #999;
-	opacity: 0.6;
-	transition: opacity 0.3s ease;
-	z-index: 15;
-}
-
-.copy-icon-button:hover {
-	opacity: 1;
-	color: #333;
-}
-
-.copy-icon-button svg {
-	display: block;
-}
-
-.copy-icon-button.copied {
-	color: #f263a8;
-	opacity: 1;
-}
-
-/* copied! toast */
-.copy-toast {
-	position: absolute;
-	top: 10px;
-	right: 40px;
-	background: #f263a8;
-	color: white;
-	font-size: 0.7rem;
-	padding: 2px 8px;
-	border-radius: 4px;
-	opacity: 0;
-	transition: opacity 0.4s ease;
-	z-index: 999;
-}
-
-.copy-toast.visible {
-	opacity: 1;
-}
-
-.code-comment-wrapper {
-	display: block;
-	background: #f9fafc;
-	border-radius: 12px;
-	padding: 0;
-	overflow: hidden;
-	font-family: 'Fira Code', monospace;
-	position: relative;
-}
-
-.code-comment-wrapper::before {
-	content: attr(data-lang);
-	position: absolute;
-	top: 10px;
-	right: 10px;
-	background: #e0e7ff;
-	color: #1e1e2f;
-	font-size: 0.75rem;
-	font-weight: 600;
-	padding: 4px 10px;
-	border-radius: 6px;
-	pointer-events: none;
-	text-transform: lowercase;
-	z-index: 10;
-}
-
-.code-comment-wrapper .highlight-line,
-.code-comment-wrapper .normal-line {
-	display: grid;
-	grid-template-columns: auto 1fr;
-	gap: 1rem;
-	align-items: center;
-	padding: 0rem 0.5rem;
-	background: #fff;
-	white-space: pre-wrap;
-}
-
-.code-comment-wrapper .highlight-line {
-	border-left: 4px solid #a162f7;
-}
-
-.code-comment-wrapper .highlight-line::before,
-.code-comment-wrapper .normal-line::before {
-	content: attr(data-code);
-	white-space: pre;
-	font-weight: 400;
-	color: #1e1e2f;
-}
-
-.code-comment-wrapper .highlight-line::after {
-	content: attr(data-comment);
-	margin-left: 1rem;
-	padding: 0rem 0.6rem;
-	background: #f3f4f6;
-	border-radius: 4px;
-	color: #6b7280;
-	white-space: pre-wrap;
-	font-size: 0.9rem;
-	font-weight: 400;
-}
-
-/* optional outer wrapper */
-.code-comment-container {
-	background: #f8f9fb;
-	padding: 1em;
-	border-radius: 0.6em;
-	font-family: 'Fira Code', monospace;
-	overflow-x: auto;
-	position: relative;
-}
-
 /* legacy fallback */
 .code-comment-line,
 .code-block,
@@ -1294,50 +1178,43 @@ code .token {
 	display: none;
 }
 
-.code-comment-wrapper[data-lang='js']::before,
-.code-comment-wrapper[data-lang='javascript']::before,
 pre[data-lang='js']::before,
 pre[data-lang='javascript']::before {
 	background: #ded6ff;
 	color: #2f265f;
 }
 
-.code-comment-wrapper[data-lang='html']::before,
 pre[data-lang='html']::before {
 	background: #fbebd2;
 	color: #593b00;
 }
 
-.code-comment-wrapper[data-lang='css']::before,
 pre[data-lang='css']::before {
 	background: #dafdfa;
 	color: #003f3f;
 }
 
-.code-comment-wrapper[data-lang='json']::before,
 pre[data-lang='json']::before {
 	background: #fce9ff;
 	color: #521847;
 }
 
-.code-comment-wrapper[data-lang='bash']::before,
 pre[data-lang='bash']::before {
 	background: #e8ffe3;
 	color: #2b4a2a;
 }
 
-.code-comment-wrapper[data-lang='processing']::before,
 pre[data-lang='processing']::before {
 	background: #fff0f5;
 	color: #5c2a3c;
 }
-
 
 /* =========================================
    COVER PAGE
 	 (We don't use this!)
 	 (Docsify's default setting; we keep it here for reference.)
    ========================================= */
+
 section.cover {
 	position: relative;
 	align-items: center;

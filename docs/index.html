@@ -82,10 +82,10 @@
 		</div>
 		<button id="close-banner">&times;</button>
 	</div>
+	<script src="js/banner.js"></script>
 
 	<!-- Load Custom Scripts -->
-	<script src="js/banner.js"></script>
-	<script src="js/code-block.js"></script>
+	<script src="js/custom-plugins.js"></script>
 
 	<script>
 		// Docsify Configuration
@@ -118,33 +118,30 @@
 				tabComments: true,
 				tabHeadings: true,
 			},
+			copyCode: {
+				buttonText: "Copy Code!",
+				errorText: 'Error',
+				successText: '❤️ Copied!'
+			},
 			// Register custom plugins from code-block.js
 			plugins: [
-				window.codeCommentPlugin,
-				window.copyIconPlugin,
-				window.examplesSearchPlugin,
-				window.prismCustomPlugin,
-				function (hook, vm) {
-					// remove "Clear Search" text from search input!
-					hook.ready(function () {
-						const clearText = document.querySelector('.clear-button .visually-hidden');
-						if (clearText) {
-							clearText.textContent = '';
-						}
-					});
-				}
+				window.ml5DocsPlugins.prismCustomPlugin,
+				window.ml5DocsPlugins.examplesSearchPlugin,
+				window.ml5DocsPlugins.clearSearchTextPlugin
 			]
 		}
 	</script>
 
 	<!-- Docsify Core v5 -->
 	<script src="//cdn.jsdelivr.net/npm/docsify@5"></script>
-	<!-- Search Plugin v5 -->
+	<!-- Search Plugin -->
 	<script src="//cdn.jsdelivr.net/npm/docsify@5/dist/plugins/search.min.js"></script>
-	<!-- External Script Execution v5 -->
+	<!-- External Script Execution -->
 	<script src="//cdn.jsdelivr.net/npm/docsify@5/dist/plugins/external-script.min.js"></script>
 	<!-- Docsify Tabs -->
 	<script src="//cdn.jsdelivr.net/npm/docsify-tabs@1"></script>
+	<!-- Copy Code Plugin -->
+	<script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
 </body>
 
 </html>

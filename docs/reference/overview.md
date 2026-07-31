@@ -1,11 +1,14 @@
-# Reference Overview
+# Reference Overview & All Examples
 
 <center>
   <img class="header-img" src="assets/header-reference-overview.png" alt="Reference Overview Header Image" >
   <p class="img-credit"> Image Credit: <a href="https://thenounproject.com/creator/diasytrisniaty/" target="_blank" title="diasy tristiady">diasy tristiady</a> | <a href='https://forms.gle/5EpwYabG8hLn4p926' target="contribute-form">Contribute ♥️</a> </p>
 </center>
 
+## Reference Overview
+
 Welcome to the ml5.js reference page!
+
 ml5.js provides a collection of ready-to-use machine learning models that run directly in the browser, with no installation or server required. It is designed to be accessible to users with no prior machine learning experience. This page provides an overview of the available models, organized by the level of setup and customization required.
 
 There are three ways to work with ml5.js:
@@ -19,6 +22,8 @@ There are three ways to work with ml5.js:
 Use the sidebar to learn more about each model, or explore the examples below.
 
 --- 
+## ml5 Examples
+
 
 <div id="examples-page">
 

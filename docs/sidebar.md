@@ -10,7 +10,7 @@
 - **Reference**
   <div class="sidebar-section-divider">&nbsp;</div>
 
-- [Overview](/reference/overview.md)
+  - [Overview & Examples](/reference/overview.md)
 
 <div class="sidebar-spacer">&nbsp;</div>
 
