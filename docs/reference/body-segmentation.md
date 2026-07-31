@@ -62,7 +62,7 @@ let options = {
 
 ?> You can also specify the mask type as `person` or `background` in the options object. For more information on the options object, please refer to the [Methods](/reference/body-segmentation?id=methods) section.
 
-Now, let's load the BodySegmentation model with the specified options. Using `async` and `await` ensures that the model is fully loaded before the draw() function begins.
+Now, let's load the BodySegmentation model with the specified options. Using `async` and `await` ensures that the model is fully loaded before the `draw()` function begins.
 
 ```javascript
 async function setup() { // Make sure to add "async" before "function setup ()".

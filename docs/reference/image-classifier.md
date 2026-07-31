@@ -66,7 +66,7 @@ Let's open the `sketch.js` file and define a variable to store the ImageClassifi
 let classifier;
 ```
 
-Now, we can load the ImageClassifier model. Using `async` and `await` ensures that the model is loaded before the draw() function begins. Note here we can specify the model name we want to use, such as `MobileNet`.
+Now, we can load the ImageClassifier model. Using `async` and `await` ensures that the model is loaded before the `draw()` function begins. Note here we can specify the model name we want to use, such as `MobileNet`.
 
 ```javascript
 async function setup() { // Make sure to add "async" before "function setup ()".

@@ -82,7 +82,7 @@ let words = [
 ];
 ```
 
-We're now going to load the SoundClassifier model. Using `async` and `await` ensures that the model is fully loaded before the draw() function begins.
+We're now going to load the SoundClassifier model. Using `async` and `await` ensures that the model is fully loaded before the `draw()` function begins.
 
 In this, we first create an `options` object to customize the model's behavior. For example, we can set the probability threshold, with the default being 0.
 

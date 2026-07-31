@@ -29,7 +29,7 @@ Before starting, make sure you have included the ml5 library in your `index.html
 
 ?> For more information on importing the ml5 library, check out the [Getting Started](/?id=set-up-ml5js) page.
 
-Using `async` and `await` to load the model. This step ensures that the model is fully loaded before the draw() function begins.
+Using `async` and `await` to load the model. This step ensures that the model is fully loaded before the `draw()` function begins.
 
 ```js
 async function setup() { // Make sure to add "async" before "function setup ()".

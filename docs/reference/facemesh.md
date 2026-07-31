@@ -69,11 +69,11 @@ let options = { maxFaces: 1, refineLandmarks: false, flipped: false };
 
 Now, we are ready to load a model configed as `options` specifies and store it in the `faceMesh` variable.
 
-Let's use `async` and `await` to ensure that the model is fully loaded before the draw() function begins. 
+Let's use `async` and `await` to ensure that the model is fully loaded before the `draw()` function begins. 
 
 ```javascript
-async function setup() { //Make sure to add "async" before "function setup ()".
-  faceMesh = await ml5.faceMesh(options); //Wait until the FaceMesh model is fully loaded.
+async function setup() { // Make sure to add "async" before "function setup ()".
+  faceMesh = await ml5.faceMesh(options); // Wait until the FaceMesh model is fully loaded.
 }
 ```
 
