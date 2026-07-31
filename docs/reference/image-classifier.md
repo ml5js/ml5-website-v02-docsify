@@ -66,11 +66,12 @@ Let's open the `sketch.js` file and define a variable to store the ImageClassifi
 let classifier;
 ```
 
-Now, we can load the ImageClassifier model in the `preload` function. Using the `preload` function ensures that the model is loaded before the `setup` and `draw` functions are called. Note here we can specify the model name we want to use, such as `MobileNet`.
+Now, we can load the ImageClassifier model. Using `async` and `await` ensures that the model is loaded before the draw() function begins. Note here we can specify the model name we want to use, such as `MobileNet`.
 
 ```javascript
-function preload() {
-  classifier = ml5.imageClassifier("MobileNet");
+async function setup() { // Make sure to add "async" before "function setup ()".
+  classifier = await ml5.imageClassifier("MobileNet"); 
+  // Wait until the ImageClassifier model is fully loaded.
 }
 ```
 
@@ -80,17 +81,14 @@ function preload() {
 
 Next, let's load an image that we want to classify. Unfold the project directory by clicking the arrow `>` at the top left corner of the p5.js editor. Create a new folder called `images`. And upload a bird image named `bird.png` to the `images` folder. Remember to login to see this option.
 
-We are ready to write the code to load the image that we just uploaded. Define a variable `img` to store the image.
+We are ready to write the code to load the image that we just uploaded. 
 
 ```javascript
-let img;
-```
+let img; //Define a variable `img` to store the image.
 
-In the `preload` function, load the image using the `loadImage` function.
-
-```javascript
-function preload() {
-  classifier = ml5.imageClassifier("MobileNet");
+async function setup() { // Make sure to add "async" before "function setup ()".
+  classifier = await ml5.imageClassifier("MobileNet"); 
+  // Wait until the ImageClassifier model is fully loaded.
   img = loadImage("images/bird.png");
 }
 ```

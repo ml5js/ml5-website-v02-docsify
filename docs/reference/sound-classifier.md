@@ -82,12 +82,12 @@ let words = [
 ];
 ```
 
-We're now going to create a `preload` function to load the SoundClassifier model. The `preload` function is a p5.js function that runs before the `setup` and `draw` function. This is where we load the model to ensure it is ready before we use it.
+We're now going to load the SoundClassifier model. Using `async` and `await` ensures that the model is fully loaded before the draw() function begins.
 
 In this, we first create an `options` object to customize the model's behavior. For example, we can set the probability threshold, with the default being 0.
 
 ```javascript
-function preload() {
+async function setup() { // Make sure to add "async" before "function setup ()".
   let options = { probabilityThreshold: 0.7 };
 
 ```
@@ -97,7 +97,8 @@ function preload() {
 Now, we are ready to load a model configured as `options` specifies and store it in the `classifier` variable.
 
 ```javascript
-  classifier = ml5.soundClassifier("SpeechCommands18w", options);
+  classifier = await ml5.soundClassifier("SpeechCommands18w", options); 
+  // Wait until the SoundClassifier model is fully loaded.
 }
 ```
 
