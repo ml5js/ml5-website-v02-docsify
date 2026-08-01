@@ -2,17 +2,17 @@
 
 ## Description
 
-The ml5.js FeatureExtractor model allows you to build your own image classifier or value predictor by reusing part of a pre-trained model. For example, you can train it to tell the difference between a coffee mug and a water bottle, recognize hand gestures, or predict a slider value from a webcam image.
+The ml5.js FeatureExtractor gives you the output of a pre-trained image classifier right before its final classification layer. You can use these "features" directly, or use [transfer learning](https://en.wikipedia.org/wiki/Transfer_learning) to train your own image classifier or predict a continuous value — a task known as regression. For example, you can train it to distinguish coffee mugs from water bottles, recognize hand poses, or predict a slider value from a webcam image.
 
-The ml5.js FeatureExtractor model is built on top of [MobileNet](https://arxiv.org/abs/1704.04861), a pre-trained model that has learned to recognize shapes, colors, and textures from millions of images. Instead of using the whole model, the FeatureExtractor only uses part of its layers to turn an image into a **feature** — a compact list of numbers that summarizes the visual content of an image.
+The ml5.js FeatureExtractor is built on top of [MobileNet](https://arxiv.org/abs/1704.04861), a model pre-trained on millions of images to recognize objects. FeatureExtractor exposes the output before MobileNet’s final classification layer as a **[feature](/learn/ml5-glossary?id=feature)** — a compact list of numbers that represents what the model has detected in the image.
 
-Once you have the features, you can reuse them for different tasks, such as **classification** or **regression**. This technique is known as [Transfer Learning](https://en.wikipedia.org/wiki/Transfer_learning).
+Because these features already encode rich visual information, you can build your own **[classification](/learn/ml5-glossary?id=classification)** or **[regression](/learn/ml5-glossary?id=regression-analysis)** model on top of them with only a small amount of training data.
 
 ?> If you are not familiar with the concepts of **classification**, **regression**, or **features**, we recommend checking out the [ml5.js Glossary](/learn/ml5-glossary) first.
 
 It provides the following functionalities:
 
-- **Custom Classification**: Train a model with your own labels to recognize specific objects, gestures, or scenes.
+- **Custom Classification**: Train a model with your own labels to recognize specific objects, hand poses, or scenes.
 - **Custom Regression**: Train a model to predict a continuous numeric value from an image.
 - **Real-time Webcam Training**: Collect training samples from a webcam and retrain the model in the browser.
 
