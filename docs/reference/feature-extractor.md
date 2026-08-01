@@ -51,10 +51,15 @@ It provides the following functionalities:
 
 ### ml5.featureExtractor()
 
-This method is used to initialize the `featureExtractor` object.
+This method is used to initialize the `featureExtractor` object. With p5.js 2.0, `setup()` can be `async`, so you can `await` the model instead of using a callback:
 
 ```javascript
-let featureExtractor = ml5.featureExtractor(?modelName, ?options, ?callback);
+let featureExtractor;
+
+async function setup() {
+  featureExtractor = await ml5.featureExtractor(?modelName, ?options, ?callback);
+  // The model is loaded and ready to use here.
+}
 ```
 
 **Parameters:**
@@ -81,11 +86,11 @@ let featureExtractor = ml5.featureExtractor(?modelName, ?options, ?callback);
   - _task_ — String. Decides what the trained model predicts; `"classification"` sorts inputs into labels, while `"regression"` predicts a continuous numeric value. This choice also determines which methods you use after training: classification tasks use [`classify()`](/reference/feature-extractor?id=featureextractorclassify) / [`classifyStart()`](/reference/feature-extractor?id=featureextractorclassifystart), while regression tasks use [`predict()`](/reference/feature-extractor?id=featureextractorpredict) / [`predictStart()`](/reference/feature-extractor?id=featureextractorpredictstart).
     - Default: `"classification"`
     - Accepted values: `"classification"`, `"regression"`
-- **callback(featureExtractor, error)**: Optional. Function. Runs once the model has loaded.
+- **callback(featureExtractor, error)**: Optional. Function. Runs once the model has loaded. With p5.js 2.0 you can `await` the call instead of passing a callback.
 
 **Returns:**
 
-- **Object**: The `featureExtractor` object, with methods to add samples, train a classifier or value predictor, and make predictions.
+- **Object**: The `featureExtractor` object, with methods to add samples, train a classifier or value predictor, and make predictions. When called with `await`, the returned object is fully loaded and ready to use.
 
 ---
 
