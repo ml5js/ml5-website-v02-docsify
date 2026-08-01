@@ -87,20 +87,15 @@ We're now going to load the SoundClassifier model. Using `async` and `await` ens
 In this, we first create an `options` object to customize the model's behavior. For example, we can set the probability threshold, with the default being 0.
 
 ```javascript
-async function setup() { // Make sure to add "async" before "function setup ()".
+// Make sure to add "async" before "function setup()".
+async function setup() {
   let options = { probabilityThreshold: 0.7 };
-
+  // load a model configured as `options` specifies and store it in the `classifier` variable.
+  classifier = await ml5.soundClassifier("SpeechCommands18w", options); 
+}
 ```
 
 ?> If you would like to know more about the available configuration settings for `options`, please check out the [Methods](/reference/sound-classifier?id=methods) section.
-
-Now, we are ready to load a model configured as `options` specifies and store it in the `classifier` variable.
-
-```javascript
-  classifier = await ml5.soundClassifier("SpeechCommands18w", options); 
-  // Wait until the SoundClassifier model is fully loaded.
-}
-```
 
 ### Classify sound with the model
 

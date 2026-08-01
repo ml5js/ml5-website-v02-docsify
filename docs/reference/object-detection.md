@@ -84,9 +84,10 @@ Using `async` setup() and `await` to load ml5.objectDetection with the supported
 
 
 ```javascript
-async function setup(){ // Make sure to add "async" before "function setup ()".
-  detector = await ml5.objectDetection("cocossd"); 
-  // Wait until the ObjectDetection model is fully loaded.
+// Make sure to add "async" before "function setup()".
+async function setup(){ 
+ // Wait until the ObjectDetection model is fully loaded.
+ detector = await ml5.objectDetection("cocossd");
 }
 ```
 

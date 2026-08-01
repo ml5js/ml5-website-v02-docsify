@@ -65,9 +65,10 @@ let options = {
 Now, let's load the BodySegmentation model with the specified options. Using `async` and `await` ensures that the model is fully loaded before the `draw()` function begins.
 
 ```javascript
-async function setup() { // Make sure to add "async" before "function setup ()".
-  bodySegmentation = await ml5. bodySegmentation ("BodyPix", options); 
+// Make sure to add "async" before "function setup()".
+async function setup() {
   // Wait until the BodySegmentation model is fully loaded.
+  bodySegmentation = await ml5. bodySegmentation ("BodyPix", options); 
 }
 ```
 

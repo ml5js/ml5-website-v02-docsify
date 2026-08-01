@@ -32,11 +32,10 @@ Before starting, make sure you have included the ml5 library in your `index.html
 Using `async` and `await` to load the model. This step ensures that the model is fully loaded before the `draw()` function begins.
 
 ```js
-async function setup() { // Make sure to add "async" before "function setup ()".
-  depthEstimator = await ml5.depthEstimation({
-    // Wait until the HandPose model is fully loaded.
-    // Use options here to configure how the model behaves. 
-    // See a full list of options below, in the 'Methods' section of this reference page
+// Make sure to add "async" before "function setup()".
+async function setup() {
+  // Wait until the Depth Estimation model is fully loaded.
+  depthEstimator = await ml5.depthEstimation({ // Use options here to configure how the model behaves. See a full list of options below, in the 'Methods' section of this reference page
   });
 }
 ```

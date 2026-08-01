@@ -679,7 +679,7 @@ li input[type='checkbox'] {
 .markdown-section em,
 .markdown-section b,
 .markdown-section strong {
-	color: var(--color-text-light);
+	color: var(--color-text-dark);
 	font-weight: var(--font-weight-bold);
 }
 
@@ -932,21 +932,21 @@ span.emoji {
 	display: block;
 	width: 50%;
 
-	/* pushes the bubble to the right */
-	margin-left: auto;
-
-	white-space: normal;
-	word-break: break-word;
 	background-color: #fff;
 	color: var(--color-secondary) !important;
-
 	font-family: var(--body-font-family) !important;
 	font-weight: var(--font-weight-normal) !important;
 	font-style: normal !important;
-	font-size: 0.95rem;
-	line-height: 1.5;
-	padding: 0.5rem 1.0rem;
+	/* font-size: 0.95rem; */
+	line-height: 1.4;
+	white-space: normal;
+	word-break: break-word;
+
+	padding: 0.5rem 0.8rem;
 	border-radius: var(--border-radius);
+
+	/* pushes the bubble to the right */
+	margin-left: auto;
 
 	/* negative margin to reduce spacing */
 	margin-bottom: -1.5rem;

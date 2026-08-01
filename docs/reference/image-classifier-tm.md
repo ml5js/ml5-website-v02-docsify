@@ -83,8 +83,10 @@ let imageModelURL = "https://teachablemachine.withgoogle.com/models/4-WUyljZZ/";
 Now, we can load the model that we just trained. Using `async` and `await` ensures that the model is loaded before `draw()` function begins.
 
 ```javascript
-async function setup() { // Make sure to add "async" before "function setup ()".
-  classifier = await ml5.imageClassifier(imageModelURL + "model.json", { // Wait until the HandPose model is fully loaded.
+// Make sure to add "async" before "function setup()".
+async function setup() {
+  // Wait until the model is fully loaded.
+  classifier = await ml5.imageClassifier(imageModelURL + "model.json", {
     flipped: true,
   });
 }

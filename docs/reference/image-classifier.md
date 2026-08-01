@@ -69,9 +69,10 @@ let classifier;
 Now, we can load the ImageClassifier model. Using `async` and `await` ensures that the model is loaded before the `draw()` function begins. Note here we can specify the model name we want to use, such as `MobileNet`.
 
 ```javascript
-async function setup() { // Make sure to add "async" before "function setup ()".
-  classifier = await ml5.imageClassifier("MobileNet"); 
+// Make sure to add "async" before "function setup()".
+async function setup() {
   // Wait until the ImageClassifier model is fully loaded.
+  classifier = await ml5.imageClassifier("MobileNet"); 
 }
 ```
 
@@ -86,7 +87,8 @@ We are ready to write the code to load the image that we just uploaded.
 ```javascript
 let img; //Define a variable `img` to store the image.
 
-async function setup() { // Make sure to add "async" before "function setup ()".
+// Make sure to add "async" before "function setup()".
+async function setup() {
   classifier = await ml5.imageClassifier("MobileNet"); 
   // Wait until the ImageClassifier model is fully loaded.
   img = loadImage("images/bird.png");

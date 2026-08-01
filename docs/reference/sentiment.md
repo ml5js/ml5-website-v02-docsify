@@ -58,9 +58,10 @@ Now, load the Sentiment model by calling the `ml5.sentiment(model, ?callback)` m
 Currently, the Sentiment model only supports the 'movieReviews' model, and we may support more models in the future.
 
 ```javascript
-async function setup() { // Make sure to add "async" before "function setup ()".
-  sentiment = await ml5.sentiment("MovieReviews"); 
+// Make sure to add "async" before "function setup()".
+async function setup() {
   // Wait until the Sentiment model is fully loaded.
+  sentiment = await ml5.sentiment("MovieReviews"); 
 }
 ```
 
