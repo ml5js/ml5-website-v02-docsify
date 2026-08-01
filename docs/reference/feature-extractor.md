@@ -54,7 +54,7 @@ It provides the following functionalities:
 This method is used to initialize the `featureExtractor` object.
 
 ```javascript
-const featureExtractor = ml5.featureExtractor(?modelName, ?options, ?callback);
+let featureExtractor = ml5.featureExtractor(?modelName, ?options, ?callback);
 ```
 
 **Parameters:**
@@ -217,12 +217,12 @@ featureExtractor.classifyStart(video, gotResults);
 
 function gotResults(results) {
   // results is sorted high → low confidence, same format as classify()
-  const label = results[0].label; // top guess, e.g. "mug"
-  const confidence = results[0].confidence; // how sure, 0–1, e.g. 0.97
+  let label = results[0].label; // top guess, e.g. "mug"
+  let confidence = results[0].confidence; // how sure, 0–1, e.g. 0.97
   console.log(label, confidence);
 
   // …or read every label's confidence:
-  for (const result of results) {
+  for (let result of results) {
     console.log(result.label, result.confidence);
   }
 }
@@ -304,7 +304,7 @@ featureExtractor.predictStart(video, gotResults);
 
 function gotResults(results) {
   // results is [{ value }], same format as predict()
-  const value = results[0].value; // predicted number, on the scale you trained with
+  let value = results[0].value; // predicted number, on the scale you trained with
   console.log(value);
 }
 ```
@@ -390,7 +390,7 @@ function modelReady() {
 Load from an HTML `<input type="file" multiple>` — the user selects `model.json` **first**, then its weights file. The model is ready (and `modelReady` runs) only after **both** files have loaded:
 
 ```javascript
-const fileInput = document.querySelector("#model-files"); // <input type="file" multiple>
+let fileInput = document.querySelector("#model-files"); // <input type="file" multiple>
 fileInput.addEventListener("change", () => {
   featureExtractor.load(fileInput.files, modelReady); // reuses the modelReady() above
 });
