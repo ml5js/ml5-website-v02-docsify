@@ -195,7 +195,7 @@ That's it! You have successfully built a Sentiment Analysis model that predicts 
 
 This method is used to load the sentiment model and store it in a variable. The ? means the argument is optional!
 
-```js
+```javascript
 let sentiment = ml5.sentiment(model, ?callback);
 ```
 
@@ -210,7 +210,7 @@ let sentiment = ml5.sentiment(model, ?callback);
 
 This method is used to predict the sentiment of a given text.
 
-```js
+```javascript
 sentiment.predict(text);
 ```
 

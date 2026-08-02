@@ -331,7 +331,7 @@ This section documents the utility functions found in the `src/utils` folder.
 
 `handleOptions` is a function that filters a user defined options object based on rules in a mold object, returning a filtered options object. The function logs friendly warnings in the console when one of the user defined options violates the rules.
 
-```js
+```javascript
 const filteredOptions = handleOptions(userObject, moldObject);
 ```
 
@@ -339,7 +339,7 @@ const filteredOptions = handleOptions(userObject, moldObject);
 
 The `userObject` is an object defined by the user to configure the options of a model. For example, the below object configures the `handpose` model to detect a maximum of 4 hands using the "full" variant:
 
-```js
+```javascript
 const optionsObject = {
   maxHands: 4,
   modelType: full,
@@ -350,7 +350,7 @@ const optionsObject = {
 
 Inspired by [Mongoose Models](https://mongoosejs.com/docs/models.html), the `moldObject` defines how the `userObject` should be filtered. Here is an example `optionsObject`:
 
-```js
+```javascript
 const mold = {
   maxHands: {
     type: "number",
@@ -393,7 +393,7 @@ The `moldObject` consists of key-value pairs. The key defines the name of an all
 
 A rule can be a constant value or a function that is dynamically evaluated. The function will be called with the current filtered object as its parameter. Below is an example usage:
 
-```js
+```javascript
 const mold = {
   runtime: {
     type: "enum",

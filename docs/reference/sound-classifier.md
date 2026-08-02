@@ -202,7 +202,7 @@ Voila! You have successfully built the Sound Classification example. Press the <
 
 This method is used to initialize the soundClassifier object.
 
-```js
+```javascript
 let soundclassifier = ml5.soundClassifier(?model, ?options, ?callback)
 ```
 
@@ -210,17 +210,17 @@ let soundclassifier = ml5.soundClassifier(?model, ?options, ?callback)
 
 - **model**: Optional. Model name or URL path to a `model.json`. Here are some options:
   - `SpeechCommands18w`: loads the 18w speech commands
-    ```js
+    ```javascript
     let classifier = ml5.soundClassifier("SpeechCommands18w", modelReady);
     ```
   - Custom model made in Google's Teachable Machine:
-    ```js
+    ```javascript
     let classifier = ml5.soundClassifier("path/to/model.json", modelReady);
     ```
 - **options**: Optional. An object describing a model accuracy and performance.
   The default and available options are:
 
-  ```js
+  ```javascript
   {
     overlapFactor: 0.5,
     includeSpectrogram: false,
@@ -253,7 +253,7 @@ let soundclassifier = ml5.soundClassifier(?model, ?options, ?callback)
 
 This method repeatedly outputs classification labels on an audio media through a callback function.
 
-```js
+```javascript
 soundClassifier.classifyStart(numOrCallback, callback);
 ```
 
@@ -262,7 +262,7 @@ soundClassifier.classifyStart(numOrCallback, callback);
 - **numOrCallback:** Optional. A number representing the number of classes to classify or a callback function to handle the results. If no number is provided, the default is the length of the labels in the model.
 - **callback:** Optional. A function to handle the classification results. The callback function will receive an array of objects with the following structure:
 
-  ```js
+  ```javascript
   [
     {
       label: "up",
@@ -287,7 +287,7 @@ soundClassifier.classifyStart(numOrCallback, callback);
 
 This method can be called after a call to `soundClassifier.classifyStart` to stop the repeating classifications.
 
-```js
+```javascript
 soundClassifier.classifyStop();
 ```
 

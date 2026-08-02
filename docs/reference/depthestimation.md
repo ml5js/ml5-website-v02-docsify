@@ -31,7 +31,7 @@ Before starting, make sure you have included the ml5 library in your `index.html
 
 Using `async` and `await` to load the model. This step ensures that the model is fully loaded before the `draw()` function begins.
 
-```js
+```javascript
 // Make sure to add "async" before "function setup()".
 async function setup() {
   // Wait until the Depth Estimation model is fully loaded.
@@ -43,7 +43,7 @@ For the full list of options, check out the [methods section](#ml5depthestimatio
 
 <!-- #### p5.js 2.0
 You can also use this module with p5.js 2.0! Instead of creating `ml5.depthEstimation` in preload, do it using your async `setup()` and `await`:
-```js
+```javascript
 async function setup() {
   // Load the depth estimation model
   depthEstimator = await ml5.depthEstimation({
@@ -60,7 +60,7 @@ For any of these, make sure you first load the image, video or start the webcam 
 
 #### Continuous Estimation
 This method is used to continuously estimate depth on every frame of a video or webcam feed.
-```js
+```javascript
 // Make sure to load the model in preload or async in p5 2.0!
 function setup() {
 // Create the video capture element
@@ -78,7 +78,7 @@ Using this method, the depth estimator will take care of doing estimation of a f
 
 #### Single Frame Estimation
 This method is used to estimate depth once, for a single image:
-```js
+```javascript
 // Make sure to load the image and the model in preload or asyn in p5 2.0!
 function setup() {
   // Estimate depth from the loaded image
@@ -93,7 +93,7 @@ Because the estimation takes time, we pass in a callback function that will fire
 
 ### Using the Depth Result
 Whenever the callback function fires, we have acces to the depth result that contains all the depth information.
-```js
+```javascript
 let depthMap;
 
 function gotResults(result) {
@@ -113,13 +113,13 @@ This method is used to initialize the depth estimation object.
 
 In p5.js 1.x.x, use it inside the `preload()` function:
 
-```js
+```javascript
 const depthEstimator = ml5.depthEstimation(?options);
 ```
 
 In p5.js 2.0, use it in the `async setup()`:
 
-```js
+```javascript
 const depthEstimator = await ml5.depthEstimation(?options);
 ```
 
@@ -155,7 +155,7 @@ const depthEstimator = await ml5.depthEstimation(?options);
 ### depthEstimator.estimateStart()
 This method is used for _Continuous Estimation_: estimating depth on a video/webcam continuously, for each frame. Calling it will initiate an estimation loop, running until `depthEstimator.estimateStop()` is called.
 
-```js
+```javascript
 depthEstimator.estimateStart(media, callback)
 ```
 
@@ -167,14 +167,14 @@ depthEstimator.estimateStart(media, callback)
 ### depthEstimator.estimateStop()
 This method is used to stop an estimation loop that was previously started by a call to `depthEstimator.estimateStart()`.
 
-```js
+```javascript
 depthEstimator.estimateStop()
 ```
 
 ### depthEstimator.estimate()
 This method is used for _Single Frame Estimation_: estimating depth one time on a single image or video/webcam frame.
 
-```js
+```javascript
 depthEstimator.estimate(media, callback)
 ```
 

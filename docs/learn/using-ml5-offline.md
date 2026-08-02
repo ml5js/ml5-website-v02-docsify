@@ -16,7 +16,7 @@ The fix is to **keep the model files next to your sketch** and tell ml5.js to lo
 
 When you create a model, pass a `modelPath` pointing at a local folder of model files:
 
-```js
+```javascript
 const handPose = ml5.handPose({ modelPath: "./ml5-models/handpose" });
 ```
 
@@ -67,7 +67,7 @@ Each `model.json` lists the weight files it needs. Open it in a text editor, fin
 
 ### Step 3 — Point your sketch at the files
 
-```js
+```javascript
 let handPose;
 
 function preload() {
@@ -117,7 +117,7 @@ npx ml5 cache list
 
 Once it finishes, point your sketch at the folder exactly as before:
 
-```js
+```javascript
 const handPose = ml5.handPose({ modelPath: "./ml5-models/handpose" });
 ```
 
@@ -131,7 +131,7 @@ Because the CLI runs **ahead of time**, the very first run of your sketch is alr
 
 > ⚠️ **Experimental — not recommended for anything you can't afford to break.** There's an early, separate option that stores models in the browser instead of on disk: passing `{ cache: true }` saves the model to the browser's storage after its first download, so later visits load from that copy. It's convenient for public web sketches, but it is **not** a substitute for the `modelPath` workflow above, and it comes with real caveats you should understand before relying on it.
 
-```js
+```javascript
 handPose = ml5.handPose({ cache: true }); // experimental
 ```
 
