@@ -69,11 +69,13 @@ let options = { maxFaces: 1, refineLandmarks: false, flipped: false };
 
 Now, we are ready to load a model configed as `options` specifies and store it in the `faceMesh` variable.
 
-Let's create a `preload` function to load the FaceMesh model. The `preload` function is a p5.js function that runs before the `setup` and `draw` function. This is where we load the model to ensure it is ready before we use it.
+Let's use `async` and `await` to ensure that the model is fully loaded before the `draw()` function begins. 
 
 ```javascript
-function preload() {
-  faceMesh = ml5.faceMesh(options);
+// Make sure to add "async" before "function setup()".
+async function setup() {
+   // Wait until the FaceMesh model is fully loaded.
+  faceMesh = await ml5.faceMesh(options);
 }
 ```
 

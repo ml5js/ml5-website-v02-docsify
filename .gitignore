@@ -1,4 +1,9 @@
+# ignore unnecessary files
 .DS_Store
-__test__
-__prev__
+.vscode
 
+# ignore environment variable files
+.env
+
+# ignore a folder starting with "__"
+__*

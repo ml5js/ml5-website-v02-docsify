@@ -53,14 +53,15 @@ Let's open the `sketch.js` file and define a variable to store the Sentiment mod
 let sentiment;
 ```
 
-Now, create a `preload` function and load the Sentiment model by calling the `ml5.sentiment(model, ?callback)` method. Using the `preload` function lets us make sure that the model is loaded correctly before the `setup` and `draw` functions are called.
+Now, load the Sentiment model by calling the `ml5.sentiment(model, ?callback)` method. Using `async` and `await` ensures that the model is fully loaded before the `draw()` function begins.
 
 Currently, the Sentiment model only supports the 'movieReviews' model, and we may support more models in the future.
 
 ```javascript
-function preload() {
-  // Initialize the sentiment analysis model
-  sentiment = ml5.sentiment("MovieReviews");
+// Make sure to add "async" before "function setup()".
+async function setup() {
+  // Wait until the Sentiment model is fully loaded.
+  sentiment = await ml5.sentiment("MovieReviews"); 
 }
 ```
 

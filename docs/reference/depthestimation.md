@@ -29,18 +29,19 @@ Before starting, make sure you have included the ml5 library in your `index.html
 
 ?> For more information on importing the ml5 library, check out the [Getting Started](/?id=set-up-ml5js) page.
 
-Create an  instance of `ml5.depthEstimation` in your preload function, to allow the model to load
+Using `async` and `await` to load the model. This step ensures that the model is fully loaded before the `draw()` function begins.
+
 ```js
-function preload() {
-  depthEstimator = ml5.depthEstimation({
-    // Use options here to configure how the model behaves. 
-    // See a full list of options below, in the 'Methods' section of this reference page
+// Make sure to add "async" before "function setup()".
+async function setup() {
+  // Wait until the Depth Estimation model is fully loaded.
+  depthEstimator = await ml5.depthEstimation({ // Use options here to configure how the model behaves. See a full list of options below, in the 'Methods' section of this reference page
   });
 }
 ```
 For the full list of options, check out the [methods section](#ml5depthestimation) below!
 
-#### p5.js 2.0
+<!-- #### p5.js 2.0
 You can also use this module with p5.js 2.0! Instead of creating `ml5.depthEstimation` in preload, do it using your async `setup()` and `await`:
 ```js
 async function setup() {
@@ -50,7 +51,7 @@ async function setup() {
   });
   //the rest of your setup goes here
 }
-```
+``` -->
 
 ### Estimating Depth
 As with many other ml5 models, you have two options to run depth estimation on the image, video or webcam of your choice: _Continuous Estimation_ and _Single Frame Estimation_ .

@@ -80,11 +80,13 @@ After we have the model URL, we can store it in a variable in the `sketch.js` fi
 let imageModelURL = "https://teachablemachine.withgoogle.com/models/4-WUyljZZ/";
 ```
 
-Now, we can load the model that we just trained in the `preload` function. Using the `preload` function ensures that the model is loaded before the `setup` and `draw` functions are called.
+Now, we can load the model that we just trained. Using `async` and `await` ensures that the model is loaded before `draw()` function begins.
 
 ```javascript
-function preload() {
-  classifier = ml5.imageClassifier(imageModelURL + "model.json", {
+// Make sure to add "async" before "function setup()".
+async function setup() {
+  // Wait until the model is fully loaded.
+  classifier = await ml5.imageClassifier(imageModelURL + "model.json", {
     flipped: true,
   });
 }
