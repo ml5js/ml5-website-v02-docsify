@@ -75,7 +75,7 @@ async function setup() {
 
 ### Access webcam video
 
-Then, set up our sketch to Access the webcam video. We will capture the live video stream and hide the default HTML element so we can render it directly on our canvas.
+Then, set up our sketch to access the webcam video. We will capture the live video stream and hide the default HTML element so we can render it directly on our canvas.
 
 ```javascript
 // Define a variable "video" to store the webcam video.
