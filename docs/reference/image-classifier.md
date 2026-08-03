@@ -85,13 +85,13 @@ Next, let's load an image that we want to classify. Unfold the project directory
 We are ready to write the code to load the image that we just uploaded. 
 
 ```javascript
-let img; //Define a variable `img` to store the image.
+// Define a variable `img` to store the image.
+let img; 
 
-// Make sure to add "async" before "function setup()".
 async function setup() {
   classifier = await ml5.imageClassifier("MobileNet"); 
-  // Wait until the ImageClassifier model is fully loaded.
-  img = loadImage("images/bird.png");
+  // Also use "await" to load the image before the "draw()"" function begins.
+  img = await loadImage("images/bird.png");
 }
 ```
 
@@ -100,8 +100,11 @@ async function setup() {
 Within the `setup` function, call the `classify` method on the `classifier` object to - you guessed right - classify the image. The `classify` method takes the image and a callback function as parameters.
 
 ```javascript
-function setup() {
+async function setup() {
   createCanvas(400, 400);
+  classifier = await ml5.imageClassifier("MobileNet");
+  img = await loadImage("images/bird.png");
+  // classify the image with the model and pass in a callback function `gotResult` to handle the results.
   classifier.classify(img, gotResult);
 }
 ```
@@ -121,8 +124,8 @@ function gotResult(results) {
 We need to first display the image itself on the canvas. Add the following code to the `setup` function.
 
 ```javascript
-function setup() {
-  // ...
+async function setup() {
+  ...
   classifier.classify(img, gotResult);
   image(img, 0, 0, width, height);
 }

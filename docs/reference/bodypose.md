@@ -73,9 +73,9 @@ async function setup() {
 
 ?> You can also pass a model name, an options object, and a customized callback function to the `ml5.bodyPose()` function (e.g., `ml5.bodyPose("BlazePose", options, modelLoaded)`) to change the default configuration of the model. For more information on the available configuration settings, refer to the [Methods](/reference/bodypose?id=ml5bodypose) section on this page.
 
-### Fetch webcam video
+### Access webcam video
 
-Then, set up our sketch to fetch the webcam video. We will capture the live video stream and hide the default HTML element so we can render it directly on our canvas.
+Then, set up our sketch to access the webcam video. We will capture the live video stream and hide the default HTML element so we can render it directly on our canvas.
 
 ```javascript
 // Define a variable "video" to store the webcam video.
@@ -84,7 +84,7 @@ let bodyPose;
 
 async function setup() {
   createCanvas(640, 480);
-  // Fetch the webcam video, resize it to fit the canvas, and hide it from the display.
+  // Access the webcam video, resize it to fit the canvas, and hide it from the display.
   video = createCapture(VIDEO);
   video.size(640, 480);
   video.hide();
@@ -575,13 +575,13 @@ function setup() {
 
 For example, using BlazePose model will return:
 
-```js
+```javascript
 [[0, 1], [0, 4], [1, 2], ...[28, 32], [29, 31], [30, 32]];
 ```
 
 Using MoveNet model will return:
 
-```js
+```javascript
 [[0, 1], [0, 2], [1, 3], ...[12, 14], [13, 15], [14, 16]];
 ```
 

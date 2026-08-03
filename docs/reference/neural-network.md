@@ -414,7 +414,7 @@ nn.train(?optionsOrCallback, ?optionsOrWhileTraining, ?callback);
 - **callback**: Optional. Function.
   - If an object of options is given as the first parameter and a callback function is given as a second parameter, then this `callback` parameter will be a callback function that is fired after the training as finished.
 
-  ```js
+  ```javascript
   const trainingOptions = {
     batchSize: 32,
     epochs: 12,

@@ -79,7 +79,7 @@ async function setup() {
 }
 ```
 
-### Fetch webcam video
+### Access webcam video
 
 Define a variable `video` to hold the webcam video.
 
@@ -94,7 +94,7 @@ function setup() {
   createCanvas(640, 480);
 ```
 
-Fetch the webcam video, resize it to fit the canvas, and hide it from the display.
+Access the webcam video, resize it to fit the canvas, and hide it from the display.
 
 ```javascript
   // Create the video and hide it

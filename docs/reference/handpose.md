@@ -69,9 +69,9 @@ async function setup() {
 !> Please note that this syntax is supported starting with p5.js 2.0!
 <!-- Find out how to change the p5.js version here! -->
 
-### Fetch webcam video
+### Access webcam video
 
-Then, set up our sketch to fetch the webcam video. We will capture the live video stream and hide the default HTML element so we can render it directly on our canvas.
+Then, set up our sketch to access the webcam video. We will capture the live video stream and hide the default HTML element so we can render it directly on our canvas.
 
 ```javascript
 // Define a variable "video" to store the webcam video.
@@ -80,7 +80,7 @@ let handPose;
 
 async function setup() {
   createCanvas(640, 480);
-  // Fetch the webcam video, resize it to fit the canvas, and hide it from the display.
+  // Access the webcam video, resize it to fit the canvas, and hide it from the display.
   video = createCapture(VIDEO);
   video.size(640, 480);
   video.hide();
@@ -376,7 +376,7 @@ function setup() {
 
 **Array**: An array of arrays representing the connections between keypoints.
 
-```js
+```javascript
 [[0, 1], [1, 2], [2, 3], ...[17, 18], [18, 19], [19, 20]];
 ```
 

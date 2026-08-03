@@ -72,7 +72,7 @@ async function setup() {
 }
 ```
 
-### Fetch webcam video
+### Access webcam video
 
 Let's define a variable `video` to store the webcam video.
 
@@ -87,7 +87,7 @@ function setup() {
   createCanvas(640, 480);
 ```
 
-Fetch the webcam video, resize it to fit the canvas, and hide it from the display.
+Access the webcam video, resize it to fit the canvas, and hide it from the display.
 
 ```javascript
   // Create the video and hide it
@@ -276,7 +276,7 @@ Example usage of this method: [BodySegmentation Select Body Parts](https://edito
 
 - **Object**: An object representing the connections between keypoints.
 
-  ```js
+  ```javascript
   {
     LEFT_FACE: 0
     RIGHT_FACE: 1
