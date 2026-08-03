@@ -254,7 +254,7 @@ if (hands.length > 0) {
 
 <br>
 
-!> Here is the complete code for your first ml5.js hand tracking sketch
+!> Here is the complete code for your first ml5.js hand tracking sketch!
 
 ```javascript
 let video;
@@ -296,7 +296,9 @@ function gotHands(results) {
 ```
 
 ## Run your sketch!  {docsify-ignore}
-Now, you are ready to see the results! Press the run button on the top left corner of the editor. Move your hand in front of the webcam, and you should see a yellow circle following the tip of your index finger!
+Now, you are ready to see the results! Press the run button on the top left corner of the editor.
+
+Move your hand in front of the webcam, and you should see a yellow circle and red circle following your index finger and thumb! 🎉
 
 <!-- an image -->
 
