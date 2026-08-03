@@ -14,7 +14,7 @@ It provides the following functionalities:
 - **Sound identification**: Detect whether a certain noise (e.g., clapping) was made or a certain word (e.g., up, down) was said.
 - **Custom models**: Flexibility to use [TensorFlow's SpeechCommands18w](https://github.com/tensorflow/tfjs-models/tree/master/speech-commands) model or your own custom pre-trained speech commands.
 
-The SpeechCommands18w model can recognize 18 sounds which include the ten digits from "zero" to "nine", "up", "down", "left", "right", "stop", "go", "yes", and "no". It also includes the categories "background noise" and "unknown".
+The SpeechCommands18w model tries to recognize 18 sounds which include the ten digits from "zero" to "nine", "up", "down", "left", "right", "stop", "go", "yes", and "no". It also includes the categories "background noise" and "unknown".
 
 If opting to train your own model, try [Google's Teachable Machine](https://teachablemachine.withgoogle.com).
 

@@ -7,7 +7,7 @@
 
 ## Description
 
-The ml5.js imageClassifier is a pre-trained model that tries to recognize the content of an image. It can guess the identities of objects, animals, and even people in a picture. The image classifier uses a neural network to analyze the image and provide a list of possible labels for the content of the image in its entirety.
+The ml5.js imageClassifier is a pre-trained model that tries to recognize the content of an image. It tries to guess the identities of objects, animals, and even people in a picture. The image classifier uses a neural network to analyze the image and provide a list of possible labels for the content of the image in its entirety.
 
 The ml5.js imageClassifier uses the pre-trained MobileNet model by default. You can optionally load and use other models such as Darknet as well as a custom-trained model, DoodleNet, which is also built upon the MobileNet architecture and trained on images from the Google _Quick, Draw!_ dataset.
 

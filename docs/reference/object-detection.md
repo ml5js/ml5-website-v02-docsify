@@ -2,7 +2,7 @@
 
 ## Description
 
-The ml5.js objectDetection is a pre-trained model that can detect object from an image or a video, including live video source such as webcam.
+The ml5.js objectDetection is a pre-trained model that tries to detect objects from an image or a video, including live video source such as webcam.
 
 The ml5.js objectDetection uses pre-trained [Tensorflow.js CocoSsd model](https://github.com/tensorflow/tfjs-models/tree/master/coco-ssd).
 
