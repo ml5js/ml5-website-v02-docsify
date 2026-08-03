@@ -115,7 +115,7 @@ async function setup() {
 }
 ```
 
-## Detect hand keypoints with the model
+## Detect hand keypoints with the model {docsify-ignore}
 
 Now that the model is loaded, we can tell it to start detecting hands! We'll use the `detectStart()` function, which takes **two parameters**: the **webcam video** as our **input**, and a callback function called `gotHands` to handle the model's **output** (the detection results, **hands**).
 
@@ -164,7 +164,7 @@ function gotHands(results) {
 }
 ```
 
-## Display the results on the canvas
+## Display the results on the canvas {docsify-ignore}
 When a hand is detected, the `hands` array receives detailed data from the model. This includes the coordinates for 21 different finger joints and fingertips!
 
 Take a look at the diagram below, showing all 21 points with their names!

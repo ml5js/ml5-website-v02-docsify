@@ -92,10 +92,48 @@
     });
   };
 
+  const sidebarStatePlugin = function (hook) {
+    const sidebarMobileBreakpoint = 1060;
+    let hasResizeListener = false;
+    let lastIsMobile = null;
+
+    const sidebarStateByViewport = () => {
+      const sidebar = document.querySelector('.sidebar');
+      if (!sidebar) return;
+
+      const isMobile = window.innerWidth <= sidebarMobileBreakpoint;
+      if (isMobile) {
+        // mobile view starts with sidebar hidden, but the toggle button is visible!
+        sidebar.classList.remove('show');
+      } else {
+        // laptop/desktop view starts with sidebar visible; (the toggle button will be hidden.)
+        sidebar.classList.add('show');
+      }
+      lastIsMobile = isMobile;
+    };
+
+    hook.ready(function () {
+      sidebarStateByViewport();
+
+      if (!hasResizeListener) {
+        window.addEventListener('resize', function () {
+          const isMobile = window.innerWidth <= sidebarMobileBreakpoint;
+          if (lastIsMobile === null || isMobile !== lastIsMobile) {
+            sidebarStateByViewport();
+          }
+        });
+        hasResizeListener = true;
+      }
+    });
+
+    hook.doneEach(sidebarStateByViewport);
+  };
+
   window.ml5DocsPlugins = {
     prismCustomPlugin,
     examplesSearchPlugin,
-    clearSearchTextPlugin
+    clearSearchTextPlugin,
+    sidebarStatePlugin
   };
 
 })();
