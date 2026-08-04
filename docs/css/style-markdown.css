@@ -12,6 +12,9 @@
 /* new way in Docsify v5 to add scroll padding at the top */
 :root {
 	--scroll-padding-top: 30px;
+	--sidebar-width: 300px;
+	--sidebar-toggle-btn-width: 60px;
+	--sidebar-toggle-btn-height: 60px;
 }
 
 html,
@@ -180,7 +183,7 @@ div#app:empty::before {
 	top: 0;
 	bottom: 0;
 	left: 0;
-	width: 300px;
+	width: var(--sidebar-width);
 	overflow-y: auto;
 	transition: transform 250ms ease;
 	z-index: 950;
@@ -386,27 +389,36 @@ div#app:empty::before {
 
 /* the icon on the left bottom */
 .sidebar-toggle {
-	background-color: rgba(var(--color-sidebar-toggle-bg-rgb), 0.8);
-	border: 0;
-	outline: none;
-	padding: 15px;
+	display: none;
+
 	position: absolute;
-	bottom: 0;
 	left: 0;
-	text-align: center;
-	transition: opacity 0.3s, transform 250ms ease, background-color 1s;
-	width: auto;
-	transform: translateX(240px);
+	bottom: 0;
+
+	width: var(--sidebar-toggle-btn-width);
+	height: var(--sidebar-toggle-btn-height);
+	padding: calc(var(--sidebar-toggle-btn-height) / 4);
+	border: 0;
+
 	z-index: 1000;
 	cursor: pointer;
+	transition: opacity 0.3s, transform 250ms ease, background-color 1s;
+
+	/* background-color: rgba(var(--color-sidebar-toggle-bg-rgb), 0.8); */
+	background-color: transparent
 }
 
 .sidebar-toggle span {
-	background-color: var(--color-secondary);
+	background-color: var(--color-primary);
 	display: block;
-	margin-bottom: 4px;
-	width: 20px;
-	height: 3px;
+	margin-bottom: calc(var(--sidebar-toggle-btn-height) / 15);
+	width: calc(var(--sidebar-toggle-btn-height) / 2);
+	height: calc(var(--sidebar-toggle-btn-height) / 15);
+}
+
+
+.sidebar-toggle .sidebar-toggle-button {
+	/*  */
 }
 
 .sidebar-toggle:hover .sidebar-toggle-button {
@@ -416,24 +428,6 @@ div#app:empty::before {
 body.sticky .sidebar,
 body.sticky .sidebar-toggle {
 	position: fixed;
-}
-
-body.close .sidebar {
-	transform: translateX(-300px);
-}
-
-body.close .content {
-	left: 0;
-	width: 100%;
-}
-
-body.close .app-nav {
-	display: none;
-}
-
-body.close .sidebar-toggle {
-	width: 300px;
-	transform: translateX(0px);
 }
 
 footer {
@@ -962,8 +956,8 @@ span.emoji {
 /* mobile view adjustments for bubbles */
 @media screen and (max-width: 768px) {
 	.token.comment.bubble-comment {
-		width: 100%;
-		margin-left: 0;
+		width: 80%;
+		margin-left: auto;
 		margin-top: 0.5rem;
 		margin-bottom: 0.5rem;
 	}
@@ -1349,61 +1343,30 @@ section.cover blockquote>p>a:hover {
 }
 
 @media screen and (max-width: 1060px) {
-
-	.sidebar-toggle,
 	.sidebar {
-		position: fixed;
+		transform: translateX(calc(-1 * var(--sidebar-width)));
 	}
 
-	.app-nav li ul {
-		top: 30px;
+	.sidebar.show {
+		transform: translateX(0);
 	}
 
-	main {
-		height: auto;
-		min-height: 100vh;
-		overflow-x: hidden;
+	main>.content {
+		left: 0;
+		width: 100%;
 	}
 
-	body.close .sidebar {
-		transform: translateX(300px);
-	}
-
-	body.close .sidebar-toggle {
-		transform: translateX(240px);
+	.app-nav {
+		display: none;
 	}
 
 	.sidebar-toggle {
-		transform: translateX(0px);
+		display: block;
 	}
 
-	.sidebar {
-		left: -300px;
-		transition: transform 250ms ease;
+	body:has(.sidebar.show) .sidebar-toggle {
+		transform: translateX(calc(var(--sidebar-width) - var(--sidebar-toggle-btn-width)));
 	}
-
-	.content {
-		left: 0;
-		width: 100%;
-		max-width: 100vw;
-		padding-top: 60px;
-	}
-
-	.markdown-section {
-		max-width: 80%;
-	}
-
-	/* Good suggestion! But's let's try without it for a while. (M) */
-	/* footer {
-    flex-direction: column;
-  } */
-
-	/*
-  .footer-logo {
-    display: none;
-    margin: auto;
-    width: 30%;
-  } */
 }
 
 @media screen and (max-width: 700px) {
@@ -1415,6 +1378,11 @@ section.cover blockquote>p>a:hover {
 	.demo-iframe {
 		display: none !important;
 	}
+
+	.markdown-section {
+		width: 90%;
+		margin: 0 auto;
+	}
 }
 
 @media print {
@@ -1424,24 +1392,5 @@ section.cover blockquote>p>a:hover {
 	.app-nav,
 	#banner {
 		display: none;
-	}
-}
-
-/* this can be removed..? */
-@keyframes octocat-wave {
-
-	0%,
-	100% {
-		transform: rotate(0);
-	}
-
-	20%,
-	60% {
-		transform: rotate(-25deg);
-	}
-
-	40%,
-	80% {
-		transform: rotate(10deg);
 	}
 }
