@@ -300,7 +300,9 @@ Now, you are ready to see the results! Press the run button on the top left corn
 
 Move your hand in front of the webcam, and you should see a yellow circle and red circle following your index finger and thumb! 🎉
 
-<!-- an image -->
+<center>
+    <img alt="screenshot of handpose image on the p5 web editor interface" width="800" src="assets/handpose-run-sketch.jpg">
+</center>
 
 ## Voilà! 🎉 {docsify-ignore}
 
