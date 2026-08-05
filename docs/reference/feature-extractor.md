@@ -2,7 +2,13 @@
 
 ## Description
 
-The ml5.js FeatureExtractor gives you the output of a pre-trained image classifier right before its final classification layer. You can use these "features" directly, or use [transfer learning](https://en.wikipedia.org/wiki/Transfer_learning) to train your own image classifier or predict a continuous value — a task known as regression. For example, you can train it to distinguish coffee mugs from water bottles, recognize hand poses, or predict a slider value from a webcam image.
+The ml5.js FeatureExtractor gives you the output of a pre-trained image classifier right before its final classification layer. You can use these "features" directly, or use [transfer learning](https://en.wikipedia.org/wiki/Transfer_learning) to train your own image classifier or predict a continuous value — a task known as regression.
+
+For example, you can train it to…
+
+- ✌️ **count how many fingers you are holding up** in front of the camera,
+- 🎨 **switch the visuals in your sketch** when you strike different poses, or
+- 🔊 **control the volume of a sound** by raising and lowering your hand in front of the webcam.
 
 The ml5.js FeatureExtractor is built on top of [MobileNet](https://arxiv.org/abs/1704.04861), a model pre-trained on millions of images to recognize objects. FeatureExtractor exposes the output before MobileNet’s final classification layer as a **[feature](/learn/ml5-glossary?id=feature)** — a compact list of numbers that represents what the model has detected in the image.
 
