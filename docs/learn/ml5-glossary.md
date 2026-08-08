@@ -23,7 +23,7 @@ Batch size is a term used in machine learning to describe the number of samples 
 
 In ml5.js, you can set the batch size when you train a neural network with the `train()` method. For example, the following code sets the batch size to 12:
 
-```js
+```javascript
 function trainModel() {
   const trainingOptions = {
     epochs: 32,
@@ -45,7 +45,7 @@ ml5.js is heavily inspired by the syntax, patterns and style of the [p5.js](http
 
 In [p5.js](https://p5js.org/), [callbacks](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function) are passed as arguments to functions that often perform some asynchronous operation. For example, [p5.js](https://p5js.org/) defines the [**loadJSON()**](https://p5js.org/reference/#/p5/loadJSON) function as the following:
 
-```js
+```javascript
 function preload(){
   loadJSON("http//example.com/data.json", handleData);
 }
@@ -61,7 +61,7 @@ In this case, the `handleData` function is a callback function that is passed to
 
 Very similar to [p5.js](https://p5js.org/), ml5.js also uses callbacks to handle asynchronous operations. For example, the **imageClassifier()** method in ml5.js uses a callback function to handle the results of the classification:
 
-```js
+```javascript
 function preload() {
   // Pass a callback function to constructor
   classifier = ml5.imageClassifier("MobileNet",modelLoaded);
@@ -102,12 +102,12 @@ In a classification task, we may get a confidence score for each class. For exam
 
 | Label | Confidence Score | Selected Class |
 | ----- | ---------------- | -------------- |
-| Cat   | 0.8              | ✅             |
+| Cat   | 0.8              | ✅              |
 | Dog   | 0.2              |                |
 
 A similar example is given by the [Getting Started](/?id=your-first-sketch) of ml5 website. Here, we use the [Image Classifier](/reference/image-classifier) to classify an image of a bird and print out the label and confidence score of the prediction as follows:
 
-```js
+```javascript
 // A function to run when we get any errors and the results
 function gotResult(results) {
   // The results are in an array ordered by confidence, print in console
@@ -126,7 +126,7 @@ function gotResult(results) {
 
 An output of the above code is as follows:
 
-```js
+```javascript
 [
   {
     label: "robin, American robin, Turdus migratorius"
@@ -147,13 +147,13 @@ And we can see that the machine learning model is 92.82% confident that the imag
 
 | Label                                                     | Confidence Score      | Selected Class |
 | --------------------------------------------------------- | --------------------- | -------------- |
-| robin, American robin, Turdus migratorius                 | 0.9282158017158508    | ✅             |
+| robin, American robin, Turdus migratorius                 | 0.9282158017158508    | ✅              |
 | worm fence, snake fence, snake-rail fence, Virginia fence | 0.004057395737618208  |                |
 | brambling, Fringilla montifringilla                       | 0.0026653283275663853 |                |
 
 Let's take a look at another example in ml5.js, where the confidence score is used to represent how confident a machine learning model is about its prediction. The example given by the [BodyPose](/reference/bodypose) shows how to get the confidence score of each keypoint:
 
-```js
+```javascript
 for (let i = 0; i < poses.length; i++) {
   for (let k = 0; k < poses[i].pose.keypoints.length; k++) {
     // get each keypoint
@@ -188,7 +188,7 @@ Score threshold is often used to control the minimum confidence score required f
 
 Adding to the previous code example, we can set a threshold of 0.5, and only draw keypoints that have a confidence score higher than 0.5:
 
-```js
+```javascript
 for (let i = 0; i < poses.length; i++) {
   for (let k = 0; k < poses[i].pose.keypoints.length; k++) {
     // ...
@@ -279,7 +279,7 @@ Now, the robot thinks about the bigger picture. It looks at all the summarized i
 
 Assuming two neurons in the fully connected layer:
 
-```js
+```javascript
 Neuron 1: 0.3 * (180 + 75) + 0.5 = 144.5
 Neuron 2: 0.8 * (190 + 50) - 0.2 = 155
 ```
@@ -334,21 +334,21 @@ See an example of a training dataset and a test dataset below.
 Training Dataset
 
 | Sample # | [Feature Vector](/learn/ml5-glossary?id=feature) | Label |
-| -------- | --------------------------------------------------- | ----- |
-| sample 1 | (5.8, 0)                                            | Cat   |
-| sample 2 | (36, 2)                                             | Dog   |
-| sample 3 | (3.2, 1)                                            | Cat   |
+| -------- | ------------------------------------------------ | ----- |
+| sample 1 | (5.8, 0)                                         | Cat   |
+| sample 2 | (36, 2)                                          | Dog   |
+| sample 3 | (3.2, 1)                                         | Cat   |
 
 Test Dataset
 
 | Sample # | [Feature Vector](/learn/ml5-glossary?id=feature) | Prediction Label | Ground Truth Label |
-| -------- | --------------------------------------------------- | ---------------- | ------------------ |
-| sample 1 | (4.5, 0)                                            | ?                | Cat                |
-| sample 2 | (30, 2)                                             | ?                | Dog                |
+| -------- | ------------------------------------------------ | ---------------- | ------------------ |
+| sample 1 | (4.5, 0)                                         | ?                | Cat                |
+| sample 2 | (30, 2)                                          | ?                | Dog                |
 
 In ml5.js, you could train custom machine learning models with your own training datasets. For instance, the example given by the [Neural Networks](/reference/neural-network) uses the following training dataset to train the model to predict the color of an object:
 
-```js
+```javascript
 // Step 1: load data or create some data
 const data = [
   { r: 255, g: 0, b: 0, color: "red-ish" },
@@ -365,7 +365,7 @@ const data = [
 
 And use the following test dataset to test the performance of the model:
 
-```js
+```javascript
 // Step 6: make a classification
 function classify() {
   const input = {
@@ -408,14 +408,14 @@ Dependencies are libraries that are required by a project. The project may impor
 
 In ml5.js, you will install the dependencies of a project by running the following command:
 
-```js
+```javascript
 # install dependencies
 npm install
 ```
 
 or
 
-```js
+```javascript
 # install dependencies
 yarn
 ```
@@ -431,7 +431,7 @@ With a sample size of 96 and a batch size of 12, each epoch will consist of 8 it
 
 In ml5.js, you can set the epochs when you train a neural network with the `train()` method. For example, the following code sets the epochs to 32:
 
-```js
+```javascript
 function trainModel() {
   const trainingOptions = {
     epochs: 32,
@@ -467,7 +467,7 @@ In machine learning, features are used to represent the phenomenon being observe
 
 In ml5.js, features are often used to represent the input to a machine learning model. For instance, the example given by the [Neural Networks](/reference/neural-network) uses the following data to train the model to predict the color of an object:
 
-```js
+```javascript
 // Step 1: load data or create some data
 const data = [
   {r:255, g:0, b:0, color:'red-ish'},
@@ -522,7 +522,7 @@ Hyperparameters are parameters that are set by coders before training a machine 
 
 An example on ml5.js website that uses hyperparameters is the [Neural Networks](/reference/neural-network) example. Here, we set the epochs to 32, and the batch size to 12:
 
-```js
+```javascript
 // Step 4: train the model
 function trainModel() {
   const trainingOptions = {
@@ -554,7 +554,7 @@ And in the test dataset, the labels are the target that we want to predict. For 
 
 An example given by the [Neural Networks](/reference/neural-network) shows how we could assign labels to samples in the training dataset in ml5.js:
 
-```js
+```javascript
 // Step 1: load data or create some data
 const data = [
   { r: 255, g: 0, b: 0, color: "red-ish" },
@@ -585,7 +585,7 @@ A local development server is a server that is used to launch/deploy a website o
 
 You could launch your ml5.js sketch by using the command below. For more information, please refer to the [Getting Started](/?id=try-ml5js-locally-3) guide.
 
-```js
+```javascript
 # run the local web server
 npm run develop
 ```
@@ -855,7 +855,7 @@ ml5.js is heavily inspired by the syntax, patterns and style of the [p5.js](http
 
 In [p5.js](https://p5js.org/), [callbacks](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function) are passed as arguments to functions that often perform some asynchronous operation. For example, [p5.js](https://p5js.org/) defines the [**loadJSON()**](https://p5js.org/reference/#/p5/loadJSON) function as the following:
 
-```js
+```javascript
 function preload(){
   loadJSON("http//example.com/data.json", handleData);
 }
@@ -871,7 +871,7 @@ In this case, the `handleData` function is a callback function that is passed to
 
 Very similar to [p5.js](https://p5js.org/), ml5.js also uses callbacks to handle asynchronous operations. For example, the **imageClassifier()** method in ml5.js uses a callback function to handle the results of the classification:
 
-```js
+```javascript
 function preload() {
   // Pass a callback function to constructor
   classifier = ml5.imageClassifier("MobileNet",modelLoaded);
@@ -915,14 +915,14 @@ Dependencies are libraries that are required by a project. The project may impor
 
 In ml5.js, you will install the dependencies of a project by running the following command:
 
-```js
+```javascript
 # install dependencies
 npm install
 ```
 
 or
 
-```js
+```javascript
 # install dependencies
 yarn
 ```
@@ -935,7 +935,7 @@ A local development server is a server that is used to launch/deploy a website o
 
 You could launch your ml5.js sketch by using the command below. For more information, please refer to the [Getting Started](/?id=try-ml5js-locally-3) guide.
 
-```js
+```javascript
 # run the local web server
 npm run develop
 ```
@@ -970,12 +970,12 @@ In a classification task, we may get a confidence score for each class. For exam
 
 | Label | Confidence Score | Selected Class |
 | ----- | ---------------- | -------------- |
-| Cat   | 0.8              | ✅             |
+| Cat   | 0.8              | ✅              |
 | Dog   | 0.2              |                |
 
 A similar example is given by the [Getting Started](/?id=your-first-sketch) of ml5 website. Here, we use the [Image Classifier](/reference/image-classifier) to classify an image of a bird and print out the label and confidence score of the prediction as follows:
 
-```js
+```javascript
 // A function to run when we get any errors and the results
 function gotResult(results) {
   // The results are in an array ordered by confidence, print in console
@@ -994,7 +994,7 @@ function gotResult(results) {
 
 An output of the above code is as follows:
 
-```js
+```javascript
 [
   {
     label: "robin, American robin, Turdus migratorius"
@@ -1015,13 +1015,13 @@ And we can see that the machine learning model is 92.82% confident that the imag
 
 | Label                                                     | Confidence Score      | Selected Class |
 | --------------------------------------------------------- | --------------------- | -------------- |
-| robin, American robin, Turdus migratorius                 | 0.9282158017158508    | ✅             |
+| robin, American robin, Turdus migratorius                 | 0.9282158017158508    | ✅              |
 | worm fence, snake fence, snake-rail fence, Virginia fence | 0.004057395737618208  |                |
 | brambling, Fringilla montifringilla                       | 0.0026653283275663853 |                |
 
 Let's take a look at another example in ml5.js, where the confidence score is used to represent how confident a machine learning model is about its prediction. The example given by the [BodyPose](/reference/bodypose) shows how to get the confidence score of each keypoint:
 
-```js
+```javascript
 for (let i = 0; i < poses.length; i++) {
   for (let k = 0; k < poses[i].pose.keypoints.length; k++) {
     // get each keypoint
@@ -1056,7 +1056,7 @@ Score threshold is often used to control the minimum confidence score required f
 
 Adding to the previous code example, we can set a threshold of 0.5, and only draw keypoints that have a confidence score higher than 0.5:
 
-```js
+```javascript
 for (let i = 0; i < poses.length; i++) {
   for (let k = 0; k < poses[i].pose.keypoints.length; k++) {
     // ...
@@ -1111,21 +1111,21 @@ See an example of a training dataset and a test dataset below.
 Training Dataset
 
 | Sample # | [Feature Vector](/learn/ml5-glossary?id=feature) | Label |
-| -------- | --------------------------------------------------- | ----- |
-| sample 1 | (5.8, 0)                                            | Cat   |
-| sample 2 | (36, 2)                                             | Dog   |
-| sample 3 | (3.2, 1)                                            | Cat   |
+| -------- | ------------------------------------------------ | ----- |
+| sample 1 | (5.8, 0)                                         | Cat   |
+| sample 2 | (36, 2)                                          | Dog   |
+| sample 3 | (3.2, 1)                                         | Cat   |
 
 Test Dataset
 
 | Sample # | [Feature Vector](/learn/ml5-glossary?id=feature) | Prediction Label | Ground Truth Label |
-| -------- | --------------------------------------------------- | ---------------- | ------------------ |
-| sample 1 | (4.5, 0)                                            | ?                | Cat                |
-| sample 2 | (30, 2)                                             | ?                | Dog                |
+| -------- | ------------------------------------------------ | ---------------- | ------------------ |
+| sample 1 | (4.5, 0)                                         | ?                | Cat                |
+| sample 2 | (30, 2)                                          | ?                | Dog                |
 
 In ml5.js, you could train custom machine learning models with your own training datasets. For instance, the example given by the [Neural Networks](/reference/neural-network) uses the following training dataset to train the model to predict the color of an object:
 
-```js
+```javascript
 // Step 1: load data or create some data
 const data = [
   { r: 255, g: 0, b: 0, color: "red-ish" },
@@ -1142,7 +1142,7 @@ const data = [
 
 And use the following test dataset to test the performance of the model:
 
-```js
+```javascript
 // Step 6: make a classification
 function classify() {
   const input = {
@@ -1198,7 +1198,7 @@ In machine learning, features are used to represent the phenomenon being observe
 
 In ml5.js, features are often used to represent the input to a machine learning model. For instance, the example given by the [Neural Networks](/reference/neural-network) uses the following data to train the model to predict the color of an object:
 
-```js
+```javascript
 // Step 1: load data or create some data
 const data = [
   {r:255, g:0, b:0, color:'red-ish'},
@@ -1253,7 +1253,7 @@ Hyperparameters are parameters that are set by coders before training a machine 
 
 An example on ml5.js website that uses hyperparameters is the [Neural Networks](/reference/neural-network) example. Here, we set the epochs to 32, and the batch size to 12:
 
-```js
+```javascript
 // Step 4: train the model
 function trainModel() {
   const trainingOptions = {
@@ -1285,7 +1285,7 @@ And in the test dataset, the labels are the target that we want to predict. For 
 
 An example given by the [Neural Networks](/reference/neural-network) shows how we could assign labels to samples in the training dataset in ml5.js:
 
-```js
+```javascript
 // Step 1: load data or create some data
 const data = [
   { r: 255, g: 0, b: 0, color: "red-ish" },
@@ -1496,7 +1496,7 @@ Now, the robot thinks about the bigger picture. It looks at all the summarized i
 
 Assuming two neurons in the fully connected layer:
 
-```js
+```javascript
 Neuron 1: 0.3 * (180 + 75) + 0.5 = 144.5
 Neuron 2: 0.8 * (190 + 50) - 0.2 = 155
 ```
@@ -1576,7 +1576,7 @@ Batch size is a term used in machine learning to describe the number of samples 
 
 In ml5.js, you can set the batch size when you train a neural network with the `train()` method. For example, the following code sets the batch size to 12:
 
-```js
+```javascript
 function trainModel() {
   const trainingOptions = {
     epochs: 32,
@@ -1609,7 +1609,7 @@ With a sample size of 96 and a batch size of 12, each epoch will consist of 8 it
 
 In ml5.js, you can set the epochs when you train a neural network with the `train()` method. For example, the following code sets the epochs to 32:
 
-```js
+```javascript
 function trainModel() {
   const trainingOptions = {
     epochs: 32,

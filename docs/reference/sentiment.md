@@ -7,13 +7,13 @@
 
 ## Description
 
-Sentiment is a model trained to predict the sentiment of any given text. For example, it can predict how positive or negative a review is with a value between 0 ("negative") and 1 ("positive").
+Sentiment is a model trained to predict the sentiment of any given text. For example, it tries to predict how positive or negative a review is with a value between 0 ("negative") and 1 ("positive").
 
 The model is trained using IMDB reviews that have been truncated to a maximum of 200 words, and only the 20000 most used words in the reviews are used.
 
 It provides the following functionalities:
 
-- **Sentiment Analysis**: The model can predict the sentiment of a given text.
+- **Sentiment Analysis**: The model tries to predict the sentiment of a given text.
 
 ## Quick Start
 
@@ -53,14 +53,15 @@ Let's open the `sketch.js` file and define a variable to store the Sentiment mod
 let sentiment;
 ```
 
-Now, create a `preload` function and load the Sentiment model by calling the `ml5.sentiment(model, ?callback)` method. Using the `preload` function lets us make sure that the model is loaded correctly before the `setup` and `draw` functions are called.
+Now, load the Sentiment model by calling the `ml5.sentiment(model, ?callback)` method. Using `async` and `await` ensures that the model is fully loaded before the `draw()` function begins.
 
 Currently, the Sentiment model only supports the 'movieReviews' model, and we may support more models in the future.
 
 ```javascript
-function preload() {
-  // Initialize the sentiment analysis model
-  sentiment = ml5.sentiment("MovieReviews");
+// Make sure to add "async" before "function setup()".
+async function setup() {
+  // Wait until the Sentiment model is fully loaded.
+  sentiment = await ml5.sentiment("MovieReviews"); 
 }
 ```
 
@@ -194,7 +195,7 @@ That's it! You have successfully built a Sentiment Analysis model that predicts 
 
 This method is used to load the sentiment model and store it in a variable. The ? means the argument is optional!
 
-```js
+```javascript
 let sentiment = ml5.sentiment(model, ?callback);
 ```
 
@@ -209,7 +210,7 @@ let sentiment = ml5.sentiment(model, ?callback);
 
 This method is used to predict the sentiment of a given text.
 
-```js
+```javascript
 sentiment.predict(text);
 ```
 

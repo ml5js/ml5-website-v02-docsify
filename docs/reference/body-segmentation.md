@@ -12,8 +12,8 @@ The ml5.js BodySegmentation provides two models, `SelfieSegmentation` and `BodyP
 The ml5.js BodySegmentation is built on top of the [TensorFlow.js BodyPix model and the MediaPipe Selfie Segmentation model](https://github.com/tensorflow/tfjs-models/tree/master/body-segmentation).
 
 It provides following functionalities:
-- **Real-time person/background segmentation**: The `SelfieSegmentation` model can segment people from the background in real-time, and is designed to be lightweight. The `BodyPix` model can also be used for this purpose, but is more computationally intensive.
-- **Real-time body part segmentation**: The `BodyPix` model can segment 24 body parts in real-time.
+- **Real-time person/background segmentation**: The `SelfieSegmentation` model tries to segment people from the background in real-time, and is designed to be lightweight. The `BodyPix` model can also be used for this purpose, but is more computationally intensive.
+- **Real-time body part segmentation**: The `BodyPix` model tries to segment 24 body parts in real-time.
 
 ## Quick Start
 
@@ -46,10 +46,10 @@ Import the ml5.js library in your `index.html` file.
 ?> If you are not familiar with how to import the ml5.js library and need more detailed guidance, please check out our [Getting Started](/?id=set-up-ml5js) page.
 
 ### Load model
-Let's open the `sketch.js` file and define a variable to store the BodySegmentation model.
+Let's open the `sketch.js` file in the p5.js Web Editor and follow the steps below to load the model.
 
 ```javascript
-let bodySegmentation;
+let bodySegmentation; //Define a variable to store the BodySegmentation model.
 ```
 
 In this example, we would like to segment body parts from the webcam input. Let's specify the mask type as `parts` in the options object.
@@ -62,15 +62,17 @@ let options = {
 
 ?> You can also specify the mask type as `person` or `background` in the options object. For more information on the options object, please refer to the [Methods](/reference/body-segmentation?id=methods) section.
 
-Now, let's preload the BodySegmentation model with the specified options. Using the `preload` function ensures that the model is loaded before the `setup` and `draw` functions are called.
+Now, let's load the BodySegmentation model with the specified options. Using `async` and `await` ensures that the model is fully loaded before the `draw()` function begins.
 
 ```javascript
-function preload() {
-  bodySegmentation = ml5.bodySegmentation("BodyPix", options);
+// Make sure to add "async" before "function setup()".
+async function setup() {
+  // Wait until the BodySegmentation model is fully loaded.
+  bodySegmentation = await ml5. bodySegmentation ("BodyPix", options); 
 }
 ```
 
-### Fetch webcam video
+### Access webcam video
 
 Let's define a variable `video` to store the webcam video.
 
@@ -85,7 +87,7 @@ function setup() {
   createCanvas(640, 480);
 ```
 
-Fetch the webcam video, resize it to fit the canvas, and hide it from the display.
+Access the webcam video, resize it to fit the canvas, and hide it from the display.
 
 ```javascript
   // Create the video and hide it
@@ -274,7 +276,7 @@ Example usage of this method: [BodySegmentation Select Body Parts](https://edito
 
 - **Object**: An object representing the connections between keypoints.
 
-  ```js
+  ```javascript
   {
     LEFT_FACE: 0
     RIGHT_FACE: 1

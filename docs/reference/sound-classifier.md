@@ -14,7 +14,7 @@ It provides the following functionalities:
 - **Sound identification**: Detect whether a certain noise (e.g., clapping) was made or a certain word (e.g., up, down) was said.
 - **Custom models**: Flexibility to use [TensorFlow's SpeechCommands18w](https://github.com/tensorflow/tfjs-models/tree/master/speech-commands) model or your own custom pre-trained speech commands.
 
-The SpeechCommands18w model can recognize 18 sounds which include the ten digits from "zero" to "nine", "up", "down", "left", "right", "stop", "go", "yes", and "no". It also includes the categories "background noise" and "unknown".
+The SpeechCommands18w model tries to recognize 18 sounds which include the ten digits from "zero" to "nine", "up", "down", "left", "right", "stop", "go", "yes", and "no". It also includes the categories "background noise" and "unknown".
 
 If opting to train your own model, try [Google's Teachable Machine](https://teachablemachine.withgoogle.com).
 
@@ -82,24 +82,20 @@ let words = [
 ];
 ```
 
-We're now going to create a `preload` function to load the SoundClassifier model. The `preload` function is a p5.js function that runs before the `setup` and `draw` function. This is where we load the model to ensure it is ready before we use it.
+We're now going to load the SoundClassifier model. Using `async` and `await` ensures that the model is fully loaded before the `draw()` function begins.
 
 In this, we first create an `options` object to customize the model's behavior. For example, we can set the probability threshold, with the default being 0.
 
 ```javascript
-function preload() {
+// Make sure to add "async" before "function setup()".
+async function setup() {
   let options = { probabilityThreshold: 0.7 };
-
+  // load a model configured as `options` specifies and store it in the `classifier` variable.
+  classifier = await ml5.soundClassifier("SpeechCommands18w", options); 
+}
 ```
 
 ?> If you would like to know more about the available configuration settings for `options`, please check out the [Methods](/reference/sound-classifier?id=methods) section.
-
-Now, we are ready to load a model configured as `options` specifies and store it in the `classifier` variable.
-
-```javascript
-  classifier = ml5.soundClassifier("SpeechCommands18w", options);
-}
-```
 
 ### Classify sound with the model
 
@@ -206,7 +202,7 @@ Voila! You have successfully built the Sound Classification example. Press the <
 
 This method is used to initialize the soundClassifier object.
 
-```js
+```javascript
 let soundclassifier = ml5.soundClassifier(?model, ?options, ?callback)
 ```
 
@@ -214,17 +210,17 @@ let soundclassifier = ml5.soundClassifier(?model, ?options, ?callback)
 
 - **model**: Optional. Model name or URL path to a `model.json`. Here are some options:
   - `SpeechCommands18w`: loads the 18w speech commands
-    ```js
+    ```javascript
     let classifier = ml5.soundClassifier("SpeechCommands18w", modelReady);
     ```
   - Custom model made in Google's Teachable Machine:
-    ```js
+    ```javascript
     let classifier = ml5.soundClassifier("path/to/model.json", modelReady);
     ```
 - **options**: Optional. An object describing a model accuracy and performance.
   The default and available options are:
 
-  ```js
+  ```javascript
   {
     overlapFactor: 0.5,
     includeSpectrogram: false,
@@ -257,7 +253,7 @@ let soundclassifier = ml5.soundClassifier(?model, ?options, ?callback)
 
 This method repeatedly outputs classification labels on an audio media through a callback function.
 
-```js
+```javascript
 soundClassifier.classifyStart(numOrCallback, callback);
 ```
 
@@ -266,7 +262,7 @@ soundClassifier.classifyStart(numOrCallback, callback);
 - **numOrCallback:** Optional. A number representing the number of classes to classify or a callback function to handle the results. If no number is provided, the default is the length of the labels in the model.
 - **callback:** Optional. A function to handle the classification results. The callback function will receive an array of objects with the following structure:
 
-  ```js
+  ```javascript
   [
     {
       label: "up",
@@ -291,7 +287,7 @@ soundClassifier.classifyStart(numOrCallback, callback);
 
 This method can be called after a call to `soundClassifier.classifyStart` to stop the repeating classifications.
 
-```js
+```javascript
 soundClassifier.classifyStop();
 ```
 

@@ -7,13 +7,13 @@
 
 ## Description
 
-The ml5.js imageClassifier is a pre-trained model that can recognize the content of an image. It can identify objects, animals, and even people in a picture. The image classifier uses a neural network to analyze the image and provide a list of possible labels for the content of the image in its entirety.
+The ml5.js imageClassifier is a pre-trained model that tries to recognize the content of an image. It tries to guess the identities of objects, animals, and even people in a picture. The image classifier uses a neural network to analyze the image and provide a list of possible labels for the content of the image in its entirety.
 
 The ml5.js imageClassifier uses the pre-trained MobileNet model by default. You can optionally load and use other models such as Darknet as well as a custom-trained model, DoodleNet, which is also built upon the MobileNet architecture and trained on images from the Google _Quick, Draw!_ dataset.
 
 It provides the following functionality:
 
-- **Image Classification**: ImageClassifier can recognize the content of an image and provide a list of possible labels.
+- **Image Classification**: ImageClassifier tries to recognize the content of an image and provide a list of possible labels.
 - **Video Object Detection**: ImageClassifier can also be used to classify objects in a video stream.
 
 ?> If you want to **train your own image classification model with customized labels**, check out our [Image + Teachable Machine](/reference/image-classifier-tm) to get started!
@@ -66,11 +66,13 @@ Let's open the `sketch.js` file and define a variable to store the ImageClassifi
 let classifier;
 ```
 
-Now, we can load the ImageClassifier model in the `preload` function. Using the `preload` function ensures that the model is loaded before the `setup` and `draw` functions are called. Note here we can specify the model name we want to use, such as `MobileNet`.
+Now, we can load the ImageClassifier model. Using `async` and `await` ensures that the model is loaded before the `draw()` function begins. Note here we can specify the model name we want to use, such as `MobileNet`.
 
 ```javascript
-function preload() {
-  classifier = ml5.imageClassifier("MobileNet");
+// Make sure to add "async" before "function setup()".
+async function setup() {
+  // Wait until the ImageClassifier model is fully loaded.
+  classifier = await ml5.imageClassifier("MobileNet"); 
 }
 ```
 
@@ -80,18 +82,16 @@ function preload() {
 
 Next, let's load an image that we want to classify. Unfold the project directory by clicking the arrow `>` at the top left corner of the p5.js editor. Create a new folder called `images`. And upload a bird image named `bird.png` to the `images` folder. Remember to login to see this option.
 
-We are ready to write the code to load the image that we just uploaded. Define a variable `img` to store the image.
+We are ready to write the code to load the image that we just uploaded. 
 
 ```javascript
-let img;
-```
+// Define a variable `img` to store the image.
+let img; 
 
-In the `preload` function, load the image using the `loadImage` function.
-
-```javascript
-function preload() {
-  classifier = ml5.imageClassifier("MobileNet");
-  img = loadImage("images/bird.png");
+async function setup() {
+  classifier = await ml5.imageClassifier("MobileNet"); 
+  // Also use "await" to load the image before the "draw()"" function begins.
+  img = await loadImage("images/bird.png");
 }
 ```
 
@@ -100,8 +100,11 @@ function preload() {
 Within the `setup` function, call the `classify` method on the `classifier` object to - you guessed right - classify the image. The `classify` method takes the image and a callback function as parameters.
 
 ```javascript
-function setup() {
+async function setup() {
   createCanvas(400, 400);
+  classifier = await ml5.imageClassifier("MobileNet");
+  img = await loadImage("images/bird.png");
+  // classify the image with the model and pass in a callback function `gotResult` to handle the results.
   classifier.classify(img, gotResult);
 }
 ```
@@ -121,8 +124,8 @@ function gotResult(results) {
 We need to first display the image itself on the canvas. Add the following code to the `setup` function.
 
 ```javascript
-function setup() {
-  // ...
+async function setup() {
+  ...
   classifier.classify(img, gotResult);
   image(img, 0, 0, width, height);
 }

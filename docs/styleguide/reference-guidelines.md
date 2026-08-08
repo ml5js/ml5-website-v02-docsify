@@ -15,7 +15,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 ## Quick Start
 
-```js
+```javascript
 // Initialize the magicFeature
 const magic = ml5.magicFeature("sparkles", modelLoaded);
 
@@ -34,7 +34,7 @@ magic.makeSparkles(100, (err, results) => {
 
 ### Initialize
 
-```js
+```javascript
 const magic = ml5.magicFeature(requiredInput, ?optionalInput1, ?optionalInput2);
 ```
 
@@ -44,7 +44,7 @@ const magic = ml5.magicFeature(requiredInput, ?optionalInput1, ?optionalInput2);
 - **optionalInput1**: Optional. Notice the `?` indicates an optional parameter.
 - **optionalInput2**: Optional. A description of some kind of object with some properties. Notice the `?` indicates an optional parameter.
 
-  ```js
+  ```javascript
   {
     sparkleCount: 100,
     delightFactor: 1.0,
@@ -102,7 +102,7 @@ FUNCTION DEFINITION START
 
 > Given a number, will make magicSparkles
 
-```js
+```javascript
 classifier.makeSparkles(?numberOfSparkles, ?callback);
 ```
 
@@ -131,7 +131,7 @@ FUNCTION DEFINITION START
 
 > Given an image, will make objects in the image disappear
 
-```js
+```javascript
 classifier.makeDisappear(input, ?numberOfObjects, ?callback);
 ```
 

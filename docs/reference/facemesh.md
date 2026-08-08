@@ -7,7 +7,7 @@
 
 ## Description
 
-FaceMesh is a machine-learning model that allows for facial landmark detection in the browser. It can detect multiple faces at once and provides 468 3D facial landmarks that describe the geometry of each face. FaceMesh works best when the faces in view take up a large percentage of the image or video frame and it may struggle with small/distant faces.
+FaceMesh is a machine-learning model that allows for facial landmark detection in the browser. It tries to detect multiple faces at once and provides 468 3D facial landmarks that describe the geometry of each face. FaceMesh works best when the faces in view take up a large percentage of the image or video frame and it may struggle with small/distant faces.
 
 The ml5.js FaceMesh model is ported from the [TensorFlow.js FaceMesh implementation](https://github.com/tensorflow/tfjs-models/tree/master/face-landmarks-detection).
 
@@ -69,15 +69,17 @@ let options = { maxFaces: 1, refineLandmarks: false, flipped: false };
 
 Now, we are ready to load a model configed as `options` specifies and store it in the `faceMesh` variable.
 
-Let's create a `preload` function to load the FaceMesh model. The `preload` function is a p5.js function that runs before the `setup` and `draw` function. This is where we load the model to ensure it is ready before we use it.
+Let's use `async` and `await` to ensure that the model is fully loaded before the `draw()` function begins. 
 
 ```javascript
-function preload() {
-  faceMesh = ml5.faceMesh(options);
+// Make sure to add "async" before "function setup()".
+async function setup() {
+   // Wait until the FaceMesh model is fully loaded.
+  faceMesh = await ml5.faceMesh(options);
 }
 ```
 
-### Fetch webcam video
+### Access webcam video
 
 Define a variable `video` to hold the webcam video.
 
@@ -92,7 +94,7 @@ function setup() {
   createCanvas(640, 480);
 ```
 
-Fetch the webcam video, resize it to fit the canvas, and hide it from the display.
+Access the webcam video, resize it to fit the canvas, and hide it from the display.
 
 ```javascript
   // Create the video and hide it

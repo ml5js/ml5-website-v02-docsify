@@ -2,7 +2,7 @@
 
 ## Description
 
-The ml5.js objectDetection is a pre-trained model that can detect object from an image or a video, including live video source such as webcam.
+The ml5.js objectDetection is a pre-trained model that tries to detect objects from an image or a video, including live video source such as webcam.
 
 The ml5.js objectDetection uses pre-trained [Tensorflow.js CocoSsd model](https://github.com/tensorflow/tfjs-models/tree/master/coco-ssd).
 
@@ -80,22 +80,24 @@ function draw() {
 
 ### Load model
 
-Use preload function to load ml5.objectDetection with the supported model [CocoSsd](https://github.com/tensorflow/tfjs-models/tree/master/coco-ssd).
+Using `async` setup() and `await` to load ml5.objectDetection with the supported model [CocoSsd](https://github.com/tensorflow/tfjs-models/tree/master/coco-ssd).
 
 
 ```javascript
-function preload(){
-  detector = ml5.objectDetection("cocossd");
+// Make sure to add "async" before "function setup()".
+async function setup(){ 
+ // Wait until the ObjectDetection model is fully loaded.
+ detector = await ml5.objectDetection("cocossd");
 }
 ```
 
-Note that preload function is deprecated in p5.js 2.0, you need to load the model through async setup() and await.
+<!-- Note that preload function is deprecated in p5.js 2.0, you need to load the model through async setup() and await.
 
 ```javascript
 async function setup(){
   detector = await ml5.objectDetection("cocossd");
 }
-```
+``` -->
 
 ### Start Detection
 

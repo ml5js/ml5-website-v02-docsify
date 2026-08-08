@@ -49,7 +49,7 @@ Here is a list of the repositories you most likely will be working with:
 
 **Preamble**: If you're interested in contributing to the ml5.js project, just know you can always open an issue to ask questions or flag things that may seem confusing, unclear or intimidating. Our goal is to make ml5.js as open and supportive as possible for those who want to be involved. Ok, now that's out of the way, here's how a general workflow for what contributions to ml5.js might look like.
 
-1. Read the CONTRIBUTING.md document. ❤️
+1. Read the [CONTRIBUTING.md](https://github.com/ml5js/ml5-next-gen/blob/main/CONTRIBUTING.md) document. ❤️
 2. Take a peek at the [issues](https://github.com/ml5js/ml5-next-gen/issues) page and identify something you'd like to address **or** file a new issue. The issue could be about fixing a bug, adding a new feature, updating an existing feature, or anything else. 🚩
 3. Make a comment on the existing issue **or** indicate on your new issue that you're curious to do your best to solve it. 🔬
 4. Make a forked copy of the ml5-next-gen repository and create a branch with a meaningful name such as `fix-detection-results`. 🍴
@@ -331,7 +331,7 @@ This section documents the utility functions found in the `src/utils` folder.
 
 `handleOptions` is a function that filters a user defined options object based on rules in a mold object, returning a filtered options object. The function logs friendly warnings in the console when one of the user defined options violates the rules.
 
-```js
+```javascript
 const filteredOptions = handleOptions(userObject, moldObject);
 ```
 
@@ -339,7 +339,7 @@ const filteredOptions = handleOptions(userObject, moldObject);
 
 The `userObject` is an object defined by the user to configure the options of a model. For example, the below object configures the `handpose` model to detect a maximum of 4 hands using the "full" variant:
 
-```js
+```javascript
 const optionsObject = {
   maxHands: 4,
   modelType: full,
@@ -350,7 +350,7 @@ const optionsObject = {
 
 Inspired by [Mongoose Models](https://mongoosejs.com/docs/models.html), the `moldObject` defines how the `userObject` should be filtered. Here is an example `optionsObject`:
 
-```js
+```javascript
 const mold = {
   maxHands: {
     type: "number",
@@ -393,7 +393,7 @@ The `moldObject` consists of key-value pairs. The key defines the name of an all
 
 A rule can be a constant value or a function that is dynamically evaluated. The function will be called with the current filtered object as its parameter. Below is an example usage:
 
-```js
+```javascript
 const mold = {
   runtime: {
     type: "enum",
