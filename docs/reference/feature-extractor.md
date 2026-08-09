@@ -1,8 +1,8 @@
-# FeatureExtractor
+# Feature Extractor
 
 ## Description
 
-The ml5.js FeatureExtractor gives you the output of a pre-trained image classifier right before its final classification layer. You can use these "features" directly, or use [transfer learning](https://en.wikipedia.org/wiki/Transfer_learning) to train your own image classifier or predict a continuous value — a task known as regression.
+The ml5.js Feature Extractor gives you the output of a pre-trained image classifier right before its final classification layer. You can use these "features" directly, or use [transfer learning](https://en.wikipedia.org/wiki/Transfer_learning) to train your own image classifier or predict a continuous value — a task known as regression.
 
 For example, you can train it to…
 
@@ -10,7 +10,7 @@ For example, you can train it to…
 - 🎨 **switch the visuals in your sketch** when you strike different poses, or
 - 🔊 **control the volume of a sound** by raising and lowering your hand in front of the webcam.
 
-The ml5.js FeatureExtractor is built on top of [MobileNet](https://arxiv.org/abs/1704.04861), a model pre-trained on millions of images to recognize objects. FeatureExtractor exposes the output before MobileNet’s final classification layer as a **[feature](/learn/ml5-glossary?id=feature)** — a compact list of numbers that represents what the model has detected in the image.
+The ml5.js Feature Extractor is built on top of [MobileNet](https://arxiv.org/abs/1704.04861), a model pre-trained on millions of images to recognize objects. Feature Extractor exposes the output before MobileNet’s final classification layer as a **[feature](/learn/ml5-glossary?id=feature)** — a compact list of numbers that represents what the model has detected in the image.
 
 Because these features already encode rich visual information, you can build your own **[classification](/learn/ml5-glossary?id=classification)** or **[regression](/learn/ml5-glossary?id=regression-analysis)** model on top of them with only a small amount of training data.
 
@@ -24,19 +24,224 @@ It provides the following functionalities:
 
 ## Quick Start
 
+Run and explore a pre-built example! [This Feature Extractor example](https://editor.p5js.org/ml5/sketches/XSzNdRjCm) trains a custom classifier with samples collected from the webcam and classifies the live video in real-time.
+
+</br>
+
+[DEMO](iframes/feature-extractor ":include :type=iframe width=100% height=550px")
+
 ## Examples
+
+### p5 sketches
+
+- [Feature Extractor Webcam Classifier](https://editor.p5js.org/ml5/sketches/XSzNdRjCm): Name two classes of your own (e.g. thumbs-up 👍 vs. peace sign ✌️), collect webcam samples for each with a button click, train the classifier, and see the predicted label with its confidence score update in real-time.
+- [Feature Extractor Webcam Regressor](https://editor.p5js.org/ml5/sketches/kZkob6YQP): Control the size of a circle by moving closer or further away from the camera. Add webcam samples with the slider at 0 while leaning back and at 1 while leaning in, train the regressor, and watch the circle grow and shrink with your distance in real-time.
 
 ### Video Tutorials
 
 > These videos were created using an older version of ml5.js, so the code shown may not work directly with the current ml5.featureExtractor API.
 >
-> That said, the core concepts remain the same and the videos are still an excellent way to understand how the FeatureExtractor works!
+> That said, the core concepts remain the same and the videos are still an excellent way to understand how the Feature Extractor works!
 
 - [ml5.js Feature Extractor Classification](https://www.youtube.com/watch?v=eeO-rWYFuG0) by The Coding Train
 - [ml5.js Transfer Learning with Feature Extractor](https://www.youtube.com/watch?v=kRpZ5OqUY6Y) by The Coding Train
 - [ml5.js Feature Extractor Regression](https://www.youtube.com/watch?v=aKgq0m1YjvQ) by The Coding Train
 
 ## Step-by-Step Guide
+
+Now, let's together build the [Feature Extractor Webcam Classifier example](https://editor.p5js.org/ml5/sketches/XSzNdRjCm) from scratch, and in the process, learn how to use the Feature Extractor. We will train a custom classifier with two classes of our own, using samples collected from the webcam, and then classify the live video in real-time.
+
+### Create a new project
+
+To follow along, start by creating an empty project in the [p5.js web editor](https://editor.p5js.org/).
+
+### Set up ml5.js
+
+Import the ml5.js library in your `index.html` file.
+
+```html
+<script src="https://unpkg.com/ml5@1/dist/ml5.js"></script>
+```
+
+?> If you are not familiar with how to import the ml5.js library and need more detailed guidance, please check out our [Getting Started](/?id=set-up-ml5js) page.
+
+### Load the model
+
+Let's open the `sketch.js` file and define a variable to store the Feature Extractor.
+
+```javascript
+let classifier;
+```
+
+With p5.js 2.0, the `setup` function can be `async`, so we can `await` the model and be sure it is fully loaded before we use it. We pass `{ task: "classification" }` because we want to sort the webcam frames into labeled classes.
+
+```javascript
+async function setup() {
+  classifier = await ml5.featureExtractor("MobileNet", {
+    task: "classification",
+  });
+}
+```
+
+### Fetch webcam video
+
+Let's define a variable `video` to store the webcam video.
+
+```javascript
+let video;
+```
+
+In the `setup` function, create the canvas with a resolution of 640x480, a common resolution for webcams. Then fetch the webcam video and hide it from the display. We will draw the video on the canvas instead. The `{ flipped: true }` option mirrors the video, which feels more natural when you are moving in front of the camera.
+
+```javascript
+async function setup() {
+  // ...
+  createCanvas(640, 480);
+  video = createCapture(VIDEO, { flipped: true });
+  video.hide();
+}
+```
+
+### Create the interface
+
+Our sketch needs a small interface. Let's define a variable for each part of it:
+
+- **`classElems`**: an array that stores a text input for each class, where you type the class name.
+- **`doneButton`**: the "Start collecting samples" button. Once you have decided what to classify and named your classes, pressing this button lets you start capturing images for each class from the webcam.
+- **`result`**: a string that we will draw at the bottom of the canvas. It shows how many samples each class has while collecting, and the predicted label with its confidence score after training.
+
+```javascript
+let classElems = [];
+let doneButton;
+let result = "";
+```
+
+At the end of the `setup` function, create the text inputs and the button. You can train the classifier with any number of classes. Since this example uses **two class labels**, we create the inputs with a for loop that runs twice.
+
+The `placeholder` attribute gives each empty input a hint, "Class #1 label" and "Class #2 label", so you know where to type each class name. Pressing the button calls the `startSampling()` function, which we will write in the [Collect training samples](/reference/feature-extractor?id=collect-training-samples) section below.
+
+```javascript
+async function setup() {
+  // ...
+  for (let i = 0; i < 2; i++) {
+    let input = createInput("");
+    input.attribute("placeholder", "Class #" + (i + 1) + " label");
+    classElems.push(input);
+  }
+
+  doneButton = createButton("Start collecting samples");
+  doneButton.mousePressed(startSampling);
+}
+```
+
+The interface will look like this below the canvas:
+
+<img style="display: block; max-width: 100%;" src="assets/feature-extractor-interface.png" alt="Two class name text inputs and a Start collecting samples button">
+
+### Draw the video and results
+
+In the `draw` function, draw the webcam video on the canvas, and display the `result` text at the bottom. We will fill in `result` later: first with the sample counts, and after training with the classification results.
+
+```javascript
+function draw() {
+  background(0);
+
+  image(video, 0, 0, 640, 450);
+
+  fill(255);
+  textSize(16);
+  text(result, 10, height - 10);
+}
+```
+
+### Collect training samples
+
+When the "Start collecting samples" button is pressed, `startSampling()` runs. It reads the class name from each text input (falling back to `"Class #1"` and `"Class #2"` if left empty) and turns each input into a button. Pressing one will add a sample for that class. It also stores the label and a sample counter as custom properties on each element, and repurposes `doneButton` to move on to the training stage.
+
+```javascript
+function startSampling() {
+  for (let i = 0; i < classElems.length; i++) {
+    let label = classElems[i].value();
+    if (label.trim().length == 0) {
+      label = "Class #" + (i + 1);
+    }
+    // we're storing the label and the number of samples seen as
+    // custom properties in the p5.Element
+    classElems[i].label = label;
+    classElems[i].count = 0;
+    // turn it into a button
+    classElems[i].attribute("type", "button");
+    classElems[i].value("Add " + label);
+    classElems[i].mousePressed(addSample);
+  }
+
+  doneButton.html("Start training");
+  doneButton.mousePressed(startTraining);
+}
+```
+
+Each press of a class button calls `addSample()`. Inside, [`classifier.addImage()`](/reference/feature-extractor?id=featureextractoraddimage) captures the current webcam frame and stores it as one training sample for that class. We also update the `result` text to show how many samples each class has so far.
+
+```javascript
+function addSample() {
+  // "this" is the button that was pressed
+  classifier.addImage(video, this.label);
+  this.count++;
+
+  result = "";
+  for (let i = 0; i < classElems.length; i++) {
+    result += classElems[i].label + ": " + classElems[i].count + ", ";
+  }
+  result = result.slice(0, -2);
+}
+```
+
+?> The loop appends `", "` after every count, leaving an extra comma and space at the end of the string. `slice(0, -2)` cuts off these last two characters, turning `"cat: 5, dog: 3, "` into `"cat: 5, dog: 3"`.
+
+?> Each call to `addImage()` captures **a single frame**. Collect a good handful of samples for each class. Around 15 to 20 per class, with some variation in position and angle, already works well.
+
+### Train the model
+
+When the "Start training" button is pressed, `startTraining()` calls [`classifier.train()`](/reference/feature-extractor?id=featureextractortrain). Once training finishes, the `finishedTraining` callback runs.
+
+```javascript
+function startTraining() {
+  classifier.train({ epochs: 100, debug: true }, finishedTraining);
+}
+```
+
+Setting `debug: true` shows a "Training Performance" panel like the one below during training, where you can watch the loss curve drop in real-time. A downward trend means the model is learning. Set `debug: false` if you do not want the panel to appear.
+
+<img style="display: block; max-width: 100%;" src="assets/feature-extractor-loss-curve.png" alt="Training Performance panel showing the loss curve dropping over 100 epochs">
+
+### Classify the webcam video
+
+Once training is done, we no longer need the interface, so hide the class buttons and the train button. Then start classifying the live video with [`classifier.classifyStart()`](/reference/feature-extractor?id=featureextractorclassifystart), which runs on every webcam frame and passes the results to the `gotResult` callback.
+
+```javascript
+function finishedTraining() {
+  for (let i = 0; i < classElems.length; i++) {
+    classElems[i].hide();
+  }
+  doneButton.hide();
+
+  classifier.classifyStart(video, gotResult);
+}
+```
+
+The `results` array is sorted from highest to lowest confidence, so `results[0]` is the model's top guess. Save its label and confidence into `result`, and the `draw` function will display it at the bottom of the canvas.
+
+```javascript
+function gotResult(results) {
+  result = results[0].label + " (" + nf(results[0].confidence, 0, 2) + ")";
+}
+```
+
+?> `nf()` is the p5.js number format function, and the `0, 2` arguments keep two digits after the decimal point. A confidence of `0.9731425` is displayed as `cat (0.97)` instead of a long trail of decimals.
+
+### Run your sketch
+
+You have successfully built the Feature Extractor Webcam Classifier example. Press the <img class="inline-img" src="assets/facemesh-arrow-forward.png" alt="run button icon" aria-hidden="true"> `run` button, name your two classes, collect some samples for each, train the model, and watch it classify the live video. You can also find the [complete code](https://editor.p5js.org/ml5/sketches/XSzNdRjCm) in the p5.js web editor.
 
 ## Methods
 
@@ -72,7 +277,7 @@ async function setup() {
 
 - **modelName**: Optional. String. The underlying model used to extract features from inputs. Currently only `"MobileNet"` is supported.
   - Default: `"MobileNet"`
-- **options**: Optional. Configuration for the FeatureExtractor:
+- **options**: Optional. Configuration for the Feature Extractor:
   ```javascript
   // All fields are optional — the values shown are the defaults.
   {
@@ -151,7 +356,7 @@ featureExtractor.train(?options, ?whileTraining, ?callback);
     - Default: `100`
   - _learningRate_ — Number. How big a step training takes each time it adjusts the model. Too high and training becomes unstable; too low and it learns very slowly.
     - Default: `0.0001`
-  - _batchSize_ — Number. How many samples are processed together before the model updates, given here as a **fraction** of your total samples (`0.4` = 40%). Note: unlike the whole-number batch size in the [Glossary](/learn/ml5-glossary?id=batch-size), FeatureExtractor expects a value between `0` and `1`.
+  - _batchSize_ — Number. How many samples are processed together before the model updates, given here as a **fraction** of your total samples (`0.4` = 40%). Note: unlike the whole-number batch size in the [Glossary](/learn/ml5-glossary?id=batch-size), Feature Extractor expects a value between `0` and `1`.
     - Default: `0.4`
   - _debug_ — Boolean. Set to `true` to show the training loss curve — a live graph of how the training error drops over time, where a downward trend means training is working.
     - Default: `false`
