@@ -83,7 +83,7 @@ async function setup() {
 }
 ```
 
-### Fetch webcam video
+### Access webcam video
 
 Let's define a variable `video` to store the webcam video.
 
@@ -91,14 +91,18 @@ Let's define a variable `video` to store the webcam video.
 let video;
 ```
 
-In the `setup` function, create the canvas with a resolution of 640x480, a common resolution for webcams. Then fetch the webcam video and hide it from the display. We will draw the video on the canvas instead. The `{ flipped: true }` option mirrors the video, which feels more natural when you are moving in front of the camera.
+In the `setup` function, create the canvas with a resolution of 640x480, a common resolution for webcams. Then access the webcam video and hide it from the display. We will draw the video on the canvas instead. The `{ flipped: true }` option mirrors the video, which feels more natural when you are moving in front of the camera.
 
 ```javascript
 async function setup() {
-  // ...
   createCanvas(640, 480);
+  // Access the webcam, flip it, and hide the default video element
   video = createCapture(VIDEO, { flipped: true });
   video.hide();
+
+  classifier = await ml5.featureExtractor("MobileNet", {
+    task: "classification",
+  });
 }
 ```
 
@@ -247,18 +251,18 @@ You have successfully built the Feature Extractor Webcam Classifier example. Pre
 
 ### Overview
 
-| method | description |
-| :-- | :-- |
-| `.addImage()` | Extracts features from an image (or webcam frame) and stores it as a labeled training sample. |
-| `.train()` | Trains a classifier or value predictor on top of the collected samples. |
-| `.classify()` | Classifies a single image and returns labels with confidence scores (for classifiers only). |
-| `.classifyStart()` | Continuously classifies webcam frames and passes each result to a callback (for classifiers only). |
-| `.classifyStop()` | Stops the continuous classification started by `.classifyStart()`. |
-| `.predict()` | Predicts a continuous numeric value from a single image (for value predictors only). |
-| `.predictStart()` | Continuously predicts a value for each webcam frame and passes each result to a callback (for value predictors only). |
-| `.predictStop()` | Stops the continuous prediction started by `.predictStart()`. |
-| `.save()` | Saves the trained model to the user's device as a downloadable file. |
-| `.load()` | Loads a previously saved model from a URL or a file input. |
+| method             | description                                                                                                           |
+| :----------------- | :-------------------------------------------------------------------------------------------------------------------- |
+| `.addImage()`      | Extracts features from an image (or webcam frame) and stores it as a labeled training sample.                         |
+| `.train()`         | Trains a classifier or value predictor on top of the collected samples.                                               |
+| `.classify()`      | Classifies a single image and returns labels with confidence scores (for classifiers only).                           |
+| `.classifyStart()` | Continuously classifies webcam frames and passes each result to a callback (for classifiers only).                    |
+| `.classifyStop()`  | Stops the continuous classification started by `.classifyStart()`.                                                    |
+| `.predict()`       | Predicts a continuous numeric value from a single image (for value predictors only).                                  |
+| `.predictStart()`  | Continuously predicts a value for each webcam frame and passes each result to a callback (for value predictors only). |
+| `.predictStop()`   | Stops the continuous prediction started by `.predictStart()`.                                                         |
+| `.save()`          | Saves the trained model to the user's device as a downloadable file.                                                  |
+| `.load()`          | Loads a previously saved model from a URL or a file input.                                                            |
 
 ### ml5.featureExtractor()
 
