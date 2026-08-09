@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- iframe Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/p5@2.3.2/lib/p5.js"></script>
+  <script src="https://unpkg.com/ml5@1/dist/ml5.min.js"></script>
+
+  <!-- iframe CSS & JS -->
+  <link rel="stylesheet" type="text/css" href="../../../css/global.css">
+  <link rel="stylesheet" type="text/css" href="../style-iframe.css">
+
+  <!-- This demo has DOM controls (class inputs & train button) below the
+       canvas, so undo the full-width canvas scaling from style-iframe.css
+       and lay everything out in a column that leaves room for them. -->
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      padding-top: 8px;
+    }
+
+    /* p5 sets inline width/height on the canvas, so !important is needed
+       to let the browser scale it down at its intrinsic aspect ratio. */
+    canvas {
+      width: auto !important;
+      height: auto !important;
+      max-width: 95vw;
+      max-height: calc(100vh - 140px);
+      transform: none;
+      margin: 0 auto;
+    }
+
+    input,
+    button {
+      width: 240px;
+      padding: 6px 10px;
+      border: 1px solid var(--color-border-light);
+      border-radius: 4px;
+      background-color: #FFF;
+      color: var(--color-text-light);
+      font-family: var(--body-font-family);
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    input[type="text"] {
+      cursor: text;
+    }
+  </style>
+</head>
+
+<body>
+  <script src="script.js"></script>
+</body>
+
+</html>
