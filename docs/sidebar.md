@@ -35,8 +35,8 @@
 <div class="sidebar-spacer">&nbsp;</div>
 
 - **Train your own model!**
-- [NeuralNetwork](/reference/neural-network.md)
-- [FeatureExtractor](/reference/feature-extractor.md)
+  - [NeuralNetwork](/reference/neural-network.md)
+  - [FeatureExtractor](/reference/feature-extractor.md)
 
 <div class="sidebar-spacer">&nbsp;</div>
 
