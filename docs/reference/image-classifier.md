@@ -9,21 +9,12 @@
 
 The ml5.js imageClassifier is a pre-trained model that tries to recognize the content of an image. It tries to guess the identities of objects, animals, and even people in a picture. The image classifier uses a neural network to analyze the image and provide a list of possible labels for the content of the image in its entirety.
 
-The ml5.js imageClassifier uses MobileNet by default, but supports additional model architectures including transformer-based models and custom-trained models such as DoodleNet.
+The ml5.js imageClassifier uses the pre-trained MobileNet model by default. You can optionally load and use other models such as Darknet as well as a custom-trained model, DoodleNet, which is also built upon the MobileNet architecture and trained on images from the Google _Quick, Draw!_ dataset.
 
 It provides the following functionality:
 
 - **Image Classification**: ImageClassifier tries to recognize the content of an image and provide a list of possible labels.
 - **Video Object Detection**: ImageClassifier can also be used to classify objects in a video stream.
-
-## Supported Models
-
-ImageClassifier can use different neural network architectures depending on the model selected.
-
-- **MobileNet** (default): A lightweight convolutional neural network (CNN) designed for fast inference in the browser.
-- **VisionTransformer**: A transformer-based image classification model that uses attention mechanisms to analyze relationships between different regions of an image. Vision Transformers can provide different performance and accuracy tradeoffs compared to CNN-based architectures.
-- **Darknet**: Additional pre-trained CNN models available for image classification.
-- **Custom models**: Users can load compatible custom-trained models for specialized classification tasks.
 
 ?> If you want to **train your own image classification model with customized labels**, check out our [Image + Teachable Machine](/reference/image-classifier-tm) to get started!
 
@@ -81,7 +72,7 @@ Now, we can load the ImageClassifier model. Using `async` and `await` ensures th
 // Make sure to add "async" before "function setup()".
 async function setup() {
   // Wait until the ImageClassifier model is fully loaded.
-  classifier = await ml5.imageClassifier("MobileNet");
+  classifier = await ml5.imageClassifier("MobileNet"); 
 }
 ```
 
@@ -91,14 +82,14 @@ async function setup() {
 
 Next, let's load an image that we want to classify. Unfold the project directory by clicking the arrow `>` at the top left corner of the p5.js editor. Create a new folder called `images`. And upload a bird image named `bird.png` to the `images` folder. Remember to login to see this option.
 
-We are ready to write the code to load the image that we just uploaded.
+We are ready to write the code to load the image that we just uploaded. 
 
 ```javascript
 // Define a variable `img` to store the image.
-let img;
+let img; 
 
 async function setup() {
-  classifier = await ml5.imageClassifier("MobileNet");
+  classifier = await ml5.imageClassifier("MobileNet"); 
   // Also use "await" to load the image before the "draw()"" function begins.
   img = await loadImage("images/bird.png");
 }
@@ -188,17 +179,12 @@ const classifier = ml5.imageClassifier(modelNameOrUrl, ?options, ?callback);
 **Parameters:**
 
 - **modelName**: Optional.
-  - String: Name of the underlying model to use. Possible values include:
-    - `mobilenet`
-    - `darknet` (28 MB in size)
-    - `darknet-tiny` (4 MB)
-    - `doodlenet`
-    - `VisionTransformer`
-    - or a URL to a compatible model file.
+  - String: Name of the underlying model to use. Possible values are `mobilenet`, `darknet` (28 MB in size), `darknet-tiny` (4 MB), `doodlenet`, or a URL to a compatible model file.
 
-- **options**: Optional.
-  Object: An object to change the default configuration of the model.
-  - The default options for the default `mobilenet` model are
+- **options**: Optional. 
+  - Object: An object to change the default configuration of the model.
+
+    The default options for the default `mobilenet` model are
 
     ```
     {
@@ -206,30 +192,16 @@ const classifier = ml5.imageClassifier(modelNameOrUrl, ?options, ?callback);
       topk: 3
     }
     ```
-
     - _version_: The MobileNet version to use. Default is 2.
     - _alpha_: The width multiplier for the MobileNet. Default is 1.0.
     - _topk_: The number of labels to return. Default is 3.
-
-  - The default options for `VisionTransformer` model are
-
-  ```
-  {
-    dtype: "fp32",
-    topK: 3
-  }
-  ```
-
-  - _dtype_: The numerical precision used during inference
-  - _device_: The backend device used for computation
-  - _topK_: The number of classification results returned
 
 - **callback(classifier, error)**: Optional. A function to run once the model has been loaded. Alternatively, call `ml5.imageClassifier()` within the p5 `preload` function.
 
 **Returns:**  
 The imageClassifier object.
 
----
+--- 
 
 ### imageClassifier.classifyStart()
 
@@ -271,7 +243,7 @@ This method can be called after a call to `imageClassifier.classifyStart` to sto
 imageClassifier.classifyStop();
 ```
 
----
+--- 
 
 ### imageClassifier.classify()
 
@@ -291,3 +263,4 @@ imageClassifier.classify(media, ?kNumber, ?callback);
 
 **Returns:**  
 A promise that resolves to the estimation output.
+
