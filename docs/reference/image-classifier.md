@@ -18,7 +18,7 @@ It provides the following functionality:
 
 ## Supported Models
 
-ImageClassifier can use different neural network architectures depending on the model selected.
+ImageClassifier supports different neural network architectures depending on the model selected.
 
 - **MobileNet** (default): A lightweight convolutional neural network (CNN) designed for fast inference in the browser.
 - **VisionTransformer**: A transformer-based image classification model that uses attention mechanisms to analyze relationships between different regions of an image. Vision Transformers can provide different performance and accuracy tradeoffs compared to CNN-based architectures.
