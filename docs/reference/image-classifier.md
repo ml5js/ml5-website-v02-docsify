@@ -13,17 +13,20 @@ The ml5.js imageClassifier uses MobileNet by default, but supports additional mo
 
 It provides the following functionality:
 
-- **Image Classification**: ImageClassifier tries to recognize the content of an image and provide a list of possible labels.
-- **Video Object Detection**: ImageClassifier can also be used to classify objects in a video stream.
+- **Image Classification**: ImageClassifier classifies the conents of a static image and provides a list of possible labels.
+- **Video Object Detection**: ImageClassifier continously classifies the conents of a static image and provides a list of possible labels.
 
 ## Supported Models
 
 ImageClassifier can use different neural network architectures depending on the model selected.
 
-- **MobileNet** (default): A lightweight convolutional neural network (CNN) designed for fast inference in the browser.
-- **VisionTransformer**: A transformer-based image classification model that uses attention mechanisms to analyze relationships between different regions of an image. Vision Transformers can provide different performance and accuracy tradeoffs compared to CNN-based architectures.
-- **Darknet**: Additional pre-trained CNN models available for image classification.
+- **MobileNet** (default): This model loads MobileNet, a lightweight convolutional neural network designed for efficient image classification. It was pretrained on ImageNet, a dataset of approximately 15 million images across 1,000 classes. MobileNet is optimized for relatively fast inference and is commonly used for real-time image classification in browser and mobile applications.
+- **ViTBase**: This model loads Xenova/vit-base-patch16-224, which is a transformers.js version of Google’s vit-base-patch16-224 model. It was pretrained on ImageNet-21K: about 14 million images and 21,843 classes and then fine-tuned on ImageNet-1K to predict the familiar 1,000 classes. The Vision Transformer architecture divides an image into patches and uses an attention mechanism to learn relationships between different parts of the image.[Reference](https://huggingface.co/Xenova/vit-base-patch16-224)
+- **SwinFood101**: This model loads onnx-community/swin-finetuned-food101-ONNX, an ONNX version of a Swin Transformer fine-tuned on the Food101 dataset. It was fine-tuned from Microsoft’s swin-base-patch4-window7-224 model to classify images into 101 different food categories. Swin uses shifted windows of attention to efficiently learn relationships between different regions of an image. [Reference](https://huggingface.co/onnx-community/swin-finetuned-food101-ONNX)
+- **DoodleNet**; DoodleNet has its own set of 345 drawing categories from the Google Quick, Draw! dataset. (link to Yining's repo for training this model / Quick, Draw)
 - **Custom models**: Users can load compatible custom-trained models for specialized classification tasks.
+
+?> Even though they use different neural network architectures, MobileNet and ViTBase predict from the same 1,000 ImageNet categories.
 
 ?> If you want to **train your own image classification model with customized labels**, check out our [Image + Teachable Machine](/reference/image-classifier-tm) to get started!
 
@@ -190,10 +193,9 @@ const classifier = ml5.imageClassifier(modelNameOrUrl, ?options, ?callback);
 - **modelName**: Optional.
   - String: Name of the underlying model to use. Possible values include:
     - `mobilenet`
-    - `darknet` (28 MB in size)
-    - `darknet-tiny` (4 MB)
     - `doodlenet`
-    - `VisionTransformer`
+    - `ViTBase`
+    - `SwinFood101`
     - or a URL to a compatible model file.
 
 - **options**: Optional.
