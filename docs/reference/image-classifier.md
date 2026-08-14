@@ -18,7 +18,7 @@ It provides the following functionality:
 
 ## Supported Models
 
-ImageClassifier can use different neural network architectures depending on the model selected.
+ImageClassifier supports different neural network architectures depending on the model selected.
 
 - **MobileNet** (default): This model loads MobileNet, a lightweight convolutional neural network designed for efficient image classification. It was pretrained on ImageNet, a dataset of approximately 15 million images across 1,000 classes. MobileNet is optimized for relatively fast inference and is commonly used for real-time image classification in browser and mobile applications.
 - **ViTBase**: This model loads Xenova/vit-base-patch16-224, which is a transformers.js version of Google’s vit-base-patch16-224 model. It was pretrained on ImageNet-21K: about 14 million images and 21,843 classes and then fine-tuned on ImageNet-1K to predict the familiar 1,000 classes. The Vision Transformer architecture divides an image into patches and uses an attention mechanism to learn relationships between different parts of the image.[Reference](https://huggingface.co/Xenova/vit-base-patch16-224)
