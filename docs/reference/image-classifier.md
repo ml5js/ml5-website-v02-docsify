@@ -28,7 +28,7 @@ ImageClassifier supports different neural network architectures depending on the
 
 Even though they use different neural network architectures, MobileNet and ViTBase predict from the same 1,000 ImageNet categories.
 
-?> If you want to **train your own image classification model with customized labels**, check out our [Image + Teachable Machine](/reference/image-classifier-tm) to get started!
+If you want to **train your own image classification model with customized labels**, check out our [Image + Teachable Machine](/reference/image-classifier-tm) to get started!
 
 ## Quick Start
 
