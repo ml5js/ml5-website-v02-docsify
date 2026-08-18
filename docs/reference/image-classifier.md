@@ -9,7 +9,7 @@
 
 The ml5.js imageClassifier loads a pre-trained model that attempts to classify the content of an image. Each model can only predict labels from a fixed set of categories it was trained to recognize (typically objects, animals, and other visual categories). The image classifier uses a neural network to analyze the image and provide a list of possible labels for the content of the image in its entirety.
 
-The ml5.js imageClassifier uses MobileNet by default, but supports additional model architectures including transformer-based models and custom-trained models such as DoodleNet.
+The ml5.js imageClassifier uses MobileNet by default, but supports additional model architectures including transformer-based models, fine-tuned models such as `Food101`, specialized pre-trained models such as `DoodleNet`, and custom models created with [Teachable Machine](/reference/image-classifier-tm). MobileNet was trained on the 1,000 category ImageNet dataset.```
 
 It provides the following functionality:
 
