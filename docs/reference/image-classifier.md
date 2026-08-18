@@ -192,8 +192,8 @@ const classifier = ml5.imageClassifier(modelNameOrUrl, ?options, ?callback);
 
 - **modelName**: Optional.
   - String: Name of the underlying model to use. Possible values include:
-    - `mobilenet`
-    - `doodlenet`
+    - `MobileNet`
+    - `DoodleNet`
     - `ViTBase`
     - `SwinFood101`
     - or a URL to a compatible model file.
