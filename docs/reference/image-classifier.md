@@ -13,8 +13,8 @@ The ml5.js imageClassifier uses MobileNet by default, but supports additional mo
 
 It provides the following functionality:
 
-- **Image Classification**: ImageClassifier classifies the conents of a static image and provides a list of possible labels.
-- **Video Object Detection**: ImageClassifier continously classifies the conents of a static image and provides a list of possible labels.
+- ***Single Image Classification*** (`classify()`): Classifies one image and provides a list of possible labels.
+- ***Continuous Video Classification*** (`classifyStart()`): Repeatedly classifies frames from a video and provides updated labels.
 
 ## Supported Models
 
