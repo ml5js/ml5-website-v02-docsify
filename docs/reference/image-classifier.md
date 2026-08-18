@@ -213,7 +213,7 @@ const classifier = ml5.imageClassifier(modelNameOrUrl, ?options, ?callback);
     - _alpha_: The width multiplier for the MobileNet. Default is 1.0.
     - _topk_: The number of labels to return. Default is 3.
 
-  - The default options for `VisionTransformer` model are
+  - The default options for the `ViTBase` model are
 
   ```
   {
