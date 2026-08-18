@@ -7,16 +7,28 @@
 
 ## Description
 
-The ml5.js imageClassifier is a pre-trained model that tries to recognize the content of an image. It tries to guess the identities of objects, animals, and even people in a picture. The image classifier uses a neural network to analyze the image and provide a list of possible labels for the content of the image in its entirety.
+The ml5.js imageClassifier loads a pre-trained model that attempts to classify the content of an image. Each model can only predict labels from a fixed set of categories it was trained to recognize (typically objects, animals, and other visual categories). The image classifier uses a neural network to analyze the image and provide a list of possible labels for the content of the image in its entirety.
 
-The ml5.js imageClassifier uses the pre-trained MobileNet model by default. You can optionally load and use other models such as Darknet as well as a custom-trained model, DoodleNet, which is also built upon the MobileNet architecture and trained on images from the Google _Quick, Draw!_ dataset.
+The ml5.js imageClassifier uses MobileNet by default, but supports additional model architectures including transformer-based models, fine-tuned models such as `Food101`, specialized pre-trained models such as `DoodleNet`, and custom models created with [Teachable Machine](/reference/image-classifier-tm). MobileNet was trained on the 1,000 category ImageNet dataset.```
 
 It provides the following functionality:
 
-- **Image Classification**: ImageClassifier tries to recognize the content of an image and provide a list of possible labels.
-- **Video Object Detection**: ImageClassifier can also be used to classify objects in a video stream.
+- ***Single Image Classification*** (`classify()`): Classifies one image and provides a list of possible labels.
+- ***Continuous Video Classification*** (`classifyStart()`): Repeatedly classifies frames from a video and provides updated labels.
 
-?> If you want to **train your own image classification model with customized labels**, check out our [Image + Teachable Machine](/reference/image-classifier-tm) to get started!
+## Supported Models
+
+ImageClassifier supports different neural network architectures depending on the model selected.
+
+- **MobileNet** (default): This model loads [MobileNet](https://github.com/tensorflow/models/tree/master/research/slim/nets/mobilenet), a lightweight convolutional neural network designed for efficient image classification. It was pretrained on ImageNet, a dataset of approximately 15 million images across 1,000 classes. MobileNet is optimized for relatively fast inference and is commonly used for real-time image classification in browser and mobile applications.
+- **ViTBase**: This model loads [Xenova/vit-base-patch16-224](https://huggingface.co/Xenova/vit-base-patch16-224), which is a transformers.js version of Google’s vit-base-patch16-224 model. It was pretrained on [ImageNet-21K](https://www.image-net.org/): about 14 million images and 21,843 classes and then fine-tuned on ImageNet-1K to predict the familiar 1,000 classes. The Vision Transformer architecture divides an image into patches and uses an attention mechanism to learn relationships between different parts of the image.
+- **SwinFood101**: This model loads [onnx-community/swin-finetuned-food101-ONNX](https://huggingface.co/onnx-community/swin-finetuned-food101-ONNX), an ONNX version of a Swin Transformer fine-tuned on the [Food101 dataset](https://huggingface.co/datasets/ethz/food101). It was fine-tuned from Microsoft’s swin-base-patch4-window7-224 model to classify images into 101 different food categories. Swin uses shifted windows of attention to efficiently learn relationships between different regions of an image.
+- **DoodleNet**: [DoodleNet](https://github.com/yining1023/doodleNet) has its own set of 345 drawing categories from the [Google Quick, Draw! dataset](https://github.com/googlecreativelab/quickdraw-dataset).
+- **Custom models**: Users can load compatible custom-trained models for specialized classification tasks.
+
+Even though they use different neural network architectures, MobileNet and ViTBase predict from the same 1,000 ImageNet categories.
+
+If you want to **train your own image classification model with customized labels**, check out our [Image + Teachable Machine](/reference/image-classifier-tm) to get started!
 
 ## Quick Start
 
@@ -72,7 +84,7 @@ Now, we can load the ImageClassifier model. Using `async` and `await` ensures th
 // Make sure to add "async" before "function setup()".
 async function setup() {
   // Wait until the ImageClassifier model is fully loaded.
-  classifier = await ml5.imageClassifier("MobileNet"); 
+  classifier = await ml5.imageClassifier("MobileNet");
 }
 ```
 
@@ -82,14 +94,14 @@ async function setup() {
 
 Next, let's load an image that we want to classify. Unfold the project directory by clicking the arrow `>` at the top left corner of the p5.js editor. Create a new folder called `images`. And upload a bird image named `bird.png` to the `images` folder. Remember to login to see this option.
 
-We are ready to write the code to load the image that we just uploaded. 
+We are ready to write the code to load the image that we just uploaded.
 
 ```javascript
 // Define a variable `img` to store the image.
-let img; 
+let img;
 
 async function setup() {
-  classifier = await ml5.imageClassifier("MobileNet"); 
+  classifier = await ml5.imageClassifier("MobileNet");
   // Also use "await" to load the image before the "draw()"" function begins.
   img = await loadImage("images/bird.png");
 }
@@ -179,12 +191,16 @@ const classifier = ml5.imageClassifier(modelNameOrUrl, ?options, ?callback);
 **Parameters:**
 
 - **modelName**: Optional.
-  - String: Name of the underlying model to use. Possible values are `mobilenet`, `darknet` (28 MB in size), `darknet-tiny` (4 MB), `doodlenet`, or a URL to a compatible model file.
+  - String: Name of the underlying model to use. Possible values include:
+    - `MobileNet`
+    - `DoodleNet`
+    - `ViTBase`
+    - `SwinFood101`
+    - or a URL to a compatible model file.
 
-- **options**: Optional. 
-  - Object: An object to change the default configuration of the model.
-
-    The default options for the default `mobilenet` model are
+- **options**: Optional.
+  Object: An object to change the default configuration of the model.
+  - The default options for the default `MobileNet` model are
 
     ```
     {
@@ -192,16 +208,30 @@ const classifier = ml5.imageClassifier(modelNameOrUrl, ?options, ?callback);
       topk: 3
     }
     ```
+
     - _version_: The MobileNet version to use. Default is 2.
     - _alpha_: The width multiplier for the MobileNet. Default is 1.0.
     - _topk_: The number of labels to return. Default is 3.
+
+  - The default options for the `ViTBase` model are
+
+  ```
+  {
+    dtype: "fp32",
+    topK: 3
+  }
+  ```
+
+  - _dtype_: The numerical precision used during inference
+  - _device_: The backend device used for computation
+  - _topK_: The number of classification results returned
 
 - **callback(classifier, error)**: Optional. A function to run once the model has been loaded. Alternatively, call `ml5.imageClassifier()` within the p5 `preload` function.
 
 **Returns:**  
 The imageClassifier object.
 
---- 
+---
 
 ### imageClassifier.classifyStart()
 
@@ -243,7 +273,7 @@ This method can be called after a call to `imageClassifier.classifyStart` to sto
 imageClassifier.classifyStop();
 ```
 
---- 
+---
 
 ### imageClassifier.classify()
 
@@ -263,4 +293,3 @@ imageClassifier.classify(media, ?kNumber, ?callback);
 
 **Returns:**  
 A promise that resolves to the estimation output.
-
