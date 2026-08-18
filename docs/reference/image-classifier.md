@@ -200,7 +200,7 @@ const classifier = ml5.imageClassifier(modelNameOrUrl, ?options, ?callback);
 
 - **options**: Optional.
   Object: An object to change the default configuration of the model.
-  - The default options for the default `mobilenet` model are
+  - The default options for the default `MobileNet` model are
 
     ```
     {
