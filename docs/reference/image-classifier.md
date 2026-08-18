@@ -26,7 +26,7 @@ ImageClassifier supports different neural network architectures depending on the
 - **DoodleNet**; DoodleNet has its own set of 345 drawing categories from the Google Quick, Draw! dataset. (link to Yining's repo for training this model / Quick, Draw)
 - **Custom models**: Users can load compatible custom-trained models for specialized classification tasks.
 
-?> Even though they use different neural network architectures, MobileNet and ViTBase predict from the same 1,000 ImageNet categories.
+Even though they use different neural network architectures, MobileNet and ViTBase predict from the same 1,000 ImageNet categories.
 
 ?> If you want to **train your own image classification model with customized labels**, check out our [Image + Teachable Machine](/reference/image-classifier-tm) to get started!
 
