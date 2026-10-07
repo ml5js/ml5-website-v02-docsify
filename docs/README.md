@@ -196,10 +196,10 @@ Take a look at the diagram below, showing all 21 points with their names!
       <li>[14] ring_finger_pip</li>
       <li>[15] ring_finger_dip</li>
       <li>[16] ring_finger_tip</li>
-      <li>[17] pinky_mcp</li>
-      <li>[18] pinky_pip</li>
-      <li>[19] pinky_dip</li>
-      <li>[20] pinky_tip</li>
+      <li>[17] pinky_finger_mcp</li>
+      <li>[18] pinky_finger_pip</li>
+      <li>[19] pinky_finger_dip</li>
+      <li>[20] pinky_finger_tip</li>
     </ul>
   </div>
 </div>
