@@ -22,14 +22,9 @@ Run and explore a pre-built example! [This BodySegmentation example](https://edi
 
 [DEMO](iframes/body-segmentation ":include :type=iframe width=100% height=550px")
 
-## Examples
-- [BodySegmentation Mask Body Parts](https://editor.p5js.org/ml5/sketches/ruoyal-RC): Segment body parts from webcam input.
-- [BodySegmentation Mask Background](https://editor.p5js.org/ml5/sketches/KNsdeNhrp): Segment the background from webcam input.
-- [BodySegmentation Mask Person](https://editor.p5js.org/ml5/sketches/h6TN8umP5): Segment the person from webcam input.
-- [BodySegmentation Select Body Parts](https://editor.p5js.org/ml5/sketches/R5rug0HKk): Segment selected body part(s) from webcam input.
 
 ## Step-by-Step Guide
-Now, let's together build the [BodySegmentation Mask Body Part example](https://editor.p5js.org/ml5/sketches/ruoyal-RC) from scratch, and in the process, learn how to use the BodySegmentation models.
+Now, let's together build the [SpeechToText example](https://editor.p5js.org/ml5/sketches/ruoyal-RC) from scratch, and in the process, learn how to use the SpeechToText models.
 
 ### Create a new project
 
@@ -45,261 +40,190 @@ Import the ml5.js library in your `index.html` file.
 ?> If you are not familiar with how to import the ml5.js library and need more detailed guidance, please check out our [Getting Started](/?id=set-up-ml5js) page.
 
 ### Load model
-Let's open the `sketch.js` file in the p5.js Web Editor and follow the steps below to load the model.
+Let's open the `sketch.js` file in the p5.js Web Editor and follow the steps below to load the model and create a variable to display the transcription.
 
 ```javascript
-let bodySegmentation; //Define a variable to store the BodySegmentation model.
+let speechToTextModel;; //Define a variable to store the STT model.
+let transcriptionText = "Transcription: ";
+
 ```
 
-In this example, we would like to segment body parts from the webcam input. Let's specify the mask type as `parts` in the options object.
+### Set Up Function
+
+Let's start with our set up function by creating the canvas and loading our model. Here we are loading `Whisper` which defaults to loading `whisper-base`. You can change this to be `whiper-tiny` or `whisper-small`. The default language is `english` which you can also change. We'll also load a model progress bar in our console. 
 
 ```javascript
-let options = {
-  maskType: "parts",
-};
-```
-
-?> You can also specify the mask type as `person` or `background` in the options object. For more information on the options object, please refer to the [Methods](/reference/body-segmentation?id=methods) section.
-
-Now, let's load the BodySegmentation model with the specified options. Using `async` and `await` ensures that the model is fully loaded before the `draw()` function begins.
-
-```javascript
-// Make sure to add "async" before "function setup()".
 async function setup() {
-  // Wait until the BodySegmentation model is fully loaded.
-  bodySegmentation = await ml5. bodySegmentation ("BodyPix", options); 
-}
+  createCanvas(400, 400);
+
+  speechToTextModel = await ml5.speechToText(
+    "Whisper",
+    {
+      language: "english",
+      progress_callback: logProgress,
+    }
+  );
+};
+
+console.log("Model loaded!");
 ```
 
-### Access webcam video
-
-Let's define a variable `video` to store the webcam video.
+See the progress bar, we also need to add our `logProgress()` function at the end of our sketch after draw.
 
 ```javascript
-let video;
-```
-
-Resize the canvas dimensions to 640x480, a common resolution for webcams.
-
-```javascript
-function setup() {
-  createCanvas(640, 480);
-```
-
-Access the webcam video, resize it to fit the canvas, and hide it from the display.
-
-```javascript
-  // Create the video and hide it
-  video = createCapture(VIDEO);
-  video.size(640, 480);
-  video.hide();
-}
-```
-
-### Detect body parts with the model
-We can now use the BodySegmentation model to detect body parts from the webcam input. Let's define a variable `segmentation` to store the segmented body parts.
-
-```javascript
-let segmentation;
-```
-
-To start detecting the body parts, in the `setup` function, we need to call the `detectStart` method of the `bodySegmentation` object. This method takes the webcam video as input and a callback function to handle the output.
-
-```javascript
-function setup() {
-  // ...
-  video.hide();
-
-  // Start detecting body parts from the webcam video
-  bodySegmentation.detectStart(video, gotResults);
-}
-```
-
-The `gotResults()` function is a callback function that will be called when the `bodySegmentation.detectStart()` method detects body parts. Once the body parts are detected, the output `result` will be passed to `gotResults()`, and then saved to the `segmentation` variable.
-
-```javascript
-function gotResults(result) {
-  segmentation = result;
-}
-```
-
-?> The `result` object also contains additional properties. For more information on the output object, please refer to the [Methods](/reference/body-segmentation?id=methods) section.
-
-### Display the segmented body parts
-Before we display the segmented body parts, let's clear the canvas and draw the webcam video.
-
-```javascript
-function draw() {
-  background(255);
-  image(video, 0, 0);
-```
-
-If the `segmentation` variable is not empty, we can display the segmented body parts on the canvas.
-
-```javascript
-  if (segmentation) {
-    image(segmentation.mask, 0, 0, width, height);
+function logProgress(info) {
+  if(info.status === "progress_total") {
+    console.log("Loading model: " + round(info.progress) + "%");
   }
 }
 ```
 
+### Transcription Functions
+
+Now, let's add some buttons to the `setup()` function so we can start and stop recording our speech. 
+
+```javascript
+async function setup() {
+  createCanvas(400, 400);
+
+  speechToTextModel = await ml5.speechToText(
+    "Whisper",
+    {
+      language: "english", 
+      progress_callback: logProgress, 
+
+    }
+  );
+
+  console.log("Model loaded!");
+
+  let startButton = createButton("start");
+  startButton.mousePressed(transcribeStart);
+  let stopButton = createButton("stop");
+  stopButton.mousePressed(transcribeStop);
+}
+```
+
+Now let's add our `transcribeStart()`, `transcribeStop()`, and `gotResults()` functions that will be called when we press our start and stop recording buttons. Add these functions after draw. 
+
+```javascript
+function transcribeStart() {
+  console.log("Listening...");
+  speechToTextModel.transcribeStart();
+}
+
+function transcribeStop() {
+  console.log("Stopped Listening...");
+  speechToTextModel.transcribeStop(gotResults);
+}
+
+function gotResults(results) {
+  console.log(results);
+  if (results && results.text) {
+    transcriptionText = "Transcription: " + results.text;
+  }
+}
+```
+### Draw Function
+
+Let's set up our `draw()` function to print the transcribed text to our canvas.
+
+```javascript
+function draw() {
+  background(220);
+  fill(0);
+  noStroke();
+  textAlign(LEFT, TOP);
+
+  text(transcriptionText, 20, 20, width - 40, height - 40);
+}
+```
+
 ### Run your sketch
-You have successfully built the BodySegmentation Mask Body Part example! Press the <img class="inline-img" src="assets/facemesh-arrow-forward.png" alt="run button icon" aria-hidden="true"> `run` button to see the code in action. You can also find the [complete code](https://editor.p5js.org/ml5/sketches/ruoyal-RC) in the p5.js web editor.
+You have successfully built the SpeechToText example! Press the <img class="inline-img" src="assets/facemesh-arrow-forward.png" alt="run button icon" aria-hidden="true"> `run` button to see the code in action. You can also find the [complete code](https://editor.p5js.org/ml5/sketches/ruoyal-RC) in the p5.js web editor.
 
 ?> If you have any questions or spot something unclear in this step-by-step code guide, we'd love to hear from you! Join us on [Discord](https://discord.com/invite/3CVauZMSt7) and let us know how we can make it better.
 
-
 ## Methods
 
-### ml5.bodySegmentation()
+### ml5.speechToText()
 
 This method is used to initialize the bodySegmentation object.
 
 ```javascript
-const bodySegmentation = ml5.bodySegmentation(?modelName, ?options, ?callback);
+speechToTextModel = await ml5.speechToText(?modelName, ?options, ?callback);
 ```
 
 **Parameters:**
 
 - **modelName**: Optional. A string specifying which model to use. Types of model:
-  - _SelfieSegmentation_(default): A model that can be used to segment people from the background.
-  - _BodyPix_: A model that can be used to segment people and body parts.
+  - _Whisper_(default): whisper-base model
+  - _WhisperTiny_: whisper-tiny model
+  - _WhisperBase_: whisper-base model
+  - _WhisperSmall_: whisper-small model
 
 - **options**: Optional. An object to change the default configuration of the model. See the example options object:
 
   ```javascript
   {
-    runtime: "tfjs", // "tfjs" or "mediapipe"
-    modelType: "general", // "general" or "landscape"
-    maskType: "background", // "background", "person", or "parts" (used to change the type of segmentation mask output)
-    flipped: false,
-  }
+      language: "english", 
+      progress_callback: logProgress, 
+      device: "wasm",
+      dtype: "q8" 
+
+    }
   ```
 
-  Important Option:
-  - _maskType_: The type of mask to output. The options are:
-    - _background_: A mask of the background. The result is an image with transparent pixels on the background and black pixels on the person.
-    - _person_: A mask of the person. The result is an image with black pixels on the background and transparent pixels on the person.
-    - _parts_: **BodyPix** only. A mask of the body parts. The result is an image with white pixels on the background and various color pixels for each body part.
-  - _flipped_ - Optional
-    - Boolean: Flip the result horizontally. Defaults to false.
+  - _language_: The language that's being spoken and transcribed. [Language Options Available](https://whisper-api.com/docs/languages/)
+  - *progress_callback* : A function called repeatedly with a progress info object while the model files download. Use it to show a loading bar or log progress.
+  - _device_ : Where the model runs, either `"webgpu"` (faster) or `"wasm"` (works in every browser). By default ml5 picks `"webgpu"` if the browser supports it and `"wasm"` otherwise.
+  - _dtype_: The numeric precision of the model weights, such as `"fp32"`, `"fp16"`, `"q8"` or `"q4"`. Lower precision downloads faster and uses less memory but can be less accurate.
 
-  [More info on options for SelfieSegmentation model with tfjs runtime](https://github.com/tensorflow/tfjs-models/tree/master/body-segmentation/src/selfie_segmentation_tfjs#create-a-detector).
+  [see other options for optional parameters](https://huggingface.co/docs/transformers.js/en/api/utils/hub)
 
-  [More info on options for SelfieSegmentation model with mediaPipe runtime](https://github.com/tensorflow/tfjs-models/tree/master/body-segmentation/src/selfie_segmentation_mediapipe#create-a-detector).
-
-  [More info on options for BodyPix model.](https://github.com/tensorflow/tfjs-models/blob/master/body-segmentation/src/body_pix/README.md#create-a-detector)
-
-- **callback(bodySegmentation, error)**: Optional. A function to run once the model has been loaded. Alternatively, call `ml5.bodySegmentation()` within the p5 `preload` function.
+- **callback(speechToText, error)**: Optional. A function that runs once the model has finished loading. It receives the speechToText object as its argument.
 
 **Returns:**
 
-- **Object**: The bodySegmentation object. This object contains the methods to start and stop the body segment detection process.
+- **Object**: The speechToText object. It contains the `transcribeStart()` and `transcribeStop()` methods used to record and transcribe speech.
 
 ---
 
-### bodySegmentation.detectStart()
+### speechToText.transcribeStart()
 
-This method repeatedly outputs segmentation masks on an image media through a callback function.
+This method asks for microphone access and starts recording audio. If the model is still loading, it waits until loading finishes. If recording is already in progress, it logs a warning and does nothing.
 
 ```javascript
-bodySegmentation.detectStart(media, callback);
+speechToTextModel.transcribeStart();
+```
+
+**Returns:**
+
+- **Promise**: Resolves with no value once recording has started. It rejects with an error if microphone access is denied.
+
+---
+
+### speechToText.transcribeStop()
+
+This method stops the recording, releases the microphone, and transcribes the recorded audio.
+
+```javascript
+speechToTextModel.transcribeStop(?optionsOrCallback, ?cb);
 ```
 
 **Parameters:**
 
-- **media**: An HTML or p5.js image, video, or canvas element to run the segmentation on.
+- **optionsOrCallback**: Optional. 
+  - _language_: The language being spoken. Default is `english`
+  - _task_: Either `"transcribe"` (write down what was said) or `"translate"` (translate the speech into English). If not set, it is chosen automatically.
+  - *return_timestamps*: If `true`, the result also includes a `chunks` array with the start and end time (in seconds) of each piece of transcribed text. Default is `false`.
+  - *chunk_length_s* : Length in seconds of the pieces the audio is split into for transcription. Default is `30`.
+  - *stride_length_s*: Overlap in seconds between neighboring pieces, so words at the edges aren't cut off. Default is `5`.
+  - *force_full_sequences*: Whether to force full sequences in the output. Default is `false`.
+  - *num_frames*: The number of frames in the input audio.
 
-- **callback(output, error)**: Optional. A callback function to handle the results of the body segmentation.
-
-The `output` will contain an object with the following properties. Based on the `maskType` option, the `mask` (and `maskImageData`) will contain either a mask of the detected background, or a mask of the detected persons, or a (colored) mask of the detected body parts of the detected persons.
-
-  ```javascript
-  {
-    mask: {}, // a p5 Image object, can be directly passed into p5 image() function
-    maskImageData: {}, // the mask as an ImageData object
-    data: [], // an array of raw detection results
-    imageData: {}, // an ImageData object of the raw detection results
-  }
-  ```
-
-The `data` array contains the underlying segmentation result of the image, stored as one number per pixel of the input image. (With the BodyPix model, the right hand is e.g. the number 11, which is the same as `bodySegmentation.LEFT_HAND`.)
-
-  _results.mask_ under different _maskType_ options:
-  - _background_: A mask of the background. _results.mask_ is an image with transparent pixels on the background and black pixels on the person.
-  - _body_: A mask of the person. _results.mask_ is an image with black pixels on the background and transparent pixels on the person.
-  - _parts_: **BodyPix** only. _results.mask_ is an image with white pixels on the background and various color pixels for each body part.
-
----
-
-### bodySegmentation.detectStop()
-
-This method can be called after a call to `bodySegmentation.detectStart` to stop the repeating pose estimation.
-
-```javascript
-bodySegmentation.detectStop();
-```
-
----
-
-### bodySegmentation.detect()
-
-This method asynchronously outputs a single segmentation mask on an image media when called.
-
-```javascript
-bodySegmentation.detect(media, ?callback);
-```
-
-**Parameters:**
-
-- **media**: An HTML or p5.js image, video, or canvas element to run the segmentation on.
-
-- **callback(output, error)**: Optional. A callback function to handle the output of the estimation, see output example above.
-
-**Returns:**
-A promise that resolves to the segmentation output.
-
----
-
-### bodySegmentation.getPartsId()
-
-This method returns an object containing all the body part constants as key-value pairs for select certain body parts.
-
-```javascript
-let parts = bodySegmentation.getPartsId();
-```
-
-Example usage of this method: [BodySegmentation Select Body Parts](https://editor.p5js.org/ml5/sketches/R5rug0HKk)
+- **cb**:  A callback function that receives the transcription result once it is ready. The result is an object like `{ text: "hello world" }`.
 
 **Returns:**
 
-- **Object**: An object representing the connections between keypoints.
-
-  ```javascript
-  {
-    LEFT_FACE: 0
-    RIGHT_FACE: 1
-    LEFT_UPPER_ARM_FRONT: 2
-    LEFT_UPPER_ARM_BACK: 3
-    RIGHT_UPPER_ARM_FRONT: 4
-    RIGHT_UPPER_ARM_BACK: 5
-    LEFT_LOWER_ARM_FRONT: 6
-    LEFT_LOWER_ARM_BACK: 7
-    RIGHT_LOWER_ARM_FRONT: 8
-    RIGHT_LOWER_ARM_BACK: 9
-    LEFT_HAND: 10
-    RIGHT_HAND: 11
-    TORSO_FRONT: 12
-    TORSO_BACK: 13
-    LEFT_UPPER_LEG_FRONT: 14
-    LEFT_UPPER_LEG_BACK: 15
-    RIGHT_UPPER_LEG_FRONT: 16
-    RIGHT_UPPER_LEG_BACK: 17
-    LEFT_LOWER_LEG_FRONT: 18
-    LEFT_LOWER_LEG_BACK: 19
-    RIGHT_LOWER_LEG_FRONT: 20
-    RIGHT_LOWER_LEG_BACK: 21
-    LEFT_FOOT: 22
-    RIGHT_FOOT: 23
-  }
-  ```
+- **Promise**: Resolves with the same result object that is passed to the callback. Its `text` property is the transcribed speech. If nothing is being recorded, it returns `undefined`.
