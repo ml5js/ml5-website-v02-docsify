@@ -50,7 +50,7 @@ let transcriptionText = "Transcription: ";
 
 ### Set Up Function
 
-Let's start with our set up function by creating the canvas and loading our model. Here we are loading `Whisper` which defaults to loading `whisper-base`. You can change this to be `whiper-tiny` or `whisper-small`. The default language is `english` which you can also change. We'll also load a model progress bar in our console. 
+Let's start with our set up function by creating the canvas and loading our model. Here we are loading `Whisper` which defaults to loading `whisper-base`. You can change this to be `whisper-tiny` or `whisper-small`. The default language is `english` which you can also change. We'll also load a model progress bar in our console. 
 
 ```javascript
 async function setup() {
