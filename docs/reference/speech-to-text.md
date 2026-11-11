@@ -9,7 +9,7 @@
 
 The ml5.js SpeechToText provides the `whisper` models, `whisper-tiny`, `whisper-base`, and `whisper-small`. The `whisper` model transcribes speech to text. `whisper-base` is the default loaded model with `tiny` taking less compute and `small` taking more. 
 
-The ml5.js SpeechToText is an automatic speech recognition, transformer machine learning model provided by [hugging face](https://huggingface.co/Xenova/whisper-base).
+The ml5.js SpeechToText is an automatic speech recognition, transformer machine learning model provided by [Hugging Face](https://huggingface.co/Xenova/whisper-base).
 
 It provides following functionalities:
 - **Multilingual Transcription**: [99 languages supported](https://whisper-api.com/docs/languages/) 
