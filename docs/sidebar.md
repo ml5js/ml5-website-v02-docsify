@@ -24,6 +24,7 @@
   - [Sentiment](/reference/sentiment.md)
   - [ObjectDetection](/reference/object-detection.md)
   - [DepthEstimation](/reference/depthestimation.md)
+  - [SpeechToText](/reference/speech-to-text.md)
 
 <div class="sidebar-spacer">&nbsp;</div>
 
