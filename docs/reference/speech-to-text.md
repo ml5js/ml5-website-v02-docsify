@@ -43,7 +43,8 @@ Import the ml5.js library in your `index.html` file.
 Let's open the `sketch.js` file in the p5.js Web Editor and follow the steps below to load the model and create a variable to display the transcription.
 
 ```javascript
-let speechToTextModel;; //Define a variable to store the STT model.
+// Define a variable to store the STT model.
+let speechToTextModel; 
 let transcriptionText = "Transcription: ";
 
 ```
