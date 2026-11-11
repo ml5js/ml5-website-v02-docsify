@@ -1,4 +1,4 @@
-# SpeechtoText
+# SpeechToText
 
 <center>
   <img class="header-img" src="assets/header-body-segmentation.png" alt="BodySegmentation Header Image" >
