@@ -65,7 +65,6 @@ async function setup() {
   );
 };
 
-console.log("Model loaded!");
 ```
 
 See the progress bar, we also need to add our `logProgress()` function at the end of our sketch after draw.
@@ -94,8 +93,6 @@ async function setup() {
 
     }
   );
-
-  console.log("Model loaded!");
 
   let startButton = createButton("start");
   startButton.mousePressed(transcribeStart);
