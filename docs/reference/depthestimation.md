@@ -1,7 +1,7 @@
 # DepthEstimation
 ## Description
 
-The ml5.js DepthEstimation module loads a pre-trained model to infer a depth map from an image or video. In use, it tries to estimate the distance between the camera that captured the image, and every pixel on said image. This can be used on images and videos taken previously with other cameras, or real-time capture with a webcam.
+The ml5.js DepthEstimation module loads a pre-trained model to infer a depth map from an image or video. In use, it estimates which pixels on the image are closer to or farther from the viewer. This can be used on images and videos taken previously with other cameras, or real-time capture with a webcam.
 
 By default, ml5.js DepthEstimation uses the Depth Anything model, but also supports the Tensorflow AR Portrait Depth model.
 
@@ -155,7 +155,7 @@ const depthEstimator = await ml5.depthEstimation(?modelName, ?options);
     - Accepted values: `'webgpu'`, `'wasm'`.
   - `dtype`: Only compatible with the **DepthAnything** model. Used to set the numerical precision of the model's weights and activations. Higher precision trades performance speed for high fidelity output. Lower precision trades output fidelity for fast performance.
     - Default: Automatically sets `'fp16'` when using `'webgpu'` and `'q8'` when using `'wasm'`.
-    - Accepted values: `'fp16'` (half-precision), `'uint8'` or `'int8'` (8-bit), `'q4'` or `'q4f16'`or `'bnb4'` (4-bit).
+    - Accepted values: `'fp32'` (full precision), `'fp16'` (half-precision), `'q8'`, `'int8'` or `'uint8'` (8-bit), `'q4'`, `'q4f16'` or `'bnb4'` (4-bit).
 
 **Returns:**
 
