@@ -36,7 +36,7 @@ Run and explore a pre-built example! [This ImageClassifier example](https://edit
 
 </br>
 
-[DEMO](iframes/image-classifier ':include :type=iframe width=100% height=550px')
+[DEMO](iframes/image-classifier ":include :type=iframe width=100% height=550px")
 
 ## Examples
 
@@ -84,7 +84,7 @@ Now, we can load the ImageClassifier model. Using `async` and `await` ensures th
 // Make sure to add "async" before "function setup()".
 async function setup() {
   // Wait until the ImageClassifier model is fully loaded.
-  classifier = await ml5.imageClassifier('MobileNet');
+  classifier = await ml5.imageClassifier("MobileNet");
 }
 ```
 
@@ -101,9 +101,9 @@ We are ready to write the code to load the image that we just uploaded.
 let img;
 
 async function setup() {
-  classifier = await ml5.imageClassifier('MobileNet');
+  classifier = await ml5.imageClassifier("MobileNet");
   // Also use "await" to load the image before the "draw()"" function begins.
-  img = await loadImage('images/bird.png');
+  img = await loadImage("images/bird.png");
 }
 ```
 
@@ -114,8 +114,8 @@ Within the `setup` function, call the `classify` method on the `classifier` obje
 ```javascript
 async function setup() {
   createCanvas(400, 400);
-  classifier = await ml5.imageClassifier('MobileNet');
-  img = await loadImage('images/bird.png');
+  classifier = await ml5.imageClassifier("MobileNet");
+  img = await loadImage("images/bird.png");
   // classify the image with the model and pass in a callback function `gotResult` to handle the results.
   classifier.classify(img, gotResult);
 }
@@ -160,8 +160,8 @@ function gotResult(results) {
 Let's get the top 1 label that model feels most confident about. `results[0]` is the object with the highest confidence score. We can then extract the label and confidence from this object. `nf()` is used to format the confidence score to two decimal places.
 
 ```javascript
-label = 'Label: ' + results[0].label;
-confidence = 'Confidence: ' + nf(results[0].confidence, 0, 2);
+label = "Label: " + results[0].label;
+confidence = "Confidence: " + nf(results[0].confidence, 0, 2);
 ```
 
 Finally, display the label and confidence on the canvas.
@@ -253,11 +253,11 @@ imageClassifier.classifyStart(media, ?kNumber, callback);
   ```javascript
   [
     {
-      label: 'zebra',
+      label: "zebra",
       confidence: 0.98,
     },
     {
-      label: 'tiger',
+      label: "tiger",
       confidence: 0.89,
     },
     // Additional objects here...
