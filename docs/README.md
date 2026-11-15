@@ -1,4 +1,13 @@
-# Getting Started
+<center>
+<div style="padding:28px 0 8px;">
+  <span style="font-family:Georgia,'Times New Roman',serif; font-size:2.8rem; font-weight:bold; background:linear-gradient(135deg,#6d28d9 0%,#9333ea 55%,#db2777 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; display:inline-block;">✦ Getting Started ✦</span>
+  <div style="margin-top:6px;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="380" height="14">
+      <path d="M10,7 Q65,13 120,7 Q175,1 230,7 Q285,13 340,7 Q358,4 370,7" stroke="#9333ea" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.55"/>
+    </svg>
+  </div>
+</div>
+</center>
 
 <center>
   <img class="header-img" src="assets/header-getting-started.png" alt="Getting Started Header Image" >
