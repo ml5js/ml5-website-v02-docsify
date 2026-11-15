@@ -179,7 +179,7 @@ speechToTextModel = await ml5.speechToText(?modelName, ?options, ?callback);
 
   [see other options for optional parameters](https://huggingface.co/docs/transformers.js/en/api/utils/hub)
 
-- **callback(speechToText, error)**: Optional. A function that runs once the model has finished loading. It receives the speechToText object as its argument.
+- **callback(speechToText)**: Optional. A function that runs once the model has finished loading. It receives the speechToText object as its argument.
 
 **Returns:**
 
