@@ -16,11 +16,11 @@ It provides following functionalities:
 
 ## Quick Start
 
-Run and explore a pre-built example! [This BodySegmentation example](https://editor.p5js.org/ml5/sketches/ruoyal-RC) demonstrates how to use the BodySegmentation `BodyPix` model to segment body parts from webcam input.
+Run and explore a pre-built example! [This SpeechToText example](https://editor.p5js.org/ml5/sketches/ruoyal-RC) demonstrates how to use the SpeechToText `Whisper` model to transcribe speech from microphone input.
 
 </br>
 
-[DEMO](iframes/body-segmentation ":include :type=iframe width=100% height=550px")
+[DEMO](iframes/speech-to-text ":include :type=iframe width=100% height=550px")
 
 
 ## Step-by-Step Guide
