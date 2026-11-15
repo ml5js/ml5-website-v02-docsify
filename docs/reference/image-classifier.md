@@ -9,18 +9,18 @@
 
 The ml5.js imageClassifier loads a pre-trained model that attempts to classify the content of an image. Each model can only predict labels from a fixed set of categories it was trained to recognize (typically objects, animals, and other visual categories). The image classifier uses a neural network to analyze the image and provide a list of possible labels for the content of the image in its entirety.
 
-The ml5.js imageClassifier uses MobileNet by default, but supports additional model architectures including transformer-based models, fine-tuned models such as `Food101`, specialized pre-trained models such as `DoodleNet`, and custom models created with [Teachable Machine](/reference/image-classifier-tm). MobileNet was trained on the 1,000 category ImageNet dataset.```
+The ml5.js imageClassifier uses MobileNet by default, but supports additional model architectures including transformer-based models, fine-tuned models such as `SwinFood101`, specialized pre-trained models such as `DoodleNet`, and custom models created with [Teachable Machine](/reference/image-classifier-tm). MobileNet was trained on the 1,000 category ImageNet dataset.
 
 It provides the following functionality:
 
-- ***Single Image Classification*** (`classify()`): Classifies one image and provides a list of possible labels.
-- ***Continuous Video Classification*** (`classifyStart()`): Repeatedly classifies frames from a video and provides updated labels.
+- **_Single Image Classification_** (`classify()`): Classifies one image and provides a list of possible labels.
+- **_Continuous Video Classification_** (`classifyStart()`): Repeatedly classifies frames from a video and provides updated labels.
 
 ## Supported Models
 
 ImageClassifier supports different neural network architectures depending on the model selected.
 
-- **MobileNet** (default): This model loads [MobileNet](https://github.com/tensorflow/models/tree/master/research/slim/nets/mobilenet), a lightweight convolutional neural network designed for efficient image classification. It was pretrained on ImageNet, a dataset of approximately 15 million images across 1,000 classes. MobileNet is optimized for relatively fast inference and is commonly used for real-time image classification in browser and mobile applications.
+- **MobileNet** (default): This model loads [MobileNet](https://github.com/tensorflow/models/tree/master/research/slim/nets/mobilenet), a lightweight convolutional neural network designed for efficient image classification. It was pretrained on ImageNet-1K, a dataset of approximately 1.2 million images across 1,000 classes. MobileNet is optimized for relatively fast inference and is commonly used for real-time image classification in browser and mobile applications.
 - **ViTBase**: This model loads [Xenova/vit-base-patch16-224](https://huggingface.co/Xenova/vit-base-patch16-224), which is a transformers.js version of Google’s vit-base-patch16-224 model. It was pretrained on [ImageNet-21K](https://www.image-net.org/): about 14 million images and 21,843 classes and then fine-tuned on ImageNet-1K to predict the familiar 1,000 classes. The Vision Transformer architecture divides an image into patches and uses an attention mechanism to learn relationships between different parts of the image.
 - **SwinFood101**: This model loads [onnx-community/swin-finetuned-food101-ONNX](https://huggingface.co/onnx-community/swin-finetuned-food101-ONNX), an ONNX version of a Swin Transformer fine-tuned on the [Food101 dataset](https://huggingface.co/datasets/ethz/food101). It was fine-tuned from Microsoft’s swin-base-patch4-window7-224 model to classify images into 101 different food categories. Swin uses shifted windows of attention to efficiently learn relationships between different regions of an image.
 - **DoodleNet**: [DoodleNet](https://github.com/yining1023/doodleNet) has its own set of 345 drawing categories from the [Google Quick, Draw! dataset](https://github.com/googlecreativelab/quickdraw-dataset).
@@ -36,7 +36,7 @@ Run and explore a pre-built example! [This ImageClassifier example](https://edit
 
 </br>
 
-[DEMO](iframes/image-classifier ":include :type=iframe width=100% height=550px")
+[DEMO](iframes/image-classifier ':include :type=iframe width=100% height=550px')
 
 ## Examples
 
@@ -84,11 +84,11 @@ Now, we can load the ImageClassifier model. Using `async` and `await` ensures th
 // Make sure to add "async" before "function setup()".
 async function setup() {
   // Wait until the ImageClassifier model is fully loaded.
-  classifier = await ml5.imageClassifier("MobileNet");
+  classifier = await ml5.imageClassifier('MobileNet');
 }
 ```
 
-?> If you would like to use a different model such as `Darknet`, specify configuration options for the model, or tailor a callback function to run once the model is loaded, you can pass these as arguments to the `ml5.imageClassifier(?modelName, ?options, ?callback)` method. See the [ml5.imageClassifier() method](/reference/image-classifier?id=ml5imageclassifier) for more details.
+?> If you would like to use a different model such as `ViTBase`, specify configuration options for the model, or tailor a callback function to run once the model is loaded, you can pass these as arguments to the `ml5.imageClassifier(?modelName, ?options, ?callback)` method. See the [ml5.imageClassifier() method](/reference/image-classifier?id=ml5imageclassifier) for more details.
 
 ### Load an image
 
@@ -101,9 +101,9 @@ We are ready to write the code to load the image that we just uploaded.
 let img;
 
 async function setup() {
-  classifier = await ml5.imageClassifier("MobileNet");
+  classifier = await ml5.imageClassifier('MobileNet');
   // Also use "await" to load the image before the "draw()"" function begins.
-  img = await loadImage("images/bird.png");
+  img = await loadImage('images/bird.png');
 }
 ```
 
@@ -114,8 +114,8 @@ Within the `setup` function, call the `classify` method on the `classifier` obje
 ```javascript
 async function setup() {
   createCanvas(400, 400);
-  classifier = await ml5.imageClassifier("MobileNet");
-  img = await loadImage("images/bird.png");
+  classifier = await ml5.imageClassifier('MobileNet');
+  img = await loadImage('images/bird.png');
   // classify the image with the model and pass in a callback function `gotResult` to handle the results.
   classifier.classify(img, gotResult);
 }
@@ -160,8 +160,8 @@ function gotResult(results) {
 Let's get the top 1 label that model feels most confident about. `results[0]` is the object with the highest confidence score. We can then extract the label and confidence from this object. `nf()` is used to format the confidence score to two decimal places.
 
 ```javascript
-label = "Label: " + results[0].label;
-confidence = "Confidence: " + nf(results[0].confidence, 0, 2);
+label = 'Label: ' + results[0].label;
+confidence = 'Confidence: ' + nf(results[0].confidence, 0, 2);
 ```
 
 Finally, display the label and confidence on the canvas.
@@ -213,18 +213,19 @@ const classifier = ml5.imageClassifier(modelNameOrUrl, ?options, ?callback);
     - _alpha_: The width multiplier for the MobileNet. Default is 1.0.
     - _topk_: The number of labels to return. Default is 3.
 
-  - The default options for the `ViTBase` model are
+  - The options for the `ViTBase` and `SwinFood101` models are
 
-  ```
-  {
-    dtype: "fp32",
-    topK: 3
-  }
-  ```
+    ```
+    {
+      topk: 3,
+      device: "webgpu",
+      dtype: "fp16"
+    }
+    ```
 
-  - _dtype_: The numerical precision used during inference
-  - _device_: The backend device used for computation
-  - _topK_: The number of classification results returned
+    - _topk_: The number of labels to return. Default is 3.
+    - _device_: Where the model runs, either `"webgpu"` or `"wasm"`. By default ml5 uses `"webgpu"` if the browser supports it and `"wasm"` otherwise.
+    - _dtype_: The numerical precision of the model weights, such as `"fp32"`, `"fp16"`, `"q8"` or `"q4"`. By default ml5 uses `"fp16"` on WebGPU and `"q8"` on WASM.
 
 - **callback(classifier, error)**: Optional. A function to run once the model has been loaded. Alternatively, call `ml5.imageClassifier()` within the p5 `preload` function.
 
@@ -252,11 +253,11 @@ imageClassifier.classifyStart(media, ?kNumber, callback);
   ```javascript
   [
     {
-      label: "zebra",
+      label: 'zebra',
       confidence: 0.98,
     },
     {
-      label: "tiger",
+      label: 'tiger',
       confidence: 0.89,
     },
     // Additional objects here...

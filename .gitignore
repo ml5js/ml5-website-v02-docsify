@@ -7,3 +7,6 @@
 
 # ignore a folder starting with "__"
 __*
+
+# ignore local package installs
+node_modules/
