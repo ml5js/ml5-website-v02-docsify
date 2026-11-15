@@ -146,7 +146,7 @@ You have successfully built the SpeechToText example! Press the <img class="inli
 
 ### ml5.speechToText()
 
-This method is used to initialize the bodySegmentation object.
+This method is used to initialize the speechToText object.
 
 ```javascript
 speechToTextModel = await ml5.speechToText(?modelName, ?options, ?callback);
