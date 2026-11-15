@@ -12,7 +12,7 @@ The ml5.js SpeechToText provides the `whisper` models, `whisper-tiny`, `whisper-
 The ml5.js SpeechToText is an automatic speech recognition, transformer machine learning model provided by [Hugging Face](https://huggingface.co/Xenova/whisper-base).
 
 It provides following functionalities:
-- **Multilingual Transcription**: [99 languages supported](https://whisper-api.com/docs/languages/) 
+- **Multilingual Transcription**: [99 languages supported](https://github.com/openai/whisper#available-models-and-languages) 
 
 ## Quick Start
 
@@ -172,7 +172,7 @@ speechToTextModel = await ml5.speechToText(?modelName, ?options, ?callback);
     }
   ```
 
-  - _language_: The language that's being spoken and transcribed. [Language Options Available](https://whisper-api.com/docs/languages/)
+  - _language_: The language that's being spoken and transcribed. [Language Options Available](https://github.com/openai/whisper#available-models-and-languages)
   - *progress_callback* : A function called repeatedly with a progress info object while the model files download. Use it to show a loading bar or log progress.
   - _device_ : Where the model runs, either `"webgpu"` (faster) or `"wasm"` (works in every browser). By default ml5 picks `"webgpu"` if the browser supports it and `"wasm"` otherwise.
   - _dtype_: The numeric precision of the model weights, such as `"fp32"`, `"fp16"`, `"q8"` or `"q4"`. Lower precision downloads faster and uses less memory but can be less accurate.
