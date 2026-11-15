@@ -19,7 +19,7 @@ Get up and running with the [webcam example](https://editor.p5js.org/ml5/sketche
 
 </br>
 
-[DEMO](iframes/depthestimation ':include :type=iframe width=100% height=550px')
+[DEMO](iframes/depthestimation ":include :type=iframe width=100% height=550px")
 
 ## Examples
 
@@ -90,7 +90,7 @@ This method is used to estimate depth once, for a single image:
 ```javascript
 async function setup() {
   // Load your image
-  img = await loadImage('image.jpg');
+  img = await loadImage("image.jpg");
   // Wait until the DepthAnything model is fully loaded.
   depthEstimator = await ml5.depthEstimation();
   // Estimate depth from the loaded image
