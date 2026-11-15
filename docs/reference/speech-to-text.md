@@ -16,7 +16,7 @@ It provides following functionalities:
 
 ## Quick Start
 
-Run and explore a pre-built example! [This SpeechToText example](https://editor.p5js.org/ml5/sketches/ruoyal-RC) demonstrates how to use the SpeechToText `Whisper` model to transcribe speech from microphone input.
+Run and explore a pre-built example! This [SpeechToText example](https://editor.p5js.org/ml5/sketches/ruoyal-RC) demonstrates how to use the SpeechToText `Whisper` model to transcribe speech from microphone input.
 
 </br>
 
