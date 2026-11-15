@@ -89,7 +89,8 @@ This method is used to estimate depth once, for a single image:
 
 ```javascript
 async function setup() {
-  // Load you image here
+  // Load your image
+  img = await loadImage('image.jpg');
   // Wait until the DepthAnything model is fully loaded.
   depthEstimator = await ml5.depthEstimation();
   // Estimate depth from the loaded image
@@ -171,7 +172,7 @@ const depthEstimator = await ml5.depthEstimation(?modelName, ?options);
     - Accepted values: `'webgpu'`, `'wasm'`.
   - `dtype`: Only compatible with the **DepthAnything** model. Used to set the numerical precision of the model's weights and activations. Higher precision trades performance speed for high fidelity output. Lower precision trades output fidelity for fast performance.
     - Default: Automatically sets `'fp16'` when using `'webgpu'` and `'q8'` when using `'wasm'`.
-    - Accepted values: `'fp32'` (full precision), `'fp16'` (half-precision), `'q8'`, `'int8'` or `'uint8'` (8-bit), `'q4'`, `'q4f16'` or `'bnb4'` (4-bit).
+    - Accepted values: `'fp32'` (full precision), `'fp16'` (half-precision), `'q8'` (8-bit), `'q4'` (4-bit).
 
 **Returns:**
 
