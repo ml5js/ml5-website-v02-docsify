@@ -1,4 +1,5 @@
 # DepthEstimation
+
 ## Description
 
 The ml5.js DepthEstimation module loads a pre-trained model to infer a depth map from an image or video. In use, it estimates which pixels on the image are closer to or farther from the viewer. This can be used on images and videos taken previously with other cameras, or real-time capture with a webcam.
@@ -9,8 +10,8 @@ By default, ml5.js DepthEstimation uses the Depth Anything model, but also suppo
 
 DepthEstimation supports different neural network architectures depending on the model selected:
 
-* **DepthAnything** (default): This model loads [onnx-community/depth-anything-v2-small](https://huggingface.co/onnx-community/depth-anything-v2-small), an ONNX version of the [Depth Anything V2](https://depth-anything-v2.github.io/) model. It is a general purpose monocular (for images taken by cameras with one lens) depth estimation model trained on a combination of 595 thousand synthetic labeled images and 62 million real unlabeled images.
-* **ARPortraitDepth**: This model loads Tensorflow's [ARPortraitDepth](https://blog.tensorflow.org/2022/05/portrait-depth-api-turning-single-image.html). This model uses a light-weight U-Net architecture to estimate depth *specifically for portrait photos*, with unreliable results for any other kind of image. Because of this single purpose, the model also loads and uses [MediaPipe SelfieSegmentation](https://chuoling.github.io/mediapipe/solutions/selfie_segmentation.html) behind the scenes, to first isolate the subject from the background before running depth estimation. The mask that the segmentation creates is available for use through ml5, see the [Methods section](#depthestimationresult) for more details and the [Mask Background example](https://editor.p5js.org/ml5/sketches/zxi8xUuq4) for an implementation example.
+- **DepthAnything** (default): This model loads [onnx-community/depth-anything-v2-small](https://huggingface.co/onnx-community/depth-anything-v2-small), an ONNX version of the [Depth Anything V2](https://depth-anything-v2.github.io/) model. It is a general purpose monocular (for images taken by cameras with one lens) depth estimation model trained on a combination of 595 thousand synthetic labeled images and 62 million real unlabeled images.
+- **ARPortraitDepth**: This model loads Tensorflow's [ARPortraitDepth](https://blog.tensorflow.org/2022/05/portrait-depth-api-turning-single-image.html). This model uses a light-weight U-Net architecture to estimate depth _specifically for portrait photos_, with unreliable results for any other kind of image. Because of this single purpose, the model also loads and uses [MediaPipe SelfieSegmentation](https://chuoling.github.io/mediapipe/solutions/selfie_segmentation.html) behind the scenes, to first isolate the subject from the background before running depth estimation. The mask that the segmentation creates is available for use through ml5, see the [Methods section](#depthestimationresult) for more details and the [Mask Background example](https://editor.p5js.org/ml5/sketches/zxi8xUuq4) for an implementation example.
 
 ## Quick Start
 
@@ -18,9 +19,10 @@ Get up and running with the [webcam example](https://editor.p5js.org/ml5/sketche
 
 </br>
 
-[DEMO](iframes/depthestimation ":include :type=iframe width=100% height=550px")
+[DEMO](iframes/depthestimation ':include :type=iframe width=100% height=550px')
 
 ## Examples
+
 - [Webcam](https://editor.p5js.org/ml5/sketches/1AlSdDhwA): Show the live depth map of the video captured by the webcam.
 - [Video](https://editor.p5js.org/ml5/sketches/YGAqvhn1o): Generate the depth map of a video file as it plays.
 - [Single Image](https://editor.p5js.org/ml5/sketches/VpVUFgtOU): Depth map of an image using single frame estimation.
@@ -29,7 +31,9 @@ Get up and running with the [webcam example](https://editor.p5js.org/ml5/sketche
 - [Mesh](https://editor.p5js.org/ml5/sketches/CE2f9l38k): Creates a live 3D mesh geometry of the webcam video.
 
 ## Step-by-Step Guide
+
 ### Initialization and Options
+
 Before starting, make sure you have included the ml5 library in your `index.html` file:
 
 ```html
@@ -51,15 +55,18 @@ async function setup() {
 ?> If you would like to use the `ARPortraitDepth` model instead, or specify configuration options for the model, you can pass these as arguments to the `ml5.depthEstimation(?modelName, ?options)` method. See the [ml5.depthEstimation() method](#ml5depthestimation) for more details.
 
 ### Estimating Depth
+
 As with many other ml5 models, you have two options to run depth estimation on the image, video or webcam of your choice: _Continuous Estimation_ and _Single Frame Estimation_ .
 
 For any of these, make sure you first load the image, video or start the webcam capture. This is the media we will pass to the model.
 
 #### Continuous Estimation
+
 This method is used to continuously estimate depth on every frame of a video or webcam feed.
+
 ```javascript
 async function setup() {
-// Create the video capture element
+  // Create the video capture element
   webcam = createCapture(VIDEO);
 
   // Wait until the DepthAnything model is fully loaded.
@@ -73,10 +80,13 @@ function gotResults(result) {
   // The most recent depth map is in the result object!
 }
 ```
+
 Using this method, the depth estimator will take care of doing estimation of a frame and waiting for it to finish before working on the next frame. Any time a depth map is ready, it will fire the callback function to provide it.
 
 #### Single Frame Estimation
+
 This method is used to estimate depth once, for a single image:
+
 ```javascript
 async function setup() {
   // Load you image here
@@ -90,18 +100,22 @@ function gotResults(result) {
   // The depth map is in the result object!
 }
 ```
+
 Because the estimation takes time, we pass in a callback function that will fire when estimation is ready. The `estimate` method is called in setup because it **will only run once**. If calling it multiple times, it is prudent to wait for each operation to finish before starting the next one, or consider using continuous estimation and starting/stopping to fit your needs.
 
 ### Using the Depth Result
+
 Whenever the callback function fires, we have access to the depth result that contains all the depth information.
+
 ```javascript
 let depthMap;
 
 function gotResults(result) {
-    // Save the depth result in a variable
-    depthMap = result;
+  // Save the depth result in a variable
+  depthMap = result;
 }
 ```
+
 The `result` is a `DepthEstimationResult` object that contains the depth map and other relevant data. Save it to variable so you can use it inside the p5 `draw()` loop!
 
 For more information, on the structure and data contained in the result, check out [DepthEstimationResult Structure](#depthestimationresult) below.
@@ -123,14 +137,16 @@ In p5.js 2.0, use it in the `async function setup()`:
 ```javascript
 const depthEstimator = await ml5.depthEstimation(?modelName, ?options);
 ```
+
 **Parameters:**
-- **modelName**: (optional) 
+
+- **modelName**: (optional)
   - Default: `DepthAnything`
   - Accepted values: `DepthAnything`, `ARPortraitDepth`
 
 - **options**: (optional)
   - `flipHorizontal`: Used to mirror the depth map horizontally
-    - Default: `false` 
+    - Default: `false`
     - Accepted values: `true`, `false` (boolean).
   - `dilationFactor`: Only compatible with the **ARPortraitDepth** model. Sets how many pixels around the detected edges of a person should be ignored. Used to clean the edges of the depth map.
     - Default: `4`
@@ -162,29 +178,32 @@ const depthEstimator = await ml5.depthEstimation(?modelName, ?options);
 - **Object**: `depthEstimation` object that contains the methods to run estimation.
 
 ### depthEstimator.estimateStart()
+
 This method is used for _Continuous Estimation_: estimating depth on a video/webcam continuously, for each frame. Calling it will initiate an estimation loop, running until `depthEstimator.estimateStop()` is called.
 
 ```javascript
-depthEstimator.estimateStart(media, callback)
+depthEstimator.estimateStart(media, callback);
 ```
 
 **Parameters:**
 
 - **media**: An HTML or p5.js image, video, or canvas element to estimate a depth map for continuously.
-- **callback(result)**: A callback function that will be called *every time* an estimation result is available. The `result` is a `DepthEstimationResult` object. Check the section on it below for details on its structure.
+- **callback(result)**: A callback function that will be called _every time_ an estimation result is available. The `result` is a `DepthEstimationResult` object. Check the section on it below for details on its structure.
 
 ### depthEstimator.estimateStop()
+
 This method is used to stop an estimation loop that was previously started by a call to `depthEstimator.estimateStart()`.
 
 ```javascript
-depthEstimator.estimateStop()
+depthEstimator.estimateStop();
 ```
 
 ### depthEstimator.estimate()
+
 This method is used for _Single Frame Estimation_: estimating depth one time on a single image or video/webcam frame.
 
 ```javascript
-depthEstimator.estimate(media, callback)
+depthEstimator.estimate(media, callback);
 ```
 
 **Parameters:**
@@ -192,8 +211,8 @@ depthEstimator.estimate(media, callback)
 - **media**: An HTML or p5.js image, video, or canvas element to estimate a depth map for.
 - **callback(result)**: A callback function that will be called when estimation is ready. The `result` is a `DepthEstimationResult` object. Check the section on it below for details on its structure.
 
-
 ### DepthEstimationResult
+
 This is the object that is passed as an argument to the callback functions of `depthEstimator.estimateStart()` or `depthEstimator.estimate()`. It contains the result of the depth estimation process and other useful relevant data
 
 These are its properties:
@@ -215,4 +234,5 @@ These are its properties:
   - Type: number (integer)
 
 ## Learn more
+
 Check out the community article [Finding the Z-axis](https://ml5js.org/blog/bringing-depth-estimation/) to learn more about the way depth estimation was first implemented in ml5.
