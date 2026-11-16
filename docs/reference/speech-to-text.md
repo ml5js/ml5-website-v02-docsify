@@ -9,7 +9,7 @@
 
 The ml5.js SpeechToText provides the `whisper` models, `whisper-tiny`, `whisper-base`, and `whisper-small`. The `whisper` model transcribes speech to text. `whisper-base` is the default loaded model with `tiny` taking less compute and `small` taking more. 
 
-The ml5.js SpeechToText is an automatic speech recognition, transformer machine learning model provided by [Hugging Face](https://huggingface.co/Xenova/whisper-base).
+The ml5.js SpeechToText is an automatic speech recognition, transformer machine learning model, `Whisper`, which was developed by [OpenAI](https://openai.com/index/whisper/). The version used here in ml5.js is a Transformer.js model provided by [Hugging Face](https://huggingface.co/Xenova/whisper-base).
 
 It provides following functionalities:
 - **Multilingual Transcription**: [99 languages supported](https://github.com/openai/whisper#available-models-and-languages) 
@@ -218,10 +218,51 @@ speechToTextModel.transcribeStop(?optionsOrCallback, ?cb);
   - *chunk_length_s* : Length in seconds of the pieces the audio is split into for transcription. Default is `30`.
   - *stride_length_s*: Overlap in seconds between neighboring pieces, so words at the edges aren't cut off. Default is `5`.
   - *force_full_sequences*: Whether to force full sequences in the output. Default is `false`.
-  - *num_frames*: The number of frames in the input audio.
+
+  [see other options for optional parameters](https://huggingface.co/docs/transformers.js/en/api/pipelines#module_pipelines.AutomaticSpeechRecognitionPipeline)
+
 
 - **cb**:  A callback function that receives the transcription result once it is ready. The result is an object like `{ text: "hello world" }`.
 
 **Returns:**
 
 - **Promise**: Resolves with the same result object that is passed to the callback. Its `text` property is the transcribed speech. If nothing is being recorded, it returns `undefined`.
+
+---
+
+### speechToText.transcribe()
+
+This method transcribes an audio file or url and returns the recognized text. If the model is still loading, it waits until loading finishes.
+
+```javascript
+speechToTextModel.transcribe(url, ?options);
+```
+
+**Parameters:**
+
+- **url**: A url or object url pointing to the audio to transcribe.
+
+- **options**: Optional. An object to change how the audio is transcribed. See the example options object:
+
+  ```javascript
+  {
+      language: "english",
+      task: "translate",
+      return_timestamps: true,
+      chunk_length_s: 30,
+      stride_length_s: 5
+  }
+  ```
+
+  - _language_: The language being spoken. Defaults to the `language` set when the model was loaded. [Language Options Available](https://github.com/openai/whisper#available-models-and-languages)
+  - _task_: Either `"transcribe"` (write down what was said) or `"translate"` (translate the speech into English). If not set, it is chosen automatically.
+  - *return_timestamps*: If `true`, the result also includes a `chunks` array with the start and end time (in seconds) of each piece of transcribed text. If `"word"`, it gives the start and end time of each word. Default is `false`.
+  - *chunk_length_s*: Length in seconds of the pieces the audio is split into for transcription. Default is `30`.
+  - *stride_length_s*: Overlap in seconds between neighboring pieces, so words at the edges aren't cut off. Default is `5`.
+  - *force_full_sequences*: Whether to force full sequences in the output. Default is `false`.
+
+  [see other options for optional parameters](https://huggingface.co/docs/transformers.js/en/api/pipelines#module_pipelines.AutomaticSpeechRecognitionPipeline)
+
+**Returns:**
+
+- **Promise**: An object containing the transcribed text
