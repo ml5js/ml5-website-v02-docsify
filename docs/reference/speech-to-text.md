@@ -166,8 +166,8 @@ speechToTextModel = await ml5.speechToText(?modelName, ?options, ?callback);
   {
       language: "english", 
       progress_callback: logProgress, 
-      device: "wasm",
-      dtype: "q8" 
+      device: "wasm", // optional: force a device
+      dtype: "q8"  // optional: force a precision
 
     }
   ```
@@ -175,7 +175,7 @@ speechToTextModel = await ml5.speechToText(?modelName, ?options, ?callback);
   - _language_: The language that's being spoken and transcribed. [Language Options Available](https://github.com/openai/whisper#available-models-and-languages)
   - *progress_callback* : A function called repeatedly with a progress info object while the model files download. Use it to show a loading bar or log progress.
   - _device_ : Where the model runs, either `"webgpu"` (faster) or `"wasm"` (works in every browser). By default ml5 picks `"webgpu"` if the browser supports it and `"wasm"` otherwise.
-  - _dtype_: The numeric precision of the model weights, such as `"fp32"`, `"fp16"`, `"q8"` or `"q4"`. Lower precision downloads faster and uses less memory but can be less accurate.
+  - _dtype_: The numeric precision of the model weights, such as `"fp32"`, `"fp16"`, `"q8"` or `"q4"`. Lower precision downloads faster and uses less memory but can be less accurate. By default ml5 uses "fp16" when running on "webgpu" and "q8" when running on "wasm".
 
   [see other options for optional parameters](https://huggingface.co/docs/transformers.js/en/api/utils/hub)
 
