@@ -156,10 +156,10 @@ const depthEstimator = await ml5.depthEstimation(?modelName, ?options);
     - Default: `'GRAYSCALE'`
     - Accepted values: `'GRAYSCALE'` or `'COLOR'` (string).
   - `minDepth`: Sets the depth value that will map to the 'close' color. This is only used if enableSmoothing is set to `false`.
-    - Default: `0`
+    - Default: `0` (DepthAnything), `0.2` (ARPortraitDepth)
     - Accepted values: `0` to `1` (float). Must be less than `maxDepth`.
   - `maxDepth`: Sets the depth value that will map to the 'far' color.
-    - Default: `1`
+    - Default: `1` (DepthAnything), `0.75` (ARPortraitDepth)
     - Accepted values: `0` to `1` (float). Must be greater than `minDepth`. This is only used if enableSmoothing is set to `false`.
   - `enableSmoothing`: Whether to do a fixed mapping of depth value max and min (using maxDepth and minDepth) or smooth it across frames; recording the lowest and highest values detected in the depth map on every frame and using them as the mapping limits.
     - Default: `false`
@@ -172,7 +172,10 @@ const depthEstimator = await ml5.depthEstimation(?modelName, ?options);
     - Accepted values: `'webgpu'`, `'wasm'`.
   - `dtype`: Only compatible with the **DepthAnything** model. Used to set the numerical precision of the model's weights and activations. Higher precision trades performance speed for high fidelity output. Lower precision trades output fidelity for fast performance.
     - Default: Automatically sets `'fp16'` when using `'webgpu'` and `'q8'` when using `'wasm'`.
-    - Accepted values: `'fp32'` (full precision), `'fp16'` (half-precision), `'q8'` (8-bit), `'q4'` (4-bit).
+    - Accepted values: `'fp32'` (full precision), `'fp16'` (half-precision), `'q8'`, `'int8'` or `'uint8'` (8-bit), `'q4'`, `'q4f16'` or `'bnb4'` (4-bit).
+  - `targetFps`: Used to limit the speed at which depthEstimation results are updated. This framerate can only be guaranteed if the value passed in is lower than the speed at which the device can generate new results.
+    - Default: `null`, estimation will run at the maximum speed that the device can handle.
+    - Accepted values: Numbers greater than `0`.
 
 **Returns:**
 
