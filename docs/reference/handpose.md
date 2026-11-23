@@ -56,12 +56,13 @@ Import the ml5.js library in your `index.html` file.
 Let’s open the `sketch.js` file in the p5.js Web Editor and load the HandPose model. By using `async` and `await`, we ensure the model is completely ready before the `draw()` function starts running.
 
 ```javascript
-// Define a variable to store the HandPose model.
+// {!1} Define a variable to store the HandPose model.
 let handPose;
-// Make sure to add "async" before "function setup()".
+// {!1} Use async so setup can await loading.
 async function setup() {
-  createCanvas(640, 480); // a common webcam resolution
-  // Wait until the HandPose model is fully loaded.
+  // {!1} Use a common webcam resolution.
+  createCanvas(640, 480);
+  // {!1} Use await to finish loading the model.
   handPose = await ml5.handPose();
 }
 ```
@@ -71,16 +72,16 @@ async function setup() {
 
 ### Access webcam video
 
-Then, set up our sketch to access the webcam video. We will capture the live video stream and hide the default HTML element so we can render it directly on our canvas.
+Then, set up our sketch to access the webcam video. We will capture the live video stream and hide the default HTML element so we can draw it only on our canvas.
 
 ```javascript
-// Define a variable "video" to store the webcam video.
+// {!1} Define a variable "video" to store the webcam video.
 let video;
 let handPose;
 
 async function setup() {
   createCanvas(640, 480);
-  // Access the webcam video, resize it to fit the canvas, and hide it from the display.
+  // {!3} Capture webcam video, then resize and hide the video element.
   video = createCapture(VIDEO);
   video.size(640, 480);
   video.hide();
@@ -118,7 +119,7 @@ Now, let's apply the steps above! Here is the code we have built so far.
 ```javascript
 let video;
 let handPose;
-// Define a variable "hands" to store the detected hands as an array.
+// {!1} Define a variable "hands" to store the detected hands as an array.
 let hands = [];
 
 async function setup() {
@@ -128,13 +129,13 @@ async function setup() {
   video.hide();
 
   handPose = await ml5.handPose();
-  // Start detecting hands from the webcam video.
+  // {!1} Start detecting hands from the webcam video.
   handPose.detectStart(video, gotHands);
 }
 
-// Callback function for when handPose outputs data
+// {!1} Callback function for when handPose outputs data
 function gotHands(results) {
-  // Save the output to the hands variable
+  // {!1} Save the output to the hands variable
   hands = results;
 }
 ```
@@ -154,13 +155,13 @@ Let's draw the detected hand keypoints on our canvas!
 We will iterate through the `hands` array, where each `hand` object represents a detected hand and contains an array of keypoints (finger joints). Each keypoint object has the properties `x` and `y`, which we will use to draw a green circle at every location.
 
 ```javascript
-// Loop through the "hands" array to fetch each detected hand.
+// {!2} Loop through the "hands" array to fetch each detected hand.
 for (let i = 0; i < hands.length; i++) {
   let hand = hands[i];
-  // Iterate through all the keypoints of the current hand.
+  // {!2} Iterate through all the keypoints of the current hand.
   for (let j = 0; j < hand.keypoints.length; j++) {
     let keypoint = hand.keypoints[j];
-    // Finally, draw a green circle at the location of the keypoint.
+    // {!3} Finally, draw a green circle at the location of the keypoint.
     fill(0, 255, 0);
     noStroke();
     circle(keypoint.x, keypoint.y, 10);
@@ -193,6 +194,7 @@ function draw() {
   background(220);
   image(video, 0, 0);
 
+  // {!9} Draw the hand keypoints.
   for (let i = 0; i < hands.length; i++) {
     let hand = hands[i];
     for (let j = 0; j < hand.keypoints.length; j++) {
@@ -298,9 +300,9 @@ handPose.detectStart(media, callback);
     keypoints3D: [{ x, y, z, confidence, name }, ...],
     index_finger_dip: { x, y, x3D, y3D, z3D },
     index_finger_mcp: { x, y, x3D, y3D, z3D },
-    ...
+    // ...
   }
-  ...
+  // ...
 ]
 ```
 
@@ -324,12 +326,12 @@ For example, you can toggle the hand pose estimation with click event in p5.js b
 
 ```javascript
 
-// Toggle detection when mouse is pressed
+// {!3} Toggle detection when mouse is pressed
 function mousePressed() {
   toggleDetection();
 }
 
-// Call this function to start and stop detection
+// {!9} Call this function to start and stop detection
 function toggleDetection() {
   if (isDetecting) {
     handPose.detectStop();
@@ -366,9 +368,9 @@ This method returns the skeletal connection information between the hand keypoin
 ```javascript
 const connections;
 function setup() {
-  ...
+  // ...
   connections = handPose.getConnections();
-  ...
+  // ...
 }
 ```
 

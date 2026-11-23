@@ -57,13 +57,7 @@ Import the ml5.js library in your `index.html` file.
 
 ### Load model
 
-Let's open the `sketch.js` file and define a variable to store the Image + Teachable Machine model.
-
-```javascript
-let classifier;
-```
-
-Before we load the model, we need to get the model URL from the Teachable Machine platform. Follow the steps below to create a Teachable Machine model:
+Let's open the `sketch.js` file. Then, we need to get the model URL from the Teachable Machine platform before we can load it. Follow the steps below to create a Teachable Machine model:
 
 - Step 1: Open [Teachable Machine](https://teachablemachine.withgoogle.com/train) and create a new "Image Project".
 - Step 2: Choose "Standard image model".
@@ -83,9 +77,13 @@ let imageModelURL = "https://teachablemachine.withgoogle.com/models/4-WUyljZZ/";
 Now, we can load the model that we just trained. Using `async` and `await` ensures that the model is loaded before `draw()` function begins.
 
 ```javascript
-// Make sure to add "async" before "function setup()".
+// {!1} Define a variable to store the Teachable Machine model.
+let classifier;
+// {!1} Use async so setup can await loading.
 async function setup() {
-  // Wait until the model is fully loaded.
+  // {!1} Use a common webcam resolution.
+  createCanvas(640, 480);
+  // {!3} Use await to finish loading the model.
   classifier = await ml5.imageClassifier(imageModelURL + "model.json", {
     flipped: true,
   });
@@ -94,27 +92,22 @@ async function setup() {
 
 ### Access webcam video
 
-Define a variable `video` to hold the webcam video.
+Then, set up our sketch to access the webcam video. We will capture the live video stream and hide the default HTML element so we can draw it only on our canvas. The `flipped` option mirrors the video, which can feel more natural when you move in front of the camera.
 
 ```javascript
 let video;
-```
+let classifier;
 
-Resize the canvas dimensions to 640x480, a common resolution for webcams.
-
-```javascript
-function setup() {
+async function setup() {
   createCanvas(640, 480);
-}
-```
-
-Access the webcam video, resize it to fit the canvas, and hide it from the display.
-
-```javascript
-  // Create the video and hide it
+  // {!3} Capture mirrored webcam video, then resize and hide the video element.
   video = createCapture(VIDEO, { flipped: true });
   video.size(320, 240);
   video.hide();
+
+  classifier = await ml5.imageClassifier(imageModelURL + "model.json", {
+    flipped: true,
+  });
 }
 ```
 
@@ -130,10 +123,10 @@ We can now start classifying the video with the Teachable Machine model. In the 
 
 ```javascript
 function setup() {
-  ...
+  // ...
   video.hide();
 
-  // Start classifying the video
+  // {!1} Start classifying the video
   classifier.classifyStart(video, gotResult);
 }
 ```
@@ -141,9 +134,9 @@ function setup() {
 The `gotResult` function is a callback function that will be called when the `classifyStart` method finishes classifying the video. Now, let's define the `gotResult` function. This function will update the `label` variable with the highest confidence label predicted by the model.
 
 ```javascript
-// A function to run when we get the results and any errors
+// {!1} A function to run when we get the results and any errors
 function gotResult(results) {
-  // Update the label variable which is displayed on the canvas
+  // {!1} Update the label variable which is displayed on the canvas
   label = results[0].label;
 }
 ```
@@ -160,7 +153,7 @@ function draw() {
 Now, we can display the classification result on the canvas.
 
 ```javascript
-  // Display the label on the canvas
+  // {!4} Display the label on the canvas
   fill(255);
   textSize(16);
   textAlign(CENTER);
@@ -172,7 +165,7 @@ Now, we can display the classification result on the canvas.
 
 Congratulations! You have successfully built the Image + Teachable Machine Video example. Press the <img class="inline-img" src="assets/facemesh-arrow-forward.png" alt="run button icon" aria-hidden="true"> `run` button to see the code in action. You can also find the [complete code](https://editor.p5js.org/ml5/sketches/VvGXajA36) in the p5.js web editor.
 
-?> If you have any questions or spot something unclear in this step-by-step code guide, we'd love to hear from you! Join us on [Discord](https://discord.com/invite/3CVauZMSt7) and let us know how we can make it better.
+?> If you have any questions or spot something unclear in this step-by-step guide, please feel free to [open an issue on GitHub](https://github.com/ml5js/ml5-website-v02-docsify/issues) and let us know how we can make it better.
 
 ## Methods
 

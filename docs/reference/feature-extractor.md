@@ -65,18 +65,18 @@ Import the ml5.js library in your `index.html` file.
 
 ?> If you are not familiar with how to import the ml5.js library and need more detailed guidance, please check out our [Getting Started](/?id=set-up-ml5js) page.
 
-### Load the model
+### Load model
 
-Let's open the `sketch.js` file and define a variable to store the Feature Extractor.
+Let's open the `sketch.js` file. Then, we can use an `async setup()` function in p5.js 2.0 to `await` the model and make sure it is fully loaded before we use it. We pass `{ task: "classification" }` because we want to sort the webcam frames into labeled classes.
 
 ```javascript
+// {!1} Define a variable to store the Feature Extractor model.
 let classifier;
-```
-
-With p5.js 2.0, the `setup` function can be `async`, so we can `await` the model and be sure it is fully loaded before we use it. We pass `{ task: "classification" }` because we want to sort the webcam frames into labeled classes.
-
-```javascript
+// {!1} Use async so setup can await loading.
 async function setup() {
+  // {!1} Use a common webcam resolution.
+  createCanvas(640, 480);
+  // {!3} Use await to finish loading the model.
   classifier = await ml5.featureExtractor("MobileNet", {
     task: "classification",
   });
@@ -85,19 +85,17 @@ async function setup() {
 
 ### Access webcam video
 
-Let's define a variable `video` to store the webcam video.
+Then, set up our sketch to access the webcam video. We will capture the live video stream and hide the default HTML element so we can draw it only on our canvas. The `flipped` option mirrors the video, which can feel more natural when you move in front of the camera.
 
 ```javascript
 let video;
-```
+let classifier;
 
-In the `setup` function, create the canvas with a resolution of 640x480, a common resolution for webcams. Then access the webcam video and hide it from the display. We will draw the video on the canvas instead. The `{ flipped: true }` option mirrors the video, which feels more natural when you are moving in front of the camera.
-
-```javascript
 async function setup() {
   createCanvas(640, 480);
-  // Access the webcam, flip it, and hide the default video element
+  // {!3} Capture mirrored webcam video, then resize and hide the video element.
   video = createCapture(VIDEO, { flipped: true });
+  video.size(640, 480);
   video.hide();
 
   classifier = await ml5.featureExtractor("MobileNet", {
@@ -170,10 +168,10 @@ function startSampling() {
       label = "Class #" + (i + 1);
     }
     // we're storing the label and the number of samples seen as
-    // custom properties in the p5.Element
+    // {!2} custom properties in the p5.Element
     classElems[i].label = label;
     classElems[i].count = 0;
-    // turn it into a button
+    // {!3} turn it into a button
     classElems[i].attribute("type", "button");
     classElems[i].value("Add " + label);
     classElems[i].mousePressed(addSample);
@@ -188,7 +186,7 @@ Each press of a class button calls `addSample()`. Inside, [`classifier.addImage(
 
 ```javascript
 function addSample() {
-  // "this" is the button that was pressed
+  // {!2} "this" is the button that was pressed
   classifier.addImage(video, this.label);
   this.count++;
 
@@ -283,7 +281,7 @@ async function setup() {
   - Default: `"MobileNet"`
 - **options**: Optional. Configuration for the Feature Extractor:
   ```javascript
-  // All fields are optional — the values shown are the defaults.
+  // {!5} All fields are optional — the values shown are the defaults.
   {
     version: 2,
     alpha: 1.0,
@@ -345,7 +343,7 @@ featureExtractor.train(?options, ?whileTraining, ?callback);
 
 - **options**: Optional. Object. Configuration for training:
   ```javascript
-  // All fields are optional — the values shown are the defaults.
+  // {!7} All fields are optional — the values shown are the defaults.
   {
     epochs: 20,
     hiddenUnits: 100,
@@ -436,12 +434,12 @@ Your callback receives one `results` array per frame — one `{ label, confidenc
 featureExtractor.classifyStart(video, gotResults);
 
 function gotResults(results) {
-  // results is sorted high → low confidence, same format as classify()
+  // {!3} results is sorted high → low confidence, same format as classify()
   let label = results[0].label; // top guess, e.g. "mug"
   let confidence = results[0].confidence; // how sure, 0–1, e.g. 0.97
   console.log(label, confidence);
 
-  // …or read every label's confidence:
+  // {!3} …or read every label's confidence:
   for (let result of results) {
     console.log(result.label, result.confidence);
   }
@@ -523,7 +521,7 @@ Your callback receives one `results` array per frame — an array containing a s
 featureExtractor.predictStart(video, gotResults);
 
 function gotResults(results) {
-  // results is [{ value }], same format as predict()
+  // {!2} results is [{ value }], same format as predict()
   let value = results[0].value; // predicted number, on the scale you trained with
   console.log(value);
 }
@@ -602,7 +600,7 @@ Load from a URL — keep `model.json` and `model.weights.bin` together at the sa
 featureExtractor.load("model.json", modelReady);
 
 function modelReady() {
-  // The saved model is fully restored — no train() needed.
+  // {!1} The saved model is fully restored — no train() needed.
   featureExtractor.predict(video, gotResults); // use classify(video, …) for a classification model
 }
 ```
@@ -610,8 +608,10 @@ function modelReady() {
 Load from an HTML `<input type="file" multiple>` — the user selects `model.json` **first**, then its weights file. The model is ready (and `modelReady` runs) only after **both** files have loaded:
 
 ```javascript
-let fileInput = document.querySelector("#model-files"); // <input type="file" multiple>
+// {!1} <input type="file" multiple>
+let fileInput = document.querySelector("#model-files");
 fileInput.addEventListener("change", () => {
-  featureExtractor.load(fileInput.files, modelReady); // reuses the modelReady() above
+  // {!1} reuses the modelReady() above
+  featureExtractor.load(fileInput.files, modelReady);
 });
 ```

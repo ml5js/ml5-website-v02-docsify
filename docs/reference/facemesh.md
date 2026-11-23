@@ -53,13 +53,7 @@ Import the ml5.js library in your `index.html` file.
 
 ### Load model
 
-Let's open the `sketch.js` file and define a variable to store the FaceMesh model.
-
-```javascript
-let faceMesh;
-```
-
-Next, we can create a `options` object to customize the model's behavior. For example, we can set the maximum number of faces to detect to 1, disable the refinement of landmarks (further refine the landmark coordinates around the eyes and lips at the cost of compute), and prevent the model from flipping the image horizontally.
+Let's open the `sketch.js` file. Then, we can create an `options` object to customize the model's behavior. For example, we can set the maximum number of faces to detect to 1, disable the refinement of landmarks (further refine the landmark coordinates around the eyes and lips at the cost of compute), and prevent the model from flipping the image horizontally.
 
 ```javascript
 let options = { maxFaces: 1, refineLandmarks: false, flipped: false };
@@ -72,35 +66,33 @@ Now, we are ready to load a model configed as `options` specifies and store it i
 Let's use `async` and `await` to ensure that the model is fully loaded before the `draw()` function begins. 
 
 ```javascript
-// Make sure to add "async" before "function setup()".
+// {!1} Define a variable to store the FaceMesh model.
+let faceMesh;
+// {!1} Use async so setup can await loading.
 async function setup() {
-   // Wait until the FaceMesh model is fully loaded.
+  // {!1} Use a common webcam resolution.
+  createCanvas(640, 480);
+  // {!1} Use await to finish loading the model.
   faceMesh = await ml5.faceMesh(options);
 }
 ```
 
 ### Access webcam video
 
-Define a variable `video` to hold the webcam video.
+Then, set up our sketch to access the webcam video. We will capture the live video stream and hide the default HTML element so we can draw it only on our canvas.
 
 ```javascript
 let video;
-```
+let faceMesh;
 
-Resize the canvas dimensions to 640x480, a common resolution for webcams.
-
-```javascript
-function setup() {
+async function setup() {
   createCanvas(640, 480);
-```
-
-Access the webcam video, resize it to fit the canvas, and hide it from the display.
-
-```javascript
-  // Create the video and hide it
+  // {!3} Capture webcam video, then resize and hide the video element.
   video = createCapture(VIDEO);
   video.size(640, 480);
   video.hide();
+
+  faceMesh = await ml5.faceMesh(options);
 }
 ```
 
@@ -116,10 +108,10 @@ To start detecting the keypoints of the face, in the `setup` function, we need t
 
 ```javascript
 function setup() {
-  ...
+  // ...
   video.hide();
 
-  // Start detecting faces from the webcam video
+  // {!1} Start detecting faces from the webcam video
   faceMesh.detectStart(video, gotFaces);
 }
 ```
@@ -127,9 +119,9 @@ function setup() {
 The `gotFaces()` function is a callback function that will be called when the `faceMesh.detectStart()` method detects faces. Once the faces are detected, the output `results` will be passed to `gotFaces()`, and then saved to the `faces` variable.
 
 ```javascript
-// Callback function for when faceMesh outputs data
+// {!1} Callback function for when faceMesh outputs data
 function gotFaces(results) {
-  // Save the output to the faces variable
+  // {!1} Save the output to the faces variable
   faces = results;
 }
 ```
@@ -146,7 +138,6 @@ function draw() {
 Iterate all faces of the `faces` array, fetch the `i`th dectected face, and store it in the `face` variable.
 
 ```javascript
-// Draw all the tracked face points
   for (let i = 0; i < faces.length; i++) {
     let face = faces[i];
 ```
@@ -175,7 +166,7 @@ Note we are iterating through all the keypoints (`j` is ranging from 0 to the le
 
 And, that's it! You have successfully built the FaceMesh Keypoints example from scratch. Press the <img class="inline-img" src="assets/facemesh-arrow-forward.png" alt="tip icon" aria-hidden="true"> `run` button to see the code in action. You can also find the complete code [here](https://editor.p5js.org/ml5/sketches/lCurUW1TT).
 
-?> If you have any questions or spot something unclear in this step-by-step code guide, we'd love to hear from you! Join us on [Discord](https://discord.com/invite/3CVauZMSt7) and let us know how we can make it better.
+?> If you have any questions or spot something unclear in this step-by-step guide, please feel free to [open an issue on GitHub](https://github.com/ml5js/ml5-website-v02-docsify/issues) and let us know how we can make it better.
 
 ## Methods
 
@@ -245,9 +236,9 @@ faceMesh.detectStart(media, callback);
       keypoints: [{ x, y, z, name }, ... ],
       faceOval: { x, y, width, height, centerX, centerY, keypoints: [{ x, y, z }, ... ]},
       leftEye: { x, y, width, height, centerX, centerY, keypoints: [{ x, y, z }, ... ]},
-      ...
+      // ...
     },
-    ...
+    // ...
   ]
   ```
 

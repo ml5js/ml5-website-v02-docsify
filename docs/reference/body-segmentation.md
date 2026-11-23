@@ -46,13 +46,7 @@ Import the ml5.js library in your `index.html` file.
 ?> If you are not familiar with how to import the ml5.js library and need more detailed guidance, please check out our [Getting Started](/?id=set-up-ml5js) page.
 
 ### Load model
-Let's open the `sketch.js` file in the p5.js Web Editor and follow the steps below to load the model.
-
-```javascript
-let bodySegmentation; //Define a variable to store the BodySegmentation model.
-```
-
-In this example, we would like to segment body parts from the webcam input. Let's specify the mask type as `parts` in the options object.
+Let's open the `sketch.js` file. Then, we'll set up the model to segment body parts from the webcam input. We'll specify the mask type as `parts` in the options object.
 
 ```javascript
 let options = {
@@ -65,35 +59,33 @@ let options = {
 Now, let's load the BodySegmentation model with the specified options. Using `async` and `await` ensures that the model is fully loaded before the `draw()` function begins.
 
 ```javascript
-// Make sure to add "async" before "function setup()".
+// {!1} Define a variable to store the BodySegmentation model.
+let bodySegmentation;
+// {!1} Use async so setup can await loading.
 async function setup() {
-  // Wait until the BodySegmentation model is fully loaded.
+  // {!1} Use a common webcam resolution.
+  createCanvas(640, 480);
+  // {!1} Use await to finish loading the model.
   bodySegmentation = await ml5. bodySegmentation ("BodyPix", options); 
 }
 ```
 
 ### Access webcam video
 
-Let's define a variable `video` to store the webcam video.
+Then, set up our sketch to access the webcam video. We will capture the live video stream and hide the default HTML element so we can draw it only on our canvas.
 
 ```javascript
 let video;
-```
+let bodySegmentation;
 
-Resize the canvas dimensions to 640x480, a common resolution for webcams.
-
-```javascript
-function setup() {
+async function setup() {
   createCanvas(640, 480);
-```
-
-Access the webcam video, resize it to fit the canvas, and hide it from the display.
-
-```javascript
-  // Create the video and hide it
+  // {!3} Capture webcam video, then resize and hide the video element.
   video = createCapture(VIDEO);
   video.size(640, 480);
   video.hide();
+
+  bodySegmentation = await ml5. bodySegmentation ("BodyPix", options);
 }
 ```
 
@@ -111,7 +103,7 @@ function setup() {
   // ...
   video.hide();
 
-  // Start detecting body parts from the webcam video
+  // {!1} Start detecting body parts from the webcam video
   bodySegmentation.detectStart(video, gotResults);
 }
 ```
@@ -147,7 +139,7 @@ If the `segmentation` variable is not empty, we can display the segmented body p
 ### Run your sketch
 You have successfully built the BodySegmentation Mask Body Part example! Press the <img class="inline-img" src="assets/facemesh-arrow-forward.png" alt="run button icon" aria-hidden="true"> `run` button to see the code in action. You can also find the [complete code](https://editor.p5js.org/ml5/sketches/ruoyal-RC) in the p5.js web editor.
 
-?> If you have any questions or spot something unclear in this step-by-step code guide, we'd love to hear from you! Join us on [Discord](https://discord.com/invite/3CVauZMSt7) and let us know how we can make it better.
+?> If you have any questions or spot something unclear in this step-by-step guide, please feel free to [open an issue on GitHub](https://github.com/ml5js/ml5-website-v02-docsify/issues) and let us know how we can make it better.
 
 
 ## Methods
@@ -170,9 +162,12 @@ const bodySegmentation = ml5.bodySegmentation(?modelName, ?options, ?callback);
 
   ```javascript
   {
-    runtime: "tfjs", // "tfjs" or "mediapipe"
-    modelType: "general", // "general" or "landscape"
-    maskType: "background", // "background", "person", or "parts" (used to change the type of segmentation mask output)
+    // {!1} "tfjs" or "mediapipe"
+    runtime: "tfjs",
+    // {!1} "general" or "landscape"
+    modelType: "general",
+    // {!1} "background", "person", or "parts" (used to change the type of segmentation mask output)
+    maskType: "background",
     flipped: false,
   }
   ```
@@ -217,10 +212,14 @@ The `output` will contain an object with the following properties. Based on the 
 
   ```javascript
   {
-    mask: {}, // a p5 Image object, can be directly passed into p5 image() function
-    maskImageData: {}, // the mask as an ImageData object
-    data: [], // an array of raw detection results
-    imageData: {}, // an ImageData object of the raw detection results
+    // {!1} a p5 Image object, can be directly passed into p5 image() function
+    mask: {},
+    // {!1} the mask as an ImageData object
+    maskImageData: {},
+    // {!1} an array of raw detection results
+    data: [],
+    // {!1} an ImageData object of the raw detection results
+    imageData: {},
   }
   ```
 

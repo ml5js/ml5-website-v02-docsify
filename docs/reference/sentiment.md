@@ -47,29 +47,30 @@ Import the ml5.js library in your `index.html` file.
 
 ### Load model
 
-Let's open the `sketch.js` file and define a variable to store the Sentiment model.
-
-```javascript
-let sentiment;
-```
-
-Now, load the Sentiment model by calling the `ml5.sentiment(model, ?callback)` method. Using `async` and `await` ensures that the model is fully loaded before the `draw()` function begins.
+Let's open the `sketch.js` file. Then, we will load the Sentiment model by calling the `ml5.sentiment(model, ?callback)` method. Using `async` and `await` ensures that the model is fully loaded before the `draw()` function begins.
 
 Currently, the Sentiment model only supports the 'movieReviews' model, and we may support more models in the future.
 
 ```javascript
-// Make sure to add "async" before "function setup()".
+// {!1} Define a variable to store the Sentiment model.
+let sentiment;
+// {!1} Use async so setup can await loading.
 async function setup() {
-  // Wait until the Sentiment model is fully loaded.
+  // {!1} Use await to finish loading the model.
   sentiment = await ml5.sentiment("MovieReviews"); 
 }
 ```
 
+### Set up without a canvas
+
 Since we are not going to draw anything on the canvas and will instead update the HTML elements directly to interact with the model, we can remove the canvas within the `setup` function.
 
 ```javascript
-function setup() {
+let sentiment;
+
+async function setup() {
   noCanvas();
+  sentiment = await ml5.sentiment("MovieReviews");
 }
 ```
 
@@ -105,8 +106,8 @@ Let's tackle these one by one! We can start with the input field to receive the 
 
 ```javascript
 function setup() {
-  ...
-  // Set up the DOM elements
+  // ...
+  // {!1} Set up the DOM elements
   inputBox = createInput("Today is the happiest day and is full of rainbows!");
 ```
 
@@ -137,14 +138,14 @@ It will get the values from the user input, and store it in a variable `text`.
 
 ```javascript
 function getSentiment() {
-  // Use the value of the input box
+  // {!1} Use the value of the input box
   let text = inputBox.value();
 ```
 
 Make the prediction using the `predict` method of the `sentiment` object. Here, we pass two parameters: the input text and a customized callback function `gotResult`.
 
 ```javascript
-  // Start making the prediction
+  // {!1} Start making the prediction
   sentiment.predict(text, gotResult);
 }
 ```
@@ -153,7 +154,7 @@ The `gotResult` function is a callback function that will be called when the `pr
 
 ```javascript
 function gotResult(prediction) {
-  // Display sentiment result via the DOM
+  // {!1} Display sentiment result via the DOM
   sentimentResult.html("Sentiment confidence: " + prediction.confidence);
 }
 ```
@@ -164,10 +165,10 @@ To do this, let's first go back to the `setup` function. We can use the `mousePr
 
 ```javascript
 function setup() {
-  ...
+  // ...
   sentimentResult = createP("Sentiment confidence:");
 
-  // Start predicting when the submit button is pressed
+  // {!1} Start predicting when the submit button is pressed
   submitBtn.mousePressed(getSentiment);
 }
 ```
@@ -175,7 +176,7 @@ function setup() {
 Now, we'll create a `keyPressed` function and call the `getSentiment` function when the user presses the 'enter' key.
 
 ```javascript
-// Start predicting when the 'Enter' key is pressed
+// {!5} Start predicting when the 'Enter' key is pressed
 function keyPressed() {
   if (keyCode == ENTER) {
     getSentiment();
@@ -187,7 +188,7 @@ function keyPressed() {
 
 That's it! You have successfully built a Sentiment Analysis model that predicts the sentiment of the given text. Press the <img class="inline-img" src="assets/facemesh-arrow-forward.png" alt="run button icon" aria-hidden="true"> `run` button to see the code in action. You can also find the [complete code](https://editor.p5js.org/ml5/sketches/hopIvsCGL) in the p5.js web editor.
 
-?> If you have any questions or spot something unclear in this step-by-step code guide, we'd love to hear from you! Join us on [Discord](https://discord.com/invite/3CVauZMSt7) and let us know how we can make it better.
+?> If you have any questions or spot something unclear in this step-by-step guide, please feel free to [open an issue on GitHub](https://github.com/ml5js/ml5-website-v02-docsify/issues) and let us know how we can make it better.
 
 ## Methods
 

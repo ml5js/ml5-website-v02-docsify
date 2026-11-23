@@ -2,7 +2,7 @@
 
 <br/>
 
-> 🧪 **New & experimental.** Offline support is landing in ml5.js. The APIs described here are being finalized — expect small changes, and please share feedback on [Discord](https://discord.com/invite/3CVauZMSt7) or [GitHub](https://github.com/ml5js/ml5-next-gen).
+> 🧪 **New & experimental.** Offline support is landing in ml5.js. The APIs described here are being finalized — expect small changes, and please share feedback on [GitHub](https://github.com/ml5js/ml5-next-gen/issues).
 
 ml5.js normally downloads its pre-trained models from the cloud the first time your sketch runs. That's perfect for everyday tinkering, but it falls apart in the places creative coders love to put their work: a gallery installation behind a flaky network, a classroom with no Wi‑Fi, a kiosk that has to boot cold, or an air‑gapped machine that never touches the open internet.
 
@@ -151,6 +151,6 @@ handPose = ml5.handPose({ cache: true }); // experimental
 
 - `ml5 cache` CLI + `modelPath` — [ml5-next-gen #305](https://github.com/ml5js/ml5-next-gen/pull/305)
 - In-browser caching (experimental) — [ml5-next-gen #304](https://github.com/ml5js/ml5-next-gen/pull/304)
-- Questions, ideas, or want to help test offline mode? Join us on [Discord](https://discord.com/invite/3CVauZMSt7).
+- Questions, ideas, or want to help test offline mode? Please [open an issue on GitHub](https://github.com/ml5js/ml5-next-gen/issues).
 
 <br>

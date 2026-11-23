@@ -48,46 +48,19 @@ Import the ml5.js library in your `index.html` file by copying the following `<s
 
 ?> If you are not familiar with how to import the ml5.js library and need more detailed guidance, please check out our [Getting Started](/?id=set-up-ml5js) tutorial.
 
-### Declare variables
-
-```javascript
-let video;
-let detector;
-let detections = [];
-```
-
-### Fetch and draw webcam video
-
-We'll use webcam feed as video input, then hide html element to avoid duplicate with the video drawn on canvas.
-
-You'll see the video source drawn on the canvas.
-
-```javascript
-let video;
-
-function setup() {
-  createCanvas(640, 480);
-
-  video = createCapture(VIDEO);
-  video.size(width, height);
-  video.hide();
-}
-
-function draw() {
-  image(video, 0, 0);
-}
-```
-
 ### Load model
 
-Using `async` setup() and `await` to load ml5.objectDetection with the supported model [CocoSsd](https://github.com/tensorflow/tfjs-models/tree/master/coco-ssd).
-
+Let's open the `sketch.js` file. Then, we'll load the [CocoSsd](https://github.com/tensorflow/tfjs-models/tree/master/coco-ssd) model inside `setup()`. By using `async` and `await`, we ensure the model is completely ready before the `draw()` function starts running.
 
 ```javascript
-// Make sure to add "async" before "function setup()".
-async function setup(){ 
- // Wait until the ObjectDetection model is fully loaded.
- detector = await ml5.objectDetection("cocossd");
+// {!1} Define a variable to store the ObjectDetection model.
+let detector;
+// {!1} Use async so setup can await loading.
+async function setup() {
+  // {!1} Use a common webcam resolution.
+  createCanvas(640, 480);
+  // {!1} Use await to finish loading the model.
+  detector = await ml5.objectDetection("cocossd");
 }
 ```
 
@@ -98,6 +71,32 @@ async function setup(){
   detector = await ml5.objectDetection("cocossd");
 }
 ``` -->
+
+### Access webcam video
+
+Then, set up our sketch to access the webcam video. We will capture the live video stream and hide the default HTML element so we can draw it only on our canvas.
+
+```javascript
+// {!1} Define a variable to store the webcam video.
+let video;
+let detector;
+// {!1} Define an array to store the latest detection results.
+let detections = [];
+
+async function setup() {
+  createCanvas(640, 480);
+  // {!3} Capture webcam video, then resize and hide the video element.
+  video = createCapture(VIDEO);
+  video.size(width, height);
+  video.hide();
+
+  detector = await ml5.objectDetection("cocossd");
+}
+
+function draw() {
+  image(video, 0, 0);
+}
+```
 
 ### Start Detection
 
@@ -136,13 +135,13 @@ Inside draw function, draw a bounding box and a label.
 for (let i = 0; i < detections.length; i += 1) {
     let detection = detections[i];
 
-    // Draw bounding box
+    // {!4} Draw bounding box
     stroke(0, 255, 0);
     strokeWeight(4);
     noFill();
     rect(detection.x, detection.y, detection.width, detection.height);
 
-    // Draw label
+    // {!4} Draw label
     noStroke();
     fill(255);
     textSize(24);

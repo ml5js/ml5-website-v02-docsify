@@ -28,6 +28,8 @@
 	--color-bg-gray: #f5f5f5;
 	--color-bg-code: var(--color-bg-light);
 
+	--comment-highlight-gap: 0.2rem;
+
 	--color-border: #ddd;
 	--color-border-light: #eee;
 	--color-border-dark: #ccc;

@@ -60,18 +60,16 @@ Import the ml5.js library in your `index.html` file.
 
 ### Load model
 
-Let's open the `sketch.js` file and define a variable to store the ImageClassifier model.
+Let's open the `sketch.js` file. Then, we can load the ImageClassifier model. Using `async` and `await` ensures that the model is loaded before the `draw()` function begins. Note here we can specify the model name we want to use, such as `MobileNet`.
 
 ```javascript
+// {!1} Define a variable to store the ImageClassifier model.
 let classifier;
-```
-
-Now, we can load the ImageClassifier model. Using `async` and `await` ensures that the model is loaded before the `draw()` function begins. Note here we can specify the model name we want to use, such as `MobileNet`.
-
-```javascript
-// Make sure to add "async" before "function setup()".
+// {!1} Use async so setup can await loading.
 async function setup() {
-  // Wait until the ImageClassifier model is fully loaded.
+  // {!1} Create a canvas to display the results.
+  createCanvas(400, 400);
+  // {!1} Use await to finish loading the model.
   classifier = await ml5.imageClassifier("MobileNet"); 
 }
 ```
@@ -85,12 +83,13 @@ Next, let's load an image that we want to classify. Unfold the project directory
 We are ready to write the code to load the image that we just uploaded. 
 
 ```javascript
-// Define a variable `img` to store the image.
-let img; 
+// {!1} Define a variable 'img' to store the image.
+let img;
+let classifier;
 
 async function setup() {
   classifier = await ml5.imageClassifier("MobileNet"); 
-  // Also use "await" to load the image before the "draw()"" function begins.
+  // {!1} Use await to finish loading the image.
   img = await loadImage("images/bird.png");
 }
 ```
@@ -104,7 +103,7 @@ async function setup() {
   createCanvas(400, 400);
   classifier = await ml5.imageClassifier("MobileNet");
   img = await loadImage("images/bird.png");
-  // classify the image with the model and pass in a callback function `gotResult` to handle the results.
+  // {!1} classify the image with the model and pass in a callback function 'gotResult' to handle the results.
   classifier.classify(img, gotResult);
 }
 ```
@@ -112,9 +111,9 @@ async function setup() {
 The callback function `gotResult` is a function that will be called when the `classify` method finishes classifying the image. Now, let's define the `gotResult` function.
 
 ```javascript
-// Callback function for when classification has finished
+// {!1} Callback function for when classification has finished
 function gotResult(results) {
-  // The results are in an array ordered by confidence
+  // {!1} The results are in an array ordered by confidence
   console.log(results);
 }
 ```
@@ -125,7 +124,7 @@ We need to first display the image itself on the canvas. Add the following code 
 
 ```javascript
 async function setup() {
-  ...
+  // ...
   classifier.classify(img, gotResult);
   image(img, 0, 0, width, height);
 }
@@ -134,12 +133,12 @@ async function setup() {
 We can then display the classification results on the canvas. With `fill()`, `stroke()`, and `textSize()`, we can set up the text style.
 
 ```javascript
-// Callback function for when classification has finished
+// {!1} Callback function for when classification has finished
 function gotResult(results) {
-  // The results are in an array ordered by confidence
+  // {!1} The results are in an array ordered by confidence
   console.log(results);
 
-  // Display the results on the canvas
+  // {!3} Display the results on the canvas
   fill(255);
   stroke(0);
   textSize(18);
@@ -164,7 +163,7 @@ Finally, display the label and confidence on the canvas.
 
 Voila! You have successfully built the ImageClassifier Single Image example. Press the <img class="inline-img" src="assets/facemesh-arrow-forward.png" alt="run button icon" aria-hidden="true"> `run` button to see the code in action. You can also find the [complete code](https://editor.p5js.org/ml5/sketches/pjPr6XmPY) in the p5.js web editor.
 
-?> If you have any questions or spot something unclear in this step-by-step code guide, we'd love to hear from you! Join us on [Discord](https://discord.com/invite/3CVauZMSt7) and let us know how we can make it better.
+?> If you have any questions or spot something unclear in this step-by-step guide, please feel free to [open an issue on GitHub](https://github.com/ml5js/ml5-website-v02-docsify/issues) and let us know how we can make it better.
 
 ## Methods
 
@@ -186,7 +185,7 @@ const classifier = ml5.imageClassifier(modelNameOrUrl, ?options, ?callback);
 
     The default options for the default `mobilenet` model are
 
-    ```
+    ```javascript
     {
       alpha: 1.0,
       topk: 3
