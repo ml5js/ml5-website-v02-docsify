@@ -51,13 +51,7 @@ Import the ml5.js library in your `index.html` file.
 
 ### Load model
 
-Let's open the `sketch.js` file and define a variable to store the SoundClassifier model.
-
-```javascript
-let classifier;
-```
-
-Next, we will store the 18 words available in the SpeechCommands18w model in an array.
+Let's open the `sketch.js` file. Then, we will store the 18 words available in the SpeechCommands18w model in an array.
 
 ```javascript
 let words = [
@@ -87,10 +81,14 @@ We're now going to load the SoundClassifier model. Using `async` and `await` ens
 In this, we first create an `options` object to customize the model's behavior. For example, we can set the probability threshold, with the default being 0.
 
 ```javascript
-// Make sure to add "async" before "function setup()".
+// {!1} Define a variable to store the SoundClassifier model.
+let classifier;
+// {!1} Use async so setup can await loading.
 async function setup() {
+  // {!1} Create a canvas to display the results.
+  createCanvas(650, 450);
   let options = { probabilityThreshold: 0.7 };
-  // load a model configured as `options` specifies and store it in the `classifier` variable.
+  // {!1} Use await to finish loading the model.
   classifier = await ml5.soundClassifier("SpeechCommands18w", options); 
 }
 ```
@@ -102,7 +100,7 @@ async function setup() {
 Define a variable to store the label of the classified sound.
 
 ```javascript
-// Variable for displaying the results on the canvas
+// {!1} Variable for displaying the results on the canvas
 let predictedWord = "";
 ```
 
@@ -111,7 +109,7 @@ Within the `setup` function, we call the `classifyStart` method on the `classifi
 ```javascript
 function setup() {
   createCanvas(650, 450);
-  // Classify the sound from microphone in real time
+  // {!1} Classify the sound from microphone in real time
   classifier.classifyStart(gotResult);
 }
 ```
@@ -119,16 +117,16 @@ function setup() {
 Now, let's define the `gotResult` function. The callback function `gotResult` is a function that will be called when the `classifyStart` method finishes classifying the sound.
 
 ```javascript
-// A function to run when we get any errors and the results
+// {!1} A function to run when we get any errors and the results
 function gotResult(results) {
-  // The results are in an array ordered by confidence
+  // {!1} The results are in an array ordered by confidence
   console.log(results);
 ```
 
 Let's get the top 1 label that model feels most confident about. `results[0]` is the object with the highest confidence score.
 
 ```javascript
-  // Load the first label to the text variable displayed on the canvas
+  // {!1} Load the first label to the text variable displayed on the canvas
   predictedWord = results[0].label;
 }
 ```
@@ -140,7 +138,7 @@ To give the user some guidance on how to interact with the model, we can add a p
 Using `textAlign()`, `textSize()`, and `fill()`, we can set up the text style.
 
 ```javascript
-// Function to display the 18 words on the canvas
+// {!5} Function to display the 18 words on the canvas
 function displayWords() {
   textAlign(CENTER, CENTER);
   textSize(32);
@@ -153,7 +151,7 @@ We can also specify where we want the words to appear on the screen. To set up r
 ```javascript
   let x = 125;
   let y = 150;
-  // Words appear in 3 columns of 6 rows
+  // {!9} Words appear in 3 columns of 6 rows
   for (let i = 0; i < words.length; i++) {
     fill(158);
     text(words[i], x, y);
@@ -173,14 +171,14 @@ In the `draw()` function, draw the `background` and call the `displayWords()` fu
 ```javascript
 function draw() {
   background(250);
-  // Call function for displaying background words
+  // {!1} Call function for displaying background words
   displayWords();
 ```
 
 Finally, we display the classification results on the canvas and again, use `fill()`, `textAlign()`, and `textSize()` to set up styling.
 
 ```javascript
-  // Once the model outputs results start displaying the predicted word on the canvas
+  // {!6} Once the model outputs results start displaying the predicted word on the canvas
   if (predictedWord !== "") {
     fill(211, 107, 255);
     textAlign(CENTER, CENTER);
@@ -194,7 +192,7 @@ Finally, we display the classification results on the canvas and again, use `fil
 
 Voila! You have successfully built the Sound Classification example. Press the <img class="inline-img" src="assets/facemesh-arrow-forward.png" alt="run button icon" aria-hidden="true"> `run` button to see the code in action. You can also find the [complete code](https://editor.p5js.org/ml5/sketches/HUm7NYMW3) in the p5.js web editor.
 
-?> If you have any questions or spot something unclear in this step-by-step code guide, we'd love to hear from you! Join us on [Discord](https://discord.com/invite/3CVauZMSt7) and let us know how we can make it better.
+?> If you have any questions or spot something unclear in this step-by-step guide, please feel free to [open an issue on GitHub](https://github.com/ml5js/ml5-website-v02-docsify/issues) and let us know how we can make it better.
 
 ## Methods
 

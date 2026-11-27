@@ -68,14 +68,12 @@ Inside the `setup()` function, add `createCapture(VIDEO)` to access the webcam, 
 
 ```javascript
 function setup() {
-  // Change the canvas size to a common webcam resolution
+  // {!1} Change the canvas size to a common webcam resolution
   createCanvas(640, 480);
   console.log("ml5 version:", ml5.version);
-  // Access the webcam
+  // {!3} Capture webcam video, then resize and hide the video element.
   video = createCapture(VIDEO); 
-  // Resize the webcam video to match the canvas size
   video.size(640, 480); 
-  // Hide the HTML video element
   video.hide();
 }
 ```
@@ -101,7 +99,7 @@ Let's apply this to the code we have so far.
 
 ```javascript
 let video;
-// Define a variable "handPose" to store the HandPose model.
+// {!1} Define a variable "handPose" to store the HandPose model.
 let handPose;
 
 async function setup() {
@@ -110,7 +108,7 @@ async function setup() {
   video = createCapture(VIDEO);
   video.size(640, 480);
   video.hide();
-  // Load the HandPose model.
+  // {!1} Load the HandPose model.
   handPose = await ml5.handPose();
 }
 ```
@@ -142,7 +140,7 @@ Let's put it all together and see what we have so far.
 ```javascript
 let video;
 let handPose;
-// Define a variable "hands" to store the detection results.
+// {!1} Define a variable "hands" to store the detection results.
 let hands = [];
 
 async function setup() {
@@ -153,13 +151,13 @@ async function setup() {
   video.hide();
 
   handPose = await ml5.handPose();
-  // Start detecting hands in the webcam video
+  // {!1} Start detecting hands in the webcam video
   handPose.detectStart(video, gotHands);
 }
 
 // Callback function to receive the detection results
 function gotHands(results) {
-  // Store the detection results in the hands array
+  // {!1} Store the detection results in the hands array
   hands = results;
 }
 ```
@@ -212,7 +210,7 @@ We will draw the video first in the `draw()` function.
 ```javascript
 function draw() {
   background(220);
-  // Draw the webcam video on the canvas
+  // {!1} Draw the webcam video on the canvas
   image(video, 0, 0);
 }
 ```
@@ -222,11 +220,11 @@ Then, we will check if a hand is detected by checking if the `hands` array has a
 ```javascript
 // Check if there is at least one hand detected
 if (hands.length > 0) {
- // Get the index finger tip and thumb of the first hand (index: 0 in the array)
+ // {!2} Get the index finger tip coordinates of the first hand.
  let fingerX = hands[0].index_finger_tip.x;
  let fingerY = hands[0].index_finger_tip.y;
 
- // Draw a yellow circle on the index finger tip
+ // {!3} Draw a yellow circle on the index finger tip
  noStroke();
  fill(255, 255, 0);
  circle(fingerX, fingerY, 20);
@@ -239,14 +237,14 @@ Let's also try to get the thumb coordinates and draw a red circle on it!
 if (hands.length > 0) {
  let fingerX = hands[0].index_finger_tip.x;
  let fingerY = hands[0].index_finger_tip.y;
- // Get the thumb tip coordinates
+ // {!2} Get the thumb tip coordinates
  let thumbX = hands[0].thumb_tip.x;
  let thumbY = hands[0].thumb_tip.y;
 
  noStroke();
  fill(255, 255, 0);
  circle(fingerX, fingerY, 20);
- // Draw a red circle on the thumb
+ // {!2} Draw a red circle on the thumb
  fill(255, 0, 0);
  circle(thumbX, thumbY, 20);  
 }

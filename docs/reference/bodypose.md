@@ -58,12 +58,13 @@ Import the ml5.js library in your `index.html` file by copying the following `<s
 Let’s open the `sketch.js` file in the p5.js Web Editor and load the BodyPose model. By using `async` and `await`, we ensure the model is completely ready before the `draw()` function starts running.
 
 ```javascript
-// Define a variable to store the BodyPose model.
+// {!1} Define a variable to store the BodyPose model.
 let bodyPose;
-// Make sure to add "async" before "function setup()".
+// {!1} Use async so setup can await loading.
 async function setup() {
-  createCanvas(640, 480); // a common webcam resolution
-  // Wait until the BodyPose model is fully loaded.
+  // {!1} Use a common webcam resolution.
+  createCanvas(640, 480);
+  // {!1} Use await to finish loading the model.
   bodyPose = await ml5.bodyPose();
 }
 ```
@@ -75,16 +76,16 @@ async function setup() {
 
 ### Access webcam video
 
-Then, set up our sketch to access the webcam video. We will capture the live video stream and hide the default HTML element so we can render it directly on our canvas.
+Then, set up our sketch to access the webcam video. We will capture the live video stream and hide the default HTML element so we can draw it only on our canvas.
 
 ```javascript
-// Define a variable "video" to store the webcam video.
+// {!1} Define a variable "video" to store the webcam video.
 let video;
 let bodyPose;
 
 async function setup() {
   createCanvas(640, 480);
-  // Access the webcam video, resize it to fit the canvas, and hide it from the display.
+  // {!3} Capture webcam video, then resize and hide the video element.
   video = createCapture(VIDEO);
   video.size(640, 480);
   video.hide();
@@ -123,7 +124,7 @@ Now, let's apply the steps above! Here is the code we have built so far.
 ```javascript
 let video;
 let bodyPose;
-// Define a variable "poses" to store the detected poses as an array.
+// {!1} Define a variable "poses" to store the detected poses as an array.
 let poses = [];
 
 async function setup() {
@@ -133,13 +134,13 @@ async function setup() {
   video.hide();
 
   bodyPose = await ml5.bodyPose();
-  // Start detecting poses from the webcam video.
+  // {!1} Start detecting poses from the webcam video.
   bodyPose.detectStart(video, gotPoses);
 }
 
-// Callback function for when bodyPose outputs data
+// {!1} Callback function for when bodyPose outputs data
 function gotPoses(results) {
-  // Save the output to the poses variable
+  // {!1} Save the output to the poses variable
   poses = results;
 }
 ```
@@ -161,13 +162,13 @@ We will iterate through the `poses` array, where each `pose` object represents a
 First, we will loop through its keypoints to draw a green circle at every location.
 
 ```javascript
-// Loop through the "poses" array to fetch each detected pose.
+// {!2} Loop through the "poses" array to fetch each detected pose.
 for (let i = 0; i < poses.length; i++) {
   let pose = poses[i];
-  // Iterate through all the keypoints of the current pose.
+  // {!2} Iterate through all the keypoints of the current pose.
   for (let j = 0; j < pose.keypoints.length; j++) {
     let keypoint = pose.keypoints[j];
-    // Finally, draw a green circle at the location of the keypoint.
+    // {!3} Finally, draw a green circle at the location of the keypoint.
     fill(0, 255, 0);
     noStroke();
     circle(keypoint.x, keypoint.y, 10);
@@ -182,7 +183,7 @@ for (let i = 0; i < poses.length; i++) {
   let pose = poses[i];
   for (let j = 0; j < pose.keypoints.length; j++) {
     let keypoint = pose.keypoints[j];
-    // Draw a circle only if the keypoint's confidence is greater than 0.1
+    // {!5} Draw a circle only if the keypoint's confidence is greater than 0.1
     if (keypoint.confidence > 0.1) {
       fill(0, 255, 0);
       noStroke();
@@ -253,7 +254,7 @@ Next, we will use `bodyPose.getSkeleton()` in the `setup()` function to get the 
 ```javascript
 function setup() {
   bodyPose.detectStart(video, gotPoses);
-  // Get the skeleton data from "bodyPose" to know which keypoints to link together.
+  // {!1} Get the skeleton data from "bodyPose" to know which keypoints to link together.
   connections = bodyPose.getSkeleton(); 
 }
 ```
@@ -263,16 +264,16 @@ function setup() {
 Applying the same rule as before, we only want to draw a red line if both points have a `confidence` score greater than `0.1`.
 
 ```javascript
-// Loop through the "poses" array to fetch each detected pose.
+// {!2} Loop through the "poses" array to fetch each detected pose.
 for (let i = 0; i < poses.length; i++) {
   let pose = poses[i];
-  // Iterate through the "connections" array to draw lines between keypoints.
+  // {!5} Iterate through the "connections" array to draw lines between keypoints.
   for (let j = 0; j < connections.length; j++) {
     let pointAIndex = connections[j][0];
     let pointBIndex = connections[j][1];
     let pointA = pose.keypoints[pointAIndex];
     let pointB = pose.keypoints[pointBIndex];
-    // Only draw a line if both points have a `confidence` greater than `0.1`.
+    // {!5} Only draw a line if both points have a 'confidence' greater than '0.1'.
     if (pointA.confidence > 0.1 && pointB.confidence > 0.1) {
       stroke(255, 0, 0);
       strokeWeight(2);
@@ -308,7 +309,7 @@ async function setup() {
 function draw() {
   background(220);
   image(video, 0, 0);
-  // Draw the skeleton first, so the keypoints are drawn on top of the lines.
+  // {!15} Draw the skeleton first, so the keypoints are drawn on top of the lines.
   for (let i = 0; i < poses.length; i++) {
     let pose = poses[i];
     for (let j = 0; j < connections.length; j++) {
@@ -324,7 +325,7 @@ function draw() {
       }
     }
   }
-  // Draw the keypoints on top of the skeleton lines.
+  // {!12} Draw the keypoints on top of the skeleton lines.
   for (let i = 0; i < poses.length; i++) {
     let pose = poses[i];
     for (let j = 0; j < pose.keypoints.length; j++) {
@@ -458,10 +459,10 @@ bodypose.detectStart(media, gotPoses);
     left_ankle: { x, y, confidence },
     left_ear: { x, y, confidence },
     left_elbow: { x, y, confidence },
-    ...
+    // ...
     confidence: 0.28,
   },
-  ...
+  // ...
 ];
 ```
 
@@ -495,10 +496,10 @@ See the diagram below for the position of each keypoint.
     nose: { x, y, confidence, keypoint3D: { x, y, z, confidence } },
     left_eye_inner: { x, y, confidence, keypoint3D: { x, y, z, confidence } },
     left_eye: { x, y, confidence, keypoint3D: { x, y, z, confidence } },
-    ...
+    // ...
     confidence: 0.28,
   },
-  ...
+  // ...
 ];
 ```
 
@@ -517,12 +518,12 @@ bodypose.detectStop();
 For example, you can toggle the pose estimation with click event in p5.js by using this function as follows:
 
 ```javascript
-// Toggle detection when mouse is pressed
+// {!3} Toggle detection when mouse is pressed
 function mousePressed() {
 	toggleDetection();
 }
 
-// Call this function to start and stop detection
+// {!9} Call this function to start and stop detection
 function toggleDetection() {
 	if (isDetecting) {
 		bodypose.detectStop();
@@ -563,9 +564,9 @@ This method returns an array of arrays, where each sub-array contains the indice
 ```javascript
 const connections;
 function setup() {
-  ...
+  // ...
   const connections = bodypose.getConnections(); // or bodypose.getSkeleton();
-  ...
+  // ...
 }
 ```
 

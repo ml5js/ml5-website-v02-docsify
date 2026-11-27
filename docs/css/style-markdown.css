@@ -916,50 +916,88 @@ span.emoji {
 
 /* CUSTOM CODE BLOCK */
 
-/* styling for comments sitting right next to the code */
-.token.comment.inline-comment {
-	/* add more */
+.markdown-section pre.comment-highlight-block {
+	display: grid;
+	grid-template-columns: minmax(0, 65fr) minmax(0, 35fr);
+	padding-top: 2.6rem;
+	white-space: normal;
 }
 
-/* styling for comments on their own line (bubbles) */
-.token.comment.bubble-comment {
-	display: block;
-	width: 50%;
+.markdown-section pre.comment-highlight-block>code {
+	display: contents;
+	padding: 0;
+}
 
-	background-color: #fff;
-	color: var(--color-secondary) !important;
-	font-family: var(--body-font-family) !important;
-	font-weight: var(--font-weight-normal) !important;
-	font-style: normal !important;
-	/* font-size: 0.95rem; */
+/* Hide the comment here; keep it for copying and screen readers! */
+.comment-highlight-block .comment-annotation-source {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: pre;
+}
+
+.comment-highlight-block .comment-code-chunk {
+	display: block;
+	grid-column: 1 / -1;
+	grid-row: var(--comment-row);
+	min-width: 0;
+	padding: 0 1.4rem;
+	white-space: pre-wrap;
+	overflow-wrap: anywhere;
+}
+
+.comment-highlight-block .comment-code-highlight {
+	grid-column: 1;
+	border-left: 3px solid var(--color-primary);
+	padding-left: calc(1.4rem - 3px);
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+	background-color: var(--color-bg);
+}
+
+.comment-highlight-block>.bubble-comment {
+	display: block;
+	grid-column: 2;
+	grid-row: var(--comment-row);
+	min-width: 0;
+	padding: 0.5rem 1rem;
+	background-color: var(--color-bg);
+	color: var(--color-secondary);
+	font-family: var(--body-font-family);
+	font-size: 0.9rem;
+	font-weight: var(--font-weight-normal);
 	line-height: 1.4;
 	white-space: normal;
-	word-break: break-word;
-
-	padding: 0.5rem 0.8rem;
-	border-radius: var(--border-radius);
-
-	/* pushes the bubble to the right */
-	margin-left: auto;
-
-	/* negative margin to reduce spacing */
-	margin-bottom: -1.5rem;
+	overflow-wrap: anywhere;
 }
 
-/* hide the '//' part for bubble comments */
-.token.comment.bubble-comment .hide-slash {
-	font-size: 0;
-	opacity: 0;
-	pointer-events: none;
+.comment-highlight-block .comment-group-adjacent {
+	margin-top: var(--comment-highlight-gap);
 }
 
-/* mobile view adjustments for bubbles */
-@media screen and (max-width: 768px) {
-	.token.comment.bubble-comment {
-		width: 80%;
-		margin-left: auto;
-		margin-top: 0.5rem;
-		margin-bottom: 0.5rem;
+@media screen and (max-width: 900px) {
+	.markdown-section pre.comment-highlight-block {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.comment-highlight-block .comment-code-chunk {
+		grid-column: 1;
+		grid-row: calc(var(--comment-row) * 2 - 1);
+	}
+
+	.comment-highlight-block>.bubble-comment {
+		grid-column: 1;
+		grid-row: calc(var(--comment-row) * 2);
+		border-left: 3px solid var(--color-primary);
+		padding-left: 1.4rem;
+	}
+
+	.comment-highlight-block>.bubble-comment.comment-group-adjacent {
+		margin-top: 0;
 	}
 }
 
@@ -1203,11 +1241,7 @@ pre[data-lang='processing']::before {
 	color: #5c2a3c;
 }
 
-/* =========================================
-   COVER PAGE
-	 (We don't use this!)
-	 (Docsify's default setting; we keep it here for reference.)
-   ========================================= */
+/* Unused Docsify cover styles, kept for reference. */
 
 section.cover {
 	position: relative;

@@ -56,14 +56,14 @@ Let's then set up the backend to `webgl` to allow this example to work across al
 function setup() {
   createCanvas(640, 240);
 
-  // Set the backend to 'webgl'
+  // {!1} Set the backend to 'webgl'
   ml5.setBackend("webgl");
 ```
 
 Create a variable `options` to configure the model.
 
 ```javascript
-  // Set the options for the neural network
+  // {!4} Set the options for the neural network
   let options = {
     task: "classification",
     debug: true,
@@ -73,7 +73,7 @@ Create a variable `options` to configure the model.
 Initialize the neural network model with the options.
 
 ```javascript
-  // Initialize the neural network
+  // {!1} Initialize the neural network
   classifier = ml5.neuralNetwork(options);
 }
 ```
@@ -104,7 +104,7 @@ Now, we will add the data to the neural network model. We iterate through the da
 
 ```javascript
 function setup() {
-  ...
+  // ...
   classifier = ml5.neuralNetwork(options);
 
   // Add data to the neural network
@@ -142,7 +142,7 @@ Now, we can train the neural network model with the training data. Define the tr
 
 ```javascript
 function setup() {
-  ...
+  // ...
   classifier.normalizeData();
 
   // Train the neural network
@@ -198,14 +198,14 @@ In the `setup()` function, create the sliders and set their initial values. The 
 
 ```javascript
 function setup() {
-  ...
+  // ...
   ml5.setBackend("webgl");
 
   rSlider = createSlider(0, 255, 255).position(10, 20);
   gSlider = createSlider(0, 255, 0).position(10, 40);
   bSlider = createSlider(0, 255, 0).position(10, 60);
 
-  ...
+  // ...
 }
 ```
 
@@ -262,7 +262,7 @@ We know that the `label` variable stores the predicted color label. Let's displa
 
 ```javascript
 function draw() {
-  ...
+  // ...
   background(r, g, b);
 
   textAlign(CENTER, CENTER);
@@ -274,7 +274,7 @@ function draw() {
 ### Run your sketch
 Now you can run your sketch and interact with the sliders to change the RGB values of the test data. The canvas will display the predicted color label based on the RGB values you set. You can also find the [complete code](https://editor.p5js.org/ml5/sketches/eGHBdmCLe) in the p5.js web editor.
 
-?> If you have any questions or spot something unclear in this step-by-step code guide, we'd love to hear from you! Join us on [Discord](https://discord.com/invite/3CVauZMSt7) and let us know how we can make it better.
+?> If you have any questions or spot something unclear in this step-by-step guide, please feel free to [open an issue on GitHub](https://github.com/ml5js/ml5-website-v02-docsify/issues) and let us know how we can make it better.
 
 ## Methods
 
@@ -309,13 +309,18 @@ const nn = ml5.neuralNetwork(options, callback);
 - **options**: Required. An object to configure the neural network. The available options are:
   ```javascript
   {
-    inputs: [], // can also be a number
-    outputs: [], // can also be a number
+    // {!1} can also be a number
+    inputs: [],
+    // {!1} can also be a number
+    outputs: [],
     dataUrl: null,
     modelUrl: null,
-    layers: [], // custom layers
-    task: null, // 'classification', 'regression', 'imageClassification'
-    debug: false, // determines whether or not to show the training visualization
+    // {!1} custom layers
+    layers: [],
+    // {!1} 'classification', 'regression', 'imageClassification'
+    task: null,
+    // {!1} determines whether or not to show the training visualization
+    debug: false,
     learningRate: 0.2,
     hiddenUnits: 16,
   }
